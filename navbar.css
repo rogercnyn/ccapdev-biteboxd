@@ -34,13 +34,15 @@ header {
     border-radius: 45px;
 
     /* design */
-    border: none;
-    background-color: #F2F4F2;
+    /* border: none; */
+    background-color: white;
 
     /* search text design */
-    padding: 10px 20px; 
+    padding: 10px 40px; 
     font-size: 18px; 
     font-family: 'Jua';
+
+    border: 1px solid grey;
 }
 
 .search-button {
@@ -69,3 +71,10 @@ header {
     outline: none;
 }
 
+.search-icon {
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-right: -2rem;
+    z-index: 1;
+    opacity: 80%;
+}
