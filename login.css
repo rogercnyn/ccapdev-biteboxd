@@ -1,75 +1,11 @@
 
 @import "base.css";
+@import "common-login-signup.css";
 
 
-header {
-    height: 15%;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 15%);
-
-    /* centers the logo pic, yellow box, and policy */
-    align-items: center;
-}
-
-/* MAIN PROPORTIONS */
 
 
-.logo-big {
-    flex: 0 0 21%;
-}
 
-.login {
-    flex: 0 0 60%;
-}
-
-.policy {
-    flex: 0 0 18%;
-}
-
-
-/* MAIN > FIRST  */
-
-.logo {
-    width: auto;
-    height: 7rem;
-}
-
-/* MAIN >  YELLOW BOX */
-
-.login {
-    /* layout */
-    width: 30%;
-    display: flex; /* logo-text, then form */
-    flex-direction: column;
-    align-items: center;
-
-    /* design */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.8);
-
-}
-
-.logo-text {
-    flex: 0 0 22%;
-}
-
-.login-form {
-    flex: 0 0 73%;
-}
-
-
-/* main > yellow box > logo-text  */
-.logo-text {
-    font-size: 50px;
-
-    /* vertically align text + add space */
-    display: flex;
-    align-items: center;
-    padding: 2%;
-}
 
 /* main > yellow box > login-form  */
 
@@ -152,49 +88,3 @@ a {
 input:focus {
     outline: none;
 } 
-
-.login button {
-    border-radius: 90px;
-    font-size: 15px;
-    font-family: "Jua";
-    background-color: black;
-    color: white;
-    width: 30%;
-    height: 15%;
-}
-
-.back {
-    height: 1.5rem;
-    width: 1.75rem;
-}
-
-.back-button {
-    margin-left: 20%;
-
-}
-
-.back-button:hover {
-    opacity: 70%;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.signup-button {
-    border-radius: 90px;
-    font-size: 15px;
-    font-family: "Jua";
-    background-color: black;
-    color: white;
-    width: 7%;
-    height: 40%;
-    margin-right: 20%;
-}
-
-.policy {
-    display: flex;
-    align-items: center;
-}
