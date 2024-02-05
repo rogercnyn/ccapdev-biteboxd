@@ -29,7 +29,7 @@
             </div>
 
             <p class="logo-text">Sign Up</p>
-            <div class="login-form">
+            <!-- <div class="login-form">
                 <div class=" name-box">
                     <div class="box first-name-box">
                         <p class="input-label">First Name</p>
@@ -59,8 +59,40 @@
                     <p class="input-label">Confirm Password</p>
                     <input type="password">
                 </div>
-            <button class="action-button">Sign up</button>
 
+                <div class="action-button-container">
+                    <button class="action-button">Continue</button>
+                </div>
+            </div>  -->
+
+            <!-- <div class="login-form">
+                <div class="tag-layers">
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)">Salty</div>
+                        <div class="tag" onclick="toggleTag(this)">Sweet</div>
+                    </div>
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)">Sour</div>
+                        <div class="tag" onclick="toggleTag(this)">Bitter</div>
+                        <div class="tag" onclick="toggleTag(this)">Japanese</div>
+                    </div>
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)">Chinese</div>
+                        <div class="tag" onclick="toggleTag(this)">Italian</div>
+                        <div class="tag" onclick="toggleTag(this)">Korean</div>
+                    </div>
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)">Filipino</div>
+                        <div class="tag" onclick="toggleTag(this)">Indian</div>
+                    </div>
+                    <div class="action-button-container">
+                        <button class="action-button">Sign up</button>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="login-form">
+                
             </div>
 
         </div>
@@ -68,6 +100,13 @@
             <p>By signing in to BiteBoxd, you agree to our Terms and Privacy Policy.</p>
         </div>
     </main>
+
+    <script>
+        function toggleTag(tag) {
+            tag.classList.toggle('selected');
+        }
+    </script>
+    
     
 </body>
 </html>
