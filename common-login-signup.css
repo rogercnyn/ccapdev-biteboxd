@@ -1,17 +1,6 @@
-.back {
-    height: 1.5rem;
-    width: 1.75rem;
-}
+/* HEADER PART */
 
-.back-button {
-    margin-left: 20%;
-
-}
-
-.back-button:hover {
-    opacity: 70%;
-}
-
+/* header - layout */
 header {
     height: 15%;
     display: flex;
@@ -19,20 +8,44 @@ header {
     justify-content: space-between;
 }
 
+.back {
+    /* X Icon */
+    height: 1.5rem;
+    width: 1.75rem;
+}
+
+.back-button {
+    margin-left: 20%;
+}
+
+.back-button:hover {
+    opacity: 70%;
+}
+
+
 .redirect-button {
+    /* layout */
+    width: 7%;
+    height: 40%;
+    margin-right: 20%;
+
+    /* design */
     border-radius: 90px;
     font-size: 15px;
     font-family: "Jua";
     background-color: black;
     color: white;
-    width: 7%;
-    height: 40%;
-    margin-right: 20%;
 }
 
 
+/* POLICY PART */
+.policy {
+    display: flex;
+    align-items: center;
+}
 
-/* main body */
+
+/* MAIN PART */
 
 main {
     display: flex;
@@ -45,12 +58,11 @@ main {
 
 /* MAIN PROPORTIONS */
 
-
 .logo-big {
     flex: 0 0 21%;
 }
 
-.login {
+.yellow-box {
     flex: 0 0 60%;
 }
 
@@ -68,24 +80,52 @@ main {
 
 /* MAIN >  YELLOW BOX */
 
-.login {
+.yellow-box {
     /* layout */
     width: 30%;
-    display: flex; /* logo-text, then form */
+    display: flex; /* child: logo-text, then form */
     flex-direction: column;
     align-items: center;
 
     /* design */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.8);
-
 }
 
+/* main > yellow box > logo-text */
 .logo-text {
     flex: 0 0 22%;
 }
 
+/* main > yellow box > login-form */
 .login-form {
-    flex: 0 0 73%;
+    /* take up the remaining space that logo-text does not occupy*/
+    flex: 1;
+    width: 100%;
+    
+    /* inside the login form */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+
+/* main > yellow box > login-form > box */
+/* parent of label and child */
+.box {
+    width: 80%;
+    font-size: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    /* center the boxes  */
+    align-items: center;
+    justify-content: center;
+}
+
+.box > p {
+    align-self: flex-start;
 }
 
 
@@ -99,19 +139,47 @@ main {
     padding: 2%;
 }
 
-.policy {
-    display: flex;
-    align-items: center;
-}
 
 
+ 
 .action-button {
     border-radius: 90px;
     font-size: 15px;
     font-family: "Jua";
     background-color: black;
     color: white;
-    width: 30%;
-    height: 15%;
 }
 
+
+input {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid gray;
+
+    font-size: 20px;
+    font-family: "Jua";
+    padding-left: 2%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+} 
+
+
+input:focus {
+    outline: none;
+} 
+
+ 
+.input-label {
+    opacity: 37%;
+    font-size: 13px;
+} 
+
+.redirect {
+    color: white;
+}
+
+.action-button {
+    width: 24.25%;
+    height: 15%;
+}
