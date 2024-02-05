@@ -1,0 +1,200 @@
+
+@import "base.css";
+
+
+header {
+    height: 15%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 15%);
+
+    /* centers the logo pic, yellow box, and policy */
+    align-items: center;
+}
+
+/* MAIN PROPORTIONS */
+
+
+.logo-big {
+    flex: 0 0 21%;
+}
+
+.login {
+    flex: 0 0 60%;
+}
+
+.policy {
+    flex: 0 0 18%;
+}
+
+
+/* MAIN > FIRST  */
+
+.logo {
+    width: auto;
+    height: 7rem;
+}
+
+/* MAIN >  YELLOW BOX */
+
+.login {
+    /* layout */
+    width: 30%;
+    display: flex; /* logo-text, then form */
+    flex-direction: column;
+    align-items: center;
+
+    /* design */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.8);
+
+}
+
+.logo-text {
+    flex: 0 0 22%;
+}
+
+.login-form {
+    flex: 0 0 73%;
+}
+
+
+/* main > yellow box > logo-text  */
+.logo-text {
+    font-size: 50px;
+
+    /* vertically align text + add space */
+    display: flex;
+    align-items: center;
+    padding: 2%;
+}
+
+/* main > yellow box > login-form  */
+
+.login-form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.username-box {
+    flex: 0 0 30%;
+}
+
+.password-box {
+    flex: 0 0 38%;
+}
+
+
+
+.username-box, .password-box {
+    width: 100%;
+    font-size: 15px;
+    
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.username-box > p, .password-box > p {
+    align-self: flex-start;
+}
+
+#forgot {
+    opacity: 43%;
+    margin-top: 2%;
+    align-self: flex-end;
+}
+
+input {
+    height: 80%;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid gray;
+
+    padding: 3px;
+    font-size: 21px;
+    font-family: "Jua";
+    padding-left: 2%;
+    padding-top: 1%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+} 
+
+ 
+.input-label {
+    opacity: 37%;
+    font-size: 13px;
+} 
+
+
+
+
+.forgot:hover {
+    opacity: 90%;
+}
+
+
+
+a {
+    color: #4D4747;
+
+}
+
+
+
+input:focus {
+    outline: none;
+} 
+
+.login button {
+    border-radius: 90px;
+    font-size: 15px;
+    font-family: "Jua";
+    background-color: black;
+    color: white;
+    width: 30%;
+    height: 15%;
+}
+
+.back {
+    height: 1.5rem;
+    width: 1.75rem;
+}
+
+.back-button {
+    margin-left: 20%;
+
+}
+
+.back-button:hover {
+    opacity: 70%;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.signup-button {
+    border-radius: 90px;
+    font-size: 15px;
+    font-family: "Jua";
+    background-color: black;
+    color: white;
+    width: 7%;
+    height: 40%;
+    margin-right: 20%;
+}
+
+.policy {
+    display: flex;
+    align-items: center;
+}

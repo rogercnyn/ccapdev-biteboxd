@@ -1,0 +1,174 @@
+@import "navbar.css";
+@import "base.css";
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.search-settings {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.filters p, .sorting p {
+    opacity: 50%;
+    text-decoration: underline;
+    font-size: 13px;
+}
+
+.filters p:hover, .sorting p:hover {
+    opacity: 70%;
+    cursor: pointer;
+}
+
+
+.filters, .sorting {
+    display: flex;
+    align-items: center;
+}
+
+.filters {
+    margin-left: 15%;
+    gap: 2rem;
+}
+
+.sorting {
+    margin-right: 15%;
+    gap: 0.5rem;
+}
+
+.descending-icon {
+    height: 2rem;
+    width: auto;
+}
+
+.results {
+    width: 60%;
+    margin: auto;
+}
+
+.results-found {
+    font-size: 13px;
+}
+
+meter::-webkit-meter-optimum-value {
+    background-color: #7DA03E;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2), 2px 4px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    animation: liquid 3s ease infinite;
+
+}
+
+meter::-webkit-meter-bar {
+    background: none;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1), 2px 4px 3px rgba(0, 0, 0, 0.1);
+
+}
+
+meter {
+    width: 60%;
+    height: 40px;
+    background: transparent;
+
+}
+
+
+.result-box {
+    display: flex;
+    border: 1px solid rgba(217, 217, 217, 0.6);
+    flex-direction: column;
+    padding: 2%;
+}
+
+.reviewed-by {
+    align-self: flex-end;
+    color: #333;
+    opacity: 0.5;
+    font-size: 12px;
+}
+
+.store-pic {
+    height: 89%;
+    width: 85%;
+    border-radius: 15px;
+}
+
+.store-details {
+    display: flex;
+    gap: 2rem;
+}
+
+.store-details-image {
+    flex: 0 0 23%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.caption {
+    font-size: 13px;
+    color: #333;
+}
+
+.store-details {
+
+}
+
+.star {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+.rating {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+}
+
+
+.rating-text {
+    font-size: 9px;
+    margin-top: 0.25rem;
+    color: #333;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.stars {
+    display: flex;
+    gap: -0.5rem;
+}
+
+.store-details-text {
+    width: 100%;
+}
+
+.criterias {
+    margin-top: 15px;
+
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+}
+
+.criteria {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.criteria-container {
+    flex: 0 0 calc(50% - 100px);
+}
+
+.all-results {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}

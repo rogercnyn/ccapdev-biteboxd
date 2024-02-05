@@ -1,0 +1,63 @@
+
+@import "navbar.css";
+@import "base.css";
+
+
+main {
+    display: flex;
+}
+
+.four-box-container {
+    width: 70%;
+    margin: auto;
+    height: calc(100vh - 93px);
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+
+ }
+
+.two-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+    height: 40%;
+}
+
+.navigation-box {
+    width: 30%;
+
+    /* text-align: start; */
+    font-family: 'Jua';
+    font-size: 30px;
+
+}
+
+
+.navigation-box > p {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+
+.navigation-box > p > a{
+    text-decoration: none;
+    color: black;
+}
+
+.threed-icon {
+    width: 75%;
+    height: auto;
+    margin-left: 27%;
+    margin-top: -15%;
+}
+
+
+.navigation-box:hover {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.8);
+}
