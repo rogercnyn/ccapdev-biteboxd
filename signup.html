@@ -23,13 +23,15 @@
         </div>
         <div class="yellow-box login">
             <div class="sliders">
-                <div class="ellipse" id="ellipse-1"></div>
+                <div class="ellipse ellipse-clicked" id="ellipse-1"></div>
                 <div class="ellipse" id="ellipse-2"></div>
                 <div class="ellipse" id="ellipse-3"></div>
             </div>
 
             <p class="logo-text">Sign Up</p>
-            <!-- <div class="login-form">
+
+
+            <div class="login-form" id="form1">
                 <div class=" name-box">
                     <div class="box first-name-box">
                         <p class="input-label">First Name</p>
@@ -60,13 +62,13 @@
                     <input type="password">
                 </div>
 
-                <div class="action-button-container">
-                    <button class="action-button">Continue</button>
-                </div>
-            </div>  -->
+                <form class="action-button-container">
+                    <button class="action-button" id="toForm2">Continue</button>
+                </form>
+            </div>    
 
-            <!-- <div class="login-form">
-                <div class="tag-layers">
+            <div class="login-form hide-form" id="form2">
+                <div class="yellow-box-container tag-layers" id="form2container">
                     <div class="layer">
                         <div class="tag" onclick="toggleTag(this)">Salty</div>
                         <div class="tag" onclick="toggleTag(this)">Sweet</div>
@@ -86,13 +88,28 @@
                         <div class="tag" onclick="toggleTag(this)">Indian</div>
                     </div>
                     <div class="action-button-container">
-                        <button class="action-button">Sign up</button>
+                        <button class="action-button" id="toForm3">Sign up</button>
                     </div>
                 </div>
-            </div> -->
+            </div> 
 
-            <div class="login-form">
-                
+            <div class="login-form hide-form" id="form3">
+                <form class="yellow-box-container  avatar-container">
+                    <div class="two-avatar">
+                        <div class="pic-option" onclick="clickAvatar(this)"><img src="assets/avatar-f1.png" alt="" class="avatar"></div>
+                        <div class="pic-option" onclick="clickAvatar(this)"><img src="assets/avatar-f2.png" alt="" class="avatar"></div>
+                    </div>
+                    <div class="two-avatar">
+                        <div class="pic-option" onclick="clickAvatar(this)"><img src="assets/avatar-m1.png" alt="" class="avatar"></div>
+                        <div class="pic-option" onclick="triggerFileInput(this)">   
+                             <input type="file" id="avatar-upload" class="avatar-upload">   
+                            <img src="assets/upload.svg" alt="" class="upload-icon">                     </div>
+                    </div>
+
+                    <div class="action-button-container">
+                        <button class="action-button">Sign up</button>
+                    </div>
+                </form>
             </div>
 
         </div>
@@ -105,6 +122,50 @@
         function toggleTag(tag) {
             tag.classList.toggle('selected');
         }
+
+        function triggerFileInput(element) {
+            
+            clickAvatar(element);
+            var input = document.getElementById('avatar-upload');
+            input.click();
+        }
+
+        function clickAvatar(element) {
+
+            
+            var inputs = document.querySelectorAll('.pic-option'); 
+            inputs.forEach(function(input) {
+                input.classList.remove('clicked');
+            });
+            
+
+            var input = element.querySelector('pic-option');
+            element.classList.add('clicked');
+        }
+
+        document.getElementById('toForm2').addEventListener('click', function() {
+            event.preventDefault(); // Prevent default form submission behavior
+
+            document.getElementById('form1').classList.add('hide-form');
+            document.getElementById('form2').classList.remove('hide-form');
+
+            document.getElementById('ellipse-2').classList.add('ellipse-clicked');
+            document.getElementById('form2container').classList.add('adjustForm2');
+            document.getElementById('toForm3').classList.add('adjustButton2');
+
+        });
+
+        
+        document.getElementById('toForm3').addEventListener('click', function() {
+            event.preventDefault(); // Prevent default form submission behavior
+
+            document.getElementById('form2').classList.add('hide-form');
+            document.getElementById('form3').classList.remove('hide-form');
+            document.getElementById('ellipse-3').classList.add('ellipse-clicked');
+
+        });
+
+
     </script>
     
     

@@ -196,3 +196,10 @@ input:focus {
     display: flex;
     justify-content: center;
 }
+
+.yellow-box-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}

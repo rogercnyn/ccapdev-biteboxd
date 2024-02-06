@@ -85,12 +85,76 @@ main {
 
 .tag-layers {
     margin-top: 7%;
-    /* margin-bottom: 5%; */
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
     gap: 2.5rem;
 }
 
+.avatar {
+    width: 100%; 
+    height: 100%;
+}
 
+
+
+.avatar-container {
+    gap: 1.5rem;
+    align-items: center;
+    
+} 
+
+ .yellow-box {
+    background-color: white;
+} 
+
+
+.two-avatar {
+    display: flex;
+    gap: 1.25rem;
+    width: 80%;
+    max-height: 37%;
+}
+
+
+.pic-option {
+    border: 1px solid #d9d9d9;
+    height: 100%;
+    flex: 0 0 47%;
+    display: flex;
+    cursor: pointer;
+
+}
+
+.avatar-upload {
+    display: none;
+
+}
+
+.pic-option.clicked {
+    border: 1px solid black;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.upload-icon {
+    height: 5rem;
+    margin: auto;
+    opacity: 20%;
+}
+
+.hide-form {
+    display: none;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+
+} 
+
+
+.ellipse-clicked {
+    background-color: #111;
+}
+
+
+.adjustForm2 {
+    margin-top: 3%;
+}
+
+.adjustButton2 {
+    height: 50%;
+}
