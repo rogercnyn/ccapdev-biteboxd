@@ -158,3 +158,8 @@ main {
 .adjustButton2 {
     height: 50%;
 }
+
+.wrong-credentials {
+    /* color: red; */
+    /* flex: 0 0 0.1; */
+}

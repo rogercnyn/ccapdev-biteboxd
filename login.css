@@ -14,7 +14,7 @@
 
 #forgot {
     opacity: 43%;
-    margin-top: 2%;
+    margin-top: 3%;
     align-self: flex-end;
 }
 
@@ -28,4 +28,59 @@ a {
 }
 
 
+.show-password {
+    height: 1.5rem;
+    z-index: 1;
+    margin-inline-start: auto;
+    margin-top: -8%;
+    opacity: 50%;
+    cursor: pointer;
+}
 
+.show-password-clicked {
+    opacity: 100%;
+}
+
+
+.show-password:hover {
+    opacity: 100%;
+}
+
+
+
+
+/* js related css */
+
+.wrong-creds-text {
+    display: none;
+} 
+
+.make-logo-text-small {
+    flex: 0 0 20%;
+}
+
+
+.make-login-small {
+    gap: 0.4rem;
+}
+
+
+.show-wrong-creds-text {
+    color: red;
+    font-size: 12px;
+    text-align: start;
+    display: block;
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}

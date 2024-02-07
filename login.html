@@ -24,9 +24,11 @@
             <img src="assets/logo.png" alt="" class="logo">
         </div>
         <div class="yellow-box login">
-            <p class="logo-text">Log In</p>
-            <form action="#" class="login-form">
-
+            <p class="logo-text" id="logo-text">Log In</p>
+            <form action="#" class="login-form" id="login-form">
+                <div class="wrong-credentials">
+                    <p class="wrong-creds-text" id="wrong-creds-text">Incorrect username or password.</p>
+                </div>
 
                 <div class="box username-box">
                     <p class="input-label">Username</p>
@@ -36,6 +38,7 @@
                 <div class="box password-box">
                     <p class="input-label">Password</p>
                     <input type="password" id="password">
+                    <img src="assets/see.svg" alt="" class="show-password" id="show-password" onclick="togglePasswordVisibility()">
                     <p id="forgot"><a href="">FORGOT?</a></p> 
                 </div>
 
@@ -54,13 +57,45 @@
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
             
-            if (username === "makoreviews" && password === "meowmeow") {
+            if (username === "makoeats" && password === "meowmeow") {
                 alert('ito muna redirect to a page later')
             } else {
+                document.getElementById("login-form").classList.add("make-login-small");
+                document.getElementById("wrong-creds-text").classList.add("show-wrong-creds-text");
+                document.getElementById("logo-text").classList.add("make-logo-text-small");
                 document.getElementById("username").style.outline = "1px solid red";
                 document.getElementById("password").style.outline = "1px solid red";
+                shakeBoxes();
             }
         }
+
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById("password");
+            var showPasswordIcon = document.getElementById("show-password");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                showPasswordIcon.classList.add("show-password-clicked")
+            } else {
+                showPasswordIcon.classList.remove("show-password-clicked")
+
+                passwordField.type = "password";
+            }
+        }
+
+        function shakeBoxes() {
+            var usernameBox = document.querySelector(".username-box");
+            var passwordBox = document.querySelector(".password-box");
+
+            usernameBox.classList.add("shake");
+            passwordBox.classList.add("shake");
+
+            setTimeout(function() {
+                usernameBox.classList.remove("shake");
+                passwordBox.classList.remove("shake");
+            }, 500);
+        }
+
     </script>
 
 </body>
