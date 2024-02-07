@@ -30,17 +30,17 @@
 
                 <div class="box username-box">
                     <p class="input-label">Username</p>
-                    <input type="text">
+                    <input type="text" id="username">
                 </div>
 
                 <div class="box password-box">
                     <p class="input-label">Password</p>
-                    <input type="password">
+                    <input type="password" id="password">
                     <p id="forgot"><a href="">FORGOT?</a></p> 
                 </div>
 
                 <div class="action-button-container">
-                    <button class="action-button">Log in</button>
+                    <button class="action-button" onclick="checkLogin()">Log in</button>
                 </div>
             </form>
         </div>
@@ -48,6 +48,20 @@
             <p>By signing in to BiteBoxd, you agree to our Terms and Privacy Policy.</p>
         </div>
     </main>
+
+    <script>
+        function checkLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            if (username === "makoreviews" && password === "meowmeow") {
+                alert('ito muna redirect to a page later')
+            } else {
+                document.getElementById("username").style.outline = "1px solid red";
+                document.getElementById("password").style.outline = "1px solid red";
+            }
+        }
+    </script>
 
 </body>
 </html>

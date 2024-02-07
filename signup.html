@@ -21,7 +21,7 @@
         <div class="logo-big">
             <img src="assets/logo.png" alt="" class="logo">
         </div>
-        <div class="yellow-box login">
+        <div class="yellow-box login" id="yellow-box">
             <div class="sliders">
                 <div class="ellipse ellipse-clicked" id="ellipse-1"></div>
                 <div class="ellipse" id="ellipse-2"></div>
@@ -146,6 +146,7 @@
         document.getElementById('toForm2').addEventListener('click', function() {
             event.preventDefault(); // Prevent default form submission behavior
 
+            document.getElementById("yellow-box").classList.add('turn-white');
             document.getElementById('form1').classList.add('hide-form');
             document.getElementById('form2').classList.remove('hide-form');
 
