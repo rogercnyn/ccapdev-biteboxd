@@ -3,15 +3,18 @@
 
 
 main {
+    margin-top: 3%;
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-direction: row;
+    /* gap: 3rem; */
+    justify-content: space-evenly;
 }
 
 .search-settings {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    /* width: 100%; */
+    flex: 0 0 20%;
 }
 
 .filters p, .sorting p {
@@ -47,8 +50,11 @@ main {
 }
 
 .results {
-    width: 60%;
-    margin: auto;
+    flex: 0 0 70%;
+    border: 0.5px solid rgba(217, 217, 217, 0.6);
+    padding: 2%;
+    border-radius: 25px;
+
 }
 
 .results-found {
@@ -64,7 +70,8 @@ meter::-webkit-meter-optimum-value {
 
 meter::-webkit-meter-bar {
     background: none;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1), 2px 4px 3px rgba(0, 0, 0, 0.1);
+
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1), 2px 2px 2px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -78,7 +85,7 @@ meter {
 
 .result-box {
     display: flex;
-    border: 1px solid rgba(217, 217, 217, 0.6);
+    border-bottom: 1px solid rgba(217, 217, 217, 0.6);
     flex-direction: column;
     padding: 2%;
 }
@@ -99,6 +106,7 @@ meter {
 .store-details {
     display: flex;
     gap: 2rem;
+    margin-top: -2.5%;
 }
 
 .store-details-image {
@@ -169,5 +177,18 @@ meter {
 .all-results {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+}
+
+.review-icon {
+    filter: invert(58%) sepia(81%) saturate(6305%) hue-rotate(339deg) brightness(102%) contrast(107%);
+    height: 2rem;
+    margin-inline-start: auto;
+}
+
+.review-icon:hover {
+    filter: invert(21%) sepia(95%) saturate(7448%) hue-rotate(357deg) brightness(101%) contrast(115%);
+}
+
+.advanced-search-header {
+    font-size: 25px;
 }
