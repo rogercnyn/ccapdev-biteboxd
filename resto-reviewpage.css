@@ -1,0 +1,54 @@
+@import "navbar.css";
+@import "base.css";
+
+.main {
+    justify-content: center;
+    display: flex;
+    padding: 1.5rem;
+}
+
+.restoinfo{
+    display: flex;
+    flex-direction: row;
+    height: 350px;
+    width: 700px;
+    border: 1px solid gray;
+    border-radius: 20px;
+}
+
+.restopicturearea {
+    display: flex;
+    padding-left: 30px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.restopicture img {
+    width: 100%; /* Make sure the image takes up 100% of the container */
+    height: 100%; /* Make sure the image takes up 100% of the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+}
+
+.restopicture{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.restodetailsarea {
+    padding-left: 15px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.reviewarea{
+    padding-top: 15px;
+    display: flex;
+    height: 5000px;
+    width: 700px;
+}
