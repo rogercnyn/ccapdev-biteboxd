@@ -20,3 +20,21 @@ header {
     text-align: center;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
 }
+
+
+.logo {
+    height: 60px;
+    width: auto;
+    margin-top: 50%;
+}
+
+.logo-link   {
+    flex: 0 0 20%;
+}
+
+
+.nav-icon {
+    height: 32px;
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(345deg) brightness(107%) contrast(100%);
+    margin: auto;
+}

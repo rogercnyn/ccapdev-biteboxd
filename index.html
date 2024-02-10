@@ -3,58 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
     <title>BiteBoxd</title>
-</head>
+
+        <link rel="stylesheet" href="index.css">
+    </head>
 <body>
     <header>
-        <a href="index.html">
+        <a href="index.html" class="logo-link">
             <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
         </a>
-        <form action="search.html" class="search">
+        
+        <div class="nav-icon-container">
+            <img src="assets/home.svg" alt="" class="nav-icon">
+            <p>Home</p>
+        </div>
+        
+        <div class="nav-icon-container">
+            <img src="assets/person.svg" alt="" class="nav-icon">
+            <p>Log In</p>
+        </div>
+
+        <div class="nav-icon-container">
+            <img src="assets/archive.svg" alt="" class="nav-icon">
+            <p>Index</p>
+        </div>
+        
+
+    </header>
+
+
+    <main>
+        <div class="search-container">
             <img src="assets/search-icon.svg" alt="" class="search-icon">
             <input type="search" class="search-bar" placeholder="Find a restaurant">
-            <button class="search-button">
+            <button class="search-button" onclick="search()">
                 Search
             </button>
 
-        </form>
-        <div class="profile-icon">
         </div>
-    </header>
 
-    <main>
-
-
-        
-        <div class="four-box-container">
-            <div class="two-box">
-                <div class="yellow-box navigation-box">
-                    <p><a href="#">Index</a></p>
-                    <img src="assets/index3d.png" alt="" class="threed-icon">
-                </div>
-                <div class="yellow-box navigation-box">
-                    <p><a href="login.html">Log In</a></p>
-                    <img src="assets/login3d.png" alt="" class="threed-icon">
-                
-                </div>
-            </div>
-
-            <div class="two-box">
-                <div class="yellow-box navigation-box">
-                    <p><a href="">Discover</a></p>
-                    <img src="assets/discover3d.png" alt="" class="threed-icon">
-                </div>
-                <div class="yellow-box navigation-box">
-                    <p><a href="signup.html">Sign Up</a></p>
-
-                    <img src="assets/signup3d.png" alt="" class="threed-icon">
-                </div>
-            </div>
-
-        </div>
+        <img src="assets/index.png" alt="" class="background">
 
 
     </main>
+
+    <script>
+        
+        function search() {
+            var query = document.querySelector('.search-bar').value;
+            window.location.href = 'search.html?query=' + encodeURIComponent(query);
+        }
+    </script>
 </body>
 </html>

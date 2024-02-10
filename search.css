@@ -186,7 +186,7 @@ main {
     display: flex;
     flex-direction: row;
     font-size: 12px;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
     margin-top: 0.5%;
     font-family: 'Jua';
     align-items: center;
@@ -366,7 +366,7 @@ meter {
 
 .all-results {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;  
 
 }
 
