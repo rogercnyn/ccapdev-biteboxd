@@ -1,13 +1,17 @@
-/* @import "navbar.css"; */
+@import "navbar.css";
 @import "base.css";
 
+body {
+    height: 1000px;
+}
 
 .search-bar{
 
     /* position */
-    width: 50%;
-    height: 75%;
+    width: 100%;
+    height: 90%;
     border-radius: 20px;
+    /* position: fixed; */
 
     /* design */
     /* border: none; */
@@ -26,7 +30,7 @@
 
 .search-button {
     /* position */
-    height: 75%;
+    height: 90%;
     width: 10%;
     border-radius: 20px;
     margin-left: -10%;
@@ -81,31 +85,6 @@
     margin-top: 50%;
 }
 
-body {
-    display: flex;
-    flex-direction: row;
-    height: 1000px;
-    /* gap: 10rem; */
-}
-
-header {
-    display: flex;
-    background-color: #FDD247;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 6%;
-    position: fixed;
-    gap: 5rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-top-right-radius: 15px;  
-    text-align: center;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
-
-
-
-}
-
 .logo-link   {
     flex: 0 0 20%;
 }
@@ -121,33 +100,130 @@ header {
 
 
 main {
-    margin-top: 3%;
-    flex: 0 0 90%;
+    /* position */
+    margin-top: 2%; /* so that it doesnt stick to the window */
+    flex: 0 0 90%; 
     margin-inline-start: auto;
-    
+
+    /* inside */
+    display: flex;
+    flex-direction: row;
+    gap: 3.5rem;
+}
+
+.content {
+    flex: 0 0 65%;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
+}
+
+ 
+.search-settings-container {
+    position: fixed;
+    border: 1px solid #eee;
+    background-color: #fff;
+    width: 17%;
+    height: 92%;
+    /* margin-top: 3%; */
+    margin-left: 3%;
+    gap: 1.2rem;
+    display: flex;
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.05); */
+    flex-direction: column;
+}
+
+.advanced-search-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+
+.search-setting {
+    height: 9.5%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    gap: 0.25rem;
+}
+
+.input-filter {
+    width: 90%;
+    height: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    background-color: #EEEEEE;
+    border: none;
+
+    /* inside */
+    font-size: 15px;
+    font-family: 'Jua';
+    padding: 2%;
+}
+
+.advanced-search-header {
+    display: flex;
+    background-color: #000;
+    flex: 0 0 8%;
+    justify-content: center;
+    /* font-size: 2px; */
+    gap: 0.5rem;
+    color: white;
+
+    align-items: center;
+}
+.advanced-search-header > p {
+    font-size: 15px;
+}
+.search-settings {
+    /* border: 1px solid black; */
+    width: 100%;
+
+}
+
+.sorting {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    margin-bottom: 2%;
+    margin-top: 0.5%;
+    font-family: 'Jua';
+    align-items: center;
+
+}
+
+.search-string {
+    color: #1C31E7;
+}
+
+
+#criteria {
+    font-family: 'Jua';
+    border: none;
+    width: 17%;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+#criteria:focus {
+    border: none;
 }
 
 .search-container {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
-    flex: 0 0 10%;
-    /* border: 1px solid red; */
+    flex: 0 0 8%;
 }
 
 
 .results {
-    flex: 0 0 65%;
-    border: 0.5px solid rgba(217, 217, 217, 0.6);
-    border-radius: 25px;
+    flex: 1;
 
 }
 
 .results-found {
-    font-size: 13px;
+    font-size: 10px;
 }
 
 meter::-webkit-meter-optimum-value {
@@ -165,8 +241,8 @@ meter::-webkit-meter-bar {
 }
 
 meter {
-    width: 60%;
-    height: 40px;
+    width: 40%;
+    height: 20px;
     background: transparent;
 
 }
@@ -176,7 +252,8 @@ meter {
     display: flex;
     border-bottom: 1px solid rgba(217, 217, 217, 0.6);
     flex-direction: column;
-    padding: 2%;
+    padding: 3%;
+    /* height: 130px; */
 }
 
 .reviewed-by {
@@ -187,9 +264,9 @@ meter {
 }
 
 .store-pic {
-    height: 89%;
-    width: 85%;
-    border-radius: 15px;
+    height: 100%;
+    width: 70%;
+    border-radius: 2px;
 }
 
 .store-details {
@@ -199,19 +276,15 @@ meter {
 }
 
 .store-details-image {
-    flex: 0 0 23%;
+    flex: 0 0 25%;
 
     display: flex;
     justify-content: center;
 }
 
 .caption {
-    font-size: 13px;
+    font-size: 12px;
     color: #333;
-}
-
-.store-details {
-
 }
 
 .star {
@@ -232,7 +305,7 @@ meter {
 }
 
 .title {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .stars {
@@ -259,19 +332,48 @@ meter {
     gap: 0.5rem;
 }
 
+.card {
+    max-width: 33rem;
+    background: #fff;
+    margin: 0 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+   
+  .slider-star-rating {
+    font-size: 2rem;
+
+    color: #ccc; 
+    cursor: pointer;
+}
+
+.slider-star-rating:hover,
+.slider-star-rating.colored {
+    color: #ffd700; 
+
+}
+   
+
+
 .criteria-container {
-    flex: 0 0 calc(50% - 100px);
+    flex: 0 0 calc(50% - 120px);
+    font-size: 12px;
+    color: #767373;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .all-results {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
+
 }
 
 .review-icon {
     filter: invert(58%) sepia(81%) saturate(6305%) hue-rotate(339deg) brightness(102%) contrast(107%);
     height: 2rem;
-    margin-inline-start: auto;
+    margin-inline-start: 50%;
 }
 
 .review-icon:hover {
@@ -287,3 +389,99 @@ meter {
     flex-direction: row;
 }
 
+
+.container-sort {
+    border: 1px solid #ddd;
+
+    padding: 4%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+}
+
+.categories {
+    display: flex;
+}
+.container-sort p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+}
+
+.price-sort {
+    width: 10%;
+    text-align: center;
+}
+
+.view-more {
+    align-self: flex-end;
+    color: #555;
+    margin-right: 2%;
+    font-size: 10px;
+}
+.price-categories {
+    display: flex;
+    gap: 0.75rem;
+}
+
+
+.search-setting-criteria {
+    display: flex;
+    gap: 2rem;
+}
+
+.box {
+    width: 20px;
+    height: 20px;
+}
+
+.green {
+    background-color: #7DA03E;
+}
+
+.yellow {
+    background-color: #FDD446;
+}
+
+.red {
+    background-color: #A8433A;
+}
+
+.categories {
+    gap: 0.5rem;
+}
+
+.adv-search-button {
+    width: 80%;
+    align-self: center;
+    height: 40%;
+    border-radius: 30px;
+    font-family: 'Jua';
+    font-size: 15px;
+}
+
+.clear-button {
+    background-color: white;
+    border: 1px solid #d9d9d9;
+}
+
+.apply-button {
+    background-color: black;
+    color: white;
+}
+
+.filter-buttons {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.empty-pic {
+    width: 50%;
+}
+
+.empty {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 40px;
+}

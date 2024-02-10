@@ -33,22 +33,39 @@
 
     <main>
 
-        <div class="search-container">
-            <img src="assets/search-icon.svg" alt="" class="search-icon">
-            <input type="search" class="search-bar" placeholder="Find a restaurant">
-            <button class="search-button">
-                Search
-            </button>
+        
+        <div class="content" id="content">
+            <div class="search-container">
+                <img src="assets/search-icon.svg" alt="" class="search-icon">
+                <input type="search" class="search-bar" placeholder="Find a restaurant">
+                <button class="search-button" onclick="search()">
+                    Search
+                </button>
 
-        </div>
+            </div>
 
-        <div class="result-and-setting-container">
-
-    
-            <div class="results">
+            <div class="empty" id="empty">
+                <img src="assets/empty.png" alt="" class="empty-pic">
+                <p>No results.</p>
+            </div>
+        
+            <div class="results" id="results">
+          
                 <p class="results-found">
-                    2 results found.
+                    2 RESULTS FOR <span class="search-string">"SEARCH STRING"</span>
                 </p> 
+                <div class="sorting">
+                    <p>Sort:</p>
+                    <select id="criteria">
+                        <option value="recommended">Recommended</option>
+                        <option value="reviews">Number of Reviews</option>
+                        <option value="rating">Rating</option>
+                        <option value="food-quality">Food Quality</option>
+                        <option value="price">Price</option>
+                        <option value="service">Service</option>
+                      </select>
+                      
+                </div>
                 <div class="all-results">
                     <div class="result-box">
                         <img src="assets/review.svg" alt="" class="review-icon">
@@ -89,8 +106,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div> 
+                    </div> 
 
                     <div class="result-box">
                         <img src="assets/review.svg" alt="" class="review-icon">
@@ -132,17 +149,222 @@
                                 </div>
                             </div>
                         </div>
+                    </div> 
+
+                    <div class="result-box">
+                        <img src="assets/review.svg" alt="" class="review-icon">
+
+                        <div class="store-details">
+
+                            <div class="store-details-image">
+                                <img src="assets/cbsisig.jpg" alt="" class="store-pic">
+
+                            </div>
+                            <div class="store-details-text">
+                                <div class="rating">
+
+                                    <p class="title">Chef Bab's Sisig</p>
+                                    <div class="stars">
+
+                                        <img src="assets/star.png" alt="" class="star">
+                                        <img src="assets/star.png" alt="" class="star">
+                                        <img src="assets/star.png" alt="" class="star">
+                                    </div>
+
+                
+                                    <p class="rating-text">3.8 (210)</p>
+                                </div>
+                                <p class="caption">P200-300 | Vito Cruz, Taft, Manila</p>
+                                <div class="criterias">
+                                    <div class="criteria">
+                                        <div class="criteria-container">Food Quality</div>
+                                        <meter max="10" min="0" value="8"></meter>
+                                    </div>
+                                    <div class="criteria">
+                                        <div class="criteria-container">Service</div>
+                                        <meter max="10" min="0" value="7"></meter>
+                                    </div>
+                                    <div class="criteria">
+                                        <div class="criteria-container">Price</div>
+                                        <meter max="10" min="0" value="4"></meter>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+
+
+
+
+                </div> 
+            </div>
+       
+        </div>
+
+        <div class="search-settings" id="search-settings">
+            <div class="search-settings-container">
+                <div class="advanced-search-header">
+                    <p>Advanced Search</p>
+                </div>
+                <div class="search-setting">
+                    <p>Ratings</p>
+                    <div class="star-sorting">
+                        <span onclick="addRating(1)" class="slider-star-rating">★</span>
+                        <span onclick="addRating(2)" class="slider-star-rating">★</span>
+                        <span onclick="addRating(3)" class="slider-star-rating">★</span>
+                        <span onclick="addRating(4)" class="slider-star-rating">★</span>
+                        <span onclick="addRating(5)" class="slider-star-rating">★</span>
                     </div>
+                </div>
+
+                <div class="search-setting">
+                    <p>City</p>
+                    <input type="text" class="input-filter">
+                </div>
+
+                
+                <div class="search-setting">
+                    <p>Min. Reviewers</p>
+                    <input type="text" class="input-filter">
+                </div>
+
+                <div class="search-setting">
+                    <p>Category</p>
+                    <div class="categories">
+                        <div class="container-sort category-sort">
+                            <p>Fast Food</p>
+                        </div>
+                        <div class="container-sort category-sort">
+                            <p>Filipino</p>
+                        </div>
+                        <div class="container-sort category-sort">
+                            <p>Chinese</p>
+                        </div>
+
+                    </div>
+                    <p class="view-more">View more</p>
+                </div>
+
+                <div class="search-setting">
+                    <p>Pricing</p>
+                    <div class="price-categories">
+                        <div class="container-sort price-sort">
+                            <p>P</p>
+                        </div>
+                        <div class="container-sort price-sort">
+                            <p>PP</p>
+                        </div>
+                        <div class="container-sort price-sort">
+                            <p>PPP</p>
+                        </div>
+                        <div class="container-sort price-sort">
+                            <p>PPPP</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="search-setting-criteria">
+                    <div class="search-setting">
+                        <p>Food Quality</p>
+                        <div class="categories">
+                            <div class="green box"></div>
+                            <div class="yellow box"></div>
+                            <div class="red box"></div>
+                        </div>
+                    </div>
+
+                    <div class="search-setting">
+                        <p>Service</p>
+                        <div class="categories">
+                            <div class="green box"></div>
+                            <div class="yellow box"></div>
+                            <div class="red box"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="filter-buttons">
+                    <button class="clear-button adv-search-button">Clear</button>
+                    <button class="apply-button adv-search-button">Apply</button>
                 </div>
             </div>
 
-            <div class="search-settings">
-                <p class="advanced-search-header">Advanced Search</p>
-            </div>
         </div>
 
     </main>
 
+    <script>
+        let stars = document.getElementsByClassName("slider-star-rating");
+        let currentRating = 0;
+
+        // Function to update rating
+        function addRating(n) {
+            currentRating = n;
+
+            removeRating();
+            Array.from(stars).slice(0, n).forEach(star => star.classList.add("colored"));
+        }
+
+        function removeRating() {
+            Array.from(stars).forEach(star => star.classList.remove("colored"));
+        }
+
+        // Add event listeners
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].addEventListener("mouseenter", function() {
+                if (currentRating === 0) {
+                    for (let j = 0; j <= i; j++) 
+                        stars[j].classList.add("colored");
+                }
+            });
+
+            stars[i].addEventListener("mouseleave", function() {
+                if (currentRating === 0) {
+                    removeRating();
+                } else {
+                    Array.from(stars).slice(0, currentRating).forEach(star => star.classList.add("colored"));
+                }
+            });
+
+            stars[i].addEventListener("click", function() {
+                addRating(i + 1); // Add 1 to i because ratings start from 1, not 0
+            });
+        }
+
+
+    function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+    var query = getUrlParameter('query');
+    console.log(query)
+    if (query != '') {
+        document.getElementById('empty').style.display = 'none';
+    } else {
+        document.getElementById('results').style.display = 'none';
+        document.getElementById('search-settings').style.display = 'none';
+        document.getElementById('content').style.marginLeft = "15%"
+
+        
+    }
+
+    function search() {
+        var query = document.querySelector('.search-bar').value;
+        window.location.href = 'search.html?query=' + encodeURIComponent(query);
+    
+
+    
+
+    }
+    </script>
+
+    
+    
     
 </body>
 </html>
