@@ -1,4 +1,7 @@
-
+a {
+    text-decoration: none;
+    color: black;
+}
 body {
     display: flex;
     flex-direction: row;
@@ -13,7 +16,7 @@ header {
     height: 100%;
     width: 6%;
     position: fixed;
-    gap: 5rem;
+    gap: 3rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-top-right-radius: 15px;  
     font-size: 10px;
@@ -37,4 +40,28 @@ header {
     height: 32px;
     filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(345deg) brightness(107%) contrast(100%);
     margin: auto;
+}
+
+.nav-icon-container {
+    width: 90%;
+    padding: 5%;
+    /* height: 70%; */
+}
+.nav-icon-container:hover {
+    background-color: #ffe48d;
+    border-radius: 10%;
+    /* opacity: 10%; */
+
+    
+}
+
+
+.profile-icon {
+    height: 50px;
+    border-radius: 100%;
+    border: 2px solid black;
+}
+
+a {
+    cursor: pointer;
 }

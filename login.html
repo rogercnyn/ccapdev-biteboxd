@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <title>BiteBoxd - Log In</title>
 </head>
 <body>
 
@@ -58,7 +59,7 @@
             var password = document.getElementById("password").value;
             
             if (username === "makoeats" && password === "meowmeow") {
-                alert('ito muna redirect to a page later')
+                window.location.href = "index.html?isLogged=true"
             } else {
                 document.getElementById("login-form").classList.add("make-login-small");
                 document.getElementById("wrong-creds-text").classList.add("show-wrong-creds-text");

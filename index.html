@@ -3,32 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
     <title>BiteBoxd</title>
-
-        <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css">
     </head>
 <body>
     <header>
-        <a href="index.html" class="logo-link">
+        <a class="logo-link" onclick="transferSession('index.html')">
             <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
         </a>
         
-        <div class="nav-icon-container">
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
             <img src="assets/home.svg" alt="" class="nav-icon">
             <p>Home</p>
-        </div>
+        </a>
         
-        <div class="nav-icon-container">
-            <img src="assets/person.svg" alt="" class="nav-icon">
-            <p>Log In</p>
-        </div>
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
+            <img src="assets/explore.svg" alt="" class="nav-icon">
+            <p>Explore</p>
+        </a>
 
-        <div class="nav-icon-container">
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
             <img src="assets/archive.svg" alt="" class="nav-icon">
             <p>Index</p>
-        </div>
-        
+        </a>
 
+        <a href="login.html" class="nav-icon-container" id="person-icon">
+            <img src="assets/person.svg" alt="" class="nav-icon">
+            <p>Accounts</p>
+        </a>
+        
+        <div class="account-icon" id="account-icon">
+            <img src="assets/profile.jpg" alt="" class="profile-icon">
+        </div>
     </header>
 
 
@@ -48,10 +55,43 @@
     </main>
 
     <script>
+        var isLogged = getUrlParameter('isLogged');
         
+
         function search() {
             var query = document.querySelector('.search-bar').value;
-            window.location.href = 'search.html?query=' + encodeURIComponent(query);
+            var dest = 'search.html?query=' + encodeURIComponent(query);
+            if(isLogged === 'true') {
+                dest += '&isLogged=true';
+            } 
+
+            window.location.href = dest;
+
+        }
+
+        
+        function getUrlParameter(name) {
+                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                var results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+        function transferSession(link) {
+            if(isLogged === 'true'){
+                window.location.href = link + '?isLogged=true'
+            }
+            else {
+                window.location.href = link
+            }
+        }
+
+
+        if (isLogged != 'true') {
+            document.getElementById('account-icon').style.display = 'none';
+        } else {
+            document.getElementById('person-icon').style.opacity = '0%';
+            document.getElementById('person-icon').style.pointerEvents = 'none';
         }
     </script>
 </body>

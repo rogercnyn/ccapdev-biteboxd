@@ -4,32 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="search.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <script src="search.js"></script>
+    <title>BiteBoxd - Search</title>
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo-link">
+        <a class="logo-link" onclick="transferSession('index.html')">
             <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
         </a>
         
-        <div class="nav-icon-container">
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
             <img src="assets/home.svg" alt="" class="nav-icon">
             <p>Home</p>
-        </div>
+        </a>
         
-        <div class="nav-icon-container">
-            <img src="assets/person.svg" alt="" class="nav-icon">
-            <p>Log In</p>
-        </div>
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
+            <img src="assets/explore.svg" alt="" class="nav-icon">
+            <p>Explore</p>
+        </a>
 
-        <div class="nav-icon-container">
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
             <img src="assets/archive.svg" alt="" class="nav-icon">
             <p>Index</p>
-        </div>
+        </a>
+
+        <a href="login.html" class="nav-icon-container" id="person-icon">
+            <img src="assets/person.svg" alt="" class="nav-icon">
+            <p>Accounts</p>
+        </a>
         
-
+        <div class="account-icon" id="account-icon">
+            <img src="assets/profile.jpg" alt="" class="profile-icon">
+        </div>
     </header>
-
 
     <main>
 
@@ -229,36 +237,25 @@
                     <input type="text" class="input-filter">
                 </div>
 
-                <div class="search-setting">
-                    <p>Category</p>
-                    <div class="categories">
-                        <div class="container-sort category-sort">
-                            <p>Fast Food</p>
-                        </div>
-                        <div class="container-sort category-sort">
-                            <p>Filipino</p>
-                        </div>
-                        <div class="container-sort category-sort">
-                            <p>Chinese</p>
-                        </div>
-
-                    </div>
-                    <p class="view-more">View more</p>
-                </div>
-
-                <div class="search-setting">
+          
+                <div class="price-setting">
                     <p>Pricing</p>
                     <div class="price-categories">
-                        <div class="container-sort price-sort">
+                        <div class="container-sort">
+
+                            <input type="radio" id="price-PP" name="price" value="P">
                             <p>P</p>
                         </div>
-                        <div class="container-sort price-sort">
+                        <div class="container-sort">
+                            <input type="radio" id="price-PP" name="price" value="PP">
                             <p>PP</p>
                         </div>
-                        <div class="container-sort price-sort">
+                        <div class="container-sort">
+                            <input type="radio" id="price-PP" name="price" value="PPP">
                             <p>PPP</p>
                         </div>
-                        <div class="container-sort price-sort">
+                        <div class="container-sort">
+                            <input type="radio" id="price-PP" name="price" value="PPPP">
                             <p>PPPP</p>
                         </div>
 
@@ -295,70 +292,11 @@
 
     </main>
 
-    <script>
-        let stars = document.getElementsByClassName("slider-star-rating");
-        let currentRating = 0;
-
-        // Function to update rating
-        function addRating(n) {
-            currentRating = n;
-
-            removeRating();
-            Array.from(stars).slice(0, n).forEach(star => star.classList.add("colored"));
-        }
-
-        function removeRating() {
-            Array.from(stars).forEach(star => star.classList.remove("colored"));
-        }
-
-        // Add event listeners
-        for (let i = 0; i < stars.length; i++) {
-            stars[i].addEventListener("mouseenter", function() {
-                if (currentRating === 0) {
-                    for (let j = 0; j <= i; j++) 
-                        stars[j].classList.add("colored");
-                }
-            });
-
-            stars[i].addEventListener("mouseleave", function() {
-                if (currentRating === 0) {
-                    removeRating();
-                } else {
-                    Array.from(stars).slice(0, currentRating).forEach(star => star.classList.add("colored"));
-                }
-            });
-
-            stars[i].addEventListener("click", function() {
-                addRating(i + 1); // Add 1 to i because ratings start from 1, not 0
-            });
-        }
-
-
-    function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
-
-    var query = getUrlParameter('query');
-    console.log(query)
-    if (query != '') {
-        document.getElementById('empty').style.display = 'none';
-    } else {
-        document.getElementById('results').style.display = 'none';
-        document.getElementById('search-settings').style.display = 'none';
-        document.getElementById('content').style.marginLeft = "15%"   
-    }
-
-    function search() {
-        var query = document.querySelector('.search-bar').value;
-        window.location.href = 'search.html?query=' + encodeURIComponent(query);
-    }
-    </script>
-
+<script>
     
-    
+    adjustNavBar();
+    adjustResult();
+</script>
     
 </body>
 </html>
