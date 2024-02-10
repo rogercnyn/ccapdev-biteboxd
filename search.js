@@ -41,6 +41,11 @@ class Slider {
     removeAllColors() {
         Array.from(this.elements).forEach(element => element.classList.remove("colored"));
     }
+
+    reset () {
+        this.removeAllColors();
+        this.currentValue = 0;
+    }
 }
 
 
@@ -90,13 +95,51 @@ function search() {
     appendLogin(dest)
 }
 
+function initializeSearchString() {
+    let query = getUrlParameter('query');
+    let searchString = document.getElementById('search-string');
+    let searchBar = document.querySelector('.search-bar');
+
+    searchString.textContent =  " '" + query + "'";
+    searchBar.value = query;
+
+    console.log('query' + searchString.textContent);
+}
+
 function appendLogin(dest) {
     if(isLogged === 'true'){
-        dest += '&isLogged=true'
+        dest += '?isLogged=true'
     }
     window.location.href = dest;
 }
 
+
+
+function clickTrafficLight(element) {
+    
+    let siblings = element.parentElement.children
+    Array.from(siblings).forEach(sibling => sibling.style.border = "none")
+    element.style.border = "1px solid black";
+}
+
+function initSearchPage() {
+    adjustNavBar();
+    adjustResult();
+    stars.initializeHover();
+    cashEmos.initializeHover();
+    initializeSearchString();
+}
+
+function togglePopup() {
+    var popupContainer = document.getElementById("popupContainer");
+    popupContainer.style.display = (popupContainer.style.display === "block") ? "none" : "block";
+}
+
+function logOut() {
+    let updatedUrl = window.location.href.replace('isLogged=true', '');
+
+    window.location.href = updatedUrl;
+}
 
 const stars = new Slider(document.getElementsByClassName("slider-star-rating"));
 const cashEmos = new Slider(document.getElementsByClassName("slider-price-rating"));

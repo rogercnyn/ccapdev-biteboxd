@@ -51,7 +51,7 @@ main {
 }
 
 .peek-review {
-    background-color: #fafafa;
+    background-color: #f8f8f8;
     margin-top: 2%;
     padding: 2%;
     border-radius: 20px;
@@ -131,6 +131,7 @@ main {
 
 .search-string {
     color: #1C31E7;
+    font-size: 13px;
 }
 
 
@@ -166,24 +167,6 @@ input[type="radio"] {
 
 .results-found {
     font-size: 10px;
-}
-
-
-meter::-webkit-meter-optimum-value {
-    background-color: #7DA03E;
-    border-radius: 20px;
-    animation: liquid 3s ease infinite;
-}
-
-meter::-webkit-meter-bar {
-    background: none;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1), 2px 2px 2px rgba(0, 0, 0, 0.1);
-}
-
-meter {
-    width: 40%;
-    height: 20px;
-    background: transparent;
 }
 
 
@@ -288,7 +271,7 @@ meter {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     width: 100%;
     border-radius: 0.5rem;
-  }
+}
    
   .slider-star-rating {
     font-size: 2rem;
@@ -312,16 +295,6 @@ meter {
 .all-results {
     display: flex;
     flex-direction: column;  
-}
-
-.review-icon {
-    filter: invert(58%) sepia(81%) saturate(6305%) hue-rotate(339deg) brightness(102%) contrast(107%);
-    height: 2rem;
-    margin-inline-start: 50%;
-}
-
-.review-icon:hover {
-    filter: invert(21%) sepia(95%) saturate(7448%) hue-rotate(357deg) brightness(101%) contrast(115%);
 }
 
 .advanced-search-header {
@@ -387,6 +360,7 @@ meter {
 .box {
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .green {
@@ -412,6 +386,11 @@ meter {
     border-radius: 30px;
     font-family: 'Jua';
     font-size: 15px;
+    cursor: pointer;
+}
+
+.adv-search-button:hover {
+    transform: translateY(-5%);
 }
 
 .clear-button {
@@ -429,6 +408,8 @@ meter {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    margin-top: 5%;
+
 }
 
 .empty-pic {
@@ -471,4 +452,38 @@ meter {
 .slider-price-rating.colored {
     filter: grayscale(0%);
     opacity: 100%;
+}
+
+.popup-container {
+    position: fixed;
+    left: 5%;
+    bottom: 9%;
+    background-color: white;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(128, 153, 173, 0.5);
+    /* opacity: 70%; */
+}
+
+.popup {
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup a {
+    flex: 1;
+    font-family: Tahoma;
+    font-size: 12px;
+    /* border: 1px solid black; */
+    display: flex;
+    padding: 10%;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup a:hover {
+    background-color: #efefef;
 }

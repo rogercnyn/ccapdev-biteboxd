@@ -34,13 +34,21 @@
             <p>Accounts</p>
         </a>
         
-        <div class="account-icon" id="account-icon">
+        <div class="account-icon" id="account-icon" onclick="togglePopup()">
             <img src="assets/profile.jpg" alt="" class="profile-icon">
         </div>
+        
     </header>
 
     <main>
 
+        <div class="popup-container" id="popupContainer" style="display: none;">
+            <div class="popup" id="popup">
+                <a href="#" onclick="viewProfile()">View Profile</a>
+                <a href="#" onclick="viewProfile()">Edit Profile</a>
+                <a href="#" onclick="logOut()">Log Out</a>
+            </div>
+        </div>
         
         <div class="content" id="content">
             <div class="search-container">
@@ -61,7 +69,7 @@
             <div class="results" id="results">
           
                 <p class="results-found">
-                    2 RESULTS FOR <span class="search-string">"SEARCH STRING"</span>
+                    2 RESULTS FOR <span class="search-string" id="search-string">"SEARCH STRING"</span>
                 </p> 
                 <div class="sorting">
                     <p>Sort:</p>
@@ -229,24 +237,24 @@
                     <div class="search-setting">
                         <p>Food Quality</p>
                         <div class="categories">
-                            <div class="green box"></div>
-                            <div class="yellow box"></div>
-                            <div class="red box"></div>
+                            <div class="green box" onclick="clickTrafficLight(this)"></div>
+                            <div class="yellow box" onclick="clickTrafficLight(this)"></div>
+                            <div class="red box" onclick="clickTrafficLight(this)"></div>
                         </div>
                     </div>
 
                     <div class="search-setting">
                         <p>Service</p>
                         <div class="categories">
-                            <div class="green box"></div>
-                            <div class="yellow box"></div>
-                            <div class="red box"></div>
+                            <div class="green box" onclick="clickTrafficLight(this)"></div>
+                            <div class="yellow box" onclick="clickTrafficLight(this)"></div>
+                            <div class="red box" onclick="clickTrafficLight(this)"></div>
                         </div>
                     </div>
 
                 </div>
                 <div class="filter-buttons">
-                    <button class="clear-button adv-search-button">Clear</button>
+                    <button class="clear-button adv-search-button" onclick="search()">Clear</button>
                     <button class="apply-button adv-search-button">Apply</button>
                 </div>
             </div>
@@ -257,10 +265,7 @@
 
 <script>
     
-    adjustNavBar();
-    adjustResult();
-    stars.initializeHover();
-    cashEmos.initializeHover();
+    initSearchPage();
 </script>
     
 </body>
