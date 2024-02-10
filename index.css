@@ -105,12 +105,12 @@ opacity: 80%;
 }
 
 .search-container {
-display: flex;
-flex-direction: row;
-align-items: center;
-height: 70%;
-width: 40%;
-margin-left: 10%;
-margin-top: auto;
-margin-bottom: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 70%;
+    width: 40%;
+    margin-left: 10%;
+    margin-top: auto;
+    margin-bottom: auto;
 }

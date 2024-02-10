@@ -44,12 +44,13 @@
         
         <div class="content" id="content">
             <div class="search-container">
-                <img src="assets/search-icon.svg" alt="" class="search-icon">
-                <input type="search" class="search-bar" placeholder="Find a restaurant">
-                <button class="search-button" onclick="search()">
-                    Search
-                </button>
-
+                <!-- <div class="search-fixed-container"> -->
+                    <img src="assets/search-icon.svg" alt="" class="search-icon">
+                    <input type="search" class="search-bar" placeholder="Find a restaurant">
+                    <button class="search-button" onclick="search()">
+                        Search
+                    </button>
+                <!-- </div> -->
             </div>
 
             <div class="empty" id="empty">
@@ -75,8 +76,7 @@
                       
                 </div>
                 <div class="all-results">
-                    <div class="result-box">
-                        <img src="assets/review.svg" alt="" class="review-icon">
+                    <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
                         <div class="store-details">
 
                             <div class="store-details-image">
@@ -96,114 +96,91 @@
                                     </div>
 
                 
-                                    <p class="rating-text">4.3 (172)</p>
+                                <p class="rating-text">4.3 (172)</p>
                                 </div>
                                 <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
-                                <div class="criterias">
-                                    <div class="criteria">
-                                        <div class="criteria-container">Food Quality</div>
-                                        <meter max="10" min="0" value="7"></meter>
-                                    </div>
-                                    <div class="criteria">
-                                        <div class="criteria-container">Service</div>
-                                        <meter max="10" min="0" value="9"></meter>
-                                    </div>
-                                    <div class="criteria">
-                                        <div class="criteria-container">Price</div>
-                                        <meter max="10" min="0" value="8"></meter>
-                                    </div>
+                                <div class="peek-review">
+                                    <p class="peek-review-para">
+                                        "Open 24 hour! Perfect for Makati as everything usually closes after people leave this mostly business area. Close walk from hotel we were staying. Very busy at…"
+                                        <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                    </p>
                                 </div>
                             </div>
                         </div> 
                     </div> 
 
-                    <div class="result-box">
-                        <img src="assets/review.svg" alt="" class="review-icon">
-
+                    <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
                         <div class="store-details">
 
                             <div class="store-details-image">
-                                <img src="assets/cbsisig.jpg" alt="" class="store-pic">
+                                <img src="assets/bacsi.jpg" alt="" class="store-pic">
 
                             </div>
                             <div class="store-details-text">
                                 <div class="rating">
 
-                                    <p class="title">Chef Bab's Sisig</p>
+                                    <p class="title">Ate Rica's Bacsilog</p>
                                     <div class="stars">
 
+                                        <img src="assets/star.png" alt="" class="star">
                                         <img src="assets/star.png" alt="" class="star">
                                         <img src="assets/star.png" alt="" class="star">
                                         <img src="assets/star.png" alt="" class="star">
                                     </div>
 
                 
-                                    <p class="rating-text">3.8 (210)</p>
+                                <p class="rating-text">4.3 (172)</p>
                                 </div>
-                                <p class="caption">P200-300 | Vito Cruz, Taft, Manila</p>
-                                <div class="criterias">
-                                    <div class="criteria">
-                                        <div class="criteria-container">Food Quality</div>
-                                        <meter max="10" min="0" value="8"></meter>
-                                    </div>
-                                    <div class="criteria">
-                                        <div class="criteria-container">Service</div>
-                                        <meter max="10" min="0" value="7"></meter>
-                                    </div>
-                                    <div class="criteria">
-                                        <div class="criteria-container">Price</div>
-                                        <meter max="10" min="0" value="4"></meter>
-                                    </div>
+                                <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
+                                <div class="peek-review">
+                                    <p class="peek-review-para">
+                                        "Open 24 hour! Perfect for Makati as everything usually closes after people leave this mostly business area. Close walk from hotel we were staying. Very busy at…"
+                                        <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                    </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div> 
 
-                    <div class="result-box">
-                        <img src="assets/review.svg" alt="" class="review-icon">
-
+                    <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
                         <div class="store-details">
 
                             <div class="store-details-image">
-                                <img src="assets/cbsisig.jpg" alt="" class="store-pic">
+                                <img src="assets/bacsi.jpg" alt="" class="store-pic">
 
                             </div>
                             <div class="store-details-text">
                                 <div class="rating">
 
-                                    <p class="title">Chef Bab's Sisig</p>
+                                    <p class="title">Ate Rica's Bacsilog</p>
                                     <div class="stars">
 
+                                        <img src="assets/star.png" alt="" class="star">
                                         <img src="assets/star.png" alt="" class="star">
                                         <img src="assets/star.png" alt="" class="star">
                                         <img src="assets/star.png" alt="" class="star">
                                     </div>
 
                 
-                                    <p class="rating-text">3.8 (210)</p>
+                                <p class="rating-text">4.3 (172)</p>
                                 </div>
-                                <p class="caption">P200-300 | Vito Cruz, Taft, Manila</p>
-                                <div class="criterias">
-                                    <div class="criteria">
-                                        <div class="criteria-container">Food Quality</div>
-                                        <meter max="10" min="0" value="8"></meter>
-                                    </div>
-                                    <div class="criteria">
-                                        <div class="criteria-container">Service</div>
-                                        <meter max="10" min="0" value="7"></meter>
-                                    </div>
-                                    <div class="criteria">
-                                        <div class="criteria-container">Price</div>
-                                        <meter max="10" min="0" value="4"></meter>
-                                    </div>
+                                <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
+                                <div class="peek-review">
+                                    <p class="peek-review-para">
+                                        "Open 24 hour! Perfect for Makati as everything usually closes after people leave this mostly business area. Close walk from hotel we were staying. Very busy at…"
+                                        <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                    </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div> 
 
 
 
 
+                    <div class="load-more-container">
+                        <button class="load-more-button" onclick="loadMoreResults()">Load More</button>
+                    </div>
 
                 </div> 
             </div>
@@ -218,11 +195,11 @@
                 <div class="search-setting">
                     <p>Ratings</p>
                     <div class="star-sorting">
-                        <span onclick="addRating(1)" class="slider-star-rating">★</span>
-                        <span onclick="addRating(2)" class="slider-star-rating">★</span>
-                        <span onclick="addRating(3)" class="slider-star-rating">★</span>
-                        <span onclick="addRating(4)" class="slider-star-rating">★</span>
-                        <span onclick="addRating(5)" class="slider-star-rating">★</span>
+                        <span onclick="stars.handleClick(1)" class="slider-star-rating">★</span>
+                        <span onclick="stars.handleClick(2)" class="slider-star-rating">★</span>
+                        <span onclick="stars.handleClick(3)" class="slider-star-rating">★</span>
+                        <span onclick="stars.handleClick(4)" class="slider-star-rating">★</span>
+                        <span onclick="stars.handleClick(5)" class="slider-star-rating">★</span>
                     </div>
                 </div>
 
@@ -240,25 +217,11 @@
           
                 <div class="price-setting">
                     <p>Pricing</p>
-                    <div class="price-categories">
-                        <div class="container-sort">
-
-                            <input type="radio" id="price-PP" name="price" value="P">
-                            <p>P</p>
-                        </div>
-                        <div class="container-sort">
-                            <input type="radio" id="price-PP" name="price" value="PP">
-                            <p>PP</p>
-                        </div>
-                        <div class="container-sort">
-                            <input type="radio" id="price-PP" name="price" value="PPP">
-                            <p>PPP</p>
-                        </div>
-                        <div class="container-sort">
-                            <input type="radio" id="price-PP" name="price" value="PPPP">
-                            <p>PPPP</p>
-                        </div>
-
+                    <div class="price-slider">
+                        <span onclick="cashEmos.handleClick(1)" class="slider-price-rating">💵</span>
+                        <span onclick="cashEmos.handleClick(2)" class="slider-price-rating">💵</span>
+                        <span onclick="cashEmos.handleClick(3)" class="slider-price-rating">💵</span>
+                        <span onclick="cashEmos.handleClick(4)" class="slider-price-rating">💵</span>
                     </div>
                 </div>
 
@@ -296,6 +259,8 @@
     
     adjustNavBar();
     adjustResult();
+    stars.initializeHover();
+    cashEmos.initializeHover();
 </script>
     
 </body>
