@@ -13,14 +13,11 @@
 
 
 #forgot {
-    opacity: 43%;
+    opacity: 0%;
     margin-top: 3%;
-    align-self: flex-end;
+    /* align-self: flex-end; */
 }
 
-.forgot:hover {
-    opacity: 90%;
-}
 
 
 a {
