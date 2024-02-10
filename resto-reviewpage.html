@@ -5,29 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review Restaurant</title>
     <link rel="stylesheet" href="resto-reviewpage.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo-link">
+        <a class="logo-link" onclick="transferSession('index.html')">
             <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
         </a>
         
-        <div class="nav-icon-container">
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
             <img src="assets/home.svg" alt="" class="nav-icon">
             <p>Home</p>
-        </div>
+        </a>
         
-        <div class="nav-icon-container">
-            <img src="assets/person.svg" alt="" class="nav-icon">
-            <p>Log In</p>
-        </div>
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
+            <img src="assets/explore.svg" alt="" class="nav-icon">
+            <p>Explore</p>
+        </a>
 
-        <div class="nav-icon-container">
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
             <img src="assets/archive.svg" alt="" class="nav-icon">
             <p>Index</p>
-        </div>
-        
+        </a>
 
+        <a href="login.html" class="nav-icon-container" id="person-icon">
+            <img src="assets/person.svg" alt="" class="nav-icon">
+            <p>Accounts</p>
+        </a>
+        
+        <div class="account-icon" id="account-icon">
+            <img src="assets/profile.jpg" alt="" class="profile-icon">
+        </div>
     </header>
 
     <main class = "main">
@@ -53,70 +61,115 @@
         </div>
 
         <div class="reviewarea">
-            <h1>Reviews</h1>
+
+            <div class="reviewheader">
+                <h1>Reviews</h1>
+            </div>
+
             <br>
-            <div class="publishreview">
-                <textarea type="review" class="review-bar" placeholder="Type your review here..."></textarea>
-                <div class="alignpublishbutton">
-                    <button class="publish-button">Publish</button>
+
+            <div class="publishrevarea">
+                <div class="publishreview">
+                    
+                    <div class="criteriaratearea">
+                        <div class="criteriarate">
+                            <h3 class="criterialbl">Food Quality</h3>
+                            <div class="star-sorting" data-criterion="food">
+                                <span onclick="addRating(1)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(2)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(3)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(4)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(5)" class="slider-star-rating">★</span>
+                            </div>
+                        </div>
+
+                        <div class="criteriarate">
+                            <h3 class="criterialbl">Service</h3>
+                            <div class="star-sorting" data-criterion="service">
+                                <span onclick="addRating(1)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(2)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(3)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(4)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(5)" class="slider-star-rating">★</span>
+                            </div>
+                        </div>
+
+                        <div class="criteriarate">
+                            <h3 class="criterialbl">Price</h3>
+                            <div class="star-sorting" data-criterion="price">
+                                <span onclick="addRating(1)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(2)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(3)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(4)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(5)" class="slider-star-rating">★</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div id="editor">
+                    </div>
+                    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+                    <script src="resto-reviewpage.js"></script>
+
+                    <div class="photo-upload">
+                        <label for="photo-input">Upload up to 4 photos:</label>
+                        <input type="file" id="photo-input" name="photos" accept="image/*" multiple>
+                    </div>
+
+                    <div class="alignpublishbutton">
+                        <button class="publish-button">Publish</button>
+                    </div>
                 </div>
             </div>
+            
 
             <hr>
 
-            <div class="review">
-                <div class="reviewpicarea">
-                    <img src="assets/cbsisig.jpg" alt="Picture" class="reviewpic">
-                </div>
-
-                <div class="reviewinfo">
-                    <div class="user-score">
-                        <h2 class="reviewdeets">GetALife_21</h2>
-                        <h2 class="yellowscore">4.6/5</h2>
+            <div class="publishedrevarea">
+                <div class="review">
+                    <div class="reviewpicarea">
+                        <img src="assets/cbsisig.jpg" alt="Picture" class="reviewpic">
                     </div>
-                    <h4>Food Quality</h4>
-                    <h4>Service</h4>
-                    <h4>Price</h4>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
-                </div>
-            </div>
+    
+                    <div class="reviewinfo">
+                        <div class="user-score">
+                            <h2>GetALife_21</h2>
+                            <h2 class="dot">·</h2>
+                            <h2 class="yellowscore">4.6/5</h2>
+                        </div>
+                        <div class="criteriascore">
+                            <h4 class="criteria">Food Quality</h4>
+                            <div class="stars">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                            </div>
+                        </div>
 
-            <div class="review">
-                <div class="reviewpicarea">
-                    <img src="assets/cbsisig.jpg" alt="Picture" class="reviewpic">
-                </div>
+                        <div class="criteriascore">
+                            <h4 class="criteria">Service</h4>
+                            <div class="stars">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                            </div>
+                        </div>
 
-                <div class="reviewinfo">
-                    <div class="user-score">
-                        <h2 class="reviewdeets">GetALife_21</h2>
-                        <h2 class="yellowscore">4.6/5</h2>
+                        <div class="criteriascore">
+                            <h4 class="criteria">Price</h4>
+                            <div class="stars">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                            </div>
+                        </div>
+                        <br>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
                     </div>
-                    <h4>Food Quality</h4>
-                    <h4>Service</h4>
-                    <h4>Price</h4>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
                 </div>
-            </div>
-
-            <div class="review">
-                <div class="reviewpicarea">
-                    <img src="assets/cbsisig.jpg" alt="Picture" class="reviewpic">
-                </div>
-
-                <div class="reviewinfo">
-                    <div class="user-score">
-                        <h2 class="reviewdeets">GetALife_21</h2>
-                        <h2 class="yellowscore">4.6/5</h2>
-                    </div>
-                    <h4>Food Quality</h4>
-                    <h4>Service</h4>
-                    <h4>Price</h4>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
-                </div>
-            </div>
 
         </div>
     </main>
