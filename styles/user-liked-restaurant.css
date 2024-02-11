@@ -1,0 +1,119 @@
+
+/* Liked Restaurants */
+.liked-restaurants {
+    display: flex;
+    border-bottom: 1px solid rgba(217, 217, 217, 0.6);
+    flex-direction: column;
+    padding: 2%;
+    margin-top: 20px;
+    margin-left: 130px;
+    margin-right: 130px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+}
+
+meter::-webkit-meter-optimum-value {
+    background-color: #7DA03E;
+    border-radius: 20px;
+    animation: liquid 3s ease infinite;
+
+}
+
+meter::-webkit-meter-bar {
+    background: none;
+
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1), 2px 2px 2px rgba(0, 0, 0, 0.1);
+
+}
+
+meter {
+    width: 40%;
+    height: 20px;
+    background: transparent;
+
+}
+
+.reviewed-by {
+    align-self: flex-end;
+    color: #333;
+    opacity: 0.5;
+    font-size: 12px;
+}
+
+.store-pic {
+    height: 100%;
+    width: 70%;
+    border-radius: 2px;
+}
+
+.store-details {
+    display: flex;
+    gap: 2rem;
+    margin-top: -2.5%;
+}
+
+.store-details-image {
+    flex: 0 0 25%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.caption {
+    font-size: 12px;
+    color: #333;
+}
+
+.star {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+.rating {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+}
+
+
+.rating-text {
+    font-size: 9px;
+    margin-top: 0.25rem;
+    color: #333;
+}
+
+.title {
+    font-size: 15px;
+}
+
+.stars {
+    display: flex;
+    gap: -0.5rem;
+}
+
+.store-details-text {
+    width: 100%;
+}
+
+.criterias {
+    margin-top: 15px;
+
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+}
+
+.criteria {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.review-icon {
+    height: 2rem;
+    margin-inline-start: 90%;
+}
+
+.review-icon:hover {
+    filter: invert(21%) sepia(95%) saturate(7448%) hue-rotate(357deg) brightness(101%) contrast(115%);
+}
