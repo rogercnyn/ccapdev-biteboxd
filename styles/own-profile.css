@@ -1,0 +1,160 @@
+@import "navbar.css";
+@import "base.css";
+@import "tabs.css";
+@import "user-liked-restaurant.css";
+@import "user-reviews.css";
+@import "user-about.css";
+
+main {
+    flex: 1; 
+    margin-left: 6%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-header{
+    height: 30%;
+    width: 100%;
+    background-color: rgb(192, 191, 191);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 1px solid #838181;
+    margin-bottom: 10px;
+}
+
+.profile{
+    position: absolute;
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10%;
+    padding-bottom: 10%;
+    height: auto;
+    background-color: rgb(248, 245, 245);
+    border-radius: 15px;
+	box-shadow: 0 5px 15px 0px rgba(194, 187, 187, 0.6);
+
+}
+
+.avatar-container{
+    position:absolute;
+    left: 25%;
+    top:4%
+}
+
+.avatar-border{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.avatar{
+    width: 200px;
+	height: 200px;
+	box-sizing: border-box;
+    position: relative;
+    background-color: aliceblue;
+
+    left: 150 px;
+	border: 10px white solid;
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 0 5px 15px 0px rgba(194, 187, 187, 0.6);
+	img { width: 100%; height: auto; }
+}
+
+.handle {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem; 
+    font-weight: bold;
+    top: 10%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+/* edit profile icon */
+.handle-edit{
+    display: flex;
+    padding-left: 200px;
+}
+.edit{
+    padding-right: 20px;
+    padding-top: 20px;
+
+}
+.edit-btn{
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    background: #FDD247;
+    border-radius: 15px;
+    padding: 8px;
+
+}
+
+.date-created {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-size: 1.25rem; 
+    font-weight: bold;
+    top: 10%;
+}
+
+.fullname{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem; 
+    font-weight: bold;
+    top: 10%;
+}
+.user-info{
+    flex-direction: row;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem; 
+    font-weight: bold;
+    top: 10%;
+    margin-left: 25%
+}
+.bio{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem; 
+    top: 10%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 5%
+}
+
+.icon{
+    height: 20px;
+    margin-right: .5rem;
+}
+
+.info-container{
+    height: 180px;
+
+    background-color: rgb(251, 251, 251);/* remove */
+    border-radius: 15px;
+    border: 1px solid #83818100;
+	box-shadow: 0 5px 15px 0px rgba(194, 187, 187, 0.6);
+
+}
+
+
+

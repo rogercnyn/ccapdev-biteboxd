@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/others-profile.css">
+        <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
+        <script src="script/own-profile.js"></script>
+        <title>BiteBoxd - View other user's Profile</title>
+    </head>
+<body>
+    <header>
+        <a class="logo-link" onclick="transferSession('index.html')">
+            <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
+        </a>
+        
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
+            <img src="assets/home.svg" alt="" class="nav-icon">
+            <p>Home</p>
+        </a>
+        
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
+            <img src="assets/explore.svg" alt="" class="nav-icon">
+            <p>Explore</p>
+        </a>
+
+        <a class="nav-icon-container" onclick="transferSession('all.html')">
+            <img src="assets/archive.svg" alt="" class="nav-icon">
+            <p>All</p>
+        </a>
+
+        <a href="login.html" class="nav-icon-container" id="person-icon">
+            <img src="assets/person.svg" alt="" class="nav-icon">
+            <p>Accounts</p>
+        </a>
+        
+        <div class="account-icon" id="account-icon" onclick="togglePopup()">
+            <img src="assets/profile.jpg" alt="" class="profile-icon">
+        </div>
+        
+        <div class="popup-container" id="popupContainer" style="display: none;">
+            <div class="popup" id="popup">
+                <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
+                <a href="#" onclick="viewProfile()">Edit Profile</a>
+                <a href="#" onclick="logOut()">Log Out</a>
+            </div>
+        </div>        
+    </header>
+
+    <main>
+        <div class="profile-header">
+
+        </div>
+        
+        <div class="profile">
+            <div class="info-container">
+                <div class="handle-edit">
+                    <div class="handle">
+                        <h1>@spencer_123</h1>
+                    </div>
+                    <div class="edit">
+                        <button class="edit-btn">Edit Profile</button>
+                    </div>
+                </div>
+                
+        
+                <div class="user-info">
+                    <div class="fullname">
+                        <img src="assets/full-name-icon.png" alt="full name icon" class="icon">
+                        <h3>Spencer Hastings</h3>
+                    </div>
+                    <div class="date-created">
+                        <img src="assets/calendar.png" alt="date icon" class="icon">
+                        <h3>2023</h3>
+                    </div>
+                </div>
+                <div class="bio">
+                    <p>bio: Savoring every bite, one dish at a time</p>
+                </div>
+            </div>
+            <div class="profile-tabs"> <!-- tab_box-->
+                <button class="tab-btn" id="liked-restaurants">Liked Restaurants</button>
+                <button class="tab-btn" id="reviews">Reviews</button>
+                <button class="tab-btn" id="about">About</button>
+                <div class="line"></div>
+            </div>
+
+        <div class="content-box">
+
+            <!-- Liked Restaurants -->
+            <div class="content">
+
+                <div class="liked-restaurants">
+                    <img src="assets/review.svg" alt="" class="review-icon">
+                            <div class="store-details">
+    
+                                <div class="store-details-image">
+                                    <img src="assets/bacsi.jpg" alt="" class="store-pic">
+    
+                                </div>
+                                <div class="store-details-text">
+                                    <div class="rating">
+    
+                                        <p class="title">Ate Rica's Bacsilog</p>
+                                        <div class="stars">
+    
+                                            <img src="assets/star.png" alt="" class="star">
+                                            <img src="assets/star.png" alt="" class="star">
+                                            <img src="assets/star.png" alt="" class="star">
+                                            <img src="assets/star.png" alt="" class="star">
+                                        </div>
+    
+                    
+                                        <p class="rating-text">4.3 (172)</p>
+                                    </div>
+                                    <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
+                                    <div class="criterias">
+                                        <div class="criteria">
+                                            <div class="criteria-container">Food Quality</div>
+                                            <meter max="10" min="0" value="7"></meter>
+                                        </div>
+                                        <div class="criteria">
+                                            <div class="criteria-container">Service</div>
+                                            <meter max="10" min="0" value="9"></meter>
+                                        </div>
+                                        <div class="criteria">
+                                            <div class="criteria-container">Price</div>
+                                            <meter max="10" min="0" value="8"></meter>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                </div>
+                <div class="liked-restaurants">
+                    <img src="assets/review.svg" alt="" class="review-icon">
+                            <div class="store-details">
+    
+                                <div class="store-details-image">
+                                    <img src="assets/bacsi.jpg" alt="" class="store-pic">
+    
+                                </div>
+                                <div class="store-details-text">
+                                    <div class="rating">
+    
+                                        <p class="title">Ate Rica's Bacsilog</p>
+                                        <div class="stars">
+    
+                                            <img src="assets/star.png" alt="" class="star">
+                                            <img src="assets/star.png" alt="" class="star">
+                                            <img src="assets/star.png" alt="" class="star">
+                                            <img src="assets/star.png" alt="" class="star">
+                                        </div>
+    
+                    
+                                        <p class="rating-text">4.3 (172)</p>
+                                    </div>
+                                    <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
+                                    <div class="criterias">
+                                        <div class="criteria">
+                                            <div class="criteria-container">Food Quality</div>
+                                            <meter max="10" min="0" value="7"></meter>
+                                        </div>
+                                        <div class="criteria">
+                                            <div class="criteria-container">Service</div>
+                                            <meter max="10" min="0" value="9"></meter>
+                                        </div>
+                                        <div class="criteria">
+                                            <div class="criteria-container">Price</div>
+                                            <meter max="10" min="0" value="8"></meter>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                </div>
+                <div class="liked-restaurants">
+                    <img src="assets/review.svg" alt="" class="review-icon">
+                            <div class="store-details">
+    
+                                <div class="store-details-image">
+                                    <img src="assets/bacsi.jpg" alt="" class="store-pic">
+    
+                                </div>
+                                <div class="store-details-text">
+                                    <div class="rating">
+    
+                                        <p class="title">Ate Rica's Bacsilog</p>
+                                        <div class="stars">
+    
+                                            <img src="assets/star.png" alt="" class="star">
+                                            <img src="assets/star.png" alt="" class="star">
+                                            <img src="assets/star.png" alt="" class="star">
+                                            <img src="assets/star.png" alt="" class="star">
+                                        </div>
+    
+                    
+                                        <p class="rating-text">4.3 (172)</p>
+                                    </div>
+                                    <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
+                                    <div class="criterias">
+                                        <div class="criteria">
+                                            <div class="criteria-container">Food Quality</div>
+                                            <meter max="10" min="0" value="7"></meter>
+                                        </div>
+                                        <div class="criteria">
+                                            <div class="criteria-container">Service</div>
+                                            <meter max="10" min="0" value="9"></meter>
+                                        </div>
+                                        <div class="criteria">
+                                            <div class="criteria-container">Price</div>
+                                            <meter max="10" min="0" value="8"></meter>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                </div>
+
+            </div>
+
+            <!-- Reviews -->
+            <div class="content">
+
+            <div class="review">
+                <div class="reviewpicarea">
+                    <img src="assets/cbsisig.jpg" alt="Picture" class="reviewpic">
+                </div>
+
+                <div class="reviewinfo">
+                    <div class="user-score">
+                        <h2>GetALife_21</h2>
+                        <h2 class="dot">·</h2>
+                        <h2 class="yellowscore">4.6/5</h2>
+                    <img src="assets/review.svg" alt="" class="review-edit-icon">
+
+                    </div>
+                    <div class="criteriascore">
+                        <h4 class="criteria">Food Quality</h4>
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                    </div>
+
+                    <div class="criteriascore">
+                        <h4 class="criteria">Service</h4>
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                    </div>
+
+                    <div class="criteriascore">
+                        <h4 class="criteria">Price</h4>
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                    </div>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                </div>
+            </div>
+            <div class="review">
+                <div class="reviewpicarea">
+                    <img src="assets/cbsisig.jpg" alt="Picture" class="reviewpic">
+                </div>
+
+                <div class="reviewinfo">
+                    <div class="user-score">
+                        <h2>GetALife_21</h2>
+                        <h2 class="dot">·</h2>
+                        <h2 class="yellowscore">4.6/5</h2>
+                    <img src="assets/review.svg" alt="" class="review-edit-icon">
+
+                    </div>
+                    <div class="criteriascore">
+                        <h4 class="criteria">Food Quality</h4>
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                    </div>
+
+                    <div class="criteriascore">
+                        <h4 class="criteria">Service</h4>
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                    </div>
+
+                    <div class="criteriascore">
+                        <h4 class="criteria">Price</h4>
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                    </div>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                </div>
+            </div>
+            <div class="review">
+                <div class="reviewpicarea">
+                    <img src="assets/cbsisig.jpg" alt="Picture" class="reviewpic">
+                </div>
+
+                <div class="reviewinfo">
+                    <div class="user-score">
+                        <h2>GetALife_21</h2>
+                        <h2 class="dot">·</h2>
+                        <h2 class="yellowscore">4.6/5</h2>
+                    <img src="assets/review.svg" alt="" class="review-edit-icon">
+
+                    </div>
+                    <div class="criteriascore">
+                        <h4 class="criteria">Food Quality</h4>
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                    </div>
+
+                    <div class="criteriascore">
+                        <h4 class="criteria">Service</h4>
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                    </div>
+
+                    <div class="criteriascore">
+                        <h4 class="criteria">Price</h4>
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                    </div>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                </div>
+            </div>
+        
+            
+
+            </div>
+
+            <!-- About -->
+            <div class="content">
+                <div class="user-ratings-container">
+                    <div class="rating-labelled">
+                        <div class="rating">
+                            <div class="outer">
+                                <div class="inner">
+                                    <div class="heart">
+                                        <img src="assets/heart.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                                <circle class="heart-rating"cx="80" cy="80" r="70" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div class="rating-label-percentage">
+                            <p class="rating-label">Hearts: </p>
+                            <p class="number">65%</p>
+                        </div>
+                        
+
+                    </div>
+                    
+                    <div class="rating-labelled">
+                        <div class="rating">
+                            <div class="outer">
+                                <div class="inner">
+                                    <div class="tomato">
+                                        <img src="assets/tomato.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                                <circle class="tomato-rating"cx="80" cy="80" r="70" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div class="rating-label-percentage">
+                            <p class="rating-label">Tomatoes:</p>
+                            <p class="number">25%</p>
+                        </div>
+                    </div>
+    
+                    <div class="rating-labelled">
+                        <div class="rating">
+                            <div class="outer">
+                                <div class="inner">
+                                    <div class="like">
+                                        <img src="assets/like.png" alt="">
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                                <circle class="credibility-rating" cx="80" cy="80" r="70" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div class="rating-label-percentage">
+                            <p class="rating-label">Credibility:</p>
+                            <p id="number">95%</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="divider"></div>
+                <div class="recent-activities-container">
+                    <h3>Recent Activities</h3>
+                    <div class="recent-activity">
+                        <div class="avatar-container-recent-activity">
+                            <div class="avatar-border-recent-activity">
+                                <div class="avatar-recent-activity">
+                                    <img src="assets/avatar-f1.png" alt="avatar">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recent-activity-description">
+                            <p>@Spencer visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
+                        </div>
+                        <div class="delete-recent-activity">
+                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <div class="avatar-container-recent-activity">
+                            <div class="avatar-border-recent-activity">
+                                <div class="avatar-recent-activity">
+                                    <img src="assets/avatar-f1.png" alt="avatar">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recent-activity-description">
+                            <p>@Spencer visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
+                        </div>
+                        <div class="delete-recent-activity">
+                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <div class="avatar-container-recent-activity">
+                            <div class="avatar-border-recent-activity">
+                                <div class="avatar-recent-activity">
+                                    <img src="assets/avatar-f1.png" alt="avatar">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recent-activity-description">
+                            <p>@Spencer visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
+                        </div>
+                        <div class="delete-recent-activity">
+                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <div class="avatar-container-recent-activity">
+                            <div class="avatar-border-recent-activity">
+                                <div class="avatar-recent-activity">
+                                    <img src="assets/avatar-f1.png" alt="avatar">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recent-activity-description">
+                            <p>@Spencer visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
+                        </div>
+                        <div class="delete-recent-activity">
+                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <div class="avatar-container-recent-activity">
+                            <div class="avatar-border-recent-activity">
+                                <div class="avatar-recent-activity">
+                                    <img src="assets/avatar-f1.png" alt="avatar">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recent-activity-description">
+                            <p>@Spencer visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
+                        </div>
+                        <div class="delete-recent-activity">
+                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+            </div>
+        <div class="avatar-container">
+            <div class="avatar-boorder">
+                <div class="avatar">
+                    <img src="assets/avatar-f1.png" alt="avatar">
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        adjustNavBar();
+    </script>
+</body>
+</html>

@@ -7,9 +7,7 @@ function togglePopup() {
 }
 
 function logOut() {
-    let updatedUrl = window.location.href.replace('isLogged=true', '');
-
-    window.location.href = updatedUrl;
+    window.location.href = "index.html";
 }
 
 function adjustNavBar (){
