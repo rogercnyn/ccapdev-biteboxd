@@ -19,9 +19,19 @@
     cursor: pointer; 
     background-color: #000;
     color: white;
-
     font-family: 'Jua';
     font-size: 18px;
+    border: none;
+}
+
+.clear-icon {
+    height: 1.5rem;
+    cursor: pointer;
+    opacity: 0%;
+}
+
+.clear-icon:hover {
+    opacity: 20%;
 }
 
 .search-button:hover {
@@ -30,6 +40,8 @@
 
 .search-bar:focus {
     outline: none;
+    box-shadow: 0px 4px 4px rgba(217, 217, 217,1);
+
 }
 
 .search-icon {
@@ -40,10 +52,3 @@
     opacity: 80%;
 }
 
-.search-icon {
-    height: 1.25rem;
-    width: 1.25rem;
-    margin-right: -2rem;
-    z-index: 1;
-    opacity: 80%;
-}
