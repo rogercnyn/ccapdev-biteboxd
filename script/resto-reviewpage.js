@@ -96,7 +96,7 @@ function handleFileSelect(event) {
                 imgContainer.appendChild(img);
                 imgContainer.appendChild(removeButton);
 
-               
+                // Append the container to the main photo container
                 photoContainer.appendChild(imgContainer);
             };
 
@@ -110,12 +110,15 @@ function handleFileSelect(event) {
     }
 }
 
-function toggleColor(button) {
-    var likeDislikeContainer = button.parentElement;
+function toggleColor(type) {
+    var likeButton = document.querySelector('.like');
+    var dislikeButton = document.querySelector('.dislike');
 
-    if (likeDislikeContainer.classList.contains('colored')) {
-      likeDislikeContainer.classList.remove('colored');
+    if (type === 'like') {
+      likeButton.classList.contains('colored');
+      dislikeButton.classList.remove('colored');
     } else {
-      likeDislikeContainer.classList.add('colored');
+      dislikeButton.classList.contains('colored');
+      likeButton.classList.remove('colored');
     }
 }
