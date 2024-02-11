@@ -1,0 +1,157 @@
+@import "navbar.css";
+@import "base.css";
+
+main {
+    flex: 0 0 90%;
+    margin-left: 7%;
+
+}
+
+.category-button.clicked-category, .category-button:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    transition: box-shadow 0.5s ease, background-color 0.5s ease, transform 0.5s ease; /* Longer transition duration */
+    transform: scale(1.1); 
+
+}
+
+
+.category-header {
+    margin: auto;
+    width: 90%;
+    margin-top: 1%;
+    /* border: 1px solid black; */
+}
+
+
+
+
+
+.categories {
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.category-button {
+    width: 8%;
+    height: 35%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+
+    border: 1px solid #111;
+    border-bottom: 3px solid #111;
+    background-color: #FDD247;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    font-family: 'Jua';
+    font-size: 15px;
+}
+
+
+
+h1 {
+    font-size: 50px;
+}
+
+.category-header {
+    display: flex;
+    flex-direction: column;
+}
+#sorting {
+    /* outline: none; */
+    border: none;
+    margin-left: auto;
+    width: fit-content;
+    margin-top: -1.5%;
+    margin-bottom: 1%;
+    color: #999999;
+    font-family: Tahoma;
+    font-size: 12px;
+    padding: 0.5%;
+}
+
+.gallery {
+    width: 90%;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+
+.catalogue {
+    padding: 2% 0%;
+    margin-top: 10%;
+    width: 90%;
+    margin: auto;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+}
+
+
+/* container */
+.store-pic {
+    width: 85%;
+    height: 90%;
+    border-radius: 10px;
+    object-fit: cover;
+
+}
+
+.pic-container {
+    /* border: 1px solid black; */
+    flex: 0 0 87%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.star {
+    height: 1rem;
+}
+
+.resto-container {
+    height: 330px;
+    /* border: 1px solid black; */
+    width: 250px;
+    border-radius: 25px;
+    background-color: #FAF5E6;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 23px;
+    font-family: Tahoma;
+    text-align: center;
+    margin-top: -5%;
+}
+
+.rating-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    gap: 0.25rem;
+}
+
+.stars {
+    
+    /* border: 1px solid black; */
+    display: flex;
+    /* margin-top: 2%; */
+}
+
+.reviewers {
+    font-family: Tahoma;
+    font-size: 12px;
+    color: #A9A9A9;
+}

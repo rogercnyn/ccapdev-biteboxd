@@ -4,6 +4,7 @@ let currentRatings = {
     service: 0,
     price: 0,
 };
+let maxPhotos = 4;
 
 document.addEventListener("DOMContentLoaded", function () {
     var quill = new Quill('#editor', {
@@ -50,3 +51,61 @@ starsContainers.forEach(container => {
         updateStars();
     });
 });
+
+document.getElementById('photo-input').addEventListener('change', handleFileSelect);
+document.querySelector('.publish-button').addEventListener('click', handleUpload);
+
+function handleFileSelect(event) {
+    const files = event.target.files;
+    const photoContainer = document.getElementById('photo-container');
+    const currentPhotos = photoContainer.querySelectorAll('.photo-preview').length;
+
+
+    if (currentPhotos + files.length > maxPhotos) {
+        alert('Maximum of 4 photos allowed.');
+        event.target.value = ''; 
+        return;
+    }
+
+    else {
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+    
+            reader.onload = function (e) {
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'photo-container-item';
+
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.alt = 'Photo Preview';
+                img.className = 'photo-preview';
+
+                const removeButton = document.createElement('div');
+                removeButton.innerHTML = '&#10006;'; // X icon
+                removeButton.className = 'remove-button';
+                removeButton.addEventListener('click', function () {
+                    // Remove the corresponding image and container when clicked
+                    imgContainer.remove();
+                    // Enable the file input and upload button if they were disabled
+                    document.getElementById('photo-input').disabled = false;
+                    document.querySelector('.publish-button').disabled = false;
+                });
+
+                // Append the image and remove button to the container
+                imgContainer.appendChild(img);
+                imgContainer.appendChild(removeButton);
+
+                // Append the container to the main photo container
+                photoContainer.appendChild(imgContainer);
+            };
+
+            reader.readAsDataURL(file);
+        }
+        const fileInput = document.getElementById('photo-input');
+        fileInput.disabled = currentPhotos >= maxPhotos;
+
+        const uploadButton = document.querySelector('.publish-button');
+        uploadButton.disabled = currentPhotos >= maxPhotos;
+    }
+}

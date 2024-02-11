@@ -27,14 +27,6 @@ main {
     height: 90%;
 }
 
-    
-
-.search-button {
-    height: 90%;
-    width: 10%;
-    border-radius: 20px;
-    margin-left: -10%;
-}
 
 
 .search-container {
@@ -79,6 +71,15 @@ main {
     /* flex: 0 0 2.5%; */
     height: 15%;
     margin-left: 5%;
+}
+
+.search-button {
+    margin-left: -2%;
+}
+
+.clear-icon {
+    margin-left: -13.7%;
+
 }
 
 .search-setting {
@@ -452,4 +453,11 @@ input[type="radio"] {
 .slider-price-rating.colored {
     filter: grayscale(0%);
     opacity: 100%;
+}
+
+.search-button {
+    height: 90%;
+    width: 10%;
+    border-radius: 20px;
+    margin-left: 1%;
 }

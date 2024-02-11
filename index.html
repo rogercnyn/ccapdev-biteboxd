@@ -26,9 +26,9 @@
             <p>Explore</p>
         </a>
 
-        <a class="nav-icon-container" onclick="transferSession('index.html')">
+        <a class="nav-icon-container" onclick="transferSession('all.html')">
             <img src="assets/archive.svg" alt="" class="nav-icon">
-            <p>Index</p>
+            <p>All</p>
         </a>
 
         <a href="login.html" class="nav-icon-container" id="person-icon">
@@ -54,10 +54,10 @@
         <div class="search-container">
             <img src="assets/search-icon.svg" alt="" class="search-icon">
             <input type="search" class="search-bar" placeholder="Find a restaurant">
+            <img src="assets/clear.svg" alt="" onclick="clearSearchBar()" class="clear-icon" id="clear-icon">
             <button class="search-button" onclick="search()">
                 Search
             </button>
-
         </div>
 
         <img src="assets/index.png" alt="" class="background">
@@ -66,8 +66,8 @@
     </main>
 
     <script>
-        
         adjustNavBar();
+        addClear();
     </script>
 </body>
 </html>
