@@ -43,7 +43,7 @@ main {
     cursor: pointer;
 
     border: 1px solid #111;
-    border-bottom: 3px solid #111;
+    border-bottom: 4px solid #111;
     background-color: #FDD247;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
     font-family: 'Jua';
