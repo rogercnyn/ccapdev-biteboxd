@@ -282,7 +282,6 @@ hr {
     right: 10px;
     display: flex;
     gap: 10px;
-    filter: grayscale(65%);
     opacity: 80%;
 }
 
