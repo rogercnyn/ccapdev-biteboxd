@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles/all.css">
+    <title>Biteboxd - All</title>
+    <script src="script/general.js"></script>
+    <script src="script/navbar.js"></script>
+    <script src="script/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <a class="logo-link" onclick="transferSession('index.html')">
+            <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
+        </a>
+        
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
+            <img src="assets/home.svg" alt="" class="nav-icon">
+            <p>Home</p>
+        </a>
+        
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
+            <img src="assets/explore.svg" alt="" class="nav-icon">
+            <p>Explore</p>
+        </a>
+
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
+            <img src="assets/archive.svg" alt="" class="nav-icon">
+            <p>All</p>
+        </a>
+
+        <a href="login.html" class="nav-icon-container" id="person-icon">
+            <img src="assets/person.svg" alt="" class="nav-icon">
+            <p>Accounts</p>
+        </a>
+        
+        <div class="account-icon" id="account-icon" onclick="togglePopup()">
+            <img src="assets/profile.jpg" alt="" class="profile-icon">
+        </div>
+        
+        <div class="popup-container" id="popupContainer" style="display: none;">
+            <div class="popup" id="popup">
+                <a href="#" onclick="viewProfile()">View Profile</a>
+                <a href="#" onclick="viewProfile()">Edit Profile</a>
+                <a href="#" onclick="logOut()">Log Out</a>
+            </div>
+        </div>        
+    </header>
+
+    <main>
+        <div class="categories">
+            <button class="category-button" id="fil" onclick="changeCategory('fil')">Filipino</button>
+            <button class="category-button" id="cof" onclick="changeCategory('cof')">Coffee</button>
+            <button class="category-button" id="jap" onclick="changeCategory('jap')">Japanese</button>
+            <button class="category-button" id="chi" onclick="changeCategory('chi')">Chinese</button>
+            <button class="category-button" id="ame" onclick="changeCategory('ame')">American</button>
+            <button class="category-button" id="ita" onclick="changeCategory('ita')">Italian</button>
+            <button class="category-button" id="kor" onclick="changeCategory('kor')">Korean</button>
+            <button class="category-button" onclick="resetCategory()">All</button>
+        </div>
+        <div class="category-header">
+            <h1 id="category-title">All Restaurants</h1>
+            <select id="sorting">
+                <option value="az">A-Z</option>
+                <option value="za">Z-A</option>
+                <option value="rating">Rating</option>
+                <option value="rating-high-low">Rating (high-low)</option>
+            </select>
+            <hr>
+        </div>
+
+        <div class="catalogue">
+
+            <div class="gallery">
+                <div class="resto-container ita">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Italianni's</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+
+                <div class="resto-container kor">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Samgyup</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+                <div class="resto-container cof">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Starbs</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+                
+                <div class="resto-container ame">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Kenny Roger's</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+                
+                <div class="resto-container jap">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Ramenagi</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+                
+                <div class="resto-container fil">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Max</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+                
+                <div class="resto-container chi">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Din Tai Fung</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div> 
+
+                <div class="resto-container ita">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Italianni's</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+
+                <div class="resto-container kor">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Samgyup</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+                <div class="resto-container cof">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Starbs</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+                
+                <div class="resto-container ame">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Kenny Roger's</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+                
+                <div class="resto-container jap">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Ramenagi</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+                
+                <div class="resto-container fil">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Max</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div>
+
+                
+                <div class="resto-container chi">
+                    <div class="pic-container">
+                        <img src="assets/bacsi.jpg" alt="" class="store-pic">
+                    </div>
+                    <p class="title">Din Tai Fung</p>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                            <img src="assets/star.png" alt="" class="star">
+                        </div>
+                        <p class="reviewers">(172)</p>
+                    </div>
+                </div> 
+            </div>
+        </div>
+
+
+    </main>
+
+    <script>
+        adjustNavBar();
+    </script>
+    
+</body>
+</html>

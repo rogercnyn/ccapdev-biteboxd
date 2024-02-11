@@ -24,10 +24,3 @@ function adjustNavBar (){
 }
 
 
-
-function transferSession(link) {
-    if(isLogged === 'true'){
-        link += '?isLogged=true'
-    } 
-    window.location.href = link
-}
