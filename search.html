@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="styles/search.css">
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
-    <script src="search.js"></script>
+    <script src="script/general.js"></script>
+    <script src="script/slider.js"></script>
+    <script src="script/navbar.js"></script>
+    <script src="script/search.js"></script>
+    <script src="script/search-bar.js"></script>
     <title>BiteBoxd - Search</title>
 </head>
 <body>
@@ -38,17 +42,17 @@
             <img src="assets/profile.jpg" alt="" class="profile-icon">
         </div>
         
-    </header>
-
-    <main>
-
         <div class="popup-container" id="popupContainer" style="display: none;">
             <div class="popup" id="popup">
                 <a href="#" onclick="viewProfile()">View Profile</a>
                 <a href="#" onclick="viewProfile()">Edit Profile</a>
                 <a href="#" onclick="logOut()">Log Out</a>
             </div>
-        </div>
+        </div>        
+    </header>
+    <main>
+
+
         
         <div class="content" id="content">
             <div class="search-container">
@@ -264,8 +268,15 @@
     </main>
 
 <script>
-    
+        
+    const stars = new Slider(document.getElementsByClassName("slider-star-rating"));
+    const cashEmos = new Slider(document.getElementsByClassName("slider-price-rating"));
+
+    stars.initializeHover();
+    cashEmos.initializeHover();
     initSearchPage();
+    adjustNavBar();
+
 </script>
     
 </body>

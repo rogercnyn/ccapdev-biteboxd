@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
     <title>BiteBoxd</title>
-    <link rel="stylesheet" href="index.css">
+    <script src="script/general.js"></script>
+    <script src="script/navbar.js"></script>
+    <script src="script/search-bar.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
     </head>
 <body>
     <header>
@@ -33,9 +36,17 @@
             <p>Accounts</p>
         </a>
         
-        <div class="account-icon" id="account-icon">
+        <div class="account-icon" id="account-icon" onclick="togglePopup()">
             <img src="assets/profile.jpg" alt="" class="profile-icon">
         </div>
+        
+        <div class="popup-container" id="popupContainer" style="display: none;">
+            <div class="popup" id="popup">
+                <a href="#" onclick="viewProfile()">View Profile</a>
+                <a href="#" onclick="viewProfile()">Edit Profile</a>
+                <a href="#" onclick="logOut()">Log Out</a>
+            </div>
+        </div>        
     </header>
 
 
@@ -55,44 +66,8 @@
     </main>
 
     <script>
-        var isLogged = getUrlParameter('isLogged');
         
-
-        function search() {
-            var query = document.querySelector('.search-bar').value;
-            var dest = 'search.html?query=' + encodeURIComponent(query);
-            if(isLogged === 'true') {
-                dest += '&isLogged=true';
-            } 
-
-            window.location.href = dest;
-
-        }
-
-        
-        function getUrlParameter(name) {
-                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-                var results = regex.exec(location.search);
-                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
-
-        function transferSession(link) {
-            if(isLogged === 'true'){
-                window.location.href = link + '?isLogged=true'
-            }
-            else {
-                window.location.href = link
-            }
-        }
-
-
-        if (isLogged != 'true') {
-            document.getElementById('account-icon').style.display = 'none';
-        } else {
-            document.getElementById('person-icon').style.opacity = '0%';
-            document.getElementById('person-icon').style.pointerEvents = 'none';
-        }
+        adjustNavBar();
     </script>
 </body>
 </html>

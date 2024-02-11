@@ -453,37 +453,3 @@ input[type="radio"] {
     filter: grayscale(0%);
     opacity: 100%;
 }
-
-.popup-container {
-    position: fixed;
-    left: 5%;
-    bottom: 9%;
-    background-color: white;
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(128, 153, 173, 0.5);
-    /* opacity: 70%; */
-}
-
-.popup {
-
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.popup a {
-    flex: 1;
-    font-family: Tahoma;
-    font-size: 12px;
-    /* border: 1px solid black; */
-    display: flex;
-    padding: 10%;
-    align-items: center;
-    justify-content: center;
-}
-
-.popup a:hover {
-    background-color: #efefef;
-}
