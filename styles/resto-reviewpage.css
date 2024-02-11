@@ -92,7 +92,9 @@
     flex-direction: row;
     height: 350px;
     width: 1000px;
-    border: 1px solid gray;
+    border: 1px solid rgb(160, 160, 160);
+    background-color: #d9d9d9;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
 }
 
@@ -211,7 +213,9 @@ hr {
     display: flex;
     width: 850px;
     height: 200px;
-    border: 1px solid gray;
+    border: 1px solid rgb(160, 160, 160);
+    background-color: #d9d9d9;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     margin-bottom: 30px;
 }
@@ -343,5 +347,5 @@ hr {
     cursor: pointer;
     color: rgb(235, 34, 34);
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
-    font-size: 1.5em; /* You can adjust the font size */
+    font-size: 1.5em; 
 }
