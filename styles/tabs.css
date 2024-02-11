@@ -1,0 +1,54 @@
+/* tabs */
+.profile-tabs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid rgba(229, 229, 229);
+    position: relative;
+}
+
+.profile-tabs .tab-btn {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+.profile-tabs .tab-btn.active {
+    color: #FDD247;
+    text-shadow:
+    -.2px -.2px 0 #524f3e,
+     0   -.2px 0 #524f3e,
+     .2px -.2px 0 #524f3e,
+     .2px  0   0 #524f3e,
+     .2px  .2px 0 #524f3e,
+     0    .2px 0 #524f3e,
+    -.2px  .2px 0 #524f3e,
+    -.2px  0   0 #524f3e;
+}
+
+.content-box {
+    padding: 20px;
+}
+
+.content-box .content {
+    display: none; 
+}
+
+.content-box .content.active {
+    display: block;
+}
+
+.line {
+    position: absolute;
+    top: 90%;
+    left: 82px;
+    width: 90px;
+    height: 5px;
+    background-color: #FDD247;
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+}

@@ -82,21 +82,21 @@ function handleFileSelect(event) {
                 img.className = 'photo-preview';
 
                 const removeButton = document.createElement('div');
-                removeButton.innerHTML = '&#10006;'; // X icon
+                removeButton.innerHTML = '&#10006;'; 
                 removeButton.className = 'remove-button';
                 removeButton.addEventListener('click', function () {
-                    // Remove the corresponding image and container when clicked
+                    
                     imgContainer.remove();
-                    // Enable the file input and upload button if they were disabled
+                   
                     document.getElementById('photo-input').disabled = false;
                     document.querySelector('.publish-button').disabled = false;
                 });
 
-                // Append the image and remove button to the container
+                
                 imgContainer.appendChild(img);
                 imgContainer.appendChild(removeButton);
 
-                // Append the container to the main photo container
+               
                 photoContainer.appendChild(imgContainer);
             };
 
@@ -107,5 +107,15 @@ function handleFileSelect(event) {
 
         const uploadButton = document.querySelector('.publish-button');
         uploadButton.disabled = currentPhotos >= maxPhotos;
+    }
+}
+
+function toggleColor(button) {
+    var likeDislikeContainer = button.parentElement;
+
+    if (likeDislikeContainer.classList.contains('colored')) {
+      likeDislikeContainer.classList.remove('colored');
+    } else {
+      likeDislikeContainer.classList.add('colored');
     }
 }
