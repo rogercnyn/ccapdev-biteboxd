@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
     <title>Review Restaurant</title>
+    <script src="script/general.js"></script>
+    <script src="script/navbar.js"></script>
     <link rel="stylesheet" href="styles/resto-reviewpage.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
@@ -24,9 +27,9 @@
             <p>Explore</p>
         </a>
 
-        <a class="nav-icon-container" onclick="transferSession('index.html')">
+        <a class="nav-icon-container" onclick="transferSession('all.html')">
             <img src="assets/archive.svg" alt="" class="nav-icon">
-            <p>Index</p>
+            <p>All</p>
         </a>
 
         <a href="login.html" class="nav-icon-container" id="person-icon">
@@ -34,9 +37,17 @@
             <p>Accounts</p>
         </a>
         
-        <div class="account-icon" id="account-icon">
+        <div class="account-icon" id="account-icon" onclick="togglePopup()">
             <img src="assets/profile.jpg" alt="" class="profile-icon">
         </div>
+        
+        <div class="popup-container" id="popupContainer" style="display: none;">
+            <div class="popup" id="popup">
+                <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
+                <a href="#" onclick="viewProfile()">Edit Profile</a>
+                <a href="#" onclick="logOut()">Log Out</a>
+            </div>
+        </div>        
     </header>
 
     <main class = "main">
@@ -219,5 +230,8 @@
 
         </div>
     </main>
+    <script>
+        adjustNavBar();
+    </script>
 </body>
 </html>
