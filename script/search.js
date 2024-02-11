@@ -29,7 +29,7 @@ function clickTrafficLight(element) {
     
     let siblings = element.parentElement.children
     Array.from(siblings).forEach(sibling => sibling.style.border = "none")
-    element.style.border = "1px solid black";
+    element.style.border = "2px solid black";
 }
 
 function initSearchPage() {
