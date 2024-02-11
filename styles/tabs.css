@@ -19,6 +19,15 @@
 
 .profile-tabs .tab-btn.active {
     color: #FDD247;
+    text-shadow:
+    -.2px -.2px 0 #524f3e,
+     0   -.2px 0 #524f3e,
+     .2px -.2px 0 #524f3e,
+     .2px  0   0 #524f3e,
+     .2px  .2px 0 #524f3e,
+     0    .2px 0 #524f3e,
+    -.2px  .2px 0 #524f3e,
+    -.2px  0   0 #524f3e;
 }
 
 .content-box {

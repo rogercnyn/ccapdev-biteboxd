@@ -27,10 +27,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
 
     border: 0.5px solid rgb(225, 223, 223);
 	box-shadow: inset 0 5px 15px 0px rgba(194, 187, 187, 0.6);
     border-radius: 50%;
+}
+
+.rating-label-percentage{
+    display: flex;
+    margin-left: 30%;
+    margin-top: 15px;
+    font-size: 11px;
+}
+
+.rating-label{
+    padding-right: 5px;
 }
 
 .heart, .like{
@@ -49,6 +61,11 @@
     stroke-dasharray: 450;
     stroke-dashoffset: 450;
     animation: anim-heart 2s linear forwards;
+}
+
+#number{
+    margin-left: 3px;
+    font-weight: 300;
 }
 
 .tomato-rating{
@@ -98,11 +115,7 @@ svg{
 
 }
 
-.rating-label{
-    margin-left: 35%;
-    margin-top: 15px;
-    font-size: 13px;
-}
+
 .divider{
     height: 70px;
     border-bottom: 1px solid rgba(218, 218, 218, 0.864);
@@ -158,4 +171,17 @@ svg{
 
 .recent-activities-container h3{
     margin-bottom: 20px;
+}
+
+
+.delete-recent-activity-icon{
+    height: 2rem;
+    margin-inline-start: 90%;
+}
+.delete-recent-activity{
+margin-left: 125px;
+}
+
+.delete-recent-activity-icon:hover {
+    filter: invert(21%) sepia(95%) saturate(7448%) hue-rotate(357deg) brightness(101%) contrast(115%);
 }
