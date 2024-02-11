@@ -331,3 +331,17 @@ hr {
     margin: 5px;
     object-fit: cover;
 }
+
+.photo-container-item {
+    position: relative;
+    display: inline-block;
+}
+.remove-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    color: rgb(235, 34, 34);
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+    font-size: 1.5em; /* You can adjust the font size */
+}
