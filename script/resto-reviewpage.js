@@ -97,6 +97,8 @@ function handleFileSelect(event) {
 function handleUpload() {
     const photoContainer = document.getElementById('photo-container');
 
+    var textarea = document.getElementById("title");
+
     if (priceSlider.currentValue === 0 || foodQualitySlider.currentValue === 0 || serviceSlider.currentValue === 0) {
         alert('Cannot publish review with zero ratings.');
         return;
@@ -107,6 +109,8 @@ function handleUpload() {
         alert('Review Published!');
         quillEditor.root.innerHTML = '';
         photoContainer.innerHTML = '';
+        textarea.value='';
+
 
         priceSlider.reset();
         foodQualitySlider.reset();
