@@ -201,9 +201,24 @@
                         <div class="reply-editorarea" id="reply-editor-container">
                            <div class="reply-editor"></div>
                         </div>
-                        <button class="publish-button" onclick="handleReply()">Publish Reply</button>
+                        <div class="publish-button" onclick="handleReply(this)">Publish Reply</div>
                     </div>
                 
+                    <div class="responsepanel">
+
+                        <div class="score-username">
+                            <h2 class="titlearea">Re: PJ Restaurant</h2>
+                        
+                            <div class="nametitle">
+                                <p class="nameandtime">February 12, 2024 8:01 am </p>
+                            </div>
+                        </div>
+                        <div id="replytext">
+
+                        </div>
+
+          
+                    </div>
                 </div>
 
                 <div class="review-and-response">
@@ -290,9 +305,21 @@
                         <div class="reply-editorarea" id="reply-editor-container">
                            <div class="reply-editor"></div>
                         </div>
-                        <button class="publish-button" onclick="handleReply()">Publish Reply</button>
+                        <div class="publish-button" onclick="handleReply(this)">Publish Reply</div>
                     </div>
                     <div class="responsepanel">
+
+                        <div class="score-username">
+                            <h2 class="titlearea">Re: AJ Restaurant</h2>
+                        
+                            <div class="nametitle">
+                                <p class="nameandtime">February 12, 2024 8:01 am </p>
+                            </div>
+                        </div>
+                        <div id="replytext">
+
+                        </div>
+
           
                     </div>
                 
@@ -308,8 +335,13 @@
 
         let quillTargets = document.getElementsByClassName('reply-editor')
         let replyPanels = document.getElementsByClassName('replypanel')
-        Array.from(quillTargets).forEach(quillTarget => createQuill(quillTarget));
+        let responsePanels = document.getElementsByClassName('responsepanel')
+
+        
+        let quills = []
+        Array.from(quillTargets).forEach(quillTarget => quills.push(createQuill(quillTarget)));
         Array.from(replyPanels).forEach(replyPanel => $(replyPanel).hide());
+        Array.from(responsePanels).forEach(responsePanel => $(responsePanel).hide());
 
 
         adjustNavBar();

@@ -163,7 +163,7 @@
 }
 
 
-#longtext {
+#longtext, #replytext {
     text-align: left;
     font-family: 'Segoe UI', sans-serif;
     font-size: 13px;
@@ -171,4 +171,12 @@
     background-color: #f8f8f8;
     padding: 2%;
     border-radius: 20px;
+}
+
+#replytext {
+    background-color: #FDF4D8;
+}
+
+.responsepanel {
+    margin-bottom: 2%;
 }
