@@ -7,9 +7,12 @@
     <title>Review Restaurant</title>
     <script src="script/general.js"></script>
     <script src="script/navbar.js"></script>
+    <script src="script/quillSettings.js"></script>
+    <link rel="stylesheet" href="styles/resto-reviewpage.css">
     <link rel="stylesheet" href="styles/resto-responsepage.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -61,52 +64,49 @@
 
         </div>
         <div class="restoinfo">
-            
             <div class="restopicturearea">
                 <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
             </div>
             <div class="restodetailsarea">
                 <div class="nameandoverallscore">
                     <h1>Bacsilog Hub</h1>
-                    <h2 class="dot">·</h2>
                     <h2 class="yellowscore">4.0/5</h2>
                 </div>
                 <div class="moredetails">
-                    <h3>💵💵</h3>
-                    <h3 class="dot">·</h3>
-                    <h3>Filipino</h3>
-                    <h3 class="dot">·</h3>
-                    <h3>Fastfood</h3>
+                    <p class="restodetail" id="emojip">💵💵</p>
+                    <p class="restodetail">Filipino</p>
+                    <p class="restodetail">Fastfood</p>
                 </div>
-                <h4>Vito Cruz, Metro Manila, Philippines</h4>
+                <p class="location">Vito Cruz, Metro Manila, Philippines</p>
                 <br>
                 <div class="attributes">
 
                     <div class="firstbatchattri">
-                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Offers Delivery</h4></div>
-                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Outdoor dining</h4></div>
-                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Indoor dining</h4></div>
-                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Good for Groups</h4></div>
+                        <div class="feature"><span class="checkmark">&#10004;</span>Offers Delivery</div>
+                        <div class="feature"><span class="checkmark">&#10004;</span>Outdoor dining</div>
+                        <div class="feature"><span class="checkmark">&#10004;</span>Indoor dining</div>
+                        <div class="feature"><span class="checkmark">&#10004;</span>Good for Groups</div>
                     </div>
 
                     <div class="secondbatchattri">
-                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Music and TV</h4></div>
-                        <div class="feature"><span class="cross">&#10008;</span><h4>Drive-thru</h4></div>
-                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Offers Takeout</h4></div>
-                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Accepts Credit Cards</h4></div>
+                        <div class="feature"><span class="checkmark">&#10004;</span>Music and TV</div>
+                        <div class="feature"><span class="cross">&#10008;</span>Drive-thru</div>
+                        <div class="feature"><span class="checkmark">&#10004;</span>Offers Takeout</div>
+                        <div class="feature"><span class="checkmark">&#10004;</span>Accepts Credit Cards</div>
                     </div>
                     
                     <div class="thirdbatchattri">
-                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Accepts E-Wallet</h4></div>
-                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Good for Kids</h4></div>
-                        <div class="feature"><span class="cross">&#10008;</span><h4>Good for Pets</h4></div>
-                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Vegetarian/Vegan Offerings</h4></div>
+                        <div class="feature"><span class="checkmark">&#10004;</span>Accepts E-Wallet</div>
+                        <div class="feature"><span class="checkmark">&#10004;</span>Good for Kids</div>
+                        <div class="feature"><span class="cross">&#10008;</span>Good for Pets</div>
+                        <div class="feature"><span class="checkmark">&#10004;</span>Vegetarian/Vegan Offerings</div>
                     </div>
 
                 </div>
             </div>
         </div>
-
+        
+        <hr>
         <div class="reviewarea">
 
             <div class="reviewheader">
@@ -116,72 +116,204 @@
             <br>
 
             <div class="publishedrevarea">
-                <div class="review">
+                <hr>
+                <div class="review-and-response">
+                    <div class="review"> 
+                        <div class="review-panel">
 
-                    <div class="reviewpanel">
-                        <div class="like-dislike" id="likeDislikeButtons">
-                            <button class="like" onclick="toggleColor('like')">&#128077;</button>
-                            <button class="dislike" onclick="toggleColor('dislike')">&#128078;</button>
-                        </div>
-    
-                        <div class="reviewpicarea">
-                            <img src="assets/cbsisig.jpg" alt="Picture" class="reviewpic">
-                        </div>
-        
-                        <div class="reviewinfo">
-                            <div class="user-score">
-                                <h2>GetALife_21</h2>
-                                <h2 class="dot">·</h2>
-                                <h2 class="yellowscore">4.6/5</h2>
-                            </div>
-                            <div class="criteriascore">
-                                <h4 class="criteria">Food Quality</h4>
-                                <div class="stars">
-                                    <img src="assets/star.png" alt="" class="star">
-                                    <img src="assets/star.png" alt="" class="star">
-                                    <img src="assets/star.png" alt="" class="star">
-                                    <img src="assets/star.png" alt="" class="star">
+                            <div class="profile-score">
+                                <div class="profilearea">
+                                    <img src="assets/profile.jpg" class="profilepic">
                                 </div>
-                            </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Service</h4>
-                                <div class="stars">
-                                    <img src="assets/star.png" alt="" class="star">
-                                    <img src="assets/star.png" alt="" class="star">
+                                <div class="score">
+                                    <h2 class="yellowscore" id="user-score">4.6</h2>
                                 </div>
+                                <div class="reply" onclick="injectQuill(this)">Reply</div>
                             </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Price</h4>
-                                <div class="stars">
-                                    <img src="assets/star.png" alt="" class="star">
-                                    <img src="assets/star.png" alt="" class="star">
-                                    <img src="assets/star.png" alt="" class="star">
-                                    <img src="assets/star.png" alt="" class="star">
-                                    <img src="assets/star.png" alt="" class="star">
-                                </div>
-                            </div>
-                            <br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
-                        </div>
-                        <div class="replybuttonarea" onclick="toggleReplyEditor(this)">
-                            <p>Reply</p>
-                        </div>
-                    </div>
 
-                    <div class="replypanel">
+                            <div class="review-center-tile">
+                                <div class="score-username">
+                                    <h2 class="titlearea">Good meal but one try is enough!</h2>
+                                
+                                    <div class="nametitle">
+                                        <p class="nameandtime">makoeats · February 12, 2024 8:01 am </p>
+                                    </div>
+                                </div>
+                                <div class="criteriaratings">
+                                    <div class="criteriascore">
+                                        <h4 class="criteria">Food Quality
+                                        <div class="stars">
+                                            <span>🍗</span>
+                                            <span>🍗</span>
+                                            <span>🍗</span>
+                                            <span>🍗</span>
+                                        </div>
+                                    </div>
+            
+                                    <div class="criteriascore">
+                                        <h4 class="criteria">Service
+                                        <div class="stars">
+                                            <span>🤝</span>
+                                            <span>🤝</span>
+                                            <span>🤝</span>
+                                        </div>
+                                    </div>
+            
+                                    <div class="criteriascore">
+                                        <h4 class="criteria">Price
+                                        <div class="stars">
+                                            <span>💵</span>
+                                            <span>💵</span>
+                                            <span>💵</span>
+                                            <span>💵</span>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="reviewbody">
+                                    <p id="longtext">
+                                        I had an amazing experience here! The food was exquisite, and the service was impeccable. The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
+                                    </p>
+                                
+                                </div>
+                        
+                            </div>
+
+                        
+                        
+                            <div class="rate-review" id="likeDislikeButtons">
+                                <div class="likeset">
+                                    <button class="like-dislike" id="like">&#128077;</button>
+                                    <button class="like-dislike" id="dislike">&#128078;</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="photopanel">
+                            <img src="assets/cbsisig.jpg" class="revpic">
+                            <img src="assets/cbsisig.jpg" class="revpic">
+                            <img src="assets/bacsi.jpg" class="revpic">
+                            <img src="assets/bacsi.jpg" class="revpic">
+                        </div>
+            
+                     </div>
+                     <div class="replypanel">
                         <div class="reply-editorarea" id="reply-editor-container">
-                            <div id="reply-editor"></div>
+                           <div class="reply-editor"></div>
                         </div>
                         <button class="publish-button" onclick="handleReply()">Publish Reply</button>
                     </div>
-                    <script src="script/resto-responsepage.js"></script>
+                
                 </div>
+
+                <div class="review-and-response">
+                    <div class="review"> 
+                        <div class="review-panel">
+
+                            <div class="profile-score">
+                                <div class="profilearea">
+                                    <img src="assets/profile.jpg" class="profilepic">
+                                </div>
+                                <div class="score">
+                                    <h2 class="yellowscore" id="user-score">4.6</h2>
+                                </div>
+                                <div class="reply" onclick="injectQuill(this)">Reply</div>
+                            </div>
+
+                            <div class="review-center-tile">
+                                <div class="score-username">
+                                    <h2 class="titlearea">Good meal but one try is enough!</h2>
+                                
+                                    <div class="nametitle">
+                                        <p class="nameandtime">makoeats · February 12, 2024 8:01 am </p>
+                                    </div>
+                                </div>
+                                <div class="criteriaratings">
+                                    <div class="criteriascore">
+                                        <h4 class="criteria">Food Quality
+                                        <div class="stars">
+                                            <span>🍗</span>
+                                            <span>🍗</span>
+                                            <span>🍗</span>
+                                            <span>🍗</span>
+                                        </div>
+                                    </div>
+            
+                                    <div class="criteriascore">
+                                        <h4 class="criteria">Service
+                                        <div class="stars">
+                                            <span>🤝</span>
+                                            <span>🤝</span>
+                                            <span>🤝</span>
+                                        </div>
+                                    </div>
+            
+                                    <div class="criteriascore">
+                                        <h4 class="criteria">Price
+                                        <div class="stars">
+                                            <span>💵</span>
+                                            <span>💵</span>
+                                            <span>💵</span>
+                                            <span>💵</span>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="reviewbody">
+                                    <p id="longtext">
+                                        I had an amazing experience here! The food was exquisite, and the service was impeccable. The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
+                                    </p>
+                                
+                                </div>
+                        
+                            </div>
+
+                        
+                        
+                            <div class="rate-review" id="likeDislikeButtons">
+                                <div class="likeset">
+                                    <button class="like-dislike" id="like">&#128077;</button>
+                                    <button class="like-dislike" id="dislike">&#128078;</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="photopanel">
+                            <img src="assets/cbsisig.jpg" class="revpic">
+                            <img src="assets/cbsisig.jpg" class="revpic">
+                            <img src="assets/bacsi.jpg" class="revpic">
+                            <img src="assets/bacsi.jpg" class="revpic">
+                        </div>
+            
+                     </div>
+                     <div class="replypanel">
+                        <div class="reply-editorarea" id="reply-editor-container">
+                           <div class="reply-editor"></div>
+                        </div>
+                        <button class="publish-button" onclick="handleReply()">Publish Reply</button>
+                    </div>
+                    <div class="responsepanel">
+          
+                    </div>
+                
+                </div>
+
+                
+            </div>     
         </div>
+    
+    
     </main>
     <script>
+
+        let quillTargets = document.getElementsByClassName('reply-editor')
+        let replyPanels = document.getElementsByClassName('replypanel')
+        Array.from(quillTargets).forEach(quillTarget => createQuill(quillTarget));
+        Array.from(replyPanels).forEach(replyPanel => $(replyPanel).hide());
+
+
         adjustNavBar();
     </script>
+    <script src="script/resto-responsepage.js"></script>
 </body>
 </html>

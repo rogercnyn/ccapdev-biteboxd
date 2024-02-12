@@ -1,0 +1,174 @@
+
+.review {
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+    height: 325px;
+    border-bottom: 1px solid #d1d1d1;
+    margin-bottom: 30px;
+    padding: 1%;
+    position: relative;
+    gap: 0.5rem;
+}
+
+.review-panel {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.review-center-tile {
+    /* ; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+
+}
+
+.rate-review {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    opacity: 80%;
+}
+
+.like-dislike {
+    font-size: 20px;
+}
+
+.rate-review button {
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transition: filter 0.3s, opacity 0.3s;
+}
+
+
+.criteriaratearea {
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.criteriarate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#user-score {
+    font-size: 25px;
+}
+
+.yellowscore {
+    background-color:#FDD247;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+}
+
+.criteriaratings {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 70px;
+    padding-bottom: 10px;
+}
+
+.criteriascore {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.criteria {
+    margin-right: 10px;
+}
+
+
+.reviewbody{
+    padding-bottom: 10px;
+}
+
+
+
+.criterialbl {
+    margin-right: 20px;
+}
+
+
+.photopanel{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding-left: 90px;
+}
+
+
+.revpic {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+
+.profile-score{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.profilepic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid black;
+}
+
+.score-username{
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    gap: -10px;
+}
+
+.score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+
+}
+
+.nametitle{
+    display: flex;
+}
+
+.nameandtime {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 12px;
+
+    color: rgb(164, 163, 163);
+}
+
+
+#longtext {
+    text-align: left;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    background-color: #f8f8f8;
+    padding: 2%;
+    border-radius: 20px;
+}

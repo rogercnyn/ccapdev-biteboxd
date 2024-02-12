@@ -1,0 +1,154 @@
+/* kasama na din yung review header */
+
+.restoinfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 350px;
+    width: 1000px;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 2%;
+    font-weight: 300;
+
+}
+
+.attributes {
+    font-family: 'Segoe UI', sans-serif;
+    color: #222;
+}
+
+.nameandoverallscore {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.moredetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 10px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.restodetail {
+    font-size: 12px;
+    /* border: 1px solid black; */
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    padding: 1% 1%;
+}
+
+
+.attributes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.location {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.firstbatchattri {
+    display: flex;
+    flex-direction: column;
+}
+
+.secondbatchattri {
+    display: flex;
+    flex-direction: column;
+}
+
+.thirdbatchattri {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    gap: 5px;
+}
+
+.feature h3 {
+    margin-right: 5px;
+}
+
+.checkmark {
+color: green;
+}
+
+.cross {
+color: red;
+}
+
+.restopicturearea {
+    display: flex;
+    padding-left: 30px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.restopicture img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain;
+}
+
+.restopicture{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.restodetailsarea {
+    padding-left: 15px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.reviewarea{
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    height: 5000px;
+    width: 1000px;
+}
+
+.reviewheader {
+    width: 1000px;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.publishrevarea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.publishreview {
+    width: 900px; 
+    padding: 20px;
+    border-radius: 8px;
+}
+
+
+hr {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border: 0.5px solid gray;
+}
