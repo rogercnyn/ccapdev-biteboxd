@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="styles/explore.css">
+        <title>Biteboxd | Explore</title>
+        <script src="script/general.js"></script>
+        <script src="script/navbar.js"></script>
+        <script src="script/search-bar.js"></script>
+        <script src="script/explore.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    </head>
+
+    <body>
+        <header>
+            <a class="logo-link" onclick="transferSession('index.html')">
+                <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
+            </a>
+            
+            <a class="nav-icon-container" onclick="transferSession('index.html')">
+                <img src="assets/home.svg" alt="" class="nav-icon">
+                <p>Home</p>
+            </a>
+            
+            <a class="nav-icon-container" onclick="transferSession('explore.html')">
+                <img src="assets/explore.svg" alt="" class="nav-icon">
+                <p>Explore</p>
+            </a>
+    
+            <a class="nav-icon-container" onclick="transferSession('all.html')">
+                <img src="assets/archive.svg" alt="" class="nav-icon">
+                <p>All</p>
+            </a>
+    
+            <a href="login.html" class="nav-icon-container" id="person-icon">
+                <img src="assets/person.svg" alt="" class="nav-icon">
+                <p>Accounts</p>
+            </a>
+            
+            <div class="account-icon" id="account-icon" onclick="togglePopup()">
+                <img src="assets/profile.jpg" alt="" class="profile-icon">
+            </div>
+            
+            <div class="popup-container" id="popupContainer" style="display: none;">
+                <div class="popup" id="popup">
+                    <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
+                    <a href="#" onclick="viewProfile()">Edit Profile</a>
+                    <a href="#" onclick="logOut()">Log Out</a>
+                </div>
+            </div>        
+        </header>
+
+        <main>
+            <div class="search-container">
+                <img src="assets/search-icon.svg" alt="" class="search-icon">
+                <input type="search" class="search-bar" placeholder="Find a restaurant">
+                <button class="search-button">
+                    Search
+                </button>
+            </div>
+
+            <div class="categories">
+                <button class="category-button" id="fil" onclick="changeCategory('fil')">Filipino</button>
+                <button class="category-button" id="cof" onclick="changeCategory('cof')">Coffee</button>
+                <button class="category-button" id="jap" onclick="changeCategory('jap')">Japanese</button>
+                <button class="category-button" id="chi" onclick="changeCategory('chi')">Chinese</button>
+                <button class="category-button" id="ame" onclick="changeCategory('ame')">American</button>
+                <button class="category-button" id="ita" onclick="changeCategory('ita')">Italian</button>
+                <button class="category-button" id="kor" onclick="changeCategory('kor')">Korean</button>
+                <button class="category-button" onclick="resetCategory()">All</button>
+            </div>
+            <div class="category-header">
+                <h1 id="category-title"></h1>
+                <select id="sorting">
+                    <option value="az">A-Z</option>
+                    <option value="za">Z-A</option>
+                    <option value="rating">Rating</option>
+                    <option value="rating-high-low">Rating (high-low)</option>
+                </select>
+            </div>
+
+            <div class="explore-catalogue">
+                <div class="explore-gallery">
+                    <a href="resto-reviewpage.html" class="store-profile kor">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>Samgyupsalamat</h2>
+                                        <strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Quezon City</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a>
+
+
+                    <a href="resto-reviewpage.html" class="store-profile kor">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>Romantic Baboy</h2>
+                                        <strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Taft, Manila</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a>
+
+                    <a href="resto-reviewpage.html" class="store-profile jap">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>Botejyu</h2>
+                                        <strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Taft, Manila</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a>
+
+                    <a href="resto-reviewpage.html" class="store-profile jap">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>Yamimura</h2>
+                                        <strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Taft, Manila</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a> 
+
+                    <a href="resto-reviewpage.html" class="store-profile chi">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>Hapchan</h2>
+                                        <strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Taft, Manila</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a>
+
+                    <a href="resto-reviewpage.html" class="store-profile chi">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>King Chef</h2>
+                                        <strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Taft, Manila</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a>
+
+                    <a href="resto-reviewpage.html" class="store-profile ame">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>Wendy's</h2>
+                                        <strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Taft, Manila</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a>
+
+                    <a href="resto-reviewpage.html" class="store-profile ame">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>Yellow Cab</h2>
+                                        <strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Taft, Manila</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a>
+
+                    <a href="resto-reviewpage.html" class="store-profile ita">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>Italianni's</h2>
+                                        <strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Taft, Manila</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a>
+
+                    <a href="resto-reviewpage.html" class="store-profile ita">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>Mama Lou's</h2>
+                                        <strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Taft, Manila</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a>
+
+                    <a href="resto-reviewpage.html" class="store-profile fil">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>The Aristocrat</h2>
+                                        <strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Taft, Manila</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a>
+
+                    <a href="resto-reviewpage.html" class="store-profile fil">
+                        <div class="pic-container">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="store-pic">
+                        </div>
+                        <div class="store-shortdesc">
+                            <div class="info-top">
+                                    <div class="name-and-price">
+                                        <h2>Manam</h2><strong class="price">₱₱₱</strong>
+                                    </div>
+                                <div class="rating">
+                                    <span class="count">4.3 (172)</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <h6>Taft, Manila</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <script>
+            adjustNavBar();
+        </script>
+
+    </body>
+</html>
