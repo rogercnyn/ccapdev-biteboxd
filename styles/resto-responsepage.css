@@ -1,5 +1,6 @@
 @import "navbar.css";
 @import "base.css";
+@import "quill.css";
 
 .search-bar{
 
@@ -216,43 +217,63 @@ hr {
     align-items: center;
 }
 
+.publish-button {
+    align-self: center;
+    color: #a9a9a9;
+    border: none;
+    padding: 1%;
+    z-index: 2;
+    background-color: transparent;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.publish-button:hover {
+    color: black;
+}
+
 .review {
     display: flex;
     flex-direction: column;
     width: 850px;
     height: 230px;
     max-height: 400px;
-    background-color: #f2f2f2;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
     margin-bottom: 30px;
     position: relative;
+    padding: 1%;
+    gap: 2rem;
 }
 
 .reviewpanel {
+    /* border-bottom: 1px solid #d1d1d1; */
+    /* border: 1px solid black; */
     justify-content: center;
     display: flex;
+    flex-direction: row;
 }
 
 .replypanel {
     display: flex;
     flex-direction: column;
+    /* gap: 2rem; */
+    width: 90%;
+    margin-inline-start: auto;
 }
 
 .replybuttonarea {
     padding-left: 20px;
     color: #FBB700;
+    cursor: pointer;
 }
 
 .reply-editorarea{
     height: 200px;
-    padding: 10px;
+    /* border: 1px solid pink; */
 }
 
 #reply-editor {
-    height: 100px;
-    font-family: 'Jua';
-    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 15px;
 }
 
 .like-dislike {

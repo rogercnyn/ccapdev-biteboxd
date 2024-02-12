@@ -165,17 +165,16 @@
                             <br>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
                         </div>
-                    </div>
-
-                    <div class="replypanel">
                         <div class="replybuttonarea" onclick="toggleReplyEditor(this)">
                             <p>Reply</p>
                         </div>
+                    </div>
 
-                        <div class="reply-editorarea" style="display: none;">
+                    <div class="replypanel">
+                        <div class="reply-editorarea" id="reply-editor-container">
                             <div id="reply-editor"></div>
-                            <button class="publish-button" onclick="handleReply()">Publish Reply</button>
                         </div>
+                        <button class="publish-button" onclick="handleReply()">Publish Reply</button>
                     </div>
                     <script src="script/resto-responsepage.js"></script>
                 </div>
