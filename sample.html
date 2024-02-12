@@ -3,53 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Upload</title>
-    <style>
-        .photo-container {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-
-        .photo-preview {
-            width: 100px;
-            height: 100px;
-            margin: 5px;
-            object-fit: cover;
-        }
-    </style>
+    <title>Alert on Publish Button Click</title>
 </head>
 <body>
-    <div class="photo-upload">
-        <label for="photo-input">Upload up to 4 photos:</label>
-        <input type="file" id="photo-input" name="photos" accept="image/*" multiple>
-    </div>
 
-    <div class="photo-container" id="photo-container"></div>
+<div class="alignpublishbutton">
+    <button class="publish-button" id="publishBtn">Publish</button>
+</div>
 
-    <script>
-        document.getElementById('photo-input').addEventListener('change', handleFileSelect);
+<script>
+    // Get the button element by its ID
+    var publishButton = document.getElementById("publishBtn");
 
-        function handleFileSelect(event) {
-            const files = event.target.files;
-            const photoContainer = document.getElementById('photo-container');
-            photoContainer.innerHTML = '';
+    // Add a click event listener to the button
+    publishButton.addEventListener("click", function() {
+        // Display an alert when the button is clicked
+        alert("Publish button clicked!");
+    });
+</script>
 
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.alt = 'Photo Preview';
-                    img.className = 'photo-preview';
-                    photoContainer.appendChild(img);
-                };
-
-                reader.readAsDataURL(file);
-            }
-        }
-    </script>
 </body>
 </html>

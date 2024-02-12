@@ -5,19 +5,23 @@ let currentRatings = {
     price: 0,
 };
 let maxPhotos = 4;
+let quillEditor;
+let photoContainer;
 
 document.addEventListener("DOMContentLoaded", function () {
-    var quill = new Quill('#editor', {
+    quillEditor = new Quill('#editor', {
         theme: 'snow',
         height: 120,
         placeholder: 'Type here your review!'
     });
+    document.querySelector('.publish-button').addEventListener('click', handleUpload);
 });
 
 function addRating(criterion, n) {
     currentRatings[criterion] = n;
     updateStars();
 }
+
 
 function updateStars() {
     starsContainers.forEach(container => {
@@ -96,7 +100,6 @@ function handleFileSelect(event) {
                 imgContainer.appendChild(img);
                 imgContainer.appendChild(removeButton);
 
-                // Append the container to the main photo container
                 photoContainer.appendChild(imgContainer);
             };
 
@@ -121,4 +124,29 @@ function toggleColor(type) {
       dislikeButton.classList.contains('colored');
       likeButton.classList.remove('colored');
     }
+}
+
+function handleUpload() {
+    const photoContainer = document.getElementById('photo-container');
+
+    if (currentRatings.food === 0 || currentRatings.service === 0 || currentRatings.price === 0) {
+        alert('Cannot publish review with zero ratings.');
+        return;
+    }
+
+    else {
+
+        alert('Review Published!');
+        quillEditor.root.innerHTML = '';
+        photoContainer.innerHTML = '';
+
+        currentRatings = {
+            food: 0,
+            service: 0,
+            price: 0,
+        };
+
+        updateStars();
+    }
+
 }
