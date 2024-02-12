@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
+    <title>Review Restaurant</title>
+    <script src="script/general.js"></script>
+    <script src="script/navbar.js"></script>
+    <link rel="stylesheet" href="styles/resto-responsepage.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+</head>
+<body>
+    <header>
+        <a class="logo-link" onclick="transferSession('index.html')">
+            <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
+        </a>
+        
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
+            <img src="assets/home.svg" alt="" class="nav-icon">
+            <p>Home</p>
+        </a>
+        
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
+            <img src="assets/explore.svg" alt="" class="nav-icon">
+            <p>Explore</p>
+        </a>
+
+        <a class="nav-icon-container" onclick="transferSession('all.html')">
+            <img src="assets/archive.svg" alt="" class="nav-icon">
+            <p>All</p>
+        </a>
+
+        <a href="login.html" class="nav-icon-container" id="person-icon">
+            <img src="assets/person.svg" alt="" class="nav-icon">
+            <p>Accounts</p>
+        </a>
+        
+        <div class="account-icon" id="account-icon" onclick="togglePopup()">
+            <img src="assets/profile.jpg" alt="" class="profile-icon">
+        </div>
+        
+        <div class="popup-container" id="popupContainer" style="display: none;">
+            <div class="popup" id="popup">
+                <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
+                <a href="#" onclick="viewProfile()">Edit Profile</a>
+                <a href="#" onclick="logOut()">Log Out</a>
+            </div>
+        </div>        
+    </header>
+
+    <main class = "main">
+
+        <div class="search-container">
+            <img src="assets/search-icon.svg" alt="" class="search-icon">
+            <input type="search" class="search-bar" placeholder="Find a restaurant">
+            <button class="search-button">
+                Search
+            </button>
+
+        </div>
+        <div class="restoinfo">
+            
+            <div class="restopicturearea">
+                <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
+            </div>
+            <div class="restodetailsarea">
+                <div class="nameandoverallscore">
+                    <h1>Bacsilog Hub</h1>
+                    <h2 class="dot">·</h2>
+                    <h2 class="yellowscore">4.0/5</h2>
+                </div>
+                <div class="moredetails">
+                    <h3>💵💵</h3>
+                    <h3 class="dot">·</h3>
+                    <h3>Filipino</h3>
+                    <h3 class="dot">·</h3>
+                    <h3>Fastfood</h3>
+                </div>
+                <h4>Vito Cruz, Metro Manila, Philippines</h4>
+                <br>
+                <div class="attributes">
+
+                    <div class="firstbatchattri">
+                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Offers Delivery</h4></div>
+                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Outdoor dining</h4></div>
+                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Indoor dining</h4></div>
+                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Good for Groups</h4></div>
+                    </div>
+
+                    <div class="secondbatchattri">
+                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Music and TV</h4></div>
+                        <div class="feature"><span class="cross">&#10008;</span><h4>Drive-thru</h4></div>
+                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Offers Takeout</h4></div>
+                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Accepts Credit Cards</h4></div>
+                    </div>
+                    
+                    <div class="thirdbatchattri">
+                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Accepts E-Wallet</h4></div>
+                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Good for Kids</h4></div>
+                        <div class="feature"><span class="cross">&#10008;</span><h4>Good for Pets</h4></div>
+                        <div class="feature"><span class="checkmark">&#10004;</span><h4>Vegetarian/Vegan Offerings</h4></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="reviewarea">
+
+            <div class="reviewheader">
+                <h1>Reviews</h1>
+            </div>
+
+            <br>
+
+            <div class="publishedrevarea">
+                <div class="review">
+
+                    <div class="reviewpanel">
+                        <div class="like-dislike" id="likeDislikeButtons">
+                            <button class="like" onclick="toggleColor('like')">&#128077;</button>
+                            <button class="dislike" onclick="toggleColor('dislike')">&#128078;</button>
+                        </div>
+    
+                        <div class="reviewpicarea">
+                            <img src="assets/cbsisig.jpg" alt="Picture" class="reviewpic">
+                        </div>
+        
+                        <div class="reviewinfo">
+                            <div class="user-score">
+                                <h2>GetALife_21</h2>
+                                <h2 class="dot">·</h2>
+                                <h2 class="yellowscore">4.6/5</h2>
+                            </div>
+                            <div class="criteriascore">
+                                <h4 class="criteria">Food Quality</h4>
+                                <div class="stars">
+                                    <img src="assets/star.png" alt="" class="star">
+                                    <img src="assets/star.png" alt="" class="star">
+                                    <img src="assets/star.png" alt="" class="star">
+                                    <img src="assets/star.png" alt="" class="star">
+                                </div>
+                            </div>
+    
+                            <div class="criteriascore">
+                                <h4 class="criteria">Service</h4>
+                                <div class="stars">
+                                    <img src="assets/star.png" alt="" class="star">
+                                    <img src="assets/star.png" alt="" class="star">
+                                </div>
+                            </div>
+    
+                            <div class="criteriascore">
+                                <h4 class="criteria">Price</h4>
+                                <div class="stars">
+                                    <img src="assets/star.png" alt="" class="star">
+                                    <img src="assets/star.png" alt="" class="star">
+                                    <img src="assets/star.png" alt="" class="star">
+                                    <img src="assets/star.png" alt="" class="star">
+                                    <img src="assets/star.png" alt="" class="star">
+                                </div>
+                            </div>
+                            <br>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                        </div>
+                    </div>
+
+                    <div class="replypanel">
+                        <div class="replybuttonarea" onclick="toggleReplyEditor(this)">
+                            <p>Reply</p>
+                        </div>
+
+                        <div class="reply-editorarea" style="display: none;">
+                            <div id="reply-editor"></div>
+                            <button class="publish-button" onclick="handleReply()">Publish Reply</button>
+                        </div>
+                    </div>
+                    <script src="script/resto-responsepage.js"></script>
+                </div>
+        </div>
+    </main>
+    <script>
+        adjustNavBar();
+    </script>
+</body>
+</html>
