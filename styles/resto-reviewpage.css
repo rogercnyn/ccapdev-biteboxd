@@ -255,15 +255,14 @@ hr {
     padding: 5px;
     cursor: pointer;
     background-color: transparent;
+    /* color: transparent; */
     border: none;
-    filter: grayscale(100%);
-    opacity: 70%;
     transition: filter 0.3s, opacity 0.3s;
   }
 
 .like-dislike:hover, .like-dislike.colored {
-    filter: brightness(100%);
-    opacity: 100%;
+    text-shadow: 0 0 4px black;
+    /* color: white; */
 }
 
 .reviewpicarea {
