@@ -1,6 +1,7 @@
 @import "navbar.css";
 @import "base.css";
 @import "search-bar.css";
+@import "sliders.css";
 
 main {
     /* position */
@@ -274,17 +275,7 @@ input[type="radio"] {
     border-radius: 0.5rem;
 }
    
-  .slider-star-rating {
-    font-size: 2rem;
 
-    color: #ccc; 
-    cursor: pointer;
-}
-
-.slider-star-rating:hover,
-.slider-star-rating.colored {
-    color: #ffd700; 
-}
 
 .criteria-container {
     flex: 0 0 calc(50% - 120px);
@@ -440,19 +431,6 @@ input[type="radio"] {
     text-decoration: underline;
     color: #111;
 
-}
-.slider-price-rating {
-    filter: grayscale(65%);
-    font-size: 23px;
-    opacity: 80%;
-    cursor: pointer;
-
-}
-
-.slider-price-rating:hover,
-.slider-price-rating.colored {
-    filter: grayscale(0%);
-    opacity: 100%;
 }
 
 .search-button {

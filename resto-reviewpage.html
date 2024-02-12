@@ -7,8 +7,12 @@
     <title>Review Restaurant</title>
     <script src="script/general.js"></script>
     <script src="script/navbar.js"></script>
+    <script src="script/resto-reviewpage.js"></script>
+    <script src="script/like.js"></script>
+    <script src="script/slider.js"></script>
     <link rel="stylesheet" href="styles/resto-reviewpage.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 </head>
 <body>
@@ -114,40 +118,45 @@
 
             <br>
 
-            <div class="publishrevarea">
-                <div class="publishreview">
+            <div class="publishrevarea" >
+
+                <div class="cannot-publish" id="cannot-publish">
+                    <a href="login.html">Log in to leave a review</a>
+                </div>
+
+                <div class="publishreview" id="publishreview">
                     
                     <div class="criteriaratearea">
                         <div class="criteriarate">
                             <h3 class="criterialbl">Food Quality</h3>
                             <div class="star-sorting" data-criterion="food">
-                                <span onclick="addRating(0, 1)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(0, 2)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(0, 3)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(0, 4)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(0, 5)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(0, 1)" class="slider-emoji-rating slider-food-rating">🍗</span>
+                                <span onclick="addRating(0, 2)" class="slider-emoji-rating slider-food-rating">🍗</span>
+                                <span onclick="addRating(0, 3)" class="slider-emoji-rating slider-food-rating">🍗</span>
+                                <span onclick="addRating(0, 4)" class="slider-emoji-rating slider-food-rating">🍗</span>
+                                <span onclick="addRating(0, 5)" class="slider-emoji-rating slider-food-rating">🍗</span>
                             </div>
                         </div>
 
                         <div class="criteriarate">
                             <h3 class="criterialbl">Service</h3>
                             <div class="star-sorting" data-criterion="service">
-                                <span onclick="addRating(1, 1)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(1, 2)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(1, 3)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(1, 4)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(1, 5)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(1, 1)" class="slider-emoji-rating slider-service-rating">🤝</span>
+                                <span onclick="addRating(1, 2)" class="slider-emoji-rating slider-service-rating">🤝</span>
+                                <span onclick="addRating(1, 3)" class="slider-emoji-rating slider-service-rating">🤝</span>
+                                <span onclick="addRating(1, 4)" class="slider-emoji-rating slider-service-rating">🤝</span>
+                                <span onclick="addRating(1, 5)" class="slider-emoji-rating slider-service-rating">🤝</span>
                             </div>
                         </div>
 
                         <div class="criteriarate">
                             <h3 class="criterialbl">Price</h3>
                             <div class="star-sorting" data-criterion="price">
-                                <span onclick="addRating(2, 1)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(2, 2)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(2, 3)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(2, 4)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(2, 5)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(2, 1)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                <span onclick="addRating(2, 2)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                <span onclick="addRating(2, 3)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                <span onclick="addRating(2, 4)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                <span onclick="addRating(2, 5)" class="slider-emoji-rating slider-price-rating">💵</span>
                             </div>
                         </div>
                         
@@ -169,7 +178,6 @@
                         <button class="publish-button" id="publishBtn">Publish</button>
                     </div>
 
-                    <script src="script/resto-reviewpage.js"></script>
                 </div>
             </div>
             
@@ -179,9 +187,62 @@
             <div class="publishedrevarea">
                 <div class="review">
 
-                    <div class="like-dislike" id="likeDislikeButtons">
-                        <button class="like" onclick="toggleColor('like')">&#128077;</button>
-                        <button class="dislike" onclick="toggleColor('dislike')">&#128078;</button>
+                    <div class="rate-review" id="likeDislikeButtons">
+                        <div class="likeset">
+                            <button class="like-dislike" id="like">&#128077;</button>
+                            <button class="like-dislike" id="dislike">&#128078;</button>
+                        </div>
+                    </div>
+
+                    <div class="reviewpicarea">
+                        <img src="assets/cbsisig.jpg" alt="Picture" class="reviewpic">
+                    </div>
+    
+                    <div class="reviewinfo">
+                        <div class="user-score">
+                            <h2>GetALife_21</h2>
+                            <h2 class="dot">·</h2>
+                            <h2 class="yellowscore">4.6/5</h2>
+                        </div>
+                        <div class="criteriascore">
+                            <h4 class="criteria">Food Quality</h4>
+                            <div class="stars">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                            </div>
+                        </div>
+
+                        <div class="criteriascore">
+                            <h4 class="criteria">Service</h4>
+                            <div class="stars">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                            </div>
+                        </div>
+
+                        <div class="criteriascore">
+                            <h4 class="criteria">Price</h4>
+                            <div class="stars">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                                <img src="assets/star.png" alt="" class="star">
+                            </div>
+                        </div>
+                        <br>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero nunc, mattis nec faucibus gravida.</p>
+                    </div>
+                </div>
+                <div class="review">
+
+                    <div class="rate-review" id="likeDislikeButtons">
+                        <div class="likeset">
+                            <button class="like-dislike" id="like">&#128077;</button>
+                            <button class="like-dislike" id="dislike">&#128078;</button>
+                        </div>
                     </div>
 
                     <div class="reviewpicarea">
@@ -230,7 +291,34 @@
         </div>
     </main>
     <script>
+        const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'))
+        const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'))
+        const serviceSlider = new Slider(document.getElementsByClassName('slider-service-rating'))
+        priceSlider.initializeHover();
+        foodQualitySlider.initializeHover();
+        serviceSlider.initializeHover();
+        
+
+        const likesets = document.getElementsByClassName('likeset');
+        const likes = []
+        // console.log(likeDislikeButtons)
+
+
+        Array.from(likesets).forEach(likeset => {
+            let likeButton = likeset.querySelector('#like');
+            let dislikeButton = likeset.querySelector('#dislike');
+            likes.push(new Like(likeButton, dislikeButton))
+        });
+
+        
+        Array.from(likes).forEach(like => {
+            like.initializeClick();
+        });
+
+
+        console.log(likes)
         adjustNavBar();
+        detectLogin();
     </script>
 </body>
 </html>
