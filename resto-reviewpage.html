@@ -7,7 +7,6 @@
     <title>Review Restaurant</title>
     <script src="script/general.js"></script>
     <script src="script/navbar.js"></script>
-    <script src="script/resto-reviewpage.js"></script>
     <script src="script/like.js"></script>
     <script src="script/slider.js"></script>
     <link rel="stylesheet" href="styles/resto-reviewpage.css">
@@ -58,7 +57,7 @@
 
         <div class="search-container">
             <img src="assets/search-icon.svg" alt="" class="search-icon">
-            <input type="search" class="search-bar" placeholder="Find a restaurant">
+            <input type="search" class="search-bar" placeholder="Find a review on Bacsilog Hub">
             <button class="search-button">
                 Search
             </button>
@@ -177,11 +176,17 @@
                     <div class="alignpublishbutton">
                         <button class="publish-button" id="publishBtn">Publish</button>
                     </div>
-
                 </div>
             </div>
-            
-
+            <script>
+                const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'))
+                const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'))
+                const serviceSlider = new Slider(document.getElementsByClassName('slider-service-rating'))
+                priceSlider.initializeHover();
+                foodQualitySlider.initializeHover();
+                serviceSlider.initializeHover();
+            </script>
+            <script src="script/resto-reviewpage.js"></script>
             <hr>
 
             <div class="publishedrevarea">
@@ -291,14 +296,7 @@
         </div>
     </main>
     <script>
-        const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'))
-        const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'))
-        const serviceSlider = new Slider(document.getElementsByClassName('slider-service-rating'))
-        priceSlider.initializeHover();
-        foodQualitySlider.initializeHover();
-        serviceSlider.initializeHover();
         
-
         const likesets = document.getElementsByClassName('likeset');
         const likes = []
         // console.log(likeDislikeButtons)
@@ -320,5 +318,6 @@
         adjustNavBar();
         detectLogin();
     </script>
+    
 </body>
 </html>

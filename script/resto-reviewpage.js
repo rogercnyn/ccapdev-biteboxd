@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", function () {
+    quillEditor = new Quill('#editor', {
+        theme: 'snow',
+        height: 120,
+        placeholder: 'Type here your review!'
+    });
+    document.querySelector('.publish-button').addEventListener('click', handleUpload);
+});
+
 let currentRatings = {
     food: 0,
     service: 0,
@@ -7,14 +16,7 @@ let maxPhotos = 4;
 let quillEditor;
 let photoContainer;
 
-document.addEventListener("DOMContentLoaded", function () {
-    quillEditor = new Quill('#editor', {
-        theme: 'snow',
-        height: 120,
-        placeholder: 'Type here your review!'
-    });
-    document.querySelector('.publish-button').addEventListener('click', handleUpload);
-});
+
 
 function addRating(criterion, n) {
     currentRatings[criterion] = n;
@@ -33,9 +35,10 @@ function updateStars() {
     });
 }
 
-document.getElementById('photo-input').addEventListener('change', handleFileSelect);
+
 document.querySelector('.publish-button').addEventListener('click', handleUpload);
 
+document.getElementById('photo-input').addEventListener('change', handleFileSelect);
 function handleFileSelect(event) {
     const files = event.target.files;
     const photoContainer = document.getElementById('photo-container');
@@ -94,7 +97,7 @@ function handleFileSelect(event) {
 function handleUpload() {
     const photoContainer = document.getElementById('photo-container');
 
-    if (currentRatings.food === 0 || currentRatings.service === 0 || currentRatings.price === 0) {
+    if (priceSlider.currentValue === 0 || foodQualitySlider.currentValue === 0 || serviceSlider.currentValue === 0) {
         alert('Cannot publish review with zero ratings.');
         return;
     }
@@ -105,11 +108,9 @@ function handleUpload() {
         quillEditor.root.innerHTML = '';
         photoContainer.innerHTML = '';
 
-        currentRatings = {
-            food: 0,
-            service: 0,
-            price: 0,
-        };
+        priceSlider.reset();
+        foodQualitySlider.reset();
+        serviceSlider.reset();
 
         updateStars();
     }
