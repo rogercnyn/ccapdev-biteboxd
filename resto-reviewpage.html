@@ -121,33 +121,33 @@
                         <div class="criteriarate">
                             <h3 class="criterialbl">Food Quality</h3>
                             <div class="star-sorting" data-criterion="food">
-                                <span onclick="addRating(1)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(2)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(3)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(4)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(5)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(0, 1)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(0, 2)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(0, 3)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(0, 4)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(0, 5)" class="slider-star-rating">★</span>
                             </div>
                         </div>
 
                         <div class="criteriarate">
                             <h3 class="criterialbl">Service</h3>
                             <div class="star-sorting" data-criterion="service">
-                                <span onclick="addRating(1)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(2)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(3)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(4)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(5)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(1, 1)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(1, 2)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(1, 3)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(1, 4)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(1, 5)" class="slider-star-rating">★</span>
                             </div>
                         </div>
 
                         <div class="criteriarate">
                             <h3 class="criterialbl">Price</h3>
                             <div class="star-sorting" data-criterion="price">
-                                <span onclick="addRating(1)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(2)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(3)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(4)" class="slider-star-rating">★</span>
-                                <span onclick="addRating(5)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(2, 1)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(2, 2)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(2, 3)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(2, 4)" class="slider-star-rating">★</span>
+                                <span onclick="addRating(2, 5)" class="slider-star-rating">★</span>
                             </div>
                         </div>
                         
@@ -156,21 +156,20 @@
                     <div id="editor">
                     </div>
                     
-                    
-
                     <div class="photo-upload">
                         <label for="photo-input">Upload up to 4 photos:</label>
                         <input type="file" id="photo-input" name="photos" accept="image/*" multiple>
                     </div>
                 
                     <div class="photo-container" id="photo-container">
-                        
+
                     </div>
-                    <script src="script/resto-reviewpage.js"></script>
 
                     <div class="alignpublishbutton">
-                        <button class="publish-button">Publish</button>
+                        <button class="publish-button" id="publishBtn">Publish</button>
                     </div>
+
+                    <script src="script/resto-reviewpage.js"></script>
                 </div>
             </div>
             
