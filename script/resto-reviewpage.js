@@ -1,4 +1,3 @@
-let starsContainers = document.querySelectorAll(".star-sorting");
 let currentRatings = {
     food: 0,
     service: 0,
@@ -33,28 +32,6 @@ function updateStars() {
         });
     });
 }
-
-starsContainers.forEach(container => {
-    container.addEventListener("mouseenter", function (event) {
-        const criterion = container.dataset.criterion;
-        const index = Array.from(container.children).indexOf(event.target);
-
-        currentRatings[criterion] = index + 1;
-        updateStars();
-    });
-
-    container.addEventListener("mouseleave", function () {
-        updateStars();
-    });
-
-    container.addEventListener("click", function (event) {
-        const criterion = container.dataset.criterion;
-        const index = Array.from(container.children).indexOf(event.target);
-
-        currentRatings[criterion] = index + 1;
-        updateStars();
-    });
-});
 
 document.getElementById('photo-input').addEventListener('change', handleFileSelect);
 document.querySelector('.publish-button').addEventListener('click', handleUpload);
@@ -113,18 +90,6 @@ function handleFileSelect(event) {
     }
 }
 
-function toggleColor(type) {
-    var likeButton = document.querySelector('.like');
-    var dislikeButton = document.querySelector('.dislike');
-
-    if (type === 'like') {
-      likeButton.classList.contains('colored');
-      dislikeButton.classList.remove('colored');
-    } else {
-      dislikeButton.classList.contains('colored');
-      likeButton.classList.remove('colored');
-    }
-}
 
 function handleUpload() {
     const photoContainer = document.getElementById('photo-container');
@@ -147,6 +112,23 @@ function handleUpload() {
         };
 
         updateStars();
+    }
+
+}
+
+
+function detectLogin() {
+    let publishrev = document.getElementById('publishreview')
+    let logInArea = document.getElementById('cannot-publish')
+
+
+    // console.log(publishrev)
+    if(isLogged) {
+        $(logInArea).hide();
+        $(publishrev).show();
+    } else {
+        $(publishrev).hide();
+        $(logInArea).show();
     }
 
 }

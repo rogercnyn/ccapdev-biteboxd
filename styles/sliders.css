@@ -1,0 +1,24 @@
+.slider-emoji-rating {
+    /* filter: grayscale(65%); */
+    font-size: 23px;
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.slider-emoji-rating:hover,
+.slider-emoji-rating.colored {
+    filter: grayscale(0%);
+    opacity: 100%;
+}
+
+
+.slider-star-rating {
+    font-size: 2rem;
+    color: #ccc; 
+    cursor: pointer;
+}
+
+.slider-star-rating:hover,
+.slider-star-rating.colored {
+    color: #ffd700; 
+}
