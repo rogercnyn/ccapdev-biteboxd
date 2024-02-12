@@ -289,9 +289,9 @@ hr {
     display: flex;
     flex-direction: column;
     width: 850px;
-    height: 200px;
+    height: 500px;
+    max-height: 300px;
     border-bottom: 1px solid #d1d1d1;
-
     margin-bottom: 30px;
     padding: 1%;
     position: relative;
