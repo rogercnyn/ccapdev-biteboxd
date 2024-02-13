@@ -27,3 +27,10 @@ function addClear() {
         clearIcon.style.opacity = "0%";
     });
 }
+
+function appendLogin(dest) {
+    if(isLogged === 'true'){
+        dest += '?isLogged=true'
+    }
+    window.location.href = dest;
+}

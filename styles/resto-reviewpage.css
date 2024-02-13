@@ -190,3 +190,7 @@ margin-bottom: 100px;
     font-size: 1em; 
     resize: none;
 }
+
+#map {
+    height: 400px;
+  }

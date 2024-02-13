@@ -24,17 +24,6 @@ function addRating(criterion, n) {
 }
 
 
-function updateStars() {
-    starsContainers.forEach(container => {
-        const criterion = container.dataset.criterion;
-        const stars = container.children;
-
-        Array.from(stars).forEach((star, index) => {
-            star.classList.toggle("colored", index < currentRatings[criterion]);
-        });
-    });
-}
-
 
 document.querySelector('.publish-button').addEventListener('click', handleUpload);
 

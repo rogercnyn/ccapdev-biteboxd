@@ -13,6 +13,10 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="script/resto-reviewpage.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
 </head>
 <body>
     <header>
@@ -190,8 +194,11 @@
                 foodQualitySlider.initializeHover();
                 serviceSlider.initializeHover();
             </script>
-            <script src="script/resto-reviewpage.js"></script>
-            
+            <hr>
+            <div id="map"></div>
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+            <script src="script/map.js"></script>
+           
             <hr>
 
             <div class="publishedrevarea">

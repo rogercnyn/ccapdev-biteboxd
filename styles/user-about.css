@@ -45,15 +45,22 @@
     padding-right: 5px;
 }
 
-.heart, .like{
+.heart{
     display: flex;
     height: 40px;
 }
 
 .tomato{
     display: flex;
-    height: 60px;
+    height: 55px;
+
 }
+
+#like{
+    height: 70px;
+}
+
+
 .heart-rating{
     fill: none;
     stroke:#f5c012;
@@ -77,6 +84,7 @@
     animation: anim-tomato 2s linear forwards;
 }
 
+
 .credibility-rating{
     fill: none;
     stroke:#f5c012;
@@ -85,6 +93,7 @@
     stroke-dashoffset: 450;
     animation: anim-credibility 2s linear forwards;
 }
+
 
 @keyframes anim-heart {
     100%{
