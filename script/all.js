@@ -6,12 +6,14 @@ const categoryDictionary = {
     'chi': 'Chinese',
     'ame': 'American',
     'ita': 'Italian',
-    'kor': 'Korean'
+    'kor': 'Korean',
+    'all': 'All Restaurants'
 };
 
 function resetCategory() {
     removeClickedButtons();
     showAllContainers();
+    changeCategoryTitle('all')
 }
 
 

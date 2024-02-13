@@ -4,6 +4,7 @@
 @import "sliders.css";
 
 main {
+    
     /* position */
     margin-top: 2%; /* so that it doesnt stick to the window */
     flex: 0 0 90%;  /* adjusts the width */

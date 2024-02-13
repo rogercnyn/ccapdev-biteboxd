@@ -1,10 +1,54 @@
 @import "navbar.css";
 @import "base.css";
+@import "search-bar.css";
+
 
 main {
-    flex: 0 0 90%;
-    margin-left: 7%;
+    flex: 0 0 96%;
+    margin-inline-start: auto; 
+    margin-top: 2%;
 
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+}
+
+
+.category-title {
+    font-size: 100px;
+    font-family: 'DM Sans';
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(to right, #888 0%, #000 50%, #888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.search-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar {
+    height: 70px;
+    width: 80%;
+}
+
+.search-button {
+    height: 70px;
+    width: 10%;
+    border-radius: 20px;
+    margin-left: 2%;
+}
+
+
+.clear-icon {
+    margin-left: -14%;
 }
 
 .category-button.clicked-category, .category-button:hover {
@@ -15,14 +59,13 @@ main {
 
 }
 
-
 .category-header {
     margin: auto;
     width: 90%;
-    margin-top: 1%;
-    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
 }
-
 
 
 
@@ -56,10 +99,6 @@ h1 {
     font-size: 50px;
 }
 
-.category-header {
-    display: flex;
-    flex-direction: column;
-}
 #sorting {
     /* outline: none; */
     border: none;
@@ -74,21 +113,23 @@ h1 {
 }
 
 .gallery {
-    width: 90%;
+    width: 80%;
     display: flex;
-    gap: 2rem;
+    gap: 7rem;
     flex-wrap: wrap;
+    /* justify-content: center; */
 }
 
 
 .catalogue {
     padding: 2% 0%;
-    margin-top: 10%;
     width: 90%;
     margin: auto;
     flex: 1;
     display: flex;
     justify-content: center;
+
+
 }
 
 hr {
@@ -98,42 +139,83 @@ hr {
 
 /* container */
 .store-pic {
-    width: 85%;
-    height: 90%;
-    border-radius: 10px;
+    width: 225px;
+    height: 250px;
     object-fit: cover;
+    border-radius: 20px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: -60px;
 
 }
 
 .pic-container {
-    /* border: 1px solid black; */
-    flex: 0 0 87%;
+    flex: 0 0 71%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .star {
-    height: 1rem;
+    height: 1.5rem;
 }
 
 .resto-container {
-    height: 330px;
-    /* border: 1px solid black; */
-    width: 250px;
+    position: relative;
+    height: 300px;
+    width: 275px;
     border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #f8f8f8;
-
-    display: flex;
+    display:flex;
     flex-direction: column;
 }
 
+.resto-container:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+    cursor: pointer;
+
+}
+
+
 .title {
     font-size: 23px;
-    font-family: Tahoma;
-    text-align: center;
-    margin-top: -5%;
+    font-family: 'Segoe UI';
 }
+
+
+.caption {
+    font-size: 12px;
+    font-family: 'Segoe UI';
+    height: 20%;
+    color: #888;
+}
+
+.text-area {
+    flex: 1;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 90%;
+    margin-inline-start: auto;
+
+
+}
+
+.title {
+    flex: 0 0 1;
+}
+
+.caption {
+    height: 90px;
+    word-wrap: break-word;
+
+    flex: 0 0 2;
+}
+
 
 .rating-container {
     display: flex;
@@ -145,6 +227,13 @@ hr {
 
 .stars {
     
+    position: absolute;
+    top: 195px;
+    left: 80px;
+    margin: auto;
+
+    border-radius: 12px;
+      padding: 1%;
     /* border: 1px solid black; */
     display: flex;
     /* margin-top: 2%; */
