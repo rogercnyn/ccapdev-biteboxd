@@ -9,13 +9,24 @@
     <script src="script/navbar.js"></script>
     <script src="script/like.js"></script>
     <script src="script/slider.js"></script>
-    <link rel="stylesheet" href="styles/resto-reviewpage.css">
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="script/resto-reviewpage.js"></script>
+
+    <link rel="stylesheet" href="styles/resto-reviewpage.css">
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <!-- quill -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <!-- map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+    <!-- chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </head>
 <body>
@@ -58,15 +69,6 @@
     </header>
 
     <main class = "main">
-
-        <div class="search-container">
-            <img src="assets/search-icon.svg" alt="" class="search-icon">
-            <input type="search" class="search-bar" placeholder="Find a review on Bacsilog Hub">
-            <button class="search-button">
-                Search
-            </button>
-
-        </div>
         <div class="restoinfo">
             <div class="restopicturearea">
                 <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
@@ -111,6 +113,7 @@
         </div>
 
         <hr>
+
         <div class="reviewarea">
 
             <div class="reviewheader">
@@ -119,6 +122,20 @@
 
             <br>
 
+            <div class="rating-map-container">
+                <div class="rating-container">
+                    <h2>Overall Rating</h2>
+                    <p>64 reviews</p>
+                    <div>
+                        <canvas id="ratingChart"></canvas>
+                    </div>                
+                </div>
+            
+                <div id="map"></div>
+
+            </div>
+
+           <hr>
             <div class="publishrevarea" >
 
                 <div class="cannot-publish" id="cannot-publish">
@@ -186,22 +203,21 @@
                     </div>
                 </div>
             </div>
-            <script>
-                const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'))
-                const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'))
-                const serviceSlider = new Slider(document.getElementsByClassName('slider-service-rating'))
-                priceSlider.initializeHover();
-                foodQualitySlider.initializeHover();
-                serviceSlider.initializeHover();
-            </script>
+
             <hr>
-            <div id="map"></div>
-            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-            <script src="script/map.js"></script>
-           
-            <hr>
+                <div class="search-container">
+                    <img src="assets/search-icon.svg" alt="" class="search-icon">
+                    <input type="search" class="search-bar" placeholder="Find a review">
+                    <img src="assets/clear.svg" alt="" onclick="clearSearchBar()" class="clear-icon" id="clear-icon">
+                    <button class="search-button" onclick="searchReview()">
+                        Search
+                    </button>
+                </div>
 
             <div class="publishedrevarea">
+
+
+
                 <div class="review">
                
                     <div class="review-panel">
@@ -360,8 +376,18 @@
                 </div>
             </div>
     </main>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script/map.js"></script>
+    <script src="script/chart.js"></script>
+
     <script>
-        
+        const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'))
+        const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'))
+        const serviceSlider = new Slider(document.getElementsByClassName('slider-service-rating'))
+        priceSlider.initializeHover();
+        foodQualitySlider.initializeHover();
+        serviceSlider.initializeHover();
+                
         const likesets = document.getElementsByClassName('likeset');
         const likes = []
         // console.log(likeDislikeButtons)
@@ -377,6 +403,7 @@
         Array.from(likes).forEach(like => {
             like.initializeClick();
         });
+
 
 
         console.log(likes)
