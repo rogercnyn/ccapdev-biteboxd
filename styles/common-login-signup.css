@@ -159,19 +159,27 @@ main {
 }
 
 
-input {
-    height: 100%;
-    width: 100%;
+input:not([type="checkbox"]) {
+    /* height: 100%; */
+    /* width: 100%; */
+    font-family: 'Segoe UI';
+    height: 50px;
+    width: 350px;
     border-radius: 10px;
     border: 1px solid gray;
 
-    font-size: 20px;
-    font-family: "Jua";
+    font-size: 15px;
+    /* font-family: "Jua"; */
     padding-left: 2%;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.1);
 
 } 
 
+
+#first-name, #last-name {
+
+    width: 160px !important;
+}
 
 input:focus {
     outline: none;
@@ -179,8 +187,11 @@ input:focus {
 
  
 .input-label {
-    opacity: 37%;
+    font-family: 'Segoe UI';
+    opacity: 50%;
     font-size: 13px;
+    /* width: 300px; */
+    /* align-self: flex-start; */
 } 
 
 .redirect {
@@ -193,7 +204,8 @@ input:focus {
 }
 
 .action-button-container {
-    flex: 1;
+    /* flex: 1; */
+    height: 75px;
     display: flex;
     justify-content: center;
 }

@@ -163,3 +163,14 @@ main {
     /* color: red; */
     /* flex: 0 0 0.1; */
 }
+
+
+.parsley-errors-list {
+    list-style-type: none;
+    margin-left: 4px;
+    padding: 0;
+    align-self: flex-start;
+    font-family: 'Segoe UI';
+    color: red;
+    font-size: 10px;
+}

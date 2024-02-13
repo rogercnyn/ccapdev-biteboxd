@@ -23,28 +23,23 @@ function clickAvatar(element) {
 }
 
 function initializeSignUp(){
-    document.getElementById('toForm2').addEventListener('click', function() {
+    
+    
+    document.getElementById('toForm3').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent default form submission behavior
     
-        document.getElementById("yellow-box").classList.add('turn-white');
-        document.getElementById('form1').classList.add('hide-form');
-        document.getElementById('form2').classList.remove('hide-form');
+        // Validate the form using Parsley.js
+        $('#form2').parsley().validate();
     
-        document.getElementById('ellipse-2').classList.add('ellipse-clicked');
-        document.getElementById('form2container').classList.add('adjustForm2');
-        document.getElementById('toForm3').classList.add('adjustButton2');
-    
+        if ($('#form2').parsley().isValid()) {
+            // Form is valid, proceed to the next step
+            document.getElementById('form2').classList.add('hide-form');
+            document.getElementById('form3').classList.remove('hide-form');
+            document.getElementById('ellipse-3').classList.add('ellipse-clicked');
+        } else {
+        }
     });
     
-    
-    document.getElementById('toForm3').addEventListener('click', function() {
-        event.preventDefault(); // Prevent default form submission behavior
-    
-        document.getElementById('form2').classList.add('hide-form');
-        document.getElementById('form3').classList.remove('hide-form');
-        document.getElementById('ellipse-3').classList.add('ellipse-clicked');
-    
-    });
     
 }
 

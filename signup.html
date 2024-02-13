@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/signup.css">
-    <script src="script/signup.js"></script>    
     <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
+    <script src="script/general.js"></script>
+
+    <!-- noty -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/noty@3.1.4/lib/noty.css">
+    <script src="https://cdn.jsdelivr.net/npm/noty@3.1.4/lib/noty.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+    
+    
     <title>BiteBoxd - Sign up</title>
+    <script src="script/signup.js"></script>    
 </head>
 <body>
     <header>
@@ -32,42 +42,43 @@
 
             <p class="logo-text">Sign Up</p>
 
-
-            <div class="login-form" id="form1">
-                <div class=" name-box">
+            <form class="login-form" id="form1">
+                <div class="name-box">
                     <div class="box first-name-box">
                         <p class="input-label">First Name</p>
-                        <input type="text">
+                        <input type="text" id="first-name" data-parsley-trigger="change" required data-parsley-pattern="^[a-zA-Z\s]+$" >
                     </div>
                     <div class="box last-name-box">
                         <p class="input-label">Last Name</p>
-                        <input type="text">
+                        <input type="text" id="last-name"  data-parsley-trigger="change"  required data-parsley-pattern="^[a-zA-Z\s]+$">
                     </div>
                 </div>
-
+            
                 <div class="box username-box">
                     <p class="input-label">Username</p>
-                    <input type="text">
+                    <input type="text" id="username"  data-parsley-trigger="change" required data-parsley-pattern="^[a-zA-Z0-9]+$"> 
                 </div>
                 <div class="box email-box">
                     <p class="input-label">Email</p>
-                    <input type="text">
+                    <input type="email" id="email" name="email" required data-parsley-type="email" data-parsley-trigger="change">
                 </div>
-
+            
                 <div class="box password-box">
                     <p class="input-label">Password</p>
-                    <input type="password">
+                    <input type="password" id="password" name="password" required data-parsley-minlength="8" data-parsley-trigger="change">  
+                    <img src="assets/see.svg" alt="" class="show-password" id="show-password" onclick="togglePasswordVisibility()">
                 </div>
-
-                <div class="box confirm-password-box">
+            
+                <div class="box confirm-password-box password-box">
                     <p class="input-label">Confirm Password</p>
-                    <input type="password">
+                    <input type="password" id="password" name="password" required data-parsley-minlength="8" data-parsley-trigger="change">
+                    <img src="assets/see.svg" alt="" class="show-password" id="show-password" onclick="togglePasswordVisibility()">
                 </div>
-
-                <form class="action-button-container">
+            
+                <div class="action-button-container">
                     <button class="action-button" id="toForm2">Continue</button>
-                </form>
-            </div>    
+                </div>
+            </form>
 
             <div class="login-form hide-form" id="form2">
                 <div class="yellow-box-container tag-layers" id="form2container">
@@ -121,8 +132,25 @@
     </main>
 
     <script>
-        initializeSignUp();
+        $(document).ready(function() {
+            $('#form1').parsley();
+
+            $('#form1').on('submit', function(e) {
+                if ($('#form1').parsley().isValid()) {
+                    document.getElementById("yellow-box").classList.add('turn-white');
+                    document.getElementById('form1').classList.add('hide-form');
+                    document.getElementById('form2').classList.remove('hide-form');
+                
+                    document.getElementById('ellipse-2').classList.add('ellipse-clicked');
+                    document.getElementById('form2container').classList.add('adjustForm2');
+                    document.getElementById('toForm3').classList.add('adjustButton2');
+                } 
+                e.preventDefault(); // Prevent form submission
+            });
+        });           
+      initializeSignUp(); 
     </script>
+    
     
 </body>
 </html>

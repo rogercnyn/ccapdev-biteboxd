@@ -14,16 +14,20 @@ function injectQuill(element) {
     toggleReplyPanel(replyPanel)
 
 
-   
+
 }
 
 function toggleReplyPanel(replyPanel){
     
+       // Check if the element is currently hidden
     if ($(replyPanel).is(':hidden')) {
+        // If hidden, show the element
         $(replyPanel).show();
     } else {
+        // If visible, hide the element
         $(replyPanel).hide();
     }
+   
 }
 
 
@@ -45,7 +49,7 @@ function handleReply(button) {
         }
         if (resPanels[i].nodeType === 1) {
             nthNumber++;
-        }
+        } 
     }
     console.log(nthNumber)
 
@@ -57,7 +61,7 @@ function handleReply(button) {
         var html = quills[nthNumber].root.innerHTML;    
         responsePanel.querySelector("#replytext").innerHTML = html;
     }
-    
+
     toggleReplyPanel(responsePanel.previousElementSibling)
 
     

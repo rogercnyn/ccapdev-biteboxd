@@ -26,3 +26,18 @@ function appendQueryParameter(url, paramName, paramValue) {
 
     return newUrl;
 }
+
+
+function togglePasswordVisibility() {
+    var passwordField = document.getElementById("password");
+    var showPasswordIcon = document.getElementById("show-password");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        showPasswordIcon.classList.add("show-password-clicked")
+    } else {
+        showPasswordIcon.classList.remove("show-password-clicked")
+
+        passwordField.type = "password";
+    }
+}

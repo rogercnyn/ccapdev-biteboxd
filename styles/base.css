@@ -24,3 +24,25 @@ body {
 a {
     text-decoration: none;
 }
+
+.password-box {
+    position: relative;
+}
+.show-password {
+    position: absolute;
+    height: 1.5rem;
+    top: 35px;
+    right: 10px;
+    z-index: 1;
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.show-password-clicked {
+    opacity: 100%;
+}
+
+
+.show-password:hover {
+    opacity: 100%;
+}

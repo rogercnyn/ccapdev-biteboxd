@@ -13,9 +13,11 @@
 
 
 #forgot {
-    opacity: 0%;
+    opacity: 100%;
     margin-top: 3%;
-    /* align-self: flex-end; */
+    align-self: flex-end;
+    font-family: 'Segoe UI';
+    font-size: 12px;
 }
 
 
@@ -25,23 +27,6 @@ a {
 }
 
 
-.show-password {
-    height: 1.5rem;
-    z-index: 1;
-    margin-inline-start: auto;
-    margin-top: -8%;
-    opacity: 50%;
-    cursor: pointer;
-}
-
-.show-password-clicked {
-    opacity: 100%;
-}
-
-
-.show-password:hover {
-    opacity: 100%;
-}
 
 
 /* js related css */
