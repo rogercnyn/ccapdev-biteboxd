@@ -1,15 +1,9 @@
 function search() {
     let query = document.querySelector('.search-bar').value;
     let dest = 'search.html?query=' + encodeURIComponent(query);
-    appendLogin(dest)
+   transferSession(dest)
 }
 
-function appendLogin(dest) {
-    if(isLogged === 'true'){
-        dest += '?isLogged=true'
-    }
-    window.location.href = dest;
-}
 
 function clearSearchBar() {
     document.querySelector('.search-bar').value = ''

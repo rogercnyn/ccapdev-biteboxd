@@ -11,8 +11,6 @@ function adjustResult() {
     }
 }
 
-
-
 function initializeSearchString() {
     let query = getUrlParameter('query');
     let searchString = document.getElementById('search-string');
@@ -21,7 +19,6 @@ function initializeSearchString() {
     searchString.textContent =  " '" + query + "'";
     searchBar.value = query;
 
-    console.log('query' + searchString.textContent);
 }
 
 
