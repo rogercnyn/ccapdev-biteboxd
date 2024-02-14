@@ -96,17 +96,27 @@
 }
   
 .upload-label {
-    display: inline-block;
+    height: 75px;
+    width: 75px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
     padding: 10px 15px;
     cursor: pointer;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
 }
+.upload-text {
+    font-size: 14px;
+    color: #333; 
+    margin-top: -5;
+ }
   
 .upload-icon {
-    width: 30px; 
-    height: 30px;
+    width: 50px; 
+    height: 50px;
 }
   
 .hidden-input {
