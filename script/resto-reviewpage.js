@@ -26,61 +26,127 @@ function addRating(criterion, n) {
 
 
 document.querySelector('.publish-button').addEventListener('click', handleUpload);
-
 document.getElementById('photo-input').addEventListener('change', handleFileSelect);
+
 function handleFileSelect(event) {
     const files = event.target.files;
     const photoContainer = document.getElementById('photo-container');
     const currentPhotos = photoContainer.querySelectorAll('.photo-preview').length;
 
-
     if (currentPhotos + files.length > maxPhotos) {
-        alert('Maximum of 4 photos allowed.');
-        event.target.value = ''; 
+        alert('Maximum of 4 media files allowed.');
+        event.target.value = '';
         return;
-    }
-
-    else {
+    } else {
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const reader = new FileReader();
-    
-            reader.onload = function (e) {
-                const imgContainer = document.createElement('div');
-                imgContainer.className = 'photo-container-item';
 
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.alt = 'Photo Preview';
-                img.className = 'photo-preview';
-                img.style.borderRadius = '10px';
+            reader.onload = function (e) {
+                const mediaContainer = document.createElement('div');
+                mediaContainer.className = 'photo-container-item';
+
+                if (isImage(file)) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.alt = 'Media Preview';
+                    img.className = 'photo-preview';
+                    img.style.borderRadius = '10px';
+
+                    img.addEventListener('click', function () {
+                        openModal(e.target.result);
+                    });
+
+                    mediaContainer.appendChild(img);
+                } else if (isVideo(file)) {
+                    const video = document.createElement('video');
+                    video.src = e.target.result;
+                    video.controls = true;
+                    video.className = 'photo-preview';
+                    video.style.borderRadius = '10px';
+
+                    video.addEventListener('click', function () {
+                        openModal(e.target.result);
+                    });
+
+                    mediaContainer.appendChild(video);
+                }
 
                 const removeButton = document.createElement('div');
-                removeButton.innerHTML = '&#10006;'; 
+                removeButton.innerHTML = '&#10006;';
                 removeButton.className = 'remove-button';
+
                 removeButton.addEventListener('click', function () {
-                    
-                    imgContainer.remove();
-                   
+                    mediaContainer.remove();
+
                     document.getElementById('photo-input').disabled = false;
                     document.querySelector('.publish-button').disabled = false;
                 });
 
-                
-                imgContainer.appendChild(img);
-                imgContainer.appendChild(removeButton);
+                mediaContainer.appendChild(removeButton);
 
-                photoContainer.appendChild(imgContainer);
+                photoContainer.appendChild(mediaContainer);
             };
 
             reader.readAsDataURL(file);
         }
+
         const fileInput = document.getElementById('photo-input');
         fileInput.disabled = currentPhotos >= maxPhotos;
 
         const uploadButton = document.querySelector('.publish-button');
         uploadButton.disabled = currentPhotos >= maxPhotos;
     }
+}
+
+function isImage(file) {
+    return file.type.startsWith('image');
+}
+
+function isVideo(file) {
+    return file.type.startsWith('video');
+}
+
+function isImage(file) {
+    return file.type.startsWith('image');
+}
+
+function isVideo(file) {
+    return file.type.startsWith('video');
+}
+
+
+function openModal(mediaSrc) {
+    const modal = document.getElementById('mediaModal');
+    const modalMediaContainer = document.getElementById('modal-media-container');
+
+    modalMediaContainer.innerHTML = '';
+
+    const isVideoMedia = /\.(mp4|webm|ogg)$/i.test(mediaSrc);
+
+    if (isVideoMedia) {
+        const video = document.createElement('video');
+        video.id = 'modal-media';
+        video.src = mediaSrc;
+        video.controls = true;
+        video.style.width = '100%'; 
+        video.style.height = 'auto'; 
+        modalMediaContainer.appendChild(video);
+    } else {
+        const img = document.createElement('img');
+        img.src = mediaSrc;
+        img.style.width = '100%';
+        img.style.height = 'auto';
+        modalMediaContainer.appendChild(img);
+    }
+
+    modal.style.display = 'flex';
+}
+
+
+function closeModal() {
+    const modal = document.getElementById('mediaModal');
+    modal.style.display = 'none';
 }
 
 
