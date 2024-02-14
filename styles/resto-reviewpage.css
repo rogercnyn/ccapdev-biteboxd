@@ -90,7 +90,37 @@
     font-size: 16px;
 }
 
+.photo-upload {
+    position: relative;
+    align-items: center;
+}
+  
+.upload-label {
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+  
+.upload-icon {
+    width: 30px; 
+    height: 30px;
+}
+  
+.hidden-input {
+    display: none;
+}
+
+.uploadarea{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .photo-container {
+    margin-left: 10px;
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;

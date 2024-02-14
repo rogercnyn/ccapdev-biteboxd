@@ -193,22 +193,30 @@
                     
                     <div id="editor">
                     </div>
+
+                    <br>
                     
-                    <div class="photo-upload">
-                        <label for="photo-input">Upload up to 4 photos:</label>
-                        <input type="file" id="photo-input" name="photos" accept="image/*,video/*" multiple>
-                    </div>
-                
-                    <div class="photo-container" id="photo-container">
-
-                    </div>
-
-                    <div class="modal" id="mediaModal" onclick="closeModal()">
-                        <div class="modal-content" onclick="event.stopPropagation();">
-                          <span class="close" onclick="closeModal()">&times;</span>
-                          <div id="modal-media-container"></div>
+                    <div class="uploadarea">
+                        <div class="photo-upload">
+                            <label for="photo-input" class="upload-label">
+                              <img src="assets/upload.svg" alt="Upload Icon" class="upload-icon">
+                            </label>
+                            <input type="file" id="photo-input" name="photos" accept="image/*,video/*" multiple class="hidden-input">
                         </div>
-                      </div>
+                          
+                    
+                        <div class="photo-container" id="photo-container">
+    
+                        </div>
+    
+                        <div class="modal" id="mediaModal" onclick="closeModal()">
+                            <div class="modal-content" onclick="event.stopPropagation();">
+                              <span class="close" onclick="closeModal()">&times;</span>
+                              <div id="modal-media-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
 
                     <div class="alignpublishbutton">
                         <button class="publish-button" id="publishBtn">Publish</button>
