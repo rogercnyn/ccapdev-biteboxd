@@ -145,6 +145,16 @@ color: red;
     display: flex;
     justify-content: flex-start;
     text-align: left;
+    align-items: center;
+    gap: 10px;
+}
+
+.reviewoverall {
+    background-color:#FDD247;
+    padding: 3px;
+    border-radius: 5px;
+    color: black;
+    font-size: 18px;
 }
 
 .publishrevarea {

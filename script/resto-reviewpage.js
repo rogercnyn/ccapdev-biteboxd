@@ -126,3 +126,16 @@ function detectLogin() {
     }
 
 }
+
+function toggleOptions() {
+    var popup = document.getElementById("optionsPopup");
+    popup.style.display = (popup.style.display === "block") ? "none" : "block";
+}
+
+function editReview() {
+    alert("Edited review published!");
+}
+
+function deleteReview() {
+    alert("Review deleted!");
+}

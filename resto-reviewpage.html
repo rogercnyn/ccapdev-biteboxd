@@ -118,6 +118,7 @@
 
             <div class="reviewheader">
                 <h1>Reviews</h1>
+                <h1 class="reviewoverall">4.0/5</h1>
             </div>
 
             <br>
@@ -168,7 +169,7 @@
                         </div>
 
                         <div class="criteriarate">
-                            <h3 class="criterialbl">Price</h3>
+                            <h3 class="criterialbl">Affordability</h3>
                             <div class="star-sorting" data-criterion="price">
                                 <span onclick="addRating(2, 1)" class="slider-emoji-rating slider-price-rating">💵</span>
                                 <span onclick="addRating(2, 2)" class="slider-emoji-rating slider-price-rating">💵</span>
@@ -236,7 +237,9 @@
                                 <h2 class="titlearea">Good meal but one try is enough!</h2>
                             
                                 <div class="nametitle">
-                                    <p class="nameandtime">makoeats · February 12, 2024 8:01 am </p>
+                                    <a href="own-profile.html" class="nameandtime">makoeats</a>
+                                    <p class="nameandtime"> · </p>
+                                    <p class="nameandtime">February 12, 2024 8:01 am </p>
                                 </div>
                             </div>
                             <div class="criteriaratings">
@@ -247,6 +250,7 @@
                                         <span>🍗</span>
                                         <span>🍗</span>
                                         <span>🍗</span>
+                                        <span class="over-emoji">🍗</span>
                                     </div>
                                 </div>
         
@@ -256,37 +260,44 @@
                                         <span>🤝</span>
                                         <span>🤝</span>
                                         <span>🤝</span>
+                                        <span class="over-emoji">🤝</span>
+                                        <span class="over-emoji">🤝</span>
                                     </div>
                                 </div>
         
                                 <div class="criteriascore">
-                                    <h4 class="criteria">Price
+                                    <h4 class="criteria">Affordability
                                     <div class="stars">
                                         <span>💵</span>
                                         <span>💵</span>
                                         <span>💵</span>
                                         <span>💵</span>
+                                        <span class="over-emoji">💵</span>
                                     </div>
                                 </div>
                             </div>
         
                             <div class="reviewbody">
                                 <p id="longtext">
-                                    I had an amazing experience here! The food was exquisite, and the service was impeccable. The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
+                                    I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
                                 </p>
                             
                             </div>
                     
                         </div>
 
-                    
-                    
+
                         <div class="rate-review" id="likeDislikeButtons">
-                            <div class="likeset">
-                                <button class="like-dislike" id="like">&#128077;</button>
-                                <button class="like-dislike" id="dislike">&#128078;</button>
+                            <div class="options-button" onclick="toggleOptions()">
+                                &#8286; 
+                                <div class="options-popup" id="optionsPopup">
+                                    <a href="#" onclick="editReview()">Edit</a>
+                                    <a href="#" onclick="deleteReview()">Delete</a>
+                                </div>
                             </div>
                         </div>
+                    
+        
                     </div>
 
                     <div class="photopanel">
@@ -305,16 +316,18 @@
                                 <img src="assets/profile.jpg" class="profilepic">
                             </div>
                             <div class="score">
-                                <h2 class="yellowscore" id="user-score">4.6</h2>
+                                <h2 class="yellowscore" id="user-score">4.9</h2>
                             </div>
                         </div>
 
                         <div class="review-center-tile">
                             <div class="score-username">
-                                <h2 class="titlearea">Good meal but one try is enough!</h2>
+                                <h2 class="titlearea">My new go-to!</h2>
                             
                                 <div class="nametitle">
-                                    <p class="nameandtime">makoeats · February 12, 2024 8:01 am </p>
+                                    <p class="nameandtime">chinarocks</p>
+                                    <p class="nameandtime"> · </p>
+                                    <p class="nameandtime">February 12, 2024 8:01 am </p>
                                 </div>
                             </div>
                             <div class="criteriaratings">
@@ -324,7 +337,8 @@
                                         <span>🍗</span>
                                         <span>🍗</span>
                                         <span>🍗</span>
-                                        <span>🍗</span>
+                                        <span class="over-emoji">🍗</span>
+                                        <span class="over-emoji">🍗</span>
                                     </div>
                                 </div>
         
@@ -334,12 +348,15 @@
                                         <span>🤝</span>
                                         <span>🤝</span>
                                         <span>🤝</span>
+                                        <span>🤝</span>
+                                        <span class="over-emoji">🤝</span>
                                     </div>
                                 </div>
         
                                 <div class="criteriascore">
-                                    <h4 class="criteria">Price
+                                    <h4 class="criteria">Affordability
                                     <div class="stars">
+                                        <span>💵</span>
                                         <span>💵</span>
                                         <span>💵</span>
                                         <span>💵</span>
@@ -350,15 +367,13 @@
         
                             <div class="reviewbody">
                                 <p id="longtext">
-                                    I had an amazing experience here! The food was exquisite, and the service was impeccable. The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
+                                    This is now my <b>new go-to resto!</b> <b><i>Not the best</i></b> but you get what you paid for. The <u>service is a little slow but ate is so nice and accommodating.</u> Price is cheaper compared to other resto nearby.</p>
                                 </p>
                             
                             </div>
                     
                         </div>
 
-                    
-                    
                         <div class="rate-review" id="likeDislikeButtons">
                             <div class="likeset">
                                 <button class="like-dislike" id="like">&#128077;</button>
@@ -409,6 +424,12 @@
         console.log(likes)
         adjustNavBar();
         detectLogin();
+
+        document.getElementById("title").addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+            }
+        });
     </script>
     
 </body>
