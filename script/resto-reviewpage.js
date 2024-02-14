@@ -210,3 +210,16 @@ function editReview() {
 function deleteReview() {
     alert("Review deleted!");
 }
+
+function toggleText() {
+    var longText = document.getElementById('longtext');
+    var seeMoreLink = document.getElementById('seeMoreLink');
+
+    if (longText.style.maxHeight) {
+        longText.style.maxHeight = null;
+        seeMoreLink.innerHTML = '<b>...see more</b>';
+    } else {
+        longText.style.maxHeight = longText.scrollHeight + "px";
+        seeMoreLink.innerHTML = '<b>...see less</b>';
+    }
+}
