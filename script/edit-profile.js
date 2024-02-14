@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById("first-name").textContent = firstName;
         document.getElementById("last-name").textContent = lastName;
-        document.getElementById("profile-bio").textContent =  bio;
+        document.getElementById("profile-bio").textContent = bio;
 
         var fileInput = document.getElementById("profilePic");
         if (fileInput.files && fileInput.files[0]) {
@@ -37,19 +37,18 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = "none";
     };
 
-    // to be continued....
     document.body.addEventListener('click', function(event) {
         if (event.target.classList.contains('review-edit-icon')) {
-            // Implement yung logic para sa edit review
             console.log('Edit review icon clicked');
-            // openEditReviewModal(event.target); --> define this after
+            // to be Implemented
         }
 
         if (event.target.classList.contains('delete-recent-activity-icon')) {
             if (confirm('Are you sure you want to delete this activity?')) {
-                var activityElement = event.target.closest('.recent-activity');
-                if (activityElement) {
-                    activityElement.remove();
+                var reviewPanel = event.target.closest('.review-panel');
+                if (reviewPanel) {
+                    reviewPanel.parentElement.remove();
+                    alert("Review deleted!");
                 }
             }
         }
@@ -60,14 +59,37 @@ function preFillEditProfileForm() {
     var currentUsername = document.getElementById("profile-username").textContent.replace('@', '');
     var currentFirstName = document.getElementById("first-name").textContent;
     var currentLastName = document.getElementById("last-name").textContent;
-    var currentBio = document.getElementById("profile-bio").textContent.replace('bio: ', '');
+    var currentBio = document.getElementById("profile-bio").textContent;
 
     document.getElementById("firstName").value = currentFirstName;
     document.getElementById("lastName").value = currentLastName;
     document.getElementById("bio").value = currentBio;
 }
 
-function openEditProfileModal() {
-    preFillEditProfileForm(); 
-    document.getElementById("editProfileModal").style.display = "block";
+
+function toggleOptions(button) {
+    var optionsPopup = button.querySelector('.options-popup');
+    if (optionsPopup.style.display === 'block') {
+        optionsPopup.style.display = 'none';
+    } else {
+        optionsPopup.style.display = 'block';
+    }
 }
+
+// delete review
+function deleteReview(deleteButton) {
+    var review = deleteButton.closest('.review');
+    var confirmDelete = confirm("Are you sure you want to delete this review?");
+    
+    if (confirmDelete) {
+        review.remove();
+    }
+}
+
+//edit review
+
+function editReview() {
+    alert("Edited review published!");
+}
+
+

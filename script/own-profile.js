@@ -22,3 +22,4 @@ document.addEventListener('DOMContentLoaded', function () {
     const defaultTabIndex = 0; 
     activateTab(defaultTabIndex);
 });
+
