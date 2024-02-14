@@ -96,6 +96,10 @@
     margin-top: 10px;
 }
 
+body.modal-open {
+    overflow: hidden;
+}
+
 .photo-preview {
     width: 100px;
     height: 100px;

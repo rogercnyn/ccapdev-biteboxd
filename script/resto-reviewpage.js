@@ -141,12 +141,16 @@ function openModal(mediaSrc) {
     }
 
     modal.style.display = 'flex';
+
+    document.body.classList.add('modal-open');
+    
 }
 
 
 function closeModal() {
     const modal = document.getElementById('mediaModal');
     modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
 }
 
 
