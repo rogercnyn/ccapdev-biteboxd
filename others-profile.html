@@ -4,8 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/own-profile.css">
-        <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
         <script src="script/own-profile.js"></script>
+        <script src="script/general.js"></script>
+        <script src="script/navbar.js"></script>
         <title>BiteBoxd - View other user's Profile</title>
     </head>
 <body>
@@ -37,6 +39,13 @@
         <div class="account-icon" id="account-icon" onclick="togglePopup()">
             <img src="assets/profile.jpg" alt="" class="profile-icon">
         </div>
+        <div class="popup-container" id="popupContainer" style="display: none;">
+            <div class="popup" id="popup">
+                <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
+                <a href="#" onclick="openEditProfileModal();">Edit Profile</a>
+                <a href="#" onclick="logOut()">Log Out</a>
+            </div>
+        </div>   
         
     </header>
 
@@ -886,5 +895,8 @@
             </div>
         </div>
     </main>
+    <script>
+        adjustNavBar();
+    </script>
 </body>
 </html>
