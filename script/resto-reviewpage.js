@@ -53,6 +53,7 @@ function handleFileSelect(event) {
                 img.src = e.target.result;
                 img.alt = 'Photo Preview';
                 img.className = 'photo-preview';
+                img.style.borderRadius = '10px';
 
                 const removeButton = document.createElement('div');
                 removeButton.innerHTML = '&#10006;'; 

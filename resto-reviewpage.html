@@ -9,7 +9,7 @@
     <script src="script/navbar.js"></script>
     <script src="script/like.js"></script>
     <script src="script/slider.js"></script>
-    <script src="script/resto-reviewpage.js"></script>
+    
 
     <link rel="stylesheet" href="styles/resto-reviewpage.css">
 
@@ -118,15 +118,19 @@
 
             <div class="reviewheader">
                 <h1>Reviews</h1>
-                <h1 class="reviewoverall">4.0/5</h1>
+            
             </div>
 
             <br>
 
             <div class="rating-map-container">
                 <div class="rating-container">
-                    <h2>Overall Rating</h2>
-                    <p>64 reviews</p>
+                    <div class="overallrate">
+                        <h2 class="segoe">Overall Rating</h2>
+                        <h1 class="reviewoverall">4.0/5</h1>
+                    </div>
+                    
+                    <p class="segoe">64 reviews</p>
                     <div>
                         <canvas id="ratingChart"></canvas>
                     </div>                
@@ -216,9 +220,6 @@
                 </div>
 
             <div class="publishedrevarea">
-
-
-
                 <div class="review">
                
                     <div class="review-panel">
@@ -394,7 +395,7 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="script/map.js"></script>
     <script src="script/chart.js"></script>
-
+    <script src="script/resto-reviewpage.js"></script>
     <script>
         const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'))
         const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'))

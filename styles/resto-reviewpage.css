@@ -171,6 +171,18 @@ margin-bottom: 100px;
     font-weight: 700;
 }
 
+.segoe{
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.overallrate{
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    align-items: center;
+    gap: 10px;
+}
+
 #map {
     height: 300px;
     width: 500px;

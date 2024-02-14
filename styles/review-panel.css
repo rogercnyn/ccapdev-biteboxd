@@ -26,6 +26,11 @@
 
 }
 
+.likeset{
+    align-items: center;
+    justify-content: center;
+}
+
 .rate-review {
     position: absolute;
     top: 10px;
