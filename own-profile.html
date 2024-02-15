@@ -8,9 +8,18 @@
         <script src="script/own-profile.js"></script>
         <script src="script/general.js"></script>
         <script src="script/navbar.js"></script>
-        <script src="script/edit-profile.js"></script>
-        <script src="script/resto-reviewpage.js"></script>
+        <script type="" src="script/edit-profile.js"></script>
         <script src="script/like.js"></script>
+    <script src="script/general.js"></script>
+
+      <!-- quill -->
+      <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+      <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
         <title>BiteBoxd - View own Profile</title>
     </head>
 <body>
@@ -136,8 +145,11 @@
             <!-- Liked Restaurants -->
             <div class="content">
 
-                <div class="liked-restaurants">
-                    <img src="assets/review.svg" alt="" class="review-icon">
+                <div class="results" id="results">
+          
+                    
+                    <div class="all-results">
+                        <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
                             <div class="store-details">
     
                                 <div class="store-details-image">
@@ -157,28 +169,20 @@
                                         </div>
     
                     
-                                        <p class="rating-text">4.3 (172)</p>
+                                    <p class="rating-text">4.3 (172)</p>
                                     </div>
                                     <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
-                                    <div class="criterias">
-                                        <div class="criteria">
-                                            <div class="criteria-container">Food Quality</div>
-                                            <meter max="10" min="0" value="7"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Service</div>
-                                            <meter max="10" min="0" value="9"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Price</div>
-                                            <meter max="10" min="0" value="8"></meter>
-                                        </div>
+                                    <div class="peek-review">
+                                        <p class="peek-review-para">
+                                            "Open 24 hour! Perfect for Makati as everything usually closes after people leave this mostly business area. Close walk from hotel we were staying. Very busy at…"
+                                            <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                        </p>
                                     </div>
                                 </div>
                             </div> 
-                </div>
-                <div class="liked-restaurants">
-                    <img src="assets/review.svg" alt="" class="review-icon">
+                        </div> 
+    
+                        <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
                             <div class="store-details">
     
                                 <div class="store-details-image">
@@ -198,28 +202,20 @@
                                         </div>
     
                     
-                                        <p class="rating-text">4.3 (172)</p>
+                                    <p class="rating-text">4.3 (172)</p>
                                     </div>
                                     <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
-                                    <div class="criterias">
-                                        <div class="criteria">
-                                            <div class="criteria-container">Food Quality</div>
-                                            <meter max="10" min="0" value="7"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Service</div>
-                                            <meter max="10" min="0" value="9"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Price</div>
-                                            <meter max="10" min="0" value="8"></meter>
-                                        </div>
+                                    <div class="peek-review">
+                                        <p class="peek-review-para">
+                                            "Open 24 hour! Perfect for Makati as everything usually closes after people leave this mostly business area. Close walk from hotel we were staying. Very busy at…"
+                                            <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                        </p>
                                     </div>
                                 </div>
                             </div> 
-                </div>
-                <div class="liked-restaurants">
-                    <img src="assets/review.svg" alt="" class="review-icon">
+                        </div> 
+    
+                        <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
                             <div class="store-details">
     
                                 <div class="store-details-image">
@@ -239,148 +235,27 @@
                                         </div>
     
                     
-                                        <p class="rating-text">4.3 (172)</p>
+                                    <p class="rating-text">4.3 (172)</p>
                                     </div>
                                     <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
-                                    <div class="criterias">
-                                        <div class="criteria">
-                                            <div class="criteria-container">Food Quality</div>
-                                            <meter max="10" min="0" value="7"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Service</div>
-                                            <meter max="10" min="0" value="9"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Price</div>
-                                            <meter max="10" min="0" value="8"></meter>
-                                        </div>
+                                    <div class="peek-review">
+                                        <p class="peek-review-para">
+                                            "Open 24 hour! Perfect for Makati as everything usually closes after people leave this mostly business area. Close walk from hotel we were staying. Very busy at…"
+                                            <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                        </p>
                                     </div>
                                 </div>
                             </div> 
-                </div>
-                <div class="liked-restaurants">
-                    <img src="assets/review.svg" alt="" class="review-icon">
-                            <div class="store-details">
+                        </div> 
     
-                                <div class="store-details-image">
-                                    <img src="assets/bacsi.jpg" alt="" class="store-pic">
     
-                                </div>
-                                <div class="store-details-text">
-                                    <div class="rating">
     
-                                        <p class="title">Ate Rica's Bacsilog</p>
-                                        <div class="stars">
     
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                        </div>
+                        <div class="load-more-container">
+                            <button class="load-more-button" onclick="loadMoreResults()">Load More</button>
+                        </div>
     
-                    
-                                        <p class="rating-text">4.3 (172)</p>
-                                    </div>
-                                    <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
-                                    <div class="criterias">
-                                        <div class="criteria">
-                                            <div class="criteria-container">Food Quality</div>
-                                            <meter max="10" min="0" value="7"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Service</div>
-                                            <meter max="10" min="0" value="9"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Price</div>
-                                            <meter max="10" min="0" value="8"></meter>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                </div>
-                <div class="liked-restaurants">
-                    <img src="assets/review.svg" alt="" class="review-icon">
-                            <div class="store-details">
-    
-                                <div class="store-details-image">
-                                    <img src="assets/bacsi.jpg" alt="" class="store-pic">
-    
-                                </div>
-                                <div class="store-details-text">
-                                    <div class="rating">
-    
-                                        <p class="title">Ate Rica's Bacsilog</p>
-                                        <div class="stars">
-    
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                        </div>
-    
-                    
-                                        <p class="rating-text">4.3 (172)</p>
-                                    </div>
-                                    <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
-                                    <div class="criterias">
-                                        <div class="criteria">
-                                            <div class="criteria-container">Food Quality</div>
-                                            <meter max="10" min="0" value="7"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Service</div>
-                                            <meter max="10" min="0" value="9"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Price</div>
-                                            <meter max="10" min="0" value="8"></meter>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                </div>
-                <div class="liked-restaurants">
-                    <img src="assets/review.svg" alt="" class="review-icon">
-                            <div class="store-details">
-    
-                                <div class="store-details-image">
-                                    <img src="assets/bacsi.jpg" alt="" class="store-pic">
-    
-                                </div>
-                                <div class="store-details-text">
-                                    <div class="rating">
-    
-                                        <p class="title">Ate Rica's Bacsilog</p>
-                                        <div class="stars">
-    
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                        </div>
-    
-                    
-                                        <p class="rating-text">4.3 (172)</p>
-                                    </div>
-                                    <p class="caption">P125-175 | Vito Cruz, Taft, Manila</p>
-                                    <div class="criterias">
-                                        <div class="criteria">
-                                            <div class="criteria-container">Food Quality</div>
-                                            <meter max="10" min="0" value="7"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Service</div>
-                                            <meter max="10" min="0" value="9"></meter>
-                                        </div>
-                                        <div class="criteria">
-                                            <div class="criteria-container">Price</div>
-                                            <meter max="10" min="0" value="8"></meter>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
+                    </div> 
                 </div>
                 
 
@@ -463,10 +338,10 @@
                                 <button class="like-dislike" id="dislike">&#128078;</button>
                                 <span class="numberoffeedback">16</span>
                             </div>
-                            <div class="options-button" onclick="toggleOptions(this)">
+                            <div class="options-button" onclick="toggleOptions(this);">
                                 &nbsp;&nbsp;&#8286;
-                                <div class="options-popup">
-                                    <a href="#">Edit</a>
+                                <div class="options-popup" id="optionsPopup">
+                                    <a href="#" onclick="editReview();">Edit</a>
                                     <a href="#" onclick="deleteReview(this)">Delete</a>
                                 </div>
                             </div>
@@ -668,13 +543,6 @@
                         <img src="assets/bacsi.jpg" class="revpic">
                     </div>
                 </div>
-                
-                
-                
-                
-                
-               
-
 
             </div>
            
@@ -757,7 +625,7 @@
                             </div>
                         </div>
                         <div class="recent-activity-description">
-                            <p>@makoeats visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
+                            <p>@makoeats visited and left a review at <a href="resto-reviewpage.html"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
                         </div>
                         <div class="delete-recent-activity">
                             <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
@@ -772,7 +640,7 @@
                             </div>
                         </div>
                         <div class="recent-activity-description">
-                            <p>@makoeats visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
+                            <p>@makoeats liked <a href="others-profile.html"><strong><u>@Mon_1015</u></strong></a> review.</p>
                         </div>
                         <div class="delete-recent-activity">
                             <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
@@ -787,78 +655,12 @@
                             </div>
                         </div>
                         <div class="recent-activity-description">
-                            <p>@makoeats visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
+                            <p>@makoeats visited at <a href="#"><strong><u>Starbucks Coffee</u></strong></a></p>
                         </div>
                         <div class="delete-recent-activity">
                             <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
                         </div>
                     </div>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="assets/profile.jpg" alt="avatar">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@makoeats visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
-                        </div>
-                        <div class="delete-recent-activity">
-                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
-                        </div>
-                    </div>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="assets/profile.jpg" alt="avatar">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@makoeats visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
-                        </div>
-                        <div class="delete-recent-activity">
-                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
-                        </div>
-                    </div>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="assets/profile.jpg" alt="avatar">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@makoeats visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
-                        </div>
-                        <div class="delete-recent-activity">
-                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
-                        </div>
-                    </div>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="assets/profile.jpg" alt="avatar">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@makoeats visited and left a review at <a href="#"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
-                        </div>
-                        <div class="delete-recent-activity">
-                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
-                        </div>
-                    </div>
-                    
-
-
-
-
-
                 </div>
             </div>
 

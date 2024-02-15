@@ -185,7 +185,7 @@ svg{
 
 .delete-recent-activity-icon{
     height: 2rem;
-    margin-inline-start: 90%;
+    /* margin-inline-start: 90%; */
 }
 .delete-recent-activity{
     margin-inline-start: 31%;

@@ -38,21 +38,33 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     document.body.addEventListener('click', function(event) {
-        if (event.target.classList.contains('review-edit-icon')) {
-            console.log('Edit review icon clicked');
-            // to be Implemented
-        }
-
         if (event.target.classList.contains('delete-recent-activity-icon')) {
-            if (confirm('Are you sure you want to delete this activity?')) {
-                var reviewPanel = event.target.closest('.review-panel');
-                if (reviewPanel) {
-                    reviewPanel.parentElement.remove();
-                    alert("Review deleted!");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Are you sure?',
+                text: 'This action cannot be undone.',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var review = event.target.closest('.review');
+                    if (review) {
+                        review.remove();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Deleted!',
+                            text: 'Your review has been deleted.',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    }
                 }
-            }
+            });
         }
     });
+    
 });
 
 function preFillEditProfileForm() {
@@ -76,20 +88,41 @@ function toggleOptions(button) {
     }
 }
 
-// delete review
+
 function deleteReview(deleteButton) {
     var review = deleteButton.closest('.review');
-    var confirmDelete = confirm("Are you sure you want to delete this review?");
-    
-    if (confirmDelete) {
-        review.remove();
-    }
+    Swal.fire({
+        icon: 'warning',
+        title: 'Are you sure?',
+        text: 'This action cannot be undone.',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            review.remove();
+            Swal.fire({
+                icon: 'success',
+                title: 'Deleted!',
+                text: 'Your review has been deleted.',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+    });
 }
 
 //edit review
 
 function editReview() {
-    alert("Edited review published!");
+    Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Edited review is now published.',
+        showConfirmButton: false,
+        timer: 2500 
+    });
 }
 
 function openEditProfileModal() {
