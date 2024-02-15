@@ -22,7 +22,7 @@
             <p>Home</p>
         </a>
         
-        <a class="nav-icon-container" onclick="transferSession('explore.html')">
+        <a class="nav-icon-container" onclick="transferSession('index.html')">
             <img src="assets/explore.svg" alt="" class="nav-icon">
             <p>Explore</p>
         </a>
@@ -44,12 +44,11 @@
         <div class="popup-container" id="popupContainer" style="display: none;">
             <div class="popup" id="popup">
                 <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
-                <a href="#" onclick="viewProfile()">Edit Profile</a>
+                <a href="#" onclick="openEditProfileModal();" class="edit-profile-popup">Edit Profile</a> 
                 <a href="#" onclick="logOut()">Log Out</a>
             </div>
         </div>        
     </header>
-
 
     <main>
         <div class="profile-header">
@@ -390,7 +389,6 @@
                 <div class="review">
                
                     <div class="review-panel">
-
                         <div class="profile-score">
                             <div class="profilearea">
                                 <img src="assets/profile.jpg" class="profilepic">
@@ -444,23 +442,31 @@
                                     </div>
                                 </div>
                             </div>
-        
-                            <div class="reviewbody">
-                                <p id="longtext">
-                                    I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
-                                </p>
-                            
+
+                            <div class="reviewtext" id="rev1">
+                                <span class="longtext">I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!</span>
+                                <span class="full-text">However, I think it is important to note that for some people, the taste may not be good. It's a little bit spicy due to the pepper they add on the toppings. You may ask ate not to put any if spicy is not your thing.</span>
+                                <span class="see-more" onclick="toggleSeeMore('rev1')"><b>...see more</b></span>
                             </div>
                     
                         </div>
 
 
-                        <div class="review-popup">
-                            <div class="options-button" onclick="toggleOptions(this)">
-                                &#8286;
-                                <div class="options-popup">
-                                    <a href="#">Edit</a>
-                                    <a href="#" onclick="deleteReview(this)">Delete</a>
+                        <div class="rate-review" id="likeDislikeButtons">
+                            <div class="options-button" onclick="toggleOptions()">
+                                <button class="a" id="a">&#128077;</button>
+                                <span class = "numberoffeedback">8</span>
+                                <button class="a" id="b">&#128078;</button>
+                                <span class="numberoffeedback">9</span>
+                                &nbsp;&nbsp;&#8286; 
+                                <div class="review-popup">
+                                    <div class="options-button" onclick="toggleOptions(this)">
+                                        &#8286;
+                                        <div class="options-popup">
+                                            <a href="#">Edit</a>
+                                            <a href="#" onclick="deleteReview(this)">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -469,11 +475,20 @@
                     </div>
 
                     <div class="photopanel">
-                        <img src="assets/cbsisig.jpg" class="revpic">
-                        <img src="assets/cbsisig.jpg" class="revpic">
-                        <img src="assets/bacsi.jpg" class="revpic">
-                        <img src="assets/bacsi.jpg" class="revpic">
+                        <img src="assets/bacsilog1.png" class="revpic" onclick="openModal('assets/bacsilog1.png')">
+                        <img src="assets/bacsilog2.jpeg" class="revpic" onclick="openModal('assets/bacsilog2.jpeg')">
+                        <video src="assets/bacsilogvid.mp4" class="revpic" onclick="openModal('assets/bacsilogvid.mp4')"></video>
+                        <img src="assets/bacsi.jpg" class="revpic" onclick="openModal('assets/bacsi.jpg')">
                     </div>
+
+                    
+                    <div class="modal" id="modal" onclick="closeModal()">
+                        <div class="modal-content" onclick="event.stopPropagation();">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <div id="modal-media-container"></div>
+                        </div>
+                    </div>
+                    
                 </div>
 
                 <div class="review">
