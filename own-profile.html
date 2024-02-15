@@ -22,7 +22,7 @@
             <p>Home</p>
         </a>
         
-        <a class="nav-icon-container" onclick="transferSession('index.html')">
+        <a class="nav-icon-container" onclick="transferSession('explore.html')">
             <img src="assets/explore.svg" alt="" class="nav-icon">
             <p>Explore</p>
         </a>
@@ -44,11 +44,12 @@
         <div class="popup-container" id="popupContainer" style="display: none;">
             <div class="popup" id="popup">
                 <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
-                <a href="#" onclick="openEditProfileModal();" class="edit-profile-popup">Edit Profile</a> 
+                <a href="#" onclick="viewProfile()">Edit Profile</a>
                 <a href="#" onclick="logOut()">Log Out</a>
             </div>
         </div>        
     </header>
+
 
     <main>
         <div class="profile-header">
