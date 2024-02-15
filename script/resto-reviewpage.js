@@ -117,7 +117,7 @@ function isVideo(file) {
 
 
 function openModal(mediaSrc) {
-    const modal = document.getElementById('mediaModal');
+    const modal = document.getElementById('modal');
     const modalMediaContainer = document.getElementById('modal-media-container');
 
     modalMediaContainer.innerHTML = '';
@@ -126,7 +126,7 @@ function openModal(mediaSrc) {
 
     if (isVideoMedia) {
         const video = document.createElement('video');
-        video.id = 'modal-media';
+        video.id = 'modal';
         video.src = mediaSrc;
         video.controls = true;
         video.style.width = '100%'; 
@@ -148,7 +148,7 @@ function openModal(mediaSrc) {
 
 
 function closeModal() {
-    const modal = document.getElementById('mediaModal');
+    const modal = document.getElementById('modal');
     modal.style.display = 'none';
     document.body.classList.remove('modal-open');
 }
