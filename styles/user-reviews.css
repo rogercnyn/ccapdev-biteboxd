@@ -290,6 +290,16 @@
     padding: 2%;
     border-radius: 20px;
 }
+.longtext, #replytext, .full-text, .see-more {
+    text-align: left;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    border-radius: 20px;
+}
+.full-text{
+    display: none;
+}
 
 #replytext {
     background-color: #FDF4D8;
@@ -332,3 +342,81 @@
 .options-popup a:hover {
     background-color: #efefef;
 }
+
+
+.react.btn {
+    align-items: center;
+    justify-content: center;
+}
+
+.numberoffeedback {
+    color: #929191;
+}
+
+.like-dislike {
+    font-size: 20px;
+}
+
+.react.btn:hover{
+    transform: scale(5px);
+    
+}
+
+
+.like-dislike:hover, .like-dislike.colored {
+    text-shadow: 0 0 4px black;
+}
+
+/* .react-container {
+    display: flex;
+    align-items: center;
+}
+
+.react-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 5px;
+    color: #333; 
+}
+
+.react-btn:hover {
+    color: #00f; 
+    transform: scale(1.2); 
+}
+
+.options-button {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.options-popup {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 120px;
+    box-shadow: 0 0 10px rgba(128, 153, 173, 0.5);
+    z-index: 1;
+    display: none;
+    border-radius: 10px;
+}
+
+.options-button:hover .options-popup {
+    display: block; 
+}
+
+.options-popup a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 8px 16px;
+    font-family: Tahoma;
+    font-size: 12px;
+}
+
+.options-popup a:hover {
+    background-color: #6f6c6c;
+    box-shadow: #6f6c6c;
+} */

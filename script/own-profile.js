@@ -23,3 +23,21 @@ document.addEventListener('DOMContentLoaded', function () {
     activateTab(defaultTabIndex);
 });
 
+
+function toggleSeeMore(reviewId) {
+    var truncateText = document.getElementById(reviewId);
+    var fullText = truncateText.querySelector('.full-text');
+    var seeMoreButton = truncateText.querySelector('.see-more');
+
+    var computedDisplayStyle = window.getComputedStyle(fullText).display;
+
+    if (computedDisplayStyle === 'none') {
+        truncateText.style.maxHeight = 'none'; 
+        fullText.style.display = 'inline'; 
+        seeMoreButton.innerHTML = '<b>...see less</b>';
+    } else {
+        truncateText.style.maxHeight = '60px'; 
+        fullText.style.display = 'none'; 
+        seeMoreButton.innerHTML = '<b>...see more</b>';
+    }
+}

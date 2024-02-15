@@ -8,6 +8,7 @@
         <script src="script/own-profile.js"></script>
         <script src="script/general.js"></script>
         <script src="script/navbar.js"></script>
+        <script src="script/like.js"></script>
         <title>BiteBoxd - View other user's Profile</title>
     </head>
 <body>
@@ -93,7 +94,7 @@
             <div class="content">
 
                 <div class="liked-restaurants">
-                            <div class="store-details">
+                            <div class="store-details" style="margin-top: 0%;">
     
                                 <div class="store-details-image">
                                     <img src="assets/bacsi.jpg" alt="" class="store-pic">
@@ -218,13 +219,15 @@
            <!-- Reviews -->
            <div class="content">
 
+                
+
             <div class="review">
            
                 <div class="review-panel">
 
                     <div class="profile-score">
                         <div class="profilearea">
-                            <img src="assets/avatar-f2.png" class="profilepic">
+                            <img src="assets/profile.jpg" class="profilepic">
                         </div>
                         <div class="score">
                             <h2 class="yellowscore" id="user-score">4.6</h2>
@@ -236,7 +239,7 @@
                             <h2 class="titlearea">Good meal but one try is enough!</h2>
                         
                             <div class="nametitle">
-                                <a href="others-profile.html" class="nameandtime">@Mon_1015</a>
+                                <a href="own-profile.html" class="nameandtime">makoeats</a>
                                 <p class="nameandtime"> · </p>
                                 <p class="nameandtime">February 12, 2024 8:01 am </p>
                             </div>
@@ -276,102 +279,30 @@
                             </div>
                         </div>
     
-                        <div class="reviewbody">
-                            <p id="longtext">
-                                I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
-                            </p>
-                        
-                        </div>
-                
-                    </div>
-                
-    
-                </div>
-
-                <div class="photopanel">
-                    <img src="assets/cbsisig.jpg" class="revpic">
-                    <img src="assets/cbsisig.jpg" class="revpic">
-                    <img src="assets/bacsi.jpg" class="revpic">
-                    <img src="assets/bacsi.jpg" class="revpic">
-                </div>
-            </div>
-            <div class="review">
-           
-                <div class="review-panel">
-
-                    <div class="profile-score">
-                        <div class="profilearea">
-                            <img src="assets/avatar-f2.png" class="profilepic">
-                        </div>
-                        <div class="score">
-                            <h2 class="yellowscore" id="user-score">4.6</h2>
-                        </div>
-                    </div>
-
-                    <div class="review-center-tile">
-                        <div class="score-username">
-                            <h2 class="titlearea">Good meal but one try is enough!</h2>
-                        
-                            <div class="nametitle">
-                                <a href="others-profile.html" class="nameandtime">@Mon_1015</a>
-                                <p class="nameandtime"> · </p>
-                                <p class="nameandtime">February 12, 2024 8:01 am </p>
-                            </div>
-                        </div>
-                        <div class="criteriaratings">
-                            <div class="criteriascore">
-                                <h4 class="criteria">Food Quality
-                                <div class="stars">
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span class="over-emoji">🍗</span>
-                                </div>
-                            </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Service
-                                <div class="stars">
-                                    <span>🤝</span>
-                                    <span>🤝</span>
-                                    <span>🤝</span>
-                                    <span class="over-emoji">🤝</span>
-                                    <span class="over-emoji">🤝</span>
-                                </div>
-                            </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Affordability
-                                <div class="stars">
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span class="over-emoji">💵</span>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="reviewbody">
-                            <p id="longtext">
-                                I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
-                            </p>
-                        
+                        <div class="reviewtext" id="rev1">
+                            <span class="longtext">I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!</span>
+                            <span class="full-text">However, I think it is important to note that for some people, the taste may not be good. It's a little bit spicy due to the pepper they add on the toppings. You may ask ate not to put any if spicy is not your thing.</span>
+                            <span class="see-more" onclick="toggleSeeMore('rev1')"><b>...see more</b></span>
                         </div>
                 
                     </div>
 
 
                     <div class="review-popup">
+                        <div class="react-container">
+                            <button class="like-dislike" id="like">&#128077;</button>
+                            <span class = "numberoffeedback">10</span>
+                            <button class="like-dislike" id="dislike">&#128078;</button>
+                            <span class="numberoffeedback">16</span>
+                        </div>
                         <div class="options-button" onclick="toggleOptions(this)">
-                            &#8286;
+                            &nbsp;&nbsp;&#8286;
                             <div class="options-popup">
                                 <a href="#">Edit</a>
                                 <a href="#" onclick="deleteReview(this)">Delete</a>
                             </div>
                         </div>
-                    </div>
+                    </div>                        
                 
     
                 </div>
@@ -389,7 +320,7 @@
 
                     <div class="profile-score">
                         <div class="profilearea">
-                            <img src="assets/avatar-f2.png" class="profilepic">
+                            <img src="assets/profile.jpg" class="profilepic">
                         </div>
                         <div class="score">
                             <h2 class="yellowscore" id="user-score">4.6</h2>
@@ -401,7 +332,7 @@
                             <h2 class="titlearea">Good meal but one try is enough!</h2>
                         
                             <div class="nametitle">
-                                <a href="others-profile.html" class="nameandtime">@Mon_1015</a>
+                                <a href="own-profile.html" class="nameandtime">makoeats</a>
                                 <p class="nameandtime"> · </p>
                                 <p class="nameandtime">February 12, 2024 8:01 am </p>
                             </div>
@@ -441,25 +372,30 @@
                             </div>
                         </div>
     
-                        <div class="reviewbody">
-                            <p id="longtext">
-                                I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
-                            </p>
-                        
+                        <div class="reviewtext" id="rev2">
+                            <span class="longtext">I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!</span>
+                            <span class="full-text">However, I think it is important to note that for some people, the taste may not be good. It's a little bit spicy due to the pepper they add on the toppings. You may ask ate not to put any if spicy is not your thing.</span>
+                            <span class="see-more" onclick="toggleSeeMore('rev2')"><b>...see more</b></span>
                         </div>
                 
                     </div>
 
 
                     <div class="review-popup">
+                        <div class="react-container">
+                            <button class="like-dislike" id="like">&#128077;</button>
+                            <span class = "numberoffeedback">10</span>
+                            <button class="like-dislike" id="dislike">&#128078;</button>
+                            <span class="numberoffeedback">16</span>
+                        </div>
                         <div class="options-button" onclick="toggleOptions(this)">
-                            &#8286;
+                            &nbsp;&nbsp;&#8286;
                             <div class="options-popup">
                                 <a href="#">Edit</a>
                                 <a href="#" onclick="deleteReview(this)">Delete</a>
                             </div>
                         </div>
-                    </div>
+                    </div>                        
                 
     
                 </div>
@@ -477,7 +413,7 @@
 
                     <div class="profile-score">
                         <div class="profilearea">
-                            <img src="assets/avatar-f2.png" class="profilepic">
+                            <img src="assets/profile.jpg" class="profilepic">
                         </div>
                         <div class="score">
                             <h2 class="yellowscore" id="user-score">4.6</h2>
@@ -489,7 +425,7 @@
                             <h2 class="titlearea">Good meal but one try is enough!</h2>
                         
                             <div class="nametitle">
-                                <a href="others-profile.html" class="nameandtime">@Mon_1015</a>
+                                <a href="own-profile.html" class="nameandtime">makoeats</a>
                                 <p class="nameandtime"> · </p>
                                 <p class="nameandtime">February 12, 2024 8:01 am </p>
                             </div>
@@ -529,25 +465,30 @@
                             </div>
                         </div>
     
-                        <div class="reviewbody">
-                            <p id="longtext">
-                                I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
-                            </p>
-                        
+                        <div class="reviewtext" id="rev3">
+                            <span class="longtext">I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!</span>
+                            <span class="full-text">However, I think it is important to note that for some people, the taste may not be good. It's a little bit spicy due to the pepper they add on the toppings. You may ask ate not to put any if spicy is not your thing.</span>
+                            <span class="see-more" onclick="toggleSeeMore('rev3')"><b>...see more</b></span>
                         </div>
                 
                     </div>
 
 
                     <div class="review-popup">
+                        <div class="react-container">
+                            <button class="like-dislike" id="like">&#128077;</button>
+                            <span class = "numberoffeedback">10</span>
+                            <button class="like-dislike" id="dislike">&#128078;</button>
+                            <span class="numberoffeedback">16</span>
+                        </div>
                         <div class="options-button" onclick="toggleOptions(this)">
-                            &#8286;
+                            &nbsp;&nbsp;&#8286;
                             <div class="options-popup">
                                 <a href="#">Edit</a>
                                 <a href="#" onclick="deleteReview(this)">Delete</a>
                             </div>
                         </div>
-                    </div>
+                    </div>                        
                 
     
                 </div>
@@ -559,185 +500,10 @@
                     <img src="assets/bacsi.jpg" class="revpic">
                 </div>
             </div>
-            <div class="review">
-           
-                <div class="review-panel">
-
-                    <div class="profile-score">
-                        <div class="profilearea">
-                            <img src="assets/avatar-f2.png" class="profilepic">
-                        </div>
-                        <div class="score">
-                            <h2 class="yellowscore" id="user-score">4.6</h2>
-                        </div>
-                    </div>
-
-                    <div class="review-center-tile">
-                        <div class="score-username">
-                            <h2 class="titlearea">Good meal but one try is enough!</h2>
-                        
-                            <div class="nametitle">
-                                <a href="others-profile.html" class="nameandtime">@Mon_1015</a>
-                                <p class="nameandtime"> · </p>
-                                <p class="nameandtime">February 12, 2024 8:01 am </p>
-                            </div>
-                        </div>
-                        <div class="criteriaratings">
-                            <div class="criteriascore">
-                                <h4 class="criteria">Food Quality
-                                <div class="stars">
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span class="over-emoji">🍗</span>
-                                </div>
-                            </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Service
-                                <div class="stars">
-                                    <span>🤝</span>
-                                    <span>🤝</span>
-                                    <span>🤝</span>
-                                    <span class="over-emoji">🤝</span>
-                                    <span class="over-emoji">🤝</span>
-                                </div>
-                            </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Affordability
-                                <div class="stars">
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span class="over-emoji">💵</span>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="reviewbody">
-                            <p id="longtext">
-                                I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
-                            </p>
-                        
-                        </div>
-                
-                    </div>
-
-
-                    <div class="review-popup">
-                        <div class="options-button" onclick="toggleOptions(this)">
-                            &#8286;
-                            <div class="options-popup">
-                                <a href="#">Edit</a>
-                                <a href="#" onclick="deleteReview(this)">Delete</a>
-                            </div>
-                        </div>
-                    </div>
-                
-    
-                </div>
-
-                <div class="photopanel">
-                    <img src="assets/cbsisig.jpg" class="revpic">
-                    <img src="assets/cbsisig.jpg" class="revpic">
-                    <img src="assets/bacsi.jpg" class="revpic">
-                    <img src="assets/bacsi.jpg" class="revpic">
-                </div>
-            </div>
-            <div class="review">
-           
-                <div class="review-panel">
-
-                    <div class="profile-score">
-                        <div class="profilearea">
-                            <img src="assets/avatar-f2.png" class="profilepic">
-                        </div>
-                        <div class="score">
-                            <h2 class="yellowscore" id="user-score">4.6</h2>
-                        </div>
-                    </div>
-
-                    <div class="review-center-tile">
-                        <div class="score-username">
-                            <h2 class="titlearea">Good meal but one try is enough!</h2>
-                        
-                            <div class="nametitle">
-                                <a href="others-profile.html" class="nameandtime">@Mon_1015</a>
-                                <p class="nameandtime"> · </p>
-                                <p class="nameandtime">February 12, 2024 8:01 am </p>
-                            </div>
-                        </div>
-                        <div class="criteriaratings">
-                            <div class="criteriascore">
-                                <h4 class="criteria">Food Quality
-                                <div class="stars">
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span class="over-emoji">🍗</span>
-                                </div>
-                            </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Service
-                                <div class="stars">
-                                    <span>🤝</span>
-                                    <span>🤝</span>
-                                    <span>🤝</span>
-                                    <span class="over-emoji">🤝</span>
-                                    <span class="over-emoji">🤝</span>
-                                </div>
-                            </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Affordability
-                                <div class="stars">
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span class="over-emoji">💵</span>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="reviewbody">
-                            <p id="longtext">
-                                I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!
-                            </p>
-                        
-                        </div>
-                
-                    </div>
-
-
-                    <div class="review-popup">
-                        <div class="options-button" onclick="toggleOptions(this)">
-                            &#8286;
-                            <div class="options-popup">
-                                <a href="#">Edit</a>
-                                <a href="#" onclick="deleteReview(this)">Delete</a>
-                            </div>
-                        </div>
-                    </div>
-                
-    
-                </div>
-
-                <div class="photopanel">
-                    <img src="assets/cbsisig.jpg" class="revpic">
-                    <img src="assets/cbsisig.jpg" class="revpic">
-                    <img src="assets/bacsi.jpg" class="revpic">
-                    <img src="assets/bacsi.jpg" class="revpic">
-                </div>
-            </div>
-
+            
 
         </div>
+        
 
             <!-- About -->
             <div class="content">
@@ -897,6 +663,36 @@
     </main>
     <script>
         adjustNavBar();
+
+        const likesets = document.getElementsByClassName('react-container');
+        const likes = []
+        // console.log(likeDislikeButtons)
+
+
+        Array.from(likesets).forEach(likeset => {
+            let likeButton = likeset.querySelector('#like');
+            let dislikeButton = likeset.querySelector('#dislike');
+            likes.push(new Like(likeButton, dislikeButton))
+        });
+
+        
+        Array.from(likes).forEach(like => {
+            like.initializeClick();
+        });
+
+
+
+        console.log(likes)
+        adjustNavBar();
+
+        document.getElementById("title").addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+            }
+        });
+
+
+        console.log(likes)
     </script>
 </body>
 </html>

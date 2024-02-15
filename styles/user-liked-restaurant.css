@@ -12,6 +12,7 @@
     border-radius: 15px;
 }
 
+
 meter::-webkit-meter-optimum-value {
     background-color: #7DA03E;
     border-radius: 20px;
@@ -49,7 +50,7 @@ meter {
 .store-details {
     display: flex;
     gap: 2rem;
-    margin-top: -2.5%;
+    margin-top: -3.5%;
 }
 
 .store-details-image {

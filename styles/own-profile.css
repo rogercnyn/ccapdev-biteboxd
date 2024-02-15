@@ -16,7 +16,8 @@ main {
 
 .profile-header{
     height: 40%;
-    width: 100%;
+    width: 95.2%;
+    margin-left: 20px;
     /* background-color: rgb(192, 191, 191); */
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -29,7 +30,7 @@ main {
     width: 100%;
     height: auto;
     border-radius: 15px;
-    opacity: 30%;
+    opacity: 40%;
 }
 
 .profile{

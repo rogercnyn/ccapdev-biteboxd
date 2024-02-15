@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
-    height: 5000px;
+    height: 2900px;
 }
 
 .review-bar {
@@ -199,6 +199,11 @@ margin-bottom: 100px;
 
 .container h1 {
     font-size: 2em; 
+}
+
+.star-sorting {
+    align-self: center;
+    margin-inline-end: auto;
 }
 
 
