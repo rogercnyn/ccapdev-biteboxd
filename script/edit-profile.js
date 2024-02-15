@@ -92,4 +92,41 @@ function editReview() {
     alert("Edited review published!");
 }
 
+function openEditProfileModal() {
+    var modal = document.getElementById("editProfileModal");
+    var btn = document.querySelector(".edit-profile-popup");
+    var form = document.getElementById("editProfileForm");
+
+    // Click event handler for the edit button
+    btn.onclick = function() {
+        preFillEditProfileForm(); // Prefill the edit profile form with existing data
+        modal.style.display = "block"; // Display the modal
+    };
+
+    // Submit event handler for the edit profile form
+    form.onsubmit = function(event) {
+        event.preventDefault();
+
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var bio = document.getElementById("bio").value;
+
+        document.getElementById("first-name").textContent = firstName;
+        document.getElementById("last-name").textContent = lastName;
+        document.getElementById("profile-bio").textContent = bio;
+
+        var fileInput = document.getElementById("profilePic");
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("profile-pic").src = e.target.result;
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+
+        modal.style.display = "none"; // Close the modal after submitting the form
+    };
+}
+
+
 
