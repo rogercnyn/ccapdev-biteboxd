@@ -24,6 +24,11 @@ function addRating(criterion, n) {
 }
 
 
+function searchReview(){
+    let reviews = document.getElementsByClassName("review")
+
+    Array.from(reviews).slice(0, reviews.length - 1).forEach(review => $(review).hide())
+}
 
 document.querySelector('.publish-button').addEventListener('click', handleUpload);
 document.getElementById('photo-input').addEventListener('change', handleFileSelect);
