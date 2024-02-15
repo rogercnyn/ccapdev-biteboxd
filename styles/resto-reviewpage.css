@@ -201,6 +201,11 @@ margin-bottom: 100px;
     font-size: 2em; 
 }
 
+.star-sorting {
+    align-self: center;
+    margin-inline-end: auto;
+}
+
 
 .textbox {
     width: 900px;

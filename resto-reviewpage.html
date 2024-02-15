@@ -80,9 +80,10 @@
                     <h2 class="yellowscore">4.0/5</h2>
                 </div>
                 <div class="moredetails">
-                    <p class="restodetail" id="emojip">💵💵</p>
+                    <p class="restodetail" id="emojip">💵 💵 (P125-175)</p>
                     <p class="restodetail">Filipino</p>
                     <p class="restodetail">Fastfood</p>
+                    <p class="restodetail">Open during: M-S (8:00 AM - 5:00 PM)</p>
                 </div>
                 <p class="location">Vito Cruz, Metro Manila, Philippines</p>
                 <br>
@@ -231,7 +232,15 @@
 
             <hr>
                 <div class="search-container">
-                    <img src="assets/search-icon.svg" alt="" class="search-icon">
+                    <div class="star-sorting">
+                        <p>Filter reviews: </p>
+                        <span onclick="stars.handleClick(1)" class="slider-star-rating">★</span>
+                        <span onclick="stars.handleClick(2)" class="slider-star-rating">★</span>
+                        <span onclick="stars.handleClick(3)" class="slider-star-rating">★</span>
+                        <span onclick="stars.handleClick(4)" class="slider-star-rating">★</span>
+                        <span onclick="stars.handleClick(5)" class="slider-star-rating">★</span>
+                    </div>
+                     <img src="assets/search-icon.svg" alt="" class="search-icon">
                     <input type="search" class="search-bar" placeholder="Find a review">
                     <img src="assets/clear.svg" alt="" onclick="clearSearchBar()" class="clear-icon" id="clear-icon">
                     <button class="search-button" onclick="searchReview()">
@@ -701,9 +710,11 @@
         const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'))
         const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'))
         const serviceSlider = new Slider(document.getElementsByClassName('slider-service-rating'))
+        const filterReviewSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
         priceSlider.initializeHover();
         foodQualitySlider.initializeHover();
         serviceSlider.initializeHover();
+        filterReviewSlider.initializeHover();
                 
         const likesets = document.getElementsByClassName('likeset');
         const likes = []
