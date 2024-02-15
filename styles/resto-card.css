@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 350px;
     width: 1000px;
     background-color: #f8fafa;
     border-radius: 40px;
@@ -62,11 +63,6 @@
 
 .location {
     font-family: 'Segoe UI', sans-serif;
-}
-
-.description {
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 16px;
 }
 
 .firstbatchattri {

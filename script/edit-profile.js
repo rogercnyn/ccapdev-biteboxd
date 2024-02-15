@@ -128,5 +128,32 @@ function openEditProfileModal() {
     };
 }
 
+// Get the edit review popup
+var editReviewPopup = document.getElementById("editReviewPopup");
+
+// Get the button that opens the edit review popup
+var editButton = document.getElementById("editButton");
+
+// Get the <span> element that closes the edit review popup
+var closeEditPopup = document.getElementById("closeEditPopup");
+
+// When the user clicks the button, open the edit review popup
+editButton.onclick = function() {
+    editReviewPopup.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the edit review popup
+closeEditPopup.onclick = function() {
+    editReviewPopup.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the edit review popup, close it
+window.onclick = function(event) {
+    if (event.target == editReviewPopup) {
+        editReviewPopup.style.display = "none";
+    }
+}
+
+
 
 

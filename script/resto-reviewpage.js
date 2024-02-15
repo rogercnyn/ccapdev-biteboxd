@@ -159,11 +159,6 @@ function handleUpload() {
 
     var textarea = document.getElementById("title");
 
-    if (textarea.value.trim() === '') {
-        alert('Please enter a title for your review.');
-        return;
-    }
-
     if (priceSlider.currentValue === 0 || foodQualitySlider.currentValue === 0 || serviceSlider.currentValue === 0) {
         alert('Cannot publish review with zero ratings.');
         return;
@@ -222,12 +217,12 @@ function toggleSeeMore(reviewId) {
     var computedDisplayStyle = window.getComputedStyle(fullText).display;
 
     if (computedDisplayStyle === 'none') {
-        truncateText.style.maxHeight = 'none'; 
-        fullText.style.display = 'inline'; 
+        truncateText.style.maxHeight = 'none'; // Expand the container to show full text
+        fullText.style.display = 'inline'; // Display the full text
         seeMoreButton.innerHTML = '<b>...see less</b>';
     } else {
-        truncateText.style.maxHeight = '60px'; 
-        fullText.style.display = 'none'; 
+        truncateText.style.maxHeight = '60px'; // Truncate the text by setting a maximum height
+        fullText.style.display = 'none'; // Hide the full text
         seeMoreButton.innerHTML = '<b>...see more</b>';
     }
 }

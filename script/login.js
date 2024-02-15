@@ -4,7 +4,13 @@ function checkLogin() {
     
     if (username === "makoeats" && password === "meowmeow") {
         window.location.href = "index.html?isLogged=true"
-    } else {
+    } else if (username === "borttom" && password === "topmedaddy") {
+
+        window.location.href = "resto-responsepage.html?isLogged=true"
+    }
+    
+    
+    else {
         document.getElementById("login-form").classList.add("make-login-small");
         document.getElementById("wrong-creds-text").classList.add("show-wrong-creds-text");
         document.getElementById("logo-text").classList.add("make-logo-text-small");
