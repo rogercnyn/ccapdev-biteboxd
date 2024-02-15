@@ -5,19 +5,22 @@ a {
 body {
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 header {
     display: flex;
-    background-color: #FDD247;
+    background-color: #fdd247;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    height: 93%;
     width: 6%;
+    top: 20px;
+    left: 20px;
     position: fixed;
     gap: 3rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-top-right-radius: 15px;  
+    border-radius: 50px;  
     font-size: 10px;
     text-align: center;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
