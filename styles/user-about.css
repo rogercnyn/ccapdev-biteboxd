@@ -137,7 +137,7 @@ svg{
     padding: 20px ;
     display: flex;
     flex-direction: column;
-    
+    /* width: auto; */
 }
 
 .recent-activity{
@@ -185,10 +185,11 @@ svg{
 
 .delete-recent-activity-icon{
     height: 2rem;
-    /* margin-inline-start: 90%; */
+    position: absolute;
+    right: 7%;
 }
 .delete-recent-activity{
-    margin-inline-start: 31%;
+    /* margin-inline-start: 68%; */
 }
 
 .delete-recent-activity-icon:hover {
