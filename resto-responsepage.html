@@ -118,7 +118,6 @@
             <br>
 
             <div class="publishedrevarea">
-                <hr>
                 <div class="review-and-response">
                     <div class="review"> 
                         <div class="review-panel">
@@ -129,7 +128,7 @@
                                 <div class="score">
                                     <h2 class="yellowscore" id="user-score">4.6</h2>
                                 </div>
-                                <div class="reply" onclick="injectQuill(this)">Show Reply</div>
+                                <div class="reply" onclick="injectQuill(this)">Reply</div>
 
                             </div>
     
@@ -230,14 +229,14 @@
                     <div class="responsepanel">
 
                         <div class="score-username">
-                            <h2 class="titlearea">Re: PJ Restaurant</h2>
+                            <h2 class="titlearea">Re: Ate Rica's</h2>
                         
                             <div class="nametitle">
                                 <p class="nameandtime">February 12, 2024 8:01 am </p>
                             </div>
                         </div>
                         <div id="replytext">
-
+                            Thank you for your kind review!
                         </div>
 
           
@@ -255,7 +254,7 @@
                                 <div class="score">
                                     <h2 class="yellowscore" id="user-score">4.9</h2>
                                 </div>
-                                <div class="reply" onclick="injectQuill(this)">Show Reply</div>
+                                <div class="reply" onclick="injectQuill(this)">Reply</div>
  
                             </div>
     
@@ -345,15 +344,13 @@
                     <div class="responsepanel">
 
                         <div class="score-username">
-                            <h2 class="titlearea">Re: AJ Restaurant</h2>
+                            <h2 class="titlearea">Re: Ate Rica's</h2>
                         
                             <div class="nametitle">
                                 <p class="nameandtime">February 12, 2024 8:01 am </p>
                             </div>
                         </div>
-                        <div id="replytext">
-                            weh
-                        </div>
+                        <div id="replytext"></div>
 
           
                     </div>
@@ -376,7 +373,18 @@
         let quills = []
         Array.from(quillTargets).forEach(quillTarget => quills.push(createQuill(quillTarget)));
         Array.from(replyPanels).forEach(replyPanel => $(replyPanel).hide());
-        Array.from(responsePanels).forEach(responsePanel => $(responsePanel).hide());
+        Array.from(responsePanels).forEach(responsePanel => 
+        {
+            let bodyText = responsePanel.querySelector("#replytext")
+
+            if(bodyText.innerHTML.length == 0){
+                console.log('here');
+                $(responsePanel).hide()
+            }
+
+        }
+
+        );
 
 
         adjustNavBar();
