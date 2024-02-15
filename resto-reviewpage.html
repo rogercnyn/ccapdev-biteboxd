@@ -71,11 +71,11 @@
     <main class = "main">
         <div class="restoinfo">
             <div class="restopicturearea">
-                <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
+                <img src="assets/bacsilog-main.jpeg" alt="Picture" class="restopicture">
             </div>
             <div class="restodetailsarea">
                 <div class="nameandoverallscore">
-                    <h1 class="resto-title">Bacsilog Hub</h1>
+                    <h1 class="resto-title">Ate Rica's</h1>
                     <h2 class="yellowscore">4.0/5</h2>
                 </div>
                 <div class="moredetails">
@@ -84,6 +84,8 @@
                     <p class="restodetail">Fastfood</p>
                 </div>
                 <p class="location">Vito Cruz, Metro Manila, Philippines</p>
+                <br>
+                <p class="description">Ate Rica's Bacsilog offers different type of silog meals at an affordable price. The best sellers are bacsilog, tapsilog, and hotsilog.</p>
                 <br>
                 <div class="attributes">
 
@@ -305,7 +307,11 @@
 
                         <div class="rate-review" id="likeDislikeButtons">
                             <div class="options-button" onclick="toggleOptions()">
-                                &#8286; 
+                                <button class="a" id="a">&#128077;</button>
+                                <span class = "numberoffeedback">8</span>
+                                <button class="a" id="b">&#128078;</button>
+                                <span class="numberoffeedback">9</span>
+                                &nbsp;&nbsp;&#8286; 
                                 <div class="options-popup" id="optionsPopup">
                                     <a href="#" onclick="editReview()">Edit</a>
                                     <a href="#" onclick="deleteReview()">Delete</a>
@@ -317,9 +323,9 @@
                     </div>
 
                     <div class="photopanel">
-                        <img src="assets/cbsisig.jpg" class="revpic" onclick="openModal('assets/cbsisig.jpg')">
-                        <img src="assets/cbsisig.jpg" class="revpic" onclick="openModal('assets/cbsisig.jpg')">
-                        <video src="assets/pattyvideo.mp4" class="revpic" onclick="openModal('assets/pattyvideo.mp4')"></video>
+                        <img src="assets/bacsilog1.png" class="revpic" onclick="openModal('assets/bacsilog1.png')">
+                        <img src="assets/bacsilog2.jpeg" class="revpic" onclick="openModal('assets/bacsilog2.jpeg')">
+                        <video src="assets/bacsilogvid.mp4" class="revpic" onclick="openModal('assets/bacsilogvid.mp4')"></video>
                         <img src="assets/bacsi.jpg" class="revpic" onclick="openModal('assets/bacsi.jpg')">
                     </div>
 
@@ -411,10 +417,268 @@
                     </div>
 
                     <div class="photopanel">
-                        <img src="assets/cbsisig.jpg" class="revpic" onclick="openModal('assets/cbsisig.jpg')">
-                        <img src="assets/cbsisig.jpg" class="revpic" onclick="openModal('assets/cbsisig.jpg')">
-                        <img src="assets/bacsi.jpg" class="revpic" onclick="openModal('assets/bacsi.jpg')">
-                        <img src="assets/bacsi.jpg" class="revpic" onclick="openModal('assets/bacsi.jpg')">
+                        <img src="assets/bacsilog3.jpeg" class="revpic" onclick="openModal('assets/bacsilog3.jpeg')">
+                        <img src="assets/bacsilog5.jpg" class="revpic" onclick="openModal('assets/bacsilog5.jpg')">
+                    </div>
+
+                    <div class="modal" id="modal" onclick="closeModal()">
+                        <div class="modal-content" onclick="event.stopPropagation();">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <div id="modal-media-container"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="review"> 
+                    <div class="review-panel" id="reviewPanel2">
+
+                        <div class="profile-score">
+                            <div class="profilearea">
+                                <img src="assets/avatar-f1.png" class="profilepic">
+                            </div>
+                            <div class="score">
+                                <h2 class="yellowscore" id="user-score">4.9</h2>
+                            </div>
+                        </div>
+
+                        <div class="review-center-tile">
+                            <div class="score-username">
+                                <h2 class="titlearea">THE CHEESE SAUCE!</h2>
+                            
+                                <div class="nametitle">
+                                    <a href="others-profile.html" class="nameandtime">@corah</a>
+                                    <p class="nameandtime"> · </p>
+                                    <p class="nameandtime">February 13, 2024 11:19 am </p>
+                                </div>
+                            </div>
+                            <div class="criteriaratings">
+                                <div class="criteriascore">
+                                    <h4 class="criteria">Food Quality
+                                    <div class="stars">
+                                        <span>🍗</span>
+                                        <span>🍗</span>
+                                        <span>🍗</span>
+                                        <span>🍗</span>
+                                        <span class="over-emoji">🍗</span>
+                                    </div>
+                                </div>
+        
+                                <div class="criteriascore">
+                                    <h4 class="criteria">Service
+                                    <div class="stars">
+                                        <span>🤝</span>
+                                        <span>🤝</span>
+                                        <span>🤝</span>
+                                        <span class="over-emoji">🤝</span>
+                                        <span class="over-emoji">🤝</span>
+                                    </div>
+                                </div>
+        
+                                <div class="criteriascore">
+                                    <h4 class="criteria">Affordability
+                                    <div class="stars">
+                                        <span>💵</span>
+                                        <span>💵</span>
+                                        <span>💵</span>
+                                        <span>💵</span>
+                                        <span>💵</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="reviewtext" id="rev2">
+                                <span class="longtext"><b>AMAZING FOOD!!! The cheese sauce is so good!!</b> It's also very affordable. But it took them some time to cook my order. Nonetheless, it's good!</span>
+                            </div>
+
+                            
+        
+                        </div>
+
+                        <div class="rate-review" id="likeDislikeButtons">
+                            <div class="likeset">
+                                <button class="like-dislike" id="like">&#128077;</button>
+                                <span class = "numberoffeedback">10</span>
+                                <button class="like-dislike" id="dislike">&#128078;</button>
+                                <span class="numberoffeedback">16</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="photopanel">
+                       
+                    </div>
+
+                    <div class="modal" id="modal" onclick="closeModal()">
+                        <div class="modal-content" onclick="event.stopPropagation();">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <div id="modal-media-container"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="review"> 
+                    <div class="review-panel" id="reviewPanel2">
+
+                        <div class="profile-score">
+                            <div class="profilearea">
+                                <img src="assets/avatar-f2.png" class="profilepic">
+                            </div>
+                            <div class="score">
+                                <h2 class="yellowscore" id="user-score">5.0</h2>
+                            </div>
+                        </div>
+
+                        <div class="review-center-tile">
+                            <div class="score-username">
+                                <h2 class="titlearea">They have good bacon <3</h2>
+                            
+                                <div class="nametitle">
+                                    <a href="others-profile.html" class="nameandtime">@archerreviewer</a>
+                                    <p class="nameandtime"> · </p>
+                                    <p class="nameandtime">February 14, 2024 3:55 pm </p>
+                                </div>
+                            </div>
+                            <div class="criteriaratings">
+                                <div class="criteriascore">
+                                    <h4 class="criteria">Food Quality
+                                    <div class="stars">
+                                        <span>🍗</span>
+                                        <span>🍗</span>
+                                        <span>🍗</span>
+                                        <span>🍗</span>
+                                        <span>🍗</span>
+                                    </div>
+                                </div>
+        
+                                <div class="criteriascore">
+                                    <h4 class="criteria">Service
+                                    <div class="stars">
+                                        <span>🤝</span>
+                                        <span>🤝</span>
+                                        <span>🤝</span>
+                                        <span>🤝</span>
+                                        <span>🤝</span>
+                                    </div>
+                                </div>
+        
+                                <div class="criteriascore">
+                                    <h4 class="criteria">Affordability
+                                    <div class="stars">
+                                        <span>💵</span>
+                                        <span>💵</span>
+                                        <span>💵</span>
+                                        <span>💵</span>
+                                        <span>💵</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        
+
+                            
+        
+                        </div>
+
+                        <div class="rate-review" id="likeDislikeButtons">
+                            <div class="likeset">
+                                <button class="like-dislike" id="like">&#128077;</button>
+                                <span class = "numberoffeedback">9</span>
+                                <button class="like-dislike" id="dislike">&#128078;</button>
+                                <span class="numberoffeedback">9</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="photopanel">
+                        <img src="assets/bacsilog6.jpeg" class="revpic" onclick="openModal('assets/bacsilog3.jpeg')">
+                    </div>
+
+                    <div class="modal" id="modal" onclick="closeModal()">
+                        <div class="modal-content" onclick="event.stopPropagation();">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <div id="modal-media-container"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="review"> 
+                    <div class="review-panel" id="reviewPanel2">
+
+                        <div class="profile-score">
+                            <div class="profilearea">
+                                <img src="assets/avatar-m1.png" class="profilepic">
+                            </div>
+                            <div class="score">
+                                <h2 class="yellowscore" id="user-score">4.0</h2>
+                            </div>
+                        </div>
+
+                        <div class="review-center-tile">
+                            <div class="score-username">
+                                <h2 class="titlearea">Mid</h2>
+                            
+                                <div class="nametitle">
+                                    <a href="others-profile.html" class="nameandtime">@urordinaryguy</a>
+                                    <p class="nameandtime"> · </p>
+                                    <p class="nameandtime">February 15, 2024 2:22 pm </p>
+                                </div>
+                            </div>
+                            <div class="criteriaratings">
+                                <div class="criteriascore">
+                                    <h4 class="criteria">Food Quality
+                                    <div class="stars">
+                                        <span>🍗</span>
+                                        <span>🍗</span>
+                                        <span>🍗</span>
+                                        <span>🍗</span>
+                                        <span class="over-emoji">🍗</span>
+                                    </div>
+                                </div>
+        
+                                <div class="criteriascore">
+                                    <h4 class="criteria">Service
+                                    <div class="stars">
+                                        <span>🤝</span>
+                                        <span>🤝</span>
+                                        <span class="over-emoji">🤝</span>
+                                        <span class="over-emoji">🤝</span>
+                                        <span class="over-emoji">🤝</span>
+                                    </div>
+                                </div>
+        
+                                <div class="criteriascore">
+                                    <h4 class="criteria">Affordability
+                                    <div class="stars">
+                                        <span>💵</span>
+                                        <span>💵</span>
+                                        <span>💵</span>
+                                        <span class="over-emoji">💵</span>
+                                        <span class="over-emoji">💵</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        
+
+                            
+        
+                        </div>
+
+                        <div class="rate-review" id="likeDislikeButtons">
+                            <div class="likeset">
+                                <button class="like-dislike" id="like">&#128077;</button>
+                                <span class = "numberoffeedback">1</span>
+                                <button class="like-dislike" id="dislike">&#128078;</button>
+                                <span class="numberoffeedback">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="photopanel">
+                       
                     </div>
 
                     <div class="modal" id="modal" onclick="closeModal()">
