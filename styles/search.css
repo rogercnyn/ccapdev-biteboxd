@@ -42,6 +42,7 @@ main {
     font-family: Tahoma, sans-serif;
     color: #888;
     line-height: 1.5rem;
+    overflow: hidden;
 }
 
 .peek-review {
@@ -49,11 +50,14 @@ main {
     margin-top: 2%;
     padding: 2%;
     border-radius: 20px;
+    height: 65px;
+    overflow: hidden;
 }
 
 #more {
     color: black;
     font-weight: bold;
+    display: inline;
 }
 
 .search-settings-container {
@@ -180,11 +184,13 @@ input[type="radio"] {
     padding: 2%;
     cursor: pointer;
     flex: 0 0 25%;
+    max-height: 150px;
 }
 
 
 .result-box:hover {
-    box-shadow: 0 0 10px rgba(128, 153, 173, 0.5);
+    box-shadow: 0 0 15px rgba(128, 153, 173, 0.5);
+    border-radius: 20px;
 }
 
 .reviewed-by {
@@ -205,7 +211,7 @@ input[type="radio"] {
     display: flex;
     gap: 1.5rem;
     height: 100%;
-    width: 90%;
+    width: 100%;
 }
 
 .store-details-image {
@@ -418,7 +424,8 @@ input[type="radio"] {
 
 .load-more-container {
     text-align: center;
-    margin-top: 25px;
+    margin-top: 20px;
+    padding-bottom: 20px;
 }
 
 .load-more-button {

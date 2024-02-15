@@ -170,6 +170,9 @@ hr {
     background-color: #f8f8f8;
     display:flex;
     flex-direction: column;
+
+    justify-content: center;
+    text-align: center;
 }
 
 .resto-container:hover {
@@ -182,6 +185,7 @@ hr {
 
 .title {
     font-size: 23px;
+    text-align: center;
     font-family: 'Segoe UI';
 }
 
@@ -191,6 +195,9 @@ hr {
     font-family: 'Segoe UI';
     height: 20%;
     color: #888;
+
+    justify-content: center;
+    text-align: center;
 }
 
 .text-area {
