@@ -8,6 +8,7 @@
     padding: 1%;
     position: relative;
     gap: 0.5rem;
+
 }
 
 .review-panel {
@@ -30,6 +31,10 @@
 .likeset{
     align-items: center;
     justify-content: center;
+}
+
+.numberoffeedback {
+    color: #929191;
 }
 
 .rate-review {
@@ -104,9 +109,27 @@
     padding-bottom: 10px;
     max-height: 120px;
     overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
+.reviewtext {
+    padding-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 120px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 10px
+}
 
+.full-text{
+    display: none;
+
+}
+
+.see-more-link{
+    cursor: pointer;
+}
 
 .criterialbl {
     margin-right: 20px;
@@ -223,18 +246,21 @@
 }
 
 .longtext {
+    margin-bottom: 0;
     overflow: hidden;
     max-height: 300px;
     transition: max-height 0.3s ease;
 }
 
-.longtext, #replytext {
+.see-more {
+    cursor: pointer;
+}
+
+.longtext, #replytext, .full-text, .see-more {
     text-align: left;
     font-family: 'Segoe UI', sans-serif;
     font-size: 13px;
     line-height: 20px;
-    background-color: #f8f8f8;
-    padding: 2%;
     border-radius: 20px;
 }
 

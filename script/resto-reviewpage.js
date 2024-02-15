@@ -209,28 +209,21 @@ function deleteReview() {
     alert("Review deleted!");
 }
 
-function toggleText(reviewId, seeMoreLinkId, reviewPanelId) {
-    var review = document.getElementById(reviewId);
-    var seeMoreLink = document.getElementById(seeMoreLinkId);
-    var reviewPanel = document.getElementById(reviewPanelId);
+function toggleSeeMore() {
+    var truncateText = document.getElementById('rev');
+    var fullText = truncateText.querySelector('.full-text');
+    var seeMoreButton = truncateText.querySelector('.see-more');
 
-    // Store the original content if not already stored
-    if (!review.originalContent) {
-        review.originalContent = review.innerHTML;
-    }
+    var computedDisplayStyle = window.getComputedStyle(fullText).display;
 
-    if (review.style.maxHeight) {
-        // If it's expanded, collapse it
-        review.innerHTML = review.originalContent;
-        review.style.maxHeight = null;
-        seeMoreLink.innerHTML = '<b>...see more</b>';
-        reviewPanel.style.maxHeight = null;
+    if (computedDisplayStyle === 'none') {
+        truncateText.style.maxHeight = 'none'; // Expand the container to show full text
+        fullText.style.display = 'inline'; // Display the full text
+        seeMoreButton.innerHTML = '<b>...see less</b>';
     } else {
-        // If it's collapsed, expand it
-        review.innerHTML = review.originalContent + " music. It's very vibey and all. Many Lasallians would love this place. I swear! Try it guys! It's very vibey and all. Many Lasallians would love this place. I swear! Try it guys! It's very vibey and all. Many Lasallians would love this place. I swear! Try it guys! It's very vibey and all. Many Lasallians would love this place. I swear! Try it guys!";
-        review.style.maxHeight = review.scrollHeight + "px";
-        seeMoreLink.innerHTML = '<b>...see less</b>';
-        reviewPanel.style.maxHeight = reviewPanel.scrollHeight + "px";
+        truncateText.style.maxHeight = '60px'; // Truncate the text by setting a maximum height
+        fullText.style.display = 'none'; // Hide the full text
+        seeMoreButton.innerHTML = '<b>...see more</b>';
     }
 }
 
