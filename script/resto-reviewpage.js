@@ -209,8 +209,8 @@ function deleteReview() {
     alert("Review deleted!");
 }
 
-function toggleSeeMore() {
-    var truncateText = document.getElementById('rev');
+function toggleSeeMore(reviewId) {
+    var truncateText = document.getElementById(reviewId);
     var fullText = truncateText.querySelector('.full-text');
     var seeMoreButton = truncateText.querySelector('.see-more');
 
