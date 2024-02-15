@@ -211,6 +211,7 @@
     height: 50px;
     border-radius: 50px;
     border: 1px solid black;
+    object-fit: cover;
 }
 
 .score-username{
