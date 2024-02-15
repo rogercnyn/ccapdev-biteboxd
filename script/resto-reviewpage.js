@@ -186,17 +186,15 @@ function detectLogin() {
     let publishrev = document.getElementById('publishreview')
     let logInArea = document.getElementById('cannot-publish')
 
-
-    // console.log(publishrev)
-    if(isLogged) {
+    if (isLogged) {
         $(logInArea).hide();
         $(publishrev).show();
     } else {
         $(publishrev).hide();
         $(logInArea).show();
     }
-
 }
+
 
 function toggleOptions() {
     var popup = document.getElementById("optionsPopup");
@@ -211,15 +209,29 @@ function deleteReview() {
     alert("Review deleted!");
 }
 
-function toggleText() {
-    var longText = document.getElementById('longtext');
-    var seeMoreLink = document.getElementById('seeMoreLink');
+function toggleText(reviewId, seeMoreLinkId, reviewPanelId) {
+    var review = document.getElementById(reviewId);
+    var seeMoreLink = document.getElementById(seeMoreLinkId);
+    var reviewPanel = document.getElementById(reviewPanelId);
 
-    if (longText.style.maxHeight) {
-        longText.style.maxHeight = null;
+    // Store the original content if not already stored
+    if (!review.originalContent) {
+        review.originalContent = review.innerHTML;
+    }
+
+    if (review.style.maxHeight) {
+        // If it's expanded, collapse it
+        review.innerHTML = review.originalContent;
+        review.style.maxHeight = null;
         seeMoreLink.innerHTML = '<b>...see more</b>';
+        reviewPanel.style.maxHeight = null;
     } else {
-        longText.style.maxHeight = longText.scrollHeight + "px";
+        // If it's collapsed, expand it
+        review.innerHTML = review.originalContent + " music. It's very vibey and all. Many Lasallians would love this place. I swear! Try it guys! It's very vibey and all. Many Lasallians would love this place. I swear! Try it guys! It's very vibey and all. Many Lasallians would love this place. I swear! Try it guys! It's very vibey and all. Many Lasallians would love this place. I swear! Try it guys!";
+        review.style.maxHeight = review.scrollHeight + "px";
         seeMoreLink.innerHTML = '<b>...see less</b>';
+        reviewPanel.style.maxHeight = reviewPanel.scrollHeight + "px";
     }
 }
+
+

@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     width: 850px;
-    height: 325px;
     border-bottom: 1px solid #d1d1d1;
     margin-bottom: 30px;
     padding: 1%;
@@ -15,6 +14,8 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
+    max-height: 500px;
+    transition: max-height 0.3s ease;
 }
 
 .review-center-tile {
@@ -101,6 +102,8 @@
 
 .reviewbody{
     padding-bottom: 10px;
+    max-height: 120px;
+    overflow: hidden;
 }
 
 
@@ -115,6 +118,7 @@
     flex-direction: row;
     gap: 15px;
     padding-left: 90px;
+    margin-bottom: 20px;
 }
 
 
@@ -218,7 +222,13 @@
     
 }
 
-#longtext, #replytext {
+.longtext {
+    overflow: hidden;
+    max-height: 300px;
+    transition: max-height 0.3s ease;
+}
+
+.longtext, #replytext {
     text-align: left;
     font-family: 'Segoe UI', sans-serif;
     font-size: 13px;
