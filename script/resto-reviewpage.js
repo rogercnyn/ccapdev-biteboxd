@@ -259,7 +259,7 @@ function toggleSeeMore(reviewId) {
     if (computedDisplayStyle === 'none') {
         truncateText.style.maxHeight = 'none'; 
         fullText.style.display = 'inline'; 
-        seeMoreButton.innerHTML = '<b>...see less</b>';
+        seeMoreButton.innerHTML = '<b>see less</b>';
     } else {
         truncateText.style.maxHeight = '60px'; 
         fullText.style.display = 'none'; 
