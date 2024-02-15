@@ -17,6 +17,7 @@
     gap: 2rem;
     max-height: 500px;
     transition: max-height 0.3s ease;
+    padding: 2%;
 }
 
 .review-center-tile {
@@ -266,6 +267,7 @@
 
 #replytext {
     background-color: #FDF4D8;
+    padding: 2%;
 }
 
 .responsepanel {
