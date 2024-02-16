@@ -4,7 +4,7 @@ function checkLogin() {
     
     if (username === "makoeats" && password === "meowmeow") {
         window.location.href = "index.html?isLogged=true"
-    } else if (username === "borttom" && password === "topmedaddy") {
+    } else if (username === "borttom" && password === "codewithryan") {
 
         window.location.href = "resto-responsepage.html?isLogged=true"
     }
