@@ -84,6 +84,22 @@
 }
 
 
+.responsepanel {
+    background-color: #f8f8f8;
+    padding: 4%;
+
+    width: 70%;
+    font-family: 'Segoe UI';
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-inline-start: auto;
+    
+    border-radius: 25px;
+
+}
+
+
 #editor {
     height: 100px;
     font-family: 'Segoe UI', sans-serif;
