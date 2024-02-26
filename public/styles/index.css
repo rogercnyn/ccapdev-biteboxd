@@ -1,0 +1,63 @@
+
+@import "navbar.css";
+@import "base.css";
+@import "search-bar.css";
+
+
+main {
+    /* position */
+    flex: 1; 
+    margin-left: 2%;
+
+    /* inside */
+    display: flex;
+    flex-direction: row;
+}
+
+
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+.background {
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+    right: 0;
+}
+
+.search-bar{
+    width: 100%;
+    height: 15%;
+    border-radius: 20px;
+}
+
+.search-button {
+    margin-left: 1%;
+}
+
+.clear-icon {
+    margin-left: -25%;
+}
+
+
+
+.search-button {
+    /* position */
+    height: 15%;
+    width: 20%;
+    border-radius: 20px;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 70%;
+    width: 40%;
+    margin-left: 10%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+

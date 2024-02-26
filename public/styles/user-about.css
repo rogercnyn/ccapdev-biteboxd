@@ -1,0 +1,197 @@
+
+/* About */
+
+/* Circle Meter (with animation) */
+.rating-labelled{
+    width: 160px;
+    height: 160px;
+    position: relative;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.outer{
+    width: 120px;
+    height: 120px;
+    padding: 20px;
+	box-shadow: 0 5px 15px 0px rgba(194, 187, 187, 0.6);
+    border-radius: 50%;
+}
+
+.inner{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    border: 0.5px solid rgb(225, 223, 223);
+	box-shadow: inset 0 5px 15px 0px rgba(194, 187, 187, 0.6);
+    border-radius: 50%;
+}
+
+.rating-label-percentage{
+    display: flex;
+    margin-left: 30%;
+    margin-top: 15px;
+    font-size: 11px;
+}
+
+.rating-label{
+    padding-right: 5px;
+}
+
+.heart{
+    display: flex;
+    height: 40px;
+}
+
+.tomato{
+    display: flex;
+    height: 55px;
+
+}
+
+#like{
+    height: 70px;
+}
+
+
+.heart-rating{
+    fill: none;
+    stroke:#f5c012;
+    stroke-width: 20px;
+    stroke-dasharray: 450;
+    stroke-dashoffset: 450;
+    animation: anim-heart 2s linear forwards;
+}
+
+#number{
+    margin-left: 3px;
+    font-weight: 300;
+}
+
+.tomato-rating{
+    fill: none;
+    stroke:#f5c012;
+    stroke-width: 20px;
+    stroke-dasharray: 450;
+    stroke-dashoffset: 450;
+    animation: anim-tomato 2s linear forwards;
+}
+
+
+.credibility-rating{
+    fill: none;
+    stroke:#f5c012;
+    stroke-width: 20px;
+    stroke-dasharray: 450;
+    stroke-dashoffset: 450;
+    animation: anim-credibility 2s linear forwards;
+}
+
+
+@keyframes anim-heart {
+    100%{
+        stroke-dashoffset: 157.5;
+    }
+}
+@keyframes anim-credibility {
+    100% {
+        stroke-dashoffset: 40.5; 
+    }
+}
+@keyframes anim-tomato {
+    100% {
+        stroke-dashoffset: 360; 
+    }
+}
+
+svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+.user-ratings-container{
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.divider{
+    height: 70px;
+    border-bottom: 1px solid rgba(218, 218, 218, 0.864);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* recent Activities */
+.recent-activities-container{
+    padding: 20px ;
+    display: flex;
+    flex-direction: column;
+    /* width: auto; */
+}
+
+.recent-activity{
+    border: 1px solid rgba(218, 218, 218, 0.864);
+    /* border-radius: 15px; */
+    margin-bottom: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+.avatar-container-recent-activity{
+    left: 25%;
+    top:4%
+}
+
+.avatar-border-recent-activity{
+    width: 100%;
+    height: 30%;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.avatar-recent-activity{
+    width: 80px;
+	height: 80px;
+	box-sizing: border-box;
+    position: relative;
+    background-color: aliceblue;
+
+    left: 150 px;
+	border: 5px white solid;
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 0 5px 15px 0px rgba(194, 187, 187, 0.6);
+	img { width: 100%; height: auto; }
+}
+
+.recent-activities-container h3{
+    margin-bottom: 20px;
+}
+
+
+.delete-recent-activity-icon{
+    height: 2rem;
+    position: absolute;
+    right: 7%;
+}
+.delete-recent-activity{
+    /* margin-inline-start: 68%; */
+}
+
+.delete-recent-activity-icon:hover {
+    filter: invert(21%) sepia(95%) saturate(7448%) hue-rotate(357deg) brightness(101%) contrast(115%);
+}

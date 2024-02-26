@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/signup.css">
+    <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
+    <script src="script/general.js"></script>
+
+    <!-- noty -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/noty@3.1.4/lib/noty.css">
+    <script src="https://cdn.jsdelivr.net/npm/noty@3.1.4/lib/noty.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+    
+    
+    <title>BiteBoxd - Sign up</title>
+    <script src="script/signup.js"></script>    
+</head>
+<body>
+    <header>
+        <div class="back-button">
+            <a href="index.html">
+                <img src="assets/back.png" alt="" class="back">
+            </a>
+        </div>
+        <button class="redirect-button" onclick="window.location.href = 'login.html'">
+            <a href="login.html" class="redirect">Log In</a>
+        </button>
+    </header>
+    <main>
+        <div class="logo-big">
+            <img src="assets/logo.png" alt="" class="logo">
+        </div>
+        <div class="yellow-box login" id="yellow-box">
+            <div class="sliders">
+                <div class="ellipse ellipse-clicked" id="ellipse-1"></div>
+                <div class="ellipse" id="ellipse-2"></div>
+                <div class="ellipse" id="ellipse-3"></div>
+            </div>
+
+            <p class="logo-text">Sign Up</p>
+
+            <form class="login-form" id="form1">
+                <div class="name-box">
+                    <div class="box first-name-box">
+                        <p class="input-label">First Name</p>
+                        <input type="text" id="first-name" data-parsley-trigger="change" required data-parsley-pattern="^[a-zA-Z\s]+$" >
+                    </div>
+                    <div class="box last-name-box">
+                        <p class="input-label">Last Name</p>
+                        <input type="text" id="last-name"  data-parsley-trigger="change"  required data-parsley-pattern="^[a-zA-Z\s]+$">
+                    </div>
+                </div>
+            
+                <div class="box username-box">
+                    <p class="input-label">Username</p>
+                    <input type="text" id="username"  data-parsley-trigger="change" required data-parsley-pattern="^[a-zA-Z0-9]+$"> 
+                </div>
+                <div class="box email-box">
+                    <p class="input-label">Email</p>
+                    <input type="email" id="email" name="email" required data-parsley-type="email" data-parsley-trigger="change">
+                </div>
+            
+                <div class="box password-box">
+                    <p class="input-label">Password</p>
+                    <input type="password" id="password" name="password" required data-parsley-minlength="8" data-parsley-trigger="change">  
+                    <img src="assets/see.svg" alt="" class="show-password" id="show-password" onclick="togglePasswordVisibility()">
+                </div>
+            
+                <div class="box confirm-password-box password-box">
+                    <p class="input-label">Confirm Password</p>
+                    <input type="password" id="password" name="password" required data-parsley-minlength="8" data-parsley-trigger="change">
+                    <img src="assets/see.svg" alt="" class="show-password" id="show-password" onclick="togglePasswordVisibility()">
+                </div>
+            
+                <div class="action-button-container">
+                    <button class="action-button" id="toForm2">Continue</button>
+                </div>
+            </form>
+
+            <div class="login-form hide-form" id="form2">
+                <div class="yellow-box-container tag-layers" id="form2container">
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)">Salty</div>
+                        <div class="tag" onclick="toggleTag(this)">Sweet</div>
+                    </div>
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)">Sour</div>
+                        <div class="tag" onclick="toggleTag(this)">Bitter</div>
+                        <div class="tag" onclick="toggleTag(this)">Japanese</div>
+                    </div>
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)">Chinese</div>
+                        <div class="tag" onclick="toggleTag(this)">Italian</div>
+                        <div class="tag" onclick="toggleTag(this)">Korean</div>
+                    </div>
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)">Filipino</div>
+                        <div class="tag" onclick="toggleTag(this)">Indian</div>
+                    </div>
+                    <div class="action-button-container">
+                        <button class="action-button" id="toForm3">Sign up</button>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="login-form hide-form" id="form3">
+                <form class="yellow-box-container  avatar-container">
+                    <div class="two-avatar">
+                        <div class="pic-option" onclick="clickAvatar(this)"><img src="assets/avatar-f1.png" alt="" class="avatar"></div>
+                        <div class="pic-option" onclick="clickAvatar(this)"><img src="assets/avatar-f2.png" alt="" class="avatar"></div>
+                    </div>
+                    <div class="two-avatar">
+                        <div class="pic-option" onclick="clickAvatar(this)"><img src="assets/avatar-m1.png" alt="" class="avatar"></div>
+                        <div class="pic-option" onclick="triggerFileInput(this)">   
+                             <input type="file" id="avatar-upload" class="avatar-upload">   
+                            <img src="assets/upload.svg" alt="" class="upload-icon">                     </div>
+                    </div>
+
+                    <div class="action-button-container">
+                        <button class="action-button">Sign up</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="policy">
+            <p>By signing in to BiteBoxd, you agree to our Terms and Privacy Policy.</p>
+        </div>
+    </main>
+
+    <script>
+        $(document).ready(function() {
+            $('#form1').parsley();
+
+            $('#form1').on('submit', function(e) {
+                if ($('#form1').parsley().isValid()) {
+                    document.getElementById("yellow-box").classList.add('turn-white');
+                    document.getElementById('form1').classList.add('hide-form');
+                    document.getElementById('form2').classList.remove('hide-form');
+                
+                    document.getElementById('ellipse-2').classList.add('ellipse-clicked');
+                    document.getElementById('form2container').classList.add('adjustForm2');
+                    document.getElementById('toForm3').classList.add('adjustButton2');
+                } 
+                e.preventDefault(); // Prevent form submission
+            });
+        });           
+      initializeSignUp(); 
+    </script>
+    
+    
+</body>
+</html>

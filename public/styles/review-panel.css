@@ -1,0 +1,276 @@
+
+.review {
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+    border-bottom: 1px solid #d1d1d1;
+    margin-bottom: 30px;
+    padding: 1%;
+    position: relative;
+    gap: 0.5rem;
+
+}
+
+.review-panel {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    max-height: 500px;
+    transition: max-height 0.3s ease;
+    padding: 2%;
+}
+
+.review-center-tile {
+    /* ; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+
+}
+
+.likeset{
+    align-items: center;
+    justify-content: center;
+}
+
+.numberoffeedback {
+    color: #929191;
+}
+
+.rate-review {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    opacity: 80%;
+}
+
+.like-dislike {
+    font-size: 20px;
+}
+
+.rate-review button {
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transition: filter 0.3s, opacity 0.3s;
+}
+
+
+.criteriaratearea {
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.criteriarate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#user-score {
+    font-size: 25px;
+}
+
+.yellowscore {
+    background-color:#FDD247;
+    padding: 3px;
+    border-radius: 5px;
+    color: black;
+    font-size: 20px;
+}
+
+.criteriaratings {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 70px;
+    padding-bottom: 10px;
+}
+
+.criteriascore {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.criteria {
+    margin-right: 10px;
+}
+
+
+.reviewbody{
+    padding-bottom: 10px;
+    max-height: 120px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.reviewtext {
+    padding-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 120px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 10px
+}
+
+.full-text{
+    display: none;
+
+}
+
+.see-more-link{
+    cursor: pointer;
+}
+
+.criterialbl {
+    margin-right: 20px;
+}
+
+
+.photopanel{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding-left: 90px;
+    margin-bottom: 20px;
+}
+
+
+.revpic {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.photopanel {
+    display: flex;
+    gap: 10px;
+  }
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.modal-content {
+    max-width: 80%;
+    max-height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+#modal-media {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.profile-score{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.profilepic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid black;
+    object-fit: cover;
+}
+
+.score-username{
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    gap: -10px;
+}
+
+.score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+
+}
+
+.nametitle{
+    display: flex;
+}
+
+.nameandtime {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13px;
+    margin-right: 5px;
+    color: rgb(164, 163, 163);
+    margin-bottom: 5px;
+    margin-top:5px;
+}
+
+.over-emoji{
+    opacity: 30%;
+    
+}
+
+.longtext {
+    margin-bottom: 0;
+    overflow: hidden;
+    max-height: 300px;
+    transition: max-height 0.3s ease;
+}
+
+.see-more {
+    cursor: pointer;
+}
+
+.longtext, #replytext, .full-text, .see-more {
+    text-align: left;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    border-radius: 20px;
+}
+
+#replytext {
+        /* background-color: #fcfcfc; */
+        padding: 2%;
+}
+
+.responsepanel {
+    margin-bottom: 2%;
+}

@@ -1,0 +1,15 @@
+.ql-container {
+    /* border: none; */
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid black;
+}
+.ql-toolbar {
+    border-bottom: none !important;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+}
+.ql-editor {
+    font-family: "Segoe UI";
+}
+

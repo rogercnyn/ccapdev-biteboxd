@@ -1,0 +1,66 @@
+
+@import "base.css";
+@import "common-login-signup.css";
+
+
+.username-box {
+    flex: 0 0 30%;
+}
+
+.password-box {
+    flex: 0 0 38%;
+}
+
+
+#forgot {
+    opacity: 100%;
+    margin-top: 3%;
+    align-self: flex-end;
+    font-family: 'Segoe UI';
+    font-size: 12px;
+}
+
+
+
+a {
+    color: #4D4747;
+}
+
+
+
+
+/* js related css */
+
+.wrong-creds-text {
+    display: none;
+} 
+
+.make-logo-text-small {
+    flex: 0 0 20%;
+}
+
+
+.make-login-small {
+    gap: 0.4rem;
+}
+
+
+.show-wrong-creds-text {
+    color: red;
+    font-size: 12px;
+    text-align: start;
+    display: block;
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}

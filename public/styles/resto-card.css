@@ -1,0 +1,182 @@
+/* kasama na din yung review header */
+
+.restoinfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 1000px;
+    background-color: #f8fafa;
+    border-radius: 40px;
+    padding: 2%;
+    font-weight: 300;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.resto-title {
+    font-family: 'DM Sans';
+    font-weight: 900;
+    font-size: 80px;
+    background-color: black;
+    /* background: linear-gradient(to right, #888 0%, #000 50%, #888 100%); */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.attributes {
+    font-family: 'Segoe UI', sans-serif;
+    color: #222;
+}
+
+.nameandoverallscore {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.moredetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 10px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.restodetail {
+    font-size: 12px;
+    /* border: 1px solid black; */
+    background-color: #f2f2f8;
+    border-radius: 20px;
+    padding: 1% 1%;
+}
+
+
+.attributes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.location {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.description {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+}
+
+.firstbatchattri {
+    display: flex;
+    flex-direction: column;
+}
+
+.secondbatchattri {
+    display: flex;
+    flex-direction: column;
+}
+
+.thirdbatchattri {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    gap: 5px;
+}
+
+.feature h3 {
+    margin-right: 5px;
+}
+
+.checkmark {
+color: green;
+}
+
+.cross {
+color: red;
+}
+
+.restopicturearea {
+    display: flex;
+    padding-left: 30px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.restopicture img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain;
+}
+
+.restopicture{
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    border-radius: 10px;
+}
+
+.restodetailsarea {
+    padding-left: 15px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.reviewarea{
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    height: 5000px;
+    width: 1000px;
+}
+
+.reviewheader {
+    width: 1000px;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    align-items: center;
+    gap: 10px;
+}
+
+.reviewoverall {
+    background-color:#FDD247;
+    padding: 3px;
+    border-radius: 5px;
+    color: black;
+    font-size: 18px;
+}
+
+.publishrevarea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.publishreview {
+    width: 900px; 
+    padding: 20px;
+    border-radius: 8px;
+}
+
+
+hr {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border: 0.5px solid gray;
+}
