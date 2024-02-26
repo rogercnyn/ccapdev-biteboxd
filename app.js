@@ -8,12 +8,6 @@ const PORT = 3000;
 
 dotenv.config();
 
-function middleware(req, res, next) {
-    console.log('Middleware executed');
-    next(); 
-}
-
-
 async function main() {
     const app = express();
 
@@ -32,8 +26,6 @@ async function main() {
 
 
     app.use(express.json());
-    // Apply routes to express app
-    // app.use(middleware)
     app.use(router);
 
     app.listen(PORT, async function() {
