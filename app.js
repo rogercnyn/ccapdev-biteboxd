@@ -1,12 +1,19 @@
-const express = require('express')
 const dotenv = require('dotenv');
+dotenv.config();
+
+// dependencies
+const express = require('express')
 const exphbs = require('express-handlebars');
-const router = require('./src/routes/router.js');
 const path = require("path")
+
+//  requires dot env configuration already
+const connect = require('./src/models/db.js');
+const router = require('./src/routes/router.js');
+
+
 
 const PORT = 3000;
 
-dotenv.config();
 
 async function main() {
     const app = express();
@@ -30,6 +37,14 @@ async function main() {
 
     app.listen(PORT, async function() {
         console.log(`express app is now listening on port ${PORT}`);
+        try {
+            await connect();
+            console.log(`Now connected to MongoDB`);
+
+        } catch (err) {
+            console.log('Connection to MongoDB failed: ');
+            console.error(err);
+        }
     });
 }
 
