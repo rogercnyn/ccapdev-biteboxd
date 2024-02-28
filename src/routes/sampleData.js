@@ -4,13 +4,11 @@ const RestaurantReply = require('../models/RestaurantReply.js');
 const Review = require('../models/Review.js');
 
 
-function dropAll() {
-    await Promise.all([
-        Review.collection.drop(),
-        RestaurantReply.collection.drop(),
-        Profile.collection.drop(),
-        Restaurant.collection.drop()
-    ]);
+function dropAll(){
+    Review.collection.drop();
+    RestaurantReply.collection.drop();
+    Profile.collection.drop();
+    Restaurant.collection.drop();
 }
 
 // will automatically run when imported
