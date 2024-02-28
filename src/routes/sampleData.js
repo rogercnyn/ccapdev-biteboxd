@@ -5,8 +5,8 @@ const Review = require('../models/Review.js');
 
 
 function dropAll(){
-    Review.collection.drop();
     RestaurantReply.collection.drop();
+    Review.collection.drop();
     Profile.collection.drop();
     Restaurant.collection.drop();
 }
