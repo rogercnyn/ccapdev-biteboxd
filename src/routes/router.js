@@ -1,7 +1,10 @@
 const { Router }= require('express');
 const path = require('path');
 const fs = require('fs');
-const Review = require('../models/Review.js')
+const Review = require('../models/Review.js');
+const Profile = require('../models/Profile.js');
+const Restaurant = require('../models/Restaurant.js');
+const RestaurantReply = require('../models/RestaurantReply.js');
 
 const router = Router();
 const viewsDir = path.join(path.resolve(__dirname, '..'), 'views');
@@ -24,6 +27,9 @@ htmlFiles.forEach(fileName =>
 router.get('/', routeToFile('index.html'));
 
 
+const sampleRestaurantReply = new RestaurantReply({
+    body: 'hehehe'
+});
 
 const sampleReview = new Review({
     rating: 4,
@@ -37,13 +43,65 @@ const sampleReview = new Review({
     media: ['media_url_1', 'media_url_2'],
 });
 
+const sampleProfile = new Profile({
+    username: 'Makowa',
+    image: 'pic1.jpg',
+    bgImage: 'pic1.jpg',
+    firstName: 'Mako',
+    lastName: 'Pangan',
+    bio: 'Has the best taste in Taft!'
+})
+
+const sampleRestaurant = new Restaurant({
+    name: 'Jollibee',
+    location: 'Taft Avenue',
+    username: 'jollibee_taft',
+    password: 'bidaangsaya2024',
+    startPriceRange: '50',
+    endPriceRange: '1000',
+    description: 'Home of the best Pinoy fried chicken.'
+});
+
+
+// for debugging only, remove once implementation
+
+Review.collection.drop();
+Profile.collection.drop();
+Restaurant.collection.drop();
+RestaurantReply.collection.drop();
+
 // Save the document to the database
+
+sampleRestaurantReply.save()
+    .then(savedRestaurantReply => {
+        console.log('Sample restaurant reply saved successfully:', savedRestaurantReply);
+    })
+    .catch(error => {
+        console.error('Error saving restaurant reply review:', error);
+    });
+
 sampleReview.save()
     .then(savedReview => {
         console.log('Sample review saved successfully:', savedReview);
     })
     .catch(error => {
         console.error('Error saving sample review:', error);
+    });
+
+sampleProfile.save()
+    .then(savedProfile => {
+        console.log('Sample profile saved successfully:', savedProfile);
+    })
+    .catch(error => {
+        console.error('Error saving profile review:', error);
+    });
+
+sampleRestaurant.save()
+    .then(savedRestaurant => {
+        console.log('Sample restaurant saved successfully:', savedRestaurant);
+    })
+    .catch(error => {
+        console.error('Error saving restaurant review:', error);
     });
 
 module.exports = router;
