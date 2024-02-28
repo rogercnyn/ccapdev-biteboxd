@@ -12,8 +12,6 @@ const restaurantSchema = new Schema({
     username: {type: String, required: true},
     password: {type: String, required: true},
 
-    //rating: {type: Schema.Types.ObjectId, ref: 'RatingSet', required: true},
-
     startPriceRange: {type: Number, required: true},
     endPriceRange: {type: Number, required: true},
 
@@ -24,6 +22,12 @@ const restaurantSchema = new Schema({
 
     attribute: { type: [Number], required: true },
     tag: { type: [String], required: true },
+
+    noOfFiveStars: {type : Number, required: true},
+    noOfFourStars: {type : Number, required: true},
+    noOfThreeStars: {type : Number, required: true},
+    noOfTwoStars: {type : Number, required: true},
+    noOfOneStars: {type : Number, required: true},
 });
 
 const Restaurant = model('restaurant', restaurantSchema); 

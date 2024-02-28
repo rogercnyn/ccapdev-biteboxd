@@ -2,15 +2,13 @@ const Restaurant = require('../models/Restaurant.js');
 const Review = require('../models/Review.js');
 const Profile = require('../models/Profile.js');
 const RestaurantReply = require('../models/RestaurantReply.js');
-const RatingSet = require('../models/RatingSet.js');
 
 
 function dropAll(){
-    Restaurant.collection.drop();
-    RatingSet.collection.drop();
+    RestaurantReply.collection.drop();
     Review.collection.drop();
     Profile.collection.drop();
-    RestaurantReply.collection.drop();
+    Restaurant.collection.drop();
 }
 
 // will automatically run when imported
@@ -27,7 +25,12 @@ const sampleRestaurant = new Restaurant({
     attribute: [1, 0, 1, 0, 
                 1, 0, 1, 0,
                 0, 1, 0, 1],
-    tag: ['Filipino', 'Fastfood']
+    tag: ['Filipino', 'Fastfood'],
+    noOfFiveStars: 10,
+    noOfFourStars: 1,
+    noOfThreeStars: 22,
+    noOfTwoStars: 13,
+    noOfOneStars: 2
 });
 
 const sampleProfile = new Profile({
@@ -37,12 +40,6 @@ const sampleProfile = new Profile({
     firstName: 'Mako',
     lastName: 'Pangan',
     bio: 'Has the best taste in Taft!'
-});
-
-
-const sampleRatingSet = new RatingSet({
-    restaurantId: sampleRestaurant._id,
-    noOfRatings: 5
 });
 
 const sampleReview = new Review({
@@ -55,13 +52,11 @@ const sampleReview = new Review({
     noOfDislikes: 2,
     title: 'Sample Review Title',
     body: 'This is a sample review body text.',
-    media: ['media_url_1', 'media_url_2'],
+    media: ['media_url_1', 'media_url_2']
 });
 
 
 const sampleRestaurantReply = new RestaurantReply({
-    reviewId: sampleReview._id,
-    rating: sampleRatingSet._id,
     restaurantId: sampleRestaurant._id,
     body: 'Thank you for visiting our resto! <3',
     isEdited: true
@@ -72,6 +67,5 @@ const sampleRestaurantReply = new RestaurantReply({
 module.exports = {
         sampleRestaurant, 
         sampleProfile,
-        sampleRatingSet,
         sampleReview,
         sampleRestaurantReply}

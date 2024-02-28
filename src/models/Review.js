@@ -32,7 +32,7 @@ const reviewSchema = new Schema({
     deletedAt: { type: Date, default: null },
 
     // Replies
-    replies: {type: [Schema.Types.ObjectId], ref: 'Reply', default: []}
+    replies: {type: [Schema.Types.ObjectId], ref: 'RestaurantReply', default: []}
 });
 
 
