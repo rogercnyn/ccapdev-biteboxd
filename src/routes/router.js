@@ -28,7 +28,8 @@ router.get('/', routeToFile('index.html'));
 
 
 const sampleRestaurantReply = new RestaurantReply({
-    body: 'hehehe'
+    body: 'SAMPLEEEEEEEEEEEEE',
+    isEdited: true
 });
 
 const sampleReview = new Review({
