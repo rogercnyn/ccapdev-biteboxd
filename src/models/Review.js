@@ -8,7 +8,7 @@ const reviewSchema = new Schema({
     },
 
     rating: { type: Number, required: true },
-    // username: { type: Schema.Types.ObjectId, ref: 'User', required: true }, // SHOULD BE REQUIRED PERO FOR TESTING LANG
+    username: { type: Schema.Types.ObjectId, ref: 'Profile', required: true }, 
     createdAt: { type: Date, default: Date.now },
     isEdited: { type: Boolean, default: false },
 

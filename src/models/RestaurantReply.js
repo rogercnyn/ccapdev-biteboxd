@@ -6,11 +6,11 @@ const restaurantReplySchema = new Schema({
         default: () => new mongoose.Types.ObjectId() 
     },
 
-    //reviewId: {type: Schema.Types.ObjectId, ref: 'Review', required: true},
+    reviewId: {type: Schema.Types.ObjectId, ref: 'Review', required: true},
 
-    //rating: {type: Schema.Types.ObjectId, ref: 'RatingSet', required: true},
+    rating: {type: Schema.Types.ObjectId, ref: 'RatingSet', required: true},
 
-    //restaurantId: {type: Schema.Types.ObjectId, ref: 'Restaurant', required: true},
+    restaurantId: {type: Schema.Types.ObjectId, ref: 'Restaurant', required: true},
 
     isEdited: {type: Boolean, required: false},
 

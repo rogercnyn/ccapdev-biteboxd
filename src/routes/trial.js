@@ -1,4 +1,4 @@
-const  {sampleRestaurant, sampleRatingSet} = require('./sampleData.js')
+const  {sampleRestaurant, sampleProfile, sampleRatingSet, sampleReview, sampleRestaurantReply} = require('./sampleData.js')
 
 
 function saveSampleRestaurant(){
@@ -22,36 +22,47 @@ function saveSampleRatingSet(){
     });
 }
 
-// sampleMostLovedRestaurant.save()
-//     .then(savedMostLovedRestaurant => {
-//         console.log('Sample loved restaurant saved successfully:', savedMostLovedRestaurant);
-//     })
-//     .catch(error => {
-//         console.error('Error saving loved restaurant review:', error);
-//     });
+function saveSampleReview()
+{
+    sampleReview.save()
+    .then(savedReview => {
+        console.log('Sample review saved successfully:', savedReview);
+    })
+    .catch(error => {
+        console.error('Error saving sample review:', error);
+    });
+}
 
-// sampleReview.save()
-//     .then(savedReview => {
-//         console.log('Sample review saved successfully:', savedReview);
-//     })
-//     .catch(error => {
-//         console.error('Error saving sample review:', error);
-//     });
+function saveSampleProfile()
+{
+    sampleProfile.save()
+    .then(savedProfile => {
+        console.log('Sample profile saved successfully:', savedProfile);
+    })
+    .catch(error => {
+        console.error('Error saving profile review:', error);
+    });
+}
 
-// sampleProfile.save()
-//     .then(savedProfile => {
-//         console.log('Sample profile saved successfully:', savedProfile);
-//     })
-//     .catch(error => {
-//         console.error('Error saving profile review:', error);
-//     });
+function saveSampleRestaurantReply()
+{
+    sampleRestaurantReply.save()
+    .then(savedRestaurantReply => {
+        console.log('Sample restaurant reply saved successfully:', savedRestaurantReply);
+    })
+    .catch(error => {
+        console.error('Error saving restaurant reply:', error);
+    });
+}
 
 
 
 function test(){
     saveSampleRestaurant()
-    // dito dapat profile
+    saveSampleProfile()
     saveSampleRatingSet()    
+    saveSampleReview()
+    saveSampleRestaurantReply()
 }
 
 
