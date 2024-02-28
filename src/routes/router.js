@@ -5,6 +5,8 @@ const Review = require('../models/Review.js');
 const Profile = require('../models/Profile.js');
 const Restaurant = require('../models/Restaurant.js');
 const RestaurantReply = require('../models/RestaurantReply.js');
+const RatingSet = require('../models/RatingSet.js');
+const MostLovedRestaurant = require('../models/MostLovedRestaurant.js');
 
 const router = Router();
 const viewsDir = path.join(path.resolve(__dirname, '..'), 'views');
@@ -51,16 +53,26 @@ const sampleProfile = new Profile({
     firstName: 'Mako',
     lastName: 'Pangan',
     bio: 'Has the best taste in Taft!'
-})
+});
+
+const sampleRatingSet = new RatingSet({
+    noOfRatings: 5
+});
 
 const sampleRestaurant = new Restaurant({
     name: 'Jollibee',
     location: 'Taft Avenue',
     username: 'jollibee_taft',
     password: 'bidaangsaya2024',
-    startPriceRange: '50',
-    endPriceRange: '1000',
-    description: 'Home of the best Pinoy fried chicken.'
+    startPriceRange: 50,
+    endPriceRange: 1000,
+    description: 'Home of the best Pinoy fried chicken.',
+    attribute: ['Accepts E-Wallet', 'Outdoor dining'],
+    tag: ['Filipino', 'Fastfood']
+});
+
+const sampleMostLovedRestaurant = new MostLovedRestaurant({
+    // nothing here for now
 });
 
 
@@ -70,6 +82,8 @@ Review.collection.drop();
 Profile.collection.drop();
 Restaurant.collection.drop();
 RestaurantReply.collection.drop();
+RatingSet.collection.drop();
+MostLovedRestaurant.collection.drop();
 
 // Save the document to the database
 
@@ -79,6 +93,14 @@ sampleRestaurantReply.save()
     })
     .catch(error => {
         console.error('Error saving restaurant reply review:', error);
+    });
+
+sampleMostLovedRestaurant.save()
+    .then(savedMostLovedRestaurant => {
+        console.log('Sample loved restaurant saved successfully:', savedMostLovedRestaurant);
+    })
+    .catch(error => {
+        console.error('Error saving loved restaurant review:', error);
     });
 
 sampleReview.save()
@@ -103,6 +125,14 @@ sampleRestaurant.save()
     })
     .catch(error => {
         console.error('Error saving restaurant review:', error);
+    });
+
+sampleRatingSet.save()
+    .then(savedRatingSet => {
+        console.log('Sample rating set saved successfully:', savedRatingSet);
+    })
+    .catch(error => {
+        console.error('Error saving rating set review:', error);
     });
 
 module.exports = router;

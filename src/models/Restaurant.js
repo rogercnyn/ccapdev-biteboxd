@@ -6,8 +6,8 @@ const restaurantSchema = new Schema({
         default: () => new mongoose.Types.ObjectId() 
     },
 
-    name: {type: String, required: true},
-    location: {type: String, required: true},
+    name: {type: String, required: true, unique: true},
+    location: {type: String, required: true, unique: true},
 
     username: {type: String, required: true},
     password: {type: String, required: true},
@@ -20,7 +20,10 @@ const restaurantSchema = new Schema({
     startOpeningHour: {type: Date, default: Date.now },
     endOpeningHour: {type: Date, default: Date.now },
 
-    description: {type: String, required: true}
+    description: {type: String, required: true},
+
+    attribute: { type: [String], required: true },
+    tag: { type: [String], required: true },
 });
 
 const Restaurant = model('restaurant', restaurantSchema); 
