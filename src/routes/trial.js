@@ -1,4 +1,4 @@
-const  {sampleRestaurant, sampleProfile, sampleReview, sampleRestaurantReply} = require('./sampleData.js')
+const  {sampleRestaurant, sampleProfile, sampleRestaurantReply, sampleReview} = require('./sampleData.js')
 
 
 function saveSampleRestaurant(){
@@ -8,17 +8,6 @@ function saveSampleRestaurant(){
     })
     .catch(error => {
         console.error('Error saving restaurant review:', error);
-    });
-}
-
-function saveSampleReview()
-{
-    sampleReview.save()
-    .then(savedReview => {
-        console.log('Sample review saved successfully:', savedReview);
-    })
-    .catch(error => {
-        console.error('Error saving sample review:', error);
     });
 }
 
@@ -44,13 +33,24 @@ function saveSampleRestaurantReply()
     });
 }
 
+function saveSampleReview()
+{
+    sampleReview.save()
+    .then(savedReview => {
+        console.log('Sample review saved successfully:', savedReview);
+    })
+    .catch(error => {
+        console.error('Error saving sample review:', error);
+    });
+}
+
 
 
 function test(){
     saveSampleRestaurant()
     saveSampleProfile()
-    saveSampleReview()
     saveSampleRestaurantReply()
+    saveSampleReview()
 }
 
 

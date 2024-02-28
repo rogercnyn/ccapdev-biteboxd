@@ -1,18 +1,21 @@
 const Restaurant = require('../models/Restaurant.js');
-const Review = require('../models/Review.js');
 const Profile = require('../models/Profile.js');
 const RestaurantReply = require('../models/RestaurantReply.js');
+const Review = require('../models/Review.js');
 
 
-function dropAll(){
-    RestaurantReply.collection.drop();
-    Review.collection.drop();
-    Profile.collection.drop();
-    Restaurant.collection.drop();
+function dropAll() {
+    await Promise.all([
+        Review.collection.drop(),
+        RestaurantReply.collection.drop(),
+        Profile.collection.drop(),
+        Restaurant.collection.drop()
+    ]);
 }
 
 // will automatically run when imported
 dropAll();
+
 
 const sampleRestaurant = new Restaurant({
     name: 'Jollibee',
@@ -42,6 +45,12 @@ const sampleProfile = new Profile({
     bio: 'Has the best taste in Taft!'
 });
 
+const sampleRestaurantReply = new RestaurantReply({
+    restaurantId: sampleRestaurant._id,
+    body: 'Thank you for visiting our resto! <3',
+    isEdited: true
+});
+
 const sampleReview = new Review({
     username: sampleProfile._id,
     rating: 4,
@@ -52,20 +61,12 @@ const sampleReview = new Review({
     noOfDislikes: 2,
     title: 'Sample Review Title',
     body: 'This is a sample review body text.',
-    media: ['media_url_1', 'media_url_2']
+    media: ['media_url_1', 'media_url_2'],
+    replies: sampleRestaurantReply._id
 });
-
-
-const sampleRestaurantReply = new RestaurantReply({
-    restaurantId: sampleRestaurant._id,
-    body: 'Thank you for visiting our resto! <3',
-    isEdited: true
-});
-
-
 
 module.exports = {
         sampleRestaurant, 
         sampleProfile,
-        sampleReview,
-        sampleRestaurantReply}
+        sampleRestaurantReply,
+        sampleReview}
