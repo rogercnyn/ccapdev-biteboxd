@@ -1,0 +1,581 @@
+{
+    "restaurants": [
+      {
+        "id": 1,
+        "type": "Filipino",
+        "name": "Tapa King",
+        "overall_rating": "3.9",
+        "reviews": 130,
+        "ratings": {
+          "5_star": 6,
+          "4_star": 65,
+          "3_star": 34,
+          "2_star": 20,
+          "1_star": 5
+        },
+        "tags": ["Filipino", "Fastfood", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Indulge in Tapa King's signature Filipino tapa dishes, renowned for their savory flavors and tender meat. Whether it's breakfast, lunch, or dinner, our dishes will satisfy your cravings and leave you coming back for more.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 2,
+        "type": "Filipino",
+        "name": "Angrydobo",
+        "overall_rating": "3.7",
+        "reviews": 338,
+        "ratings": {
+          "5_star": 6,
+          "4_star": 120,
+          "3_star": 120,
+          "2_star": 60,
+          "1_star": 25
+        },
+        "tags": ["Filipino", "Fastfood", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Experience the bold and explosive flavors of Angrydobo's Filipino cuisine. From tangy adobo to spicy sinigang, our dishes are sure to tantalize your taste buds and leave you craving for more. Visit us and unleash your inner foodie!",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 3,
+        "type": "Filipino",
+        "name": "Chef Bab’s Sisig",
+        "overall_rating": "4.4",
+        "reviews": 18,
+        "ratings": {
+          "5_star": 1,
+          "4_star": 5,
+          "3_star": 7,
+          "2_star": 3,
+          "1_star": 2
+        },
+        "tags": ["Filipino", "₱₱₱"],
+        "location": "Malate, Manila",
+        "description": "Delight your taste buds with Chef Bab’s Sisig's mouthwatering Filipino delicacies. Our sizzling sisig is a crowd favorite, packed with flavor and served with a side of satisfaction. Come savor the taste of tradition with every bite.",
+        "amenities": ["Delivery", "Outdoor dining", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 4,
+        "type": "Filipino",
+        "name": "Manam",
+        "overall_rating": "4.8",
+        "reviews": 1200,
+        "ratings": {
+          "5_star": 700,
+          "4_star": 400,
+          "3_star": 50,
+          "2_star": 20,
+          "1_star": 30
+        },
+        "tags": ["Filipino", "₱₱₱"],
+        "location": "Ermita, Manila",
+        "description": "Discover the best of Filipino cuisine at Manam, where traditional flavors meet modern twists. From classic adobo to innovative twists on kare-kare, our menu offers a culinary journey that celebrates the richness of Filipino food heritage.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids", "Vegetarian/Vegan Offerings"]
+      },
+      {
+        "id": 5,
+        "type": "Filipino",
+        "name": "The Aristocrat",
+        "overall_rating": "4.6",
+        "reviews": 1200,
+        "ratings": {
+          "5_star": 900,
+          "4_star": 200,
+          "3_star": 50,
+          "2_star": 30,
+          "1_star": 20
+        },
+        "tags": ["Filipino", "₱₱₱"],
+        "location": "Ermita, Manila",
+        "description": "Step into The Aristocrat and experience Filipino culinary excellence like never before. From our famous chicken barbecue to delectable pancit, each dish is prepared with care and served with a side of nostalgia. Taste the legacy today!",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids", "Vegetarian/Vegan Offerings"]
+      },
+      {
+        "id": 6,
+        "type": "Coffee",
+        "name": "Tomo Coffee",
+        "overall_rating": "3.8",
+        "reviews": 24,
+        "ratings": {
+          "5_star": 5,
+          "4_star": 7,
+          "3_star": 6,
+          "2_star": 3,
+          "1_star": 3
+        },
+        "tags": ["Coffee", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Start your day right with Tomo Coffee's premium brews and cozy ambiance. Whether you prefer a classic espresso or a trendy latte, our baristas craft each cup with expertise and passion. Visit us and elevate your coffee experience.",
+        "amenities": ["Delivery", "Outdoor dining", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 7,
+        "type": "Coffee",
+        "name": "Seattle's Best",
+        "overall_rating": "4.3",
+        "reviews": 186,
+        "ratings": {
+          "5_star": 90,
+          "4_star": 60,
+          "3_star": 20,
+          "2_star": 10,
+          "1_star": 6
+        },
+        "tags": ["Coffee", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Embrace the Seattle coffee culture at Seattle’s Best Coffee. Savor the rich aroma and bold flavors of our handcrafted brews, paired perfectly with a selection of freshly baked pastries. Join us and indulge in the taste of the Pacific Northwest.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 8,
+        "type": "Coffee",
+        "name": "Starbucks",
+        "overall_rating": "4.4",
+        "reviews": 688,
+        "ratings": {
+          "5_star": 500,
+          "4_star": 130,
+          "3_star": 40,
+          "2_star": 10,
+          "1_star": 8
+        },
+        "tags": ["Coffee", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Fuel your day with Starbucks' iconic beverages and delectable treats. From creamy Frappuccinos to artisanal pastries, our menu offers something for every coffee lover. Visit us and discover your new favorite drink today.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids", "Vegetarian/Vegan Offerings"]
+      },
+      {
+        "id": 9,
+        "type": "Coffee",
+        "name": "Coffee Project",
+        "overall_rating": "4.5",
+        "reviews": 636,
+        "ratings": {
+          "5_star": 550,
+          "4_star": 50,
+          "3_star": 20,
+          "2_star": 10,
+          "1_star": 6
+        },
+        "tags": ["Coffee", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Immerse yourself in the cozy ambiance and artisanal coffee blends of Coffee Project. With every sip, experience the passion and creativity poured into each cup, making every visit a delightful journey of flavors and relaxation.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 10,
+        "type": "Coffee",
+        "name": "Pickup Coffee",
+        "overall_rating": "3.3",
+        "reviews": 24,
+        "ratings": {
+          "5_star": 3,
+          "4_star": 5,
+          "3_star": 6,
+          "2_star": 5,
+          "1_star": 5
+        },
+        "tags": ["Coffee", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Dive into a world of flavor at Pickup Coffee, where every cup is brewed with care and precision. Whether you're craving a classic brew or a specialty blend, our coffee artisans are here to elevate your coffee experience.",
+        "amenities": ["Delivery", "Indoor dining", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 11,
+        "type": "Japanese",
+        "name": "Tokyo Tokyo",
+        "overall_rating": "4.4",
+        "reviews": 56,
+        "ratings": {
+          "5_star": 30,
+          "4_star": 15,
+          "3_star": 6,
+          "2_star": 3,
+          "1_star": 2
+        },
+        "tags": ["Japanese", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Experience the vibrant flavors of Japan at Tokyo Tokyo. From savory ramen to crispy tempura, our menu offers a taste of authentic Japanese cuisine that will transport you to the bustling streets of Tokyo with every bite.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids", "Vegetarian/Vegan Offerings"]
+      },
+      {
+        "id": 12,
+        "type": "Japanese",
+        "name": "Yoshimeatsu",
+        "overall_rating": "4.5",
+        "reviews": 312,
+        "ratings": {
+          "5_star": 200,
+          "4_star": 80,
+          "3_star": 20,
+          "2_star": 8,
+          "1_star": 4
+        },
+        "tags": ["Japanese", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Indulge in a feast of flavors at Yoshimeatsu, where the grill sizzles with mouthwatering Japanese BBQ delights. From tender meats to flavorful sides, our menu promises a culinary adventure that will leave you craving for more.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids", "Vegetarian/Vegan Offerings"]
+      },
+      {
+        "id": 13,
+        "type": "Japanese",
+        "name": "Crazy Katsu",
+        "overall_rating": "4.1",
+        "reviews": 25,
+        "ratings": {
+          "5_star": 10,
+          "4_star": 8,
+          "3_star": 3,
+          "2_star": 2,
+          "1_star": 2
+        },
+        "tags": ["Japanese", "Fastfood", "₱₱"],
+        "location": "Taft, Manila",
+        "description": "Treat yourself to the ultimate comfort food experience at Crazy Katsu. With every crispy bite of our perfectly fried katsu dishes, experience a burst of flavor that will satisfy your cravings and leave you wanting seconds.",
+        "amenities": ["Delivery", "Indoor dining", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids"]
+      },
+      {
+        "id": 14,
+        "type": "Japanese",
+        "name": "Pepper Lunch",
+        "overall_rating": "4.7",
+        "reviews": 11,
+        "ratings": {
+          "5_star": 6,
+          "4_star": 3,
+          "3_star": 1,
+          "2_star": 1,
+          "1_star": 0
+        },
+        "tags": ["Japanese", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Ignite your taste buds with the sizzling delights of Pepper Lunch. From sizzling steaks to savory rice bowls, our interactive dining experience allows you to customize your meal just the way you like it. Come sizzle with us today!",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 15,
+        "type": "Japanese",
+        "name": "Hayashi",
+        "overall_rating": "4.2",
+        "reviews": 5,
+        "ratings": {
+          "5_star": 2,
+          "4_star": 2,
+          "3_star": 1,
+          "2_star": 0,
+          "1_star": 0
+        },
+        "tags": ["Japanese", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Embark on a culinary journey through Japan at Hayashi. From fresh sushi to flavorful bento boxes, our menu offers a taste of authentic Japanese cuisine crafted with the finest ingredients and served with a side of hospitality.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 16,
+        "type": "Chinese",
+        "name": "David’s Tea House",
+        "overall_rating": "4.0",
+        "reviews": 16,
+        "ratings": {
+          "5_star": 7,
+          "4_star": 5,
+          "3_star": 2,
+          "2_star": 1,
+          "1_star": 1
+        },
+        "tags": ["Chinese", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Dive into a world of flavor at David’s Tea House, where every bite is a celebration of Chinese culinary heritage. From savory dim sum to comforting noodle soups, our menu offers a taste of tradition that will warm your heart and soul.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 17,
+        "type": "Chinese",
+        "name": "Jus & Jerry’s",
+        "overall_rating": "4.1",
+        "reviews": 66,
+        "ratings": {
+          "5_star": 30,
+          "4_star": 20,
+          "3_star": 8,
+          "2_star": 5,
+          "1_star": 3
+        },
+        "tags": ["Chinese", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Indulge in the rich and aromatic flavors of Chinese cuisine at Jus & Jerry’s. From savory stir-fries to comforting noodle dishes, our menu offers a delicious journey through the vibrant flavors of the Orient. Visit us and savor the taste.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids", "Vegetarian/Vegan Offerings"]
+      },
+      {
+        "id": 18,
+        "type": "Chinese",
+        "name": "Chowking",
+        "overall_rating": "3.3",
+        "reviews": 78,
+        "ratings": {
+          "5_star": 10,
+          "4_star": 15,
+          "3_star": 25,
+          "2_star": 20,
+          "1_star": 8
+        },
+        "tags": ["Chinese", "Fastfood", "₱₱"],
+        "location": "Taft, Manila",
+        "description": "Experience the fusion of Filipino and Chinese flavors at Chowking. From savory pancit to crispy siopao, our menu offers a taste of comfort that will satisfy your cravings and leave you coming back for more. Visit us and taste the fusion today!",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids", "Vegetarian/Vegan Offerings"]
+      },
+      {
+        "id": 19,
+        "type": "Chinese",
+        "name": "Dimsum King",
+        "overall_rating": "No reviews",
+        "reviews": 0,
+        "ratings": {
+          "5_star": 0,
+          "4_star": 0,
+          "3_star": 0,
+          "2_star": 0,
+          "1_star": 0
+        },
+        "tags": ["Chinese"],
+        "location": "Taft, Manila",
+        "description": "Explore the exquisite flavors of Cantonese cuisine at Dimsum King. From delicate dumplings to savory buns, our menu offers a delectable selection of dim sum delights that will transport you to the bustling streets of Hong Kong.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids", "Vegetarian/Vegan Offerings"]
+      },
+      {
+        "id": 20,
+        "type": "Chinese",
+        "name": "Wok Dis Way",
+        "overall_rating": "5.0",
+        "reviews": 1,
+        "ratings": {
+          "5_star": 1,
+          "4_star": 0,
+          "3_star": 0,
+          "2_star": 0,
+          "1_star": 0
+        },
+        "tags": ["Chinese"],
+        "location": "Taft, Manila",
+        "description": "Embark on a culinary adventure at Wok Dis Way, where every dish is cooked to perfection in our sizzling woks. From flavorful stir-fries to crispy fried rice, our menu offers a taste of Chinese cuisine that will leave you craving for more.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 21,
+        "type": "American",
+        "name": "Army Navy",
+        "overall_rating": "4.2",
+        "reviews": 146,
+        "ratings": {
+          "5_star": 70,
+          "4_star": 50,
+          "3_star": 15,
+          "2_star": 8,
+          "1_star": 3
+        },
+        "tags": ["American", "Fastfood", "₱₱"],
+        "location": "Taft, Manila",
+        "description": "Dive into a world of bold flavors at Army Navy, where every bite is a taste of freedom. From juicy burgers to hearty burritos, our menu offers a culinary journey that celebrates the spirit of independence and adventure.",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids", "Vegetarian/Vegan Offerings"]
+      },
+      {
+        "id": 22,
+        "type": "American",
+        "name": "Popeyes",
+        "overall_rating": "4.1",
+        "reviews": 174,
+        "ratings": {
+          "5_star": 100,
+          "4_star": 50,
+          "3_star": 12,
+          "2_star": 8,
+          "1_star": 4
+        },
+        "tags": ["American", "₱₱₱"],
+        "location": "Taft, Manila",
+        "description": "Satisfy your cravings for Southern comfort at Popeyes, where every bite is a taste of Louisiana. From crispy fried chicken to buttery biscuits, our menu offers a delicious journey through the flavors of the Deep South. Come feast with us today!",
+        "amenities": ["Delivery", "Indoor dining" , "Good for Groups" , "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids", "Good for Kids", "Vegetarian/Vegan Offerings"]
+      },
+      {
+        "id": 23,
+        "type": "American",
+        "name": "Wendy’s",
+        "overall_rating": "4.2",
+        "reviews": 34,
+        "ratings": {
+          "5_star": 15,
+          "4_star": 10,
+          "3_star": 5,
+          "2_star": 2,
+          "1_star": 2
+        },
+        "tags": ["American", "Fastfood", "₱₱"],
+        "location": "Taft, Manila",
+        "description": "Indulge in the flavor-packed delights of Wendy’s, where every bite is a taste of fast-food perfection. From juicy burgers to frosty desserts, our menu offers a satisfying meal that will leave you craving for more. Visit us and taste the difference today!",
+        "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids"]
+      },
+      {
+        "id": 24,
+        "type": "American",
+        "name": "Burger King",
+        "overall_rating": 4.3,
+        "reviews": 344,
+        "ratings": {
+            "5_star": 250,
+            "4_star": 50,
+            "3_star": 20,
+            "2_star": 15,
+            "1_star": 9
+          },
+          "tags": ["American", "Fastfood", "₱₱"],
+          "location": "Taft, Manila",
+          "description": "Treat yourself to the flame-grilled goodness of Burger King, where every burger is a masterpiece of flavor. From classic Whoppers to indulgent fries, our menu offers a taste of fast-food royalty that will leave you coming back for more.",
+          "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids"]
+      },
+      {
+        "id": 25,
+        "type": "American",
+        "name": "Zark's Burgers",
+        "overall_rating": 4.2,
+        "reviews": 574,
+        "ratings": {
+            "5_star": 400,
+            "4_star": 100,
+            "3_star": 30,
+            "2_star": 25,
+            "1_star": 19
+          },
+          "tags": ["American", "Fastfood", "₱₱"],
+          "location": "Taft, Manila",
+          "description": "Experience burger heaven at Zark’s Burgers, where every bite is a flavor explosion. From towering burgers to loaded fries, our menu offers a delicious journey through the world of gourmet burgers that will leave you craving for more.",
+          "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts E-Wallet", "Good for Kids", "Vegetarian/Vegan Offerings"]
+      },
+      {
+        "id": 26,
+        "type": "Italian",
+        "name": "Aventino's",
+        "overall_rating": 0,
+        "reviews": 0,
+        "ratings": {
+            "5_star": 0,
+            "4_star": 0,
+            "3_star": 0,
+            "2_star": 0,
+            "1_star": 0
+          },
+          "tags": ["Italian"],
+          "location": "Taft, Manila",
+          "description": "Savor the taste of Italy at Sbarro, where every slice is a slice of heaven. From cheesy pizzas to hearty pasta dishes, our menu offers a taste of authentic Italian cuisine that will transport you to the streets of Naples with every bite.",
+          "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet"]
+      },
+      {
+        "id": 27,
+        "type": "Italian",
+        "name": "Italianni's",
+        "overall_rating": 4.9,
+        "reviews": 3100,
+        "ratings": {
+            "5_star": 2800,
+            "4_star": 800,
+            "3_star": 150,
+            "2_star": 70,
+            "1_star": 80
+          },
+          "tags": ["Italian", "₱₱"],
+          "location": "Ermita, Manila",
+          "description": "Indulge in the richness of Italian cuisine at Italianni’s, where every meal is a celebration of flavor. From hearty pasta dishes to succulent seafood, our menu offers a culinary journey through the diverse regions of Italy. Buon appetito!",
+          "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids"]
+      },
+      {
+        "id": 28,
+        "type": "Korean",
+        "name": "Romantic Baboy",
+        "overall_rating": 4.4,
+        "reviews": 291,
+        "ratings": {
+            "5_star": 200,
+            "4_star": 50,
+            "3_star": 25,
+            "2_star": 10,
+            "1_star": 6
+          },
+          "tags": ["Korean", "₱₱₱"],
+          "location": "Taft, Manila",
+          "description": "Treat yourself to a feast of flavors at Romantic Baboy, where every bite is a celebration of Korean BBQ excellence. From succulent pork belly to flavorful side dishes, our menu promises a dining experience that will leave you craving for more.",
+          "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids"]
+      },
+      {
+        "id": 29,
+        "type": "Korean",
+        "name": "Samgyupsalamat",
+        "overall_rating": 4.2,
+        "reviews": 782,
+        "ratings": {
+            "5_star": 500,
+            "4_star": 150,
+            "3_star": 60,
+            "2_star": 30,
+            "1_star": 20
+          },
+          "tags": ["Korean", "₱₱₱"],
+          "location": "Taft, Manila",
+          "description": "Dive into a world of sizzling delights at Samgyupsalamat, where every grill is a canvas of flavor. From premium meats to mouthwatering side dishes, our Korean BBQ experience promises a culinary adventure that will leave you coming back for more.",
+          "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids"]
+      },
+      {
+        "id": 30,
+        "type": "Korean",
+        "name": "Wang Pau",
+        "overall_rating": 2.8,
+        "reviews": 14,
+        "ratings": {
+            "5_star": 1,
+            "4_star": 3,
+            "3_star": 5,
+            "2_star": 3,
+            "1_star": 2
+          },
+          "tags": ["Korean", "₱₱₱"],
+          "location": "Malate, Manila",
+          "description": "",
+          "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids"] 
+      },
+      {
+        "id": 31,
+        "type": "Korean",
+        "name": "BAB Korean Restaurant",
+        "overall_rating": 5.0,
+        "reviews": 1,
+        "ratings": {
+            "5_star": 1,
+            "4_star": 0,
+            "3_star": 0,
+            "2_star": 0,
+            "1_star": 0
+          },
+          "tags": ["Korean", "₱₱"],
+          "location": "Taft, Manila",
+          "description": "Experience authentic Korean flavors at BAB Korean Restaurant, where every dish is a masterpiece of taste. From savory bulgogi to spicy kimchi, our menu offers a culinary journey that celebrates the rich heritage of Korean cuisine. Come feast with us today!",
+          "amenities": ["Delivery", "Indoor dining", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids"]
+      },
+      {
+        "id": 32,
+        "type": "Korean",
+        "name": "Chung Dam Restaurant",
+        "overall_rating": 4.3,
+        "reviews": 138,
+        "ratings": {
+            "5_star": 80,
+            "4_star": 30,
+            "3_star": 15,
+            "2_star": 8,
+            "1_star": 5
+          },
+          "tags": ["Korean", "₱₱₱"],
+          "location": "Malate, Manila",
+          "description": "Embark on a gastronomic adventure at Chung Dam Restaurant, where every dish is a celebration of Korean BBQ mastery. From marinated meats to flavorful banchan, our menu promises a dining experience that will leave you craving for more. Come sizzle with us today!",
+          "amenities": ["Delivery", "Indoor dining", "Good for Groups", "Offers Takeout", "Accepts Credit Cards", "Accepts E-Wallet", "Good for Kids"]
+      }
+    ]
+  }
+  
