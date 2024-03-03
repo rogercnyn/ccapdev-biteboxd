@@ -1,6 +1,7 @@
 const { Schema, SchemaTypes, mode, model, mongoose } = require('mongoose');
 
 const reviewSchema = new Schema({
+    username: { type: String, required: false},
     isEdited: { type: Boolean, default: false },
 
     // Ratings

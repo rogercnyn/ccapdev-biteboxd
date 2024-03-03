@@ -52,18 +52,39 @@ function getAllRestaurant(){
             });
 }
 
-function addAReviewToRestaurant(restaurantId, reviewId){
-    Restaurant.updateOne(
-        { _id: restaurantId },
-        { $push: { reviews: reviewId } }
-    )
-        .then(result => {
-            console.log('Review added to the restaurant:', result);
-        })
-        .catch(error => {
-            console.error('Error adding review to the restaurant:', error);
-        });
-      
+async function addAReviewToRestaurant(restaurantId, reviewId){
+    
+
+    const restaurant = await Restaurant.findById(restaurantId)
+
+
+    if (!restaurant) {
+        console.log('Restaurant not found');
+        return; 
+    }
+
+    await restaurant.reviews.push(reviewId);
+    await restaurant.save();
+
+    console.log('Review added to the restaurant');
 }
 
-module.exports = { searchQuery, getAllRestaurant, addAReviewToRestaurant };
+function saveRestaurant(restaurantToSave) {
+    return restaurantToSave.save()
+        .then(savedRestaurant => {
+            console.log('Restaurant saved successfully:', savedRestaurant);
+            return savedRestaurant; 
+        })
+        .catch(error => {
+            console.error('Error saving restaurant:', error);
+            throw error;
+        });
+}
+
+function addRestaurant(restaurantToSave){
+    let savedRestaurant = saveRestaurant(new Restaurant(restaurantToSave))
+}
+
+
+
+module.exports = { searchQuery, getAllRestaurant, addAReviewToRestaurant, addRestaurant };
