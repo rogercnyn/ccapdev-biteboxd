@@ -59,6 +59,7 @@ restaurantSchema.pre('validate', function(next) {
 });
 
 
+
 const Restaurant = model('restaurant', restaurantSchema); 
 
 module.exports = Restaurant;

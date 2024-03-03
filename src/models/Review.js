@@ -4,7 +4,6 @@ const reviewSchema = new Schema({
     isEdited: { type: Boolean, default: false },
 
     // Ratings
-    overallRating: { type: Number, required: true },
     foodRating: { type: Number, required: true },
     serviceRating: { type: Number, required: true },
     affordabilityRating: { type: Number, required: true },
@@ -27,6 +26,17 @@ const reviewSchema = new Schema({
     // Replies
     replies: {type: [Schema.Types.ObjectId], ref: 'RestaurantReply', default: []}
 });
+
+
+reviewSchema.virtual('overallRating').get(function() {
+    const sum = this.foodRating + this.serviceRating + this.affordabilityRating;
+    const average = (sum / 3) * 100;
+    return Math.round(average, 2)/100;
+});
+
+
+reviewSchema.set('toObject', { virtuals: true });
+reviewSchema.set('toJSON', { virtuals: true });
 
 
 const Review = model('review', reviewSchema); 
