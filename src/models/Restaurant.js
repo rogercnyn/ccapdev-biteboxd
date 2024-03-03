@@ -6,9 +6,16 @@ const restaurantSchema = new Schema({
     name: {type: String, required: true},
     location: {type: String, required: true},
 
+    //media
+    media: {type: String, required: true},
+
     // login credentials of resto managers
     username: {type: String, required: true},
     password: {type: String, required: true},
+
+    // coordinates for map
+    coordX: {type: Number, required: true},
+    coordY: {type: Number, required: true},
 
     // data about the pricing
     startPriceRange: {type: Number, required: true},

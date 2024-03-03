@@ -33,7 +33,10 @@ const sampleRestaurant = new Restaurant({
     noOfFourStars: 1,
     noOfThreeStars: 22,
     noOfTwoStars: 13,
-    noOfOneStars: 2
+    noOfOneStars: 2,
+    media: 'bacsilog-main.jpeg',
+    coordX: 144.75,
+    coordY: 133.5
 
     // reviews: blank muna
     // start and end opening hour: naka.now muna
@@ -41,8 +44,8 @@ const sampleRestaurant = new Restaurant({
 
 const sampleProfile = new Profile({
     username: 'Makowa',
-    image: 'pic1.jpg',
-    bgImage: 'pic1.jpg',
+    image: 'avatar-f1.jpg',
+    bgImage: 'header.jpg',
     firstName: 'Mako',
     lastName: 'Pangan',
     bio: 'Has the best taste in Taft!',
@@ -55,7 +58,7 @@ const sampleProfile = new Profile({
 
 const sampleReview = new Review({
     username: sampleProfile._id,
-    linkToUsername: 'ownprofile_mako.html',
+    linkToUsername: 'own-profile.hbs',
     overallRating: 4,
     foodRating: 4,
     serviceRating: 5,
@@ -64,7 +67,7 @@ const sampleReview = new Review({
     noOfDislikes: 2,
     title: 'Sample Review Title',
     body: 'This is a sample review body text.',
-    media: ['media_url_1', 'media_url_2']
+    media: ['bacsilog1.png', 'bacsilog2.jpeg']
 
     // replies: blank muna
     // replies: sampleRestaurantReply._id
@@ -73,7 +76,7 @@ const sampleReview = new Review({
 const sampleRestaurantReply = new RestaurantReply({
     restaurantId: sampleRestaurant._id,
     body: 'Thank you for visiting our resto! <3',
-    media: ['media_url_1', 'media_url_2']
+    media: ['bacsilog3.jpeg', 'bacsilog5.jpg']
 });
 
 module.exports = {
