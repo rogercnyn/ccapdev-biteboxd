@@ -17,6 +17,7 @@ function saveSampleReview() {
     return sampleReview.save()
         .then(savedReview => {
             console.log('Sample review saved successfully:', savedReview);
+            // console.log('Sample review saved successfully:', savedReview.overallRating);
             return savedReview; // Return the saved document
         })
         .catch(error => {

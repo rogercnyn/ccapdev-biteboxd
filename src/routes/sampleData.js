@@ -59,10 +59,9 @@ const sampleProfile = new Profile({
 const sampleReview = new Review({
     username: sampleProfile._id,
     linkToUsername: 'own-profile.hbs',
-    overallRating: 4,
     foodRating: 4,
     serviceRating: 5,
-    affordabilityRating: 3,
+    affordabilityRating: 4,
     noOfLikes: 10,
     noOfDislikes: 2,
     title: 'Sample Review Title',
