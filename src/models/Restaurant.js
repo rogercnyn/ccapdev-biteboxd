@@ -1,10 +1,6 @@
 const { Schema, SchemaTypes, mode, model, mongoose } = require('mongoose');
 
 const restaurantSchema = new Schema({
-    restaurantId: {
-        type: Schema.Types.ObjectId,
-        default: () => new mongoose.Types.ObjectId() 
-    },
 
     // core information
     name: {type: String, required: true},
@@ -28,6 +24,7 @@ const restaurantSchema = new Schema({
     tag: { type: [String], required: true },
 
     // statistics
+    rating: {type : Number, required: true, default: 0},
     noOfReviews: {type : Number, required: true, default: 0},
     noOfFiveStars: {type : Number, required: true, default: 0},
     noOfFourStars: {type : Number, required: true, default: 0},

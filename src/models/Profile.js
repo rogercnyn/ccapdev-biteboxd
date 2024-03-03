@@ -1,10 +1,6 @@
 const { Schema, SchemaTypes, mode, model, mongoose } = require('mongoose');
 
 const profileSchema = new Schema({
-    id: {
-        type: Schema.Types.ObjectId,
-        default: () => new mongoose.Types.ObjectId() 
-    },
 
     // username
     username: { type: String, required: true, unique: true}, 
@@ -29,6 +25,7 @@ const profileSchema = new Schema({
     // stats
     hearts: {type: Number, required: true},
     dislike: {type: Number, required: true},
+    credibility: {type: Number, required: true},
 
     // reviews
     reviews: {type: [Schema.Types.ObjectId], ref: 'Review', default: []},

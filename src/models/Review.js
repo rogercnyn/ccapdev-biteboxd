@@ -1,11 +1,6 @@
 const { Schema, SchemaTypes, mode, model, mongoose } = require('mongoose');
 
 const reviewSchema = new Schema({
-    // References
-    reviewId: {
-        type: Schema.Types.ObjectId,
-        default: () => new mongoose.Types.ObjectId() 
-    },
 
     username: { type: Schema.Types.ObjectId, ref: 'Profile', required: true },
     linkToUsername: {type: String, required: true},

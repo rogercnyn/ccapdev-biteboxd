@@ -1,11 +1,6 @@
 const { Schema, SchemaTypes, mode, model, mongoose } = require('mongoose');
 
 const restaurantReplySchema = new Schema({
-    replyId: {
-        type: Schema.Types.ObjectId,
-        default: () => new mongoose.Types.ObjectId() 
-    },
-
     restaurantId: {type: Schema.Types.ObjectId, ref: 'Restaurant', required: true},
 
     isEdited: {type: Boolean, required: false},
