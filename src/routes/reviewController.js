@@ -1,5 +1,7 @@
 const Review  = require('../models/Review.js')
+
 const { addAReviewToRestaurant } = require('./restaurantController.js')
+const { addReviewToProfile } = require('./profileController.js')
 
 async function countReviews() {
     try {
@@ -35,6 +37,8 @@ function saveReview(reviewToSave) {
 async function addReview(restaurantId, reviewToSave){
     let savedReview = await saveReview(new Review(reviewToSave))
     // addAReviewToRestaurant(restaurantId, savedReview['_id'])
+    addReviewToProfile(savedReview.username, savedReview['_id'])
+    
 }
 
 module.exports = { addReview, clearReviews }

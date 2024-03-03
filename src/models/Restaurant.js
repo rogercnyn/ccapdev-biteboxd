@@ -52,6 +52,8 @@ restaurantSchema.pre('validate', function(next) {
 
     const totalStars = this.noOfFiveStars + this.noOfFourStars + this.noOfThreeStars + this.noOfTwoStars + this.noOfOneStars;
     console.log(this.numberOfReviews)
+    console.log(totalStars)
+    console.log("---")
     if (totalStars !== this.numberOfReviews) {
         return next(new Error('The sum of star ratings must equal the total number of reviews.'));
     }
