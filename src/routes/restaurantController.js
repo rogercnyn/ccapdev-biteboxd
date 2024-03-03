@@ -52,4 +52,18 @@ function getAllRestaurant(){
             });
 }
 
-module.exports = { searchQuery, getAllRestaurant };
+function addAReviewToRestaurant(restaurantId, reviewId){
+    Restaurant.updateOne(
+        { _id: restaurantId },
+        { $push: { reviews: reviewId } }
+    )
+        .then(result => {
+            console.log('Review added to the restaurant:', result);
+        })
+        .catch(error => {
+            console.error('Error adding review to the restaurant:', error);
+        });
+      
+}
+
+module.exports = { searchQuery, getAllRestaurant, addAReviewToRestaurant };

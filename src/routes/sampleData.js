@@ -16,27 +16,30 @@ dropAll();
 
 
 const sampleRestaurant = new Restaurant({
-    name: 'Jollibee',
-    location: 'Taft Avenue, Manila',
-    username: 'jollibee_taft',
-    password: 'bidaangsaya2024',
-    startPriceRange: 50,
-    endPriceRange: 1000,
-    description: 'Home of the best Pinoy fried chicken.',
-    shortDescription: 'Chicken joy',
-    amenities: [1, 0, 1, 0, 
-                1, 0, 1, 0,
-                0, 1, 0, 1],
+    name: 'Ate Rica\'s',
+    location: 'Vito Cruz, Metro Manila, Philippines',
+    username: 'atericas_taft',
+    password: 'theOGrica',
+    startPriceRange: 125,
+    endPriceRange: 175,
+    description: 'Ate Rica\'s Bacsilog offers different types of silog meals at an affordable price. The best sellers are bacsilog, tapsilog, and hotsilog.',
+    shortDescription: 'Your new go-to Bacsilog-an',
+    amenities: [1, 1, 1,
+                1, 0, 1,
+                1, 1, 0,
+                1, 1, 1],
     tag: ['Filipino', 'Fastfood'],
-    rating: 4.7,
-    numberOfReviews: 48,
-    noOfFiveStars: 10,
-    noOfFourStars: 1,
-    noOfThreeStars: 22,
-    noOfTwoStars: 13,
-    noOfOneStars: 2,
-    media: 'burgerking.jpg',
-    coordinates: [-73.968285, 40.785091]
+    rating: 4.0,
+    numberOfReviews: 64,
+    noOfFiveStars: 20,
+    noOfFourStars: 15,
+    noOfThreeStars: 10,
+    noOfTwoStars: 8,
+    noOfOneStars: 11,
+    media: 'bacsilog-main.jpeg',
+
+    // X, Y 
+    coordinates: [14.566420908001565, 120.99256453262059]
 
     // reviews: blank muna
     // start and end opening hour: naka.now muna
@@ -57,8 +60,6 @@ const sampleProfile = new Profile({
 });
 
 const sampleReview = new Review({
-    username: sampleProfile._id,
-    linkToUsername: 'own-profile.hbs',
     foodRating: 4,
     serviceRating: 5,
     affordabilityRating: 4,

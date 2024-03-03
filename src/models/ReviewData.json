@@ -1,9 +1,6 @@
 [
     {
-        "username": "makoeats",
-        "linkToUsername": "own-profile.hbs",
         "isEdited": false,
-        "overallRating": 4.6,
         "foodRating": 4,
         "serviceRating": 3,
         "affordabilityRating": 4,
@@ -16,10 +13,7 @@
     },
 
     {
-        "username": "Mon_1015",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": true,
-        "overallRating": 4.9,
         "foodRating": 3,
         "serviceRating": 4,
         "affordabilityRating": 5,
@@ -32,10 +26,7 @@
     },
 
     {
-        "username": "corah",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": false,
-        "overallRating": 4.9,
         "foodRating": 4,
         "serviceRating": 3,
         "affordabilityRating": 5,
@@ -48,10 +39,7 @@
     },
 
     {
-        "username": "archerreviewer",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": false,
-        "overallRating": 5.0,
         "foodRating": 5,
         "serviceRating": 5,
         "affordabilityRating": 5,
@@ -64,10 +52,7 @@
     },
 
     {
-        "username": "urordinaryguy",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": false,
-        "overallRating": 4.0,
         "foodRating": 4,
         "serviceRating": 2,
         "affordabilityRating": 3,
@@ -80,10 +65,7 @@
     },
 
     {
-        "username": "alltoowell",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": false,
-        "overallRating": 4.5,
         "foodRating": 5,
         "serviceRating": 5,
         "affordabilityRating": 4,
@@ -96,10 +78,7 @@
     },
 
     {
-        "username": "richkid99",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": true,
-        "overallRating": 2.5,
         "foodRating": 2,
         "serviceRating": 3,
         "affordabilityRating": 2,
@@ -112,10 +91,7 @@
     },
 
     {
-        "username": "fashionfoodie",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": false,
-        "overallRating": 4.5,
         "foodRating": 5,
         "serviceRating": 4,
         "affordabilityRating": 4,
@@ -128,10 +104,7 @@
     },
 
     {
-        "username": "lostintaft",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": false,
-        "overallRating": 3.5,
         "foodRating": 3,
         "serviceRating": 4,
         "affordabilityRating": 2,
@@ -144,10 +117,7 @@
     },
 
     {
-        "username": "taftpalate",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": true,
-        "overallRating": 4.0,
         "foodRating": 4,
         "serviceRating": 3,
         "affordabilityRating": 4,
@@ -160,10 +130,7 @@
     },
 
     {
-        "username": "lebron12345",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": false,
-        "overallRating": 4.7,
         "foodRating": 5,
         "serviceRating": 4,
         "affordabilityRating": 4,
@@ -176,10 +143,7 @@
     },
 
     {
-        "username": "lasallianfoodie",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": false,
-        "overallRating": 4.5,
         "foodRating": 5,
         "serviceRating": 4,
         "affordabilityRating": 5,
@@ -192,10 +156,7 @@
     },
 
     {
-        "username": "maine_mairel",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": false,
-        "overallRating": 4.3,
         "foodRating": 4,
         "serviceRating": 3,
         "affordabilityRating": 5,
@@ -208,10 +169,7 @@
     },
 
     {
-        "username": "xmon_toro",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": true,
-        "overallRating": 3.6,
         "foodRating": 3,
         "serviceRating": 4,
         "affordabilityRating": 3,
@@ -224,10 +182,7 @@
     },
 
     {
-        "username": "Mon_1015",
-        "linkToUsername": "others-profile.hbs",
         "isEdited": true,
-        "overallRating": 4.9,
         "foodRating": 3,
         "serviceRating": 4,
         "affordabilityRating": 5,
