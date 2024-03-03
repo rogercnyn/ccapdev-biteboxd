@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="styles/explore.css">
     <title>Biteboxd - All</title>
     <script src="script/general.js"></script>
-    <script src="script/navbar.js"></script>
-    <!-- <script src="script/all.js"></script> -->
-    <!-- <script src="script/search-bar.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -17,42 +14,7 @@
 
 </head>
 <body>
-    <header>
-        <a class="logo-link" onclick="transferSession('index.html')">
-            <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
-        </a>
-        
-        <a class="nav-icon-container" onclick="transferSession('index.html')">
-            <img src="assets/home.svg" alt="" class="nav-icon">
-            <p>Home</p>
-        </a>
-        
-        <a class="nav-icon-container" onclick="transferSession('explore.html')">
-            <img src="assets/explore.svg" alt="" class="nav-icon">
-            <p>Explore</p>
-        </a>
-
-        <a class="nav-icon-container" onclick="transferSession('all.html')">
-            <img src="assets/archive.svg" alt="" class="nav-icon">
-            <p>All</p>
-        </a>
-
-        <a href="login.html" class="nav-icon-container" id="person-icon">
-            <img src="assets/person.svg" alt="" class="nav-icon">
-            <p>Accounts</p>
-        </a>
-        
-        <div class="account-icon" id="account-icon" onclick="togglePopup()">
-            <img src="assets/profile.jpg" alt="" class="profile-icon">
-        </div>
-        
-        <div class="popup-container" id="popupContainer" style="display: none;">
-            <div class="popup" id="popup">
-                <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
-                <a href="#" onclick="logOut()">Log Out</a>
-            </div>
-        </div>        
-    </header>
+   {{> navbar}}
 
 
     <main>
@@ -65,14 +27,14 @@
         <div class="category-header">
             
             <div class="category">
-                <div class="cat-stack" onclick="window.location.href='explore.html#trending-now'">
+                <div class="cat-stack" onclick="window.location.href='explore#trending-now'">
                     <img src="assets/26.png" alt="" class="explore-icon">
                     <p class="category-text">
                         Trending now
                     </p>
                 </div>
             </div>
-            <div class="category" onclick="window.location.href='explore.html#editors-choice'">
+            <div class="category" onclick="window.location.href='explore#editors-choice'">
                 <div class="cat-stack">
                     <img src="assets/27.png" alt="" class="explore-icon">
                     <p class="category-text">
@@ -80,7 +42,7 @@
                     </p>
                 </div>
             </div>
-            <div class="category" onclick="window.location.href='explore.html#popular'">
+            <div class="category" onclick="window.location.href='explore#popular'">
                 <img src="assets/28.png" alt="" class="explore-icon" id="cook-icon">
                 <div class="cat-stack">
                     <p class="category-text">
@@ -95,7 +57,7 @@
         </a>
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     <div class="restoinfo">
                         <div class="restopicturearea">
                             <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
@@ -114,24 +76,24 @@
                             <div class="attributes">
             
                                 <div class="firstbatchattri">
-                                    <div class="feature"><span class="checkmark">&#10004;</span>Offers Delivery</div>
-                                    <div class="feature"><span class="checkmark">&#10004;</span>Outdoor dining</div>
-                                    <div class="feature"><span class="checkmark">&#10004;</span>Indoor dining</div>
-                                    <div class="feature"><span class="checkmark">&#10004;</span>Good for Groups</div>
+                                    <div class="feature" id="0"><span class="checkmark">&#10004;</span>Offers Delivery</div>
+                                    <div class="feature" id="1"><span class="checkmark">&#10004;</span>Outdoor dining</div>
+                                    <div class="feature" id="2"><span class="checkmark">&#10004;</span>Indoor dining</div>
+                                    <div class="feature" id="3"><span class="checkmark">&#10004;</span>Good for Groups</div>
                                 </div>
             
                                 <div class="secondbatchattri">
-                                    <div class="feature"><span class="checkmark">&#10004;</span>Music and TV</div>
-                                    <div class="feature"><span class="cross">&#10008;</span>Drive-thru</div>
-                                    <div class="feature"><span class="checkmark">&#10004;</span>Offers Takeout</div>
-                                    <div class="feature"><span class="checkmark">&#10004;</span>Accepts Credit Cards</div>
+                                    <div class="feature" id="4"><span class="checkmark">&#10004;</span>Music and TV</div>
+                                    <div class="feature" id="5"><span class="cross">&#10008;</span>Drive-thru</div>
+                                    <div class="feature" id="6"><span class="checkmark">&#10004;</span>Offers Takeout</div>
+                                    <div class="feature" id="7"><span class="checkmark">&#10004;</span>Accepts Credit Cards</div>
                                 </div>
                                 
                                 <div class="thirdbatchattri">
-                                    <div class="feature"><span class="checkmark">&#10004;</span>Accepts E-Wallet</div>
-                                    <div class="feature"><span class="checkmark">&#10004;</span>Good for Kids</div>
-                                    <div class="feature"><span class="cross">&#10008;</span>Good for Pets</div>
-                                    <div class="feature"><span class="checkmark">&#10004;</span>Vegetarian/Vegan Offerings</div>
+                                    <div class="feature" id="8"><span class="checkmark">&#10004;</span>Accepts E-Wallet</div>
+                                    <div class="feature" id="9"><span class="checkmark">&#10004;</span>Good for Kids</div>
+                                    <div class="feature" id="10"><span class="cross">&#10008;</span>Good for Pets</div>
+                                    <div class="feature" id="11"><span class="checkmark">&#10004;</span>Vegetarian/Vegan Offerings</div>
                                 </div>
             
                             </div>
@@ -141,7 +103,7 @@
 
 
                 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     
                     <div class="restoinfo">
                         <div class="restopicturearea">
@@ -186,7 +148,7 @@
                     </div>
                 </a>
 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     <div class="restoinfo">
                         <div class="restopicturearea">
                             <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
@@ -230,7 +192,7 @@
                     </div>
                 </a>
 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     <div class="restoinfo">
                         <div class="restopicturearea">
                             <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
@@ -275,7 +237,7 @@
                     </div>
                 </a>
 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     <div class="restoinfo">
                         <div class="restopicturearea">
                             <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
@@ -336,7 +298,7 @@
         
             <div class="swiper-wrapper">
                 <!-- Your restoinfos content here -->
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     <div class="restoinfo">
                         <div class="restopicturearea">
                             <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
@@ -381,7 +343,7 @@
                 </a>
 
 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     
                     <div class="restoinfo">
                         <div class="restopicturearea">
@@ -426,7 +388,7 @@
                     </div>
                 </a>
 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     
                     <div class="restoinfo">
                         <div class="restopicturearea">
@@ -471,7 +433,7 @@
                     </div>
                 </a>
 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     
                     <div class="restoinfo">
                         <div class="restopicturearea">
@@ -517,7 +479,7 @@
                     </div>
                 </a>
 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     
                     <div class="restoinfo">
                         <div class="restopicturearea">
@@ -576,7 +538,7 @@
         </a>
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     <div class="restoinfo">
                         <div class="restopicturearea">
                             <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
@@ -620,7 +582,7 @@
                     </div>
                 </a>
                 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     <div class="restoinfo">
                         <div class="restopicturearea">
                             <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
@@ -665,7 +627,7 @@
                 </a>
 
 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     
                     <div class="restoinfo">
                         <div class="restopicturearea">
@@ -710,7 +672,7 @@
                     </div>
                 </a>
 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     <div class="restoinfo">
                         <div class="restopicturearea">
                             <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">
@@ -755,7 +717,7 @@
                     </div>
                 </a>
 
-                <a href="resto-reviewpage.html" class="swiper-slide">
+                <a href="resto-reviewpage" class="swiper-slide">
                     <div class="restoinfo">
                         <div class="restopicturearea">
                             <img src="assets/bacsi.jpg" alt="Picture" class="restopicture">

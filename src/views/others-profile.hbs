@@ -7,47 +7,12 @@
         <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
         <script src="script/own-profile.js"></script>
         <script src="script/general.js"></script>
-        <script src="script/navbar.js"></script>
         <script src="script/like.js"></script>
         <title>BiteBoxd - View other user's Profile</title>
     </head>
 <body>
-    <header>
-        <a class="logo-link" onclick="transferSession('index.html')">
-            <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
-        </a>
-        
-        <a class="nav-icon-container" onclick="transferSession('index.html')">
-            <img src="assets/home.svg" alt="" class="nav-icon">
-            <p>Home</p>
-        </a>
-        
-        <a class="nav-icon-container" onclick="transferSession('explore.html')">
-            <img src="assets/explore.svg" alt="" class="nav-icon">
-            <p>Explore</p>
-        </a>
+    {{> navbar}}
 
-        <a class="nav-icon-container" onclick="transferSession('all.html')">
-            <img src="assets/archive.svg" alt="" class="nav-icon">
-            <p>All</p>
-        </a>
-
-        <a href="login.html" class="nav-icon-container" id="person-icon">
-            <img src="assets/person.svg" alt="" class="nav-icon">
-            <p>Accounts</p>
-        </a>
-        
-        <div class="account-icon" id="account-icon" onclick="togglePopup()">
-            <img src="assets/profile.jpg" alt="" class="profile-icon">
-        </div>
-        
-        <div class="popup-container" id="popupContainer" style="display: none;">
-            <div class="popup" id="popup">
-                <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
-                <a href="#" onclick="logOut()">Log Out</a>
-            </div>
-        </div>        
-    </header>
 
     <main>
         <div class="profile-header">
@@ -96,7 +61,7 @@
           
                     
                     <div class="all-results">
-                        <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
+                        <div class="result-box" onclick="appendLogin('resto-reviewpage')">
                             <div class="store-details">
     
                                 <div class="store-details-image">
@@ -122,14 +87,14 @@
                                     <div class="peek-review">
                                         <p class="peek-review-para">
                                             "Perfect for a Fil-Chi like me,Close walk from condo we were staying. Yummy food and nice service, the staffs ar…"
-                                            <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                            <span id="more" onclick="appendLogin('resto-reviewpage')">...more</span>                                    
                                         </p>
                                     </div>
                                 </div>
                             </div> 
                         </div> 
     
-                        <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
+                        <div class="result-box" onclick="appendLogin('resto-reviewpage')">
                             <div class="store-details">
     
                                 <div class="store-details-image">
@@ -154,14 +119,14 @@
                                     <div class="peek-review">
                                         <p class="peek-review-para">
                                             "Open 24 hour! Perfect for Taft as everything usually closes after people leave this mostly business area. Close walk from hotel we were staying. Very busy at…"
-                                            <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                            <span id="more" onclick="appendLogin('resto-reviewpage')">...more</span>                                    
                                         </p>
                                     </div>
                                 </div>
                             </div> 
                         </div> 
     
-                        <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
+                        <div class="result-box" onclick="appendLogin('resto-reviewpage')">
                             <div class="store-details">
     
                                 <div class="store-details-image">
@@ -187,7 +152,7 @@
                                     <div class="peek-review">
                                         <p class="peek-review-para">
                                             "Open 24 hour! Perfect for late night samgy craaaaviingssssss!!! as everything usually closes after people leave this mostly business area. Close walk from hotel we were staying. Very busy at…"
-                                            <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                            <span id="more" onclick="appendLogin('resto-reviewpage')">...more</span>                                    
                                         </p>
                                     </div>
                                 </div>
@@ -230,7 +195,7 @@
                             <h2 class="titlearea">My new go-to!</h2>
                         
                             <div class="nametitle">
-                                <a href="others-profile.html" class="nameandtime">@Mon_1015</a>
+                                <a href="others-profile" class="nameandtime">@Mon_1015</a>
                                 <p class="nameandtime"> · </p>
                                 <p class="nameandtime">February 12, 2024 8:01 am </p>
                             </div>
@@ -324,7 +289,7 @@
                             <h2 class="titlearea">Good meal but one try is enough!</h2>
                         
                             <div class="nametitle">
-                                <a href="others-profile.html" class="nameandtime">@Mon_1015</a>
+                                <a href="others-profile" class="nameandtime">@Mon_1015</a>
                                 <p class="nameandtime"> · </p>
                                 <p class="nameandtime">February 12, 2024 8:01 am </p>
                             </div>
@@ -481,7 +446,7 @@
                             </div>
                         </div>
                         <div class="recent-activity-description">
-                            <p>@Mon_1015 visited and left a review at <a href="resto-reviewpage.html"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
+                            <p>@Mon_1015 visited and left a review at <a href="resto-reviewpage"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
                         </div>
                     </div>
                     <div class="recent-activity">

@@ -7,58 +7,21 @@
         <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
         <script src="script/own-profile.js"></script>
         <script src="script/general.js"></script>
-        <script src="script/navbar.js"></script>
         <script type="" src="script/edit-profile.js"></script>
         <script src="script/like.js"></script>
-    <script src="script/general.js"></script>
+        <script src="script/general.js"></script>
 
-      <!-- quill -->
-      <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-      <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-  
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <!-- quill -->
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
         <title>BiteBoxd - View own Profile</title>
     </head>
 <body>
-    <header>
-        <a class="logo-link" onclick="transferSession('index.html')">
-            <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
-        </a>
-        
-        <a class="nav-icon-container" onclick="transferSession('index.html')">
-            <img src="assets/home.svg" alt="" class="nav-icon">
-            <p>Home</p>
-        </a>
-        
-        <a class="nav-icon-container" onclick="transferSession('explore.html')">
-            <img src="assets/explore.svg" alt="" class="nav-icon">
-            <p>Explore</p>
-        </a>
+    {{> navbar}}
 
-        <a class="nav-icon-container" onclick="transferSession('all.html')">
-            <img src="assets/archive.svg" alt="" class="nav-icon">
-            <p>All</p>
-        </a>
-
-        <a href="login.html" class="nav-icon-container" id="person-icon">
-            <img src="assets/person.svg" alt="" class="nav-icon">
-            <p>Accounts</p>
-        </a>
-        
-        <div class="account-icon" id="account-icon" onclick="togglePopup()">
-            <img src="assets/profile.jpg" alt="" class="profile-icon">
-        </div>
-        
-        <div class="popup-container" id="popupContainer" style="display: none;">
-            <div class="popup" id="popup">
-                <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
-                <a href="#" onclick="logOut()">Log Out</a>
-            </div>
-        </div>        
-    </header>
 
 
     <main>
@@ -148,7 +111,7 @@
           
                     
                     <div class="all-results">
-                        <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
+                        <div class="result-box" onclick="appendLogin('resto-reviewpage')">
                             <div class="store-details">
     
                                 <div class="store-details-image">
@@ -174,14 +137,14 @@
                                     <div class="peek-review">
                                         <p class="peek-review-para">
                                             "Open 24 hour! Perfect for Makati as everything usually closes after people leave this mostly business area. Close wa…"
-                                            <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                            <span id="more" onclick="appendLogin('resto-reviewpage')">...more</span>                                    
                                         </p>
                                     </div>
                                 </div>
                             </div> 
                         </div> 
     
-                        <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
+                        <div class="result-box" onclick="appendLogin('resto-reviewpage')">
                             <div class="store-details">
     
                                 <div class="store-details-image">
@@ -207,14 +170,14 @@
                                     <div class="peek-review">
                                         <p class="peek-review-para">
                                             " Amaazing food! The whole experience from start to finish is great waitress is always so friendly and kind. The food can’t ge"
-                                            <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                            <span id="more" onclick="appendLogin('resto-reviewpage')">...more</span>                                    
                                         </p>
                                     </div>
                                 </div>
                             </div> 
                         </div> 
     
-                        <div class="result-box" onclick="appendLogin('resto-reviewpage.html')">
+                        <div class="result-box" onclick="appendLogin('resto-reviewpage')">
                             <div class="store-details">
     
                                 <div class="store-details-image">
@@ -239,7 +202,7 @@
                                     <div class="peek-review">
                                         <p class="peek-review-para">
                                             "Searching for places to eat in the local area and this place popped up. I don’t normally leave reviews but I feel compelled as the food was ab…"
-                                            <span id="more" onclick="appendLogin('resto-reviewpage.html')">...more</span>                                    
+                                            <span id="more" onclick="appendLogin('resto-reviewpage')">...more</span>                                    
                                         </p>
                                     </div>
                                 </div>
@@ -282,7 +245,7 @@
                                 <h2 class="titlearea">Good meal but one try is enough!</h2>
                             
                                 <div class="nametitle">
-                                    <a href="own-profile.html" class="nameandtime">makoeats</a>
+                                    <a href="own-profile" class="nameandtime">makoeats</a>
                                     <p class="nameandtime"> · </p>
                                     <p class="nameandtime">February 12, 2024 8:01 am </p>
                                 </div>
@@ -373,7 +336,7 @@
                                 <h2 class="titlearea">Good meal but one try is enough!</h2>
                             
                                 <div class="nametitle">
-                                    <a href="own-profile.html" class="nameandtime">makoeats</a>
+                                    <a href="own-profile" class="nameandtime">makoeats</a>
                                     <p class="nameandtime"> · </p>
                                     <p class="nameandtime">February 12, 2024 8:01 am </p>
                                 </div>
@@ -466,7 +429,7 @@
                                 <h2 class="titlearea">I Dont like it here!!!</h2>
                             
                                 <div class="nametitle">
-                                    <a href="own-profile.html" class="nameandtime">makoeats</a>
+                                    <a href="own-profile" class="nameandtime">makoeats</a>
                                     <p class="nameandtime"> · </p>
                                     <p class="nameandtime">February 12, 2024 8:01 am </p>
                                 </div>
@@ -620,7 +583,7 @@
                             </div>
                         </div>
                         <div class="recent-activity-description">
-                            <p>@makoeats visited and left a review at <a href="resto-reviewpage.html"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
+                            <p>@makoeats visited and left a review at <a href="resto-reviewpage"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
                         </div>
                         <div class="delete-recent-activity">
                             <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
@@ -635,7 +598,7 @@
                             </div>
                         </div>
                         <div class="recent-activity-description">
-                            <p>@makoeats liked <a href="others-profile.html"><strong><u>@Mon_1015</u></strong></a> review.</p>
+                            <p>@makoeats liked <a href="others-profile"><strong><u>@Mon_1015</u></strong></a> review.</p>
                         </div>
                         <div class="delete-recent-activity">
                             <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  

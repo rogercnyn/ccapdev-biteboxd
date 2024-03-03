@@ -10,23 +10,22 @@ const {test} = require('./trial.js')
 
 const router = Router();
 const viewsDir = path.join(path.resolve(__dirname, '..'), 'views');
-const htmlFiles = fs.readdirSync(viewsDir) .filter(file => path.extname(file) === '.html');
+const pages = fs.readdirSync(viewsDir)
+    .filter(file => path.extname(file) === '.html' || path.extname(file) === '.hbs')
+    .map(file => path.basename(file, path.extname(file)));
 
-function routeToFile(fileName) {
-    return async function(req, res) {
-        const filePath = path.join(viewsDir, fileName);
-        res.sendFile(filePath);
-    };
-}
-
-
-console.log(htmlFiles)
-htmlFiles.forEach(fileName => 
-    router.get(`/${fileName}`, routeToFile(fileName))    
+pages.forEach(fileName => { 
+        console.log(fileName)
+        router.get(`/${fileName}`, function(req, resp){
+            resp.render(`${fileName}`);
+        })
+    }
 )
 
+router.get('/', function(req, resp){
+    resp.render("index")
+})
 
-router.get('/', routeToFile('index.html'));
 
 // [BOOKMARK] DELET ME
 // ITO LANG DAPAT MODELS

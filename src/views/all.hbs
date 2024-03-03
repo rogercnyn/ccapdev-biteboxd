@@ -7,50 +7,13 @@
     <link rel="stylesheet" href="styles/all.css">
     <title>Biteboxd - All</title>
     <script src="script/general.js"></script>
-    <script src="script/navbar.js"></script>
     <script src="script/all.js"></script>
     <script src="script/search-bar.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
-    <header>
-        <a class="logo-link" onclick="transferSession('index.html')">
-            <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
-        </a>
-        
-        <a class="nav-icon-container" onclick="transferSession('index.html')">
-            <img src="assets/home.svg" alt="" class="nav-icon">
-            <p>Home</p>
-        </a>
-        
-        <a class="nav-icon-container" onclick="transferSession('explore.html')">
-            <img src="assets/explore.svg" alt="" class="nav-icon">
-            <p>Explore</p>
-        </a>
-
-        <a class="nav-icon-container" onclick="transferSession('all.html')">
-            <img src="assets/archive.svg" alt="" class="nav-icon">
-            <p>All</p>
-        </a>
-
-        <a href="login.html" class="nav-icon-container" id="person-icon">
-            <img src="assets/person.svg" alt="" class="nav-icon">
-            <p>Accounts</p>
-        </a>
-        
-        <div class="account-icon" id="account-icon" onclick="togglePopup()">
-            <img src="assets/profile.jpg" alt="" class="profile-icon">
-        </div>
-        
-        <div class="popup-container" id="popupContainer" style="display: none;">
-            <div class="popup" id="popup">
-                <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
-                <a href="#" onclick="logOut()">Log Out</a>
-            </div>
-        </div>        
-    </header>
-
+   {{> navbar}}
     
     <main>
         <div class="category-title" id="category-title">
@@ -90,7 +53,7 @@
         <div class="catalogue">
 
             <div class="gallery">
-                <div class="resto-container fil" onclick="transferSession('resto-reviewpage.html')">
+                <div class="resto-container fil" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/atericas.jpg" alt="" class="store-pic">
                       </div>
@@ -107,7 +70,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container fil" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container fil" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/tapa king.jpg" alt="" class="store-pic">
                       </div>
@@ -124,7 +87,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container fil" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container fil" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/angrydobo.jpg" alt="" class="store-pic">
                       </div>
@@ -141,7 +104,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container fil" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container fil" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/chefbabs.jpg" alt="" class="store-pic">
                       </div>
@@ -158,7 +121,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container fil" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container fil" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/manam.jpg" alt="" class="store-pic">
                       </div>
@@ -175,7 +138,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container fil" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container fil" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/thearistocrat.jpg" alt="" class="store-pic">
                       </div>
@@ -192,7 +155,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container cof" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container cof" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/tomocoffee.jpg" alt="" class="store-pic">
                       </div>
@@ -209,7 +172,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container cof" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container cof" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/seattlesbest.jpg" alt="" class="store-pic">
                       </div>
@@ -226,7 +189,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container cof" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container cof" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/starbucks.jpg" alt="" class="store-pic">
                       </div>
@@ -243,7 +206,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container cof" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container cof" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/coffeeproject.jpg" alt="" class="store-pic">
                       </div>
@@ -260,7 +223,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container cof" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container cof" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/pickupcoffee.jpg" alt="" class="store-pic">
                       </div>
@@ -277,7 +240,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container jap" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container jap" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/tokyotokto.jpg" alt="" class="store-pic">
                       </div>
@@ -294,7 +257,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container jap" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container jap" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/yoshimeatsu.jpg" alt="" class="store-pic">
                       </div>
@@ -311,7 +274,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container jap" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container jap" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/crazykatsu.jpg" alt="" class="store-pic">
                       </div>
@@ -328,7 +291,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container jap" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container jap" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/pepper lunch.jpg" alt="" class="store-pic">
                       </div>
@@ -345,7 +308,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container jap" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container jap" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/hayashi.jpg" alt="" class="store-pic">
                       </div>
@@ -362,7 +325,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container chi" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container chi" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/davidsteahouse.jpg" alt="" class="store-pic">
                       </div>
@@ -379,7 +342,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container chi" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container chi" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/jusandjerrys.jpg" alt="" class="store-pic">
                       </div>
@@ -396,7 +359,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container chi" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container chi" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/chowking.jpg" alt="" class="store-pic">
                       </div>
@@ -413,7 +376,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container chi" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container chi" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/dimsumking.jpg" alt="" class="store-pic">
                       </div>
@@ -430,7 +393,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container chi" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container chi" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/wokdisway.jpg" alt="" class="store-pic">
                       </div>
@@ -447,7 +410,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container ame" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container ame" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/armynavy.jpg" alt="" class="store-pic">
                       </div>
@@ -464,7 +427,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container ame" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container ame" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/popeyes.jpg" alt="" class="store-pic">
                       </div>
@@ -481,7 +444,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container ame" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container ame" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/wendys.jpg" alt="" class="store-pic">
                       </div>
@@ -498,7 +461,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container ame" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container ame" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/burgerking.jpg" alt="" class="store-pic">
                       </div>
@@ -515,7 +478,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container ame" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container ame" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/zarks.jpg" alt="" class="store-pic">
                       </div>
@@ -532,7 +495,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container ita" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container ita" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/sbarro.jpg" alt="" class="store-pic">
                       </div>
@@ -549,7 +512,7 @@
                       </div>
                   </div>
   
-                  <div class="resto-container ita" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container ita" onclick="transferSession('resto-reviewpage')">
                       <div class="pic-container">
                             <img src="assets/restaurant icons/aventinos.jpg" alt="" class="store-pic">
                         </div>
@@ -567,7 +530,7 @@
                     </div>
   
                     
-                    <div class="resto-container ita" onclick="transferSession('resto-reviewpage.html')">
+                    <div class="resto-container ita" onclick="transferSession('resto-reviewpage')">
                       <div class="pic-container">
                             <img src="assets/restaurant icons/italiannis.jpg" alt="" class="store-pic">
                         </div>
@@ -584,7 +547,7 @@
                         </div>
                     </div>
 
-                  <div class="resto-container kor" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container kor" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/romanticbaboy.jpg" alt="" class="store-pic">
                       </div>
@@ -601,7 +564,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container kor" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container kor" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/wang pau.jpg" alt="" class="store-pic">
                       </div>
@@ -618,7 +581,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container kor" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container kor" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/BABKorean.jpg" alt="" class="store-pic">
                       </div>
@@ -635,7 +598,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container kor" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container kor" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/chungdam.jpg" alt="" class="store-pic">
                       </div>
@@ -652,7 +615,7 @@
                       </div>
                   </div>
 
-                  <div class="resto-container kor" onclick="transferSession('resto-reviewpage.html')">
+                  <div class="resto-container kor" onclick="transferSession('resto-reviewpage')">
                     <div class="pic-container">
                           <img src="assets/restaurant icons/samgyupsalamat.jpg" alt="" class="store-pic">
                       </div>

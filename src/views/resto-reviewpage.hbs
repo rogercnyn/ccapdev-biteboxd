@@ -6,7 +6,6 @@
     <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
     <title>Review Restaurant</title>
     <script src="script/general.js"></script>
-    <script src="script/navbar.js"></script>
     <script src="script/like.js"></script>
     <script src="script/slider.js"></script>
     
@@ -30,43 +29,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
-    <header>
-        <a class="logo-link" onclick="transferSession('index.html')">
-            <img src="assets/logo.png" alt="Biteboxd Logo" class="logo">
-        </a>
-        
-        <a class="nav-icon-container" onclick="transferSession('index.html')">
-            <img src="assets/home.svg" alt="" class="nav-icon">
-            <p>Home</p>
-        </a>
-        
-        <a class="nav-icon-container" onclick="transferSession('explore.html')">
-            <img src="assets/explore.svg" alt="" class="nav-icon">
-            <p>Explore</p>
-        </a>
-
-        <a class="nav-icon-container" onclick="transferSession('all.html')">
-            <img src="assets/archive.svg" alt="" class="nav-icon">
-            <p>All</p>
-        </a>
-
-        <a href="login.html" class="nav-icon-container" id="person-icon">
-            <img src="assets/person.svg" alt="" class="nav-icon">
-            <p>Accounts</p>
-        </a>
-        
-        <div class="account-icon" id="account-icon" onclick="togglePopup()">
-            <img src="assets/profile.jpg" alt="" class="profile-icon">
-        </div>
-        
-        <div class="popup-container" id="popupContainer" style="display: none;">
-            <div class="popup" id="popup">
-                <a href="#" onclick="transferSession('own-profile.html')">View Profile</a>
-                <a href="#" onclick="logOut()">Log Out</a>
-            </div>
-        </div>        
-    </header>
-
+    {{> navbar}}
 
 
     <main class = "main">
@@ -148,7 +111,7 @@
             <div class="publishrevarea" >
 
                 <div class="cannot-publish" id="cannot-publish">
-                    <a href="login.html">Log in to leave a review</a>
+                    <a href="login">Log in to leave a review</a>
                 </div>
 
                 <div class="publishreview" id="publishreview">
@@ -267,7 +230,7 @@
                                 <h2 class="titlearea">Good meal but one try is enough!</h2>
                             
                                 <div class="nametitle">
-                                    <a href="own-profile.html" class="nameandtime">makoeats</a>
+                                    <a href="own-profile" class="nameandtime">makoeats</a>
                                     <p class="nameandtime"> · </p>
                                     <p class="nameandtime">February 12, 2024 8:01 am </p>
                                 </div>
@@ -383,7 +346,7 @@
                                 <h2 class="titlearea">My new go-to!</h2>
                             
                                 <div class="nametitle">
-                                    <a href="others-profile.html" class="nameandtime">@Mon_1015</a>
+                                    <a href="others-profile" class="nameandtime">@Mon_1015</a>
                                     <p class="nameandtime"> · </p>
                                     <p class="nameandtime">February 12, 2024 8:01 am </p>
                                 </div>
@@ -474,7 +437,7 @@
                                 <h2 class="titlearea">THE CHEESE SAUCE!</h2>
                             
                                 <div class="nametitle">
-                                    <a href="others-profile.html" class="nameandtime">@corah</a>
+                                    <a href="others-profile" class="nameandtime">@corah</a>
                                     <p class="nameandtime"> · </p>
                                     <p class="nameandtime">February 13, 2024 11:19 am </p>
                                 </div>
@@ -562,7 +525,7 @@
                                 <h2 class="titlearea">They have good bacon <3</h2>
                             
                                 <div class="nametitle">
-                                    <a href="others-profile.html" class="nameandtime">@archerreviewer</a>
+                                    <a href="others-profile" class="nameandtime">@archerreviewer</a>
                                     <p class="nameandtime"> · </p>
                                     <p class="nameandtime">February 14, 2024 3:55 pm </p>
                                 </div>
@@ -650,7 +613,7 @@
                                 <h2 class="titlearea">Mid</h2>
                             
                                 <div class="nametitle">
-                                    <a href="others-profile.html" class="nameandtime">@urordinaryguy</a>
+                                    <a href="others-profile" class="nameandtime">@urordinaryguy</a>
                                     <p class="nameandtime"> · </p>
                                     <p class="nameandtime">February 15, 2024 2:22 pm </p>
                                 </div>
