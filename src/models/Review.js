@@ -1,9 +1,6 @@
 const { Schema, SchemaTypes, mode, model, mongoose } = require('mongoose');
 
 const reviewSchema = new Schema({
-
-    username: { type: Schema.Types.ObjectId, ref: 'Profile', required: true },
-    linkToUsername: {type: String, required: true},
     isEdited: { type: Boolean, default: false },
 
     // Ratings
