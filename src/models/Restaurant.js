@@ -14,8 +14,7 @@ const restaurantSchema = new Schema({
     password: {type: String, required: true},
 
     // coordinates for map
-    coordX: {type: Number, required: true},
-    coordY: {type: Number, required: true},
+    coordinates: { type: [Number], required: true},
 
     // data about the pricing
     startPriceRange: {type: Number, required: true},
