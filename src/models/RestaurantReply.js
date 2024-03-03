@@ -7,7 +7,7 @@ const restaurantReplySchema = new Schema({
 
     body: {type: String, required: true},
 
-    media: { type: [String], required: true },
+    media: { type: [String], required: false },
 
     createdAt: { type: Date, default: Date.now },
     deletedAt: { type: Date, default: null },
