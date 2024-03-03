@@ -30,7 +30,7 @@ function clickTrafficLight(element) {
 }
 
 function initSearchPage() {
-    adjustResult();
+    // adjustResult();
 }
 
 /*
