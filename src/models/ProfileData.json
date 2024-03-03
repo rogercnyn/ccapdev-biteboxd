@@ -1,0 +1,156 @@
+[
+    {
+        "username": "makoeats",
+        "image": "avatar-f1.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Mako",
+        "lastName": "Pangan",
+        "bio": "Has the best taste in Taft!",
+        "hearts": 712,
+        "dislike": 6,
+        "credibility": 99
+    },
+
+    {
+        "username": "Mon_1015",
+        "image": "avatar-f2.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Michelle",
+        "lastName": "Cruz",
+        "hearts": 650,
+        "dislike": 33,
+        "credibility": 94
+    },
+
+    {
+        "username": "corah",
+        "image": "avatar-m1.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Craig",
+        "lastName": "Cruz",
+        "hearts": 217,
+        "dislike": 11,
+        "credibility": 96
+    },
+
+    {
+        "username": "archerreviewer",
+        "image": "profile.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Luis",
+        "lastName": "Mendoza",
+        "hearts": 1015,
+        "dislike": 27,
+        "credibility": 99
+    },
+
+    {
+        "username": "urordinaryguy",
+        "image": "astro.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Miguel",
+        "lastName": "Sy",
+        "hearts": 10,
+        "dislike": 3,
+        "credibility": 70
+    },
+
+    {
+        "username": "alltoowell",
+        "image": "avatar-f1.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Taylor",
+        "lastName": "Sheesh",
+        "hearts": 19,
+        "dislike": 1,
+        "credibility": 99
+    },
+
+    {
+        "username": "richkid99",
+        "image": "avatar-f2.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Ariana",
+        "lastName": "Ortiz",
+        "hearts": 30,
+        "dislike": 2,
+        "credibility": 99
+    },
+
+    {
+        "username": "fashionfoodie",
+        "image": "avatar-m1.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Ryan",
+        "lastName": "Minaj",
+        "hearts": 1009,
+        "dislike": 7,
+        "credibility": 99
+    },
+
+    {
+        "username": "lostintaft",
+        "image": "avatar-m1.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Vhrent",
+        "lastName": "Pepito",
+        "hearts": 550,
+        "dislike": 100,
+        "credibility": 77
+    },
+
+    {
+        "username": "taftpalate",
+        "image": "avatar-f1.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Maxene",
+        "lastName": "B",
+        "hearts": 817,
+        "dislike": 333,
+        "credibility": 66
+    },
+
+    {
+        "username": "lebron12345",
+        "image": "avatar-m1.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Mark",
+        "lastName": "Ocampo",
+        "hearts": 77,
+        "dislike": 0,
+        "credibility": 100
+    },
+
+    {
+        "username": "lasallianfoodie",
+        "image": "avatar-f1.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Shiana",
+        "lastName": "Reyes",
+        "hearts": 100,
+        "dislike": 3,
+        "credibility": 97
+    },
+
+    {
+        "username": "maine_mairel",
+        "image": "avatar-f2.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Mikey",
+        "lastName": "Tan",
+        "hearts": 109,
+        "dislike": 5,
+        "credibility": 95
+    },
+
+    {
+        "username": "xmon_toro",
+        "image": "avatar-m1.jpg",
+        "bgImage": "header.jpg",
+        "firstName": "Miggy",
+        "lastName": "So",
+        "hearts": 190,
+        "dislike": 14,
+        "credibility": 96
+    }
+]

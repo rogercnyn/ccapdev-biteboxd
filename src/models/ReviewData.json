@@ -1,0 +1,226 @@
+[
+    {
+        "username": "makoeats",
+        "linkToUsername": "own-profile.hbs",
+        "isEdited": false,
+        "overallRating": 4.6,
+        "foodRating": 4,
+        "serviceRating": 3,
+        "affordabilityRating": 4,
+        "noOfLikes": 8,
+        "noOfDislikes": 9,
+        "title": "Good meal but one try is enough!",
+        "body": "I had an amazing experience here! The food was exquisite, and the service was impeccable. The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning! However, I think it is important to note that for some people, the taste may not be good. It's a little bit spicy due to the pepper they add on the toppings. You may ask ate not to put any if spicy is not your thing.",
+        "media": ["bacsilog1.png", "bacsilog2.jpeg", "bacsilogvid.mp4", "bacsi.jpg"]
+    },
+
+    {
+        "username": "Mon_1015",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": true,
+        "overallRating": 4.9,
+        "foodRating": 3,
+        "serviceRating": 4,
+        "affordabilityRating": 5,
+        "noOfLikes": 1,
+        "noOfDislikes": 3,
+        "title": "My new go-to!",
+        "body": "This is now my new go-to resto! Not the best but you get what you paid for. The service is a little slow but ate is so nice and accommodating. Price is cheaper compared to other resto nearby. The ambiance is also great and their choice of music is good. It's very amazing. Many Lasallians would love this resto. Try it guys! You would love this if you are a huge fan of Taylor Swift.",
+        "media": ["bacsilog3.jpeg", "bacsilog5.jpg"]
+    },
+
+    {
+        "username": "corah",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": false,
+        "overallRating": 4.9,
+        "foodRating": 4,
+        "serviceRating": 3,
+        "affordabilityRating": 5,
+        "noOfLikes": 10,
+        "noOfDislikes": 16,
+        "title": "THE CHEESE SAUCE!",
+        "body": "AMAZING FOOD!!! The cheese sauce is so good!! It's also very affordable. But it took them some time to cook my order. Nonetheless, it's good!",
+        "media": ["bacsilog3.jpeg", "bacsilog5.jpg"]
+    },
+
+    {
+        "username": "archerreviewer",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": false,
+        "overallRating": 5.0,
+        "foodRating": 5,
+        "serviceRating": 5,
+        "affordabilityRating": 5,
+        "noOfLikes": 9,
+        "noOfDislikes": 9,
+        "title": "They have good bacon <3",
+        "body": "Will eat here again!",
+        "media": ["bacsilog6.jpeg"]
+    },
+
+    {
+        "username": "urordinaryguy",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": false,
+        "overallRating": 4.0,
+        "foodRating": 4,
+        "serviceRating": 2,
+        "affordabilityRating": 3,
+        "noOfLikes": 1,
+        "noOfDislikes": 0,
+        "title": "Mid",
+        "body": "I recommend you eat in Goodmunch na lang...",
+        "media": ["bacsilog1.png"]
+    },
+
+    {
+        "username": "alltoowell",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": false,
+        "overallRating": 4.5,
+        "foodRating": 5,
+        "serviceRating": 5,
+        "affordabilityRating": 4,
+        "noOfLikes": 10,
+        "noOfDislikes": 3,
+        "title": "You get what you paid for!",
+        "body": "A bit expensive.. I guess? But the food is so delicious!",
+        "media": ["angrydobo2.jpeg"]
+    },
+
+    {
+        "username": "richkid99",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": true,
+        "overallRating": 2.5,
+        "foodRating": 2,
+        "serviceRating": 3,
+        "affordabilityRating": 2,
+        "noOfLikes": 5,
+        "noOfDislikes": 2,
+        "title": "Not Impressed",
+        "body": "What's the hype all about?????",
+        "media": ["angrydobo1.jpeg"]
+    },
+
+    {
+        "username": "fashionfoodie",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": false,
+        "overallRating": 4.5,
+        "foodRating": 5,
+        "serviceRating": 4,
+        "affordabilityRating": 4,
+        "noOfLikes": 8,
+        "noOfDislikes": 1,
+        "title": "FINALLY A GOOD ADOBO PLACE IN TAFT",
+        "body": "TITLE SAYS IT ALL!! FINALLY MY NEW GO-TO SPOT WHEN I CRAVE SOME ADOBO",
+        "media": ["angrydobo1.jpeg", "angrydobo2.jpeg"]
+    },
+
+    {
+        "username": "lostintaft",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": false,
+        "overallRating": 3.5,
+        "foodRating": 3,
+        "serviceRating": 4,
+        "affordabilityRating": 2,
+        "noOfLikes": 6,
+        "noOfDislikes": 0,
+        "title": "Eh...",
+        "body": "A bit expensive and the food is a bit mid..",
+        "media": ["angrydobo1.jpeg"]
+    },
+
+    {
+        "username": "taftpalate",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": true,
+        "overallRating": 4.0,
+        "foodRating": 4,
+        "serviceRating": 3,
+        "affordabilityRating": 4,
+        "noOfLikes": 3,
+        "noOfDislikes": 1,
+        "title": "Reminds me of home",
+        "body": "Their adobo and laing is so yummy! Their adobo reminds me of my Lola's. Will definitely recommend this one to my friends.",
+        "media": ["angrydobo2.jpeg", "angrydobo3.jpeg"]
+    },
+
+    {
+        "username": "lebron12345",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": false,
+        "overallRating": 4.7,
+        "foodRating": 5,
+        "serviceRating": 4,
+        "affordabilityRating": 4,
+        "noOfLikes": 12,
+        "noOfDislikes": 2,
+        "title": "Tapa King is my King!",
+        "body": "Really like their tapa but the service is quiet slow.",
+        "media": ["tapaking1.jpeg"]
+    },
+
+    {
+        "username": "lasallianfoodie",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": false,
+        "overallRating": 4.5,
+        "foodRating": 5,
+        "serviceRating": 4,
+        "affordabilityRating": 5,
+        "noOfLikes": 9,
+        "noOfDislikes": 1,
+        "title": "THEIR TAPA IS GOOD",
+        "body": "Their tapa is so good! You should try it!",
+        "media": ["tapaking2.jpeg"]
+    },
+
+    {
+        "username": "maine_mairel",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": false,
+        "overallRating": 4.3,
+        "foodRating": 4,
+        "serviceRating": 3,
+        "affordabilityRating": 5,
+        "noOfLikes": 7,
+        "noOfDislikes": 0,
+        "title": "Must try",
+        "body": "Lasallians on budget MUST TRY THIS!! WORTH IT.",
+        "media": ["tapaking3.jpeg"]
+    },
+
+    {
+        "username": "xmon_toro",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": true,
+        "overallRating": 3.6,
+        "foodRating": 3,
+        "serviceRating": 4,
+        "affordabilityRating": 3,
+        "noOfLikes": 4,
+        "noOfDislikes": 2,
+        "title": "Good!",
+        "body": "Not the best tapsilog in town, but its one of the OG. It tastes good naman.",
+        "media": ["tapaking1.jpeg"]
+    },
+
+    {
+        "username": "Mon_1015",
+        "linkToUsername": "others-profile.hbs",
+        "isEdited": true,
+        "overallRating": 4.9,
+        "foodRating": 3,
+        "serviceRating": 4,
+        "affordabilityRating": 5,
+        "noOfLikes": 1,
+        "noOfDislikes": 3,
+        "title": "Won't recommend",
+        "body": "Their tapa tastes so mid. If you're looking for a good tapsilog, I recommend going to carenderia near Razon.",
+        "media": ["tapaking1.jpeg", "tapaking2.jpeg", "tapaking3.jpeg"]
+    }
+]
