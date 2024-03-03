@@ -24,7 +24,15 @@ const profileSchema = new Schema({
     lastName: { type: String, required: true}, 
 
     // bio
-    bio: { type: String, required: false}
+    bio: { type: String, required: false},
+
+    // stats
+    hearts: {type: Number, required: true},
+    dislike: {type: Number, required: true},
+
+    // reviews
+    reviews: {type: [Schema.Types.ObjectId], ref: 'Review', default: []},
+    likedReviews: {type: [Schema.Types.ObjectId], ref: 'Review', default: []}
 });
 
 const Profile = model('profile', profileSchema); 
