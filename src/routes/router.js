@@ -1,31 +1,43 @@
 const { Router }= require('express');
 const path = require('path');
 const fs = require('fs');
+const {searchQuery} = require('./searchController.js')
 
 // [BOOKMARK] -> DELETE WHEN IMPLEMENTING
 
 // [BOOKMARK] DELETE ME 
-const {test} = require('./trial.js')
+const {test} = require('./trial.js');
 
 
 const router = Router();
 const viewsDir = path.join(path.resolve(__dirname, '..'), 'views');
 const pages = fs.readdirSync(viewsDir)
-    .filter(file => path.extname(file) === '.html' || path.extname(file) === '.hbs')
+    .filter(file => path.basename(file) != 'search' && path.extname(file) === '.hbs')
     .map(file => path.basename(file, path.extname(file)));
 
-pages.forEach(fileName => { 
-        console.log(fileName)
-        router.get(`/${fileName}`, function(req, resp){
-            resp.render(`${fileName}`);
-        })
-    }
-)
+// pages.forEach(fileName => { 
+//         console.log(fileName)
+//         router.get(`/${fileName}`, function(req, resp){
+//             resp.render(`${fileName}`);
+//         })
+//     }
+// )
+
+router.get('/search', function(req, resp){
+    // console.log(req)
+    const query = req.query.query;
+    console.log(query)
+    results = searchQuery(query)
+    console.log(results)
+    resp.render("search", {
+        results
+    })
+
+})
 
 router.get('/', function(req, resp){
     resp.render("index")
 })
-
 
 // [BOOKMARK] DELET ME
 // ITO LANG DAPAT MODELS
@@ -37,7 +49,8 @@ router.get('/', function(req, resp){
 // 5. IN SAMPLEDATALOADER.JS, CREATE A FUNCTION, EXPORT IT
 // 6. IN TRIAL.JS ADJUST TO IMPORT THE SAMPLEDATALOADER FUNCTION
 
-test()
+test();
+
 
 
 module.exports = router;

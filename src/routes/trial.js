@@ -1,57 +1,66 @@
 const  {sampleRestaurant, sampleProfile, sampleRestaurantReply, sampleReview} = require('./sampleData.js')
 
 
-function saveSampleRestaurant(){
-    sampleRestaurant.save()
-    .then(savedRestaurant => {
-        console.log('Sample restaurant saved successfully:', savedRestaurant);
-    })
-    .catch(error => {
-        console.error('Error saving restaurant review:', error);
-    });
+function saveSampleProfile() {
+    return sampleProfile.save()
+        .then(savedProfile => {
+            console.log('Sample profile saved successfully:', savedProfile);
+            return savedProfile; // Return the saved document
+        })
+        .catch(error => {
+            console.error('Error saving profile review:', error);
+            throw error; // Throw the error to propagate it
+        });
 }
 
-function saveSampleProfile()
-{
-    sampleProfile.save()
-    .then(savedProfile => {
-        console.log('Sample profile saved successfully:', savedProfile);
-    })
-    .catch(error => {
-        console.error('Error saving profile review:', error);
-    });
+function saveSampleReview() {
+    return sampleReview.save()
+        .then(savedReview => {
+            console.log('Sample review saved successfully:', savedReview);
+            return savedReview; // Return the saved document
+        })
+        .catch(error => {
+            console.error('Error saving sample review:', error);
+            throw error; // Throw the error to propagate it
+        });
 }
 
-function saveSampleReview()
-{
-    sampleReview.save()
-    .then(savedReview => {
-        console.log('Sample review saved successfully:', savedReview);
-    })
-    .catch(error => {
-        console.error('Error saving sample review:', error);
-    });
+function saveSampleRestaurant() {
+    return sampleRestaurant.save()
+        .then(savedRestaurant => {
+            console.log('Sample restaurant saved successfully:', savedRestaurant);
+            return savedRestaurant; // Return the saved document
+        })
+        .catch(error => {
+            console.error('Error saving restaurant review:', error);
+            throw error; // Throw the error to propagate it
+        });
 }
 
-function saveSampleRestaurantReply()
-{
-    sampleRestaurantReply.save()
-    .then(savedRestaurantReply => {
-        console.log('Sample restaurant reply saved successfully:', savedRestaurantReply);
-    })
-    .catch(error => {
-        console.error('Error saving restaurant reply:', error);
-    });
+// Repeat the same pattern for other save functions
+
+
+function saveSampleRestaurantReply() {
+    return sampleRestaurantReply.save()
+        .then(savedRestaurantReply => {
+            console.log('Sample restaurant reply saved successfully:', savedRestaurantReply);
+            return savedRestaurantReply; // Return the saved document
+        })
+        .catch(error => {
+            console.error('Error saving restaurant reply:', error);
+            throw error; // Throw the error to propagate it
+        });
 }
 
 
 
-function test(){
-    saveSampleRestaurant()
-    saveSampleProfile()
-    saveSampleReview()
-    saveSampleRestaurantReply()
+function test() {
+    return Promise.all([
+        saveSampleRestaurant(),
+        saveSampleProfile(),
+        saveSampleReview(),
+        saveSampleRestaurantReply()
+    ]);
 }
-
 
 module.exports = {test}
