@@ -35,8 +35,7 @@ const sampleRestaurant = new Restaurant({
     noOfTwoStars: 13,
     noOfOneStars: 2,
     media: 'bacsilog-main.jpeg',
-    coordX: 144.75,
-    coordY: 133.5
+    coordinates: [-73.968285, 40.785091]
 
     // reviews: blank muna
     // start and end opening hour: naka.now muna
