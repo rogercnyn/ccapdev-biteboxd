@@ -23,6 +23,10 @@ const pages = fs.readdirSync(viewsDir)
 //     }
 // )
 
+router.get('/all', function(req, resp){
+    resp.render("all")
+})
+
 router.get('/search', function(req, resp){
     const query = req.query.query;
     console.log(query)

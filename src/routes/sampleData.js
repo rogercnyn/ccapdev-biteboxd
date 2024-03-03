@@ -23,6 +23,7 @@ const sampleRestaurant = new Restaurant({
     startPriceRange: 50,
     endPriceRange: 1000,
     description: 'Home of the best Pinoy fried chicken.',
+    shortDescription: 'Chicken joy',
     amenities: [1, 0, 1, 0, 
                 1, 0, 1, 0,
                 0, 1, 0, 1],
