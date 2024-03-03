@@ -31,8 +31,11 @@ router.get('/all', function(req, resp){
             })
         }   
     )
+})
 
-    // resp.render("all")
+
+router.get('/explore', function(req, resp){
+    resp.render("explore")    
 })
 
 router.get('/search', function(req, resp){
