@@ -22,17 +22,6 @@ function saveSampleProfile()
     });
 }
 
-function saveSampleRestaurantReply()
-{
-    sampleRestaurantReply.save()
-    .then(savedRestaurantReply => {
-        console.log('Sample restaurant reply saved successfully:', savedRestaurantReply);
-    })
-    .catch(error => {
-        console.error('Error saving restaurant reply:', error);
-    });
-}
-
 function saveSampleReview()
 {
     sampleReview.save()
@@ -44,13 +33,24 @@ function saveSampleReview()
     });
 }
 
+function saveSampleRestaurantReply()
+{
+    sampleRestaurantReply.save()
+    .then(savedRestaurantReply => {
+        console.log('Sample restaurant reply saved successfully:', savedRestaurantReply);
+    })
+    .catch(error => {
+        console.error('Error saving restaurant reply:', error);
+    });
+}
+
 
 
 function test(){
     saveSampleRestaurant()
     saveSampleProfile()
-    saveSampleRestaurantReply()
     saveSampleReview()
+    saveSampleRestaurantReply()
 }
 
 

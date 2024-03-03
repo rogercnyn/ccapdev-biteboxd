@@ -1,18 +1,13 @@
 const { Schema, SchemaTypes, mode, model, mongoose } = require('mongoose');
 
 const reviewSchema = new Schema({
-    // References
-    id: {
-        type: Schema.Types.ObjectId,
-        default: () => new mongoose.Types.ObjectId() 
-    },
 
-    rating: { type: Number, required: true },
-    username: { type: Schema.Types.ObjectId, ref: 'Profile', required: true }, 
-    createdAt: { type: Date, default: Date.now },
+    username: { type: Schema.Types.ObjectId, ref: 'Profile', required: true },
+    linkToUsername: {type: String, required: true},
     isEdited: { type: Boolean, default: false },
 
     // Ratings
+    overallRating: { type: Number, required: true },
     foodRating: { type: Number, required: true },
     serviceRating: { type: Number, required: true },
     affordabilityRating: { type: Number, required: true },
@@ -29,6 +24,7 @@ const reviewSchema = new Schema({
     media: { type: [String], required: true },
     
     // Metadata
+    createdAt: { type: Date, default: Date.now },
     deletedAt: { type: Date, default: null },
 
     // Replies
