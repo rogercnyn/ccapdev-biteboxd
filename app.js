@@ -9,7 +9,7 @@ const path = require("path")
 //  requires dot env configuration already
 const connect = require('./src/models/db.js');
 const router = require('./src/routes/router.js');
-const { loadProfiles, loadRestaurant, loadReviews } = require('./src/routes/loader.js')
+const { loadProfiles, loadRestaurants, loadReviews } = require('./src/routes/loader.js')
 
 
 
@@ -52,6 +52,7 @@ async function main() {
         try {
             await connect();
             console.log(`Now connected to MongoDB`);
+            // await loadRestaurants()
             await loadProfiles()
             await loadReviews()
         } catch (err) {

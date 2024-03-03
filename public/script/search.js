@@ -31,7 +31,6 @@ function clickTrafficLight(element) {
 
 function initSearchPage() {
     adjustResult();
-    initializeSearchString();
 }
 
 /*

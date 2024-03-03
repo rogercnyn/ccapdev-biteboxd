@@ -12,7 +12,7 @@ async function countProfiles() {
 function saveProfile(profileToSave) {
     return profileToSave.save()
         .then(savedProfile => {
-            console.log('Profile saved successfully:', savedProfile);
+            // console.log('Profile saved successfully:', savedProfile);
             return savedProfile; 
         })
         .catch(error => {

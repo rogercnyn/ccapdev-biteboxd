@@ -23,7 +23,7 @@ async function clearReviews() {
 function saveReview(reviewToSave) {
     return reviewToSave.save()
         .then(savedReview => {
-            console.log('Review saved successfully:', savedReview);
+            // console.log('Review saved successfully:', savedReview);
             return savedReview; 
         })
         .catch(error => {

@@ -36,8 +36,9 @@ async function loadProfiles() {
 }
 
 
-function loadRestaurant(){
+function loadRestaurants(){
     let restaurants = parseRestaurants()
+    // console.log(restaurants)
     Array.from(restaurants).forEach(restaurant => {
         addRestaurant(restaurant)
     })
@@ -56,4 +57,4 @@ async function loadReviews() {
     }
 }
 
-module.exports = { loadProfiles, loadRestaurant, loadReviews }
+module.exports = { loadProfiles, loadRestaurants, loadReviews }

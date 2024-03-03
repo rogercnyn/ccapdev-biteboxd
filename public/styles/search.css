@@ -204,7 +204,7 @@ input[type="radio"] {
     height: 100%;
     width: 90%;
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .store-details {
