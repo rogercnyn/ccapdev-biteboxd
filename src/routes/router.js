@@ -1,7 +1,7 @@
 const { Router }= require('express');
 const path = require('path');
 const fs = require('fs');
-const {searchQuery} = require('./searchController.js')
+const { searchQuery, getAllRestaurant } = require('./restaurantController.js')
 
 // [BOOKMARK] -> DELETE WHEN IMPLEMENTING
 
@@ -23,12 +23,27 @@ const pages = fs.readdirSync(viewsDir)
 //     }
 // )
 
+router.get('/all', function(req, resp){
+    getAllRestaurant().then(results => {
+            console.log(results)
+            resp.render("all", {
+                results: results    
+            })
+        }   
+    )
+})
+
+
+router.get('/explore', function(req, resp){
+    resp.render("explore")    
+})
+
 router.get('/search', function(req, resp){
     const query = req.query.query;
     console.log(query)
     searchQuery(query)
         .then(results => {
-
+            console.log(results)
             resp.render("search", {
                 results: results,
                 query: query
@@ -42,6 +57,11 @@ router.get('/search', function(req, resp){
 
 
 router.get('/', function(req, resp){
+    resp.render("index")
+})
+
+
+router.get('/index', function(req, resp){
     resp.render("index")
 })
 

@@ -205,13 +205,17 @@ hr {
     padding: 2%;
     display: flex;
     flex-direction: column;
+    margin-top: 0.5%;
     overflow: hidden;
-    width: 90%;
-    margin-inline-start: auto;
-
+    width: 96%;
+    margin-inline-end: auto;
+    /* border: 1px solid black; */
 
 }
 
+.nostar{
+    opacity: 20%;
+}
 .title {
     flex: 0 0 1;
 }
@@ -238,7 +242,8 @@ hr {
     top: 195px;
     left: 80px;
     margin: auto;
-
+    /* border: 1px solid black; */
+    /* width: inherit; */
     border-radius: 12px;
       padding: 1%;
     /* border: 1px solid black; */

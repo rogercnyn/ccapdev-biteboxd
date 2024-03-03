@@ -26,6 +26,7 @@ const restaurantSchema = new Schema({
 
     // description
     description: {type: String, required: true},
+    shortDescription: {type: String, required: true},
     amenities: { type: [Number], required: true },
     tag: { type: [String], required: true },
 
