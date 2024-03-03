@@ -1,6 +1,6 @@
 function search() {
     let query = document.querySelector('.search-bar').value;
-    let dest = 'search.html?query=' + encodeURIComponent(query);
+    let dest = 'search?query=' + encodeURIComponent(query);
    transferSession(dest)
 }
 
