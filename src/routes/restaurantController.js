@@ -86,5 +86,9 @@ function addRestaurant(restaurantToSave){
 }
 
 
+function getRestoPageInfo(restaurantId){
+    
+}
+
 
 module.exports = { searchQuery, getAllRestaurant, addAReviewToRestaurant, addRestaurant };
