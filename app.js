@@ -16,29 +16,38 @@ const PORT = 3000;
 
 
 async function main() {
-    const app = express();
+    const server = express();
 
-    app.use(express.static(path.join(__dirname, 'public')));
+    server.use(express.static(path.join(__dirname, 'public')));
+    server.set("view engine", "hbs");
 
-    app.engine("hbs", exphbs.engine({
+    server.engine("hbs", exphbs.engine({
         extname: "hbs", 
         helpers: {
             formatDate: function(date) {
                 return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+            },
+            times: function(n, block) {
+                let accum = '';
+                for (let i = 0; i < n; ++i) {
+                    accum += block.fn(i);
+                }
+                return accum;
             }
         },
         defaultLayout: false
         
     }));
-    app.set("view engine", "hbs");
-    app.set("views", "./src/views");
+    server.set("views", "./src/views");
 
 
-    app.use(express.json());
-    app.use(router);
+    server.use(express.json());
+    server.use(express.urlencoded({ extended: true }));
+    server.use(router);
+    
 
-    app.listen(PORT, async function() {
-        console.log(`express app is now listening on port ${PORT}`);
+    server.listen(PORT, async function() {
+        console.log(`express server is now listening on port ${PORT}`);
         try {
             await connect();
             console.log(`Now connected to MongoDB`);

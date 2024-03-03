@@ -34,7 +34,7 @@ const sampleRestaurant = new Restaurant({
     noOfThreeStars: 22,
     noOfTwoStars: 13,
     noOfOneStars: 2,
-    media: 'bacsilog-main.jpeg',
+    media: 'burgerking.jpg',
     coordinates: [-73.968285, 40.785091]
 
     // reviews: blank muna

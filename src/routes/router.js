@@ -24,16 +24,22 @@ const pages = fs.readdirSync(viewsDir)
 // )
 
 router.get('/search', function(req, resp){
-    // console.log(req)
     const query = req.query.query;
     console.log(query)
-    results = searchQuery(query)
-    console.log(results)
-    resp.render("search", {
-        results
-    })
+    searchQuery(query)
+        .then(results => {
 
-})
+            resp.render("search", {
+                results: results,
+                query: query
+            });
+        })
+        .catch(error => {
+            console.error('Error searching:', error);
+            resp.status(500).send('Internal Server Error');
+        });
+});
+
 
 router.get('/', function(req, resp){
     resp.render("index")

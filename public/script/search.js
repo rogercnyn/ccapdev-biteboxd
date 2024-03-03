@@ -11,15 +11,15 @@ function adjustResult() {
     }
 }
 
-function initializeSearchString() {
-    let query = getUrlParameter('query');
-    let searchString = document.getElementById('search-string');
-    let searchBar = document.querySelector('.search-bar');
+// function initializeSearchString() {
+//     let query = getUrlParameter('query');
+//     let searchString = document.getElementById('search-string');
+//     let searchBar = document.querySelector('.search-bar');
 
-    searchString.textContent =  " '" + query + "'";
-    searchBar.value = query;
+//     searchString.textContent =  " '" + query + "'";
+//     searchBar.value = query;
 
-}
+// }
 
 
 function clickTrafficLight(element) {
