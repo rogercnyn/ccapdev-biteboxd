@@ -35,9 +35,10 @@ router.get('/search', function(req, resp){
     searchQuery(query)
         .then(results => {
             console.log(results)
-            resp.render("search", {
+        resp.render("search", {
                 results: results,
-                query: query
+                query: query,
+                hasResults: results.length !== 0
             });
         })
         .catch(error => {

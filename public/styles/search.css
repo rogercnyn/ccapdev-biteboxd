@@ -7,7 +7,7 @@ main {
     
     /* position */
     margin-top: 2%; /* so that it doesnt stick to the window */
-    flex: 0 0 90%;  /* adjusts the width */
+    flex: 0 0 85%;  /* adjusts the width */
     margin-inline-start: auto; /* stick at the right of the window*/
 
     /* inside */
@@ -26,7 +26,7 @@ main {
  
 .search-bar{
     width: 100%;
-    height: 90%;
+    height: 100%;
 }
 
 
@@ -60,13 +60,16 @@ main {
     display: inline;
 }
 
+
 .search-settings-container {
     position: fixed;
     border: 1px solid #eee;
-    background-color: #fff;
-    width: 17%;
+    background-color: #fcfcfc;
+    border-radius: 45px;
+    width: 20%;
     height: 80%;
-    margin-left: 3%;
+    margin-top: 3%;
+    margin-left: 1.5%;
     /* margin-top: 1%; */
     gap: 1.2rem;
     display: flex;
@@ -113,11 +116,13 @@ main {
 
 .advanced-search-header {
     display: flex;
-    background-color: #000;
+    background-color: #222;
     flex: 0 0 8%;
     justify-content: center;
     /* font-size: 2px; */
     gap: 0.5rem;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
     color: white;
 
     align-items: center;
@@ -442,7 +447,7 @@ input[type="radio"] {
 }
 
 .search-button {
-    height: 90%;
+    height: 100%;
     width: 10%;
     border-radius: 20px;
     margin-left: 1%;

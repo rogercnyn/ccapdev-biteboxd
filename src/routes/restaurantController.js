@@ -20,8 +20,7 @@ function searchQuery(searchTerm) {
     return Restaurant.find(
         {
             $or: [
-                { name: { $regex: searchTerm, $options: 'i' } },
-                { location: { $regex: searchTerm, $options: 'i' } }
+                { name: { $regex: searchTerm, $options: 'i' } }
             ]
         }, 
         searchRequiredFields
@@ -44,6 +43,11 @@ function getAllRestaurant(){
             .then(restaurants => {
                 floorTheRating(restaurants); 
                 getCuisine(restaurants)
+
+                restaurants.forEach(function(restaurant) {
+                    restaurant["location"] = restaurant["location"].split(",")[0].trim();
+                });
+
                 return restaurants
             })
             .catch(error => {

@@ -52,7 +52,7 @@ async function main() {
         try {
             await connect();
             console.log(`Now connected to MongoDB`);
-            // await loadRestaurants()
+            await loadRestaurants()
             await loadProfiles()
             await loadReviews()
         } catch (err) {
