@@ -30,11 +30,45 @@ async function clearProfiles() {
     }
 }
 
+async function findProfileByUsername(username) {
+    try {
+        const profile = await Profile.findOne({ username });
+        
+        if (!profile) {
+            console.log('Profile not found');
+            return null;
+        }
+
+        console.log('Profile found:', profile);
+        return profile;
+    } catch (error) {
+        console.error('Error finding profile:', error);
+        throw error;
+    }
+}
+
+async function addReviewToProfile(username, reviewId){
+    
+
+    let profile = await findProfileByUsername(username)
+
+    if(!profile){
+        console.log(username + ' not found')
+        return;
+    }
+
+    await profile.reviews.push(reviewId);
+    await profile.save();
+
+    console.log('Review added to ' + username );
+}
+
 
 
 function addProfile(profileToSave){
     let savedProfile = saveProfile(new Profile(profileToSave))
+    addReviewToProfile(savedProfile['_id'])
 }
 
 
-module.exports = { addProfile, clearProfiles }
+module.exports = { addProfile, clearProfiles, addReviewToProfile }
