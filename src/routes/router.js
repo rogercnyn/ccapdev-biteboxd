@@ -34,6 +34,11 @@ router.get('/all', function(req, resp){
 })
 
 
+router.get('/resto-reviewpage', function(req, resp){
+    resp.render("resto-reviewpage")
+})
+
+
 router.get('/explore', function(req, resp){
     resp.render("explore")    
 })

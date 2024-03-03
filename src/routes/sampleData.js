@@ -29,7 +29,7 @@ const sampleRestaurant = new Restaurant({
                 0, 1, 0, 1],
     tag: ['Filipino', 'Fastfood'],
     rating: 4.7,
-    numberOfReviews: 47,
+    numberOfReviews: 48,
     noOfFiveStars: 10,
     noOfFourStars: 1,
     noOfThreeStars: 22,

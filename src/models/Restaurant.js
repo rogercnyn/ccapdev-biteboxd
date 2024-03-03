@@ -32,7 +32,7 @@ const restaurantSchema = new Schema({
 
     // statistics
     rating: {type : Number, required: true, default: 0},
-    noOfReviews: {type : Number, required: true, default: 0},
+    numberOfReviews: {type : Number, required: true, default: 0},
     noOfFiveStars: {type : Number, required: true, default: 0},
     noOfFourStars: {type : Number, required: true, default: 0},
     noOfThreeStars: {type : Number, required: true, default: 0},
@@ -47,6 +47,17 @@ const restaurantSchema = new Schema({
     deletedAt: { type: Date, default: null },
 
 });
+
+restaurantSchema.pre('validate', function(next) {
+
+    const totalStars = this.noOfFiveStars + this.noOfFourStars + this.noOfThreeStars + this.noOfTwoStars + this.noOfOneStars;
+    
+    if (totalStars !== this.numberOfReviews) {
+        return next(new Error('The sum of star ratings must equal the total number of reviews.'));
+    }
+    next();
+});
+
 
 const Restaurant = model('restaurant', restaurantSchema); 
 
