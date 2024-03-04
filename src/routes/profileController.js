@@ -70,5 +70,14 @@ function addProfile(profileToSave){
     addReviewToProfile(savedProfile['_id'])
 }
 
+async function addBulkProfile(parsedJson){
+    try {
+        await clearProfiles(); 
+        Profile.insertMany(parsedJson)
+    } catch (error) {
+        console.error('Error loading profiles:', error);
+    }
+}
 
-module.exports = { addProfile, clearProfiles, addReviewToProfile }
+
+module.exports = { addProfile, clearProfiles, addReviewToProfile, addBulkProfile }

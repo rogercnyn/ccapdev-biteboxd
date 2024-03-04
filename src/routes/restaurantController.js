@@ -55,23 +55,11 @@ function getAllRestaurant(){
                 throw error; 
             });
 }
-async function findRestaurantByName(restaurantName) {
-    try {
-        const restaurant = await Restaurant.findOne({ name: restaurantName });
-        if (restaurant) {
-            console.log('Restaurant found:', restaurant);
-        } else {
-            console.log('Restaurant not found');
-        }
-    } catch (error) {
-        console.error('Error finding restaurant by name:', error);
-    }
-}
-
 
 async function addAReviewToRestaurant(restaurantId, reviewId){
-    const restaurant = await Restaurant.findById(restaurantId)
 
+    const restaurant = await Restaurant.findById(restaurantId)
+    
 
     if (!restaurant) {
         console.log('Restaurant not found');
@@ -127,5 +115,16 @@ function getRestoPageInfo(restaurantId){
     
 }
 
+async function addBulkResto(parsedJson){
+    try {
+        await clearRestaurants(); 
+        Restaurant.insertMany(parsedJson)
+    } catch (error) {
+        console.error('Error loading restaurants:', error);
+    }
+}
 
-module.exports = { searchQuery, getAllRestaurant, addAReviewToRestaurant, addRestaurant, clearRestaurants, findRestaurantByName };
+
+
+
+module.exports = { searchQuery, getAllRestaurant,  addBulkResto };

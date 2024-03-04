@@ -34,11 +34,15 @@ function saveReview(reviewToSave) {
         });
 }
 
-async function addReview(restaurantId, reviewToSave){
-    let savedReview = await saveReview(new Review(reviewToSave))
-    // addAReviewToRestaurant(restaurantId, savedReview['_id'])
-    addReviewToProfile(savedReview.username, savedReview['_id'])
-    return savedReview['_id']
+async function addBulkReview(parsedJson){
+    try {
+        await clearReviews(); 
+        Review.insertMany(parsedJson)
+    } catch (error) {
+        console.error('Error loading reviews:', error);
+    }
 }
 
-module.exports = { addReview, clearReviews,  }
+
+
+module.exports = { addBulkReview }
