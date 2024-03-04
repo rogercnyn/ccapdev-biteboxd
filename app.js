@@ -40,6 +40,9 @@ async function main() {
             },
             get: function(array, index, compare) {
                 return array[index] === compare;
+            },
+            isVideo: function(string){
+                return string.endsWith(".mp4") 
             }  
         },
         defaultLayout: false

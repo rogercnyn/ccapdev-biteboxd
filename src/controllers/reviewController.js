@@ -37,13 +37,19 @@ function saveReview(reviewToSave) {
 async function addBulkReview(parsedJson){
     try {
         await clearReviews(); 
-        console.log("Inserting reviews...")
-        await Review.insertMany(parsedJson)
+        console.log("Inserting reviews...");
+        
+        const insertedDocs = await Review.insertMany(parsedJson);
+        
+       
         await countReviews();
     } catch (error) {
         console.error('Error loading reviews:', error);
+        throw error; // Rethrow the error to be handled by the caller
     }
 }
+
+
 
 
 
