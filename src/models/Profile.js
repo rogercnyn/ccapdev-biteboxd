@@ -4,6 +4,7 @@ const profileSchema = new Schema({
 
     // username
     username: { type: String, required: true, unique: true}, 
+    password: { type: String, required: true},
 
     // images
     image: { type: String, required: true },
