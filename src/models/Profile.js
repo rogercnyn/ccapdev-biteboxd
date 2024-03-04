@@ -2,8 +2,11 @@ const { Schema, SchemaTypes, mode, model, mongoose } = require('mongoose');
 
 const profileSchema = new Schema({
 
-    // username
+    // information
     username: { type: String, required: true, unique: true}, 
+    password: { type: String, required: true},
+    email: { type: String, required: true, unique: true},
+    tasteProfile: {type: [String], required: true},
 
     // images
     image: { type: String, required: true },

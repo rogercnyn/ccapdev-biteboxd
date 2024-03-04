@@ -1,0 +1,298 @@
+[
+  {
+    "_id": "65e57ac3a149f9de594a9e29",
+    "username": "makoeats",
+    "password": "YouNMeinTaft03,,",
+    "email": "makopangs@gmail.com",
+    "tasteProfile": ["Salty", "Sweet", "Japanse", "Filipino", "Chinese", "Italian"],
+    "image": "avatar-f1.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Mako",
+    "lastName": "Pangan",
+    "bio": "Has the best taste in Taft!",
+    "hearts": 712,
+    "dislike": 6,
+    "credibility": 99,
+    "reviews": [
+      "65e57ac3a149f9de594a9e58"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.860Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e2c",
+    "username": "archerreviewer",
+    "password": "chase.your.dreams!!",
+    "email": "luis.mendoza01@gmail.com",
+    "tasteProfile": ["Sweet", "Sour", "Filipino", "Italian", "Indian"],
+    "image": "profile.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Luis",
+    "lastName": "Mendoza",
+    "hearts": 1015,
+    "dislike": 27,
+    "credibility": 99,
+    "reviews": [
+      "65e57ac3a149f9de594a9e6a"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.861Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e2a",
+    "username": "Mon_1015",
+    "password": "world_full-of.MAGIC",
+    "email": "michelleeecruz@gmail.com",
+    "tasteProfile": ["Salty", "Sweet", "Sour", "Bitter", "Japanese", "Chinese", "Korean", "Filipino", "Italian", "Indian"],
+    "image": "avatar-f2.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Michelle",
+    "lastName": "Cruz",
+    "hearts": 650,
+    "dislike": 33,
+    "credibility": 94,
+    "reviews": [
+      "65e57ac3a149f9de594a9e5e",
+      "65e57ac3a149f9de594a9eac"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.860Z",
+    "__v": 2
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e2b",
+    "username": "corah",
+    "password": "TOUCH.DOWN!",
+    "email": "craiggggg@gmail.com",
+    "tasteProfile": ["Salty", "Korean", "Indian"],
+    "image": "avatar-m1.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Craig",
+    "lastName": "Cruz",
+    "hearts": 217,
+    "dislike": 11,
+    "credibility": 96,
+    "reviews": [
+      "65e57ac3a149f9de594a9e64"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.861Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e2e",
+    "username": "alltoowell",
+    "password": "theoneandonly44",
+    "email": "carriedelacruz@gmail.com",
+    "tasteProfile": ["Salty", "Sweet", "Sour", "Japanese", "Korean", "Filipino", "Italian"],
+    "image": "avatar-f1.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Carrie",
+    "lastName": "Dela Cruz",
+    "hearts": 19,
+    "dislike": 1,
+    "credibility": 99,
+    "reviews": [
+      "65e57ac3a149f9de594a9e76"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.861Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e2f",
+    "username": "richkid99",
+    "password": "getawaycarrr",
+    "email": "arianaortizz@gmail.com",
+    "tasteProfile": ["Salty", "Sweet", "Filipino", "Italian"],
+    "image": "avatar-f2.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Ariana",
+    "lastName": "Ortiz",
+    "hearts": 30,
+    "dislike": 2,
+    "credibility": 99,
+    "reviews": [
+      "65e57ac3a149f9de594a9e7c"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.861Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e30",
+    "username": "fashionfoodie",
+    "password": "lamborg100.",
+    "email": "ryan.chua100@gmail.com",
+    "tasteProfile": ["Salty", "Japanese", "Korean", "Filipino"],
+    "image": "avatar-m1.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Ryan",
+    "lastName": "Chua",
+    "hearts": 1009,
+    "dislike": 7,
+    "credibility": 99,
+    "reviews": [
+      "65e57ac3a149f9de594a9e82"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.861Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e32",
+    "username": "taftpalate",
+    "password": "baggyjeanseverytime",
+    "email": "maxene.summers@gmail.com",
+    "tasteProfile": ["Salty", "Sweet", "Sour", "Japanese", "Chinese", "Korean", "Filipino", "Italian"],
+    "image": "avatar-f1.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Maxene",
+    "lastName": "Summers",
+    "hearts": 817,
+    "dislike": 333,
+    "credibility": 66,
+    "reviews": [
+      "65e57ac3a149f9de594a9e8e"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.861Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e33",
+    "username": "lebron12345",
+    "password": "paradise3000",
+    "email": "markocampooo@gmail.com",
+    "tasteProfile": ["Salty", "Sweet", "Sour", "Bitter", "Japanese", "Chinese", "Korean", "Filipino", "Italian", "Indian"],
+    "image": "avatar-m1.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Mark",
+    "lastName": "Ocampo",
+    "hearts": 77,
+    "dislike": 0,
+    "credibility": 100,
+    "reviews": [
+      "65e57ac3a149f9de594a9e94"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.861Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e34",
+    "username": "lasallianfoodie",
+    "password": "wondereverytime",
+    "email": "shianareyes@gmail.com",
+    "tasteProfile": ["Salty", "Sweet", "Chinese", "Korean", "Filipino"],
+    "image": "avatar-f1.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Shiana",
+    "lastName": "Reyes",
+    "hearts": 100,
+    "dislike": 3,
+    "credibility": 97,
+    "reviews": [
+      "65e57ac3a149f9de594a9e9a"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.862Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e35",
+    "username": "maine_mairel",
+    "password": "mightylove010",
+    "email": "mikeytan@gmail.com",
+    "tasteProfile": ["Salty", "Sour", "Japanese", "Filipino", "Italian", "Indian"],
+    "image": "avatar-f2.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Mikey",
+    "lastName": "Tan",
+    "hearts": 109,
+    "dislike": 5,
+    "credibility": 95,
+    "reviews": [
+      "65e57ac3a149f9de594a9ea0"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.862Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e36",
+    "username": "xmon_toro",
+    "password": "libraryera00",
+    "email": "miggyso@gmail.com",
+    "tasteProfile": ["Salty","Chinese", "Filipino"],
+    "image": "avatar-m1.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Miggy",
+    "lastName": "So",
+    "hearts": 190,
+    "dislike": 14,
+    "credibility": 96,
+    "reviews": [
+      "65e57ac3a149f9de594a9ea6"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.862Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e2d",
+    "username": "urordinaryguy",
+    "password": "nevergiveup10",
+    "email": "sy.miguel@gmail.com",
+    "tasteProfile": ["Salty", "Sweet", "Sour", "Bitter", "Japanese", "Chinese", "Korean", "Filipino", "Italian", "Indian"],
+    "image": "astro.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Miguel",
+    "lastName": "Sy",
+    "hearts": 10,
+    "dislike": 3,
+    "credibility": 70,
+    "reviews": [
+      "65e57ac3a149f9de594a9e70"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.861Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e31",
+    "username": "lostintaft",
+    "password": "ullneverfindme1010",
+    "email": "vhrentpepitooo@gmail.com",
+    "tasteProfile": ["Salty", "Sweet", "Sour", "Japanese", "Chinese", "Korean", "Filipino", "Italian", "Indian"],
+    "image": "avatar-m1.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Vhrent",
+    "lastName": "Pepito",
+    "hearts": 550,
+    "dislike": 100,
+    "credibility": 77,
+    "reviews": [
+      "65e57ac3a149f9de594a9e88"
+    ],
+    "likedReviews": [],
+    "createdAt": "2024-03-04T07:39:47.861Z",
+    "__v": 1
+  }
+]

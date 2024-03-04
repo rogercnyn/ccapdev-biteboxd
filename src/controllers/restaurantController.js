@@ -1,6 +1,6 @@
 const Restaurant = require('../models/Restaurant.js');
-const searchRequiredFields = { _id: 0, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1 }
-const allPageRequiredFields = { _id: 0, name: 1, location: 1,  media: 1, rating: 1, shortDescription: 1, tag: 1 }
+const searchRequiredFields = { _id: 1, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1 }
+const allPageRequiredFields = { _id: 1, name: 1, location: 1,  media: 1, rating: 1, shortDescription: 1, tag: 1 }
 
 function floorTheRating(restaurants){
     restaurants.forEach(restaurant => {
@@ -35,6 +35,18 @@ function searchQuery(searchTerm) {
     });
 }
 
+
+function getRestoCardDetails(id){
+    let restaurant = Restaurant.findById(id)
+    
+    // handle non existend ids
+    if(!restaurant) {
+        return null
+    }
+
+    
+}
+
 function getAllRestaurant(){
     return Restaurant
             .find()
@@ -55,23 +67,11 @@ function getAllRestaurant(){
                 throw error; 
             });
 }
-async function findRestaurantByName(restaurantName) {
-    try {
-        const restaurant = await Restaurant.findOne({ name: restaurantName });
-        if (restaurant) {
-            console.log('Restaurant found:', restaurant);
-        } else {
-            console.log('Restaurant not found');
-        }
-    } catch (error) {
-        console.error('Error finding restaurant by name:', error);
-    }
-}
-
 
 async function addAReviewToRestaurant(restaurantId, reviewId){
-    const restaurant = await Restaurant.findById(restaurantId)
 
+    const restaurant = await Restaurant.findById(restaurantId)
+    
 
     if (!restaurant) {
         console.log('Restaurant not found');
@@ -127,5 +127,58 @@ function getRestoPageInfo(restaurantId){
     
 }
 
+async function addBulkResto(parsedJson){
+    try {
+        await clearRestaurants(); 
+        console.log("Inserting restaurants...")
+        await Restaurant.insertMany(parsedJson)
+        await countRestaurants()
+    } catch (error) {
+        console.error('Error loading restaurants:', error);
+    }
+}
 
-module.exports = { searchQuery, getAllRestaurant, addAReviewToRestaurant, addRestaurant, clearRestaurants, findRestaurantByName };
+async function handleSearchRequest(req, resp){
+    const query = req.query.query;
+    
+    searchQuery(query)
+        .then
+        (
+            results => 
+            {
+                resp.render("search", 
+                {
+                    results: results,
+                    query: query,
+                    hasResults: results.length !== 0,
+                    resultLength: results.length
+                }); 
+             }
+        )
+        .catch
+        (
+            error => 
+            {
+                console.error('Error searching:', error);
+                resp.status(500).send('Internal Server Error');
+            }
+        );
+}
+
+async function handleGetAllRestoRequest(req, resp){
+    getAllRestaurant()
+        .then
+        (
+            results => {
+                console.log(results)
+                resp.render("all", 
+                {
+                    results: results    
+                })
+            }   
+        )
+}
+
+
+
+module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest};

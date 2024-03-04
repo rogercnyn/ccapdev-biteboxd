@@ -9,7 +9,7 @@ const path = require("path")
 //  requires dot env configuration already
 const connect = require('./src/models/db.js');
 const router = require('./src/routes/router.js');
-const { loadProfiles, loadRestaurants, loadReviews } = require('./src/routes/loader.js')
+const { loadProfiles, loadRestaurants, loadReviews, loadRestaurantReplies } = require('./src/routes/loader.js')
 
 
 
@@ -55,6 +55,7 @@ async function main() {
             await loadRestaurants()
             await loadProfiles()
             await loadReviews()
+            await loadRestaurantReplies()
         } catch (err) {
             console.log('Connection to MongoDB failed: ');
             console.error(err);

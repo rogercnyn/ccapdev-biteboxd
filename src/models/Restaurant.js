@@ -21,8 +21,10 @@ const restaurantSchema = new Schema({
     endPriceRange: {type: Number, required: true},
 
     // data about the operating hours
-    startOpeningHour: {type: Date, default: Date.now },
-    endOpeningHour: {type: Date, default: Date.now },
+    startOpeningHour: {type: String, default: "9:00 AM" },
+    endOpeningHour: {type: String, default: "5:00 PM" },
+    startOpeningDay: {type: String, default: "M" },
+    endOpeningDay: {type: String, default: "S" },
 
     // description
     description: {type: String, required: true},

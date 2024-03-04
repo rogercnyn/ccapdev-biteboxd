@@ -1,66 +1,38 @@
 
 
-const { addProfile, clearProfiles } = require('./profileController.js');
-const { addRestaurant, clearRestaurants, findRestaurantByName } = require('./restaurantController.js');
-const { addReview, clearReviews } = require('./reviewController.js');
+const { addBulkProfile } = require('../controllers/profileController.js');
+const { addBulkResto } = require('../controllers/restaurantController.js');
+const { addBulkReview } = require('../controllers/reviewController.js');
+const { addBulkRestaurantReply } = require('../controllers/restaurantreplyController.js');
 
-function parseProfiles(){
-    const fs = require('fs');
-	let rawdata = fs.readFileSync('data/ProfileData.json');
-	return JSON.parse(rawdata);
-}
+const fs = require('fs')
 
-function parseRestaurants(){
-    const fs = require('fs');
-	let rawdata = fs.readFileSync('data/RestaurantData.json');
-	return JSON.parse(rawdata)['Restaurant'];
-}
+const profileJson = 'data/biteboxd.profile.json'
+const restaurantJson = 'data/biteboxd.restaurant.json'
+const reviewJson = 'data/biteboxd.review.json'
+const restaurantReplyJson = 'data/biteboxd.restaurantreply.json'
 
-function parseReviews(){
-    const fs = require('fs')
-	let rawdata = fs.readFileSync('data/ReviewData.json');
-	return JSON.parse(rawdata);    
+function parseJson(pathToJson){
+    return JSON.parse(fs.readFileSync(pathToJson))
 }
 
 
 async function loadProfiles() {
-    try {
-        await clearProfiles(); 
-        let profiles = parseProfiles()
-        Array.from(profiles).forEach(profile => {
-            addProfile(profile)
-        })
-    } catch (error) {
-        console.error('Error loading profiles:', error);
-    }
+    addBulkProfile(parseJson(profileJson))
 }
 
 
-async function loadRestaurants(){
-    try {
-        // await clearRestaurants();
-        // let restaurants = parseRestaurants()
-        // restaurants.forEach(restaurant => {
-            // addRestaurant(restaurant)
-        // })
-        console.log(findRestaurantByName("Ate"))
-    } catch (error) {
-        console.error('Error loading restaurants:', error)
-    }
-
+async function loadRestaurants() {
+    addBulkResto(parseJson(restaurantJson))
 }
 
-// do not use this for adding when in interface
 async function loadReviews() {
-    try {
-        await clearReviews(); 
-        const reviews = parseReviews(); 
-        reviews.forEach(review => {
-            id = addReview("idCanOnlyBeDoneInBackend", review);
-        });
-    } catch (error) {
-        console.error('Error loading reviews:', error);
-    }
+    addBulkReview(parseJson(reviewJson))
 }
 
-module.exports = { loadProfiles, loadRestaurants, loadReviews }
+async function loadRestaurantReplies() {
+    addBulkRestaurantReply(parseJson(restaurantReplyJson))
+}
+
+  
+module.exports = { loadProfiles, loadRestaurants, loadReviews, loadRestaurantReplies }
