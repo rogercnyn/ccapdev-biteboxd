@@ -36,15 +36,8 @@ function searchQuery(searchTerm) {
 }
 
 
-function getRestoCardDetails(id){
-    let restaurant = Restaurant.findById(id)
-    
-    // handle non existend ids
-    if(!restaurant) {
-        return null
-    }
-
-    
+async function getRestoCardDetails(id){
+    return await Restaurant.findById(id).select("-password").lean()
 }
 
 function getAllRestaurant(){
@@ -181,4 +174,4 @@ async function handleGetAllRestoRequest(req, resp){
 
 
 
-module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest};
+module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails };

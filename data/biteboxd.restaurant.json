@@ -2,7 +2,7 @@
   {
     "_id": "65e57ac3a149f9de594a9de2",
     "name": "Ate Rica's",
-    "location": "Taft, Manila",
+    "location": "Under LRT Vito Cruz, Taft, Manila",
     "media": "atericas.jpg",
     "username": "atericas_taft",
     "password": "12345678",
@@ -72,7 +72,7 @@
     "startOpeningHour": "10:00 AM",
     "endOpeningHour": "9:00 PM",
     "startOpeningDay": "M",
-    "endOpeningDay": "S",
+    "endOpeningDay": "F",
     "description": "Experience the bold and explosive flavors of Angrydobo's Filipino cuisine. From tangy adobo to spicy sinigang, our dishes are sure to tantalize your taste buds and leave you craving for more. Visit us and unleash your inner foodie!",
     "shortDescription": "Bold Filipino flavors from tangy adobo to spicy sinigang.",
     "amenities": [
@@ -222,6 +222,7 @@
     ],
     "startPriceRange": 800,
     "endPriceRange": 1000,
+    "numberOfCash": 5, 
     "startOpeningHour": "10:00 AM",
     "endOpeningHour": "10:00 PM",
     "startOpeningDay": "M",

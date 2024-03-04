@@ -8,8 +8,8 @@ const path = require("path")
 
 //  requires dot env configuration already
 const connect = require('./src/models/db.js');
-const router = require('./src/routes/router.js');
 const { loadProfiles, loadRestaurants, loadReviews, loadRestaurantReplies } = require('./src/routes/loader.js')
+const router = require('./src/routes/router.js');
 
 
 
@@ -20,6 +20,9 @@ async function main() {
     const server = express();
 
     server.use(express.static(path.join(__dirname, 'public')));
+    server.use(router);
+
+
     server.set("view engine", "hbs");
 
     server.engine("hbs", exphbs.engine({
@@ -34,7 +37,10 @@ async function main() {
                     accum += block.fn(i);
                 }
                 return accum;
-            }
+            },
+            get: function(array, index, compare) {
+                return array[index] === compare;
+            }  
         },
         defaultLayout: false
         
@@ -44,7 +50,6 @@ async function main() {
 
     server.use(express.json());
     server.use(express.urlencoded({ extended: true }));
-    server.use(router);
     
 
     server.listen(PORT, async function() {
@@ -61,6 +66,8 @@ async function main() {
             console.error(err);
         }
     });
+
+
 }
 
 

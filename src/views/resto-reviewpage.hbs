@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/tab-icon.png" type="image/x-icon">
     <title>Review Restaurant</title>
-    <script src="script/general.js"></script>
-    <script src="script/like.js"></script>
-    <script src="script/slider.js"></script>
+    <script src="/script/general.js"></script>
+    <script src="/script/like.js"></script>
+    <script src="/script/slider.js"></script>
     
 
-    <link rel="stylesheet" href="styles/resto-reviewpage.css">
+    <link rel="stylesheet" href="/styles/resto-reviewpage.css">
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -35,7 +35,7 @@
     <main class = "main">
         <div class="restoinfo">
             <div class="restopicturearea">
-                <img src="assets/bacsilog-main.jpeg" alt="Picture" class="restopicture">
+                <img src="/assets/restaurant icons/{{media}}" alt="Picture" class="restopicture">
             </div>
             <div class="restodetailsarea">
                 <div class="nameandoverallscore">
@@ -43,10 +43,16 @@
                     <h2 class="yellowscore">{{rating}}/5</h2>
                 </div>
                 <div class="moredetails">
-                    <p class="restodetail" id="emojip">💵 💵 (P{{startPriceRange}}-{{endPriceRange}})</p>
-                    <p class="restodetail">{{tag1}}</p>
-                    <p class="restodetail">{{tag2}}</p>
-                    <p class="restodetail">Open during: M-S ({{startOpeningHour}} - {{endOpeningHour}})</p>
+                    <p class="restodetail" id="emojip">
+                        {{#times numberOfCash}}
+                            💵
+                        {{/times}}
+                        (P{{startPriceRange}}-{{endPriceRange}})</p>
+                    {{#each tag}}
+                        <p class="restodetail">{{this}}</p>
+                    {{/each}}
+                    {{!-- <p class="restodetail">{{tag2}}</p> --}}
+                    <p class="restodetail">Open during: {{startOpeningDay}}-{{endOpeningDay}} ({{startOpeningHour}} - {{endOpeningHour}})</p>
                 </div>
                 <p class="location">{{location}}</p>
                 <br>
@@ -55,24 +61,44 @@
                 <div class="attributes">
 
                     <div class="firstbatchattri">
-                        <div class="feature"><span class="checkmark">&#10004;</span>Offers Delivery</div>
-                        <div class="feature"><span class="checkmark">&#10004;</span>Outdoor dining</div>
-                        <div class="feature"><span class="checkmark">&#10004;</span>Indoor dining</div>
-                        <div class="feature"><span class="checkmark">&#10004;</span>Good for Groups</div>
+                        <div class="feature">
+                            {{#if (get amenities 0 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}
+                            Offers Delivery
+                        </div>
+                        <div class="feature">
+                            {{#if (get amenities 1 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}
+                            Outdoor dining
+                        </div>
+                        <div class="feature">
+                            {{#if (get amenities 2 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}
+                            Indoor dining</div>
+                        <div class="feature">
+                            {{#if (get amenities 3 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}
+                            Good for Groups</div>
                     </div>
 
                     <div class="secondbatchattri">
-                        <div class="feature"><span class="checkmark">&#10004;</span>Music and TV</div>
-                        <div class="feature"><span class="cross">&#10008;</span>Drive-thru</div>
-                        <div class="feature"><span class="checkmark">&#10004;</span>Offers Takeout</div>
-                        <div class="feature"><span class="checkmark">&#10004;</span>Accepts Credit Cards</div>
+                        <div class="feature">
+                            {{#if (get amenities 4 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}
+                            Music and TV</div>
+                        <div class="feature">
+                            {{#if (get amenities 5 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}
+                            Drive-thru</div>
+                        <div class="feature">
+                            {{#if (get amenities 6 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}
+                            Offers Takeout</div>
+                        <div class="feature">
+                            {{#if (get amenities 7 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}
+                            Accepts Credit Cards</div>
                     </div>
                     
                     <div class="thirdbatchattri">
-                        <div class="feature"><span class="checkmark">&#10004;</span>Accepts E-Wallet</div>
-                        <div class="feature"><span class="checkmark">&#10004;</span>Good for Kids</div>
-                        <div class="feature"><span class="cross">&#10008;</span>Good for Pets</div>
-                        <div class="feature"><span class="checkmark">&#10004;</span>Vegetarian/Vegan Offerings</div>
+                        <div class="feature">
+                            {{#if (get amenities 8 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}
+                            Accepts E-Wallet</div>
+                        <div class="feature">{{#if (get amenities 9 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}Good for Kids</div>
+                        <div class="feature">{{#if (get amenities 10 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}Good for Pets</div>
+                        <div class="feature">{{#if (get amenities 11 0) }} <span class="cross">&#10008;</span> {{else}} <span class="checkmark">&#10004;</span> {{/if}}Vegetarian/Vegan Offerings</div>
                     </div>
 
                 </div>
@@ -94,7 +120,7 @@
                 <div class="rating-container">
                     <div class="overallrate">
                         <h2 class="segoe">Overall Rating</h2>
-                        <h1 class="reviewoverall">4.0/5</h1>
+                        <h1 class="reviewoverall">{{rating}}/5</h1>
                     </div>
                     
                     <p class="segoe">64 reviews</p>
@@ -166,7 +192,7 @@
                     <div class="uploadarea">
                         <div class="photo-upload">
                             <label for="photo-input" class="upload-label">
-                              <img src="assets/upload.svg" alt="Upload Icon" class="upload-icon">
+                              <img src="/assets/upload.svg" alt="Upload Icon" class="upload-icon">
                               <br>
                               <span class="upload-text">Upload</span>
                             </label>
@@ -204,9 +230,9 @@
                         <span onclick="stars.handleClick(4)" class="slider-star-rating">★</span>
                         <span onclick="stars.handleClick(5)" class="slider-star-rating">★</span>
                     </div>
-                     <img src="assets/search-icon.svg" alt="" class="search-icon">
+                     <img src="/assets/search-icon.svg" alt="" class="search-icon">
                     <input type="search" class="search-bar" placeholder="Find a review">
-                    <img src="assets/clear.svg" alt="" onclick="clearSearchBar()" class="clear-icon" id="clear-icon">
+                    <img src="/assets/clear.svg" alt="" onclick="clearSearchBar()" class="clear-icon" id="clear-icon">
                     <button class="search-button" onclick="searchReview()">
                         Search
                     </button>
@@ -218,7 +244,7 @@
                     <div class="review-panel">
                         <div class="profile-score">
                             <div class="profilearea">
-                                <img src="assets/profile.jpg" class="profilepic">
+                                <img src="/assets/profile.jpg" class="profilepic">
                             </div>
                             <div class="score">
                                 <h2 class="yellowscore" id="user-score">4.6</h2>
@@ -297,10 +323,10 @@
                     </div>
 
                     <div class="photopanel">
-                        <img src="assets/bacsilog1.png" class="revpic" onclick="openModal('assets/bacsilog1.png')">
-                        <img src="assets/bacsilog2.jpeg" class="revpic" onclick="openModal('assets/bacsilog2.jpeg')">
-                        <video src="assets/bacsilogvid.mp4" class="revpic" onclick="openModal('assets/bacsilogvid.mp4')"></video>
-                        <img src="assets/bacsi.jpg" class="revpic" onclick="openModal('assets/bacsi.jpg')">
+                        <img src="/assets/bacsilog1.png" class="revpic" onclick="openModal('assets/bacsilog1.png')">
+                        <img src="/assets/bacsilog2.jpeg" class="revpic" onclick="openModal('assets/bacsilog2.jpeg')">
+                        <video src="/assets/bacsilogvid.mp4" class="revpic" onclick="openModal('assets/bacsilogvid.mp4')"></video>
+                        <img src="/assets/bacsi.jpg" class="revpic" onclick="openModal('assets/bacsi.jpg')">
                     </div>
 
                     
@@ -334,7 +360,7 @@
 
                         <div class="profile-score">
                             <div class="profilearea">
-                                <img src="assets/astro.png" class="profilepic">
+                                <img src="/assets/astro.png" class="profilepic">
                             </div>
                             <div class="score">
                                 <h2 class="yellowscore" id="user-score">4.9</h2>
@@ -409,8 +435,8 @@
                     </div>
 
                     <div class="photopanel">
-                        <img src="assets/bacsilog3.jpeg" class="revpic" onclick="openModal('assets/bacsilog3.jpeg')">
-                        <img src="assets/bacsilog5.jpg" class="revpic" onclick="openModal('assets/bacsilog5.jpg')">
+                        <img src="/assets/bacsilog3.jpeg" class="revpic" onclick="openModal('assets/bacsilog3.jpeg')">
+                        <img src="/assets/bacsilog5.jpg" class="revpic" onclick="openModal('assets/bacsilog5.jpg')">
                     </div>
 
                     <div class="modal" id="modal" onclick="closeModal()">
@@ -427,7 +453,7 @@
 
                         <div class="profile-score">
                             <div class="profilearea">
-                                <img src="assets/avatar-f1.png" class="profilepic">
+                                <img src="/assets/avatar-f1.png" class="profilepic">
                             </div>
                             <div class="score">
                                 <h2 class="yellowscore" id="user-score">4.9</h2>
@@ -515,7 +541,7 @@
 
                         <div class="profile-score">
                             <div class="profilearea">
-                                <img src="assets/avatar-f2.png" class="profilepic">
+                                <img src="/assets/avatar-f2.png" class="profilepic">
                             </div>
                             <div class="score">
                                 <h2 class="yellowscore" id="user-score">5.0</h2>
@@ -584,7 +610,7 @@
                     </div>
 
                     <div class="photopanel">
-                        <img src="assets/bacsilog6.jpeg" class="revpic" onclick="openModal('assets/bacsilog6.jpeg')">
+                        <img src="/assets/bacsilog6.jpeg" class="revpic" onclick="openModal('assets/bacsilog6.jpeg')">
                     </div>
 
                     <div class="modal" id="modal" onclick="closeModal()">
@@ -603,7 +629,7 @@
 
                         <div class="profile-score">
                             <div class="profilearea">
-                                <img src="assets/avatar-m1.png" class="profilepic">
+                                <img src="/assets/avatar-m1.png" class="profilepic">
                             </div>
                             <div class="score">
                                 <h2 class="yellowscore" id="user-score">4.0</h2>
@@ -687,10 +713,10 @@
             </div>
     </main>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="script/map.js"></script>
-    <script src="script/chart.js"></script>
+    <script src="/script/map.js"></script>
+    <script src="/script/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
-    <script src="script/resto-reviewpage.js"></script>
+    <script src="/script/resto-reviewpage.js"></script>
     <script>
         const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'))
         const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'))
