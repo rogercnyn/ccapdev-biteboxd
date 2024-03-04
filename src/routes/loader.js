@@ -1,7 +1,7 @@
 
 
 const { addProfile, clearProfiles } = require('./profileController.js');
-const { addRestaurant } = require('./restaurantController.js');
+const { addRestaurant, clearRestaurants, findRestaurantByName } = require('./restaurantController.js');
 const { addReview, clearReviews } = require('./reviewController.js');
 
 function parseProfiles(){
@@ -36,21 +36,27 @@ async function loadProfiles() {
 }
 
 
-function loadRestaurants(){
-    let restaurants = parseRestaurants()
-    // console.log(restaurants)
-    Array.from(restaurants).forEach(restaurant => {
-        addRestaurant(restaurant)
-    })
+async function loadRestaurants(){
+    try {
+        // await clearRestaurants();
+        // let restaurants = parseRestaurants()
+        // restaurants.forEach(restaurant => {
+            // addRestaurant(restaurant)
+        // })
+        console.log(findRestaurantByName("Ate"))
+    } catch (error) {
+        console.error('Error loading restaurants:', error)
+    }
 
 }
 
+// do not use this for adding when in interface
 async function loadReviews() {
     try {
         await clearReviews(); 
         const reviews = parseReviews(); 
         reviews.forEach(review => {
-            addReview("randomid", review); 
+            id = addReview("idCanOnlyBeDoneInBackend", review);
         });
     } catch (error) {
         console.error('Error loading reviews:', error);

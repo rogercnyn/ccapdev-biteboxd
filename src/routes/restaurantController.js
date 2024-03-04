@@ -55,10 +55,21 @@ function getAllRestaurant(){
                 throw error; 
             });
 }
+async function findRestaurantByName(restaurantName) {
+    try {
+        const restaurant = await Restaurant.findOne({ name: restaurantName });
+        if (restaurant) {
+            console.log('Restaurant found:', restaurant);
+        } else {
+            console.log('Restaurant not found');
+        }
+    } catch (error) {
+        console.error('Error finding restaurant by name:', error);
+    }
+}
+
 
 async function addAReviewToRestaurant(restaurantId, reviewId){
-    
-
     const restaurant = await Restaurant.findById(restaurantId)
 
 
@@ -85,9 +96,31 @@ function saveRestaurant(restaurantToSave) {
         });
 }
 
+
+async function countRestaurants() {
+    try {
+        const count = await Restaurant.countDocuments();
+        console.log(`Number of documents in the Restaurant collection: ${count}`);
+    } catch (error) {
+        console.error('Error counting documents:', error);
+    }
+}
+
+
+async function clearRestaurants() {
+    try {
+        await Restaurant.deleteMany({});
+        await countRestaurants();
+    } catch (error) {
+        console.error('Error clearing collection:', error);
+    }
+}
+
+
 function addRestaurant(restaurantToSave){
     let savedRestaurant = saveRestaurant(new Restaurant(restaurantToSave))
 }
+
 
 
 function getRestoPageInfo(restaurantId){
@@ -95,4 +128,4 @@ function getRestoPageInfo(restaurantId){
 }
 
 
-module.exports = { searchQuery, getAllRestaurant, addAReviewToRestaurant, addRestaurant };
+module.exports = { searchQuery, getAllRestaurant, addAReviewToRestaurant, addRestaurant, clearRestaurants, findRestaurantByName };

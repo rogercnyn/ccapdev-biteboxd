@@ -38,7 +38,7 @@ async function addReview(restaurantId, reviewToSave){
     let savedReview = await saveReview(new Review(reviewToSave))
     // addAReviewToRestaurant(restaurantId, savedReview['_id'])
     addReviewToProfile(savedReview.username, savedReview['_id'])
-    
+    return savedReview['_id']
 }
 
-module.exports = { addReview, clearReviews }
+module.exports = { addReview, clearReviews,  }

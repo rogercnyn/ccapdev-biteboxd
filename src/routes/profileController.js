@@ -39,7 +39,7 @@ async function findProfileByUsername(username) {
             return null;
         }
 
-        console.log('Profile found:', profile);
+        // console.log('Profile found:', profile);
         return profile;
     } catch (error) {
         console.error('Error finding profile:', error);
@@ -60,7 +60,7 @@ async function addReviewToProfile(username, reviewId){
     await profile.reviews.push(reviewId);
     await profile.save();
 
-    console.log('Review added to ' + username );
+    // console.log('Review added to ' + username );
 }
 
 
