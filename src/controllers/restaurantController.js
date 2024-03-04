@@ -126,7 +126,47 @@ async function addBulkResto(parsedJson){
     }
 }
 
+async function handleSearchRequest(req, resp){
+    const query = req.query.query;
+    
+    searchQuery(query)
+        .then
+        (
+            results => 
+            {
+                resp.render("search", 
+                {
+                    results: results,
+                    query: query,
+                    hasResults: results.length !== 0
+                }); 
+             }
+        )
+        .catch
+        (
+            error => 
+            {
+                console.error('Error searching:', error);
+                resp.status(500).send('Internal Server Error');
+            }
+        );
+}
+
+async function handleGetAllRestoRequest(req, resp){
+    getAllRestaurant()
+        .then
+        (
+            results => {
+                console.log(results)
+                resp.render("all", 
+                {
+                    results: results    
+                })
+            }   
+        )
+}
 
 
 
-module.exports = { searchQuery, getAllRestaurant,  addBulkResto };
+
+module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest};
