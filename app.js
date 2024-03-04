@@ -3,6 +3,7 @@ dotenv.config();
 
 // dependencies
 const express = require('express')
+const session = require('express-session');
 const exphbs = require('express-handlebars');
 const path = require("path")
 
@@ -10,7 +11,6 @@ const path = require("path")
 const connect = require('./src/models/db.js');
 const { loadProfiles, loadRestaurants, loadReviews, loadRestaurantReplies } = require('./src/routes/loader.js')
 const router = require('./src/routes/router.js');
-
 
 
 const PORT = 3000;
@@ -50,9 +50,15 @@ async function main() {
     }));
     server.set("views", "./src/views");
 
+    server.use(session({
+        secret: 'your_secret_key',
+        resave: false,
+        saveUninitialized: true
+    }));
 
     server.use(express.json());
     server.use(express.urlencoded({ extended: true }));
+    server.use(router);
     
 
     server.listen(PORT, async function() {
