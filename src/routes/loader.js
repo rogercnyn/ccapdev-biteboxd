@@ -3,11 +3,13 @@
 const { addBulkProfile } = require('./profileController.js');
 const { addBulkResto } = require('./restaurantController.js');
 const { addBulkReview } = require('./reviewController.js');
+const { addBulkRestaurantReply } = require('./restaurantreplyController.js');
 const fs = require('fs')
 
 const profileJson = 'data/biteboxd.profile.json'
 const restaurantJson = 'data/biteboxd.restaurant.json'
 const reviewJson = 'data/biteboxd.review.json'
+const restaurantReplyJson = 'data/biteboxd.restaurantreply.json'
 
 function parseJson(pathToJson){
     return JSON.parse(fs.readFileSync(pathToJson))
@@ -27,5 +29,9 @@ async function loadReviews() {
     addBulkReview(parseJson(reviewJson))
 }
 
+async function loadRestaurantReplies() {
+    addBulkRestaurantReply(parseJson(restaurantReplyJson))
+}
+
   
-module.exports = { loadProfiles, loadRestaurants, loadReviews }
+module.exports = { loadProfiles, loadRestaurants, loadReviews, loadRestaurantReplies }
