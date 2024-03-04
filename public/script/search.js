@@ -1,14 +1,11 @@
 
 function adjustResult() {
-    let query = getUrlParameter('query');
+    let emptyElement = document.getElementById('empty')
 
-    if (query != '') {
-        document.getElementById('empty').style.display = 'none';
-    } else {
-        document.getElementById('results').style.display = 'none';
-        document.getElementById('search-settings').style.display = 'none';
-        document.getElementById('content').style.marginLeft = "15%"   
+    if(emptyElement !== undefined) {
+        document.getElementById('content').style.marginLeft = "10%"           
     }
+
 }
 
 // function initializeSearchString() {
@@ -30,7 +27,7 @@ function clickTrafficLight(element) {
 }
 
 function initSearchPage() {
-    // adjustResult();
+    adjustResult();
 }
 
 /*

@@ -92,71 +92,73 @@
 
         </div>
 
-        <div class="search-settings" id="search-settings">
-            <div class="search-settings-container">
-                <div class="advanced-search-header">
-                    <p>Advanced Search</p>
-                </div>
-                <div class="search-setting">
-                    <p>Ratings</p>
-                    <div class="star-sorting">
-                        <span onclick="stars.handleClick(1)" class="slider-star-rating">★</span>
-                        <span onclick="stars.handleClick(2)" class="slider-star-rating">★</span>
-                        <span onclick="stars.handleClick(3)" class="slider-star-rating">★</span>
-                        <span onclick="stars.handleClick(4)" class="slider-star-rating">★</span>
-                        <span onclick="stars.handleClick(5)" class="slider-star-rating">★</span>
+        {{#if hasResults}}
+            <div class="search-settings" id="search-settings">
+                <div class="search-settings-container">
+                    <div class="advanced-search-header">
+                        <p>Advanced Search</p>
                     </div>
-                </div>
-
-                <div class="search-setting">
-                    <p>City</p>
-                    <input type="text" class="input-filter">
-                </div>
-
-                
-                <div class="search-setting">
-                    <p>Min. Reviewers</p>
-                    <input type="text" class="input-filter">
-                </div>
-
-          
-                <div class="price-setting">
-                    <p>Pricing</p>
-                    <div class="price-slider">
-                        <span onclick="cashEmos.handleClick(1)" class="slider-emoji-rating slider-price-rating">💵</span>
-                        <span onclick="cashEmos.handleClick(2)" class="slider-emoji-rating slider-price-rating">💵</span>
-                        <span onclick="cashEmos.handleClick(3)" class="slider-emoji-rating slider-price-rating">💵</span>
-                        <span onclick="cashEmos.handleClick(4)" class="slider-emoji-rating slider-price-rating">💵</span>
-                    </div>
-                </div>
-
-                <div class="search-setting-criteria">
                     <div class="search-setting">
-                        <p>Food Quality</p>
-                        <div class="categories">
-                            <div class="green box" onclick="clickTrafficLight(this)"></div>
-                            <div class="yellow box" onclick="clickTrafficLight(this)"></div>
-                            <div class="red box" onclick="clickTrafficLight(this)"></div>
+                        <p>Ratings</p>
+                        <div class="star-sorting">
+                            <span onclick="stars.handleClick(1)" class="slider-star-rating">★</span>
+                            <span onclick="stars.handleClick(2)" class="slider-star-rating">★</span>
+                            <span onclick="stars.handleClick(3)" class="slider-star-rating">★</span>
+                            <span onclick="stars.handleClick(4)" class="slider-star-rating">★</span>
+                            <span onclick="stars.handleClick(5)" class="slider-star-rating">★</span>
                         </div>
                     </div>
 
                     <div class="search-setting">
-                        <p>Service</p>
-                        <div class="categories">
-                            <div class="green box" onclick="clickTrafficLight(this)"></div>
-                            <div class="yellow box" onclick="clickTrafficLight(this)"></div>
-                            <div class="red box" onclick="clickTrafficLight(this)"></div>
+                        <p>City</p>
+                        <input type="text" class="input-filter">
+                    </div>
+
+                    
+                    <div class="search-setting">
+                        <p>Min. Reviewers</p>
+                        <input type="text" class="input-filter">
+                    </div>
+
+            
+                    <div class="price-setting">
+                        <p>Pricing</p>
+                        <div class="price-slider">
+                            <span onclick="cashEmos.handleClick(1)" class="slider-emoji-rating slider-price-rating">💵</span>
+                            <span onclick="cashEmos.handleClick(2)" class="slider-emoji-rating slider-price-rating">💵</span>
+                            <span onclick="cashEmos.handleClick(3)" class="slider-emoji-rating slider-price-rating">💵</span>
+                            <span onclick="cashEmos.handleClick(4)" class="slider-emoji-rating slider-price-rating">💵</span>
                         </div>
                     </div>
 
+                    <div class="search-setting-criteria">
+                        <div class="search-setting">
+                            <p>Food Quality</p>
+                            <div class="categories">
+                                <div class="green box" onclick="clickTrafficLight(this)"></div>
+                                <div class="yellow box" onclick="clickTrafficLight(this)"></div>
+                                <div class="red box" onclick="clickTrafficLight(this)"></div>
+                            </div>
+                        </div>
+
+                        <div class="search-setting">
+                            <p>Service</p>
+                            <div class="categories">
+                                <div class="green box" onclick="clickTrafficLight(this)"></div>
+                                <div class="yellow box" onclick="clickTrafficLight(this)"></div>
+                                <div class="red box" onclick="clickTrafficLight(this)"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="clear-button adv-search-button" onclick="search()">Clear</button>
+                        <button class="apply-button adv-search-button">Apply</button>
+                    </div>
                 </div>
-                <div class="filter-buttons">
-                    <button class="clear-button adv-search-button" onclick="search()">Clear</button>
-                    <button class="apply-button adv-search-button">Apply</button>
-                </div>
+
             </div>
-
-        </div>
+        {{/if}}
 
     </main>
 
