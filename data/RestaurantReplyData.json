@@ -1,0 +1,38 @@
+[
+    {
+        "restaurantId": "sampleRestaurant._id",
+        "body": "Thank you for choosing our restaurant. We sincerely appreciate your positive feedback and are delighted to hear about your positive experience. We look forward to serving you again soon!",
+        "media": ["bacsilog3.jpeg", "bacsilog5.jpg"],
+        "createdAt": "2024-02-28T13:04:00.000Z"
+    },
+      
+
+    {
+        "restaurantId": "sampleRestaurant._id",
+        "body": "We extend our sincere apologies for any inconvenience you may have experienced during your visit. Your feedback is invaluable to us, and we will take immediate steps to address the concerns raised. Please feel free to reach out if you have any further comments or if there's anything else we can do to enhance your experience.",
+        "media": ["bacsilog3.jpeg"],
+        "createdAt": "2024-02-28T13:15:00.000Z"
+    },
+      
+
+    {
+        "restaurantId": "sampleRestaurant._id",
+        "body": "Thank you for your positive comment! We're thrilled to hear about your enjoyable experience at our restaurant. Your satisfaction is our priority, and we can't wait to welcome you back for another delightful dining experience!",
+        "createdAt": "2024-03-03T09:22:00.000Z"
+    },
+      
+
+    {
+        "restaurantId": "sampleRestaurant._id",
+        "body": "We appreciate your positive comment and are delighted to have provided a memorable experience for you. Thank you for choosing our restaurant. We look forward to serving you again and providing you with another outstanding dining experience!",
+        "media": ["tapaking1.jpeg"],
+        "createdAt": "2024-03-02T12:55:00.000Z"
+    },
+
+    {
+        "restaurantId": "sampleRestaurant._id",
+        "body": "Thank you for your kind words! Your satisfaction is our top priority, and we are thrilled to hear that you enjoyed your time at our restaurant. We appreciate your patronage and look forward to serving you again in the near future!",
+        "media": ["tapaking2.jpeg"],
+        "createdAt": "2024-03-01T16:29:00.000Z"
+      }
+]
