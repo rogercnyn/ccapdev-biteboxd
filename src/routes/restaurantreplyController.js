@@ -23,7 +23,10 @@ async function clearRestaurants() {
 async function addBulkRestaurantReply(parsedJson){
     try {
         await clearRestaurants(); 
-        RestaurantReply.insertMany(parsedJson)
+        console.log("Inserting Restaurant Replies...")
+        await RestaurantReply.insertMany(parsedJson)
+        await countRestaurantReplies();
+
     } catch (error) {
         console.error('Error loading restaurant replies:', error);
     }

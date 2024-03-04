@@ -118,7 +118,9 @@ function getRestoPageInfo(restaurantId){
 async function addBulkResto(parsedJson){
     try {
         await clearRestaurants(); 
-        Restaurant.insertMany(parsedJson)
+        console.log("Inserting restaurants...")
+        await Restaurant.insertMany(parsedJson)
+        await countRestaurants()
     } catch (error) {
         console.error('Error loading restaurants:', error);
     }

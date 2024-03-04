@@ -73,7 +73,9 @@ function addProfile(profileToSave){
 async function addBulkProfile(parsedJson){
     try {
         await clearProfiles(); 
-        Profile.insertMany(parsedJson)
+        console.log("Inserting profiles...")
+        await Profile.insertMany(parsedJson)
+        await countProfiles();
     } catch (error) {
         console.error('Error loading profiles:', error);
     }
