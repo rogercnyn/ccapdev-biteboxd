@@ -39,18 +39,18 @@
             </div>
             <div class="restodetailsarea">
                 <div class="nameandoverallscore">
-                    <h1 class="resto-title">Ate Rica's</h1>
-                    <h2 class="yellowscore">4.0/5</h2>
+                    <h1 class="resto-title">{{name}}</h1>
+                    <h2 class="yellowscore">{{rating}}/5</h2>
                 </div>
                 <div class="moredetails">
-                    <p class="restodetail" id="emojip">💵 💵 (P125-175)</p>
-                    <p class="restodetail">Filipino</p>
-                    <p class="restodetail">Fastfood</p>
-                    <p class="restodetail">Open during: M-S (8:00 AM - 5:00 PM)</p>
+                    <p class="restodetail" id="emojip">💵 💵 (P{{startPriceRange}}-{{endPriceRange}})</p>
+                    <p class="restodetail">{{tag1}}</p>
+                    <p class="restodetail">{{tag2}}</p>
+                    <p class="restodetail">Open during: M-S ({{startOpeningHour}} - {{endOpeningHour}})</p>
                 </div>
-                <p class="location">Vito Cruz, Metro Manila, Philippines</p>
+                <p class="location">{{location}}</p>
                 <br>
-                <p class="description">Ate Rica's Bacsilog offers different types of silog meals at an affordable price. The best sellers are bacsilog, tapsilog, and hotsilog.</p>
+                <p class="description">{{description}}</p>
                 <br>
                 <div class="attributes">
 

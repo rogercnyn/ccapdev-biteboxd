@@ -35,6 +35,18 @@ function searchQuery(searchTerm) {
     });
 }
 
+
+function getRestoCardDetails(id){
+    let restaurant = Restaurant.findById(id)
+    
+    // handle non existend ids
+    if(!restaurant) {
+        return null
+    }
+
+    
+}
+
 function getAllRestaurant(){
     return Restaurant
             .find()
@@ -166,7 +178,6 @@ async function handleGetAllRestoRequest(req, resp){
             }   
         )
 }
-
 
 
 
