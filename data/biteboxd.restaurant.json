@@ -7,13 +7,16 @@
     "username": "atericas_taft",
     "password": "12345678",
     "coordinates": [
-      120.9931,
-      1628581.724
+      14.566280502388187, 
+      120.99256145130077
     ],
     "startPriceRange": 100,
     "endPriceRange": 150,
-    "startOpeningHour": "1970-01-01T00:00:00.007Z",
-    "endOpeningHour": "1970-01-01T00:00:00.019Z",
+    "numberOfCash": 2,
+    "startOpeningHour": "7:00 AM",
+    "endOpeningHour": "7:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Ate Rica's Bacsilog offers different types of silog meals at an affordable price. The best sellers are bacsilog, tapsilog, and hotsilog.",
     "shortDescription": "Your new go-to Bacsilog-an",
     "amenities": [
@@ -32,8 +35,7 @@
     ],
     "tag": [
       "Filipino",
-      "Fastfood",
-      "₱₱"
+      "Fastfood"
     ],
     "rating": 4,
     "numberOfReviews": 64,
@@ -61,13 +63,16 @@
     "username": "angrydobo_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.565029510845182, 
+      120.99457942179502
     ],
     "startPriceRange": 400,
     "endPriceRange": 600,
-    "startOpeningHour": "1970-01-01T00:00:00.010Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 5,
+    "startOpeningHour": "10:00 AM",
+    "endOpeningHour": "9:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Experience the bold and explosive flavors of Angrydobo's Filipino cuisine. From tangy adobo to spicy sinigang, our dishes are sure to tantalize your taste buds and leave you craving for more. Visit us and unleash your inner foodie!",
     "shortDescription": "Bold Filipino flavors from tangy adobo to spicy sinigang.",
     "amenities": [
@@ -86,8 +91,7 @@
     ],
     "tag": [
       "Filipino",
-      "Fastfood",
-      "₱₱₱"
+      "Fastfood"
     ],
     "rating": 3.7,
     "numberOfReviews": 331,
@@ -115,13 +119,16 @@
     "username": "chefbabs_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.56337301602917, 
+      120.99422975194385
     ],
     "startPriceRange": 1,
     "endPriceRange": 200,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 2,
+    "startOpeningHour": "9:00 AM",
+    "endOpeningHour": "9:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Delight your taste buds with Chef Bab’s Sisig's mouthwatering Filipino delicacies. Our sizzling sisig is a crowd favorite, packed with flavor and served with a side of satisfaction. Come savor the taste of tradition with every bite.",
     "shortDescription": "Mouthwatering sizzling sisig, bursting with Filipino flavors.",
     "amenities": [
@@ -139,8 +146,7 @@
       0
     ],
     "tag": [
-      "Filipino",
-      "₱₱₱"
+      "Filipino"
     ],
     "rating": 4.4,
     "numberOfReviews": 18,
@@ -162,13 +168,16 @@
     "username": "manam_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.564174020298289, 
+      120.99084557000043
     ],
     "startPriceRange": 200,
     "endPriceRange": 500,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 4,
+    "startOpeningHour": "10:00 AM",
+    "endOpeningHour": "10:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Discover the best of Filipino cuisine at Manam, where traditional flavors meet modern twists. From classic adobo to innovative twists on kare-kare, our menu offers a culinary journey that celebrates the richness of Filipino food heritage.",
     "shortDescription": "Traditional Filipino cuisine with modern twists for a unique experience.",
     "amenities": [
@@ -186,8 +195,7 @@
       1
     ],
     "tag": [
-      "Filipino",
-      "₱₱₱"
+      "Filipino"
     ],
     "rating": 4.8,
     "numberOfReviews": 1200,
@@ -209,13 +217,15 @@
     "username": "thearistocrat_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.576124449785913, 
+      120.98460456472496
     ],
     "startPriceRange": 800,
     "endPriceRange": 1000,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "startOpeningHour": "10:00 AM",
+    "endOpeningHour": "10:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Step into The Aristocrat and experience Filipino culinary excellence like never before. From our famous chicken barbecue to delectable pancit, each dish is prepared with care and served with a side of nostalgia. Taste the legacy today!",
     "shortDescription": "Filipino culinary excellence, serving iconic dishes with a side of nostalgia.",
     "amenities": [
@@ -233,8 +243,7 @@
       0
     ],
     "tag": [
-      "Filipino",
-      "₱₱₱"
+      "Filipino"
     ],
     "rating": 4.6,
     "numberOfReviews": 1200,
@@ -256,13 +265,16 @@
     "username": "tomo_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.563598152321816, 
+      120.99461055379182
     ],
     "startPriceRange": 100,
     "endPriceRange": 200,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 2,
+    "startOpeningHour": "7:00 AM",
+    "endOpeningHour": "12:00 AM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Start your day right with Tomo Coffee's premium brews and cozy ambiance. Whether you prefer a classic espresso or a trendy latte, our baristas craft each cup with expertise and passion. Visit us and elevate your coffee experience.",
     "shortDescription": "Premium brews and cozy ambiance to kickstart your day.",
     "amenities": [
@@ -280,8 +292,7 @@
       1
     ],
     "tag": [
-      "Coffee",
-      "₱₱₱"
+      "Coffee"
     ],
     "rating": 3.8,
     "numberOfReviews": 24,
@@ -303,13 +314,16 @@
     "username": "seattlesbest_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.563722522334958, 
+      120.99497527776353
     ],
     "startPriceRange": 100,
     "endPriceRange": 200,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 2,
+    "startOpeningHour": "8:00 AM",
+    "endOpeningHour": "10:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Embrace the Seattle coffee culture at Seattle’s Best Coffee. Savor the rich aroma and bold flavors of our handcrafted brews, paired perfectly with a selection of freshly baked pastries. Join us and indulge in the taste of the Pacific Northwest.",
     "shortDescription": "Rich handcrafted brews paired with freshly baked pastries.",
     "amenities": [
@@ -327,8 +341,7 @@
       1
     ],
     "tag": [
-      "Coffee",
-      "₱₱₱"
+      "Coffee"
     ],
     "rating": 4.3,
     "numberOfReviews": 186,
@@ -350,13 +363,16 @@
     "username": "starbucks_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.564301723353635, 
+      120.99458804225895
     ],
     "startPriceRange": 100,
     "endPriceRange": 300,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 3,
+    "startOpeningHour": "8:00 AM",
+    "endOpeningHour": "11:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Fuel your day with Starbucks' iconic beverages and delectable treats. From creamy Frappuccinos to artisanal pastries, our menu offers something for every coffee lover. Visit us and discover your new favorite drink today.",
     "shortDescription": "Iconic beverages and delectable treats for every coffee lover.  ",
     "amenities": [
@@ -374,8 +390,7 @@
       1
     ],
     "tag": [
-      "Coffee",
-      "₱₱₱"
+      "Coffee"
     ],
     "rating": 4.4,
     "numberOfReviews": 688,
@@ -397,13 +412,16 @@
     "username": "coffeeproj_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.56355938122865, 
+      120.99489036459904
     ],
     "startPriceRange": 150,
     "endPriceRange": 300,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 3,
+    "startOpeningHour": "7:00 AM",
+    "endOpeningHour": "9:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Immerse yourself in the cozy ambiance and artisanal coffee blends of Coffee Project. With every sip, experience the passion and creativity poured into each cup, making every visit a delightful journey of flavors and relaxation.",
     "shortDescription": "Artisanal coffee blends in a cozy setting for relaxation and flavor exploration.",
     "amenities": [
@@ -421,8 +439,7 @@
       1
     ],
     "tag": [
-      "Coffee",
-      "₱₱₱"
+      "Coffee"
     ],
     "rating": 4.5,
     "numberOfReviews": 636,
@@ -444,13 +461,16 @@
     "username": "pickupcoffee_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.565627032027534, 
+      120.99430805278715
     ],
     "startPriceRange": 70,
     "endPriceRange": 150,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 2,
+    "startOpeningHour": "7:00 AM",
+    "endOpeningHour": "11:00 AM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Dive into a world of flavor at Pickup Coffee, where every cup is brewed with care and precision. Whether you're craving a classic brew or a specialty blend, our coffee artisans are here to elevate your coffee experience.",
     "shortDescription": "Carefully brewed coffee, crafted to elevate your coffee experience.",
     "amenities": [
@@ -468,8 +488,7 @@
       1
     ],
     "tag": [
-      "Coffee",
-      "₱₱₱"
+      "Coffee"
     ],
     "rating": 3.3,
     "numberOfReviews": 24,
@@ -491,13 +510,16 @@
     "username": "tokyox2_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.564661992626784, 
+      120.99479114514833
     ],
     "startPriceRange": 100,
     "endPriceRange": 300,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 3,
+    "startOpeningHour": "1:00 AM",
+    "endOpeningHour": "8:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Experience the vibrant flavors of Japan at Tokyo Tokyo. From savory ramen to crispy tempura, our menu offers a taste of authentic Japanese cuisine that will transport you to the bustling streets of Tokyo with every bite.",
     "shortDescription": "Authentic Japanese cuisine from ramen to tempura.  ",
     "amenities": [
@@ -515,8 +537,7 @@
       1
     ],
     "tag": [
-      "Japanese",
-      "₱₱₱"
+      "Japanese"
     ],
     "rating": 4.4,
     "numberOfReviews": 56,
@@ -538,13 +559,16 @@
     "username": "crazykatsu_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.567691483758399, 
+      120.99293219354315
     ],
     "startPriceRange": 200,
     "endPriceRange": 400,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 4,
+    "startOpeningHour": "11:00 AM",
+    "endOpeningHour": "9:30 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Treat yourself to the ultimate comfort food experience at Crazy Katsu. With every crispy bite of our perfectly fried katsu dishes, experience a burst of flavor that will satisfy your cravings and leave you wanting seconds.",
     "shortDescription": "Crispy katsu dishes for the ultimate comfort food experience.",
     "amenities": [
@@ -563,8 +587,7 @@
     ],
     "tag": [
       "Japanese",
-      "Fastfood",
-      "₱₱"
+      "Fastfood"
     ],
     "rating": 4.1,
     "numberOfReviews": 25,
@@ -586,13 +609,16 @@
     "username": "pepperlunch_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.562643645818463, 
+      120.99533196536305
     ],
     "startPriceRange": 200,
     "endPriceRange": 500,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 4,
+    "startOpeningHour": "11:00 AM",
+    "endOpeningHour": "9:00 AM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Ignite your taste buds with the sizzling delights of Pepper Lunch. From sizzling steaks to savory rice bowls, our interactive dining experience allows you to customize your meal just the way you like it. Come sizzle with us today!",
     "shortDescription": "Interactive dining with sizzling steaks and customizable rice bowls.",
     "amenities": [
@@ -610,8 +636,7 @@
       0
     ],
     "tag": [
-      "Japanese",
-      "₱₱₱"
+      "Japanese"
     ],
     "rating": 4.7,
     "numberOfReviews": 11,
@@ -633,13 +658,16 @@
     "username": "hayashi_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.567624203337036, 
+      120.99217675661208
     ],
     "startPriceRange": 200,
     "endPriceRange": 500,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 4,
+    "startOpeningHour": "9:00 AM",
+    "endOpeningHour": "9:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Embark on a culinary journey through Japan at Hayashi. From fresh sushi to flavorful bento boxes, our menu offers a taste of authentic Japanese cuisine crafted with the finest ingredients and served with a side of hospitality.",
     "shortDescription": "Exquisite flavors of fresh sushi and flavorful bento boxes.",
     "amenities": [
@@ -657,8 +685,7 @@
       0
     ],
     "tag": [
-      "Japanese",
-      "₱₱₱"
+      "Japanese"
     ],
     "rating": 4.2,
     "numberOfReviews": 5,
@@ -680,13 +707,16 @@
     "username": "davids_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.562666776301777, 
+      120.99564875942978
     ],
     "startPriceRange": 150,
     "endPriceRange": 400,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 4,
+    "startOpeningHour": "10:00 AM",
+    "endOpeningHour": "9:30 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Dive into a world of flavor at David’s Tea House, where every bite is a celebration of Chinese culinary heritage. From savory dim sum to comforting noodle soups, our menu offers a taste of tradition that will warm your heart and soul.",
     "shortDescription": "Chinese culinary heritage celebrated through savory dim sum and noodle soups.",
     "amenities": [
@@ -704,8 +734,7 @@
       1
     ],
     "tag": [
-      "Chinese",
-      "₱₱₱"
+      "Chinese"
     ],
     "rating": 4,
     "numberOfReviews": 16,
@@ -727,13 +756,16 @@
     "username": "jandjs_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.566044525589678, 
+      120.9929528613076
     ],
     "startPriceRange": 100,
     "endPriceRange": 200,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 2,
+    "startOpeningHour": "10:30 AM",
+    "endOpeningHour": "7:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Indulge in the rich and aromatic flavors of Chinese cuisine at Jus & Jerry’s. From savory stir-fries to comforting noodle dishes, our menu offers a delicious journey through the vibrant flavors of the Orient. Visit us and savor the taste.",
     "shortDescription": "Rich and aromatic flavors of Chinese cuisine with savory stir-fries and noodle dishes.",
     "amenities": [
@@ -751,8 +783,7 @@
       0
     ],
     "tag": [
-      "Chinese",
-      "₱₱₱"
+      "Chinese"
     ],
     "rating": 4.1,
     "numberOfReviews": 66,
@@ -774,13 +805,16 @@
     "username": "chowking_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.564527333357624, 
+      120.99458182142843
     ],
     "startPriceRange": 100,
     "endPriceRange": 300,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 3,
+    "startOpeningHour": "12:00 AM",
+    "endOpeningHour": "12:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Experience the fusion of Filipino and Chinese flavors at Chowking. From savory pancit to crispy siopao, our menu offers a taste of comfort that will satisfy your cravings and leave you coming back for more. Visit us and taste the fusion today!",
     "shortDescription": "Fusion of Filipino and Chinese comfort food, from pancit to siopao.",
     "amenities": [
@@ -799,8 +833,7 @@
     ],
     "tag": [
       "Chinese",
-      "Fastfood",
-      "₱₱"
+      "Fastfood"
     ],
     "rating": 3.3,
     "numberOfReviews": 78,
@@ -822,13 +855,16 @@
     "username": "dimsumking_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.566624057670625, 
+      120.99260906728561
     ],
     "startPriceRange": 100,
     "endPriceRange": 300,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 3,
+    "startOpeningHour": "10:00 AM",
+    "endOpeningHour": "9:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Explore the exquisite flavors of Cantonese cuisine at Dimsum King. From delicate dumplings to savory buns, our menu offers a delectable selection of dim sum delights that will transport you to the bustling streets of Hong Kong.",
     "shortDescription": "Delectable dim sum delights reminiscent of Hong Kong streets.",
     "amenities": [
@@ -868,13 +904,16 @@
     "username": "wokdisway_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.56698460892342, 
+      120.99294193432026
     ],
     "startPriceRange": 150,
     "endPriceRange": 200,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 2,
+    "startOpeningHour": "10:00 AM",
+    "endOpeningHour": "4:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Embark on a culinary adventure at Wok Dis Way, where every dish is cooked to perfection in our sizzling woks. From flavorful stir-fries to crispy fried rice, our menu offers a taste of Chinese cuisine that will leave you craving for more.",
     "shortDescription": "Perfectly cooked Chinese dishes from stir-fries to fried rice.",
     "amenities": [
@@ -914,13 +953,16 @@
     "username": "armynavy_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.56555137992708, 
+      120.99445464368137
     ],
     "startPriceRange": 250,
     "endPriceRange": 500,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 4,
+    "startOpeningHour": "7:30 AM",
+    "endOpeningHour": "4:30 AM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Dive into a world of bold flavors at Army Navy, where every bite is a taste of freedom. From juicy burgers to hearty burritos, our menu offers a culinary journey that celebrates the spirit of independence and adventure.",
     "shortDescription": "Juicy burgers and hearty burritos celebrating freedom and adventure.",
     "amenities": [
@@ -939,8 +981,7 @@
     ],
     "tag": [
       "American",
-      "Fastfood",
-      "₱₱"
+      "Fastfood"
     ],
     "rating": 4.2,
     "numberOfReviews": 146,
@@ -962,13 +1003,16 @@
     "username": "popeyes_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.577193214601737, 
+      120.98902956851245
     ],
     "startPriceRange": 150,
     "endPriceRange": 400,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 4,
+    "startOpeningHour": "12:00 AM",
+    "endOpeningHour": "12:00 AM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Satisfy your cravings for Southern comfort at Popeyes, where every bite is a taste of Louisiana. From crispy fried chicken to buttery biscuits, our menu offers a delicious journey through the flavors of the Deep South. Come feast with us today!",
     "shortDescription": "Crispy fried chicken and buttery biscuits for Southern comfort.",
     "amenities": [
@@ -986,8 +1030,7 @@
       1
     ],
     "tag": [
-      "American",
-      "₱₱₱"
+      "American"
     ],
     "rating": 4.1,
     "numberOfReviews": 174,
@@ -1009,13 +1052,16 @@
     "username": "wendys_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.579305466241133, 
+      120.9874830617374
     ],
     "startPriceRange": 150,
     "endPriceRange": 300,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 3,
+    "startOpeningHour": "10:00 AM",
+    "endOpeningHour": "9:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Indulge in the flavor-packed delights of Wendy’s, where every bite is a taste of fast-food perfection. From juicy burgers to frosty desserts, our menu offers a satisfying meal that will leave you craving for more. Visit us and taste the difference today!",
     "shortDescription": "Fast-food perfection with juicy burgers and frosty desserts.",
     "amenities": [
@@ -1034,8 +1080,7 @@
     ],
     "tag": [
       "American",
-      "Fastfood",
-      "₱₱"
+      "Fastfood"
     ],
     "rating": 4.2,
     "numberOfReviews": 34,
@@ -1057,11 +1102,14 @@
     "username": "burgerking_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.5654310469544, 
+      120.99477865919954
     ],
     "startPriceRange": 100,
     "endPriceRange": 300,
+    "numberOfCash": 3,
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "startOpeningHour": "1970-01-01T00:00:00.008Z",
     "endOpeningHour": "1970-01-01T00:00:00.022Z",
     "description": "Treat yourself to the flame-grilled goodness of Burger King, where every burger is a masterpiece of flavor. From classic Whoppers to indulgent fries, our menu offers a taste of fast-food royalty that will leave you coming back for more.",
@@ -1082,8 +1130,7 @@
     ],
     "tag": [
       "American",
-      "Fastfood",
-      "₱₱"
+      "Fastfood"
     ],
     "rating": 4.3,
     "numberOfReviews": 344,
@@ -1105,13 +1152,16 @@
     "username": "zarks_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.566176893622183, 
+      120.9940061724352
     ],
     "startPriceRange": 150,
     "endPriceRange": 499,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 4,
+    "startOpeningHour": "10:00 AM",
+    "endOpeningHour": "10:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Experience burger heaven at Zark’s Burgers, where every bite is a flavor explosion. From towering burgers to loaded fries, our menu offers a delicious journey through the world of gourmet burgers that will leave you craving for more.",
     "shortDescription": "Gourmet burger heaven with towering creations and loaded fries.",
     "amenities": [
@@ -1130,8 +1180,7 @@
     ],
     "tag": [
       "American",
-      "Fastfood",
-      "₱₱"
+      "Fastfood"
     ],
     "rating": 4.2,
     "numberOfReviews": 574,
@@ -1153,13 +1202,16 @@
     "username": "sbarro_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.567919594932828, 
+      120.99306202430435
     ],
     "startPriceRange": 200,
     "endPriceRange": 500,
-    "startOpeningHour": "1970-01-01T00:00:00.010Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 4,
+    "startOpeningHour": "10:00 AM",
+    "endOpeningHour": "9:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Savor the taste of Italy at Sbarro, where every slice is a slice of heaven. From cheesy pizzas to hearty pasta dishes, our menu offers a taste of authentic Italian cuisine that will transport you to the streets of Naples with every bite.",
     "shortDescription": "Authentic Italian pizzas and pasta dishes straight from Naples.",
     "amenities": [
@@ -1199,13 +1251,16 @@
     "username": "aventinos_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.566293201317567, 
+      120.9933798091803
     ],
     "startPriceRange": 200,
     "endPriceRange": 500,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 4,
+    "startOpeningHour": "11:00 AM",
+    "endOpeningHour": "11:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Embark on a culinary journey through Italy at Aventino’s, where every dish is a celebration of Italian flavors. From classic pasta dishes to indulgent desserts, our menu offers a taste of la dolce vita that will leave you craving for more.",
     "shortDescription": "A taste of la dolce vita with classic Italian pasta and desserts.",
     "amenities": [
@@ -1245,13 +1300,16 @@
     "username": "italiannis_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.575648055659695, 
+      120.9846677588065
     ],
     "startPriceRange": 300,
     "endPriceRange": 700,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 5,
+    "startOpeningHour": "9:00 AM",
+    "endOpeningHour": "10:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Indulge in the richness of Italian cuisine at Italianni’s, where every meal is a celebration of flavor. From hearty pasta dishes to succulent seafood, our menu offers a culinary journey through the diverse regions of Italy. Buon appetito!",
     "shortDescription": "Rich Italian flavors from hearty pastas to succulent seafood.",
     "amenities": [
@@ -1269,8 +1327,7 @@
       1
     ],
     "tag": [
-      "Italian",
-      "₱₱"
+      "Italian"
     ],
     "rating": 4.9,
     "numberOfReviews": 3900,
@@ -1292,13 +1349,16 @@
     "username": "rombab_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.56841655734766, 
+      120.99272056577907
     ],
     "startPriceRange": 500,
     "endPriceRange": 800,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 5,
+    "startOpeningHour": "11:00 AM",
+    "endOpeningHour": "11:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Treat yourself to a feast of flavors at Romantic Baboy, where every bite is a celebration of Korean BBQ excellence. From succulent pork belly to flavorful side dishes, our menu promises a dining experience that will leave you craving for more.",
     "shortDescription": "Korean BBQ excellence with succulent pork belly and flavorful sides.",
     "amenities": [
@@ -1316,8 +1376,7 @@
       1
     ],
     "tag": [
-      "Korean",
-      "₱₱₱"
+      "Korean"
     ],
     "rating": 4.4,
     "numberOfReviews": 291,
@@ -1339,13 +1398,16 @@
     "username": "samgsalamat_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.563494579179029, 
+      120.99662895185415
     ],
     "startPriceRange": 400,
     "endPriceRange": 600,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 5,
+    "startOpeningHour": "11:00 AM",
+    "endOpeningHour": "11:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Dive into a world of sizzling delights at Samgyupsalamat, where every grill is a canvas of flavor. From premium meats to mouthwatering side dishes, our Korean BBQ experience promises a culinary adventure that will leave you coming back for more.",
     "shortDescription": "Sizzling Korean BBQ experience with premium meats and tasty side dishes.",
     "amenities": [
@@ -1363,8 +1425,7 @@
       1
     ],
     "tag": [
-      "Korean",
-      "₱₱₱"
+      "Korean"
     ],
     "rating": 4.2,
     "numberOfReviews": 760,
@@ -1386,13 +1447,16 @@
     "username": "wangpau_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.569679595354456, 
+      120.99237943269844
     ],
     "startPriceRange": 400,
     "endPriceRange": 600,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 5,
+    "startOpeningHour": "11:00 AM",
+    "endOpeningHour": "12:00 AM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Wang Pau Samgyupsal merges Chinese steamed buns with Korean samgyupsal. Grilled pork belly, paired with fresh veggies and condiments, is enclosed in soft buns. The savory pork complements the sweet bun, offering a delicious fusion of Chinese and Korean flavors in each bite.",
     "shortDescription": "A tantalizing fusion of Chinese steamed buns and Korean samgyupsal, marrying succulent grilled pork belly with fresh veggies, offering a flavorful bite of both cultures.",
     "amenities": [
@@ -1410,8 +1474,7 @@
       1
     ],
     "tag": [
-      "Korean",
-      "₱₱₱"
+      "Korean"
     ],
     "rating": 2.8,
     "numberOfReviews": 14,
@@ -1433,13 +1496,16 @@
     "username": "bab_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.566969832201723, 
+      120.99316509315403
     ],
     "startPriceRange": 200,
     "endPriceRange": 500,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 5,
+    "startOpeningHour": "9:00 AM",
+    "endOpeningHour": "9:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Experience authentic Korean flavors at BAB Korean Restaurant, where every dish is a masterpiece of taste. From savory bulgogi to spicy kimchi, our menu offers a culinary journey that celebrates the rich heritage of Korean cuisine. Come feast with us today!",
     "shortDescription": "Authentic Korean flavors from savory bulgogi to spicy kimchi",
     "amenities": [
@@ -1457,8 +1523,7 @@
       1
     ],
     "tag": [
-      "Korean",
-      "₱₱"
+      "Korean"
     ],
     "rating": 5,
     "numberOfReviews": 1,
@@ -1480,13 +1545,16 @@
     "username": "tapaking_taft",
     "password": "12345678",
     "coordinates": [
-      120.9931,
-      1628581.724
+      14.56774758734103, 
+      120.99328671726396
     ],
     "startPriceRange": 400,
     "endPriceRange": 600,
-    "startOpeningHour": "1970-01-01T00:00:00.000Z",
-    "endOpeningHour": "1970-01-01T00:00:00.024Z",
+    "numberOfCash": 5,
+    "startOpeningHour": "12:00 AM",
+    "endOpeningHour": "12:00 AM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Indulge in Tapa King's signature Filipino tapa dishes, renowned for their savory flavors and tender meat. Whether it's breakfast, lunch, or dinner, our dishes will satisfy your cravings and leave you coming back for more.",
     "shortDescription": "Savory Filipino tapa dishes, perfect for any mealtime craving.",
     "amenities": [
@@ -1505,8 +1573,7 @@
     ],
     "tag": [
       "Filipino",
-      "Fastfood",
-      "₱₱₱"
+      "Fastfood"
     ],
     "rating": 3.9,
     "numberOfReviews": 130,
@@ -1534,13 +1601,16 @@
     "username": "yoshimeatsu_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.567316467125455, 
+      120.99839513350716
     ],
     "startPriceRange": 500,
     "endPriceRange": 800,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 5,
+    "startOpeningHour": "11:00 AM",
+    "endOpeningHour": "9:00 PM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Indulge in a feast of flavors at Yoshimeatsu, where the grill sizzles with mouthwatering Japanese BBQ delights. From tender meats to flavorful sides, our menu promises a culinary adventure that will leave you craving for more.",
     "shortDescription": "Mouthwatering Japanese BBQ delights for a flavorful feast.",
     "amenities": [
@@ -1558,8 +1628,7 @@
       0
     ],
     "tag": [
-      "Japanese",
-      "₱₱₱"
+      "Japanese"
     ],
     "rating": 4.5,
     "numberOfReviews": 312,
@@ -1581,13 +1650,16 @@
     "username": "chungdam_taft",
     "password": "12345678",
     "coordinates": [
-      14.566420908001565,
-      120.99256453262059
+      14.570897589876111, 
+      120.98671979636802
     ],
     "startPriceRange": 500,
     "endPriceRange": 1000,
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "numberOfCash": 5,
+    "startOpeningHour": "11:00 AM",
+    "endOpeningHour": "6:00 AM",
+    "startOpeningDay": "M",
+    "endOpeningDay": "S",
     "description": "Embark on a gastronomic adventure at Chung Dam Restaurant, where every dish is a celebration of Korean BBQ mastery. From marinated meats to flavorful banchan, our menu promises a dining experience that will leave you craving for more. Come sizzle with us today!",
     "shortDescription": "Korean BBQ mastery with marinated meats and flavorful banchan.",
     "amenities": [
@@ -1605,8 +1677,7 @@
       1
     ],
     "tag": [
-      "Korean",
-      "₱₱₱"
+      "Korean"
     ],
     "rating": 4.3,
     "numberOfReviews": 138,
