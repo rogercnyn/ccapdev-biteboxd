@@ -1,5 +1,4 @@
-   // Sample data for ratings
-   const ratingsData = {
+const ratingsData = {
     '5 stars': 20,
     '4 stars': 15,
     '3 stars': 10,
@@ -7,11 +6,9 @@
     '1 star': 11
 };
 
-// Prepare data for Chart.js
 const labels = Object.keys(ratingsData);
 const data = Object.values(ratingsData);
 
-// Render chart using Chart.js
 const ctx = document.getElementById('ratingChart').getContext('2d');
 const ratingChart = new Chart(ctx, {
     type: 'bar',

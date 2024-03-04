@@ -37,7 +37,7 @@ function searchQuery(searchTerm) {
 
 
 async function getRestoCardDetails(id){
-    return await Restaurant.findById(id).select("-password").lean()
+    return await Restaurant.findById(id).select("-password").populate('reviews').lean()
 }
 
 function getAllRestaurant(){
