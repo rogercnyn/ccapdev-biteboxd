@@ -8,6 +8,7 @@
     <script src="/script/general.js"></script>
     <script src="/script/like.js"></script>
     <script src="/script/slider.js"></script>
+    <script src="/script/resto-reviewpage.js"></script>
     
 
     <link rel="stylesheet" href="/styles/resto-reviewpage.css">
@@ -137,7 +138,7 @@
             <div class="publishrevarea" >
 
                 <div class="cannot-publish" id="cannot-publish">
-                    <a href="login">Log in to leave a review</a>
+                    <a href="/login">Log in to leave a review</a>
                 </div>
 
                 <div class="publishreview" id="publishreview">
@@ -416,11 +417,11 @@
                                     </div>
                                 </div>
 
-                                <div class="reviewtext" id="rev2">
-                                    <span class="longtext">{{longText}}
+                                <div class="reviewtext" id="rev{{order}}">
+                                    <span class="longtext">{{longText}}</span>
                                     {{#unless hasNoSeeMore}}
                                         <span class="full-text">{{fullText}}</span>
-                                        <span class="see-more" onclick="toggleSeeMore('rev2')"><b>...see more</b></span>
+                                        <span class="see-more" onclick="toggleSeeMore('rev{{order}}')"><b>...see more</b></span>
                                     {{/unless}}
                                 </div>
 
@@ -482,7 +483,6 @@
                 
         const likesets = document.getElementsByClassName('likeset');
         const likes = []
-        // console.log(likeDislikeButtons)
 
 
         Array.from(likesets).forEach(likeset => {

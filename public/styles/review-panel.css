@@ -4,7 +4,7 @@
     flex-direction: column;
     width: 850px;
     border-bottom: 1px solid #d1d1d1;
-    margin-bottom: 30px;
+    /* margin-bottom: 15px; */
     padding: 1%;
     position: relative;
     gap: 0.5rem;
@@ -25,6 +25,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    /* border: 1px solid yellow; */
 
 
 }
@@ -81,10 +82,17 @@
 
 .yellowscore {
     background-color:#FDD247;
-    padding: 3px;
+    /* padding: 3px; */
     border-radius: 5px;
     color: black;
     font-size: 20px;
+    /* padding: 20%; */
+    min-width: 50px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "DM Sans";
 }
 
 .criteriaratings {
@@ -92,7 +100,14 @@
     flex-direction: row;
     align-items: center;
     gap: 70px;
-    padding-bottom: 10px;
+    padding: 15px 5px;
+
+    /* border: 1px solid #d9d9d9; */
+    border-radius: 20px;
+    /* background-color: #f9f9f9; */
+    /* padding-bottom: 10px; */
+    /* border: 1px solid green; */
+    justify-content: space-between;
 }
 
 .criteriascore {
@@ -120,7 +135,9 @@
     max-height: 120px;
     background-color: #f8f8f8;
     border-radius: 10px;
-    padding: 10px
+    padding: 10px;
+    min-height: 65px;
+    min-width: 732px;
 }
 
 .full-text{

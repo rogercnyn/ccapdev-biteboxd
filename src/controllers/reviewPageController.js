@@ -32,6 +32,7 @@ async function handleRestoPageRequest(req, resp) {
 
     restaurant['reviews'].forEach((review, index) => {
         review['profilePicture'] = profilePictures[index]['image'];
+        review['order'] = index
     });
 
     console.log(restaurant['reviews'])
