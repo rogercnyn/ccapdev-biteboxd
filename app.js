@@ -3,9 +3,11 @@ dotenv.config();
 
 // dependencies
 const express = require('express')
-const session = require('express-session');
+// const session = require('express-session');
 const exphbs = require('express-handlebars');
 const path = require("path")
+// const bodyParser = require('body-parser');
+
 
 //  requires dot env configuration already
 const connect = require('./src/models/db.js');
@@ -50,15 +52,12 @@ async function main() {
     }));
     server.set("views", "./src/views");
 
-    server.use(session({
-        secret: 'your_secret_key',
-        resave: false,
-        saveUninitialized: true
-    }));
-
     server.use(express.json());
     server.use(express.urlencoded({ extended: true }));
     server.use(router);
+    // server.use(bodyParser.urlencoded({ extended: true }));
+
+
     
 
     server.listen(PORT, async function() {
