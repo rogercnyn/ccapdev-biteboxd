@@ -1,9 +1,10 @@
 
 
-const { addBulkProfile } = require('./profileController.js');
-const { addBulkResto } = require('./restaurantController.js');
-const { addBulkReview } = require('./reviewController.js');
-const { addBulkRestaurantReply } = require('./restaurantreplyController.js');
+const { addBulkProfile } = require('../controllers/profileController.js');
+const { addBulkResto } = require('../controllers/restaurantController.js');
+const { addBulkReview } = require('../controllers/reviewController.js');
+const { addBulkRestaurantReply } = require('../controllers/restaurantreplyController.js');
+
 const fs = require('fs')
 
 const profileJson = 'data/biteboxd.profile.json'

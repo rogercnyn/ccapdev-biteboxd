@@ -1,6 +1,6 @@
 const Restaurant = require('../models/Restaurant.js');
-const searchRequiredFields = { _id: 0, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1 }
-const allPageRequiredFields = { _id: 0, name: 1, location: 1,  media: 1, rating: 1, shortDescription: 1, tag: 1 }
+const searchRequiredFields = { _id: 1, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1 }
+const allPageRequiredFields = { _id: 1, name: 1, location: 1,  media: 1, rating: 1, shortDescription: 1, tag: 1 }
 
 function floorTheRating(restaurants){
     restaurants.forEach(restaurant => {
@@ -126,7 +126,48 @@ async function addBulkResto(parsedJson){
     }
 }
 
+async function handleSearchRequest(req, resp){
+    const query = req.query.query;
+    
+    searchQuery(query)
+        .then
+        (
+            results => 
+            {
+                resp.render("search", 
+                {
+                    results: results,
+                    query: query,
+                    hasResults: results.length !== 0,
+                    resultLength: results.length
+                }); 
+             }
+        )
+        .catch
+        (
+            error => 
+            {
+                console.error('Error searching:', error);
+                resp.status(500).send('Internal Server Error');
+            }
+        );
+}
+
+async function handleGetAllRestoRequest(req, resp){
+    getAllRestaurant()
+        .then
+        (
+            results => {
+                console.log(results)
+                resp.render("all", 
+                {
+                    results: results    
+                })
+            }   
+        )
+}
 
 
 
-module.exports = { searchQuery, getAllRestaurant,  addBulkResto };
+
+module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest};
