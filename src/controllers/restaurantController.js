@@ -1,6 +1,6 @@
 const Restaurant = require('../models/Restaurant.js');
-const searchRequiredFields = { _id: 0, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1 }
-const allPageRequiredFields = { _id: 0, name: 1, location: 1,  media: 1, rating: 1, shortDescription: 1, tag: 1 }
+const searchRequiredFields = { _id: 1, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1 }
+const allPageRequiredFields = { _id: 1, name: 1, location: 1,  media: 1, rating: 1, shortDescription: 1, tag: 1 }
 
 function floorTheRating(restaurants){
     restaurants.forEach(restaurant => {
@@ -138,7 +138,8 @@ async function handleSearchRequest(req, resp){
                 {
                     results: results,
                     query: query,
-                    hasResults: results.length !== 0
+                    hasResults: results.length !== 0,
+                    resultLength: results.length
                 }); 
              }
         )
