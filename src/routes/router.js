@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { handleSearchRequest, handleGetAllRestoRequest } = require('../controllers/restaurantController');
 const { handleRestoPageRequest } = require('../controllers/reviewPageController');
+
 const router = Router();
 const Profile = require("../models/Profile");
 const bodyParser = require('body-parser');
@@ -14,6 +15,14 @@ router.use(session({
 }));
 
 
+function checkSession(req, res, next) {
+    res.locals.loggedIn = req.session && req.session.loggedIn ? req.session.loggedIn : false;
+    res.locals.profilePicture = req.session && req.session.profilePicture ? req.session.profilePicture : null;
+    next();
+}
+
+router.use(checkSession)
+
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/all', handleGetAllRestoRequest);
@@ -24,12 +33,12 @@ router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 
 router.post("/login", async (req, res) => {
     try {
-        console.log(req.body.username); 
         const profile = await Profile.findOne({ username: req.body.username });
         if (profile && profile.password === req.body.password) {
-            req.session.userId = profile.id; 
+            req.session.userId = profile.username; 
+            req.session.profilePicture = profile.image
+            req.session['loggedIn'] = true
             res.redirect("/"); 
-        //  res.redirect("/"); 
         } else {
             res.send("Wrong username or password");
         }
@@ -39,9 +48,10 @@ router.post("/login", async (req, res) => {
     }
 });
 
+
+
 router.get('/', function(req, res) {
-    const loggedIn = req.session && req.session.loggedIn ? req.session.loggedIn : false;
-    res.render('index', { loggedIn });
+    res.render('index');
 });
 
 router.get('/explore', function(req, resp){
@@ -49,10 +59,6 @@ router.get('/explore', function(req, resp){
 });
 
 router.get('/index', function(req, resp){
-    resp.render("index");
-});
-
-router.get('/', function(req, resp){
     resp.render("index");
 });
 

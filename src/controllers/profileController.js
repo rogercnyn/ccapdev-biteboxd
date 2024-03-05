@@ -21,6 +21,11 @@ function saveProfile(profileToSave) {
         });
 }
 
+
+async function getProfilePicture(username){
+    return await Profile.findOne({"username": username}).select("image").exec()
+}
+
 async function clearProfiles() {
     try {
         await Profile.deleteMany({});
@@ -82,4 +87,4 @@ async function addBulkProfile(parsedJson){
 }
 
 
-module.exports = { addProfile, clearProfiles, addReviewToProfile, addBulkProfile }
+module.exports = { addProfile, clearProfiles, addReviewToProfile, addBulkProfile, getProfilePicture }

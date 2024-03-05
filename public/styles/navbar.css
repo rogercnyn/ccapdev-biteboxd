@@ -62,6 +62,10 @@ header {
     height: 50px;
     border-radius: 100%;
     border: 2px solid black;
+    max-width: 60px;
+    object-fit: contain;
+    background-color: rgb(300, 300, 300);
+
 }
 
 a {

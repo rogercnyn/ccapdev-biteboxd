@@ -1,10 +1,7 @@
+const { getProfilePicture } = require('../controllers/profileController');
 const { getRestoCardDetails } = require('./restaurantController.js');
 
-const Profile = require('../models/Profile.js');
 
-async function getProfilePicture(username){
-    return await Profile.findOne({"username": username}).select("image").exec()
-}
 
 function computeRating(r1, r2, r3){
     return Math.round(((r1 + r2 + r3) / 3.0) * 10, 1)/10
