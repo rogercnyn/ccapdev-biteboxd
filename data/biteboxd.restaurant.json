@@ -17,6 +17,8 @@
     "endOpeningHour": "7:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Ate Rica's Bacsilog offers different types of silog meals at an affordable price. The best sellers are bacsilog, tapsilog, and hotsilog.",
     "shortDescription": "Your new go-to Bacsilog-an",
     "amenities": [
@@ -73,6 +75,8 @@
     "endOpeningHour": "9:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "F",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Experience the bold and explosive flavors of Angrydobo's Filipino cuisine. From tangy adobo to spicy sinigang, our dishes are sure to tantalize your taste buds and leave you craving for more. Visit us and unleash your inner foodie!",
     "shortDescription": "Bold Filipino flavors from tangy adobo to spicy sinigang.",
     "amenities": [
@@ -129,6 +133,8 @@
     "endOpeningHour": "9:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Delight your taste buds with Chef Bab’s Sisig's mouthwatering Filipino delicacies. Our sizzling sisig is a crowd favorite, packed with flavor and served with a side of satisfaction. Come savor the taste of tradition with every bite.",
     "shortDescription": "Mouthwatering sizzling sisig, bursting with Filipino flavors.",
     "amenities": [
@@ -178,6 +184,8 @@
     "endOpeningHour": "10:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Discover the best of Filipino cuisine at Manam, where traditional flavors meet modern twists. From classic adobo to innovative twists on kare-kare, our menu offers a culinary journey that celebrates the richness of Filipino food heritage.",
     "shortDescription": "Traditional Filipino cuisine with modern twists for a unique experience.",
     "amenities": [
@@ -227,6 +235,8 @@
     "endOpeningHour": "10:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Step into The Aristocrat and experience Filipino culinary excellence like never before. From our famous chicken barbecue to delectable pancit, each dish is prepared with care and served with a side of nostalgia. Taste the legacy today!",
     "shortDescription": "Filipino culinary excellence, serving iconic dishes with a side of nostalgia.",
     "amenities": [
@@ -276,6 +286,8 @@
     "endOpeningHour": "12:00 AM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Start your day right with Tomo Coffee's premium brews and cozy ambiance. Whether you prefer a classic espresso or a trendy latte, our baristas craft each cup with expertise and passion. Visit us and elevate your coffee experience.",
     "shortDescription": "Premium brews and cozy ambiance to kickstart your day.",
     "amenities": [
@@ -325,6 +337,8 @@
     "endOpeningHour": "10:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Embrace the Seattle coffee culture at Seattle’s Best Coffee. Savor the rich aroma and bold flavors of our handcrafted brews, paired perfectly with a selection of freshly baked pastries. Join us and indulge in the taste of the Pacific Northwest.",
     "shortDescription": "Rich handcrafted brews paired with freshly baked pastries.",
     "amenities": [
@@ -374,6 +388,8 @@
     "endOpeningHour": "11:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Fuel your day with Starbucks' iconic beverages and delectable treats. From creamy Frappuccinos to artisanal pastries, our menu offers something for every coffee lover. Visit us and discover your new favorite drink today.",
     "shortDescription": "Iconic beverages and delectable treats for every coffee lover.  ",
     "amenities": [
@@ -423,6 +439,8 @@
     "endOpeningHour": "9:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Immerse yourself in the cozy ambiance and artisanal coffee blends of Coffee Project. With every sip, experience the passion and creativity poured into each cup, making every visit a delightful journey of flavors and relaxation.",
     "shortDescription": "Artisanal coffee blends in a cozy setting for relaxation and flavor exploration.",
     "amenities": [
@@ -472,6 +490,8 @@
     "endOpeningHour": "11:00 AM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Dive into a world of flavor at Pickup Coffee, where every cup is brewed with care and precision. Whether you're craving a classic brew or a specialty blend, our coffee artisans are here to elevate your coffee experience.",
     "shortDescription": "Carefully brewed coffee, crafted to elevate your coffee experience.",
     "amenities": [
@@ -521,6 +541,8 @@
     "endOpeningHour": "8:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Experience the vibrant flavors of Japan at Tokyo Tokyo. From savory ramen to crispy tempura, our menu offers a taste of authentic Japanese cuisine that will transport you to the bustling streets of Tokyo with every bite.",
     "shortDescription": "Authentic Japanese cuisine from ramen to tempura.  ",
     "amenities": [
@@ -570,6 +592,8 @@
     "endOpeningHour": "9:30 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Treat yourself to the ultimate comfort food experience at Crazy Katsu. With every crispy bite of our perfectly fried katsu dishes, experience a burst of flavor that will satisfy your cravings and leave you wanting seconds.",
     "shortDescription": "Crispy katsu dishes for the ultimate comfort food experience.",
     "amenities": [
@@ -620,6 +644,8 @@
     "endOpeningHour": "9:00 AM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Ignite your taste buds with the sizzling delights of Pepper Lunch. From sizzling steaks to savory rice bowls, our interactive dining experience allows you to customize your meal just the way you like it. Come sizzle with us today!",
     "shortDescription": "Interactive dining with sizzling steaks and customizable rice bowls.",
     "amenities": [
@@ -669,6 +695,8 @@
     "endOpeningHour": "9:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Embark on a culinary journey through Japan at Hayashi. From fresh sushi to flavorful bento boxes, our menu offers a taste of authentic Japanese cuisine crafted with the finest ingredients and served with a side of hospitality.",
     "shortDescription": "Exquisite flavors of fresh sushi and flavorful bento boxes.",
     "amenities": [
@@ -718,6 +746,8 @@
     "endOpeningHour": "9:30 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Dive into a world of flavor at David’s Tea House, where every bite is a celebration of Chinese culinary heritage. From savory dim sum to comforting noodle soups, our menu offers a taste of tradition that will warm your heart and soul.",
     "shortDescription": "Chinese culinary heritage celebrated through savory dim sum and noodle soups.",
     "amenities": [
@@ -767,6 +797,8 @@
     "endOpeningHour": "7:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Indulge in the rich and aromatic flavors of Chinese cuisine at Jus & Jerry’s. From savory stir-fries to comforting noodle dishes, our menu offers a delicious journey through the vibrant flavors of the Orient. Visit us and savor the taste.",
     "shortDescription": "Rich and aromatic flavors of Chinese cuisine with savory stir-fries and noodle dishes.",
     "amenities": [
@@ -816,6 +848,8 @@
     "endOpeningHour": "12:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Experience the fusion of Filipino and Chinese flavors at Chowking. From savory pancit to crispy siopao, our menu offers a taste of comfort that will satisfy your cravings and leave you coming back for more. Visit us and taste the fusion today!",
     "shortDescription": "Fusion of Filipino and Chinese comfort food, from pancit to siopao.",
     "amenities": [
@@ -866,6 +900,8 @@
     "endOpeningHour": "9:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Explore the exquisite flavors of Cantonese cuisine at Dimsum King. From delicate dumplings to savory buns, our menu offers a delectable selection of dim sum delights that will transport you to the bustling streets of Hong Kong.",
     "shortDescription": "Delectable dim sum delights reminiscent of Hong Kong streets.",
     "amenities": [
@@ -915,6 +951,8 @@
     "endOpeningHour": "4:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Embark on a culinary adventure at Wok Dis Way, where every dish is cooked to perfection in our sizzling woks. From flavorful stir-fries to crispy fried rice, our menu offers a taste of Chinese cuisine that will leave you craving for more.",
     "shortDescription": "Perfectly cooked Chinese dishes from stir-fries to fried rice.",
     "amenities": [
@@ -964,6 +1002,8 @@
     "endOpeningHour": "4:30 AM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Dive into a world of bold flavors at Army Navy, where every bite is a taste of freedom. From juicy burgers to hearty burritos, our menu offers a culinary journey that celebrates the spirit of independence and adventure.",
     "shortDescription": "Juicy burgers and hearty burritos celebrating freedom and adventure.",
     "amenities": [
@@ -1014,6 +1054,8 @@
     "endOpeningHour": "12:00 AM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Satisfy your cravings for Southern comfort at Popeyes, where every bite is a taste of Louisiana. From crispy fried chicken to buttery biscuits, our menu offers a delicious journey through the flavors of the Deep South. Come feast with us today!",
     "shortDescription": "Crispy fried chicken and buttery biscuits for Southern comfort.",
     "amenities": [
@@ -1063,6 +1105,8 @@
     "endOpeningHour": "9:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Indulge in the flavor-packed delights of Wendy’s, where every bite is a taste of fast-food perfection. From juicy burgers to frosty desserts, our menu offers a satisfying meal that will leave you craving for more. Visit us and taste the difference today!",
     "shortDescription": "Fast-food perfection with juicy burgers and frosty desserts.",
     "amenities": [
@@ -1111,8 +1155,10 @@
     "numberOfCash": 3,
     "startOpeningDay": "M",
     "endOpeningDay": "S",
-    "startOpeningHour": "1970-01-01T00:00:00.008Z",
-    "endOpeningHour": "1970-01-01T00:00:00.022Z",
+    "foodQuality": 3,
+    "serviceQuality": 3,
+    "startOpeningHour": "7:00 AM",
+    "endOpeningHour": "12:00 AM",
     "description": "Treat yourself to the flame-grilled goodness of Burger King, where every burger is a masterpiece of flavor. From classic Whoppers to indulgent fries, our menu offers a taste of fast-food royalty that will leave you coming back for more.",
     "shortDescription": "Flame-grilled burgers fit for royalty with indulgent sides.",
     "amenities": [
@@ -1163,6 +1209,8 @@
     "endOpeningHour": "10:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Experience burger heaven at Zark’s Burgers, where every bite is a flavor explosion. From towering burgers to loaded fries, our menu offers a delicious journey through the world of gourmet burgers that will leave you craving for more.",
     "shortDescription": "Gourmet burger heaven with towering creations and loaded fries.",
     "amenities": [
@@ -1213,6 +1261,8 @@
     "endOpeningHour": "9:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Savor the taste of Italy at Sbarro, where every slice is a slice of heaven. From cheesy pizzas to hearty pasta dishes, our menu offers a taste of authentic Italian cuisine that will transport you to the streets of Naples with every bite.",
     "shortDescription": "Authentic Italian pizzas and pasta dishes straight from Naples.",
     "amenities": [
@@ -1262,6 +1312,8 @@
     "endOpeningHour": "11:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Embark on a culinary journey through Italy at Aventino’s, where every dish is a celebration of Italian flavors. From classic pasta dishes to indulgent desserts, our menu offers a taste of la dolce vita that will leave you craving for more.",
     "shortDescription": "A taste of la dolce vita with classic Italian pasta and desserts.",
     "amenities": [
@@ -1311,6 +1363,8 @@
     "endOpeningHour": "10:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Indulge in the richness of Italian cuisine at Italianni’s, where every meal is a celebration of flavor. From hearty pasta dishes to succulent seafood, our menu offers a culinary journey through the diverse regions of Italy. Buon appetito!",
     "shortDescription": "Rich Italian flavors from hearty pastas to succulent seafood.",
     "amenities": [
@@ -1360,6 +1414,8 @@
     "endOpeningHour": "11:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Treat yourself to a feast of flavors at Romantic Baboy, where every bite is a celebration of Korean BBQ excellence. From succulent pork belly to flavorful side dishes, our menu promises a dining experience that will leave you craving for more.",
     "shortDescription": "Korean BBQ excellence with succulent pork belly and flavorful sides.",
     "amenities": [
@@ -1409,6 +1465,8 @@
     "endOpeningHour": "11:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Dive into a world of sizzling delights at Samgyupsalamat, where every grill is a canvas of flavor. From premium meats to mouthwatering side dishes, our Korean BBQ experience promises a culinary adventure that will leave you coming back for more.",
     "shortDescription": "Sizzling Korean BBQ experience with premium meats and tasty side dishes.",
     "amenities": [
@@ -1458,6 +1516,8 @@
     "endOpeningHour": "12:00 AM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Wang Pau Samgyupsal merges Chinese steamed buns with Korean samgyupsal. Grilled pork belly, paired with fresh veggies and condiments, is enclosed in soft buns. The savory pork complements the sweet bun, offering a delicious fusion of Chinese and Korean flavors in each bite.",
     "shortDescription": "A tantalizing fusion of Chinese steamed buns and Korean samgyupsal, marrying succulent grilled pork belly with fresh veggies, offering a flavorful bite of both cultures.",
     "amenities": [
@@ -1507,6 +1567,8 @@
     "endOpeningHour": "9:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Experience authentic Korean flavors at BAB Korean Restaurant, where every dish is a masterpiece of taste. From savory bulgogi to spicy kimchi, our menu offers a culinary journey that celebrates the rich heritage of Korean cuisine. Come feast with us today!",
     "shortDescription": "Authentic Korean flavors from savory bulgogi to spicy kimchi",
     "amenities": [
@@ -1556,6 +1618,8 @@
     "endOpeningHour": "12:00 AM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Indulge in Tapa King's signature Filipino tapa dishes, renowned for their savory flavors and tender meat. Whether it's breakfast, lunch, or dinner, our dishes will satisfy your cravings and leave you coming back for more.",
     "shortDescription": "Savory Filipino tapa dishes, perfect for any mealtime craving.",
     "amenities": [
@@ -1612,6 +1676,8 @@
     "endOpeningHour": "9:00 PM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Indulge in a feast of flavors at Yoshimeatsu, where the grill sizzles with mouthwatering Japanese BBQ delights. From tender meats to flavorful sides, our menu promises a culinary adventure that will leave you craving for more.",
     "shortDescription": "Mouthwatering Japanese BBQ delights for a flavorful feast.",
     "amenities": [
@@ -1661,6 +1727,8 @@
     "endOpeningHour": "6:00 AM",
     "startOpeningDay": "M",
     "endOpeningDay": "S",
+    "foodQuality": 3,
+    "serviceQuality": 3,
     "description": "Embark on a gastronomic adventure at Chung Dam Restaurant, where every dish is a celebration of Korean BBQ mastery. From marinated meats to flavorful banchan, our menu promises a dining experience that will leave you craving for more. Come sizzle with us today!",
     "shortDescription": "Korean BBQ mastery with marinated meats and flavorful banchan.",
     "amenities": [

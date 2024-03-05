@@ -33,6 +33,10 @@ const restaurantSchema = new Schema({
     amenities: { type: [Number], required: true },
     tag: { type: [String], required: true },
 
+    //customer ratings
+    foodQuality: {type: Number, required: true, default: 0},
+    serviceQuality: {type: Number, required: true, default: 0}
+
     // statistics
     rating: {type : Number, required: true, default: 0},
     numberOfReviews: {type : Number, required: true, default: 0},
