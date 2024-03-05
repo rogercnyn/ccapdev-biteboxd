@@ -86,5 +86,52 @@ async function addBulkProfile(parsedJson){
     }
 }
 
+async function createProfile(profileData) {
+    try {
+        const newProfile = new Profile(profileData);
+        await newProfile.save();
+        return newProfile;
+    } catch (error) {
+        throw error;
+    }
+}
 
-module.exports = { addProfile, clearProfiles, addReviewToProfile, addBulkProfile, getProfilePicture }
+async function findProfileByUsername(username) {
+    try {
+        const profile = await Profile.findOne({ username: username });
+        return profile;
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+async function updateProfileByUsername(username, profileUpdates) {
+    try {
+        const updatedProfile = await Profile.findOneAndUpdate({ username: username }, profileUpdates, { new: true });
+        return updatedProfile;
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function getProfileById(id) {
+    try {
+        const profile = await Profile.findById(id);
+        return profile;
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+
+module.exports = { 
+    saveProfile, 
+    clearProfiles, 
+    findProfileByUsername, 
+    addReviewToProfile, 
+    addBulkProfile,
+    updateProfileByUsername,
+    getProfileById 
+};

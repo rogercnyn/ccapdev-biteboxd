@@ -69,6 +69,7 @@ main {
 /* MAIN > yellow box > logo-text */
 .logo-text {
     flex: 0 0 22%;
+    padding-left: 10%;
 }
 
 /* main > yellow box > login-form */
@@ -82,6 +83,7 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 0.7rem;
+
 }
 
 
@@ -116,6 +118,8 @@ main {
 .action-button-container {
     width: 100%;
     height: 100%;
+    /* display: flex; */
+    padding-right: 20%;
 }
 
 
@@ -208,7 +212,8 @@ input:focus {
     /* flex: 1; */
     height: 75px;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    padding-left: 30%;
 }
 
 .yellow-box-container {

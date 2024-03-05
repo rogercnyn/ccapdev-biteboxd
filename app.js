@@ -1,82 +1,76 @@
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config(); 
 
-// dependencies
-const express = require('express')
-// const session = require('express-session');
+const express = require('express');
+const session = require('express-session');
 const exphbs = require('express-handlebars');
-const path = require("path")
-// const bodyParser = require('body-parser');
-
-
-//  requires dot env configuration already
+const path = require("path");
+const app = express();
 const connect = require('./src/models/db.js');
-const { loadProfiles, loadRestaurants, loadReviews, loadRestaurantReplies } = require('./src/routes/loader.js')
+const { loadProfiles, loadRestaurants, loadReviews, loadRestaurantReplies } = require('./src/routes/loader.js');
 const router = require('./src/routes/router.js');
+const PORT = process.env.PORT || 3000; 
 
 
-const PORT = 3000;
+app.use(session({
+    secret: process.env.SESSION_SECRET, 
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 24 * 60 * 60 * 1000 } 
+}));
 
 
-async function main() {
-    const server = express();
-
-    server.use(express.static(path.join(__dirname, 'public')));
-    server.use(router);
+app.use(express.static(path.join(__dirname, 'public')));
 
 
-    server.set("view engine", "hbs");
-
-    server.engine("hbs", exphbs.engine({
-        extname: "hbs", 
-        helpers: {
-            formatDate: function(date) {
-                return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
-            },
-            times: function(n, block) {
-                let accum = '';
-                for (let i = 0; i < n; ++i) {
-                    accum += block.fn(i);
-                }
-                return accum;
-            },
-            get: function(array, index, compare) {
-                return array[index] === compare;
-            },
-            isVideo: function(string){
-                return string.endsWith(".mp4") 
-            }  
+app.engine("hbs", exphbs.engine({
+    extname: "hbs",
+    defaultLayout: false,
+    helpers: {
+        formatDate: function(date) {
+            if (!date) return "Invalid date";
+            const dateObj = new Date(date);
+            if (isNaN(dateObj.getTime())) return "Invalid date"; 
+            const options = { year: 'numeric', month: 'long' };
+            return dateObj.toLocaleDateString('en-US', options);
         },
-        defaultLayout: false
-        
-    }));
-    server.set("views", "./src/views");
+        times: function(n, block) {
+            let accum = '';
+            for (let i = 0; i < n; ++i) {
+                accum += block.fn(i);
+            }
+        return accum;
+        },
+        formatMonthYear: function(date) {
+            const options = { year: 'numeric', month: 'long' };
+            return new Date(date).toLocaleDateString('en-US', options);
+        },
+        get: function(array, index, compare) {
+            return array[index] === compare;
+        },
+        isVideo: function(string){
+            return string.endsWith(".mp4") 
+        }  
+    }
+}));
+app.set("view engine", "hbs");
+app.set("views", "./src/views");
 
-    server.use(express.json());
-    server.use(express.urlencoded({ extended: true }));
-    server.use(router);
-    // server.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+app.use(router);
 
-    
-
-    server.listen(PORT, async function() {
-        console.log(`express server is now listening on port ${PORT}`);
-        try {
-            await connect();
-            console.log(`Now connected to MongoDB`);
-            await loadRestaurants()
-            await loadProfiles()
-            await loadReviews()
-            await loadRestaurantReplies()
-        } catch (err) {
-            console.log('Connection to MongoDB failed: ');
-            console.error(err);
-        }
-    });
-
-
-}
-
-
-main();
+app.listen(PORT, async () => {
+    console.log(`Express server is now listening on port ${PORT}`);
+    try {
+        await connect();
+        console.log(`Now connected to MongoDB`);
+        await loadRestaurants();
+        await loadProfiles();
+        await loadReviews();
+        await loadRestaurantReplies();
+    } catch (err) {
+        console.log('Connection to MongoDB failed:');
+        console.error(err);
+    }
+});
