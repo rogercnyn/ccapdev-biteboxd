@@ -28,9 +28,7 @@ function addClear() {
     });
 }
 
-function appendLogin(dest) {
-    if(isLogged === 'true'){
-        dest += '?isLogged=true'
-    }
-    window.location.href = dest;
-}
+
+$(document).ready(function() {
+    addClear();
+});

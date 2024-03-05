@@ -139,6 +139,7 @@ async function handleSearchRequest(req, resp){
         (
             results => 
             {
+                console.log(query)
                 resp.render("search", 
                 {
                     results: results,

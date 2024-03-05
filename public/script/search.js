@@ -1,14 +1,4 @@
 
-function adjustResult() {
-    let emptyElement = document.getElementById('empty')
-
-
-    console.log(emptyElement)
-    if(emptyElement !== null) {
-        document.getElementById('content').style.marginLeft = "10%"           
-    }
-
-}
 
 // function initializeSearchString() {
 //     let query = getUrlParameter('query');
@@ -27,6 +17,12 @@ function clickTrafficLight(element) {
     Array.from(siblings).forEach(sibling => sibling.style.border = "none")
     element.style.border = "2px solid black";
 }
+
+
+function goToReviewPage(link){
+    window.location.href = `/resto-reviewpage/${link}`
+}
+
 /*
 window.addEventListener('DOMContentLoaded', function() {
     var peekReview = document.querySelector('.peek-review');
