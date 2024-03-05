@@ -35,7 +35,7 @@ const restaurantSchema = new Schema({
 
     //customer ratings
     foodQuality: {type: Number, required: true, default: 0},
-    serviceQuality: {type: Number, required: true, default: 0}
+    serviceQuality: {type: Number, required: true, default: 0},
 
     // statistics
     rating: {type : Number, required: true, default: 0},
