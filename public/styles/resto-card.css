@@ -2,6 +2,7 @@
 
 .restoinfo{
     display: flex;
+    position: relative;
     flex-direction: row;
     align-items: center;
     width: 1000px;
@@ -181,29 +182,48 @@ hr {
     border: 0.5px solid gray;
 }
 
-.rate-review {
+.options {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    
+    top: 30px;
+    right: 30px;
     display: flex;
-    gap: 10px;
+    gap: 20px;
     opacity: 80%;
+    z-index: 20; 
 }
 
-.options-button {
+.optionsbutton {
     cursor: pointer;
-    position: relative;
     display: inline-block;
-    gap:5px;
+    gap: 10px;
 }
 
-.options-popup {
-    position: absolute;
-    right: 0;
-    background-color: white;
-    min-width: 120px;
-    box-shadow: 0 0 10px rgba(128, 153, 173, 0.5);
-    z-index: 1;
-    display: none;
+.editoption {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans';
+    font-size: 12px;
+    font-weight: 700;
+    background-color: orange;
+    color: #f2f2f8;
+    padding: 10px;
+    margin-right: 5px;
+    width: 50px;
+    border-radius: 10px;
+}
+
+.deleteoption {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans';
+    font-size: 12px;
+    font-weight: 700;
+    background-color: rgb(233, 77, 15);
+    color: #f2f2f8;
+    padding: 10px;
+    width: 50px;
     border-radius: 10px;
 }
