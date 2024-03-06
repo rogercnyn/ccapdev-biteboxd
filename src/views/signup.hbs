@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -149,8 +149,186 @@
             });
         });           
       initializeSignUp(); 
+
+      function toggleTag(tag) {
+    tag.classList.toggle('selected');
+}
+
+function triggerFileInput(element) {
+    
+    clickAvatar(element);
+    var input = document.getElementById('avatar-upload');
+    input.click();
+}
+
+function clickAvatar(element) {
+
+    
+    var inputs = document.querySelectorAll('.pic-option'); 
+    inputs.forEach(function(input) {
+        input.classList.remove('clicked');
+    });
+    
+
+    var input = element.querySelector('pic-option');
+    element.classList.add('clicked');
+}
+
+function initializeSignUp(){
+    
+    
+    document.getElementById('toForm3').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default form submission behavior
+    
+        // Validate the form using Parsley.js
+        $('#form2').parsley().validate();
+    
+        if ($('#form2').parsley().isValid()) {
+            // Form is valid, proceed to the next step
+            document.getElementById('form2').classList.add('hide-form');
+            document.getElementById('form3').classList.remove('hide-form');
+            document.getElementById('ellipse-3').classList.add('ellipse-clicked');
+        } else {
+        }
+    });
+    
+    
+}
     </script>
     
     
 </body>
+</html> --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiteBoxd - Sign up</title>
+    <link rel="stylesheet" href="/styles/signup.css">
+    <link rel="shortcut icon" href="/assets/tab-icon.png" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="back-button">
+            <a href="/index"><img src="/assets/back.png" alt="Back" class="back"></a>
+        </div>
+        <button class="redirect-button">
+            <a href="/login" class="redirect">Log In</a>
+        </button>
+    </header>
+    <main>
+        <div class="logo-big">
+            <img src="/assets/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="form-container">
+            <form id="signupForm" enctype="multipart/form-data">
+                <!-- Step 1: Personal Information -->
+                <section id="step1">
+                    <h2>Personal Information</h2>
+                    <input type="text" name="firstName" placeholder="First Name" required>
+                    <input type="text" name="lastName" placeholder="Last Name" required>
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                    <button type="button" onclick="showNextStep()">Next</button>
+                </section>
+
+                <!-- Step 2: Taste Profile -->
+                <section id="step2" style="display:none;">
+                    <h2>Taste Profile</h2>
+                    <div>
+                        <input type="checkbox" name="tasteProfile" value="Salty" id="salty">
+                        <label for="salty">Salty</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="tasteProfile" value="Sweet" id="sweet">
+                        <label for="sweet">Sweet</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="tasteProfile" value="Sour" id="sour">
+                        <label for="sour">Sour</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="tasteProfile" value="Bitter" id="bitter">
+                        <label for="bitter">Bitter</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="tasteProfile" value="Japanese" id="japanese">
+                        <label for="japanese">Japanese</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="tasteProfile" value="Chinese" id="chinese">
+                        <label for="chinese">Chinese</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="tasteProfile" value="Italian" id="italian">
+                        <label for="italian">Italian</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="tasteProfile" value="Korean" id="korean">
+                        <label for="korean">Korean</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="tasteProfile" value="Filipino" id="filipino">
+                        <label for="filipino">Filipino</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="tasteProfile" value="Indian" id="indian">
+                        <label for="indian">Indian</label>
+                    </div>
+                    <!-- Add more taste preferences as needed -->
+                    <button type="button" onclick="showNextStep()">Next</button>
+                </section>
+
+                <!-- Step 3: Avatar Selection -->
+                <section id="step3" style="display:none;">
+                    <h2>Select Your Avatar</h2>
+                    <input type="file" name="avatar" accept="image/*">
+                    <button type="submit">Sign Up</button>
+                </section>
+            </form>
+        </div>
+    </main>
+    <script>
+        function showNextStep() {
+            let currentStep = $('section:visible');
+            let nextStep = currentStep.next('section');
+            if(nextStep.length) {
+                currentStep.hide();
+                nextStep.show();
+            }
+        }
+
+        $(document).ready(function() {
+            $('#signupForm').parsley();
+            $('#signupForm').on('submit', function(e) {
+                e.preventDefault();
+                if ($(this).parsley().isValid()) {
+                    // Serialize form data
+                    var formData = new FormData(this);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/signup",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            window.location.href = '/login';
+                        },
+                        error: function(response) {
+                            alert('An error occurred. Please try again.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
 </html>
+
+

@@ -2,17 +2,20 @@ const { Router } = require('express');
 const { handleSearchRequest, handleGetAllRestoRequest } = require('../controllers/restaurantController');
 const { handleRestoPageRequest } = require('../controllers/reviewPageController');
 
+
 const router = Router();
 const Profile = require("../models/Profile");
 const Review = require('../models/Review');
+const path = require('path');
+const multer = require('multer');
 
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
 const express = require('express');
-const multer = require('multer');
 
 const app = express();
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -37,17 +40,6 @@ router.use(session({
     cookie: { maxAge: 14 * 24 * 60 * 60 * 1000 } // 14 days in milliseconds
 }));
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'public/uploads/avatars/');
-    },
-    filename: function(req, file, cb) {
-        // Generate a unique filename: You could use the user's ID, a timestamp, etc.
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-    }
-});
-
 router.use(bodyParser.urlencoded({ extended: true }));
 
 function isAuthenticated(req, res, next) {
@@ -58,7 +50,6 @@ function isAuthenticated(req, res, next) {
     }
 }
 
-const upload = multer({ storage: storage });
 
 function checkSession(req, res, next) {
     res.locals.loggedIn = req.session && req.session.loggedIn ? req.session.loggedIn : false;
@@ -76,22 +67,7 @@ router.get('/search', handleSearchRequest);
 
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 
-// router.post("/login", async (req, res) => {
-//     try {
-//         const profile = await Profile.findOne({ username: req.body.username });
-//         if (profile && profile.password === req.body.password) {
-//             req.session.userId = profile.username; 
-//             req.session.profilePicture = profile.image
-//             req.session['loggedIn'] = true
-//             res.redirect("/"); 
-//         } else {
-//             res.send("Wrong username or password");
-//         }
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send("Internal Server Error");
-//     }
-// });
+
 router.post("/login", async (req, res) => {
     const { username, password } = req.body;
     try {
@@ -111,16 +87,30 @@ router.post("/login", async (req, res) => {
 router.get('/own-profile', isAuthenticated, async (req, res) => {
     try {
         const profile = await Profile.findById(req.session.userId)
-                                     .populate('reviews') 
-                                     .populate('likedReviews')   
-                                     .exec();
-
+                                    .populate('reviews')
+                                    .populate({
+                                    path: 'likedReviews',
+                                    populate: {
+                                        path: 'user',
+                                        model: 'Profile'
+                                    }
+                                    })
+                                    .exec();
+                                    
         if (!profile) {
             return res.status(404).send('Profile not found');
         }
+
         const profileData = profile.toObject({ virtuals: true });
 
+        // Adjust the main profile image path
+        profileData.image = profileData.image.startsWith('uploads/avatars/') 
+                            ? profileData.image : `uploads/avatars/${profileData.image}`;
+
         console.log(profileData);
+        if (profileData.reviews) {
+            console.log(profileData.reviews);
+        }
 
         res.render('own-profile', { 
             profile: profileData,
@@ -133,10 +123,30 @@ router.get('/own-profile', isAuthenticated, async (req, res) => {
     }
 });
 
+const fs = require('fs');
+const dir = './public/uploads/avatars/';
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, dir); 
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+    }
+});
+const upload = multer({ storage: storage });
+
 router.post('/signup', upload.single('avatar'), async (req, res) => {
     try {
         const { firstName, lastName, username, email, password, tasteProfile } = req.body;
-        const avatarPath = req.file ? req.file.path : 'defaultAvatarPath'; 
+        const imagePath = req.file ? 'uploads/avatars/' + req.file.filename : 'uploads/avatars/default-avatar.png'; 
+
+        const processedTasteProfile = Array.isArray(tasteProfile) ? tasteProfile : (tasteProfile ? tasteProfile.split(',') : []);
 
         const newProfile = new Profile({
             firstName,
@@ -144,17 +154,48 @@ router.post('/signup', upload.single('avatar'), async (req, res) => {
             username,
             email,
             password,
-            tasteProfile,
-            image: avatarPath,
+            tasteProfile: processedTasteProfile,
+            image: imagePath,
+            hearts: 0,
+            dislike: 0,
+            credibility: 0 
         });
 
         await newProfile.save();
-        res.redirect('/login'); 
+        res.redirect('/login');
     } catch (error) {
         console.error('Signup error:', error);
         res.status(500).send('Error during signup');
     }
 });
+
+router.post('/edit-profile', isAuthenticated, upload.single('profilePic'), async (req, res) => {
+    try {
+        const userId = req.session.userId;
+        const { firstName, lastName, bio } = req.body;
+        let profileUpdate = {
+            firstName: firstName,
+            lastName: lastName,
+            bio: bio
+        };
+
+        if (req.file) {
+            profileUpdate.image = 'uploads/avatars/' + req.file.filename;
+        }
+
+        await Profile.findByIdAndUpdate(userId, profileUpdate, { new: true });
+
+        res.redirect('/own-profile'); 
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).send('Failed to update profile');
+    }
+});
+
+
+
+
+
 
 
 

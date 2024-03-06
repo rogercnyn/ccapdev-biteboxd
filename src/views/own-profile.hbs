@@ -43,7 +43,7 @@
                             <div class="modal-content">
                                 <span class="close-button">&times;</span>
                                 <h2>Edit Profile</h2>
-                                <form id="editProfileForm">
+                                <form id="editProfileForm" action="/edit-profile" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="profilePic">Profile Picture:</label>
                                         <input type="file" id="profilePic" name="profilePic">
@@ -53,26 +53,27 @@
                                         <label for="backgroundPic">Background Picture:</label>
                                         <input type="file" id="backgroundPic" name="backgroundPic">
                                     </div>
-                            
+
                                     <div class="form-group">
                                         <label for="firstName">First Name:</label>
-                                        <input type="text" id="firstName" name="firstName">
+                                        <input type="text" id="firstName" name="firstName" required>
                                     </div>
-                            
+
                                     <div class="form-group">
                                         <label for="lastName">Last Name:</label>
-                                        <input type="text" id="lastName" name="lastName">
+                                        <input type="text" id="lastName" name="lastName" required>
                                     </div>
-                            
+
                                     <div class="form-group">
                                         <label for="bio">Bio:</label>
-                                        <textarea id="bio" name="bio"></textarea>
+                                        <textarea id="bio" name="bio" required></textarea>
                                     </div>
                                     
                                     <div class="form-group save-changes-div">
                                         <button type="submit" class="save-changes">Save Changes</button>
                                     </div>
                                 </form>
+
                             </div>
                             
                         </div>
@@ -113,14 +114,12 @@
                         <div class="liked-review">
                             <h3>{{this.title}}</h3>
                             <p>{{this.body}}</p>
-                            <!-- Display the ratings here -->
                             <div class="criteriaratings">
                                 <div>Food Quality: {{this.foodRating}}/5</div>
                                 <div>Service: {{this.serviceRating}}/5</div>
                                 <div>Affordability: {{this.affordabilityRating}}/5</div>
                             </div>
                             <div class="review-date">Reviewed on: {{formatDate this.createdAt}}</div>
-                            <!-- Add other elements as needed, e.g., media if you have images or videos associated with reviews -->
                             {{#if this.media.length}}
                                 <div class="review-media">
                                     {{#each this.media}}
@@ -131,7 +130,7 @@
                         </div>
                     {{/each}}
                 {{else}}
-                    <p>You haven't liked any reviews yet.</p>
+                    <p id="no-liked-revp">You haven't liked any Restaurants/ Reviewa yet.</p>
                 {{/if}}
             </div>
 
@@ -144,7 +143,7 @@
                         <div class="review-panel">
                             <div class="profile-score">
                                 <div class="profilearea">
-                                    <img src="/assets/{{../profile.image}}" alt="Profile Picture" class="profilepic" id="profile-icon">
+                                    <img src="/{{../profile.image}}" alt="Profile Picture" class="profilepic" id="profile-icon">
                                 </div>
                                 <div class="score">
                                     <h2 class="yellowscore" id="user-score">{{this.overallRating}}</h2>
@@ -236,12 +235,12 @@
                                 </div>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                                <circle class="heart-rating"cx="80" cy="80" r="70" stroke-linecap="round" />
+                                <circle id="heart-rating" class="heart-rating"cx="80" cy="80" r="70" stroke-linecap="round" />
                             </svg>
                         </div>
                         <div class="rating-label-percentage">
-                            <p class="rating-label">Hearts: </p>
-                            <p class="number">65%</p>
+                            <p>Hearts: {{profile.hearts}}</p>
+                            {{!-- <p class="number">65%</p> --}}
                         </div>
                         
 
@@ -257,12 +256,11 @@
                                 </div>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                                <circle class="tomato-rating"cx="80" cy="80" r="70" stroke-linecap="round" />
+                                <circle id="tomato-rating" class="tomato-rating"cx="80" cy="80" r="70" stroke-linecap="round" />
                             </svg>
                         </div>
                         <div class="rating-label-percentage">
-                            <p class="rating-label">Dislike:</p>
-                            <p class="number">25%</p>
+                            <p>Dislikes: {{profile.dislike}}</p>
                         </div>
                     </div>
     
@@ -278,13 +276,20 @@
                                 </div>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                                <circle class="credibility-rating" cx="80" cy="80" r="70" stroke-linecap="round" />
+                                <circle id="credibility-rating" class="credibility-rating" cx="80" cy="80" r="70" stroke-linecap="round" />
                             </svg>
                         </div>
                         <div class="rating-label-percentage">
-                            <p class="rating-label">Credibility:</p>
-                            <p id="number">95%</p>
+                            <p>Credibility: {{profile.credibility}}</p>
                         </div>
+
+                        <div 
+                            id="profile-data" 
+                            data-hearts="{{profile.hearts}}" 
+                            data-dislikes="{{profile.dislike}}" 
+                            data-credibility="{{profile.credibility}}">
+                        </div>
+
                     </div>
                     
                 </div>
@@ -295,7 +300,7 @@
                         <div class="avatar-container-recent-activity">
                             <div class="avatar-border-recent-activity">
                                 <div class="avatar-recent-activity">
-                                    <img src="assets/profile.jpg" alt="avatar">
+                                    <img src="/{{profile.image}}" alt="avatar">
                                 </div>
                             </div>
                         </div>
@@ -310,7 +315,7 @@
                         <div class="avatar-container-recent-activity">
                             <div class="avatar-border-recent-activity">
                                 <div class="avatar-recent-activity">
-                                    <img src="assets/profile.jpg" alt="avatar">
+                                    <img src="/{{profile.image}}" alt="avatar">
                                 </div>
                             </div>
                         </div>
@@ -325,7 +330,7 @@
                         <div class="avatar-container-recent-activity">
                             <div class="avatar-border-recent-activity">
                                 <div class="avatar-recent-activity">
-                                    <img src="assets/profile.jpg" alt="avatar">
+                                    <img src="/{{profile.image}}" alt="avatar">
                                 </div>
                             </div>
                         </div>
@@ -345,7 +350,7 @@
         <div class="avatar-container">
             <div class="avatar-boorder">
                 <div class="avatar">
-                    <img src="/assets/{{profile.image}}" alt="Profile Avatar" id="profile-pic">
+                    <img src="/{{profile.image}}" alt="Profile Avatar" id="profile-pic">
                 </div>
             </div>
         </div>
@@ -383,6 +388,42 @@
 
 
         console.log(likes)
+
+
+   function animateStroke(id, targetPercentage) {
+    const element = document.getElementById(id);
+    const maxDashoffset = parseInt(window.getComputedStyle(element).strokeDasharray);
+    const startOffset = maxDashoffset;
+    const endOffset = maxDashoffset * (1 - targetPercentage / 100);
+    let currentOffset = startOffset;
+    const step = (endOffset - startOffset) / 60; // Assuming 60 frames for the animation
+
+    function frame() {
+        currentOffset += step;
+        if ((step < 0 && currentOffset <= endOffset) || (step > 0 && currentOffset >= endOffset)) {
+            currentOffset = endOffset; // Ensure we don't go past the target value
+            element.style.strokeDashoffset = currentOffset;
+            return; // Stop the animation
+        }
+        element.style.strokeDashoffset = currentOffset;
+        requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+}
+
+// Example usage after the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const heartsPercentage = parseInt(document.getElementById('profile-data').getAttribute('data-hearts'));
+    const dislikesPercentage = parseInt(document.getElementById('profile-data').getAttribute('data-dislikes'));
+    const credibilityPercentage = parseInt(document.getElementById('profile-data').getAttribute('data-credibility'));
+
+    animateStroke('heart-rating', heartsPercentage);
+    animateStroke('tomato-rating', dislikesPercentage);
+    animateStroke('credibility-rating', credibilityPercentage);
+});
+
+
     </script>
 </body>
 </html>
