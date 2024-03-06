@@ -131,33 +131,26 @@ async function addBulkResto(parsedJson){
     }
 }
 
-async function handleSearchRequest(req, resp){
+async function handleSearchRequest(req, resp) {
     const query = req.query.query;
     
     searchQuery(query)
-        .then
-        (
-            results => 
-            {
-                console.log(query)
-                resp.render("search", 
-                {
-                    results: results,
-                    query: query,
-                    hasResults: results.length !== 0,
-                    resultLength: results.length
-                }); 
-             }
-        )
-        .catch
-        (
-            error => 
-            {
-                console.error('Error searching:', error);
-                resp.status(500).send('Internal Server Error');
-            }
-        );
+        .then(results => {
+            console.log(query);
+            const resultLength = results.length; // Calculate the result length
+            resp.render("search", {
+                results: results,
+                query: query,
+                hasResults: resultLength !== 0,
+                resultLength: resultLength // Pass the result length to the template
+            }); 
+        })
+        .catch(error => {
+            console.error('Error searching:', error);
+            resp.status(500).send('Internal Server Error');
+        });
 }
+
 
 async function handleGetAllRestoRequest(req, resp){
     getAllRestaurant()

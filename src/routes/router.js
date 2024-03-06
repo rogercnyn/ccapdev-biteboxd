@@ -76,6 +76,13 @@ router.get('/search', handleSearchRequest);
 
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 
+router.get('/sort', function(req, res) {
+    const criteria = req.query.criteria;
+    // Call the function to sort the results based on the criteria
+    // This will depend on how your data is structured and stored on the server
+    // Return the sorted results in the response
+    res.render('sortedResults', { /* Pass the sorted results to the template */ });
+});
 // router.post("/login", async (req, res) => {
 //     try {
 //         const profile = await Profile.findOne({ username: req.body.username });

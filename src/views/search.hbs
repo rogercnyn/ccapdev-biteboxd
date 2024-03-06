@@ -1,165 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/search.css">
-    <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/script/general.js"></script>
-    <script src="/script/slider.js"></script>
-    <script src="/script/search.js"></script>
-    <script src="/script/search-bar.js"></script>
-    <script src="script/advanced-search.js"></script>
-    <title>BiteBoxd - Search</title>
-</head>
-<body>
-    {{> navbar}}
-    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/search.css">
+        <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/script/general.js"></script>
+        <script src="/script/slider.js"></script>
+        <script src="/script/search.js"></script>
+        <script src="/script/search-bar.js"></script>
+        <script src="/script/sorting.js"></script>
+        <title>BiteBoxd - Search</title>
+    </head>
+    <body>
+        {{> navbar}}
+        
 
 
-    <main>
-        <div class="content" id="content">
-            {{>searchBar}}
+        <main>
+            <div class="content" id="content">
+                {{>searchBar}}
 
-            {{#unless hasResults}}
-                <div class="empty" id="empty">
-                    <img src="assets/empty.png" alt="" class="empty-pic">
-                    <p>No results.</p>
-                </div>
-            {{/unless}}
+                {{#unless hasResults}}
+                    <div class="empty" id="empty">
+                        <img src="assets/empty.png" alt="" class="empty-pic">
+                        <p>No results.</p>
+                    </div>
+                {{/unless}}
+
+                {{#if hasResults}}
+            
+                    <div class="results" id="results">
+                
+                        <p class="results-found">
+                            <span id="result-length">{{resultLength}}</span> RESULTS FOR <span class="search-string" id="search-string">{{query}}</span>
+                        </p> 
+                        <div class="sorting">
+                            <p>Sort:</p>
+                            <select id="criteria" onchange="sortResults(this.value)">
+                                <option value="default">Default</option>
+                                <option value="recommended">Recommended</option>
+                                <option value="reviews">Number of Reviews</option>
+                                <option value="rating">Rating</option>
+                                <option value="price">Price</option>
+                            </select>
+                            
+                        </div>
+                        <div class="all-results">
+                        
+                            {{#each results}}
+                                <div class="result-box" data-name="{{name}}" data-rating="{{rating}}" data-food-quality="{{foodQuality}}" data-service-quality="{{serviceQuality}}" data-price="{{startPriceRange}}" data-number-of-reviews="{{numberOfReviews}}">
+                                    <div class="store-details">
+                                    <div class="store-details-image">
+                                        <img src="assets/restaurant icons/{{media}}" alt="" class="store-pic">
+                                    </div>
+                                    <div class="store-details-text">
+                                        <div class="rating">
+                                        <p class="title">{{name}}</p>
+                                        <div class="stars">
+                                            {{#times stars}}
+                                                <img src="assets/star.png" alt="" class="star">
+                                            {{/times}}
+                                        </div>
+                                        <p class="rating-text">{{rating}} ({{numberOfReviews}})</p>
+                                        </div>
+                                        <p class="caption">₱{{startPriceRange}}-{{endPriceRange}} | {{location}}</p>
+                                        <div class="peek-review">
+                                        <p class="peek-review-para">{{description}}<span id="more" onclick="appendLogin('resto-reviewpage')">...more</span></p>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            {{/each}}
+
+                        </div> 
+                    </div>
+                {{/if}}
+
+            </div>
 
             {{#if hasResults}}
-        
-                <div class="results" id="results">
-            
-                    <p class="results-found">
-                        {{resultLength}} RESULTS FOR <span class="search-string" id="search-string">{{query}}</span>
-                    </p> 
-                    <div class="sorting">
-                        <p>Sort:</p>
-                        <select id="criteria">
-                            <option value="recommended">Recommended</option>
-                            <option value="reviews">Number of Reviews</option>
-                            <option value="rating">Rating</option>
-                            <option value="food-quality">Food Quality</option>
-                            <option value="price">Price</option>
-                            <option value="service">Service</option>
-                        </select>
+                <div class="search-settings" id="search-settings">
+                    <div class="search-settings-container">
+                        <div class="advanced-search-header">
+                            <p>Advanced Search</p>
+                        </div>
+                        <div class="search-setting">
+                            <p>Ratings</p>
+                            <div class="star-sorting">
+                                <span onclick="stars.handleClick(1)" class="slider-star-rating">★</span>
+                                <span onclick="stars.handleClick(2)" class="slider-star-rating">★</span>
+                                <span onclick="stars.handleClick(3)" class="slider-star-rating">★</span>
+                                <span onclick="stars.handleClick(4)" class="slider-star-rating">★</span>
+                                <span onclick="stars.handleClick(5)" class="slider-star-rating">★</span>
+                            </div>
+                        </div>
+
+                        <div class="search-setting">
+                            <p>City</p>
+                            <input type="text" class="input-filter">
+                        </div>
+
                         
-                    </div>
-                    <div class="all-results">
-                    
-                        {{#each results}}
-                            <div class="result-box" onclick="goToReviewPage('{{_id}}')">
-                                <div class="store-details">
-                                <div class="store-details-image">
-                                    <img src="assets/restaurant icons/{{media}}" alt="" class="store-pic">
-                                </div>
-                                <div class="store-details-text">
-                                    <div class="rating">
-                                    <p class="title">{{name}}</p>
-                                    <div class="stars">
-                                        {{#times stars}}
-                                            <img src="assets/star.png" alt="" class="star">
-                                        {{/times}}
-                                    </div>
-                                    <p class="rating-text">{{rating}} ({{numberOfReviews}})</p>
-                                    </div>
-                                    <p class="caption">₱{{startPriceRange}}-{{endPriceRange}} | {{location}}</p>
-                                    <div class="peek-review">
-                                    <p class="peek-review-para">{{description}}<span id="more" onclick="appendLogin('resto-reviewpage')">...more</span></p>
-                                    </div>
-                                </div>
+                        <div class="search-setting">
+                            <p>Min. Reviewers</p>
+                            <input type="text" class="input-filter">
+                        </div>
+
+                
+                        <div class="price-setting">
+                            <p>Pricing</p>
+                            <div class="price-slider">
+                                <span onclick="cashEmos.handleClick(1)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                <span onclick="cashEmos.handleClick(2)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                <span onclick="cashEmos.handleClick(3)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                <span onclick="cashEmos.handleClick(4)" class="slider-emoji-rating slider-price-rating">💵</span>
+                            </div>
+                        </div>
+
+                        <div class="search-setting-criteria">
+                            <div class="search-setting">
+                                <p>Food Quality</p>
+                                <div class="categories">
+                                    <div class="green box" onclick="clickTrafficLight(this)"></div>
+                                    <div class="yellow box" onclick="clickTrafficLight(this)"></div>
+                                    <div class="red box" onclick="clickTrafficLight(this)"></div>
                                 </div>
                             </div>
-                        {{/each}}
 
-                    </div> 
+                            <div class="search-setting">
+                                <p>Service</p>
+                                <div class="categories">
+                                    <div class="green box" onclick="clickTrafficLight(this)"></div>
+                                    <div class="yellow box" onclick="clickTrafficLight(this)"></div>
+                                    <div class="red box" onclick="clickTrafficLight(this)"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="filter-buttons">
+                            <button class="clear-button adv-search-button" onclick="search()">Clear</button>
+                            <button class="apply-button adv-search-button">Apply</button>
+                        </div>
+                    </div>
+
                 </div>
             {{/if}}
 
-        </div>
+        </main>
 
-        {{#if hasResults}}
-            <div class="search-settings" id="search-settings">
-                <div class="search-settings-container">
-                    <div class="advanced-search-header">
-                        <p>Advanced Search</p>
-                    </div>
-                    <div class="search-setting">
-                        <p>Ratings</p>
-                        <div class="star-sorting">
-                            <span onclick="stars.handleClick(1)" class="slider-star-rating">★</span>
-                            <span onclick="stars.handleClick(2)" class="slider-star-rating">★</span>
-                            <span onclick="stars.handleClick(3)" class="slider-star-rating">★</span>
-                            <span onclick="stars.handleClick(4)" class="slider-star-rating">★</span>
-                            <span onclick="stars.handleClick(5)" class="slider-star-rating">★</span>
-                        </div>
-                    </div>
-
-                    <div class="search-setting">
-                        <p>City</p>
-                        <input type="text" class="input-filter">
-                    </div>
-
-                    
-                    <div class="search-setting">
-                        <p>Min. Reviewers</p>
-                        <input type="text" class="input-filter">
-                    </div>
-
+    <script>
             
-                    <div class="price-setting">
-                        <p>Pricing</p>
-                        <div class="price-slider">
-                            <span onclick="cashEmos.handleClick(1)" class="slider-emoji-rating slider-price-rating">💵</span>
-                            <span onclick="cashEmos.handleClick(2)" class="slider-emoji-rating slider-price-rating">💵</span>
-                            <span onclick="cashEmos.handleClick(3)" class="slider-emoji-rating slider-price-rating">💵</span>
-                            <span onclick="cashEmos.handleClick(4)" class="slider-emoji-rating slider-price-rating">💵</span>
-                        </div>
-                    </div>
+        const stars = new Slider(document.getElementsByClassName("slider-star-rating"));
+        const cashEmos = new Slider(document.getElementsByClassName("slider-price-rating"));
 
-                    <div class="search-setting-criteria">
-                        <div class="search-setting">
-                            <p>Food Quality</p>
-                            <div class="categories">
-                                <div class="green box" onclick="clickTrafficLight(this)"></div>
-                                <div class="yellow box" onclick="clickTrafficLight(this)"></div>
-                                <div class="red box" onclick="clickTrafficLight(this)"></div>
-                            </div>
-                        </div>
+        stars.initializeHover();
+        cashEmos.initializeHover();
+    </script>
 
-                        <div class="search-setting">
-                            <p>Service</p>
-                            <div class="categories">
-                                <div class="green box" onclick="clickTrafficLight(this)"></div>
-                                <div class="yellow box" onclick="clickTrafficLight(this)"></div>
-                                <div class="red box" onclick="clickTrafficLight(this)"></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="filter-buttons">
-                        <button class="clear-button adv-search-button" onclick="search()">Clear</button>
-                        <button class="apply-button adv-search-button">Apply</button>
-                    </div>
-                </div>
-
-            </div>
-        {{/if}}
-
-    </main>
-
-<script>
         
-    const stars = new Slider(document.getElementsByClassName("slider-star-rating"));
-    const cashEmos = new Slider(document.getElementsByClassName("slider-price-rating"));
-
-    stars.initializeHover();
-    cashEmos.initializeHover();
-</script>
-
-    
-</body>
-</html>
+    </body>
+    </html>
