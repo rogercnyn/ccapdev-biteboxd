@@ -142,46 +142,89 @@
             </div>
 
             <div class="restopictureareaedit" onclick="openFileInput()">
-                <img src="/assets/bacsilog-main.jpeg" alt="Picture" class="restopicture" id ="restopicture">
+                <img src="/assets/restaurant icons/{{media}}" alt="Picture" class="restopicture" id ="restopicture">
                 <button class="change-button">Change Picture</button>
             </div>
 
             <div class="restodetailsarea">
                 <div class="nameandoverallscore">
-                    <h1 class="resto-title" id="restoname">Ate Rica's</h1>
-                    <h2 class="yellowscore">4.0/5</h2>
+                    <h1 class="resto-title" id="restoname">{{name}}</h1>
+                    <h2 class="yellowscore">{{ranking}}/5</h2>
                 </div>
                 <div class="moredetails">
-                    <p class="restodetail" id="emojip">💵 💵 <span id = "tag1">(P125-175)</span></p>
-                    <p class="restodetail" id="tag2">Filipino</p>
-                    <p class="restodetail" id="tag3">Fastfood</p>
-                    <p class="restodetail" id="tag4">Open during: M-S (8:00 AM - 5:00 PM)</p>
+
+                    <p class="restodetail" id="emojip">
+                        {{#times numberOfCash}}
+                            💵
+                        {{/times}}
+                        (P{{startPriceRange}}-{{endPriceRange}})</p>
+                    {{#each tag}}
+                        <p class="restodetail">{{this}}</p>
+                    {{/each}}
+                    {{!-- <p class="restodetail">{{tag2}}</p> --}}
+                    <p class="restodetail">Open during: {{startOpeningDay}}-{{endOpeningDay}} ({{startOpeningHour}} - {{endOpeningHour}})</p>
                 </div>
-                <p class="location" id="location">Vito Cruz, Metro Manila, Philippines</p>
+                <p class="location" id="location">{{location}}</p>
                 <br>
-                <p class="description" id ="description">Ate Rica's Bacsilog offers different type of silog meals at an affordable price. The best sellers are bacsilog, tapsilog, and hotsilog.</p>
+                <p class="description" id ="description">{{description}}</p>
                 <br>
                 <div class="attributes">
 
                     <div class="firstbatchattri">
-                        <div class="feature"><span class="checkmark" id="deliveryCheckbox">&#10004;</span>Offers Delivery</div>
-                        <div class="feature"><span class="checkmark" id="outdoorDiningCheckbox">&#10004;</span>Outdoor dining</div>
-                        <div class="feature"><span class="checkmark" id="indoorDiningCheckbox">&#10004;</span>Indoor dining</div>
-                        <div class="feature"><span class="checkmark" id="groupsCheckbox">&#10004;</span>Good for Groups</div>
+                        <div class="feature">
+                            {{#if (get amenities 0 0) }} <span class="cross" id="deliveryCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="deliveryCheckbox">&#10004;</span> {{/if}}
+                            Offers Delivery
+                            </div>
+                        <div class="feature">
+                             {{#if (get amenities 1 0) }} <span class="cross" id="outdoorDiningCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="outdoorDiningCheckbox">&#10004;</span> {{/if}}
+                            Outdoor dining
+                        </div>
+                        <div class="feature">
+                            {{#if (get amenities 2 0) }}  <span class="cross" id="indoorDiningCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="indoorDiningCheckbox">&#10004;</span> {{/if}}
+                            Indoor dining 
+                        </div>
+                        <div class="feature">
+                            {{#if (get amenities 3 0) }} <span class="cross" id="groupsCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="groupsCheckbox">&#10004;</span> {{/if}}
+                            Good for Groups
+                        </div>
                     </div>
 
                     <div class="secondbatchattri">
-                        <div class="feature"><span class="checkmark" id="musicTvCheckbox">&#10004;</span>Music and TV</div>
-                        <div class="feature"><span class="cross" id="driveThruCheckbox">&#10008;</span>Drive-thru</div>
-                        <div class="feature"><span class="checkmark" id="takeoutCheckbox">&#10004;</span>Offers Takeout</div>
-                        <div class="feature"><span class="checkmark" id="creditCardsCheckbox">&#10004;</span>Accepts Credit Cards</div>
+                        <div class="feature">
+                            {{#if (get amenities 4 0) }} <span class="cross" id="musicTvCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="musicTvCheckbox">&#10004;</span> {{/if}}
+                            Music and TV
+                        </div>
+                        <div class="feature">
+                            {{#if (get amenities 5 0) }} <span class="cross" id="driveThruCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="driveThruCheckbox">&#10004;</span> {{/if}}
+                            Drive-thru
+                        </div>
+                        <div class="feature">
+                            {{#if (get amenities 6 0) }} <span class="cross" id="takeoutCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="takeoutCheckbox">&#10004;</span> {{/if}}
+                            Offers Takeout
+                        </div>
+                        <div class="feature">
+                             {{#if (get amenities 7 0) }} <span class="cross" id="creditCardsCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="creditCardsCheckbox">&#10004;</span> {{/if}}
+                            Accepts Credit Cards
+                        </div>
                     </div>
                     
                     <div class="thirdbatchattri">
-                        <div class="feature"><span class="checkmark" id="eWalletCheckbox">&#10004;</span>Accepts E-Wallet</div>
-                        <div class="feature"><span class="checkmark" id="kidsCheckbox">&#10004;</span>Good for Kids</div>
-                        <div class="feature"><span class="cross" id="petsCheckbox">&#10008;</span>Good for Pets</div>
-                        <div class="feature"><span class="checkmark" id="veganCheckbox">&#10004;</span>Vegetarian/Vegan Offerings</div>
+                        <div class="feature">
+                            {{#if (get amenities 8 0) }} <span class="cross" id="eWalletCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="eWalletCheckbox">&#10004;</span> {{/if}}
+                            Accepts E-Wallet
+                        </div>
+                        <div class="feature">
+                            {{#if (get amenities 9 0) }} <span class="cross" id="kidsCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="kidsCheckbox">&#10004;</span> {{/if}}
+                            Good for Kids
+                        </div>
+                        <div class="feature">
+                            {{#if (get amenities 10 0) }} <span class="cross" id="petsCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="petsCheckbox">&#10004;</span> {{/if}}
+                            Good for Pets
+                        </div>
+                        <div class="feature">
+                            {{#if (get amenities 11 0) }} <span class="cross" id="veganCheckbox">&#10008;</span> {{else}} <span class="checkmark" id="veganCheckbox">&#10004;</span> {{/if}}
+                            Vegetarian/Vegan Offerings
+                        </div>
                     </div>
 
                 </div>
@@ -217,14 +260,15 @@
                 </div>
 
                 <div class="review-and-response">
+                    {{#each reviews}}
                     <div class="review"> 
                         <div class="review-panel">
                             <div class="profile-score">
                                 <div class="profilearea">
-                                    <img src="/assets/profile.jpg" class="profilepic">
+                                    <img src="/assets/{{profilePicture}}" class="profilepic">
                                 </div>
                                 <div class="score">
-                                    <h2 class="yellowscore" id="user-score">4.6</h2>
+                                    <h2 class="yellowscore" id="user-score">{{overallRating}}</h2>
                                 </div>
                                 <div class="reply" onclick="injectQuill(this)">Reply</div>
 
@@ -232,53 +276,58 @@
     
                             <div class="review-center-tile">
                                 <div class="score-username">
-                                    <h2 class="titlearea">Good meal but one try is enough!</h2>
+                                    <h2 class="titlearea">{{title}}</h2>
                                 
                                     <div class="nametitle">
-                                        <a href="own-profile" class="nameandtime">makoeats</a>
+                                        <a href="others-profile" class="nameandtime">@{{username}}</a>
                                         <p class="nameandtime"> · </p>
-                                        <p class="nameandtime">February 12, 2024 8:01 am </p>
+                                        <p class="nameandtime">{{createdAt}}</p>
                                     </div>
                                 </div>
                                 <div class="criteriaratings">
                                     <div class="criteriascore">
                                         <h4 class="criteria">Food Quality
                                         <div class="stars">
-                                            <span>🍗</span>
-                                            <span>🍗</span>
-                                            <span>🍗</span>
-                                            <span>🍗</span>
-                                            <span class="over-emoji">🍗</span>
+                                           {{#times foodRating}}
+                                                <span>🍗</span>
+                                            {{/times}}
+                                            {{#times noFood}}
+                                                <span class="over-emoji">🍗</span>
+                                            {{/times}}
                                         </div>
                                     </div>
             
                                     <div class="criteriascore">
                                         <h4 class="criteria">Service
                                         <div class="stars">
-                                            <span>🤝</span>
-                                            <span>🤝</span>
-                                            <span>🤝</span>
-                                            <span class="over-emoji">🤝</span>
-                                            <span class="over-emoji">🤝</span>
+                                           {{#times serviceRating}}
+                                                <span>🤝</span>
+                                            {{/times}}
+                                            {{#times noService}}
+                                                <span class="over-emoji">🤝</span>
+                                            {{/times}}
                                         </div>
                                     </div>
             
                                     <div class="criteriascore">
                                         <h4 class="criteria">Affordability
                                         <div class="stars">
-                                            <span>💵</span>
-                                            <span>💵</span>
-                                            <span>💵</span>
-                                            <span>💵</span>
-                                            <span class="over-emoji">💵</span>
+                                           {{#times affordabilityRating}}
+                                                <span>💵</span>
+                                            {{/times}}
+                                            {{#times noMoney}}
+                                                <span class="over-emoji">💵</span>
+                                            {{/times}}
                                         </div>
                                     </div>
                                 </div>
     
-                                <div class="reviewtext" id="rev1">
-                                    <span class="longtext">I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!</span>
-                                    <span class="full-text">However, I think it is important to note that for some people, the taste may not be good. It's a little bit spicy due to the pepper they add on the toppings. You may ask ate not to put any if spicy is not your thing.</span>
-                                    <span class="see-more" onclick="toggleSeeMore('rev1')"><b>...see more</b></span>
+                                <div class="reviewtext" id="rev{{order}}">
+                                    <span class="longtext">{{longText}}</span>
+                                    {{#unless hasNoSeeMore}}
+                                        <span class="full-text">{{fullText}}</span>
+                                        <span class="see-more" onclick="toggleSeeMore('rev{{order}}')"><b>...see more</b></span>
+                                    {{/unless}}
                                 </div>
                         
                             </div>
@@ -287,9 +336,9 @@
                             <div class="rate-review" id="likeDislikeButtons">
                                 <div class="options-button" onclick="toggleOptions()">
                                     <button class="a" id="a">&#128077;</button>
-                                    <span class = "numberoffeedback">8</span>
+                                    <span class = "numberoffeedback">{{noOfLikes}}</span>
                                     <button class="a" id="b">&#128078;</button>
-                                    <span class="numberoffeedback">9</span>
+                                    <span class="numberoffeedback">{{noOfDislikes}}</span>
                                     &nbsp;&nbsp;&#8286; 
                                     <div class="options-popup" id="optionsPopup">
                                         <a href="#" onclick="editReview()">Edit</a>
@@ -302,10 +351,16 @@
                         </div>
     
                         <div class="photopanel">
-                            <img src="/assets/bacsilog1.png" class="revpic" onclick="openModal('assets/bacsilog1.png')">
-                            <img src="/assets/bacsilog2.jpeg" class="revpic" onclick="openModal('assets/bacsilog2.jpeg')">
-                            <video src="/assets/bacsilogvid.mp4" class="revpic" onclick="openModal('assets/bacsilogvid.mp4')"></video>
-                            <img src="/assets/bacsi.jpg" class="revpic" onclick="openModal('assets/bacsi.jpg')">
+                            {{#each media}}
+
+                                {{#if (isVideo this)}}
+                                    <video src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></video>
+
+                                {{else}}
+                                    <img src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></img>
+
+                                {{/if}}
+                            {{/each}}
                         </div>
     
                         
@@ -323,476 +378,35 @@
                         </div>
                         <div class="publish-button" onclick="handleReply(this)">Publish Reply</div>
                     </div>
-                
+
+                {{#each restaurantreplies}}
                     <div class="responsepanel">
 
                         <div class="score-username">
-                            <h2 class="titlearea">Re: Ate Rica's</h2>
+                            <h2 class="titlearea">Re: {{name}}</h2>
                         
                             <div class="nametitle">
-                                <p class="nameandtime">February 12, 2024 8:01 am </p>
+                                <p class="nameandtime">{{createdat}} </p>
                             </div>
                         </div>
                         <div id="replytext">
-                            Thank you for your kind review!
+                           {{body}}
                         </div>
-
-          
-                    </div>
-                </div>
-
-                <div class="review-and-response">
-                    <div class="review"> 
-                        <div class="review-panel" id="reviewPanel2">
-
-                            <div class="profile-score">
-                                <div class="profilearea">
-                                    <img src="/assets/profile.jpg" class="profilepic">
-                                </div>
-                                <div class="score">
-                                    <h2 class="yellowscore" id="user-score">4.9</h2>
-                                </div>
-                                <div class="reply" onclick="injectQuill(this)">Reply</div>
- 
-                            </div>
-    
-                            <div class="review-center-tile">
-                                <div class="score-username">
-                                    <h2 class="titlearea">My new go-to!</h2>
-                                
-                                    <div class="nametitle">
-                                        <a href="others-profile" class="nameandtime">@Mon_1015</a>
-                                        <p class="nameandtime"> · </p>
-                                        <p class="nameandtime">February 12, 2024 8:01 am </p>
-                                    </div>
-                                </div>
-                                <div class="criteriaratings">
-                                    <div class="criteriascore">
-                                        <h4 class="criteria">Food Quality
-                                        <div class="stars">
-                                            <span>🍗</span>
-                                            <span>🍗</span>
-                                            <span>🍗</span>
-                                            <span class="over-emoji">🍗</span>
-                                            <span class="over-emoji">🍗</span>
-                                        </div>
-                                    </div>
-            
-                                    <div class="criteriascore">
-                                        <h4 class="criteria">Service
-                                        <div class="stars">
-                                            <span>🤝</span>
-                                            <span>🤝</span>
-                                            <span>🤝</span>
-                                            <span>🤝</span>
-                                            <span class="over-emoji">🤝</span>
-                                        </div>
-                                    </div>
-            
-                                    <div class="criteriascore">
-                                        <h4 class="criteria">Affordability
-                                        <div class="stars">
-                                            <span>💵</span>
-                                            <span>💵</span>
-                                            <span>💵</span>
-                                            <span>💵</span>
-                                            <span>💵</span>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="reviewtext" id="rev2">
-                                    <span class="longtext">This is now my <b>new go-to resto!</b> <b><i>Not the best</i></b> but you get what you paid for. The <u>service is a little slow but ate is so nice and accommodating.</u> Price is cheaper compared to other resto nearby. The ambiance is also great and their choice</span>
-                                    <span class="full-text">of music is good. It's very amazing. Many Lasallians would love this resto. Try it guys! You would love this if you are a huge fan of Taylor Swift.</span>
-                                    <span class="see-more" onclick="toggleSeeMore('rev2')"><b>...see more</b></span>
-                                </div>
-    
-                                
-            
-                            </div>
-    
-                            <div class="rate-review" id="likeDislikeButtons">
-                                <div class="likeset">
-                                    <button class="like-dislike" id="like">&#128077;</button>
-                                    <span class = "numberoffeedback">1</span>
-                                    <button class="like-dislike" id="dislike">&#128078;</button>
-                                    <span class="numberoffeedback">3</span>
-                                </div>
-                            </div>
-                        </div>
-    
                         <div class="photopanel">
-                            <img src="/assets/bacsilog3.jpeg" class="revpic" onclick="openModal('assets/bacsilog3.jpeg')">
-                            <img src="/assets/bacsilog5.jpg" class="revpic" onclick="openModal('assets/bacsilog5.jpg')">
-                        </div>
-    
-                        <div class="modal" id="modal" onclick="closeModal()">
-                            <div class="modal-content" onclick="event.stopPropagation();">
-                            <span class="close" onclick="closeModal()">&times;</span>
-                            <div id="modal-media-container"></div>
-                            </div>
-                        </div>
-                     </div>
-                     <div class="replypanel">
-                        <div class="reply-editorarea" id="reply-editor-container">
-                           <div class="reply-editor"></div>
-                        </div>
-                        <div class="publish-button" onclick="handleReply(this)">Publish Reply</div>
-                    </div>
-                    <div class="responsepanel">
+                            {{#each media}}
 
-                        <div class="score-username">
-                            <h2 class="titlearea">Re: Ate Rica's</h2>
-                        
-                            <div class="nametitle">
-                                <p class="nameandtime">February 12, 2024 8:01 am </p>
-                            </div>
-                        </div>
-                        <div id="replytext"></div>
+                                {{#if (isVideo this)}}
+                                    <video src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></video>
 
-          
+                                {{else}}
+                                    <img src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></img>
+
+                                {{/if}}
+                            {{/each}}
+                        </div>
                     </div>
-                
+                {{/each}}
                 </div>
-
-                <div class="review-and-response">
-                    <div class="review"> 
-                    
-                        <div class="review-panel" id="reviewPanel2">
-
-                            <div class="profile-score">
-                                <div class="profilearea">
-                                    <img src="/assets/avatar-f1.png" class="profilepic">
-                                </div>
-                                <div class="score">
-                                    <h2 class="yellowscore" id="user-score">4.9</h2>
-                                </div>
-                                <div class="reply" onclick="injectQuill(this)">Reply</div>
-
-                            </div>
-    
-                            <div class="review-center-tile">
-                                <div class="score-username">
-                                    <h2 class="titlearea">THE CHEESE SAUCE!</h2>
-                                
-                                    <div class="nametitle">
-                                        <a href="others-profile" class="nameandtime">@corah</a>
-                                        <p class="nameandtime"> · </p>
-                                        <p class="nameandtime">February 13, 2024 11:19 am </p>
-                                    </div>
-                                </div>
-                                <div class="criteriaratings">
-                                    <div class="criteriascore">
-                                        <h4 class="criteria">Food Quality
-                                        <div class="stars">
-                                            <span>🍗</span>
-                                            <span>🍗</span>
-                                            <span>🍗</span>
-                                            <span>🍗</span>
-                                            <span class="over-emoji">🍗</span>
-                                        </div>
-                                    </div>
-            
-                                    <div class="criteriascore">
-                                        <h4 class="criteria">Service
-                                        <div class="stars">
-                                            <span>🤝</span>
-                                            <span>🤝</span>
-                                            <span>🤝</span>
-                                            <span class="over-emoji">🤝</span>
-                                            <span class="over-emoji">🤝</span>
-                                        </div>
-                                    </div>
-            
-                                    <div class="criteriascore">
-                                        <h4 class="criteria">Affordability
-                                        <div class="stars">
-                                            <span>💵</span>
-                                            <span>💵</span>
-                                            <span>💵</span>
-                                            <span>💵</span>
-                                            <span>💵</span>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="reviewtext" id="rev2">
-                                    <span class="longtext"><b>AMAZING FOOD!!! The cheese sauce is so good!!</b> It's also very affordable. But it took them some time to cook my order. Nonetheless, it's good!</span>
-                                </div>
-    
-                                
-            
-                            </div>
-    
-                            <div class="rate-review" id="likeDislikeButtons">
-                                <div class="likeset">
-                                    <button class="like-dislike" id="like">&#128077;</button>
-                                    <span class = "numberoffeedback">10</span>
-                                    <button class="like-dislike" id="dislike">&#128078;</button>
-                                    <span class="numberoffeedback">16</span>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="photopanel">
-                           
-                        </div>
-    
-                        <div class="modal" id="modal" onclick="closeModal()">
-                            <div class="modal-content" onclick="event.stopPropagation();">
-                            <span class="close" onclick="closeModal()">&times;</span>
-                            <div id="modal-media-container"></div>
-                            </div>
-                        </div>
-    
-                 
-                    </div>
-                    <div class="replypanel">
-                        <div class="reply-editorarea" id="reply-editor-container">
-                           <div class="reply-editor"></div>
-                        </div>
-                        <div class="publish-button" onclick="handleReply(this)">Publish Reply</div>
-                    </div>
-                    <div class="responsepanel">
-
-                        <div class="score-username">
-                            <h2 class="titlearea">Re: Ate Rica's</h2>
-                        
-                            <div class="nametitle">
-                                <p class="nameandtime">February 12, 2024 8:01 am </p>
-                            </div>
-                        </div>
-                        <div id="replytext"></div>
-
-          
-                    </div>
-                </div>
-
-                
-            </div>  
-            
-            <div class="review-and-response">
-                <div class="review"> 
-                
-                    <div class="review-panel" id="reviewPanel2">
-
-                        <div class="profile-score">
-                            <div class="profilearea">
-                                <img src="/assets/avatar-f2.png" class="profilepic">
-                            </div>
-                            <div class="score">
-                                <h2 class="yellowscore" id="user-score">5.0</h2>
-                            </div>
-                            <div class="reply" onclick="injectQuill(this)">Reply</div>
-                        </div>
-
-                        <div class="review-center-tile">
-                            <div class="score-username">
-                                <h2 class="titlearea">They have good bacon <3</h2>
-                            
-                                <div class="nametitle">
-                                    <a href="others-profile" class="nameandtime">@archerreviewer</a>
-                                    <p class="nameandtime"> · </p>
-                                    <p class="nameandtime">February 14, 2024 3:55 pm </p>
-                                </div>
-                            </div>
-                            <div class="criteriaratings">
-                                <div class="criteriascore">
-                                    <h4 class="criteria">Food Quality
-                                    <div class="stars">
-                                        <span>🍗</span>
-                                        <span>🍗</span>
-                                        <span>🍗</span>
-                                        <span>🍗</span>
-                                        <span>🍗</span>
-                                    </div>
-                                </div>
-        
-                                <div class="criteriascore">
-                                    <h4 class="criteria">Service
-                                    <div class="stars">
-                                        <span>🤝</span>
-                                        <span>🤝</span>
-                                        <span>🤝</span>
-                                        <span>🤝</span>
-                                        <span>🤝</span>
-                                    </div>
-                                </div>
-        
-                                <div class="criteriascore">
-                                    <h4 class="criteria">Affordability
-                                    <div class="stars">
-                                        <span>💵</span>
-                                        <span>💵</span>
-                                        <span>💵</span>
-                                        <span>💵</span>
-                                        <span>💵</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        
-
-                            
-        
-                        </div>
-
-                        <div class="rate-review" id="likeDislikeButtons">
-                            <div class="likeset">
-                                <button class="like-dislike" id="like">&#128077;</button>
-                                <span class = "numberoffeedback">9</span>
-                                <button class="like-dislike" id="dislike">&#128078;</button>
-                                <span class="numberoffeedback">9</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="photopanel">
-                        <img src="/assets/bacsilog6.jpeg" class="revpic" onclick="openModal('assets/bacsilog3.jpeg')">
-                    </div>
-
-                    <div class="modal" id="modal" onclick="closeModal()">
-                        <div class="modal-content" onclick="event.stopPropagation();">
-                        <span class="close" onclick="closeModal()">&times;</span>
-                        <div id="modal-media-container"></div>
-                        </div>
-                    </div>
-
-             
-                </div>
-                <div class="replypanel">
-                    <div class="reply-editorarea" id="reply-editor-container">
-                       <div class="reply-editor"></div>
-                    </div>
-                    <div class="publish-button" onclick="handleReply(this)">Publish Reply</div>
-                </div>
-                <div class="responsepanel">
-
-                    <div class="score-username">
-                        <h2 class="titlearea">Re: Ate Rica's</h2>
-                    
-                        <div class="nametitle">
-                            <p class="nameandtime">February 12, 2024 8:01 am </p>
-                        </div>
-                    </div>
-                    <div id="replytext"></div>
-
-      
-                </div>
-            </div>
-
-                    
-            <div class="review-and-response">
-                <div class="review"> 
-                    <div class="review-panel" id="reviewPanel2">
-
-                        <div class="profile-score">
-                            <div class="profilearea">
-                                <img src="/assets/avatar-m1.png" class="profilepic">
-                            </div>
-                            <div class="score">
-                                <h2 class="yellowscore" id="user-score">4.0</h2>
-                            </div>
-                            <div class="reply" onclick="injectQuill(this)">Reply</div>
-
-                        </div>
-
-                        <div class="review-center-tile">
-                            <div class="score-username">
-                                <h2 class="titlearea">Mid</h2>
-                            
-                                <div class="nametitle">
-                                    <a href="others-profile" class="nameandtime">@urordinaryguy</a>
-                                    <p class="nameandtime"> · </p>
-                                    <p class="nameandtime">February 15, 2024 2:22 pm </p>
-                                </div>
-                            </div>
-                            <div class="criteriaratings">
-                                <div class="criteriascore">
-                                    <h4 class="criteria">Food Quality
-                                    <div class="stars">
-                                        <span>🍗</span>
-                                        <span>🍗</span>
-                                        <span>🍗</span>
-                                        <span>🍗</span>
-                                        <span class="over-emoji">🍗</span>
-                                    </div>
-                                </div>
-        
-                                <div class="criteriascore">
-                                    <h4 class="criteria">Service
-                                    <div class="stars">
-                                        <span>🤝</span>
-                                        <span>🤝</span>
-                                        <span class="over-emoji">🤝</span>
-                                        <span class="over-emoji">🤝</span>
-                                        <span class="over-emoji">🤝</span>
-                                    </div>
-                                </div>
-        
-                                <div class="criteriascore">
-                                    <h4 class="criteria">Affordability
-                                    <div class="stars">
-                                        <span>💵</span>
-                                        <span>💵</span>
-                                        <span>💵</span>
-                                        <span class="over-emoji">💵</span>
-                                        <span class="over-emoji">💵</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        
-
-                            
-        
-                        </div>
-
-                        <div class="rate-review" id="likeDislikeButtons">
-                            <div class="likeset">
-                                <button class="like-dislike" id="like">&#128077;</button>
-                                <span class = "numberoffeedback">1</span>
-                                <button class="like-dislike" id="dislike">&#128078;</button>
-                                <span class="numberoffeedback">0</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="photopanel">
-                       
-                    </div>
-
-                    <div class="modal" id="modal" onclick="closeModal()">
-                        <div class="modal-content" onclick="event.stopPropagation();">
-                        <span class="close" onclick="closeModal()">&times;</span>
-                        <div id="modal-media-container"></div>
-                        </div>
-                    </div>
-
-             
-                </div>
-                <div class="replypanel">
-                    <div class="reply-editorarea" id="reply-editor-container">
-                       <div class="reply-editor"></div>
-                    </div>
-                    <div class="publish-button" onclick="handleReply(this)">Publish Reply</div>
-                </div>
-                <div class="responsepanel">
-
-                    <div class="score-username">
-                        <h2 class="titlearea">Re: Ate Rica's</h2>
-                    
-                        <div class="nametitle">
-                            <p class="nameandtime">February 12, 2024 8:01 am </p>
-                        </div>
-                    </div>
-                    <div id="replytext">We apologize for this. We will do better next time.</div>
-
-      
-                </div>
-            </div>
-
-            
         </div>  
         </div>
     

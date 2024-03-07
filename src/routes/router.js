@@ -60,6 +60,7 @@ function isAuthenticated(req, res, next) {
 router.get('/all', handleGetAllRestoRequest);
 router.get('/search', handleSearchRequest);
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
+router.get('/resto-responsepage/:_id', handleRestoPageRequest);
 
 router.get('/sort', function(req, res) {
     const criteria = req.query.criteria;
