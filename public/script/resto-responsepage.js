@@ -8,6 +8,7 @@ let maxPhotos = 4;
 let quillEditor;
 let photoContainer;
 
+
 document.querySelector('form').onsubmit = function(event) {
     event.preventDefault();
 
@@ -24,7 +25,7 @@ document.querySelector('form').onsubmit = function(event) {
     const shortDesc = document.querySelector('#shortdesc').value;
     const desc = document.querySelector('#desc').value;
 
-    // Populate data in the HTML
+    
     document.querySelector('.resto-title').innerText = restaurantName;
     document.querySelector('.location').innerText = address;
     document.querySelector('#tag1').innerHTML = `💵 💵 <span>(P${priceStart}-${priceEnd})</span>`;
@@ -365,7 +366,7 @@ function deleteRestaurant(){
                             timer: 3000, 
                             timerProgressBar: true 
                         }).then(() => {
-                            window.location.href = 'index.html';
+                            window.location.href = 'index';
                         });
                     });
                     
