@@ -67,6 +67,7 @@
                                 </div>
                                 
                             </div>
+                            
                             <div class="input-group">
                                 <label for="daysopen" class="editlabel">Days Open:</label>
                                 <div class="samerow">
@@ -149,7 +150,7 @@
             <div class="restodetailsarea">
                 <div class="nameandoverallscore">
                     <h1 class="resto-title" id="restoname">{{name}}</h1>
-                    <h2 class="yellowscore">{{ranking}}/5</h2>
+                    <h2 class="yellowscore">{{rating}}/5</h2>
                 </div>
                 <div class="moredetails">
 
@@ -265,7 +266,7 @@
                         <div class="review-panel">
                             <div class="profile-score">
                                 <div class="profilearea">
-                                    <img src="/assets/{{profilePicture}}" class="profilepic">
+                                    <img src="/uploads/avatars/{{profilePicture}}" class="profilepic">
                                 </div>
                                 <div class="score">
                                     <h2 class="yellowscore" id="user-score">{{overallRating}}</h2>
@@ -339,11 +340,6 @@
                                     <span class = "numberoffeedback">{{noOfLikes}}</span>
                                     <button class="a" id="b">&#128078;</button>
                                     <span class="numberoffeedback">{{noOfDislikes}}</span>
-                                    &nbsp;&nbsp;&#8286; 
-                                    <div class="options-popup" id="optionsPopup">
-                                        <a href="#" onclick="editReview()">Edit</a>
-                                        <a href="#" onclick="deleteReview()">Delete</a>
-                                    </div>
                                 </div>
                             </div>
                         
@@ -372,14 +368,16 @@
                         </div>
                         
                      </div>
-                     <div class="replypanel">
+                    {{/each}}
+
+                    <div class="replypanel">
                         <div class="reply-editorarea" id="reply-editor-container">
                            <div class="reply-editor"></div>
                         </div>
                         <div class="publish-button" onclick="handleReply(this)">Publish Reply</div>
                     </div>
-
-                {{#each restaurantreplies}}
+                    
+                {{!-- {{#each restaurantreplies}}
                     <div class="responsepanel">
 
                         <div class="score-username">
@@ -390,7 +388,11 @@
                             </div>
                         </div>
                         <div id="replytext">
-                           {{body}}
+                           <span class="longtext">{{longText}}</span>
+                                {{#unless hasNoSeeMore}}
+                                    <span class="full-text">{{fullText}}</span>
+                                    <span class="see-more" onclick="toggleSeeMore('rev{{order}}')"><b>...see more</b></span>
+                                {{/unless}}
                         </div>
                         <div class="photopanel">
                             {{#each media}}
@@ -405,8 +407,8 @@
                             {{/each}}
                         </div>
                     </div>
-                {{/each}}
-                </div>
+                {{/each}} --}}
+            </div>
         </div>  
         </div>
     

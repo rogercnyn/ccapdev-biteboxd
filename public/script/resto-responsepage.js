@@ -366,7 +366,7 @@ function deleteRestaurant(){
                             timer: 3000, 
                             timerProgressBar: true 
                         }).then(() => {
-                            window.location.href = 'index';
+                            window.location.href = '/index';
                         });
                     });
                     

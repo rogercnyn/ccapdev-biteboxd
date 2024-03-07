@@ -133,5 +133,6 @@ module.exports = {
     addReviewToProfile, 
     addBulkProfile,
     updateProfileByUsername,
-    getProfileById 
+    getProfileById,
+    getProfilePicture
 };

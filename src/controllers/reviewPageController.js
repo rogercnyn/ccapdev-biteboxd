@@ -60,6 +60,7 @@ async function handleRestoResponsePageRequest(req, resp){
         review['order'] = index
     });
 
+    console.log(restaurant)
     resp.render("resto-responsepage", restaurant);
 }
 
@@ -82,4 +83,4 @@ function formatDate(dateString) {
 }
 
 
-module.exports = { handleRestoPageRequest }
+module.exports = { handleRestoPageRequest, handleRestoResponsePageRequest }

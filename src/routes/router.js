@@ -10,7 +10,7 @@ const Review = require('../models/Review');
 
 // Import controllers for restaurant and review handling
 const { handleSearchRequest, handleGetAllRestoRequest } = require('../controllers/restaurantController');
-const { handleRestoPageRequest } = require('../controllers/reviewPageController');
+const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
 
 const router = express.Router();
 
@@ -60,7 +60,7 @@ function isAuthenticated(req, res, next) {
 router.get('/all', handleGetAllRestoRequest);
 router.get('/search', handleSearchRequest);
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
-router.get('/resto-responsepage/:_id', handleRestoPageRequest);
+router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
 
 router.get('/sort', function(req, res) {
     const criteria = req.query.criteria;
