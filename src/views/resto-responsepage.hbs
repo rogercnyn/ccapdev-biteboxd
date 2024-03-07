@@ -377,37 +377,40 @@
                         <div class="publish-button" onclick="handleReply(this)">Publish Reply</div>
                     </div>
                     
-                {{!-- {{#each restaurantreplies}}
+                
                     <div class="responsepanel">
-
-                        <div class="score-username">
-                            <h2 class="titlearea">Re: {{name}}</h2>
-                        
-                            <div class="nametitle">
-                                <p class="nameandtime">{{createdat}} </p>
+                        {{#if hasReplies}}
+                            {{#each restaurantreplies}}
+                            <div class="score-username">
+                                <h2 class="titlearea">Re: {{name}}</h2>
+                            
+                                <div class="nametitle">
+                                    <p class="nameandtime">{{createdat}} </p>
+                                </div>
                             </div>
-                        </div>
-                        <div id="replytext">
-                           <span class="longtext">{{longText}}</span>
-                                {{#unless hasNoSeeMore}}
-                                    <span class="full-text">{{fullText}}</span>
-                                    <span class="see-more" onclick="toggleSeeMore('rev{{order}}')"><b>...see more</b></span>
-                                {{/unless}}
-                        </div>
-                        <div class="photopanel">
-                            {{#each media}}
+                            <div id="replytext">
+                            <span class="longtext">{{longText}}</span>
+                                    {{#unless hasNoSeeMore}}
+                                        <span class="full-text">{{fullText}}</span>
+                                        <span class="see-more" onclick="toggleSeeMore('rev{{order}}')"><b>...see more</b></span>
+                                    {{/unless}}
+                            </div>
+                            <div class="photopanel">
+                                {{#each media}}
 
-                                {{#if (isVideo this)}}
-                                    <video src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></video>
+                                    {{#if (isVideo this)}}
+                                        <video src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></video>
 
-                                {{else}}
-                                    <img src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></img>
+                                    {{else}}
+                                        <img src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></img>
 
-                                {{/if}}
+                                    {{/if}}
+                                {{/each}}
+                            </div>
                             {{/each}}
-                        </div>
+                        {{/if}}
                     </div>
-                {{/each}} --}}
+                
             </div>
         </div>  
         </div>
