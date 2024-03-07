@@ -62,6 +62,12 @@ router.get('/search', handleSearchRequest);
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
 
+
+// will redirect to login if the link resto-responsepage without the corresponding id is provided
+router.get('/resto-responsepage', (req, res) => {
+    res.redirect('/login');
+});
+
 router.get('/sort', function(req, res) {
     const criteria = req.query.criteria;
     // Call the function to sort the results based on the criteria
@@ -90,6 +96,7 @@ router.get('/signup', (req, res)=> res.render("signup"));
 router.get('/login', (req, res) => res.render("login"));
 router.get('/explore', (req, res) => res.render("explore"));
 router.get(['/', '/index'], (req, res) => res.render("index", { loggedIn: !!req.session.userId }));
+router.get('/createrestaurant', (req, res) => res.render("createrestaurant"));
 
 /*Login Post */
 router.post("/login", async (req, res) => {
