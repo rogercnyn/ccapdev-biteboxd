@@ -20,14 +20,14 @@
 
     {{#if loggedIn}}
         <a href="#" class="account-icon" id="account-icon" onclick="togglePopup()">
-            <img src="/assets/{{profilePicture}}" alt="" class="profile-icon" id="account-icon">
+            <img src="/uploads/avatars/{{profilePicture}}" alt="" class="profile-icon" id="account-icon">
             <p>Profile</p>
         </a>
 
         <div class="popup-container" id="popupContainer" style="display: none">
             <div class="popup" id="popup">
-                    <a href="#">View Profile</a>
-                <a href="#">Log Out</a>
+                    <a href="/own-profile">View Profile</a>
+                <a href="/logout">Log Out</a>
             </div>
         </div>
     {{else}}

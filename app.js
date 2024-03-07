@@ -20,6 +20,13 @@ app.use(session({
 
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+    // Make session data accessible to all templates
+    res.locals.loggedIn = req.session.userId ? true : false;
+    res.locals.profilePicture = req.session.profilePicture || 'defaultProfilePic.png'; // Adjust default profile picture as necessary
+    next();
+});
+app.use('/uploads', express.static('public/uploads'));
 
 
 app.engine("hbs", exphbs.engine({

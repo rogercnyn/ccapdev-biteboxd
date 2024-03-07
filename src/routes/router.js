@@ -61,6 +61,29 @@ router.get('/all', handleGetAllRestoRequest);
 router.get('/search', handleSearchRequest);
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 
+router.get('/sort', function(req, res) {
+    const criteria = req.query.criteria;
+    // Call the function to sort the results based on the criteria
+    // This will depend on how your data is structured and stored on the server
+    // Return the sorted results in the response
+    res.render('sortedResults', { /* Pass the sorted results to the template */ });
+});
+// router.post("/login", async (req, res) => {
+//     try {
+//         const profile = await Profile.findOne({ username: req.body.username });
+//         if (profile && profile.password === req.body.password) {
+//             req.session.userId = profile.username; 
+//             req.session.profilePicture = profile.image
+//             req.session['loggedIn'] = true
+//             res.redirect("/"); 
+//         } else {
+//             res.send("Wrong username or password");
+//         }
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send("Internal Server Error");
+//     }
+// });
 // Static page routes
 router.get('/signup', (req, res)=> res.render("signup"));
 router.get('/login', (req, res) => res.render("login"));
@@ -73,8 +96,11 @@ router.post("/login", async (req, res) => {
     try {
         const user = await Profile.findOne({ username });
         if (user && password === user.password) {
-            req.session.userId = user._id;
-            return res.redirect("/own-profile");
+            req.session.userId = user._id; 
+            req.session.username = user.username;
+            req.session.profilePicture = user.image
+            req.session['loggedIn'] = true
+            res.redirect("/");
         } else {
             return res.status(401).send("Incorrect username or password.");
         }
@@ -84,7 +110,12 @@ router.post("/login", async (req, res) => {
     }
 });
 
-//log in with reviews route
+router.get('/logout', function(req, res) {
+    req.session.destroy(() => {
+        res.redirect('/'); 
+    });
+});
+
 
 router.get('/own-profile', isAuthenticated, async (req, res) => {
     try {
