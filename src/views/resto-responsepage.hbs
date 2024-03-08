@@ -44,16 +44,16 @@
                         <div class="left-side">
                             <div class="input-group">
                                 <label for="restoName" class="editlabel">Restaurant Name:</label>
-                                <input type="text" id="restoName" name="restoName" class="styled-input">
+                                <input type="text" id="restoName" name="restoName" value="{{name}}" class="styled-input">
                             </div>
                             <div class="input-group">
                                 <label for="address" class="editlabel">Address:</label>
-                                <input type="text" id="address" name="address" class="styled-input">
+                                <input type="text" id="address" name="address" value="{{location}}" class="styled-input">
                             </div>
                             
                             <div class="input-group">
                                 <label for="tags" class="editlabel">Tags:</label>
-                                <input type="text" id="tags" name="tags" class="styled-input">
+                                <input type="text" id="tags" name="tags" value="{{tag}}" class="styled-input">
                             </div>
                         </div>
                     
@@ -61,9 +61,9 @@
                             <div class="input-group">
                                 <label for="price" class="editlabel">Price Range:</label>
                                 <div class="samerow">
-                                    <input type="text" id="pricestart" name="pricestart" value="₱" class="styled-input">
+                                    <input type="text" id="pricestart" name="pricestart" value="₱{{startPriceRange}}" class="styled-input">
                                     <label for="price" class="editlabel"> - </label>
-                                    <input type="text" id="priceend" name="priceend" value="₱" class="styled-input">
+                                    <input type="text" id="priceend" name="priceend" value="₱{{endPriceRange}}" class="styled-input">
                                 </div>
                                 
                             </div>

@@ -242,65 +242,50 @@ function updateCheckboxStatus(checkboxId, isChecked) {
 }
 
 function loadData() {
-    const restaurantName = document.querySelector('.resto-title').innerText;
-    const address = document.querySelector('.location').innerText;
-    const tags = "Filipino, Fastfood";
+    // const restaurantName = document.querySelector('.resto-title').textContent;
+    // const address = document.querySelector('.location').textContent;
+    // const tags = "Filipino, Fastfood";
 
-    // for price
-    const priceRangeText = document.getElementById('tag1').textContent;
-    const prices = priceRangeText.replace(/[^\d-]/g, '').split('-');
+    // // for price
+    // const priceRangeText = document.getElementById('tag1').textContent;
+    // const prices = priceRangeText.replace(/[^\d-]/g, '').split('-');
 
-    const priceStart = prices[0];
-    const priceEnd = prices[1];
+    // const priceStart = prices[0];
+    // const priceEnd = prices[1];
 
-    const daysOpenStart = "Monday";
-    const daysOpenEnd = "Saturday";
-    const operatingHourStart = "08:00";
-    const operatingHourEnd = "17:00";
-    const shortDesc = "Your new go-to bacsilogan in Taft.";
-    const desc = "Ate Rica's Bacsilog offers different type of silog meals at an affordable price. The best sellers are bacsilog, tapsilog, and hotsilog."; 
+    // const daysOpenStart = "Monday";
+    // const daysOpenEnd = "Saturday";
+    // const operatingHourStart = "08:00";
+    // const operatingHourEnd = "17:00";
+    // const shortDesc = "Your new go-to bacsilogan in Taft.";
+    // const desc = "Ate Rica's Bacsilog offers different type of silog meals at an affordable price. The best sellers are bacsilog, tapsilog, and hotsilog.";
 
-    document.querySelector('#restoName').value = restaurantName;
-    document.querySelector('#address').value = address;
-    document.querySelector('#tags').value = tags;
-    document.querySelector('#pricestart').value = priceStart;
-    document.querySelector('#priceend').value = priceEnd;
-    document.querySelector('#daysopenstart').value = daysOpenStart;
-    document.querySelector('#daysopenend').value = daysOpenEnd;
-    document.querySelector('#operatinghourstart').value = operatingHourStart;
-    document.querySelector('#operatinghourend').value = operatingHourEnd;
-    document.querySelector('#shortdesc').value = shortDesc;
-    document.querySelector('#desc').value = desc;
+    // document.getElementById('restoName').value = restaurantName;
+    // document.getElementById('address').value = address;
+    // document.getElementById('tags').value = tags;
+    // document.getElementById('pricestart').value = priceStart;
+    // document.getElementById('priceend').value = priceEnd;
+    // document.getElementById('daysopenstart').value = daysOpenStart;
+    // document.getElementById('daysopenend').value = daysOpenEnd;
+    // document.getElementById('operatinghourstart').value = operatingHourStart;
+    // document.getElementById('operatinghourend').value = operatingHourEnd;
+    // document.getElementById('shortdesc').value = shortDesc;
+    // document.getElementById('desc').value = desc;
 
-    const deliveryCheckbox = document.getElementById('deliveryCheckbox');
-    const outdoorDiningCheckbox = document.getElementById('outdoorDiningCheckbox');
-    const indoorDiningCheckbox = document.getElementById('indoorDiningCheckbox');
-    const groupsCheckbox = document.getElementById('groupsCheckbox');
+    // document.getElementById('deliveryCheckbox').checked = true;
+    // document.getElementById('outdoorDiningCheckbox').checked = true;
+    // document.getElementById('indoorDiningCheckbox').checked = true;
+    // document.getElementById('groupsCheckbox').checked = true;
 
-    const musicTvCheckbox = document.getElementById('musicTvCheckbox');
-    const driveThruCheckbox = document.getElementById('driveThruCheckbox');
-    const takeoutCheckbox = document.getElementById('takeoutCheckbox');
-    const creditCardsCheckbox = document.getElementById('creditCardsCheckbox');
+    // document.getElementById('musicTvCheckbox').checked = true;
+    // document.getElementById('driveThruCheckbox').checked = false;
+    // document.getElementById('takeoutCheckbox').checked = true;
+    // document.getElementById('creditCardsCheckbox').checked = true;
 
-    const eWalletCheckbox = document.getElementById('eWalletCheckbox');
-    const kidsCheckbox = document.getElementById('kidsCheckbox');
-    const petsCheckbox = document.getElementById('petsCheckbox');
-    const veganCheckbox = document.getElementById('veganCheckbox');
-
-    document.querySelector('#deliveryCheckbox').checked = true; 
-    document.querySelector('#outdoorDiningCheckbox').checked = true;
-    document.querySelector('#indoorDiningCheckbox').checked = true;
-    document.querySelector('#groupsCheckbox').checked = true;
-
-    document.querySelector('#musicTvCheckbox').checked = true; 
-    document.querySelector('#driveThruCheckbox').checked = false;
-    document.querySelector('#takeoutCheckbox').checked = true;
-    document.querySelector('#creditCardsCheckbox').checked = true;
-
-    document.querySelector('#eWalletCheckbox').checked = true; 
-    document.querySelector('#kidsCheckbox').checked = true;
-    document.querySelector('#petsCheckbox').checked = false;
-    document.querySelector('#veganCheckbox').checked = true;
+    // document.getElementById('eWalletCheckbox').checked = true;
+    // document.getElementById('kidsCheckbox').checked = true;
+    // document.getElementById('petsCheckbox').checked = false;
+    // document.getElementById('veganCheckbox').checked = true;
 }
 
 function editRestaurant(){

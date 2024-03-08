@@ -105,15 +105,31 @@ router.get('/createrestaurant', (req, res) => res.render("createrestaurant"));
 router.post("/login", async (req, res) => {
     const { username, password } = req.body;
     try {
-        const user = await Profile.findOne({ username });
-        if (user && password === user.password) {
-            req.session.userId = user._id; 
-            req.session.username = user.username;
-            req.session.profilePicture = user.image
-            req.session['loggedIn'] = true
+        // Try finding the user in the Profile collection
+        const userProfile = await Profile.findOne({ username });
+
+        if (userProfile && password === userProfile.password) {
+            // If found in Profile, set session and redirect
+            req.session.userId = userProfile._id;
+            req.session.username = userProfile.username;
+            req.session.profilePicture = userProfile.image;
+            req.session['loggedIn'] = true;
             res.redirect("/");
         } else {
-            return res.status(401).send("Incorrect username or password.");
+            // If not found in Profile, try finding in Restaurant collection
+            const restaurantUser = await Restaurant.findOne({ username });
+
+            if (restaurantUser && password === restaurantUser.password) {
+                // If found in Restaurant, set session and redirect
+                req.session.userId = restaurantUser._id;
+                req.session.username = restaurantUser.username;
+                req.session.profilePicture = restaurantUser.media;
+                req.session['loggedIn'] = true;
+                res.redirect("/resto-responsepage/" + restaurantUser._id);
+            } else {
+                // If not found in either collection, return error
+                return res.status(401).send("Incorrect username or password.");
+            }
         }
     } catch (error) {
         console.error('Error during login process:', error);
