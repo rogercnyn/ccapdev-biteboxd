@@ -4,9 +4,12 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const profileController = require('../controllers/profileController');
 const app = express();
+const path = require('path');
 
 const Profile = require("../models/Profile"); 
 const Review = require('../models/Review');
+const Restaurant = require('../models/Restaurant');
+
 
 // Import controllers for restaurant and review handling
 const { handleSearchRequest, handleGetAllRestoRequest } = require('../controllers/restaurantController');
@@ -135,6 +138,10 @@ router.get('/own-profile', isAuthenticated, async (req, res) => {
         if (!profile) {
             return res.status(404).send('Profile not found');
         }
+        // for (const review of profile.reviews) {
+        //     const restaurant = await Restaurant.findById(review.restaurant);
+        //     review.restaurantName = restaurant.name;
+        // }
         const profileData = profile.toObject({ virtuals: true });
 
         console.log(profileData);
@@ -150,11 +157,14 @@ router.get('/own-profile', isAuthenticated, async (req, res) => {
     }
 });
 
-//signup
+
 router.post('/signup', upload.single('avatar'), async (req, res) => {
     try {
         const { firstName, lastName, username, email, password, tasteProfile } = req.body;
-        const avatarPath = req.file ? req.file.path : 'defaultAvatarPath'; // Use a default path or handle as needed
+
+        // Use default paths for avatar and header if the user didn't upload them
+        const avatarFilename = req.file ? req.file.filename : 'default-avatar.png';
+        const headerFilename = 'header.jpg';
 
         const newProfile = new Profile({
             firstName,
@@ -163,19 +173,52 @@ router.post('/signup', upload.single('avatar'), async (req, res) => {
             email,
             password,
             tasteProfile,
-            image: avatarPath,
-            // Add other fields as needed
+            image: avatarFilename,
+            bgImage: headerFilename,
+            hearts: 0,
+            dislike: 0,
+            credibility: 0
         });
 
         await newProfile.save();
-        res.redirect('/login'); // Or handle accordingly
+        res.redirect('/login'); 
     } catch (error) {
         console.error('Signup error:', error);
         res.status(500).send('Error during signup');
     }
 });
 
-module.exports = router;
+
+router.post("/edit-profile", isAuthenticated, upload.single('profilePic'), async (req, res) => {
+    const userId = req.session.userId;
+    const { firstName, lastName, bio } = req.body;
+    try {
+        let profileUpdate = {
+            firstName: firstName,
+            lastName: lastName,
+            bio: bio
+        };
+        if (req.file) {
+            profileUpdate.image = req.file.filename;
+            req.session.profilePicture = profileUpdate.image; 
+        }
+        const updatedProfile = await Profile.findByIdAndUpdate(userId, profileUpdate, { new: true });
+
+        res.redirect("/own-profile");
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
+
+
+
+
+
+
+
 
 
 

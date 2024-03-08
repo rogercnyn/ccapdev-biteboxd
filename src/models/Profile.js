@@ -26,9 +26,9 @@ const profileSchema = new Schema({
     bio: { type: String, required: false},
 
     // stats
-    hearts: {type: Number, required: true},
-    dislike: {type: Number, required: true},
-    credibility: {type: Number, required: true},
+    hearts: {type: Number, default: '', required: true},
+    dislike: {type: Number, default: '',required: true},
+    credibility: {type: Number, default: '',required: true},
 
     // reviews
     reviews: {type: [Schema.Types.ObjectId], ref: 'Review', default: []},

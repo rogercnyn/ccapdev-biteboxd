@@ -7,7 +7,7 @@
         <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
         <script src="script/own-profile.js"></script>
         <script src="script/general.js"></script>
-        <script type="" src="script/edit-profile.js"></script>
+        <script src="script/edit-profile.js" defer></script>
         <script src="script/like.js"></script>
         <script src="script/general.js"></script>
 
@@ -225,122 +225,59 @@
             <!-- About -->
             <div class="content">
                 <div class="user-ratings-container">
+                    <!-- Ratings section -->
                     <div class="rating-labelled">
-                        <div class="rating">
-                            <div class="outer">
-                                <div class="inner">
-                                    <div class="heart">
-                                        <img src="assets/heart.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                                <circle id="heart-rating" class="heart-rating"cx="80" cy="80" r="70" stroke-linecap="round" />
-                            </svg>
-                        </div>
                         <div class="rating-label-percentage">
-                            <p>Hearts: {{profile.hearts}}</p>
-                            {{!-- <p class="number">65%</p> --}}
-                        </div>
-                        
-
-                    </div>
-                    
-                    <div class="rating-labelled">
-                        <div class="rating">
-                            <div class="outer">
-                                <div class="inner">
-                                    <div class="tomato">
-                                        <img src="assets/dislike.png" alt="" id="dislike">
-                                    </div>
-                                </div>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                                <circle id="tomato-rating" class="tomato-rating"cx="80" cy="80" r="70" stroke-linecap="round" />
-                            </svg>
-                        </div>
-                        <div class="rating-label-percentage">
-                            <p>Dislikes: {{profile.dislike}}</p>
+                            <p class="number-about">{{profile.hearts}}</p>
+                            <p class="label-about">Likes</p>
                         </div>
                     </div>
-    
                     <div class="rating-labelled">
-                        <div class="rating">
-                            <div class="outer">
-                                <div class="inner">
-                                    <div class="like">
-                                        <img src="assets/like.png" alt="" id="like">
-                                        
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                                <circle id="credibility-rating" class="credibility-rating" cx="80" cy="80" r="70" stroke-linecap="round" />
-                            </svg>
-                        </div>
                         <div class="rating-label-percentage">
-                            <p>Credibility: {{profile.credibility}}</p>
+                            <p class="number-about">{{profile.dislike}}</p>
+                            <p class="label-about">Dislikes</p>
                         </div>
-
-                        <div 
-                            id="profile-data" 
-                            data-hearts="{{profile.hearts}}" 
-                            data-dislikes="{{profile.dislike}}" 
-                            data-credibility="{{profile.credibility}}">
-                        </div>
-
                     </div>
-                    
+                    <div class="rating-labelled">
+                        <div class="rating-label-percentage">
+                            <p class="number-about">{{profile.credibility}}</p>
+                            <p class="label-about">Credibility</p>
+                        </div>
+                    </div>
                 </div>
+                <div class="divider"></div>
+                <!-- Taste profile section -->
+                <div class="taste-profile-container">
+                    <h2 class="taste-profile-label">Taste Profile</h2>
+                    <div class="taste-profile-items">
+                        {{#each profile.tasteProfile}}
+                            <div class="taste-profile-item">{{this}}</div>
+                        {{/each}}
+                    </div>
+                </div>
+
                 <div class="divider"></div>
                 <div class="recent-activities-container">
                     <h3>Recent Activities</h3>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="/uploads/avatars/{{profilePicture}}" alt="avatar">
+                        <!-- Iterate over the user's reviews to display recent activity -->
+                        {{#each reviews}}
+                            <div class="recent-activity">
+                                <div class="avatar-container-recent-activity">
+                                    <div class="avatar-border-recent-activity">
+                                        <div class="avatar-recent-activity">
+                                            <img src="/uploads/avatars/{{../profilePicture}}" alt="avatar">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recent-activity-description">
+                                    <p>@{{../username}} visited and left a review</p>
+                                </div>
+                                <div class="delete-recent-activity">
+                                    <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
                                 </div>
                             </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@makoeats visited and left a review at <a href="resto-reviewpage"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
-                        </div>
-                        <div class="delete-recent-activity">
-                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
-                        </div>
-                    </div>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="/uploads/avatars/{{profilePicture}}" alt="avatar">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@makoeats liked <a href="others-profile"><strong><u>@Mon_1015</u></strong></a> review.</p>
-                        </div>
-                        <div class="delete-recent-activity">
-                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
-                        </div>
-                    </div>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="/uploads/avatars/{{profilePicture}}" alt="avatar">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@makoeats visited at <a href="#"><strong><u>Starbucks Coffee</u></strong></a></p>
-                        </div>
-                        <div class="delete-recent-activity">
-                            <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
-                        </div>
-                    </div>
+                        {{/each}}
+
                 </div>
             </div>
 
@@ -350,7 +287,9 @@
         <div class="avatar-container">
             <div class="avatar-boorder">
                 <div class="avatar">
-                    <img src="/uploads/avatars/{{profilePicture}}" alt="Profile Avatar" id="profile-pic">
+                    <img src="uploads/avatars/{{profilePicture}}" alt="Profile Avatar" id="profile-pic">
+                    {{!-- <img src="/{{session.profilePicture}}" alt="Profile Picture" id="profile-pic"> --}}
+
                 </div>
             </div>
         </div>

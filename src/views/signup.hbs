@@ -199,6 +199,12 @@ function initializeSignUp(){
     
 </body>
 </html> --}}
+
+
+{{!-- working v --}}
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -330,5 +336,233 @@ function initializeSignUp(){
     </script>
 </body>
 </html>
+
+{{!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/signup.css">
+    <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
+    <script src="script/general.js"></script>
+
+    <!-- noty -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/noty@3.1.4/lib/noty.css">
+    <script src="https://cdn.jsdelivr.net/npm/noty@3.1.4/lib/noty.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+    
+    
+    <title>BiteBoxd - Sign up</title>
+    <script src="script/signup.js"></script>    
+    <style>
+        .hide-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="back-button">
+            <a href="index">
+                <img src="assets/back.png" alt="" class="back">
+            </a>
+        </div>
+        <button class="redirect-button" onclick="window.location.href = 'login'">
+            <a href="login" class="redirect">Log In</a>
+        </button>
+    </header>
+    <main>
+        <div class="logo-big">
+            <img src="assets/logo.png" alt="" class="logo">
+        </div>
+        <div class="yellow-box login" id="yellow-box">
+            <div class="sliders">
+                <div class="ellipse ellipse-clicked" id="ellipse-1"></div>
+                <div class="ellipse" id="ellipse-2"></div>
+                <div class="ellipse" id="ellipse-3"></div>
+            </div>
+
+            <p class="logo-text">Sign Up</p>
+        
+        <form id="signupForm" enctype="multipart/form-data">
+            <section class="login-form" id="form1">
+                <div class="name-box">
+                    <div class="box first-name-box">
+                        <label for="first-name" class="input-label">First Name</label>
+                        <input type="text" id="first-name" name="firstName" placeholder="Enter your first name" data-parsley-trigger="change" required data-parsley-pattern="^[a-zA-Z\s]+$">
+                    </div>
+                    <div class="box last-name-box">
+                        <label for="last-name" class="input-label" >Last Name</label>
+                        <input type="text" id="last-name" name="lastName" placeholder="Enter your last name" data-parsley-trigger="change" required data-parsley-pattern="^[a-zA-Z\s]+$">
+                    </div>
+                </div>
+                
+                <div class="box username-box">
+                    <label for="username" class="input-label">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter a username" data-parsley-trigger="change" required data-parsley-pattern="^[a-zA-Z0-9]+$"> 
+                </div>
+                <div class="box email-box">
+                    <label for="email" class="input-label" >Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required data-parsley-type="email" data-parsley-trigger="change">
+                </div>
+                
+                <div class="box password-box">
+                    <label for="password" class="input-label">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter a password" required data-parsley-minlength="8" data-parsley-trigger="change">  
+                </div>
+                
+                <div class="box confirm-password-box password-box">
+                    <label for="confirm-password" class="input-label">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required data-parsley-minlength="8" data-parsley-trigger="change">
+                </div>
+                
+                <div class="action-button-container">
+                    <button type="action-button" id="toForm2" onclick="showNextStep()">Next</button>
+                </div>
+            </section>
+
+
+            <section class="login-form hide-form" id="form2">
+                <div class="yellow-box-container tag-layers" id="form2container">
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)" value="Salty" id="salty">Salty</div>
+                        <div class="tag" onclick="toggleTag(this)" value="Sweet" id="sweet">Sweet</div>
+                    </div>
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)" value="Sour" id="sour">Sour</div>
+                        <div class="tag" onclick="toggleTag(this)" value="Bitter" id="bitter">Bitter</div>
+                        <div class="tag" onclick="toggleTag(this)" value="Japanese" id="japanese">Japanese</div>
+                    </div>
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)" value="Chinese" id="chinese">Chinese</div>
+                        <div class="tag" onclick="toggleTag(this)" value="Italian" id="italian">Italian</div>
+                        <div class="tag" onclick="toggleTag(this)" value="Korean" id="korean">Korean</div>
+                    </div>
+                    <div class="layer">
+                        <div class="tag" onclick="toggleTag(this)" value="Filipino" id="filipino">Filipino</div>
+                        <div class="tag" onclick="toggleTag(this)" value="Indian" id="indian">Indian</div>
+                    </div>
+                    <div class="action-button-container">
+                        <button class="action-button" id="toForm3" type="button" onclick="showNextStep()">Next</button>
+                    </div>
+                </div>
+            </section> 
+
+            <section class="login-form hide-form" id="form3">
+                <div class="two-avatar">
+                        <div class="pic-option" onclick="clickAvatar(this)"><img src="public/uploads/avatars/avatar-f1.png" alt="" class="avatar"></div>
+                        <div class="pic-option" onclick="clickAvatar(this)"><img src="public/uploads/avatars/avatar-f2.png" alt="" class="avatar"></div>
+                    </div>
+                    <div class="two-avatar">
+                        <div class="pic-option" onclick="clickAvatar(this)"><img src="public/uploads/avatars/avatar-m1.png" alt="" class="avatar"></div>
+                        <div class="pic-option" onclick="triggerFileInput(this)">   
+                             <input type="file" id="avatar-upload" class="avatar-upload">   
+                            <img src="assets/upload.svg" alt="" class="upload-icon">                     
+                        </div>
+                    </div>
+
+                    <div class="action-button-container">
+                        <button class="action-button" type="submit">Sign Up</button>
+                    </div>
+            </section> 
+
+            
+
+            <div class="action-button-container" id="submit-container" style="display: none;">
+                <button class="action-button" type="submit">Sign Up</button>
+            </div>
+        </form>
+        
+        </div>
+        <div class="policy">
+                <p>By signing in to BiteBoxd, you agree to our Terms and Privacy Policy.</p>
+            </div>
+    </main>
+
+       <script>
+    function showNextStep() {
+        let currentStep = $('section:visible');
+        let nextStep = currentStep.next('section');
+        if (nextStep.length) {
+            currentStep.hide();
+            nextStep.show();
+        }
+    }
+
+    $(document).ready(function() {
+        $('#form1').parsley();
+
+        $('#form1').on('submit', function(e) {
+            if ($('#form1').parsley().isValid()) {
+                document.getElementById("yellow-box").classList.add('turn-white');
+                document.getElementById('form1').classList.add('hide-form');
+                document.getElementById('form2').classList.remove('hide-form');
+            
+                document.getElementById('ellipse-2').classList.add('ellipse-clicked');
+            } 
+            e.preventDefault(); // Prevent form submission
+        });
+
+        $('#form2').parsley();
+
+        $('#form2').on('submit', function(e) {
+            if ($('#form2').parsley().isValid()) {
+                document.getElementById('form2').classList.add('hide-form');
+                document.getElementById('form3').classList.remove('hide-form');
+            
+                document.getElementById('ellipse-3').classList.add('ellipse-clicked');
+            } 
+            e.preventDefault(); // Prevent form submission
+        });
+
+        $('#signupForm').parsley();
+        $('#signupForm').on('submit', function(e) {
+            e.preventDefault();
+            if ($(this).parsley().isValid()) {
+                // Serialize form data
+                var formData = new FormData(this);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/signup",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        window.location.href = '/login';
+                    },
+                    error: function(response) {
+                        alert('An error occurred. Please try again.');
+                    }
+                });
+            }
+        });
+    });           
+
+    function toggleTag(tag) {
+        tag.classList.toggle('selected');
+    }
+
+    function triggerFileInput(element) {
+        clickAvatar(element);
+        var input = document.getElementById('avatar-upload');
+        input.click();
+    }
+
+    function clickAvatar(element) {
+        var inputs = document.querySelectorAll('.pic-option'); 
+        inputs.forEach(function(input) {
+            input.classList.remove('clicked');
+        });
+
+        var input = element.querySelector('pic-option');
+        element.classList.add('clicked');
+    }
+</script>
+</body>
+</html> --}}
 
 
