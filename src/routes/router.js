@@ -158,11 +158,20 @@ router.get('/own-profile', isAuthenticated, async (req, res) => {
 });
 
 
+
+
 router.post('/signup', upload.single('avatar'), async (req, res) => {
     try {
-        const { firstName, lastName, username, email, password, tasteProfile } = req.body;
+        console.log(req.body); 
 
-        // Use default paths for avatar and header if the user didn't upload them
+        const { firstName, lastName, username, email, password } = req.body;
+        const tasteProfilesString = req.body.tasteProfile; 
+
+        if (!tasteProfilesString) {
+            throw new Error("Taste profiles string is empty or null");
+        }
+
+        const tasteProfilesArray = JSON.parse(tasteProfilesString);
         const avatarFilename = req.file ? req.file.filename : 'default-avatar.png';
         const headerFilename = 'header.jpg';
 
@@ -172,7 +181,7 @@ router.post('/signup', upload.single('avatar'), async (req, res) => {
             username,
             email,
             password,
-            tasteProfile,
+            tasteProfile: tasteProfilesArray,
             image: avatarFilename,
             bgImage: headerFilename,
             hearts: 0,
@@ -187,6 +196,10 @@ router.post('/signup', upload.single('avatar'), async (req, res) => {
         res.status(500).send('Error during signup');
     }
 });
+
+
+
+
 
 
 router.post("/edit-profile", isAuthenticated, upload.single('profilePic'), async (req, res) => {
@@ -213,14 +226,4 @@ router.post("/edit-profile", isAuthenticated, upload.single('profilePic'), async
 
 
 
-
-
-
-
-
-
-
-
-
-// Export the router
 module.exports = router;

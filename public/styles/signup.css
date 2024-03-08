@@ -4,7 +4,9 @@
 
 .yellow-box {
     flex: 0 0 85%;
+    /* background-color: #ffffff; */
 }
+
 
 .sliders {
     margin-top: 1%;
@@ -66,6 +68,7 @@ main {
 
 
 .tag {
+    padding: 8px;
     border: 3px solid black;
     height: 100%;
     width: 23%;
@@ -174,3 +177,8 @@ main {
     color: red;
     font-size: 10px;
 }
+#yellow-box.yellow-box.login{
+    background-color: #FDD247;
+}
+
+
