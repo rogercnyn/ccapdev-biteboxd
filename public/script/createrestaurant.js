@@ -1,3 +1,8 @@
+// document.addEventListener("DOMContentLoaded", function () {
+//     const publishButton = document.querySelector(".publishbutton");
+//     publishButton.addEventListener("click", publishRestaurant);
+// });
+
 function openFileInput() {
     var input = document.createElement('input');
     input.type = 'file';
@@ -28,7 +33,7 @@ function updatePicture(input) {
     }
 }
 
-function publishRestaurant() {
+function publishRestaurant(event) {
     event.preventDefault();
     Swal.fire({
         title: 'Publish Restaurant',
@@ -68,8 +73,9 @@ function publishRestaurant() {
                         timer: 3000,
                         timerProgressBar: true
                     }).then(() => {
-                        window.location.href = 'resto-responsepage.html';
+                        window.location.href = '/resto-responsepage';
                     });
+                    
                 }
             });
         }

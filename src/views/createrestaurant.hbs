@@ -25,11 +25,11 @@
 
         <div id="editModal" class="editModal">
             <span id="editheader">Publish Restaurant</span>
-            <form>
+            <form id = "createRestoForm" action="/createrestaurant" method="POST" enctype="multipart/form-data">
                 <div class="upper-part">
 
                     <div class="restopictureareaupload" onclick="openFileInput()">
-                        <img src="/assets/upload-icon.png" alt="Picture" class="restopicture" id ="restopicture">
+                        <img src="/assets/upload-icon.png" alt="Picture" class="restopicture" name = "restopicture" id ="restopicture">
                     </div>
 
                     <div class="left-side">
@@ -107,29 +107,29 @@
 
                 <div class="attributesedit">
                     <div class="firstbatchattri">
-                        <div class="feature"><input type="checkbox" id="deliveryCheckbox"> Offers Delivery</div>
-                        <div class="feature"><input type="checkbox" id="outdoorDiningCheckbox"> Outdoor dining</div>
-                        <div class="feature"><input type="checkbox" id="indoorDiningCheckbox"> Indoor dining</div>
-                        <div class="feature"><input type="checkbox" id="groupsCheckbox"> Good for Groups</div>
+                        <div class="feature"><input type="checkbox" id="deliveryCheckbox" name="attri1"> Offers Delivery</div>
+                        <div class="feature"><input type="checkbox" id="outdoorDiningCheckbox" name="attri2"> Outdoor dining</div>
+                        <div class="feature"><input type="checkbox" id="indoorDiningCheckbox" name="attri3"> Indoor dining</div>
+                        <div class="feature"><input type="checkbox" id="groupsCheckbox" name="attri4"> Good for Groups</div>
                     </div>
                 
                     <div class="secondbatchattri">
-                        <div class="feature"><input type="checkbox" id="musicTvCheckbox"> Music and TV</div>
-                        <div class="feature"><input type="checkbox" id="driveThruCheckbox"> Drive-thru</div>
-                        <div class="feature"><input type="checkbox" id="takeoutCheckbox"> Offers Takeout</div>
-                        <div class="feature"><input type="checkbox" id="creditCardsCheckbox"> Accepts Credit Cards</div>
+                        <div class="feature"><input type="checkbox" id="musicTvCheckbox" name="attri5"> Music and TV</div>
+                        <div class="feature"><input type="checkbox" id="driveThruCheckbox" name="attri6"> Drive-thru</div>
+                        <div class="feature"><input type="checkbox" id="takeoutCheckbox" name="attri7"> Offers Takeout</div>
+                        <div class="feature"><input type="checkbox" id="creditCardsCheckbox" name="attri8"> Accepts Credit Cards</div>
                     </div>
                 
                     <div class="thirdbatchattri">
-                        <div class="feature"><input type="checkbox" id="eWalletCheckbox"> Accepts E-Wallet</div>
-                        <div class="feature"><input type="checkbox" id="kidsCheckbox"> Good for Kids</div>
-                        <div class="feature"><input type="checkbox" id="petsCheckbox"> Good for Pets</div>
-                        <div class="feature"><input type="checkbox" id="veganCheckbox"> Vegetarian/Vegan Offerings</div>
+                        <div class="feature"><input type="checkbox" id="eWalletCheckbox" name="attri9"> Accepts E-Wallet</div>
+                        <div class="feature"><input type="checkbox" id="kidsCheckbox" name="attri10"> Good for Kids</div>
+                        <div class="feature"><input type="checkbox" id="petsCheckbox" name="attri11"> Good for Pets</div>
+                        <div class="feature"><input type="checkbox" id="veganCheckbox" name="attri12"> Vegetarian/Vegan Offerings</div>
                     </div>
                 </div>
 
                 <div class="publisharea">
-                    <button type="submit" class ="publishbutton" onclick="publishRestaurant(event)">Publish Restaurant</button>
+                    <button type="submit" class ="publishbutton">Publish Restaurant</button>
                 </div>
                 
             </form>
