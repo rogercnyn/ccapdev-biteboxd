@@ -53,38 +53,36 @@ async function handleRestoResponsePageRequest(req, resp) {
         review['noMoney'] = 5 - review['affordabilityRating'];
         review['hasReplies'] = review['replies'].length > 0;
 
-        const replyIds = await getReply(review['id']);
-        const replies = await Promise.all(replyIds.map(async (replyId) => {
-            const reply = await readReply(replyId);
-            if (reply) {
-                reply['createdAt'] = formatDate(reply['createdAt']);
-                reply['longText'] = reply['body'] ? reply['body'].slice(0, 255) : '';
-                reply['fullText'] = reply['body'] ? reply['body'].slice(255) : '';
-                reply['hasNoSeeMore'] = reply['fullText'].length === 0;
-                return reply;
-            }
-        }));
-
-        console.log(replies);
-
         const profilePicturePromise = getProfilePicture(review['username']);
         const profilePicture = await profilePicturePromise;
-
-        return { review, replies, profilePicture };
+        return profilePicture;
     });
 
-    const results = await Promise.all(promises);
+    const profilePictures = await Promise.all(promises);
 
-    results.forEach(({ review, replies, profilePicture }, index) => {
-        review['profilePicture'] = profilePicture['image'];
+    const updatedReviews = await Promise.all(restaurant['reviews'].map(async (review, index) => {
+        review['profilePicture'] = profilePictures[index]['image'];
         review['order'] = index;
-        review['replies'] = replies;
-    });
+
+        if (review['hasReplies']) {
+            const replyPromises = review['replies'].map(async (replyId) => {
+                const reply = await getReply(replyId);
+                console.log(replyId);
+                return reply;
+            });
+
+            const replies = await Promise.all(replyPromises);
+            review['repliesDetails'] = replies;
+
+        }
+            return review; 
+        }));
+        
+        restaurant['reviews'] = updatedReviews;  
 
     console.log(restaurant);
     resp.render("resto-responsepage", restaurant);
 }
-
 
 
 function formatDate(dateString) {

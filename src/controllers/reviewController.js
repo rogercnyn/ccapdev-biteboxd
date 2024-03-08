@@ -23,7 +23,7 @@ async function clearReviews() {
 
 async function getReply(id) {
     try {
-        const review = await Review.findById(id).select('replies').exec();
+        const review = await Review.findById(id).select("replies").populate('replies').exec();
         return review ? review.replies : [];
     } catch (error) {
         console.error(error);
