@@ -53,14 +53,16 @@ async function handleRestoResponsePageRequest(req, resp) {
         review['noMoney'] = 5 - review['affordabilityRating'];
         review['hasReplies'] = review['replies'].length > 0;
 
-        const replyIds = await getReply(review['username']);
+        const replyIds = await getReply(review['id']);
         const replies = await Promise.all(replyIds.map(async (replyId) => {
             const reply = await readReply(replyId);
-            reply['createdAt'] = formatDate(reply['createdAt']);
-            reply['longText'] = reply['body'] ? reply['body'].slice(0, 255) : '';
-            reply['fullText'] = reply['body'] ? reply['body'].slice(255) : '';
-            reply['hasNoSeeMore'] = reply['fullText'].length === 0;
-            return reply;
+            if (reply) {
+                reply['createdAt'] = formatDate(reply['createdAt']);
+                reply['longText'] = reply['body'] ? reply['body'].slice(0, 255) : '';
+                reply['fullText'] = reply['body'] ? reply['body'].slice(255) : '';
+                reply['hasNoSeeMore'] = reply['fullText'].length === 0;
+                return reply;
+            }
         }));
 
         console.log(replies);

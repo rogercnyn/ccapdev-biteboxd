@@ -21,9 +21,9 @@ async function clearReviews() {
     }
 }
 
-async function getReply(username) {
+async function getReply(id) {
     try {
-        const review = await Review.findOne({"username": username}).select('replies').exec();
+        const review = await Review.findById(id).select('replies').exec();
         return review ? review.replies : [];
     } catch (error) {
         console.error(error);
