@@ -12,7 +12,7 @@ const Restaurant = require('../models/Restaurant');
 
 
 // Import controllers for restaurant and review handling
-const { handleSearchRequest, handleGetAllRestoRequest } = require('../controllers/restaurantController');
+const { handleSearchRequest, handleGetAllRestoRequest, handleSortRequest } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
 
 const router = express.Router();
@@ -64,6 +64,7 @@ router.get('/all', handleGetAllRestoRequest);
 router.get('/search', handleSearchRequest);
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
+router.get('/sort', handleSortRequest);
 
 
 // will redirect to login if the link resto-responsepage without the corresponding id is provided

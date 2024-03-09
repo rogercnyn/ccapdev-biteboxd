@@ -50,7 +50,7 @@
                         <div class="all-results">
                         
                             {{#each results}}
-                                <div class="result-box" data-name="{{name}}" data-rating="{{rating}}" data-food-quality="{{foodQuality}}" data-service-quality="{{serviceQuality}}" data-price="{{startPriceRange}}" data-number-of-reviews="{{numberOfReviews}}">
+                                <div class="result-box" data-name="{{name}}" data-rating="{{rating}}" data-food-quality="{{foodQuality}}" data-service-quality="{{serviceQuality}}" data-price="{{startPriceRange}}" data-number-of-reviews="{{numberOfReviews}}" onclick="goToReviewPage('{{_id}}')">
                                     <div class="store-details">
                                     <div class="store-details-image">
                                         <img src="assets/restaurant icons/{{media}}" alt="" class="store-pic">
@@ -151,7 +151,6 @@
         </main>
 
     <script>
-            
         const stars = new Slider(document.getElementsByClassName("slider-star-rating"));
         const cashEmos = new Slider(document.getElementsByClassName("slider-price-rating"));
 
