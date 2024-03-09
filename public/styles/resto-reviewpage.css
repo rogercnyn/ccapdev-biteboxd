@@ -10,6 +10,7 @@
 
 
 .main {
+    border: 1px solid black;
     margin-top: 50px;
     margin-left: 250px;
     justify-content: center;
@@ -18,6 +19,7 @@
     flex-direction: column;
     padding: 1.5rem;
     height: 3500px;
+    /* width: 69%; */
 }
 
 .review-bar {
