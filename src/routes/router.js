@@ -241,6 +241,65 @@ router.post("/edit-profile", isAuthenticated, upload.single('profilePic'), async
     }
 });
 
+// delete Review in Profile
+router.post('/deleteReview', async (req, res) => {
+    const { reviewId } = req.body; 
+
+    if (!reviewId) {
+        return res.status(400).json({ message: 'Review ID not provided' });
+    }
+
+    try {
+        const review = await Review.findByIdAndDelete(reviewId);
+        if (!review) {
+            return res.status(404).json({ message: 'Review not found' });
+        }
+        await Profile.updateMany(
+            { reviews: reviewId },
+            { $pull: { reviews: reviewId } }
+        );
+
+        res.json({ message: 'Review deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'An error occurred' });
+    }
+});
+
+
+router.post('/updateReview', upload.array('editMedia'), async (req, res) => {
+    const { reviewId, editTitle, editBody, editFoodRating, editServiceRating, editAffordabilityRating } = req.body;
+
+    console.log("Updating review ID: ", reviewId);
+    console.log("Received data: ", req.body);
+
+    try {
+        const update = {
+            title: editTitle,
+            body: editBody,
+            foodRating: editFoodRating,
+            serviceRating: editServiceRating,
+            affordabilityRating: editAffordabilityRating,
+        };
+        
+        console.log("Update object: ", update);
+
+        const updatedReview = await Review.findByIdAndUpdate(reviewId, update, { new: true });
+        if (!updatedReview) {
+            console.log("Review not found or update failed");
+            return res.status(404).json({ success: false, message: 'Review not found' });
+        }
+
+        console.log("Updated review: ", updatedReview);
+        res.json({ success: true, message: 'Review updated successfully', review: updatedReview });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'An error occurred' });
+    }
+});
+
+
+
 router.post("/createrestaurant", upload.single('restopicture'), async (req, res) => {
 
     const { restoName, address, tags, pricestart, priceend, daysopenstart, daysopenend, operatinghourstart, operatinghourend, shortdesc, desc, 

@@ -15,6 +15,9 @@
         <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
         <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+
 
 
         <title>{{profile.username}}'s Profile - BiteBoxd</title>
@@ -139,7 +142,7 @@
 
             <div class="content">
                 {{#each reviews}}
-                    <div class="review">
+                   <div class="review" data-review-id="{{this._id}}"> 
                         <div class="review-panel">
                             <div class="profile-score">
                                 <div class="profilearea">
@@ -202,7 +205,7 @@
                                     <div class="options-button" onclick="toggleOptions(this)">
                                         &nbsp;&nbsp;&#8286;
                                         <div class="options-popup">
-                                            <a href="#">Edit</a>
+                                            <a href="#" data-action="editReview">Edit</a>
                                             <a href="#" onclick="deleteReview(this)">Delete</a>
                                         </div>
                                     </div>
@@ -217,6 +220,62 @@
                 {{else}}
                     <p>No reviews found.</p>
                 {{/each}}
+            </div>
+
+            {{!-- Edit reviw form --}}
+            <div class="modal fade" id="editReviewModal" tabindex="-1" aria-labelledby="editReviewModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editReviewModalLabel">Edit Review</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="editReviewForm">
+                                <input type="hidden" id="editReviewId" value="">
+
+                                <div class="mb-3">
+                                    <label for="editTitle" class="form-label">Title</label>
+                                    <input type="text" class="form-control" name="editTitle" id="editTitle" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="editBody" class="form-label">Review</label>
+                                    <textarea class="form-control" name="editBody" id="editBody" rows="3" required></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="editMedia" class="form-label">Media</label>
+                                    <div id="editMediaPreview" class="mb-2">
+
+                                    </div>
+                                    <input type="file" class="form-control" name="editMedia" id="editMedia" multiple>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="editFoodRating" class="form-label">Food Quality Rating</label>
+                                    <input type="number" class="form-control" name="editFoodRating" id="editFoodRating" min="1" max="5" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="editServiceRating" class="form-label">Service Rating</label>
+                                    <input type="number" class="form-control" name="editServiceRating" id="editServiceRating" min="1" max="5" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="editAffordabilityRating" class="form-label">Affordability Rating</label>
+                                    <input type="number" class="form-control" name="editAffordabilityRating" id="editAffordabilityRating" min="1" max="5" required>
+                                </div>
+                                
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" form="editReviewForm">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
            
@@ -327,40 +386,6 @@
 
 
         console.log(likes)
-
-
-   function animateStroke(id, targetPercentage) {
-    const element = document.getElementById(id);
-    const maxDashoffset = parseInt(window.getComputedStyle(element).strokeDasharray);
-    const startOffset = maxDashoffset;
-    const endOffset = maxDashoffset * (1 - targetPercentage / 100);
-    let currentOffset = startOffset;
-    const step = (endOffset - startOffset) / 60; // Assuming 60 frames for the animation
-
-    function frame() {
-        currentOffset += step;
-        if ((step < 0 && currentOffset <= endOffset) || (step > 0 && currentOffset >= endOffset)) {
-            currentOffset = endOffset; // Ensure we don't go past the target value
-            element.style.strokeDashoffset = currentOffset;
-            return; // Stop the animation
-        }
-        element.style.strokeDashoffset = currentOffset;
-        requestAnimationFrame(frame);
-    }
-
-    requestAnimationFrame(frame);
-}
-
-// Example usage after the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    const heartsPercentage = parseInt(document.getElementById('profile-data').getAttribute('data-hearts'));
-    const dislikesPercentage = parseInt(document.getElementById('profile-data').getAttribute('data-dislikes'));
-    const credibilityPercentage = parseInt(document.getElementById('profile-data').getAttribute('data-credibility'));
-
-    animateStroke('heart-rating', heartsPercentage);
-    animateStroke('tomato-rating', dislikesPercentage);
-    animateStroke('credibility-rating', credibilityPercentage);
-});
 
 
     </script>
