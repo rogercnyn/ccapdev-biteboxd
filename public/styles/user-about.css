@@ -2,7 +2,7 @@
 /* About */
 
 /* Circle Meter (with animation) */
-.rating-labelled{
+/* .rating-labelled{
     width: 160px;
     height: 160px;
     position: relative;
@@ -10,31 +10,13 @@
     margin-right: auto;
     margin-left: auto;
 }
-
-.outer{
-    width: 120px;
-    height: 120px;
-    padding: 20px;
-	box-shadow: 0 5px 15px 0px rgba(194, 187, 187, 0.6);
-    border-radius: 50%;
-}
-
-.inner{
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-
+.number-about{
+    padding-left: 10%;
+    padding-right: 10%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-
-    border: 0.5px solid rgb(225, 223, 223);
-	box-shadow: inset 0 5px 15px 0px rgba(194, 187, 187, 0.6);
-    border-radius: 50%;
 }
-
 .rating-label-percentage{
+    flex-direction: column;
     display: flex;
     margin-left: 30%;
     margin-top: 15px;
@@ -45,88 +27,101 @@
     padding-right: 5px;
 }
 
-.heart{
-    display: flex;
-    height: 40px;
-}
 
-.tomato{
-    display: flex;
-    height: 55px;
-
-}
-
-#like{
-    height: 70px;
-}
-
-
-.heart-rating{
-    fill: none;
-    stroke:#f5c012;
-    stroke-width: 20px;
-    stroke-dasharray: 450;
-    stroke-dashoffset: 450;
-    animation: anim-heart 2s linear forwards;
-}
-
-#number{
-    margin-left: 3px;
-    font-weight: 300;
-}
-
-.tomato-rating{
-    fill: none;
-    stroke:#f5c012;
-    stroke-width: 20px;
-    stroke-dasharray: 450;
-    stroke-dashoffset: 450;
-    animation: anim-tomato 2s linear forwards;
-}
-
-
-.credibility-rating{
-    fill: none;
-    stroke:#f5c012;
-    stroke-width: 20px;
-    stroke-dasharray: 450;
-    stroke-dashoffset: 450;
-    animation: anim-credibility 2s linear forwards;
-}
-
-
-@keyframes anim-heart {
-    100%{
-        stroke-dashoffset: 157.5;
-    }
-}
-@keyframes anim-credibility {
-    100% {
-        stroke-dashoffset: 40.5; 
-    }
-}
-@keyframes anim-tomato {
-    100% {
-        stroke-dashoffset: 360; 
-    }
-}
-
-svg{
-    position: absolute;
-    top: 0;
-    left: 0;
-
-}
 
 .user-ratings-container{
     display: flex;
     justify-content: center;
 
+} */
+
+/* Updated user ratings container */
+/* User ratings container */
+.user-ratings-container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* margin-bottom: 20px; */
+   
+
+}
+
+.rating-labelled {
+    text-align: center;
+}
+
+.rating-label-percentage {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.number-about {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.label-about {
+    font-size: 14px;
+    color: #666;
+    margin-top: 0;
+}
+
+#profile-data {
+    display: none;
 }
 
 
+/* CSS for the taste profile section */
+/* Taste profile section */
+/* Taste profile section */
+.taste-profile-container {
+    margin: 20px;
+}
+
+.taste-profile-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.taste-profile-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.taste-profile-item {
+    background-color: #FDD247;
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+
+}
+
+.taste-profile-item:hover {
+    background-color: #ffffff;
+    color: FDD247;
+}
+
+
+
+
+
+
 .divider{
-    height: 70px;
+    height: 15px;
     border-bottom: 1px solid rgba(218, 218, 218, 0.864);
     margin-left: 20px;
     margin-right: 20px;

@@ -10,6 +10,17 @@ async function countRestaurantReplies() {
     }
 }
 
+async function readReply(id) {
+    try {
+        const reply = await RestaurantReply.findById(id).select().exec();
+        return reply ? reply.replies : [];
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+
+}
+
 async function clearRestaurants() {
     try {
         await RestaurantReply.deleteMany({});
@@ -32,4 +43,4 @@ async function addBulkRestaurantReply(parsedJson){
     }
 }
 
-module.exports = { addBulkRestaurantReply }
+module.exports = { addBulkRestaurantReply, readReply }

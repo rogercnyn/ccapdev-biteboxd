@@ -1,4 +1,4 @@
-const Review  = require('../models/Review.js')
+const Review  = require('../models/Review.js');
 
 const { addAReviewToRestaurant } = require('./restaurantController.js')
 const { addReviewToProfile } = require('./profileController.js')
@@ -20,6 +20,17 @@ async function clearReviews() {
         console.error('Error clearing collection:', error);
     }
 }
+
+async function getReply(id) {
+    try {
+        const review = await Review.findById(id).select("replies").populate('replies').exec();
+        return review ? review.replies : [];
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
 
 
 function saveReview(reviewToSave) {
@@ -53,4 +64,4 @@ async function addBulkReview(parsedJson){
 
 
 
-module.exports = { addBulkReview }
+module.exports = { addBulkReview, getReply }

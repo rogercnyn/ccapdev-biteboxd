@@ -16,7 +16,7 @@ function getCuisine(restaurants){
     })
 }
 
-function searchQuery(searchTerm) {
+function searchQuery(searchTerm, sortOptions) {
     return Restaurant.find(
         {
             $or: [
@@ -25,6 +25,7 @@ function searchQuery(searchTerm) {
         }, 
         searchRequiredFields
     )
+    .sort(sortOptions) // Apply sorting options
     .lean() 
     .then(restaurants => {
         return floorTheRating(restaurants); 
@@ -131,33 +132,42 @@ async function addBulkResto(parsedJson){
     }
 }
 
-async function handleSearchRequest(req, resp){
+async function handleSearchRequest(req, resp) {
     const query = req.query.query;
-    
-    searchQuery(query)
-        .then
-        (
-            results => 
-            {
-                console.log(query)
-                resp.render("search", 
-                {
-                    results: results,
-                    query: query,
-                    hasResults: results.length !== 0,
-                    resultLength: results.length
-                }); 
-             }
-        )
-        .catch
-        (
-            error => 
-            {
-                console.error('Error searching:', error);
-                resp.status(500).send('Internal Server Error');
-            }
-        );
+    const criteria = req.query.criteria; // Get sorting criteria from query parameters
+
+    let sortOptions = {};
+
+    // Determine sorting options based on criteria
+    if (criteria === 'recommended') {
+        sortOptions = { rating: -1 }; // Sort by rating descending for recommended
+    } else if (criteria === 'reviews') {
+        sortOptions = { numberOfReviews: -1 }; // Sort by number of reviews descending
+    } else if (criteria === 'rating') {
+        sortOptions = { rating: -1 }; // Sort by rating descending
+    } else if (criteria === 'price') {
+        sortOptions = { startPriceRange: 1 }; // Sort by price ascending
+    } else {
+        // Default sorting
+        sortOptions = { name: 1 }; // Sort by name ascending
+    }
+
+    try {
+        const results = await searchQuery(query, sortOptions); // Pass sorting options to search function
+        const resultLength = results.length; // Calculate the result length
+
+        resp.render("search", {
+            results: results,
+            query: query,
+            hasResults: resultLength !== 0,
+            resultLength: resultLength // Pass the result length to the template
+        });
+    } catch (error) {
+        console.error('Error searching:', error);
+        resp.status(500).send('Internal Server Error');
+    }
 }
+
 
 async function handleGetAllRestoRequest(req, resp){
     getAllRestaurant()
@@ -173,6 +183,71 @@ async function handleGetAllRestoRequest(req, resp){
         )
 }
 
+// Define the sortResults function outside of any other function
+async function sortResults(criteria) {
+    let sortedResults;
+    if (criteria === 'recommended') {
+        // Implement your recommended sorting logic here
+        sortedResults = await Restaurant.find().sort({ recommended: -1 });
+    } else if (criteria === 'reviews') {
+        // Implement sorting by number of reviews logic here
+        sortedResults = await Restaurant.find().sort({ numberOfReviews: -1 });
+    } else if (criteria === 'rating') {
+        // Implement sorting by rating logic here
+        sortedResults = await Restaurant.find().sort({ rating: -1 });
+    } else if (criteria === 'price') {
+        // Sort by price ascending
+        sortedResults = await Restaurant.find().sort({ startPriceRange: 1 });
+        // Convert startPriceRange values to integers for consistent sorting
+        sortedResults.forEach(restaurant => {
+            restaurant.startPriceRange = parseInt(restaurant.startPriceRange);
+        });
+    } else {
+        // Handle default sorting logic here
+        sortedResults = await Restaurant.find();
+    }
+    return sortedResults;
+}
 
 
-module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails };
+// Define route handler for sorting
+async function handleSortRequest(req, res) {
+    try {
+        const criteria = req.query.criteria;
+        const sortedResults = await sortResults(criteria);
+        console.log('Received sorting criteria:', criteria);
+        // Return sorted results
+        res.render('search', { results: sortedResults });
+    } catch (error) {
+        console.error('Error sorting results:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+// async function handleFilterRequest(req, res) {
+//     const selectedRating = req.query.rating; // Get the selected rating from the query parameters
+//     const selectedCity = req.query.city; // Get the selected city from the query parameters
+
+//     try {
+//         let filteredResults = await Restaurant.find(); // Retrieve all restaurants initially
+
+//         // Filter by selected rating
+//         if (selectedRating) {
+//             filteredResults = filteredResults.filter(restaurant => restaurant.rating >= selectedRating);
+//         }
+
+//         // Filter by selected city
+//         if (selectedCity) {
+//             filteredResults = filteredResults.filter(restaurant => restaurant.location.includes(selectedCity));
+//         }
+
+//         res.render('filteredResults', { results: filteredResults });
+//     } catch (error) {
+//         console.error('Error filtering results:', error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// }
+
+
+
+module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, handleSortRequest, sortResults};
