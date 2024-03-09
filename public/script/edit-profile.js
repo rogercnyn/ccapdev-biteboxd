@@ -99,7 +99,7 @@ function deleteReview(deleteButton) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ reviewId: reviewId }), // Sending the review ID to the server
+                body: JSON.stringify({ reviewId: reviewId }), 
             })
             .then(response => response.json())
             .then(data => {

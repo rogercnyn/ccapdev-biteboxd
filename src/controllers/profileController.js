@@ -1,4 +1,7 @@
 const Profile = require('../models/Profile');
+const Restaurant = require('../models/Restaurant');
+const Review = require('../models/Review');
+
 
 async function countProfiles() {
     try {
@@ -125,6 +128,199 @@ async function getProfileById(id) {
 }
 
 
+async function loginUser(req, username, password) {
+    try {
+        const userProfile = await Profile.findOne({ username });
+        if (userProfile && password === userProfile.password) {
+            req.session.userId = userProfile._id;
+            req.session.username = userProfile.username;
+            req.session.profilePicture = userProfile.image;
+            req.session['loggedIn'] = true;
+            return { success: true, redirectUrl: "/" };
+        } else {
+            const restaurantUser = await Restaurant.findOne({ username });
+            if (restaurantUser && password === restaurantUser.password) {
+                req.session.userId = restaurantUser._id;
+                req.session.username = restaurantUser.username;
+                req.session.profilePicture = restaurantUser.media;
+                req.session['loggedIn'] = true;
+                return { success: true, redirectUrl: "/resto-responsepage/" + restaurantUser._id };
+            }
+        }
+        return { success: false, message: "Incorrect username or password." };
+    } catch (error) {
+        console.error('Error during login process:', error);
+        return { success: false, message: "Internal Server Error", statusCode: 500 };
+    }
+}
+
+async function createUser(req, res) {
+    try {
+        const { firstName, lastName, username, email, password, tasteProfile } = req.body;
+        if (!tasteProfile) {
+            return res.status(400).send("Taste profiles string is empty or null");
+        }
+
+        const tasteProfilesArray = JSON.parse(tasteProfile);
+        const avatarFilename = req.file ? req.file.filename : 'default-avatar.png';
+        const headerFilename = 'header.jpg';
+
+        const newProfile = new Profile({
+            firstName,
+            lastName,
+            username,
+            email,
+            password,
+            tasteProfile: tasteProfilesArray,
+            image: avatarFilename,
+            bgImage: headerFilename,
+            hearts: 0,
+            dislike: 0,
+            credibility: 0
+        });
+
+        await newProfile.save();
+        res.redirect('/login'); 
+    } catch (error) {
+        console.error('Signup error:', error);
+        res.status(500).send('Error during signup');
+    }
+};
+
+async function editProfile(req,res) {
+    const userId = req.session.userId;
+        const { firstName, lastName, bio } = req.body;
+        try {
+            let profileUpdate = {
+                firstName: firstName,
+                lastName: lastName,
+                bio: bio
+            };
+            if (req.file) {
+                profileUpdate.image = req.file.filename;
+                req.session.profilePicture = profileUpdate.image; 
+            }
+            const updatedProfile = await Profile.findByIdAndUpdate(userId, profileUpdate, { new: true });
+    
+            res.redirect("/own-profile");
+        } catch (error) {
+            console.error('Error updating profile:', error);
+            res.status(500).send("Internal Server Error");
+        }
+};
+
+async function deleteReview(req,res) {
+    const { reviewId } = req.body; 
+
+    if (!reviewId) {
+        return res.status(400).json({ message: 'Review ID not provided' });
+    }
+
+    try {
+        const review = await Review.findByIdAndDelete(reviewId);
+        if (!review) {
+            return res.status(404).json({ message: 'Review not found' });
+        }
+        await Profile.updateMany(
+            { reviews: reviewId },
+            { $pull: { reviews: reviewId } }
+        );
+
+        res.json({ message: 'Review deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'An error occurred' });
+    }
+};
+
+
+async function updateReview(req,res) {
+    const { reviewId, editTitle, editBody, editFoodRating, editServiceRating, editAffordabilityRating } = req.body;
+
+    console.log("Updating review ID: ", reviewId);
+    console.log("Received data: ", req.body);
+
+    try {
+        const update = {
+            title: editTitle,
+            body: editBody,
+            foodRating: editFoodRating,
+            serviceRating: editServiceRating,
+            affordabilityRating: editAffordabilityRating,
+        };
+
+        console.log("Update object: ", update);
+
+        const updatedReview = await Review.findByIdAndUpdate(reviewId, update, { new: true });
+        if (!updatedReview) {
+            console.log("Review not found or update failed");
+            return res.status(404).json({ success: false, message: 'Review not found' });
+        }
+
+        console.log("Updated review: ", updatedReview);
+        res.json({ success: true, message: 'Review updated successfully', review: updatedReview });
+    } catch (error) {
+        console.error('Error updating review:', error);
+        res.status(500).json({ success: false, message: 'An error occurred' });
+    }
+};
+
+
+async function logout(req,res) {
+    req.session.destroy(() => {
+        res.redirect('/'); 
+    });
+};
+
+async function login(req,res) {
+    const { username, password } = req.body;
+    const loginResult = await loginUser(req, username, password);
+
+    if (loginResult.success) {
+        res.redirect(loginResult.redirectUrl);
+    } else {
+        if (loginResult.statusCode) {
+            res.status(loginResult.statusCode);
+        } else {
+            res.status(401);
+        }
+        res.send(loginResult.message);
+    }
+};
+
+async function handleOwnProfile(req, res) {
+    try {
+        const profile = await Profile.findById(req.session.userId)
+                                     .populate('reviews') 
+                                     .populate('likedReviews')   
+                                     .exec();
+
+        if (!profile) {
+            return res.status(404).send('Profile not found');
+        }
+
+        const profileData = profile.toObject({ virtuals: true });
+
+        console.log(profileData);
+
+        res.render('own-profile', { 
+            profile: profileData,
+            reviews: profileData.reviews,
+            likedReviews: profileData.likedReviews
+        });
+    } catch (error) {
+        console.error('Error fetching profile data:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+
+
+
+
+
+
+
 
 module.exports = { 
     saveProfile, 
@@ -134,5 +330,13 @@ module.exports = {
     addBulkProfile,
     updateProfileByUsername,
     getProfileById,
-    getProfilePicture
+    getProfilePicture,
+    loginUser,
+    createUser,
+    editProfile,
+    deleteReview,
+    updateReview,
+    logout,
+    login,
+    handleOwnProfile
 };
