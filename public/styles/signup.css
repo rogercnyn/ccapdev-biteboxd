@@ -4,9 +4,7 @@
 
 .yellow-box {
     flex: 0 0 85%;
-    /* background-color: #ffffff; */
 }
-
 
 .sliders {
     margin-top: 1%;
@@ -41,7 +39,7 @@ main {
 
 .name-box {
     display: flex;
-    width: 80%;
+    width: 100%;
     gap: 1.25rem;
     flex-direction: row;
 }
@@ -68,7 +66,6 @@ main {
 
 
 .tag {
-    padding: 8px;
     border: 3px solid black;
     height: 100%;
     width: 23%;
@@ -79,6 +76,7 @@ main {
     background-color: #FDD247;
     font-size: 20px;
     cursor: pointer;
+    padding: 8px;
 }
 
 .tag.selected {
@@ -177,8 +175,7 @@ main {
     color: red;
     font-size: 10px;
 }
-#yellow-box.yellow-box.login{
-    background-color: #FDD247;
-}
 
-
+/* #submit-action-button{
+    width: 100%;
+} */

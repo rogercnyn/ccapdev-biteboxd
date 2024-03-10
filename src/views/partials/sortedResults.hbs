@@ -1,0 +1,50 @@
+
+            
+<div class="results" id="results">
+
+    <p class="results-found">
+        <span id="result-length">{{resultLength}}</span> RESULTS FOR <span class="search-string" id="search-string">{{query}}</span>
+    </p> 
+    <div class="sorting">
+        <p>Sort:</p>
+        <select id="criteria" onchange="sortResults()">
+            <option value="default">Default</option>
+            <option value="recommended">Recommended</option>
+            <option value="reviews high-low">Number of Reviews(high-low)</option>
+            <option value="reviews low-high">Number of Reviews(low-high)</option>
+            <option value="rating high-low">Rating (high-low)</option>
+            <option value="rating low-high">Rating (low-high)</option>
+            <option value="price high-low">Price (high-low)</option>
+            <option value="price low-high">Price (low-high)</option>
+        </select>
+        
+    </div>
+    <div class="all-results">
+    
+        {{#each results}}
+            <div class="result-box" data-name="{{name}}" data-rating="{{rating}}" data-food-quality="{{foodQuality}}" data-service-quality="{{serviceQuality}}" data-price="{{startPriceRange}}" data-number-of-reviews="{{numberOfReviews}}" onclick="goToReviewPage('{{_id}}')">
+                <div class="store-details">
+                <div class="store-details-image">
+                    <img src="assets/restaurant icons/{{media}}" alt="" class="store-pic">
+                </div>
+                <div class="store-details-text">
+                    <div class="rating">
+                    <p class="title">{{name}}</p>
+                    <div class="stars">
+                        {{#times stars}}
+                            <img src="assets/star.png" alt="" class="star">
+                        {{/times}}
+                    </div>
+                    <p class="rating-text">{{rating}} ({{numberOfReviews}})</p>
+                    </div>
+                    <p class="caption">₱{{startPriceRange}}-{{endPriceRange}} | {{location}}</p>
+                    <div class="peek-review">
+                    <p class="peek-review-para">{{description}}<span id="more" onclick="appendLogin('resto-reviewpage')">...more</span></p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        {{/each}}
+
+    </div> 
+</div>

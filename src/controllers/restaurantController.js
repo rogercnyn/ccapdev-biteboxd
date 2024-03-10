@@ -1,5 +1,5 @@
 const Restaurant = require('../models/Restaurant.js');
-const searchRequiredFields = { _id: 1, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1 }
+const searchRequiredFields = { _id: 1, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1, numberOfCash: 1}
 const allPageRequiredFields = { _id: 1, name: 1, location: 1,  media: 1, rating: 1, shortDescription: 1, tag: 1 }
 
 function floorTheRating(restaurants){
@@ -193,68 +193,80 @@ async function handleGetAllRestoRequest(req, resp){
 
 // Define the sortResults function outside of any other function
 async function sortResults(criteria) {
-    let sortedResults;
-    if (criteria === 'recommended') {
-        // Implement your recommended sorting logic here
-        sortedResults = await Restaurant.find().sort({ recommended: -1 });
-    } else if (criteria === 'reviews') {
-        // Implement sorting by number of reviews logic here
-        sortedResults = await Restaurant.find().sort({ numberOfReviews: -1 });
-    } else if (criteria === 'rating') {
-        // Implement sorting by rating logic here
-        sortedResults = await Restaurant.find().sort({ rating: -1 });
-    } else if (criteria === 'price') {
-        // Sort by price ascending
-        sortedResults = await Restaurant.find().sort({ startPriceRange: 1 });
-        // Convert startPriceRange values to integers for consistent sorting
-        sortedResults.forEach(restaurant => {
-            restaurant.startPriceRange = parseInt(restaurant.startPriceRange);
-        });
-    } else {
-        // Handle default sorting logic here
-        sortedResults = await Restaurant.find();
+    let query;
+    switch (criteria) {
+        case 'recommended':
+            query = Restaurant.find({ rating: { $gte: 4 } }).sort({ rating: -1 });
+            break;
+        case 'reviews high-low':
+            query = Restaurant.find().sort({ numberOfReviews: -1 });
+            break;
+        case 'reviews low-high':
+            query = Restaurant.find().sort({ numberOfReviews: 1 });
+            break;
+        case 'rating high-low':
+            query = Restaurant.find().sort({ rating: -1 });
+            break;
+        case 'rating low-high':
+            query = Restaurant.find().sort({ rating: 1 });
+            break;
+        case 'price high-low':
+            query = Restaurant.find().sort({ startPriceRange: -1 });
+            break;
+        case 'price low-high':
+            query = Restaurant.find().sort({ startPriceRange: 1 });
+            break;
+        default: // Handles the 'default' case
+            query = Restaurant.find().sort({ name: 1 });
     }
-    return sortedResults;
+    return query.lean();
 }
+
+
 
 
 // Define route handler for sorting
 async function handleSortRequest(req, res) {
-    try {
-        const criteria = req.query.criteria;
-        const sortedResults = await sortResults(criteria);
-        console.log('Received sorting criteria:', criteria);
-        // Return sorted results
-        res.render('search', { results: sortedResults });
-    } catch (error) {
-        console.error('Error sorting results:', error);
-        res.status(500).send('Internal Server Error');
-    }
+    const criteria = req.query.criteria;
+    const sortedResults = await sortResults(criteria); // Assuming this function returns the sorted results
+
+    res.render('partials/sortedResults', { 
+        results: sortedResults,
+        hasResults: sortedResults.length > 0,
+        resultLength: sortedResults.length,
+        query: req.query.query // Assuming you're passing the search query to this function as well
+    });
 }
 
-// async function handleFilterRequest(req, res) {
-//     const selectedRating = req.query.rating; // Get the selected rating from the query parameters
-//     const selectedCity = req.query.city; // Get the selected city from the query parameters
+// In restaurantController.js
 
-//     try {
-//         let filteredResults = await Restaurant.find(); // Retrieve all restaurants initially
+async function filterRestaurants(req) {
+    const { rating, city, minReviewers, priceRange } = req.query;
+    let queryConditions = {};
 
-//         // Filter by selected rating
-//         if (selectedRating) {
-//             filteredResults = filteredResults.filter(restaurant => restaurant.rating >= selectedRating);
-//         }
+    if (rating) {
+        queryConditions.rating = { $gte: parseInt(rating) };
+    }
+    if (city) {
+        queryConditions.location = { $regex: new RegExp(city, 'i') };
+    }
+    if (minReviewers) {
+        queryConditions.numberOfReviews = { $gte: parseInt(minReviewers) };
+    }
+    if (priceRange) {
+        const [minPrice, maxPrice] = priceRange.split('-').map(Number);
+        queryConditions.startPriceRange = { $gte: minPrice };
+        queryConditions.endPriceRange = { $lte: maxPrice || 99999 }; // Assuming a high number for maxPrice if not specified
+    }
 
-//         // Filter by selected city
-//         if (selectedCity) {
-//             filteredResults = filteredResults.filter(restaurant => restaurant.location.includes(selectedCity));
-//         }
-
-//         res.render('filteredResults', { results: filteredResults });
-//     } catch (error) {
-//         console.error('Error filtering results:', error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// }
+    try {
+        const filteredRestaurants = await Restaurant.find(queryConditions).lean();
+        return filteredRestaurants;
+    } catch (error) {
+        console.error('Error filtering restaurants:', error);
+        throw error;
+    }
+}
 
 
 

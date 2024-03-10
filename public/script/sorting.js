@@ -1,18 +1,24 @@
-$(document).ready(function() {
-    $('#criteria').on('change', function() {
-        const criteria = $(this).val();
-        // Make AJAX request to fetch sorted results
-        $.ajax({
-            url: '/sort',
-            method: 'GET',
-            data: { criteria: criteria },
-            success: function(response) {
-                // Update the results section with the sorted results
-                $('#results').html(response);
-            },
-            error: function(xhr, status, error) {
-                console.error('Error sorting results:', error);
-            }
-        });
+function sortResults() {
+    const criteriaSelect = $('#criteria');
+    const selectedCriteria = criteriaSelect.val(); // Store the selected option
+
+    $.ajax({
+        url: "/api/search/sort",
+        method: 'GET',
+        data: { criteria: selectedCriteria },
+        success: function(response) {
+            $('#results').html(response);
+            // After updating the results, set the selected option based on the previous selection
+            $('#criteria').val(selectedCriteria); // Reset the selected value to what was chosen
+        },
+        error: function(xhr, status, error) {
+            console.error('Error sorting results:', error);
+        }
     });
+}
+
+
+
+$(document).ready(function() {
+    $('#criteria').on('change', sortResults); // Simplified event handler registration
 });
