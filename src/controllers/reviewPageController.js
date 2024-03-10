@@ -1,6 +1,6 @@
 const { getProfilePicture } = require('../controllers/profileController');
 const { getRestoCardDetails } = require('./restaurantController.js');
-const { getReply } = require('./reviewController.js');
+const { getReply, populateReplies } = require('./reviewController.js');
 const { readReply } = require('../controllers/restaurantreplyController.js');
 
 
@@ -12,6 +12,9 @@ function computeRating(r1, r2, r3){
 async function handleRestoPageRequest(req, resp) {
     const id = req.params._id
     let restaurant = await getRestoCardDetails(id)
+    // restaurant = await populateReplies(restaurant)
+  
+    console.log('HERE')
 
     const promises = restaurant['reviews'].map(async (review) => {
         review['createdAt'] = formatDate(review['createdAt']);
@@ -22,10 +25,19 @@ async function handleRestoPageRequest(req, resp) {
         review['noFood'] = 5 - review['foodRating']
         review['noService'] = 5 - review['serviceRating']
         review['noMoney'] = 5 - review['affordabilityRating']
+
+        review['replies'].map((reply) =>{
+            reply['media'] = restaurant['media']
+            reply['name'] = restaurant['name']
+            reply['createdAt'] = formatDate(reply['createdAt'])
+        })
+
+
         const profilePicturePromise = getProfilePicture(review['username']);
         const profilePicture = await profilePicturePromise;
         return profilePicture;
     });
+
 
     const profilePictures = await Promise.all(promises);
 
@@ -34,7 +46,6 @@ async function handleRestoPageRequest(req, resp) {
         review['order'] = index
     });
 
-    console.log(restaurant['reviews'])
     resp.render("resto-reviewpage", restaurant);
 }
 

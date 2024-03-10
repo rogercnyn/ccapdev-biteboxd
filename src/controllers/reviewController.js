@@ -31,6 +31,12 @@ async function getReply(id) {
     }
 }
 
+async function populateReplies(restaurant) {
+    for (let i = 0; i < restaurant.reviews.length; i++) {
+        restaurant.reviews[i] = await Review.populate(restaurant.reviews[i], { path: 'replies' });
+    }
+    return restaurant
+}
 
 
 function saveReview(reviewToSave) {
@@ -64,4 +70,4 @@ async function addBulkReview(parsedJson){
 
 
 
-module.exports = { addBulkReview, getReply }
+module.exports = { addBulkReview, getReply, populateReplies }

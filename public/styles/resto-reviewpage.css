@@ -7,19 +7,18 @@
 @import "quill.css";
 
 
-
+body {
+    border: 1px solid black;
+    height: 100%;
+}
 
 .main {
-    border: 1px solid black;
-    margin-top: 50px;
     margin-left: 250px;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
-    height: 3500px;
-    /* width: 69%; */
 }
 
 .review-bar {
@@ -31,7 +30,11 @@
     box-sizing: border-box;
     margin-bottom: 10px;
     padding: 10px;
-    font-family: 'Jua';
+}
+
+.titlearea {
+    font-family: 'Segoe UI';
+
 }
 
 .publish-button {
@@ -83,22 +86,6 @@
     padding-left: 10px;
     padding-right: 10px;
     color: gray;
-}
-
-
-.responsepanel {
-    background-color: #f8f8f8;
-    padding: 4%;
-
-    width: 70%;
-    font-family: 'Segoe UI';
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-inline-start: auto;
-    
-    border-radius: 25px;
-
 }
 
 

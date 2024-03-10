@@ -1,11 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-    quillEditor = new Quill('#editor', {
-        theme: 'snow',
-        height: 120,
-        placeholder: 'Type here your review!'
-    });
-    document.querySelector('.publish-button').addEventListener('click', handleUpload);
-});
 
 
 let currentRatings = {
@@ -30,10 +22,6 @@ function searchReview(){
     Array.from(reviews).slice(0, reviews.length - 1).forEach(review => $(review).hide())
 }
 
-
-
-document.querySelector('.publish-button').addEventListener('click', handleUpload);
-document.getElementById('photo-input').addEventListener('change', handleFileSelect);
 
 function handleFileSelect(event) {
     const files = event.target.files;
@@ -248,3 +236,66 @@ function deleteReview() {
         timer: 2500 
     });
 }
+
+
+function initializeMap() {
+    var map = L.map('map').setView([14.5604805, 120.9909801], 16); // DLSU Branch coordinates
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([14.5604805, 120.9909801]).addTo(map)
+    .bindPopup("Ate Rica's Bacsilog on-the-go DLSU Branch")
+    .openPopup();
+
+}
+
+function initializeQuill() {
+    quillEditor = new Quill('#editor', {
+        theme: 'snow',
+        height: 120,
+        placeholder: 'Type here your review!'
+    });
+    document.querySelector('.publish-button').addEventListener('click', handleUpload);
+}
+
+$(document).ready(function() {
+
+    let isLogged = document.querySelector('.publish-button')
+
+    if(isLogged) {
+
+        document.querySelector('.publish-button').addEventListener('click', handleUpload);
+        document.getElementById('photo-input').addEventListener('change', handleFileSelect);
+    
+        initializeQuill()    
+    }
+
+
+    const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'));
+    const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'));
+    const serviceSlider = new Slider(document.getElementsByClassName('slider-service-rating'));
+    const filterReviewSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
+    
+    priceSlider.initializeHover();
+    foodQualitySlider.initializeHover();
+    serviceSlider.initializeHover();
+    filterReviewSlider.initializeHover();
+    
+    const likesets = document.getElementsByClassName('likeset');
+    const likes = [];
+    
+    Array.from(likesets).forEach(likeset => {
+        let likeButton = likeset.querySelector('#like');
+        let dislikeButton = likeset.querySelector('#dislike');
+        likes.push(new Like(likeButton, dislikeButton));
+    });
+    
+    Array.from(likes).forEach(like => {
+        like.initializeClick();
+    });
+
+    initializeMap()
+});
+

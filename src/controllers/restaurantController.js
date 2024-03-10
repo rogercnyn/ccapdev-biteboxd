@@ -37,8 +37,16 @@ function searchQuery(searchTerm, sortOptions) {
 }
 
 
-async function getRestoCardDetails(id){
-    return await Restaurant.findById(id).select("-password").populate('reviews').lean()
+async function getRestoCardDetails(id) {
+    return await Restaurant.findById(id)
+        .select("-password")
+        .populate({
+            path: 'reviews',
+            populate: {
+                path: 'replies'
+            }
+        })
+        .lean();
 }
 
 function getAllRestaurant(){

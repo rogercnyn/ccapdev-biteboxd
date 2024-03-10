@@ -62,9 +62,12 @@ function isAuthenticated(req, res, next) {
 // Public routes for restaurant and review handling
 router.get('/all', handleGetAllRestoRequest);
 router.get('/search', handleSearchRequest);
+
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
+
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
 router.get('/sort', handleSortRequest);
+
 
 
 // will redirect to login if the link resto-responsepage without the corresponding id is provided
@@ -99,7 +102,7 @@ router.get('/sort', function(req, res) {
 router.get('/signup', (req, res)=> res.render("signup"));
 router.get('/login', (req, res) => res.render("login"));
 router.get('/explore', (req, res) => res.render("explore"));
-router.get(['/', '/index'], (req, res) => res.render("index", { loggedIn: !!req.session.userId }));
+router.get(['/', '/index'], (req, res) => res.render("index"));
 router.get('/createrestaurant', (req, res) => res.render("createrestaurant"));
 
 /*Login Post */

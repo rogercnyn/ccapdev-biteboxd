@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/assets/tab-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/resto-reviewpage.css">
+
     <title>Review Restaurant</title>
+
+
     <script src="/script/general.js"></script>
     <script src="/script/like.js"></script>
     <script src="/script/slider.js"></script>
-    <script src="/script/resto-reviewpage.js"></script>
     
-
-    <link rel="stylesheet" href="/styles/resto-reviewpage.css">
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -28,6 +29,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <script src="/script/resto-reviewpage.js"></script>
+
 </head>
 <body>
     {{> navbar}}
@@ -137,88 +141,92 @@
            <hr>
             <div class="publishrevarea" >
 
-                <div class="cannot-publish" id="cannot-publish">
-                    <a href="/login">Log in to leave a review</a>
-                </div>
+                {{#unless loggedIn}}
+                    <div class="cannot-publish" id="cannot-publish">
+                        <a href="/login">Log in to leave a review</a>
+                    </div>
+                {{/unless}}
 
-                <div class="publishreview" id="publishreview">
-                    
-                    <div class="criteriaratearea">
-                        <div class="criteriarate">
-                            <h3 class="criterialbl">Food Quality</h3>
-                            <div class="star-sorting" data-criterion="food">
-                                <span onclick="addRating(0, 1)" class="slider-emoji-rating slider-food-rating">🍗</span>
-                                <span onclick="addRating(0, 2)" class="slider-emoji-rating slider-food-rating">🍗</span>
-                                <span onclick="addRating(0, 3)" class="slider-emoji-rating slider-food-rating">🍗</span>
-                                <span onclick="addRating(0, 4)" class="slider-emoji-rating slider-food-rating">🍗</span>
-                                <span onclick="addRating(0, 5)" class="slider-emoji-rating slider-food-rating">🍗</span>
-                            </div>
-                        </div>
-
-                        <div class="criteriarate">
-                            <h3 class="criterialbl">Service</h3>
-                            <div class="star-sorting" data-criterion="service">
-                                <span onclick="addRating(1, 1)" class="slider-emoji-rating slider-service-rating">🤝</span>
-                                <span onclick="addRating(1, 2)" class="slider-emoji-rating slider-service-rating">🤝</span>
-                                <span onclick="addRating(1, 3)" class="slider-emoji-rating slider-service-rating">🤝</span>
-                                <span onclick="addRating(1, 4)" class="slider-emoji-rating slider-service-rating">🤝</span>
-                                <span onclick="addRating(1, 5)" class="slider-emoji-rating slider-service-rating">🤝</span>
-                            </div>
-                        </div>
-
-                        <div class="criteriarate">
-                            <h3 class="criterialbl">Affordability</h3>
-                            <div class="star-sorting" data-criterion="price">
-                                <span onclick="addRating(2, 1)" class="slider-emoji-rating slider-price-rating">💵</span>
-                                <span onclick="addRating(2, 2)" class="slider-emoji-rating slider-price-rating">💵</span>
-                                <span onclick="addRating(2, 3)" class="slider-emoji-rating slider-price-rating">💵</span>
-                                <span onclick="addRating(2, 4)" class="slider-emoji-rating slider-price-rating">💵</span>
-                                <span onclick="addRating(2, 5)" class="slider-emoji-rating slider-price-rating">💵</span>
-                            </div>
-                        </div>
+                {{#if loggedIn}}
+                    <div class="publishreview" id="publishreview">
                         
-                    </div>
+                        <div class="criteriaratearea">
+                            <div class="criteriarate">
+                                <h3 class="criterialbl">Food Quality</h3>
+                                <div class="star-sorting" data-criterion="food">
+                                    <span onclick="addRating(0, 1)" class="slider-emoji-rating slider-food-rating">🍗</span>
+                                    <span onclick="addRating(0, 2)" class="slider-emoji-rating slider-food-rating">🍗</span>
+                                    <span onclick="addRating(0, 3)" class="slider-emoji-rating slider-food-rating">🍗</span>
+                                    <span onclick="addRating(0, 4)" class="slider-emoji-rating slider-food-rating">🍗</span>
+                                    <span onclick="addRating(0, 5)" class="slider-emoji-rating slider-food-rating">🍗</span>
+                                </div>
+                            </div>
 
-                    <div class="title-container">
-                        <textarea id="title" class="textbox" rows="1" placeholder="Title"></textarea>
-                    </div>
+                            <div class="criteriarate">
+                                <h3 class="criterialbl">Service</h3>
+                                <div class="star-sorting" data-criterion="service">
+                                    <span onclick="addRating(1, 1)" class="slider-emoji-rating slider-service-rating">🤝</span>
+                                    <span onclick="addRating(1, 2)" class="slider-emoji-rating slider-service-rating">🤝</span>
+                                    <span onclick="addRating(1, 3)" class="slider-emoji-rating slider-service-rating">🤝</span>
+                                    <span onclick="addRating(1, 4)" class="slider-emoji-rating slider-service-rating">🤝</span>
+                                    <span onclick="addRating(1, 5)" class="slider-emoji-rating slider-service-rating">🤝</span>
+                                </div>
+                            </div>
 
-                    <br>
-                    
-                    <div id="editor">
-                    </div>
-
-                    <br>
-                    
-                    <div class="uploadarea">
-                        <div class="photo-upload">
-                            <label for="photo-input" class="upload-label">
-                              <img src="/assets/upload.svg" alt="Upload Icon" class="upload-icon">
-                              <br>
-                              <span class="upload-text">Upload</span>
-                            </label>
-                            <input type="file" id="photo-input" name="photos" accept="image/*,video/*" multiple class="hidden-input">
+                            <div class="criteriarate">
+                                <h3 class="criterialbl">Affordability</h3>
+                                <div class="star-sorting" data-criterion="price">
+                                    <span onclick="addRating(2, 1)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                    <span onclick="addRating(2, 2)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                    <span onclick="addRating(2, 3)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                    <span onclick="addRating(2, 4)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                    <span onclick="addRating(2, 5)" class="slider-emoji-rating slider-price-rating">💵</span>
+                                </div>
+                            </div>
+                            
                         </div>
-                          
-                    
-                        <div class="photo-container" id="photo-container">
-    
+
+                        <div class="title-container">
+                            <textarea id="title" class="textbox" rows="1" placeholder="Title"></textarea>
                         </div>
-    
-                        <div class="modal" id="modal" onclick="closeModal()">
-                            <div class="modal-content" onclick="event.stopPropagation();">
-                              <span class="close" onclick="closeModal()">&times;</span>
-                              <div id="modal-media-container"></div>
+
+                        <br>
+                        
+                        <div id="editor">
+                        </div>
+
+                        <br>
+                        
+                        <div class="uploadarea">
+                            <div class="photo-upload">
+                                <label for="photo-input" class="upload-label">
+                                <img src="/assets/upload.svg" alt="Upload Icon" class="upload-icon">
+                                <br>
+                                <span class="upload-text">Upload</span>
+                                </label>
+                                <input type="file" id="photo-input" name="photos" accept="image/*,video/*" multiple class="hidden-input">
+                            </div>
+                            
+                        
+                            <div class="photo-container" id="photo-container">
+        
+                            </div>
+        
+                            <div class="modal" id="modal" onclick="closeModal()">
+                                <div class="modal-content" onclick="event.stopPropagation();">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <div id="modal-media-container"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-              
-                    
+                
+                        
 
-                    <div class="alignpublishbutton">
-                        <button class="publish-button" id="publishBtn">Publish</button>
+                        <div class="alignpublishbutton">
+                            <button class="publish-button" id="publishBtn">Publish</button>
+                        </div>
                     </div>
-                </div>
+                {{/if}}
             </div>
 
             <hr>
@@ -240,129 +248,14 @@
                 </div>
 
             <div class="publishedrevarea">
-                {{!-- <div class="review">
-               
-                    <div class="review-panel">
-                        <div class="profile-score">
-                            <div class="profilearea">
-                                <img src="/assets/profile.jpg" class="profilepic">
-                            </div>
-                            <div class="score">
-                                <h2 class="yellowscore" id="user-score">4.6</h2>
-                            </div>
-                        </div>
-
-                        <div class="review-center-tile">
-                            <div class="score-username">
-                                <h2 class="titlearea">Good meal but one try is enough!</h2>
-                            
-                                <div class="nametitle">
-                                    <a href="own-profile" class="nameandtime">makoeats</a>
-                                    <p class="nameandtime"> · </p>
-                                    <p class="nameandtime">February 12, 2024 8:01 am </p>
-                                </div>
-                            </div>
-                            <div class="criteriaratings">
-                                <div class="criteriascore">
-                                    <h4 class="criteria">Food Quality
-                                    <div class="stars">
-                                        <span>🍗</span>
-                                        <span>🍗</span>
-                                        <span>🍗</span>
-                                        <span>🍗</span>
-                                        <span class="over-emoji">🍗</span>
-                                    </div>
-                                </div>
-        
-                                <div class="criteriascore">
-                                    <h4 class="criteria">Service
-                                    <div class="stars">
-                                        <span>🤝</span>
-                                        <span>🤝</span>
-                                        <span>🤝</span>
-                                        <span class="over-emoji">🤝</span>
-                                        <span class="over-emoji">🤝</span>
-                                    </div>
-                                </div>
-        
-                                <div class="criteriascore">
-                                    <h4 class="criteria">Affordability
-                                    <div class="stars">
-                                        <span>💵</span>
-                                        <span>💵</span>
-                                        <span>💵</span>
-                                        <span>💵</span>
-                                        <span class="over-emoji">💵</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="reviewtext" id="rev1">
-                                <span class="longtext">I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!</span>
-                                <span class="full-text">However, I think it is important to note that for some people, the taste may not be good. It's a little bit spicy due to the pepper they add on the toppings. You may ask ate not to put any if spicy is not your thing.</span>
-                                <span class="see-more" onclick="toggleSeeMore('rev1')"><b>...see more</b></span>
-                            </div>
-                    
-                        </div>
-
-
-                        <div class="rate-review" id="likeDislikeButtons">
-                            <div class="options-button" onclick="toggleOptions()">
-                                <button class="a" id="a">&#128077;</button>
-                                <span class = "numberoffeedback">8</span>
-                                <button class="a" id="b">&#128078;</button>
-                                <span class="numberoffeedback">9</span>
-                                &nbsp;&nbsp;&#8286; 
-                                <div class="options-popup" id="optionsPopup">
-                                    <a href="#" onclick="editReview()">Edit</a>
-                                    <a href="#" onclick="deleteReview()">Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    
-        
-                    </div>
-
-                    <div class="photopanel">
-                        <img src="/assets/bacsilog1.png" class="revpic" onclick="openModal('assets/bacsilog1.png')">
-                        <img src="/assets/bacsilog2.jpeg" class="revpic" onclick="openModal('assets/bacsilog2.jpeg')">
-                        <video src="/assets/bacsilogvid.mp4" class="revpic" onclick="openModal('assets/bacsilogvid.mp4')"></video>
-                        <img src="/assets/bacsi.jpg" class="revpic" onclick="openModal('assets/bacsi.jpg')">
-                    </div>
-
-                    
-                    <div class="modal" id="modal" onclick="closeModal()">
-                        <div class="modal-content" onclick="event.stopPropagation();">
-                        <span class="close" onclick="closeModal()">&times;</span>
-                        <div id="modal-media-container"></div>
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="responsepanel">
-                        <div class="score-username">
-                            <h2 class="titlearea">Reply: Ate Rica's</h2>
-                        
-                            <div class="nametitle">
-                                <p class="nameandtime">February 12, 2024 8:01 am </p>
-                            </div>
-                        </div>
-                        <div id="replytext">
-                            Thank you for your kind review!
-                        </div>
-
-          
-                    </div>
-                    
-                </div> --}}
-
+              
                 {{#each reviews}}
                     <div class="review"> 
                         <div class="review-panel" id="reviewPanel2">
 
                             <div class="profile-score">
                                 <div class="profilearea">
-                                    <img src="/assets/{{profilePicture}}" class="profilepic">
+                                    <img src="/uploads/avatars/{{profilePicture}}" class="profilepic">
                                 </div>
                                 <div class="score">
                                     <h2 class="yellowscore" id="user-score">{{overallRating}}</h2>
@@ -461,53 +354,44 @@
                             </div>
                         </div>
 
+
+                        {{#each replies}}
+                        
+                            <div class="responsepanel">
+                            
+                                <div class="score-username">
+                                    
+                                    <div class="profilearea">
+                                        <img src="/assets/restaurant icons/{{media}}" class="profilepic">
+                                    </div>
+
+                                    <div class="titlearea">
+
+                                        <h2>{{name}} <i class="fas fa-check-circle verified-icon"></i></h2>
+                                        <p class="nameandtime">{{createdAt}}</p>
+
+                                    </div>
+                                
+                                </div>
+                                
+                                <div id="replytext">
+                                    {{body}}
+                                </div>
+
+            
+                            </div>
+                        {{/each}}
+
+
                     </div>
                 {{/each}}
 
             </div>
     </main>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="/script/map.js"></script>
     <script src="/script/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
-    <script src="/script/resto-reviewpage.js"></script>
-    <script>
-        const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'))
-        const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'))
-        const serviceSlider = new Slider(document.getElementsByClassName('slider-service-rating'))
-        const filterReviewSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
-        priceSlider.initializeHover();
-        foodQualitySlider.initializeHover();
-        serviceSlider.initializeHover();
-        filterReviewSlider.initializeHover();
-                
-        const likesets = document.getElementsByClassName('likeset');
-        const likes = []
-
-
-        Array.from(likesets).forEach(likeset => {
-            let likeButton = likeset.querySelector('#like');
-            let dislikeButton = likeset.querySelector('#dislike');
-            likes.push(new Like(likeButton, dislikeButton))
-        });
-
-        
-        Array.from(likes).forEach(like => {
-            like.initializeClick();
-        });
-
-
-
-        console.log(likes)
-        adjustNavBar();
-        detectLogin();
-
-        document.getElementById("title").addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-                e.preventDefault();
-            }
-        });
-    </script>
+   
     
 </body>
 </html>

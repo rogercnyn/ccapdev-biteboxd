@@ -32,6 +32,7 @@ class Slider {
         this.currentValue = value;
         this.removeAllColors();
         Array.from(this.elements).slice(0, value).forEach(element => element.classList.add("colored"));
+        // window.location.href = window.location.href + "/" + value
     }
 
     removeAllColors() {

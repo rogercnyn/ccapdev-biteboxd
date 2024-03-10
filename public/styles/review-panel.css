@@ -128,7 +128,7 @@
     transition: max-height 0.3s ease;
 }
 
-.reviewtext {
+.reviewtext  {
     padding-bottom: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -276,7 +276,7 @@
     cursor: pointer;
 }
 
-.longtext, #replytext, .full-text, .see-more {
+.longtext,  .full-text, .see-more {
     text-align: left;
     font-family: 'Segoe UI', sans-serif;
     font-size: 13px;
@@ -284,11 +284,38 @@
     border-radius: 20px;
 }
 
-#replytext {
-        /* background-color: #fcfcfc; */
-        padding: 2%;
-}
+
 
 .responsepanel {
-    margin-bottom: 2%;
+    padding: 2%;
+    width: 100%;
+    font-family: 'Segoe UI';
+    display: flex;
+    flex-direction: column;
+}
+
+.responsepanel > .score-username {
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid black; */
+    align-items: center;
+    gap: 1.5rem;
+}
+
+#replytext {
+    border-radius: 10px;
+   
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13px; 
+    margin-top: 2%;
+    background-color: #fafafa;
+    padding: 2%;
+    width: 87%;
+    margin-inline-start: auto;
+}
+
+
+.replyicon {
+    color: #444;
+    font-size: 19px;
 }
