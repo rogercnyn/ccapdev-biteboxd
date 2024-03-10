@@ -52,7 +52,7 @@ router.get('/all', handleGetAllRestoRequest);
 router.get('/search', handleSearchRequest);
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
-router.get('/sort', handleSortRequest);
+router.get('/api/search/sort', handleSortRequest);
 
 
 router.get('/signup', (req, res)=> res.render("signup"));
@@ -73,6 +73,17 @@ router.get('/own-profile', isAuthenticated, handleOwnProfile);
 
 
 
+// Example server-side route for sorting
+app.get('/api/search/sort', (req, res) => {
+    const criteria = req.query.criteria;
+    // Assume getSortedResults is a function that returns sorted data based on criteria
+    getSortedResults(criteria).then(sortedResults => {
+        res.render('partials/sortedResults', { results: sortedResults, hasResults: sortedResults.length > 0 });
+    }).catch(error => {
+        // Handle errors
+        res.status(500).send('Error processing request');
+    });
+});
 
 
 
