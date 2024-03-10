@@ -11,6 +11,7 @@
         <script src="/script/search.js"></script>
         <script src="/script/search-bar.js"></script>
         <script src="/script/sorting.js"></script>
+        <script src="/script/filter.js"></script>
         <title>BiteBoxd - Search</title>
     </head>
     <body>
@@ -54,13 +55,13 @@
 
                         <div class="search-setting">
                             <p>City</p>
-                            <input type="text" class="input-filter">
+                            <input type="text" class="input-filter" maxlength="30">
                         </div>
 
                         
                         <div class="search-setting">
                             <p>Min. Reviewers</p>
-                            <input type="text" class="input-filter">
+                            <input type="number" class="input-filter" min="0">
                         </div>
 
                 
@@ -96,7 +97,7 @@
                         </div>
                         <div class="filter-buttons">
                             <button class="clear-button adv-search-button" onclick="search()">Clear</button>
-                            <button class="apply-button adv-search-button">Apply</button>
+                            <button class="apply-button adv-search-button" id="applyFilter">Apply</button>
                         </div>
                     </div>
 
