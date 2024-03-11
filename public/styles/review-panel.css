@@ -291,6 +291,8 @@
     width: 100%;
     font-family: 'Segoe UI';
     display: flex;
+    /* border-left: 1px solid #999; */
+    /* margin-left: 5%; */
     flex-direction: column;
 }
 
@@ -308,14 +310,19 @@
     font-family: 'Segoe UI', sans-serif;
     font-size: 13px; 
     margin-top: 2%;
-    background-color: #fafafa;
+    /* background-color: #fafafa; */
     padding: 2%;
     width: 87%;
     margin-inline-start: auto;
+    background-color: #fdd34793;
 }
 
 
 .replyicon {
     color: #444;
     font-size: 19px;
+}
+
+.verified-icon {
+    color: green;
 }
