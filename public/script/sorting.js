@@ -20,5 +20,5 @@ function sortResults() {
 
 
 $(document).ready(function() {
-    $('#criteria').on('change', sortResults); // Simplified event handler registration
+    $('#criteria').on('change', sortResults);
 });

@@ -146,7 +146,6 @@ async function handleSearchRequest(req, resp) {
 
     let sortOptions = {};
 
-    // Determine sorting options based on criteria
     if (criteria === 'recommended') {
         sortOptions = { rating: -1 }; // Sort by rating descending for recommended
     } else if (criteria === 'reviews') {
@@ -156,7 +155,6 @@ async function handleSearchRequest(req, resp) {
     } else if (criteria === 'price') {
         sortOptions = { startPriceRange: 1 }; // Sort by price ascending
     } else {
-        // Default sorting
         sortOptions = { name: 1 }; // Sort by name ascending
     }
 
@@ -176,7 +174,6 @@ async function handleSearchRequest(req, resp) {
     }
 }
 
-
 async function handleGetAllRestoRequest(req, resp){
     getAllRestaurant()
         .then
@@ -191,7 +188,6 @@ async function handleGetAllRestoRequest(req, resp){
         )
 }
 
-// Define the sortResults function outside of any other function
 async function sortResults(criteria) {
     let query;
     switch (criteria) {
@@ -222,9 +218,6 @@ async function sortResults(criteria) {
     return query.lean();
 }
 
-
-
-
 // Define route handler for sorting
 async function handleSortRequest(req, res) {
     const criteria = req.query.criteria;
@@ -238,25 +231,31 @@ async function handleSortRequest(req, res) {
     });
 }
 
-// In restaurantController.js
-
-async function filterRestaurants(req) {
-    const { rating, city, minReviewers, priceRange } = req.query;
+async function filterRestaurants(criteria) {
     let queryConditions = {};
 
-    if (rating) {
-        queryConditions.rating = { $gte: parseInt(rating) };
+    if (criteria.rating) {
+        queryConditions.rating = { $gte: parseInt(criteria.rating) };
     }
-    if (city) {
-        queryConditions.location = { $regex: new RegExp(city, 'i') };
+    if (criteria.city) {
+        queryConditions.location = { $regex: new RegExp(criteria.city, 'i') };
     }
-    if (minReviewers) {
-        queryConditions.numberOfReviews = { $gte: parseInt(minReviewers) };
+    if (criteria.minReviewers) {
+        queryConditions.numberOfReviews = { $gte: parseInt(criteria.minReviewers) };
     }
-    if (priceRange) {
-        const [minPrice, maxPrice] = priceRange.split('-').map(Number);
+    if (criteria.priceRange) {
+        const [minPrice, maxPrice] = criteria.priceRange.split('-').map(Number);
         queryConditions.startPriceRange = { $gte: minPrice };
-        queryConditions.endPriceRange = { $lte: maxPrice || 99999 }; // Assuming a high number for maxPrice if not specified
+        if (maxPrice) {
+            queryConditions.endPriceRange = { $lte: maxPrice };
+        }
+    }
+    // Handling foodQuality and serviceQuality, assuming these are numeric values representing thresholds
+    if (criteria.foodQuality) {
+        queryConditions.foodQuality = { $gte: parseInt(criteria.foodQuality) };
+    }
+    if (criteria.serviceQuality) {
+        queryConditions.serviceQuality = { $gte: parseInt(criteria.serviceQuality) };
     }
 
     try {
@@ -268,6 +267,31 @@ async function filterRestaurants(req) {
     }
 }
 
+async function handleFilterRequest(req, res) {
+    try {
+        // Extract the filter criteria from the request query parameters
+        const filterCriteria = {
+            rating: req.query.rating,
+            city: req.query.city,
+            minReviewers: req.query.minReviewers,
+            priceRange: req.query.priceRange
+        };
+
+        // Call the filterRestaurants function with the extracted criteria
+        const filteredResults = await filterRestaurants({ query: filterCriteria });
+
+        // Render a view or send JSON data back to the client with the filtered results
+        res.render('partials/sortedResults', { 
+            results: filteredResults,
+            hasResults: filteredResults.length > 0,
+            resultLength: filteredResults.length,
+            query: req.query.query
+        });
+    } catch (error) {
+        console.error('Error handling filter request:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
 
 
-module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, handleSortRequest, sortResults};
+module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, handleSortRequest, sortResults, filterRestaurants, handleFilterRequest};
