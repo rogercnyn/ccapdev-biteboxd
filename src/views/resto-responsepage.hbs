@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/assets/tab-icon.png" type="image/x-icon">
-    <title>Review Restaurant</title>
+    <title>{{name}}</title>
     <script src="/script/general.js"></script>
     <script src="/script/quillSettings.js"></script>
     <script src="/script/resto-responsepage.js"></script>
@@ -326,8 +326,7 @@
                                 <div class="reviewtext" id="rev{{order}}">
                                     <span class="longtext">{{longText}}</span>
                                     {{#unless hasNoSeeMore}}
-                                        <span class="full-text">{{fullText}}</span>
-                                        <span class="see-more" onclick="toggleSeeMore('rev{{order}}')"><b>...see more</b></span>
+                                        <span class="full-text">{{fullText}}</span><span class="see-more" onclick="toggleSeeMore('rev{{order}}')"><b>...see more</b></span>
                                     {{/unless}}
                                 </div>
                         
@@ -367,10 +366,8 @@
                             </div>
                         </div>
                         
-                     </div>
-                    {{/each}}
 
-                    <div class="replypanel">
+                    <div class="replypanel" id ="replypanel">
                         <div class="reply-editorarea" id="reply-editor-container">
                            <div class="reply-editor"></div>
                         </div>
@@ -378,39 +375,31 @@
                     </div>
                     
                 
-                    <div class="responsepanel">
-                        {{#if hasReplies}}
-                            {{#each restaurantreplies}}
-                            <div class="score-username">
-                                <h2 class="titlearea">Re: {{name}}</h2>
+                    {{#each replies}}
+                            <div class="responsepanel">
                             
-                                <div class="nametitle">
-                                    <p class="nameandtime">{{createdAt}} </p>
+                                <div class="score-username">
+                                    
+                                    <div class="profilearea">
+                                        <img src="/assets/restaurant icons/{{media}}" class="profilepic">
+                                    </div>
+
+                                    <div class="titlearea">
+
+                                        <h2>{{name}} <i class="fas fa-check-circle verified-icon"></i></h2>
+                                        <p class="nameandtime">{{createdAt}}</p>
+
+                                    </div>
+                                
+                                </div>
+                                
+                                <div id="replytext">
+                                    {{body}}
                                 </div>
                             </div>
-                            <div id="replytext">
-                            <span class="longtext">{{longText}}</span>
-                                    {{#unless hasNoSeeMore}}
-                                        <span class="full-text">{{fullText}}</span>
-                                        <span class="see-more" onclick="toggleSeeMore('rev{{order}}')"><b>...see more</b></span>
-                                    {{/unless}}
-                            </div>
-                            <div class="photopanel">
-                                {{#each media}}
-
-                                    {{#if (isVideo this)}}
-                                        <video src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></video>
-
-                                    {{else}}
-                                        <img src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></img>
-
-                                    {{/if}}
-                                {{/each}}
-                            </div>
-                            {{/each}}
-                        {{/if}}
+                    {{/each}}
                     </div>
-                
+                {{/each}}
             </div>
         </div>  
         </div>
