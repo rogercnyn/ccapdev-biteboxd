@@ -55,19 +55,19 @@
 
                         <div class="search-setting">
                             <p>City</p>
-                            <input type="text" class="input-filter" maxlength="30">
+                            <input type="text" class="input-filter" id="city-filter" maxlength="30">
                         </div>
 
                         
                         <div class="search-setting">
                             <p>Min. Reviewers</p>
-                            <input type="number" class="input-filter" min="0">
+                            <input type="number" id="min-review-filter" class="input-filter" min="0">
                         </div>
 
                 
                         <div class="price-setting">
                             <p>Pricing</p>
-                            <div class="price-slider">
+                            <div class="price-slider" id="price-filter">
                                 <span onclick="cashEmos.handleClick(1)" class="slider-emoji-rating slider-price-rating">💵</span>
                                 <span onclick="cashEmos.handleClick(2)" class="slider-emoji-rating slider-price-rating">💵</span>
                                 <span onclick="cashEmos.handleClick(3)" class="slider-emoji-rating slider-price-rating">💵</span>
@@ -78,7 +78,7 @@
                         <div class="search-setting-criteria">
                             <div class="search-setting">
                                 <p>Food Quality</p>
-                                <div class="categories">
+                                <div class="categories" id="food-quality-filter">
                                     <div class="green box" onclick="clickTrafficLight(this)"></div>
                                     <div class="yellow box" onclick="clickTrafficLight(this)"></div>
                                     <div class="red box" onclick="clickTrafficLight(this)"></div>
@@ -87,7 +87,7 @@
 
                             <div class="search-setting">
                                 <p>Service</p>
-                                <div class="categories">
+                                <div class="categories" id="service-quality-filter">
                                     <div class="green box" onclick="clickTrafficLight(this)"></div>
                                     <div class="yellow box" onclick="clickTrafficLight(this)"></div>
                                     <div class="red box" onclick="clickTrafficLight(this)"></div>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="filter-buttons">
                             <button class="clear-button adv-search-button" onclick="search()">Clear</button>
-                            <button class="apply-button adv-search-button" id="applyFilter">Apply</button>
+                            <button class="apply-button adv-search-button" id="applyFilter" onclick="applyFilters()">Apply</button>
                         </div>
                     </div>
 
