@@ -21,12 +21,9 @@
 }
 
 .review-center-tile {
-    /* ; */
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    /* border: 1px solid yellow; */
-
 
 }
 
@@ -81,14 +78,11 @@
 }
 
 .yellowscore {
-    background-color:#FDD247;
+    /* background-color:#FDD247; */
     /* padding: 3px; */
     border-radius: 5px;
     color: black;
-    font-size: 20px;
-    /* padding: 20%; */
-    min-width: 50px;
-    min-height: 50px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -324,5 +318,5 @@
 }
 
 .verified-icon {
-    color: green;
+    color: #125240;
 }

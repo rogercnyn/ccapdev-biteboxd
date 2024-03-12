@@ -52,6 +52,7 @@ router.get('/all', handleGetAllRestoRequest);
 router.get('/search', handleSearchRequest);
 
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
+// router.get('/resto-reviewpage/:_id/advReview', handleAdvReviewRequest);
 
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
 router.get('/api/search/sort', handleSortRequest);

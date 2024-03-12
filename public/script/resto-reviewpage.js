@@ -239,16 +239,19 @@ function deleteReview() {
 
 
 function initializeMap() {
-    var map = L.map('map').setView([14.5604805, 120.9909801], 16); // DLSU Branch coordinates
-
+    let x = $("#xcoord").val()
+    let y = $("#ycoord").val()
+    let title = $(".resto-title").text()
+    
+    let map = L.map('map').setView([ x, y ], 16);
+    
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-
-    L.marker([14.5604805, 120.9909801]).addTo(map)
-    .bindPopup("Ate Rica's Bacsilog on-the-go DLSU Branch")
-    .openPopup();
-
+    
+    L.marker([ x, y]).addTo(map)
+      .bindPopup(title)
+      .openPopup();
 }
 
 function initializeQuill() {
@@ -272,17 +275,22 @@ $(document).ready(function() {
         initializeQuill()    
     }
 
+    
 
     const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'));
     const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'));
     const serviceSlider = new Slider(document.getElementsByClassName('slider-service-rating'));
     const filterReviewSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
+    const filterPriceSlider = new Slider(document.getElementsByClassName('filter-price-rating'));
+    const filterFoodSlider = new Slider(document.getElementsByClassName('filter-food-rating'));
     
     priceSlider.initializeHover();
     foodQualitySlider.initializeHover();
     serviceSlider.initializeHover();
     filterReviewSlider.initializeHover();
-    
+    filterPriceSlider.initializeHover();
+    filterFoodSlider.initializeHover()
+
     const likesets = document.getElementsByClassName('likeset');
     const likes = [];
     
@@ -298,4 +306,3 @@ $(document).ready(function() {
 
     initializeMap()
 });
-

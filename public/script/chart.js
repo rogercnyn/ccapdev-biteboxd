@@ -1,13 +1,16 @@
-const ratingsData = {
-    '5 stars': 20,
-    '4 stars': 15,
-    '3 stars': 10,
-    '2 stars': 8,
-    '1 star': 11
+
+let ratingsData = {
+    '5 stars': $("#fiveStar").val(),
+    '4 stars': $("#fourStar").val(),
+    '3 stars': $("#threeStar").val(),
+    '2 stars': $("#twoStar").val(),
+    '1 star':  $("#oneStar").val()
 };
 
 const labels = Object.keys(ratingsData);
 const data = Object.values(ratingsData);
+
+
 
 const ctx = document.getElementById('ratingChart').getContext('2d');
 const ratingChart = new Chart(ctx, {
@@ -53,3 +56,5 @@ const ratingChart = new Chart(ctx, {
         }
     }
 });
+
+$("#ratingChart").width(450).height(450);

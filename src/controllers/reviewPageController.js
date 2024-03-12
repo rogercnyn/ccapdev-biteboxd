@@ -12,9 +12,11 @@ function computeRating(r1, r2, r3){
 async function handleRestoPageRequest(req, resp) {
     const id = req.params._id
     let restaurant = await getRestoCardDetails(id)
-    // restaurant = await populateReplies(restaurant)
-  
-    console.log('HERE')
+    let username = req.session.username ? req.session.username : "";
+
+    restaurant['flooredRating'] = Math.floor(restaurant['rating'])
+    restaurant['xcoord'] = restaurant['coordinates'][0]
+    restaurant['ycoord'] = restaurant['coordinates'][1]
 
     const promises = restaurant['reviews'].map(async (review) => {
         review['createdAt'] = formatDate(review['createdAt']);
@@ -25,6 +27,7 @@ async function handleRestoPageRequest(req, resp) {
         review['noFood'] = 5 - review['foodRating']
         review['noService'] = 5 - review['serviceRating']
         review['noMoney'] = 5 - review['affordabilityRating']
+        review['isOwnReview'] = review['username'] === username
 
         review['replies'].map((reply) =>{
             reply['media'] = restaurant['media']
@@ -45,9 +48,27 @@ async function handleRestoPageRequest(req, resp) {
         review['profilePicture'] = profilePictures[index]['image'];
         review['order'] = index
     });
+    
+
+    reorderReviews(restaurant['reviews'], username)
+    console.log(restaurant)
+    
 
     resp.render("resto-reviewpage", restaurant);
 }
+
+function reorderReviews(reviews, username) {
+    return reviews.sort((a, b) => {
+        if (a.username === username) {
+            return -1;
+        }
+        if (b.username === username) {
+            return 1;
+        }
+        return (b.noOfLikes - b.noOfDislikes) - (a.noOfLikes - a.noOfDislikes);
+    });
+}
+
 
 async function handleRestoResponsePageRequest(req, resp) {
     const id = req.params._id;

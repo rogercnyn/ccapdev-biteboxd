@@ -5,20 +5,29 @@
     position: relative;
     flex-direction: row;
     align-items: center;
-    width: 1000px;
+    width: 800px;
+    min-height: 325px;
+    max-height: 325px;
     background-color: #f8fafa;
     border-radius: 40px;
     padding: 2%;
     font-weight: 300;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
+.star-caption {
+    color: #a1a1a1;
+    font-size: 15px;
+    margin-top: 5px;
+}
 
 .resto-title {
     font-family: 'DM Sans';
     font-weight: 900;
-    font-size: 80px;
+    font-size: 40px;
+    /* border: 1px solid black; */
+    max-width: 325px;
     background-color: black;
     /* background: linear-gradient(to right, #888 0%, #000 50%, #888 100%); */
     -webkit-background-clip: text;
@@ -28,13 +37,19 @@
 .attributes {
     font-family: 'Segoe UI', sans-serif;
     color: #222;
+    font-size: 11px;
 }
 
 .nameandoverallscore {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1rem;
+    gap: 0.25rem;
+    /* font-size: 10px; */
+}
+
+.star-in-card {
+    font-size: 15px;
 }
 
 .moredetails {
@@ -42,12 +57,12 @@
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 10px;
+    margin-bottom: 11px;
     font-family: 'Segoe UI', sans-serif;
 }
 
 .restodetail {
-    font-size: 12px;
+    font-size: 11px;
     /* border: 1px solid black; */
     background-color: #f2f2f8;
     border-radius: 20px;
@@ -59,16 +74,17 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 50px;
+    gap: 40px;
 }
 
 .location {
     font-family: 'Segoe UI', sans-serif;
+    font-size: 11px;
 }
 
 .description {
     font-family: 'Segoe UI', sans-serif;
-    font-size: 16px;
+    font-size: 11px;
 }
 
 .firstbatchattri {
@@ -113,6 +129,7 @@ color: red;
     padding-top: 30px;
     justify-content: center;
     align-items: center;
+    /* border: 1px solid black; */
 }
 
 .restopicture img {
@@ -122,13 +139,13 @@ color: red;
 }
 
 .restopicture{
-    width: 250px;
-    height: 250px;
+    width: 225px;
+    height: 225px;
     overflow: hidden;
     object-fit: cover;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.2);
 
-    border-radius: 10px;
+    border-radius: 11px;
 }
 
 .restodetailsarea {
@@ -142,8 +159,8 @@ color: red;
     display: flex;
     flex-direction: column;
     padding-top: 15px;
-    height: 5000px;
-    width: 1000px;
+    /* height: 5000px; */
+    width: 850px;
 }
 
 .reviewheader {
@@ -152,7 +169,7 @@ color: red;
     justify-content: flex-start;
     text-align: left;
     align-items: center;
-    gap: 10px;
+    gap: 11px;
 }
 
 .reviewoverall {
@@ -197,7 +214,7 @@ hr {
 .optionsbutton {
     cursor: pointer;
     display: inline-block;
-    gap: 10px;
+    gap: 11px;
 }
 
 .editoption {
@@ -209,10 +226,10 @@ hr {
     font-weight: 700;
     background-color: orange;
     color: #f2f2f8;
-    padding: 10px;
+    padding: 11px;
     margin-right: 5px;
     width: 50px;
-    border-radius: 10px;
+    border-radius: 11px;
 }
 
 .deleteoption {
@@ -224,7 +241,7 @@ hr {
     font-weight: 700;
     background-color: rgb(233, 77, 15);
     color: #f2f2f8;
-    padding: 10px;
+    padding: 11px;
     width: 50px;
-    border-radius: 10px;
+    border-radius: 11px;
 }

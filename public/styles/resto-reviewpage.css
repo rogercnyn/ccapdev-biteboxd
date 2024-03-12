@@ -8,17 +8,30 @@
 
 
 body {
-    border: 1px solid black;
     height: 100%;
 }
 
 .main {
-    margin-left: 250px;
-    justify-content: center;
+    margin-left: 175px;
+    /* justify-content: space-between; */
     align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 1.5rem;
+    width: 100%;
+}
+
+
+.right {
+    font-size: 12px;
+    flex: 0 0 10%;
+    position: fixed;
+    height: 100%;
+    top: 70px;
+    /* border: 1px solid black; */
+    right: 50px;
+    width: 23%;
+    font-family: "Segoe UI";
 }
 
 .review-bar {
@@ -68,7 +81,7 @@ body {
 
 
 .publishreview {
-    width: 900px; 
+    width: 850px; 
     padding: 20px;
     border-radius: 8px;
 }
@@ -212,8 +225,12 @@ margin-bottom: 100px;
 }
 
 
+.reviewheader {
+    font-size: 15px;
+    font-family: "Segoe UI";
+}
 .textbox {
-    width: 900px;
+    width: 850px;
     padding: 10px; 
     box-sizing: border-box; 
     font-family: 'Montserrat', sans-serif;
@@ -239,7 +256,7 @@ margin-bottom: 100px;
 
 #map {
     height: 300px;
-    width: 500px;
+    width: 850px;
     border: 20px solid radius;
 }
 
@@ -258,16 +275,18 @@ margin-bottom: 100px;
 .search-container {
     margin-bottom: 4%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     /* width: 50%; */
     /* border: 1px solid black; */
-    height: 75px;
+    height: 50px;
+    font-size: 10px;
 }
 
 .search-bar {
     width: 50%;
     height: 75%;
+    font-size: 12px;
 }
 
 .clear-icon{
@@ -276,6 +295,7 @@ margin-bottom: 100px;
 
 .search-button {
     height: 75%;
+    font-size: 12px;
     width: 10%;
     border-radius: 20px;
     /* opacity: 50%; */
@@ -315,4 +335,147 @@ margin-bottom: 100px;
 
 .options-popup a:hover {
     background-color: #efefef;
+}
+
+.owned {
+    color: 	#f96161;
+}
+
+.chart-container {
+    /* border: 1px solid black; */
+    width: 250px;
+}
+
+.right-settings-container {
+    /* border: 1px solid black; */
+    display: flex;
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* box-shadow: 0 0 5px #111; */
+    /* background-color: #fdd34719; */
+    border-radius: 30px;
+    /* padding: 5%; */
+    height: 600px;
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.rating-container, .search-settings {
+    border: 1px solid #f9f9f9;
+    width: 100%;
+    box-shadow: 0 0 5px #d9d9d9;
+    border-radius: 45px;
+}
+
+.rating-container {
+    padding: 7%;
+    width: 86%;
+}
+
+.search-settings-container {
+    padding-left: 7%;
+    display: flex;
+    /* padding: 10%; */
+    /* border: 1px solid orange; */
+    flex-direction: column;
+    /* gap: 1rem; */
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.search-settings {
+    height: 550px;
+}
+
+.filter-slider {
+    font-size: 14px;
+}
+
+.filter-row {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+/* REVIEW SEARCHBAR */
+.search-rev-container {
+    position: fixed;
+}
+
+.search-rev-outer-container {
+    height: 50px;
+}
+
+.search-rev-input {
+    padding: 8px 30px 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 240px;
+    outline: none; /* Remove outline */
+}
+
+.search-rev-input:focus {
+    border-color: none; /* Add focus border color */
+}
+
+.search-rev-but {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px 10px;
+    border: none;
+    background-color: #f2f2f2;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.search-rev-but:hover {
+    background-color: #ddd;
+}
+
+.search-rev-but i {
+    font-size: 16px;
+    color: #888;
+}
+
+
+#criteria {
+    /* margin-top: 4px; */
+    font-size: 12px;
+    border: none;
+}
+
+#criteria:focus {
+    border: none;
+}
+
+.sorting {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 12px;
+    /* gap: 1rem; */
+    /* justify-content: center; */
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.adv-search-button {
+    padding: 5%;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #d9d9d9;
+}
+
+.adv-search-button:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
 }
