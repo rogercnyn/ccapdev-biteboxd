@@ -20,8 +20,8 @@ async function handleRestoPageRequest(req, resp) {
 
     const promises = restaurant['reviews'].map(async (review) => {
         review['createdAt'] = formatDate(review['createdAt']);
-        review['longText'] = review['body'].slice(0, 255);
-        review['fullText'] = review['body'].slice(255);
+        review['longText'] = review['body'].slice(0, 230);
+        review['fullText'] = review['body'].slice(230);
         review['hasNoSeeMore'] = review['fullText'].length === 0 
         review['overallRating'] = computeRating(review['affordabilityRating'],review['foodRating'], review['serviceRating'])
         review['noFood'] = 5 - review['foodRating']
@@ -76,14 +76,19 @@ async function handleRestoResponsePageRequest(req, resp) {
 
     const promises = restaurant['reviews'].map(async (review) => {
         review['createdAt'] = formatDate(review['createdAt']);
-        review['longText'] = review['body'].slice(0, 255);
-        review['fullText'] = review['body'].slice(255);
+        review['longText'] = review['body'].slice(0, 230);
+        review['fullText'] = review['body'].slice(230);
         review['hasNoSeeMore'] = review['fullText'].length === 0;
         review['overallRating'] = computeRating(review['affordabilityRating'], review['foodRating'], review['serviceRating']);
         review['noFood'] = 5 - review['foodRating'];
         review['noService'] = 5 - review['serviceRating'];
         review['noMoney'] = 5 - review['affordabilityRating'];
-        review['hasReplies'] = review['replies'].length > 0;
+
+        review['replies'].map((reply) =>{
+            reply['media'] = restaurant['media']
+            reply['name'] = restaurant['name']
+            reply['createdAt'] = formatDate(reply['createdAt'])
+        })
 
         const profilePicturePromise = getProfilePicture(review['username']);
         const profilePicture = await profilePicturePromise;
@@ -92,25 +97,10 @@ async function handleRestoResponsePageRequest(req, resp) {
 
     const profilePictures = await Promise.all(promises);
 
-    const updatedReviews = await Promise.all(restaurant['reviews'].map(async (review, index) => {
+    restaurant['reviews'].forEach((review, index) => {
         review['profilePicture'] = profilePictures[index]['image'];
-        review['order'] = index;
-
-        if (review['hasReplies']) {
-            const replyPromises = review['replies'].map(async (replyId) => {
-                const reply = await getReply(replyId);
-                console.log(replyId);
-                return reply;
-            });
-
-            const replies = await Promise.all(replyPromises);
-            review['repliesDetails'] = replies;
-
-        }
-            return review; 
-        }));
-        
-        restaurant['reviews'] = updatedReviews;  
+        review['order'] = index
+    });
 
     console.log(restaurant);
     resp.render("resto-responsepage", restaurant);

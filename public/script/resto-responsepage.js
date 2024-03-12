@@ -94,8 +94,6 @@ function injectQuill(element) {
     const replyPanel = reviewPanel.parentElement.nextElementSibling;
     toggleReplyPanel(replyPanel)
 
-
-
 }
 
 function openFileInput() {
@@ -143,7 +141,7 @@ function toggleReplyPanel(replyPanel){
 
 
 function toggleReplyEditor(button) {
-    const replyEditor = button.nextElementSibling;
+    const replyEditor = getElementById('replypanel');
     replyEditor.style.display = replyEditor.style.display === 'none' ? 'block' : 'none';
 }
 
@@ -362,3 +360,39 @@ function deleteRestaurant(){
     });
 }
 
+function openModal(mediaSrc) {
+    const modal = document.getElementById('modal');
+    const modalMediaContainer = document.getElementById('modal-media-container');
+
+    modalMediaContainer.innerHTML = '';
+
+    const isVideoMedia = /\.(mp4|webm|ogg)$/i.test(mediaSrc);
+
+    if (isVideoMedia) {
+        const video = document.createElement('video');
+        video.id = 'modal';
+        video.src = mediaSrc;
+        video.controls = true;
+        video.style.width = '100%'; 
+        video.style.height = 'auto'; 
+        modalMediaContainer.appendChild(video);
+    } else {
+        const img = document.createElement('img');
+        img.src = mediaSrc;
+        img.style.width = '100%';
+        img.style.height = 'auto';
+        modalMediaContainer.appendChild(img);
+    }
+
+    modal.style.display = 'flex';
+
+    document.body.classList.add('modal-open');
+    
+}
+
+
+function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+}
