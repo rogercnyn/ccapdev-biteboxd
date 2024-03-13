@@ -128,7 +128,6 @@ async function getProfileById(id) {
 }
 
 
-
 async function createUser(req, res) {
     try {
         const { firstName, lastName, username, email, password, tasteProfile } = req.body;
@@ -242,43 +241,44 @@ async function updateReview(req,res) {
 
 
 
-
 async function handleProfileRequest(req, res) {
-    let requestedProfile = req.params.username;
-    if(req.session.username === requestedProfile) {
-        
-        handleOwnProfile(req, res)
+    const requestedUsername = req.params.username;
+    if (req.session.username === requestedUsername) {
+        //eto for own profile
+        fetchAndRenderProfile({ _id: req.session.userId }, res, 'own-profile');
     } else {
-        // how to handle other profile
+        //dis wan for others
+        fetchAndRenderProfile({ username: requestedUsername }, res, 'others-profile');
     }
-    
 }
 
-async function handleOwnProfile(req, res) {
+async function fetchAndRenderProfile(query, res, view) {
     try {
-        const profile = await Profile.findById(req.session.userId)
-                                     .populate('reviews') 
-                                     .populate('likedReviews')   
-                                     .exec();
+        let profileQuery = Profile.findOne(query);
+        if (query._id) {
+            profileQuery = Profile.findById(query._id);
+        }
 
+        const profile = await profileQuery.populate('reviews').populate('likedReviews').exec();
         if (!profile) {
             return res.status(404).send('Profile not found');
         }
 
         const profileData = profile.toObject({ virtuals: true });
 
-        console.log(profileData);
 
-        res.render('own-profile', { 
+        res.render(view, {
             profile: profileData,
             reviews: profileData.reviews,
-            likedReviews: profileData.likedReviews
+            likedReviews: profileData.likedReviews,
         });
     } catch (error) {
-        console.error('Error fetching profile data:', error);
+        console.error(`Error fetching profile data: ${error}`);
         res.status(500).send('Internal Server Error');
     }
 }
+
+
 
 
 

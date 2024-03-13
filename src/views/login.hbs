@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/login.css">
-    <script src="script/general.js"></script>
-    <script src="script/login.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
     <title>BiteBoxd - Log In</title>
 </head>
@@ -32,11 +31,11 @@
             <div class="wrong-credentials">
                 <p class="wrong-creds-text" id="wrong-creds-text">Incorrect username or password.</p>
             </div>
-            <div class="box username-box" style="margin-left: 10%;">
+            <div class="box username-box" style="margin-left: 10%;padding-bottom: 30px;padding-top: 30px;">
                 <label for="username" class="input-label">Username</label>
                 <input type="text" id="username" name="username">
             </div>
-            <div class="box password-box" style="margin-left: 10%;">
+            <div class="box password-box" style="margin-left: 10%;padding-bottom: 30px;">
                 <label for="password" class="input-label">Password</label>
                 <input type="password" id="password" name="password">
                 <img src="assets/see.svg" alt="" class="show-password" id="show-password" onclick="togglePasswordVisibility()">
@@ -53,6 +52,9 @@
         <p>By signing in to BiteBoxd, you agree to our Terms and Privacy Policy.</p>
     </div>
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </body>
 </html>

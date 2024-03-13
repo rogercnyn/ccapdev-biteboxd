@@ -20,7 +20,7 @@
 
 
 
-        <title>{{profile.username}}'s Profile - BiteBoxd</title>
+        <title>@{{profile.username}}'s Profile - BiteBoxd</title>
     </head>
 <body>
     {{> navbar}}
@@ -87,11 +87,11 @@
         
                 <div class="user-info">
                     <div class="fullname">
-                        <img src="assets/full-name-icon.png" alt="full name icon" class="icon">
+                        <img src="/assets/full-name-icon.png" alt="full name icon" class="icon">
                         <h3 id="first-name">{{profile.firstName}}</h3> <h3>&nbsp;</h3> <h3 id="last-name">{{profile.lastName}}</h3>
                     </div>
                     <div class="date-created">
-                        <img src="assets/calendar.png" alt="date icon" class="icon">
+                        <img src="/assets/calendar.png" alt="date icon" class="icon">
                         <h3>{{formatMonthYear profile.createdAt}}</h3>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                         </div>
                     {{/each}}
                 {{else}}
-                    <p id="no-liked-revp">You haven't liked any Restaurants/ Reviewa yet.</p>
+                    <p id="no-liked-revp">You haven't liked any Restaurants yet.</p>
                 {{/if}}
             </div>
 
@@ -332,7 +332,7 @@
                                     <p>@{{../profile.username}} left a review</p>
                                 </div>
                                 <div class="delete-recent-activity">
-                                    <img src="assets/delete.png" alt="" class="delete-recent-activity-icon">  
+                                    <img src="/assets/delete.png" alt="" class="delete-recent-activity-icon">  
                                 </div>
                             </div>
                         {{/each}}
@@ -346,7 +346,7 @@
         <div class="avatar-container">
             <div class="avatar-boorder">
                 <div class="avatar">
-                    <img src="uploads/avatars/{{profilePicture}}" alt="Profile Avatar" id="profile-pic">
+                    <img src="/uploads/avatars/{{profilePicture}}" alt="Profile Avatar" id="profile-pic">
                     {{!-- <img src="/{{session.profilePicture}}" alt="Profile Picture" id="profile-pic"> --}}
 
                 </div>

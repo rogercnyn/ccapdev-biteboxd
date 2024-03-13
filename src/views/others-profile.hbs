@@ -3,49 +3,69 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/own-profile.css">
-        <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
-        <script src="script/own-profile.js"></script>
-        <script src="script/general.js"></script>
-        <script src="script/like.js"></script>
-        <title>BiteBoxd - View other user's Profile</title>
+        <link rel="stylesheet" href="/styles/own-profile.css">
+        <link rel="shortcut icon" href="/assets/tab-icon.png" type="image/x-icon">
+        <script src="/script/own-profile.js"></script>
+        <script src="/script/general.js"></script>
+        <script src="/script/edit-profile.js" defer></script>
+        <script src="/script/like.js"></script>
+        <script src="/script/general.js"></script>
+
+        <!-- quill -->
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+
+
+
+        <title>@{{profile.username}}'s Profile - BiteBoxd</title>
     </head>
 <body>
     {{> navbar}}
 
 
+
     <main>
         <div class="profile-header">
-            <img src="assets/header.jpg" alt="header" class="header-picture">
+            <img src="/assets/{{profile.bgImage}}" alt="header" class="header-picture">
         </div>
         
         <div class="profile">
             <div class="info-container">
                 <div class="handle-edit">
                     <div class="handle">
-                        <h1 style="padding-right:25%;">@Mon_1015</h1>
+                        <h1 id="profile-username">@{{profile.username}}</h1>
                     </div>
-                    <div class="edit" style="display:none;">
-                        <button class="edit-btn">Edit Profile</button>
+                    <div class="edit">
+
+
+                        <!-- edit profile popup-->
+                        <div id="editProfileModal" class="modal">
+                            
+                            
+                        </div>
+
                     </div>
                 </div>
                 
         
                 <div class="user-info">
                     <div class="fullname">
-                        <img src="assets/full-name-icon.png" alt="full name icon" class="icon">
-                        <h3>Monica Geller</h3>
+                        <img src="/assets/full-name-icon.png" alt="full name icon" class="icon">
+                        <h3 id="first-name">{{profile.firstName}}</h3> <h3>&nbsp;</h3> <h3 id="last-name">{{profile.lastName}}</h3>
                     </div>
                     <div class="date-created">
-                        <img src="assets/calendar.png" alt="date icon" class="icon">
-                        <h3>2024</h3>
+                        <img src="/assets/calendar.png" alt="date icon" class="icon">
+                        <h3>{{formatMonthYear profile.createdAt}}</h3>
                     </div>
                 </div>
                 <div class="bio">
-                    <p>bio: CHEF || Innovative chef with a taste for adventure</p>
+                    <p>bio:&nbsp;</p> <p id="profile-bio">{{profile.bio}}</p>
                 </div>
             </div>
-            <div class="profile-tabs"> <!-- tab_box-->
+            <div class="profile-tabs"> 
                 <button class="tab-btn" id="liked-restaurants">Liked Restaurants</button>
                 <button class="tab-btn" id="reviews">Reviews</button>
                 <button class="tab-btn" id="about">About</button>
@@ -55,448 +75,172 @@
         <div class="content-box">
 
             <!-- Liked Restaurants -->
+
             <div class="content">
-
-                <div class="results" id="results">
-          
-                    
-                    <div class="all-results">
-                        <div class="result-box" onclick="appendLogin('resto-reviewpage')">
-                            <div class="store-details">
-    
-                                <div class="store-details-image">
-                                    <img src="assets/restaurant icons/davidsteahouse.jpg" alt="" class="store-pic">
-    
+                <h2>Reviews You've Liked</h2>
+                {{#if profile.likedReviews.length}}
+                    {{#each profile.likedReviews}}
+                        <div class="liked-review">
+                            <h3>{{this.title}}</h3>
+                            <p>{{this.body}}</p>
+                            <div class="criteriaratings">
+                                <div>Food Quality: {{this.foodRating}}/5</div>
+                                <div>Service: {{this.serviceRating}}/5</div>
+                                <div>Affordability: {{this.affordabilityRating}}/5</div>
+                            </div>
+                            <div class="review-date">Reviewed on: {{formatDate this.createdAt}}</div>
+                            {{#if this.media.length}}
+                                <div class="review-media">
+                                    {{#each this.media}}
+                                        <img src="{{this}}" alt="Review media">
+                                    {{/each}}
                                 </div>
-                                <div class="store-details-text">
-                                    <div class="rating">
-    
-                                        <p class="title">David's Tea House</p>
-                                        <div class="stars">
-    
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                        </div>
-    
-                    
-                                    <p class="rating-text">4.3 (172)</p>
-                                    </div>
-                                    <p class="caption">P300-450 | R-Square Mall, Taft, Manila</p>
-                                    <div class="peek-review">
-                                        <p class="peek-review-para">
-                                            "Perfect for a Fil-Chi like me,Close walk from condo we were staying. Yummy food and nice service, the staffs ar…"
-                                            <span id="more" onclick="appendLogin('resto-reviewpage')">...more</span>                                    
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div> 
-    
-                        <div class="result-box" onclick="appendLogin('resto-reviewpage')">
-                            <div class="store-details">
-    
-                                <div class="store-details-image">
-                                    <img src="assets/restaurant icons/tapa king.jpg" alt="" class="store-pic">
-    
-                                </div>
-                                <div class="store-details-text">
-                                    <div class="rating">
-    
-                                        <p class="title">Tapa King</p>
-                                        <div class="stars">
-    
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                        </div>
-    
-                    
-                                    <p class="rating-text">3.7 (122)</p>
-                                    </div>
-                                    <p class="caption">P125-175 | One Archers, Taft, Manila</p>
-                                    <div class="peek-review">
-                                        <p class="peek-review-para">
-                                            "Open 24 hour! Perfect for Taft as everything usually closes after people leave this mostly business area. Close walk from hotel we were staying. Very busy at…"
-                                            <span id="more" onclick="appendLogin('resto-reviewpage')">...more</span>                                    
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div> 
-    
-                        <div class="result-box" onclick="appendLogin('resto-reviewpage')">
-                            <div class="store-details">
-    
-                                <div class="store-details-image">
-                                    <img src="assets/restaurant icons/wang pau.jpg" alt="" class="store-pic">
-    
-                                </div>
-                                <div class="store-details-text">
-                                    <div class="rating">
-    
-                                        <p class="title">Wang Pao</p>
-                                        <div class="stars">
-    
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                            <img src="assets/star.png" alt="" class="star">
-                                        </div>
-    
-                    
-                                    <p class="rating-text">4.3 (172)</p>
-                                    </div>
-                                    <p class="caption">P500-700 | Noli Street, Taft, Manila</p>
-                                    <div class="peek-review">
-                                        <p class="peek-review-para">
-                                            "Open 24 hour! Perfect for late night samgy craaaaviingssssss!!! as everything usually closes after people leave this mostly business area. Close walk from hotel we were staying. Very busy at…"
-                                            <span id="more" onclick="appendLogin('resto-reviewpage')">...more</span>                                    
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div> 
-    
-    
-    
-    
-                        <div class="load-more-container">
-                            <button class="load-more-button" onclick="loadMoreResults()">Load More</button>
+                            {{/if}}
                         </div>
-    
-                    </div> 
-                </div>
-                
-
+                    {{/each}}
+                {{else}}
+                    <p id="no-liked-revp">You haven't liked any Restaurants yet.</p>
+                {{/if}}
             </div>
 
-           <!-- Reviews -->
-           <div class="content">
 
-                
+            <!-- Reviews -->
 
-            <div class="review" style="margin-left:7%">
+            <div class="content">
+                {{#each reviews}}
+                   <div class="review" data-review-id="{{this._id}}"> 
+                        <div class="review-panel">
+                            <div class="profile-score">
+                                <div class="profilearea">
+                                    <img src="/uploads/avatars/{{../profile.image}}" alt="Profile Picture" class="profilepic" id="profile-icon">
+                                </div>
+                                <div class="score">
+                                    <h2 class="yellowscore" id="user-score">{{this.overallRating}}</h2>
+                                </div>
+                            </div>
+
+                            <div class="review-center-tile">
+                                <div class="score-username">
+                                    <h2 class="titlearea">{{this.title}}</h2>
+                                    <div class="nametitle">
+                                        <a href="/profile/{{this.username}}" class="nameandtime">{{this.username}}</a>
+                                        <p class="nameandtime"> · </p>
+                                        <p class="nameandtime">{{formatDate this.createdAt}}</p>
+                                    </div>
+                                </div>
+                                <div class="criteriaratings">
+                                    <div class="criteriascore">
+                                        <h4 class="criteria">Food Quality</h4>
+                                        <div class="stars">
+                                            {{#times this.foodRating}}
+                                                <span>🍗</span>
+                                            {{/times}}
+                                        </div>
+                                    </div>
+                                    <div class="criteriascore">
+                                        <h4 class="criteria">Service</h4>
+                                        <div class="stars">
+                                            {{#times this.serviceRating}}
+                                                <span>🤝</span>
+                                            {{/times}}
+                                        </div>
+                                    </div>
+                                    <div class="criteriascore">
+                                        <h4 class="criteria">Affordability</h4>
+                                        <div class="stars">
+                                            {{#times this.affordabilityRating}}
+                                                <span>💵</span>
+                                            {{/times}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="reviewtext" id="{{@index}}">
+                                    <span class="longtext">{{this.body}}</span>
+                                    {{!-- will implement this later --}}
+                                    <span class="read-more">Read more...</span>
+                                </div>
+                            </div>
+                                <div class="review-popup">
+                                    <div class="react-container">
+                                        <button class="like-dislike" id="like">&#128077;</button>
+                                        <span class = "numberoffeedback">9</span>
+                                        <button class="like-dislike" id="dislike">&#128078;</button>
+                                        <span class="numberoffeedback">8</span>
+                                    </div>
+                                    <div class="options-button" onclick="toggleOptions(this)">
+                                        
+                                    </div>
+                                </div>       
+                        </div>
+                        <div class="photopanel">
+                            {{#each this.media}}
+                                <img src="/assets/{{this}}" class="revpic">
+                            {{/each}}
+                        </div>
+                    </div>
+                {{else}}
+                    <p>No reviews found.</p>
+                {{/each}}
+            </div>
            
-                <div class="review-panel">
-
-                    <div class="profile-score">
-                        <div class="profilearea">
-                            <img src="assets/avatar-f2.png" class="profilepic">
-                        </div>
-                        <div class="score">
-                            <h2 class="yellowscore" id="user-score">4.6</h2>
-                        </div>
-                    </div>
-
-                    <div class="review-center-tile">
-                        <div class="score-username">
-                            <h2 class="titlearea">My new go-to!</h2>
-                        
-                            <div class="nametitle">
-                                <a href="others-profile" class="nameandtime">@Mon_1015</a>
-                                <p class="nameandtime"> · </p>
-                                <p class="nameandtime">February 12, 2024 8:01 am </p>
-                            </div>
-                        </div>
-                        <div class="criteriaratings">
-                            <div class="criteriascore">
-                                <h4 class="criteria">Food Quality
-                                <div class="stars">
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span class="over-emoji">🍗</span>
-                                    <span class="over-emoji">🍗</span>
-                                </div>
-                            </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Service
-                                <div class="stars">
-                                    <span>🤝</span>
-                                    <span>🤝</span>
-                                    <span>🤝</span>
-                                    <span>🤝</span>
-                                    <span class="over-emoji">🤝</span>
-                                </div>
-                            </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Affordability
-                                <div class="stars">
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="reviewtext" id="rev2">
-                            <span class="longtext">This is now my <b>new go-to resto!</b> <b><i>Not the best</i></b> but you get what you paid for. The <u>service is a little slow but ate is so nice and accommodating.</u> Price is cheaper compared to other resto nearby. The ambiance is also great and their choice</span>
-                            <span class="full-text">of music is good. It's very amazing. Many Lasallians would love this resto. Try it guys! You would love this if you are a huge fan of Taylor Swift.</span>
-                            <span class="see-more" onclick="toggleSeeMore('rev2')"><b>...see more</b></span>
-                        </div>
-
-                        
-    
-                    </div>
-
-
-                    <div class="review-popup">
-                        <div class="react-container">
-                            <button class="like-dislike" id="like">&#128077;</button>
-                            <span class = "numberoffeedback">10</span>
-                            <button class="like-dislike" id="dislike">&#128078;</button>
-                            <span class="numberoffeedback">16</span>
-                        </div>
-                        <div class="options-button" onclick="toggleOptions(this)">
-                            &nbsp;&nbsp;&#8286;
-                            <div class="options-popup">
-                                <a href="#">Edit</a>
-                                <a href="#" onclick="deleteReview(this)">Delete</a>
-                            </div>
-                        </div>
-                    </div>                        
-                
-    
-                </div>
-
-                <div class="photopanel">
-                    <img src="assets/bacsilog3.jpeg" class="revpic">
-                    <!-- <img src="assets/cbsisig.jpgassets/bacsilog5.jpg" class="revpic"> -->
-                    <img src="assets/bacsi.jpg" class="revpic">
-                </div>
-            </div>
-            <div class="review" style="margin-left:7%">
-           
-                <div class="review-panel">
-
-                    <div class="profile-score">
-                        <div class="profilearea">
-                            <img src="assets/avatar-f2.png" class="profilepic">
-                        </div>
-                        <div class="score">
-                            <h2 class="yellowscore" id="user-score">4.6</h2>
-                        </div>
-                    </div>
-
-                    <div class="review-center-tile">
-                        <div class="score-username">
-                            <h2 class="titlearea">Good meal but one try is enough!</h2>
-                        
-                            <div class="nametitle">
-                                <a href="others-profile" class="nameandtime">@Mon_1015</a>
-                                <p class="nameandtime"> · </p>
-                                <p class="nameandtime">February 12, 2024 8:01 am </p>
-                            </div>
-                        </div>
-                        <div class="criteriaratings">
-                            <div class="criteriascore">
-                                <h4 class="criteria">Food Quality
-                                <div class="stars">
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span>🍗</span>
-                                    <span class="over-emoji">🍗</span>
-                                </div>
-                            </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Service
-                                <div class="stars">
-                                    <span>🤝</span>
-                                    <span>🤝</span>
-                                    <span>🤝</span>
-                                    <span class="over-emoji">🤝</span>
-                                    <span class="over-emoji">🤝</span>
-                                </div>
-                            </div>
-    
-                            <div class="criteriascore">
-                                <h4 class="criteria">Affordability
-                                <div class="stars">
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span>💵</span>
-                                    <span class="over-emoji">💵</span>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="reviewtext" id="rev2">
-                            <span class="longtext">I had an <b>amazing experience</b> here! The <i>food was exquisite</i>, and <i>the service was impeccable.</i> The ambiance was cozy and inviting. I highly recommend trying their signature dishes, especially the seafood pasta. Will definitely be returning!</span>
-                            <span class="full-text">However, I think it is important to note that for some people, the taste may not be good. It's a little bit spicy due to the pepper they add on the toppings. You may ask ate not to put any if spicy is not your thing.</span>
-                            <span class="see-more" onclick="toggleSeeMore('rev2')"><b>...see more</b></span>
-                        </div>
-                
-                    </div>
-
-
-                    <div class="review-popup">
-                        <div class="react-container">
-                            <button class="like-dislike" id="like">&#128077;</button>
-                            <span class = "numberoffeedback">10</span>
-                            <button class="like-dislike" id="dislike">&#128078;</button>
-                            <span class="numberoffeedback">16</span>
-                        </div>
-                        <div class="options-button" onclick="toggleOptions(this)">
-                            &nbsp;&nbsp;&#8286;
-                            <div class="options-popup">
-                                <a href="#">Edit</a>
-                                <a href="#" onclick="deleteReview(this)">Delete</a>
-                            </div>
-                        </div>
-                    </div>                        
-                
-    
-                </div>
-
-                <div class="photopanel">
-                    <img src="assets/cbsisig.jpg" class="revpic">
-                    <img src="assets/bacsi.jpg" class="revpic">
-                </div>
-            </div>
-
             
-
-        </div>
-        
 
             <!-- About -->
             <div class="content">
                 <div class="user-ratings-container">
+                    <!-- Ratings section -->
                     <div class="rating-labelled">
-                        <div class="rating">
-                            <div class="outer">
-                                <div class="inner">
-                                    <div class="heart">
-                                        <img src="assets/heart.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                                <circle class="heart-rating"cx="80" cy="80" r="70" stroke-linecap="round" />
-                            </svg>
-                        </div>
                         <div class="rating-label-percentage">
-                            <p class="rating-label">Hearts: </p>
-                            <p class="number">65%</p>
-                        </div>
-                        
-
-                    </div>
-                    
-                    <div class="rating-labelled">
-                        <div class="rating">
-                            <div class="outer">
-                                <div class="inner">
-                                    <div class="tomato">
-                                        <img src="assets/tomato.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                                <circle class="tomato-rating"cx="80" cy="80" r="70" stroke-linecap="round" />
-                            </svg>
-                        </div>
-                        <div class="rating-label-percentage">
-                            <p class="rating-label">Tomatoes:</p>
-                            <p class="number">25%</p>
+                            <p class="number-about">{{profile.hearts}}</p>
+                            <p class="label-about">Likes</p>
                         </div>
                     </div>
-    
                     <div class="rating-labelled">
-                        <div class="rating">
-                            <div class="outer">
-                                <div class="inner">
-                                    <div class="like">
-                                        <img src="assets/like.png" alt="">
-                                        
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                                <circle class="credibility-rating" cx="80" cy="80" r="70" stroke-linecap="round" />
-                            </svg>
-                        </div>
                         <div class="rating-label-percentage">
-                            <p class="rating-label">Credibility:</p>
-                            <p id="number">95%</p>
+                            <p class="number-about">{{profile.dislike}}</p>
+                            <p class="label-about">Dislikes</p>
                         </div>
                     </div>
-                    
+                    <div class="rating-labelled">
+                        <div class="rating-label-percentage">
+                            <p class="number-about">{{profile.credibility}}</p>
+                            <p class="label-about">Credibility</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="divider"></div>
-                <!-- recent activities -->
+                <!-- Taste profile section -->
+                <div class="taste-profile-container">
+                    <h2 class="taste-profile-label">Taste Profile</h2>
+                    <div class="taste-profile-items">
+                        {{#each profile.tasteProfile}}
+                            <div class="taste-profile-item">{{this}}</div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <div class="divider"></div>
                 <div class="recent-activities-container">
                     <h3>Recent Activities</h3>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="assets/avatar-f2.png" alt="avatar">
+                        <!-- Iterate over the user's reviews to display recent activity -->
+                        {{#each reviews}}
+                            <div class="recent-activity">
+                                <div class="avatar-container-recent-activity">
+                                    <div class="avatar-border-recent-activity">
+                                        <div class="avatar-recent-activity">
+                                            <img src="/uploads/avatars/{{../profile.image}}" alt="avatar">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recent-activity-description">
+                                    <p>@{{../profile.username}} left a review</p>
+                                </div>
+                                <div class="delete-recent-activity">
                                 </div>
                             </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@Mon_1015 visited and left a review at <a href="resto-reviewpage"><strong><u>Ate Rica's Bacsilog</u></strong></a></p>
-                        </div>
-                    </div>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="assets/avatar-f2.png" alt="avatar">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@Mon_1015 visited  <a href="#"><strong><u>Starbucks Coffee.</u></strong></a></p>
-                        </div>
-                    </div>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="assets/avatar-f2.png" alt="avatar">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@Mon_1015 visited and left a review at <a href="#"><strong><u>Tapa King</u></strong></a></p>
-                        </div>
-                    </div>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="assets/avatar-f2.png" alt="avatar">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@Mon_1015 disliked a review by <a href="#"><strong><u>@corah</u></strong></a></p>
-                        </div>
-                    </div>
-                    <div class="recent-activity">
-                        <div class="avatar-container-recent-activity">
-                            <div class="avatar-border-recent-activity">
-                                <div class="avatar-recent-activity">
-                                    <img src="assets/avatar-f2.png" alt="avatar">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recent-activity-description">
-                            <p>@Mon_1015 visited and left a review at <a href="#"><strong><u>Wang Pao</u></strong></a></p>
-                        </div>
-                    </div>
+                        {{/each}}
 
                 </div>
             </div>
@@ -504,13 +248,16 @@
 
         </div>
             </div>
-        <div class="avatar-container">
-            <div class="avatar-boorder">
-                <div class="avatar">
-                    <img src="assets/avatar-f2.png" alt="avatar">
-                </div>
-            </div>
+       <div class="avatar-container">
+    <div class="avatar-boorder">
+        <div class="avatar">
+            {{!-- <img src="/uploads/avatar/{{profile.profilePicture}}" alt="Profile Avatar" id="profile-pic"> --}}
+        <img src="/uploads/avatars/{{profile.image}}" alt="Profile Avatar" id="profile-pic">
+
         </div>
+    </div>
+</div>
+
     </main>
     <script>
         adjustNavBar();
@@ -535,6 +282,7 @@
 
         console.log(likes)
         adjustNavBar();
+        detectLogin();
 
         document.getElementById("title").addEventListener("keydown", function (e) {
             if (e.key === "Enter") {
@@ -544,6 +292,8 @@
 
 
         console.log(likes)
+
+
     </script>
 </body>
 </html>
