@@ -11,7 +11,7 @@
         <script src="/script/search.js"></script>
         <script src="/script/search-bar.js"></script>
         <script src="/script/sorting.js"></script>
-        <script src="/script/filter.js"></script>
+        {{!-- <script src="/script/filter.js"></script> --}}
         <title>BiteBoxd - Search</title>
     </head>
     <body>
@@ -45,59 +45,44 @@
                         <div class="search-setting">
                             <p>Ratings</p>
                             <div class="star-sorting">
-                                <span onclick="stars.handleClick(1)" class="slider-star-rating">★</span>
-                                <span onclick="stars.handleClick(2)" class="slider-star-rating">★</span>
-                                <span onclick="stars.handleClick(3)" class="slider-star-rating">★</span>
-                                <span onclick="stars.handleClick(4)" class="slider-star-rating">★</span>
-                                <span onclick="stars.handleClick(5)" class="slider-star-rating">★</span>
+                                <span class="slider-star-rating">★</span>
+                                <span class="slider-star-rating">★</span>
+                                <span class="slider-star-rating">★</span>
+                                <span class="slider-star-rating">★</span>
+                                <span class="slider-star-rating">★</span>
                             </div>
                         </div>
 
                         <div class="search-setting">
-                            <p>City</p>
+                            <p>Location 📌</p>
                             <input type="text" class="input-filter" id="city-filter" maxlength="30">
                         </div>
 
                         
                         <div class="search-setting">
-                            <p>Min. Reviewers</p>
+                            <p>Min Reviewers 👩‍👧‍👦</p>
                             <input type="number" id="min-review-filter" class="input-filter" min="0">
                         </div>
 
                 
-                        <div class="price-setting">
-                            <p>Pricing</p>
-                            <div class="price-slider" id="price-filter">
-                                <span onclick="cashEmos.handleClick(1)" class="slider-emoji-rating slider-price-rating">💵</span>
-                                <span onclick="cashEmos.handleClick(2)" class="slider-emoji-rating slider-price-rating">💵</span>
-                                <span onclick="cashEmos.handleClick(3)" class="slider-emoji-rating slider-price-rating">💵</span>
-                                <span onclick="cashEmos.handleClick(4)" class="slider-emoji-rating slider-price-rating">💵</span>
-                            </div>
+                          <div class="search-setting-criteria">
+                            <div class="search-setting">
+                                <p>Min Price 💵</p>
+                                <input type="number" id="min-price-filter" class="input-filter short-filter" min="0">
+
                         </div>
 
-                        <div class="search-setting-criteria">
                             <div class="search-setting">
-                                <p>Food Quality</p>
-                                <div class="categories" id="food-quality-filter">
-                                    <div class="green box" onclick="clickTrafficLight(this)"></div>
-                                    <div class="yellow box" onclick="clickTrafficLight(this)"></div>
-                                    <div class="red box" onclick="clickTrafficLight(this)"></div>
-                                </div>
-                            </div>
+                                <p>Max Price💵</p>
+                                <input type="number" id="max-price-filter" class="input-filter short-filter" min="0">
 
-                            <div class="search-setting">
-                                <p>Service</p>
-                                <div class="categories" id="service-quality-filter">
-                                    <div class="green box" onclick="clickTrafficLight(this)"></div>
-                                    <div class="yellow box" onclick="clickTrafficLight(this)"></div>
-                                    <div class="red box" onclick="clickTrafficLight(this)"></div>
-                                </div>
                             </div>
 
                         </div>
+                         
                         <div class="filter-buttons">
                             <button class="clear-button adv-search-button" onclick="search()">Clear</button>
-                            <button class="apply-button adv-search-button" id="applyFilter" onclick="applyFilters()">Apply</button>
+                            <button class="apply-button adv-search-button" id="applyFilter">Apply</button>
                         </div>
                     </div>
 
@@ -105,14 +90,6 @@
             {{/if}}
 
         </main>
-
-    <script>
-        const stars = new Slider(document.getElementsByClassName("slider-star-rating"));
-        const cashEmos = new Slider(document.getElementsByClassName("slider-price-rating"));
-
-        stars.initializeHover();
-        cashEmos.initializeHover();
-    </script>
 
         
     </body>

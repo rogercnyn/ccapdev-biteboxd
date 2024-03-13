@@ -16,8 +16,8 @@ function getCuisine(restaurants){
     })
 }
 
-function searchQuery(searchTerm, sortOptions) {
-    return Restaurant.find(
+async function searchQuery(searchTerm, locationInput) {
+    let query =  await Restaurant.find(
         {
             $or: [
                 { name: { $regex: searchTerm, $options: 'i' } }
@@ -25,15 +25,17 @@ function searchQuery(searchTerm, sortOptions) {
         }, 
         searchRequiredFields
     )
-    .sort(sortOptions) // Apply sorting options
     .lean() 
-    .then(restaurants => {
-        return floorTheRating(restaurants); 
-    })
-    .catch(error => {
-        console.error('Error searching for restaurants:', error);
-        throw error; 
-    });
+
+    
+    query = floorTheRating(query);
+
+    if(locationInput) {
+        const regex = new RegExp(locationInput, 'i');
+        query = query.filter(resto => regex.test(resto.location));
+    }
+
+    return query
 }
 
 
@@ -50,13 +52,11 @@ async function getRestoCardDetails(id, searchText) {
         })
         .lean();
  
-    console.log(searchText)
   
     if (searchText) {
         const regex = new RegExp(searchText, 'i');
         query.reviews = query.reviews.filter(review => regex.test(review.body));
     }
-
     
     return query
 }  
@@ -156,38 +156,50 @@ async function addBulkResto(parsedJson){
     }
 }
 
+
+function filterRestaurants( restaurants, minStar, minRev, minPrice, maxPrice){
+
+    if(minStar){
+        restaurants = restaurants.filter(restaurant => restaurant.rating >= parseInt(minStar));
+    }
+
+    if(minRev){
+        restaurants = restaurants.filter(restaurant => restaurant.numberOfReviews >= parseInt(minRev));
+    }
+
+    if(minPrice){
+        restaurants = restaurants.filter(restaurant => restaurant.startPriceRange >= parseInt(minPrice));
+    }
+
+    if(maxPrice){
+        restaurants = restaurants.filter(restaurant => restaurant.endPriceRange <= parseInt(maxPrice));
+    }
+
+    return restaurants
+
+}
+
+const sortRecommended = restaurants => restaurants.sort((a, b) => b.rating - a.rating);
+
+
 async function handleSearchRequest(req, resp) {
-    const query = req.query.query;
-    const criteria = req.query.criteria; // Get sorting criteria from query parameters
+    // console.log("HERE")
+    const { query, minStar, locationInput, minRev, minPrice, maxPrice } = req.query;
 
-    let sortOptions = {};
+    
+    let restaurants = await searchQuery(query, locationInput)
+    restaurants = filterRestaurants(restaurants, minStar, minRev, minPrice, maxPrice)
+    const resultLength = restaurants.length; 
 
-    if (criteria === 'recommended') {
-        sortOptions = { rating: -1 }; // Sort by rating descending for recommended
-    } else if (criteria === 'reviews') {
-        sortOptions = { numberOfReviews: -1 }; // Sort by number of reviews descending
-    } else if (criteria === 'rating') {
-        sortOptions = { rating: -1 }; // Sort by rating descending
-    } else if (criteria === 'price') {
-        sortOptions = { startPriceRange: 1 }; // Sort by price ascending
-    } else {
-        sortOptions = { name: 1 }; // Sort by name ascending
-    }
 
-    try {
-        const results = await searchQuery(query, sortOptions); // Pass sorting options to search function
-        const resultLength = results.length; // Calculate the result length
+    resp.render("search", {
+        results: restaurants,
+        query: query,
+        hasResults: resultLength !== 0,
+        resultLength: resultLength 
+    }); 
 
-        resp.render("search", {
-            results: results,
-            query: query,
-            hasResults: resultLength !== 0,
-            resultLength: resultLength // Pass the result length to the template
-        });
-    } catch (error) {
-        console.error('Error searching:', error);
-        resp.status(500).send('Internal Server Error');
-    }
+    
 }
 
 async function handleGetAllRestoRequest(req, resp){
@@ -234,80 +246,5 @@ async function sortResults(criteria) {
     return query.lean();
 }
 
-// Define route handler for sorting
-async function handleSortRequest(req, res) {
-    const criteria = req.query.criteria;
-    const sortedResults = await sortResults(criteria); // Assuming this function returns the sorted results
 
-    res.render('partials/sortedResults', { 
-        results: sortedResults,
-        hasResults: sortedResults.length > 0,
-        resultLength: sortedResults.length,
-        query: req.query.query // Assuming you're passing the search query to this function as well
-    });
-}
-
-async function filterRestaurants(criteria) {
-    let queryConditions = {};
-
-    if (criteria.rating) {
-        queryConditions.rating = { $gte: parseInt(criteria.rating) };
-    }
-    if (criteria.city) {
-        queryConditions.location = { $regex: new RegExp(criteria.city, 'i') };
-    }
-    if (criteria.minReviewers) {
-        queryConditions.numberOfReviews = { $gte: parseInt(criteria.minReviewers) };
-    }
-    if (criteria.priceRange) {
-        const [minPrice, maxPrice] = criteria.priceRange.split('-').map(Number);
-        queryConditions.startPriceRange = { $gte: minPrice };
-        if (maxPrice) {
-            queryConditions.endPriceRange = { $lte: maxPrice };
-        }
-    }
-    // Handling foodQuality and serviceQuality, assuming these are numeric values representing thresholds
-    if (criteria.foodQuality) {
-        queryConditions.foodQuality = { $gte: parseInt(criteria.foodQuality) };
-    }
-    if (criteria.serviceQuality) {
-        queryConditions.serviceQuality = { $gte: parseInt(criteria.serviceQuality) };
-    }
-
-    try {
-        const filteredRestaurants = await Restaurant.find(queryConditions).lean();
-        return filteredRestaurants;
-    } catch (error) {
-        console.error('Error filtering restaurants:', error);
-        throw error;
-    }
-}
-
-async function handleFilterRequest(req, res) {
-    try {
-        // Extract the filter criteria from the request query parameters
-        const filterCriteria = {
-            rating: req.query.rating,
-            city: req.query.city,
-            minReviewers: req.query.minReviewers,
-            priceRange: req.query.priceRange
-        };
-
-        // Call the filterRestaurants function with the extracted criteria
-        const filteredResults = await filterRestaurants({ query: filterCriteria });
-
-        // Render a view or send JSON data back to the client with the filtered results
-        res.render('partials/sortedResults', { 
-            results: filteredResults,
-            hasResults: filteredResults.length > 0,
-            resultLength: filteredResults.length,
-            query: req.query.query
-        });
-    } catch (error) {
-        console.error('Error handling filter request:', error);
-        res.status(500).send('Internal Server Error');
-    }
-}
-
-
-module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, handleSortRequest, sortResults, filterRestaurants, handleFilterRequest};
+module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, sortResults, filterRestaurants};

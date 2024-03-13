@@ -1,16 +1,5 @@
 
 
-// function initializeSearchString() {
-//     let query = getUrlParameter('query');
-//     let searchString = document.getElementById('search-string');
-//     let searchBar = document.querySelector('.search-bar');
-
-//     searchString.textContent =  " '" + query + "'";
-//     searchBar.value = query;
-
-// }
-
-
 function clickTrafficLight(element) {
     
     let siblings = element.parentElement.children
@@ -23,21 +12,37 @@ function goToReviewPage(link){
     window.location.href = `/resto-reviewpage/${link}`
 }
 
-/*
-window.addEventListener('DOMContentLoaded', function() {
-    var peekReview = document.querySelector('.peek-review');
-    var peekReviewPara = document.querySelector('.peek-review-para');
-    var more = peekReviewPara.querySelector('#more');
+$(document).ready(function() {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
 
-    // Calculate the height of the peek-review-para
-    var paraHeight = peekReviewPara.scrollHeight;
+    const query = params.get('query')
+    const filterFoodSlider = new Slider(document.getElementsByClassName('filter-food-rating'));
+    const filterServiceSlider = new Slider(document.getElementsByClassName('filter-service-rating'));
+    const filterStarSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
+  
+    filterFoodSlider.initializeHover();
+    filterServiceSlider.initializeHover();
+    filterStarSlider.initializeHover();
 
-    // Calculate 80% of the peek-review-para height
-    var eightyPercentHeight = paraHeight * 0.8;
+    $("#applyFilter").click(function(){  
 
-    // Check if the scroll height of peek-review is greater than or equal to 80% of peek-review-para height
-    if (peekReview.offsetHeight >= eightyPercentHeight) {
-        more.style.display = 'block'; // Display 'more' div
-    }
-});
-*/
+        let minStar = filterStarSlider.getValue();
+        let locationInput = $("#city-filter").val();
+        let minRev = $("#min-review-filter").val();
+        let minPrice = $("#min-price-filter").val();
+        let maxPrice = $("#max-price-filter").val();
+
+        let url = `${window.location.href.split('?')[0]}?query=${query}&minStar=${minStar}&locationInput=${locationInput}&minRev=${minRev}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
+        
+        window.location.href = url
+
+    });
+
+    $('#criteria').change(function() {
+        var sorting = $(this).val();
+        let url = `${window.location.href.split('?')[0]}?query=${query}&sorting=${sorting}`;
+        window.location.href = url
+
+    });
+})

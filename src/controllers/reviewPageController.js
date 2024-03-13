@@ -116,21 +116,10 @@ function sortRecent(reviews, mostRecent){
     });
 }
 
-function sortStar(reviews){
-    return reviews.sort((a, b) => b.overallRating - a.overallRating);
-}
-
-function sortFood(reviews){
-    return reviews.sort((a, b) => b.foodRating  - a.foodRating);
-}
-
-function sortService(reviews){
-    return reviews.sort((a, b) => b.serviceRating - a.serviceRating);
-}
-
-function sortAffordability(reviews){
-    return reviews.sort((a, b) => b.affordabilityRating - a.affordabilityRating);
-}
+const sortStar = (reviews) => reviews.sort((a, b) => b.overallRating - a.overallRating);
+const sortFood = (reviews) => reviews.sort((a, b) => b.foodRating  - a.foodRating);
+const sortService = (reviews) => reviews.sort((a, b) => b.serviceRating - a.serviceRating);
+const sortAffordability = (reviews) => reviews.sort((a, b) => b.affordabilityRating - a.affordabilityRating);
 
 
 

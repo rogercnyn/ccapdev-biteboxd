@@ -36,8 +36,8 @@ router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 // router.get('/resto-reviewpage/:_id/advReview', handleAdvReviewRequest);
 
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
-router.get('/api/search/sort', handleSortRequest);
-router.get('/api/search/filter', handleFilterRequest);
+// router.get('/api/search/sort', handleSortRequest);
+// router.get('/api/search/filter', handleFilterRequest);
 
 
 router.get('/signup', (req, res)=> res.render("signup"));
