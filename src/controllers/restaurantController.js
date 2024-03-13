@@ -37,8 +37,10 @@ function searchQuery(searchTerm, sortOptions) {
 }
 
 
-async function getRestoCardDetails(id) {
-    return await Restaurant.findById(id)
+
+
+async function getRestoCardDetails(id, searchText) {
+    let query = await Restaurant.findById(id)
         .select("-password")
         .populate({
             path: 'reviews',
@@ -47,7 +49,21 @@ async function getRestoCardDetails(id) {
             }
         })
         .lean();
-}
+ 
+    console.log(searchText)
+  
+    if (searchText) {
+        const regex = new RegExp(searchText, 'i');
+        query.reviews = query.reviews.filter(review => regex.test(review.body));
+    }
+
+    
+    return query
+}  
+
+
+
+
 
 function getAllRestaurant(){
     return Restaurant

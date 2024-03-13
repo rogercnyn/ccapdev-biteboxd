@@ -463,13 +463,18 @@ margin-bottom: 100px;
 
 .filter-buttons {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: row;
-    gap: 1rem;
+    gap: 2rem;
+    /* border: 1px solid black; */
+    
 }
 
+
+
 .adv-search-button {
-    padding: 5%;
+    /* flex: 0 0 25%; */
+    padding: 3%;
     background-color: white;
     border-radius: 15px;
     border: 1px solid #d9d9d9;

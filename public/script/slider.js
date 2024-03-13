@@ -5,6 +5,10 @@ class Slider {
         this.initializeHover();
     }
 
+    getValue() {
+        return this.currentValue
+    }
+
     initializeHover() {
         for (let i = 0; i < this.elements.length; i++) {
             this.elements[i].addEventListener("mouseenter", () => this.handleMouseEnter(i));
