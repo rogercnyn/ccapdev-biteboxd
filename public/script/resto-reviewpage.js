@@ -245,6 +245,16 @@ function initializeQuill() {
 }
 
 $(document).ready(function() {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const minStar = params.get('minStar')
+    const minPrice = params.get('minPrice')
+    const minFood = params.get('minFood')
+    const minService = params.get('minService')
+    const searchTextValue = params.get('searchText')
+    const sortingVal = params.get('sorting')
+   
+
 
     let isLogged = document.querySelector('.publish-button')
 
@@ -274,6 +284,30 @@ $(document).ready(function() {
     filterFoodSlider.initializeHover()
     filterServiceSlider.initializeHover()
 
+    if(minStar) {
+        filterStarSlider.handleClick(minStar)
+    } 
+
+    if(minPrice) {
+        filterPriceSlider.handleClick(minPrice)  
+    }
+
+    if(minFood) {
+        filterFoodSlider.handleClick(minFood)
+    }
+
+    if(minService) {
+        filterServiceSlider.handleClick(minService)
+    }
+
+    $('#search-rev-input').val(searchTextValue)
+
+    if(sortingVal) {
+        $('#criteria').val(sortingVal)
+
+    }
+
+
     const likesets = document.getElementsByClassName('likeset');
     const likes = [];
     
@@ -289,6 +323,15 @@ $(document).ready(function() {
 
     initializeMap()
 
+    function searchText() {
+        let searchText = $('#search-rev-input').val();
+        let url = `${window.location.href.split('?')[0]}?searchText=${searchText}`;
+        window.location.href = url;
+    }
+
+
+
+    
 
     $("#applyFilter").click(function() {
 
@@ -305,10 +348,32 @@ $(document).ready(function() {
 
     })
 
+    $(".search-rev-but").click(function() {
+       searchText()    
+    })
+
     $("#noFilter").click(function () {
         window.location.href = window.location.href.split('?')[0];
 
     })
+
+    $("#clearFilter").click(function () {
+
+        filterStarSlider.reset();
+        filterPriceSlider.reset();
+        filterFoodSlider.reset();
+        filterServiceSlider.reset();
+        $('#search-rev-input').val('');
+        $('#criteria').val('recommended');
+    })
+
+    
+    $('#search-rev-input').keypress(function(e) {
+        if (e.key === 'Enter') {
+            searchText()            
+        }
+    });
+
 
 });
 

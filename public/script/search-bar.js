@@ -1,7 +1,7 @@
 function search() {
     let query = document.querySelector('.search-bar').value;
-    let dest = 'search?query=' + encodeURIComponent(query);
-   transferSession(dest)
+    let dest = '/search?query=' + encodeURIComponent(query);
+    window.location.href = dest
 }
 
 
@@ -25,6 +25,12 @@ function addClear() {
     
     searchBar.addEventListener('blur', function() {
         clearIcon.style.opacity = "0%";
+    });
+
+    searchBar.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            search();
+        }
     });
 }
 
