@@ -1,21 +1,18 @@
 @import "resto-reviewpage.css";
 
-.search-bar{
-    width: 400px;
-    height: 50px;
-    border-radius: 20px;
-}
-
-
-.search-button {
-    height: 50px;
-    width: 150px;
-    border-radius: 20px;
-    margin-left: -10%;
+.right {
+    font-size: 12px;
+    flex: 0 0 10%;
+    position: fixed;
+    height: 100%;
+    top: 10px;
+    right: -150px;
+    width: 15%;
+    font-family: "Segoe UI";
 }
 
 .search-container {
-    width: 700px;
+    width: 834px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -26,8 +23,6 @@
 .options-button, .rate-review button {
     cursor: default;
 }
-
-
 
 .review-and-response {
     /* border: 1px solid black; */
@@ -48,7 +43,6 @@
 .reply {
     opacity: 50%;
     cursor: pointer;
-
 }
 
 .reply:hover {
@@ -231,12 +225,6 @@ textarea {
     width: 250px;
 }
 
-.left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 500px;
-}
 
 .right {
     display: flex;
