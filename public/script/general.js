@@ -29,6 +29,12 @@ function toggleSeeMore(reviewId) {
 
 
 
+
+function goToReviewPage(link){
+    window.location.href = `/resto-reviewpage/${link}`
+}
+
+
 function appendQueryParameter(url, paramName, paramValue) {
     // Check if the URL already contains query parameters
     const separator = url.includes('?') ? '&' : '?';

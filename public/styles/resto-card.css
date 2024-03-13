@@ -37,7 +37,7 @@
 .attributes {
     font-family: 'Segoe UI', sans-serif;
     color: #222;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .nameandoverallscore {
@@ -79,12 +79,12 @@
 
 .location {
     font-family: 'Segoe UI', sans-serif;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .description {
     font-family: 'Segoe UI', sans-serif;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .firstbatchattri {

@@ -10,7 +10,7 @@ async function loginUser(req, username, password) {
             req.session.username = userProfile.username;
             req.session.profilePicture = userProfile.image;
             req.session['loggedIn'] = true;
-            req.session['type'] = 'user';
+            req.session['isResto'] = false;
             return { success: true, redirectUrl: "/" };
         } else {
             const restaurantUser = await Restaurant.findOne({ username });
@@ -19,8 +19,9 @@ async function loginUser(req, username, password) {
                 req.session.username = restaurantUser.username;
                 req.session.profilePicture = restaurantUser.media;
                 req.session['loggedIn'] = true;
-                req.session['type'] = 'restaurant';
+                req.session['isResto'] = true;
 
+                console.log(req.session)
                 return { success: true, redirectUrl: "/resto-responsepage/" + restaurantUser._id };
             }
         }

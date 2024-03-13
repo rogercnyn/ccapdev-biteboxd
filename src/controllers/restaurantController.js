@@ -231,5 +231,27 @@ async function handleGetAllRestoRequest(req, resp){
         )
 }
 
+async function handleExploreRequest(req, res){
+    let restaurants = await Restaurant.find().select("-password").lean();
 
-module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, filterRestaurants};
+    restaurants = floorTheRating(restaurants);
+
+    sortReviewersHL(restaurants)
+    // console.log(restaurants)
+    let topRestaurants = restaurants.slice(0, 5)
+    let editorsChoice =  restaurants.filter(restaurant => restaurant.rating == 5).slice(0, 5);
+
+
+    const regex = new RegExp("Taft", 'i');
+    let popularAroundYou = restaurants.filter(resto => regex.test(resto.location)).slice(0, 5);
+
+
+    res.render("explore", {
+        topRestaurants: topRestaurants,
+        editorsChoice: editorsChoice,
+        popularAroundYou: popularAroundYou
+    })
+
+}
+
+module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, filterRestaurants, handleExploreRequest};

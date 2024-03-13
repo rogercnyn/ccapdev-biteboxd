@@ -8,10 +8,6 @@ function clickTrafficLight(element) {
 }
 
 
-function goToReviewPage(link){
-    window.location.href = `/resto-reviewpage/${link}`
-}
-
 $(document).ready(function() {
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);

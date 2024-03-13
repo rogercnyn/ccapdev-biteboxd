@@ -18,6 +18,10 @@ main {
 
 }
 
+.restoinfo {
+    /* border: 10px solid black; */
+}
+
 
 .category-header {
     /* flex: 1; */
@@ -27,6 +31,7 @@ main {
     justify-content: center;
     align-items: flex-end;
     gap: 5rem;
+    margin-bottom: 2%;
 
 }
 
@@ -155,9 +160,12 @@ main {
 .swiper-container{
     position: relative;
     align-self: center;
-    width: 1050px;
+    width: 840px;
+    padding-left: 2px;
+    height: 500px;
     border-radius: 52.5px;
-    overflow: hidden; /* Hide overflow */
+    overflow: hidden; 
+    margin-bottom: 3%;
 }
 
 .swiper-initialized {
@@ -173,11 +181,14 @@ main {
 
 
 .section-title {
-    font-size: 50px;
+    /* border: 1px solid black; */
+    text-align: center;
+    font-size: 90px;
     font-family: 'DM Sans';
     font-weight: 900;
-    width: fit-content;
-    margin-top:10%;
-    margin-bottom: 3%;
-    margin-left: 10%;
+    /* width: auto; */
+    margin-top:5%;
+    /* margin-bottom: 3%; */
+    /* margin-left: 30%; */
+    /* margin: auto; */
 }

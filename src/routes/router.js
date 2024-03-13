@@ -4,9 +4,9 @@ const path = require('path');
 // DO NOT IMPORT MODELS HERE
 
 // Import controllers for restaurant and review handling
-const { handleSearchRequest, handleGetAllRestoRequest } = require('../controllers/restaurantController');
+const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
-const {handleProfileRequest, createUser, editProfile, deleteReview, updateReview} = require('../controllers/profileController');
+const { handleProfileRequest, createUser, editProfile, deleteReview, updateReview} = require('../controllers/profileController');
 const { login, logout} = require('../controllers/loginController');
 const {isAuthenticated} = require('../middleware/auth');
 const router = express.Router();
@@ -39,7 +39,7 @@ router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
 
 router.get('/signup', (req, res)=> res.render("signup"));
 router.get('/login', (req, res) => res.render("login"));
-router.get('/explore', (req, res) => res.render("explore"));
+router.get('/explore', handleExploreRequest);
 router.get(['/', '/index'], (req, res) => res.render("index", { loggedIn: !!req.session.userId }));
 router.get('/createrestaurant', (req, res) => res.render("createrestaurant"));
 

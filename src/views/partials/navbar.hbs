@@ -20,8 +20,14 @@
 
     {{#if loggedIn}}
         <a href="#" class="account-icon" id="account-icon" onclick="togglePopup()">
-            <img src="/uploads/avatars/{{profilePicture}}" alt="" class="profile-icon" id="account-icon">
-            <p>Profile</p>
+            {{#if isResto}}
+
+                <img src="/assets/restaurant icons/{{profilePicture}}" alt="" class="profile-icon" id="account-icon">
+
+            {{else}}
+                <img src="/uploads/avatars/{{profilePicture}}" alt="" class="profile-icon" id="account-icon">
+            {{/if}}
+                <p>Profile</p>
         </a>
 
         <div class="popup-container" id="popupContainer" style="display: none">
