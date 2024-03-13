@@ -9,19 +9,36 @@ function computeRating(r1, r2, r3){
     return Math.round(((r1 + r2 + r3) / 3.0) * 10, 1)/10
 }
 
-async function handleRestoPageRequest(req, resp) {
-    const id = req.params._id
-    let restaurant = await getRestoCardDetails(id)
-    let username = req.session.username ? req.session.username : "";
+function filterReviews( restaurant, overallRating, affordabilityRating, foodRating, serviceRating ){
+    console.log(overallRating, affordabilityRating, foodRating, serviceRating)
+   
+    if(overallRating){
+        restaurant.reviews = restaurant.reviews.filter(review => review.overallRating >= parseInt(overallRating));
+    }
 
+    if(affordabilityRating){
+        restaurant.reviews = restaurant.reviews.filter(review => review.affordabilityRating >= parseInt(affordabilityRating));
+    }
 
+    if(foodRating){
+        restaurant.reviews = restaurant.reviews.filter(review => review.foodRating >= parseInt(foodRating));
+    }
 
+    if(serviceRating){
+        restaurant.reviews = restaurant.reviews.filter(review => review.serviceRating >= parseInt(serviceRating));
+    }
+
+}
+
+ function completeRestaurant(restaurant){
     restaurant['flooredRating'] = Math.floor(restaurant['rating'])
     restaurant['xcoord'] = restaurant['coordinates'][0]
     restaurant['ycoord'] = restaurant['coordinates'][1]
+}
 
+async function completeReviews(restaurant, username){
     const promises = restaurant['reviews'].map(async (review) => {
-        review['createdAt'] = formatDate(review['createdAt']);
+        review['createdAtDisplay'] = formatDate(review['createdAt']);
         review['longText'] = review['body'].slice(0, 230);
         review['fullText'] = review['body'].slice(230);
         review['hasNoSeeMore'] = review['fullText'].length === 0 
@@ -30,6 +47,7 @@ async function handleRestoPageRequest(req, resp) {
         review['noService'] = 5 - review['serviceRating']
         review['noMoney'] = 5 - review['affordabilityRating']
         review['isOwnReview'] = review['username'] === username
+
 
         review['replies'].map((reply) =>{
             reply['media'] = restaurant['media']
@@ -50,16 +68,73 @@ async function handleRestoPageRequest(req, resp) {
         review['profilePicture'] = profilePictures[index]['image'];
         review['order'] = index
     });
-    
+}
 
-    reorderReviews(restaurant['reviews'], username)
-    // console.log(restaurant)
-    
+async function handleRestoPageRequest(req, resp) {
+    // parse the headers
+    const id = req.params._id
+    const { minStar, minPrice, minFood, minService, searchText, sorting } = req.query;
+    const  restaurant = await getRestoCardDetails(id, searchText)
+    const username = req.session.username ? req.session.username : "";
 
+
+    completeRestaurant(restaurant)
+
+    await completeReviews(restaurant, username)
+
+    
+    filterReviews(restaurant, minStar, minPrice, minFood, minService)
+
+
+    // assuming recommended & tie breaker 
+    sortRecommended(restaurant['reviews'], username)
+    
+    if(sorting && sorting.startsWith("recent")) {
+        sortRecent(restaurant['reviews'], "recentM" === sorting)
+    } else if (sorting === "rating") {
+        sortStar(restaurant['reviews'])
+    } else if (sorting === "food-quality") {
+        sortFood(restaurant['reviews']) 
+    } else if (sorting === "service") {
+        sortService(restaurant['reviews'])
+    } else if (sorting === "affordability") {
+        sortAffordability(restaurant['reviews'])
+    }
+    
     resp.render("resto-reviewpage", restaurant);
 }
 
-function reorderReviews(reviews, username) {
+function sortRecent(reviews, mostRecent){
+    return reviews.sort((a, b) => {
+        if (mostRecent) {
+            // Sort from most recent to least recent
+            return new Date(b.createdAt) - new Date(a.createdAt);
+        } else {
+            // Sort from least recent to most recent
+            return new Date(a.createdAt) - new Date(b.createdAt);
+        }
+    });
+}
+
+function sortStar(reviews){
+    return reviews.sort((a, b) => b.overallRating - a.overallRating);
+}
+
+function sortFood(reviews){
+    return reviews.sort((a, b) => b.foodRating  - a.foodRating);
+}
+
+function sortService(reviews){
+    return reviews.sort((a, b) => b.serviceRating - a.serviceRating);
+}
+
+function sortAffordability(reviews){
+    return reviews.sort((a, b) => b.affordabilityRating - a.affordabilityRating);
+}
+
+
+
+function sortRecommended(reviews, username) {
     return reviews.sort((a, b) => {
         if (a.username === username) {
             return -1;
@@ -70,6 +145,8 @@ function reorderReviews(reviews, username) {
         return (b.noOfLikes - b.noOfDislikes) - (a.noOfLikes - a.noOfDislikes);
     });
 }
+
+
 
 
 async function handleRestoResponsePageRequest(req, res) {

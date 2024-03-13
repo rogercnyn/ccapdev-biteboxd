@@ -10,11 +10,6 @@ let quillEditor;
 let photoContainer;
 
 
-function addRating(criterion, n) {
-    currentRatings[criterion] = n;
-    updateStars();
-}
-
 
 function searchReview(){
     let reviews = document.getElementsByClassName("review")
@@ -198,20 +193,6 @@ function handleUpload() {
 }
 
 
-function detectLogin() {
-    let publishrev = document.getElementById('publishreview')
-    let logInArea = document.getElementById('cannot-publish')
-
-    if (isLogged) {
-        $(logInArea).hide();
-        $(publishrev).show();
-    } else {
-        $(publishrev).hide();
-        $(logInArea).show();
-    }
-}
-
-
 function toggleOptions() {
     var popup = document.getElementById("optionsPopup");
     popup.style.display = (popup.style.display === "block") ? "none" : "block";
@@ -280,16 +261,18 @@ $(document).ready(function() {
     const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'));
     const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'));
     const serviceSlider = new Slider(document.getElementsByClassName('slider-service-rating'));
-    const filterReviewSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
+    const filterStarSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
     const filterPriceSlider = new Slider(document.getElementsByClassName('filter-price-rating'));
     const filterFoodSlider = new Slider(document.getElementsByClassName('filter-food-rating'));
+    const filterServiceSlider = new Slider(document.getElementsByClassName('filter-service-rating'));
     
     priceSlider.initializeHover();
     foodQualitySlider.initializeHover();
     serviceSlider.initializeHover();
-    filterReviewSlider.initializeHover();
+    filterStarSlider.initializeHover();
     filterPriceSlider.initializeHover();
     filterFoodSlider.initializeHover()
+    filterServiceSlider.initializeHover()
 
     const likesets = document.getElementsByClassName('likeset');
     const likes = [];
@@ -305,4 +288,27 @@ $(document).ready(function() {
     });
 
     initializeMap()
+
+
+    $("#applyFilter").click(function() {
+
+        let minStar = filterStarSlider.getValue()
+        let minPrice = filterPriceSlider.getValue()
+        let minFood = filterFoodSlider.getValue()
+        let minService = filterServiceSlider.getValue()
+        let searchText = $('#search-rev-input').val();
+        var sorting = $('#criteria').val();
+
+        let url = `${window.location.href.split('?')[0]}?minStar=${minStar}&minPrice=${minPrice}&minFood=${minFood}&minService=${minService}&searchText=${searchText}&sorting=${sorting}`;
+
+        window.location.href = url;
+
+    })
+
+    $("#noFilter").click(function () {
+        window.location.href = window.location.href.split('?')[0];
+
+    })
+
 });
+
