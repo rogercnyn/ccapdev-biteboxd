@@ -4,7 +4,7 @@ const path = require('path');
 // DO NOT IMPORT MODELS HERE
 
 // Import controllers for restaurant and review handling
-const { handleSearchRequest, handleGetAllRestoRequest, handleSortRequest, handleFilterRequest } = require('../controllers/restaurantController');
+const { handleSearchRequest, handleGetAllRestoRequest } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
 const {handleProfileRequest, createUser, editProfile, deleteReview, updateReview} = require('../controllers/profileController');
 const { login, logout} = require('../controllers/loginController');

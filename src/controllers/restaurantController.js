@@ -180,17 +180,32 @@ function filterRestaurants( restaurants, minStar, minRev, minPrice, maxPrice){
 }
 
 const sortRecommended = restaurants => restaurants.sort((a, b) => b.rating - a.rating);
+const sortReviewersLH = restaurants => restaurants.sort((a, b) => a.numberOfReviews - b.numberOfReviews);
+const sortReviewersHL = restaurants => restaurants.sort((a, b) => b.numberOfReviews - a.numberOfReviews);
+const sortPriceLH = restaurants => restaurants.sort((a, b) => a.startPriceRange - b.startPriceRange);
+const sortPriceHL = restaurants => restaurants.sort((a, b) => b.startPriceRange - a.startPriceRange);
 
 
 async function handleSearchRequest(req, resp) {
     // console.log("HERE")
-    const { query, minStar, locationInput, minRev, minPrice, maxPrice } = req.query;
+    const { query, minStar, locationInput, minRev, minPrice, maxPrice, sorting } = req.query;
 
     
     let restaurants = await searchQuery(query, locationInput)
     restaurants = filterRestaurants(restaurants, minStar, minRev, minPrice, maxPrice)
     const resultLength = restaurants.length; 
 
+    sortRecommended(restaurants)
+
+    if (sorting === "reviewsHL"){
+        sortReviewersHL(restaurants)
+    } else if (sorting === "reviewsLH"){
+        sortReviewersLH(restaurants)
+    } else if (sorting === "priceLH"){
+        sortPriceLH(restaurants)
+    } else if (sorting === "priceHL"){
+        sortPriceHL(restaurants)
+    }
 
     resp.render("search", {
         results: restaurants,
@@ -216,35 +231,5 @@ async function handleGetAllRestoRequest(req, resp){
         )
 }
 
-async function sortResults(criteria) {
-    let query;
-    switch (criteria) {
-        case 'recommended':
-            query = Restaurant.find({ rating: { $gte: 4 } }).sort({ rating: -1 });
-            break;
-        case 'reviews high-low':
-            query = Restaurant.find().sort({ numberOfReviews: -1 });
-            break;
-        case 'reviews low-high':
-            query = Restaurant.find().sort({ numberOfReviews: 1 });
-            break;
-        case 'rating high-low':
-            query = Restaurant.find().sort({ rating: -1 });
-            break;
-        case 'rating low-high':
-            query = Restaurant.find().sort({ rating: 1 });
-            break;
-        case 'price high-low':
-            query = Restaurant.find().sort({ startPriceRange: -1 });
-            break;
-        case 'price low-high':
-            query = Restaurant.find().sort({ startPriceRange: 1 });
-            break;
-        default: // Handles the 'default' case
-            query = Restaurant.find().sort({ name: 1 });
-    }
-    return query.lean();
-}
 
-
-module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, sortResults, filterRestaurants};
+module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, filterRestaurants};
