@@ -261,7 +261,7 @@
                                 <div class="score">
                                     <h2 class="yellowscore" id="user-score">{{overallRating}}</h2>
                                 </div>
-                                <div class="reply" onclick="injectQuill(this)">Reply</div>
+                                <div class="reply" onclick="toggleReplyPanel('replypanel_{{order}}')">Reply</div>
 
                             </div>
     
@@ -357,12 +357,12 @@
                         </div>
                         
 
-                    <div class="replypanel" id ="replypanel">
-                        <div class="reply-editorarea" id="reply-editor-container">
-                           <div class="reply-editor"></div>
+                        <div class="replypanel" id="replypanel_{{order}}">
+                            <div class="reply-editorarea">
+                                <div class="reply-editor"></div>
+                            </div>
+                            <div class="publish-button" onclick="handleReply(this, 'replypanel_{{order}}')">Publish Reply</div>
                         </div>
-                        <div class="publish-button" onclick="handleReply(this)">Publish Reply</div>
-                    </div>
                     
                 
                     {{#each replies}}

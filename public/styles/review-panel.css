@@ -306,7 +306,8 @@
     margin-top: 2%;
     /* background-color: #fafafa; */
     padding: 2%;
-    width: 87%;
+    width: 85%;
+    margin-right: 15px;
     margin-inline-start: auto;
     background-color: #fdd34793;
 }

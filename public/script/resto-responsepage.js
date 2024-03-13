@@ -126,27 +126,27 @@ function updatePicture(input) {
     }
 }
 
-function toggleReplyPanel(replyPanel){
-    
-       // Check if the element is currently hidden
-    if ($(replyPanel).is(':hidden')) {
-        // If hidden, show the element
-        $(replyPanel).show();
+function toggleReplyPanel(replyPanelId) {
+    var replyPanel = document.getElementById(replyPanelId);
+    var replyEditor = replyPanel.querySelector('.reply-editor');
+
+    if (replyPanel.style.display === 'none' || replyPanel.style.display === '') {
+        replyPanel.style.display = 'block';
+        toggleReplyEditor(replyPanel);
     } else {
-        // If visible, hide the element
-        $(replyPanel).hide();
+        replyPanel.style.display = 'none';
+        replyEditor.style.display = 'none'; // Ensure reply editor is hidden when reply panel is hidden
     }
-   
 }
 
 
-function toggleReplyEditor(button) {
-    const replyEditor = getElementById('replypanel');
-    replyEditor.style.display = replyEditor.style.display === 'none' ? 'block' : 'none';
+function toggleReplyEditor(replyPanel) {
+    const replyEditor = replyPanel.querySelector('.reply-editor');
+    replyEditor.style.display = (replyEditor.style.display === 'none' || replyEditor.style.display === '') ? 'block' : 'none';
 }
 
-function handleReply(button) {
-    var responsePanel = button.parentElement.nextElementSibling;
+function handleReply(publishButton, replyPanelId) {
+    var responsePanel = document.getElementById(replyPanelId);
     var resPanels = document.getElementsByClassName('responsepanel')
 
 
@@ -171,8 +171,7 @@ function handleReply(button) {
         responsePanel.querySelector("#replytext").innerHTML = html;
     }
 
-    toggleReplyPanel(responsePanel.previousElementSibling)
-    
+    toggleReplyPanel(responsePanel.previousElementSibling);
 }
 
 // function saveData(event) {
