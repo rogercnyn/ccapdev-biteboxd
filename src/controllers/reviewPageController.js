@@ -76,6 +76,10 @@ async function handleRestoResponsePageRequest(req, res) {
     const id = req.params._id;
     let restaurant = await getRestoCardDetails(id);
 
+    restaurant['flooredRating'] = Math.floor(restaurant['rating'])
+    restaurant['xcoord'] = restaurant['coordinates'][0]
+    restaurant['ycoord'] = restaurant['coordinates'][1]
+
     if(!req.session.loggedIn){
         res.redirect('/')
     } else {
