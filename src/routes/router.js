@@ -33,11 +33,8 @@ router.get('/all', handleGetAllRestoRequest);
 router.get('/search', handleSearchRequest);
 
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
-// router.get('/resto-reviewpage/:_id/advReview', handleAdvReviewRequest);
 
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
-// router.get('/api/search/sort', handleSortRequest);
-// router.get('/api/search/filter', handleFilterRequest);
 
 
 router.get('/signup', (req, res)=> res.render("signup"));
@@ -54,7 +51,6 @@ router.post('/signup', upload.single('avatar'), createUser);
 router.post("/login", login);
 
 router.get('/logout', logout);
-// router.get('/own-profile', handleOwnProfile);
 router.get('/profile/:username', handleProfileRequest)
 
 
