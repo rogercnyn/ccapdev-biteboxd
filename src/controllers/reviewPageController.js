@@ -14,6 +14,8 @@ async function handleRestoPageRequest(req, resp) {
     let restaurant = await getRestoCardDetails(id)
     let username = req.session.username ? req.session.username : "";
 
+
+
     restaurant['flooredRating'] = Math.floor(restaurant['rating'])
     restaurant['xcoord'] = restaurant['coordinates'][0]
     restaurant['ycoord'] = restaurant['coordinates'][1]
@@ -51,7 +53,7 @@ async function handleRestoPageRequest(req, resp) {
     
 
     reorderReviews(restaurant['reviews'], username)
-    console.log(restaurant)
+    // console.log(restaurant)
     
 
     resp.render("resto-reviewpage", restaurant);
@@ -70,40 +72,47 @@ function reorderReviews(reviews, username) {
 }
 
 
-async function handleRestoResponsePageRequest(req, resp) {
+async function handleRestoResponsePageRequest(req, res) {
     const id = req.params._id;
     let restaurant = await getRestoCardDetails(id);
 
-    const promises = restaurant['reviews'].map(async (review) => {
-        review['createdAt'] = formatDate(review['createdAt']);
-        review['longText'] = review['body'].slice(0, 230);
-        review['fullText'] = review['body'].slice(230);
-        review['hasNoSeeMore'] = review['fullText'].length === 0;
-        review['overallRating'] = computeRating(review['affordabilityRating'], review['foodRating'], review['serviceRating']);
-        review['noFood'] = 5 - review['foodRating'];
-        review['noService'] = 5 - review['serviceRating'];
-        review['noMoney'] = 5 - review['affordabilityRating'];
+    if(!req.session.loggedIn){
+        res.redirect('/')
+    } else {
+        const promises = restaurant['reviews'].map(async (review) => {
+            review['createdAt'] = formatDate(review['createdAt']);
+            review['longText'] = review['body'].slice(0, 230);
+            review['fullText'] = review['body'].slice(230);
+            review['hasNoSeeMore'] = review['fullText'].length === 0;
+            review['overallRating'] = computeRating(review['affordabilityRating'], review['foodRating'], review['serviceRating']);
+            review['noFood'] = 5 - review['foodRating'];
+            review['noService'] = 5 - review['serviceRating'];
+            review['noMoney'] = 5 - review['affordabilityRating'];
+    
+            review['replies'].map((reply) =>{
+                reply['media'] = restaurant['media']
+                reply['name'] = restaurant['name']
+                reply['createdAt'] = formatDate(reply['createdAt'])
+            })
+    
+            const profilePicturePromise = getProfilePicture(review['username']);
+            const profilePicture = await profilePicturePromise;
+            return profilePicture;
+        });
+    
+        const profilePictures = await Promise.all(promises);
+    
+        restaurant['reviews'].forEach((review, index) => {
+            review['profilePicture'] = profilePictures[index]['image'];
+            review['order'] = index
+        });
+    
+        console.log(restaurant);
+        res.render("resto-responsepage", restaurant);
+    }
 
-        review['replies'].map((reply) =>{
-            reply['media'] = restaurant['media']
-            reply['name'] = restaurant['name']
-            reply['createdAt'] = formatDate(reply['createdAt'])
-        })
 
-        const profilePicturePromise = getProfilePicture(review['username']);
-        const profilePicture = await profilePicturePromise;
-        return profilePicture;
-    });
-
-    const profilePictures = await Promise.all(promises);
-
-    restaurant['reviews'].forEach((review, index) => {
-        review['profilePicture'] = profilePictures[index]['image'];
-        review['order'] = index
-    });
-
-    console.log(restaurant);
-    resp.render("resto-responsepage", restaurant);
+  
 }
 
 
