@@ -59,7 +59,7 @@
                             
                             <div class="input-group">
                                 <label for="tags" class="editlabel">Tags:</label>
-                                <input type="text" id="tags" name="tags" value="{{tag}}" class="styled-input">
+                                <input type="text" id="tags" name="tags" value="{{addSpaceForTags tag}}" class="styled-input">
                             </div>
                         </div>
                     
@@ -78,23 +78,23 @@
                                 <label for="daysopen" class="editlabel">Days Open:</label>
                                 <div class="samerow">
                                     <select id="daysopenstart" name="daysopenstart" class="styled-input">
-                                        <option value="Monday">Monday</option>
-                                        <option value="Tuesday">Tuesday</option>
-                                        <option value="Wednesday">Wednesday</option>
-                                        <option value="Thursday">Thursday</option>
-                                        <option value="Friday">Friday</option>
-                                        <option value="Saturday">Saturday</option>
-                                        <option value="Sunday">Sunday</option>
+                                        <option value="Monday" {{#if (isSelectedDay "M" startOpeningDay)}}selected{{/if}}>Monday</option>
+                                        <option value="Tuesday" {{#if (isSelectedDay "T" startOpeningDay)}}selected{{/if}}>Tuesday</option>
+                                        <option value="Wednesday" {{#if (isSelectedDay "W" startOpeningDay)}}selected{{/if}}>Wednesday</option>
+                                        <option value="Thursday" {{#if (isSelectedDay "H" startOpeningDay)}}selected{{/if}}>Thursday</option>
+                                        <option value="Friday" {{#if (isSelectedDay "F" startOpeningDay)}}selected{{/if}}>Friday</option>
+                                        <option value="Saturday" {{#if (isSelectedDay "SA" startOpeningDay)}}selected{{/if}}>Saturday</option>
+                                        <option value="Sunday" {{#if (isSelectedDay "S" startOpeningDay)}}selected{{/if}}>Sunday</option>
                                     </select>
                                     <label for="daysopen" class="editlabel"> - </label>
                                     <select id="daysopenend" name="daysopenend" class="styled-input">
-                                        <option value="Monday">Monday</option>
-                                        <option value="Tuesday">Tuesday</option>
-                                        <option value="Wednesday">Wednesday</option>
-                                        <option value="Thursday">Thursday</option>
-                                        <option value="Friday">Friday</option>
-                                        <option value="Saturday">Saturday</option>
-                                        <option value="Sunday">Sunday</option>
+                                         <option value="Monday" {{#if (isSelectedDay "M" endOpeningDay)}}selected{{/if}}>Monday</option>
+                                        <option value="Tuesday" {{#if (isSelectedDay "T" endOpeningDay)}}selected{{/if}}>Tuesday</option>
+                                        <option value="Wednesday" {{#if (isSelectedDay "W" endOpeningDay)}}selected{{/if}}>Wednesday</option>
+                                        <option value="Thursday" {{#if (isSelectedDay "H" endOpeningDay)}}selected{{/if}}>Thursday</option>
+                                        <option value="Friday" {{#if (isSelectedDay "F" endOpeningDay)}}selected{{/if}}>Friday</option>
+                                        <option value="Saturday" {{#if (isSelectedDay "SA" endOpeningDay)}}selected{{/if}}>Saturday</option>
+                                        <option value="Sunday" {{#if (isSelectedDay "S" endOpeningDay)}}selected{{/if}}>Sunday</option>
                                     </select>
                                 </div>
 
@@ -102,9 +102,9 @@
                             <div class="input-group">
                                 <label for="operatinghour" class="editlabel">Operating Hour:</label>
                                 <div class="samerow">
-                                    <input type="time" id="operatinghourstart" name="operatinghourstart" class="styled-input">
+                                    <input type="time" id="operatinghourstart" value = "{{formatTime startOpeningHour}}" name="operatinghourstart" class="styled-input">
                                     <label for="operatinghour" class="editlabel"> - </label>
-                                    <input type="time" id="operatinghourend" name="operatinghourend" class="styled-input">
+                                    <input type="time" id="operatinghourend" value = "{{formatTime endOpeningHour}}" name="operatinghourend" class="styled-input">
                                 </div>
 
                             </div>
@@ -113,34 +113,34 @@
                     
                     <div class="shortdescription">
                         <label for="shortdesc" class="editlabel" id="shortdesclabel">Short Description:</label>
-                        <textarea id="shortdesc" name="shortdesc"></textarea>
+                        <textarea id="shortdesc" name="shortdesc"> {{shortDescription}}</textarea>
                     </div>
 
                     <div class="descriptionedit">
                         <label for="desc" class="editlabel" id ="desclabel"> Description:</label>
-                        <textarea id="desc" name="desc"></textarea>
+                        <textarea id="desc" name="desc">{{description}}</textarea>
                     </div>
 
                     <div class="attributesedit">
                         <div class="firstbatchattri">
-                            <div class="feature"><input type="checkbox" id="deliveryCheckbox"> Offers Delivery</div>
-                            <div class="feature"><input type="checkbox" id="outdoorDiningCheckbox"> Outdoor dining</div>
-                            <div class="feature"><input type="checkbox" id="indoorDiningCheckbox"> Indoor dining</div>
-                            <div class="feature"><input type="checkbox" id="groupsCheckbox"> Good for Groups</div>
+                            <div class="feature"><input type="checkbox" id="deliveryCheckbox" {{#unless (get amenities 0 0) }} checked {{/unless}}> Offers Delivery</div>
+                            <div class="feature"><input type="checkbox" id="outdoorDiningCheckbox" {{#unless (get amenities 1 0) }} checked {{/unless}}> Outdoor dining</div>
+                            <div class="feature"><input type="checkbox" id="indoorDiningCheckbox" {{#unless (get amenities 2 0) }} checked {{/unless}}> Indoor dining</div>
+                            <div class="feature"><input type="checkbox" id="groupsCheckbox" {{#unless (get amenities 3 0) }} checked {{/unless}}> Good for Groups</div>
                         </div>
                     
                         <div class="secondbatchattri">
-                            <div class="feature"><input type="checkbox" id="musicTvCheckbox"> Music and TV</div>
-                            <div class="feature"><input type="checkbox" id="driveThruCheckbox"> Drive-thru</div>
-                            <div class="feature"><input type="checkbox" id="takeoutCheckbox"> Offers Takeout</div>
-                            <div class="feature"><input type="checkbox" id="creditCardsCheckbox"> Accepts Credit Cards</div>
+                            <div class="feature"><input type="checkbox" id="musicTvCheckbox" {{#unless (get amenities 4 0) }} checked {{/unless}}> Music and TV</div>
+                            <div class="feature"><input type="checkbox" id="driveThruCheckbox" {{#unless (get amenities 5 0) }} checked {{/unless}}> Drive-thru</div>
+                            <div class="feature"><input type="checkbox" id="takeoutCheckbox" {{#unless (get amenities 6 0) }} checked {{/unless}}> Offers Takeout</div>
+                            <div class="feature"><input type="checkbox" id="creditCardsCheckbox" {{#unless (get amenities 7 0) }} checked {{/unless}}> Accepts Credit Cards</div>
                         </div>
                     
                         <div class="thirdbatchattri">
-                            <div class="feature"><input type="checkbox" id="eWalletCheckbox"> Accepts E-Wallet</div>
-                            <div class="feature"><input type="checkbox" id="kidsCheckbox"> Good for Kids</div>
-                            <div class="feature"><input type="checkbox" id="petsCheckbox"> Good for Pets</div>
-                            <div class="feature"><input type="checkbox" id="veganCheckbox"> Vegetarian/Vegan Offerings</div>
+                            <div class="feature"><input type="checkbox" id="eWalletCheckbox" {{#unless (get amenities 8 0) }} checked {{/unless}} > Accepts E-Wallet</div>
+                            <div class="feature"><input type="checkbox" id="kidsCheckbox" {{#unless (get amenities 9 0) }} checked {{/unless}}> Good for Kids</div>
+                            <div class="feature"><input type="checkbox" id="petsCheckbox" {{#unless (get amenities 10 0) }} checked {{/unless}}> Good for Pets</div>
+                            <div class="feature"><input type="checkbox" id="veganCheckbox" {{#unless (get amenities 11 0) }} checked {{/unless}}> Vegetarian/Vegan Offerings</div>
                         </div>
                     </div>
 

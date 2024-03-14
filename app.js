@@ -54,7 +54,33 @@ function initializeHandlebars() {
             },
             isVideo: function(string){
                 return string.endsWith(".mp4") 
-            }  
+            }, 
+            isSelectedDay: function(day, selectDay){
+                return day === selectDay;
+            },
+            formatTime: function(timeString) {
+                const [time, period] = timeString.split(' ');
+                const [hours, minutes] = time.split(':').map(Number);
+                let hours24 = hours;
+
+                if (period === 'PM' && hours !== 12) {
+                    hours24 += 12;
+                } else if (period === 'AM' && hours === 12) {
+                    hours24 = 0;
+                }
+
+                const formattedHours = String(hours24).padStart(2, '0');
+                const formattedMinutes = String(minutes).padStart(2, '0');
+
+                return `${formattedHours}:${formattedMinutes}:00`;
+            },  
+            addSpaceForTags: function(tags){
+                if (!Array.isArray(tags)) {
+                    return '';
+                }
+            
+                return tags.join(', ').trim();
+            }     
         }
     }));
     app.set("view engine", "hbs");
