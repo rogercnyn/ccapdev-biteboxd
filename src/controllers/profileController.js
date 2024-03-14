@@ -251,6 +251,53 @@ async function handleProfileRequest(req, res) {
     }
 }
 
+// async function fetchAndRenderProfile(query, res, view) {
+//     try {
+//         let profileQuery = Profile.findOne(query);
+//         if (query._id) {
+//             profileQuery = Profile.findById(query._id);
+//         }
+
+//         const profile = await profileQuery.populate('reviews').populate('likedReviews').exec();
+//         if (!profile) {
+//             return res.status(404).send('Profile not found');
+//         }
+
+//         const profileData = profile.toObject({ virtuals: true });
+
+//         // const promises = profileData.likedReviews.map(async (review) => {
+//         //     review['createdAtDisplay'] = formatDate(review['createdAt']);
+//         //     review['longText'] = review['body'].slice(0, 230);
+//         //     review['fullText'] = review['body'].slice(230);
+//         //     review['hasNoSeeMore'] = review['fullText'].length === 0;
+//         //     review['overallRating'] = computeRating(review['affordabilityRating'], review['foodRating'], review['serviceRating']);
+//         //     review['noFood'] = 5 - review['foodRating'];
+//         //     review['noService'] = 5 - review['serviceRating'];
+//         //     review['noMoney'] = 5 - review['affordabilityRating'];
+//         //     review['isOwnReview'] = review['username'] === username;
+
+//         //     review['replies'].map((reply) => {
+//         //         reply['media'] = profileData['media'];
+//         //         reply['name'] = profileData['name'];
+//         //         reply['createdAt'] = formatDate(reply['createdAt']);
+//         //     });
+
+//         //     const profilePicturePromise = getProfilePicture(review['username']);
+//         //     const profilePicture = await profilePicturePromise;
+
+//         //     return profilePicture;
+//         // });
+
+//         res.render(view, {
+//             profile: profileData,
+//             reviews: profileData.reviews,
+//             likedReviews: profileData.likedReviews,
+//         });
+//     } catch (error) {
+//         console.error(`Error fetching profile data: ${error}`);
+//         res.status(500).send('Internal Server Error');
+//     }
+// }
 async function fetchAndRenderProfile(query, res, view) {
     try {
         let profileQuery = Profile.findOne(query);
@@ -262,19 +309,67 @@ async function fetchAndRenderProfile(query, res, view) {
         if (!profile) {
             res.redirect('/');
         } else {
-            const profileData = profile.toObject({ virtuals: true });
-            res.render(view, {
-                profile: profileData,
-                reviews: profileData.reviews,
-                likedReviews: profileData.likedReviews,
-            });
-        }
+
+        const profileData = profile.toObject({ virtuals: true });
+
+        const likedReviewsProfilePictures = await Promise.all(profileData.likedReviews.map(async (review) => {
+            try {
+                const userProfile = await Profile.findOne({ username: review.username });
+                if (userProfile && userProfile.image) {
+                    return userProfile.image;
+                } else {
+                    console.error('Profile image not found for a review:', review._id);
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error finding profile for a review:', error);
+                return null;
+            }
+        }));
+
+
+        profileData.reviews.forEach((review, index) => {
+            review['longText'] = review['body'].slice(0, 230);
+            review['fullText'] = review['body'].slice(230);
+            review['hasNoSeeMore'] = review['fullText'].length === 0;
+        });
+        res.render(view, {
+            profile: profileData,
+            reviews: profileData.reviews,
+            likedReviews: profileData.likedReviews,
+            likedReviewsProfilePictures: likedReviewsProfilePictures
+        });
+    }
     } catch (error) {
         console.error(`Error fetching profile data: ${error}`);
         res.status(500).send('Internal Server Error');
     }
 }
 
+
+
+
+function computeRating(r1, r2, r3){
+    return Math.round(((r1 + r2 + r3) / 3.0) * 10, 1)/10
+}
+
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+
+    const options = {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric', 
+        hour: 'numeric', 
+        minute: 'numeric', 
+        hour12: true
+    };
+
+    const formattedDate = date.toLocaleDateString('en-US', options);
+
+    return `${formattedDate}`;
+}
 
 
 

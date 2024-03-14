@@ -173,4 +173,5 @@ main {
 .review {
     width: 85%;
     margin-left: 5%;
+    height: fit-content;
 }

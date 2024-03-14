@@ -17,7 +17,7 @@
     "reviews": [
       "65e57ac3a149f9de594a9e58"
     ],
-    "likedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e6a"],
     "createdAt": "2024-03-04T07:39:47.860Z",
     "__v": 1
   },
@@ -38,7 +38,7 @@
     "reviews": [
       "65e57ac3a149f9de594a9e6a"
     ],
-    "likedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e5e"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -81,7 +81,7 @@
     "reviews": [
       "65e57ac3a149f9de594a9e64"
     ],
-    "likedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e5e"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -102,7 +102,7 @@
     "reviews": [
       "65e57ac3a149f9de594a9e76"
     ],
-    "likedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e7c"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -123,7 +123,7 @@
     "reviews": [
       "65e57ac3a149f9de594a9e7c"
     ],
-    "likedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e82"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
