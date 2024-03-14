@@ -33,9 +33,13 @@
         <div class="popup-container" id="popupContainer" style="display: none">
             <div class="popup" id="popup">
 
-                {{#unless isResto}}
+                {{#if isResto}}
+                    <a href="/resto-responsepage/{{userId}}">View Profile</a>
+
+                {{else}}
                     <a href="/profile/{{loggedUsername}}">View Profile</a>
-                {{/unless}}
+
+                {{/if}}
                 <a href="/logout">Log Out</a>
             </div>
         </div>
