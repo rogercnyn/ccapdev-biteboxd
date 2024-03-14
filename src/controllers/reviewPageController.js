@@ -32,6 +32,7 @@ function filterReviews( restaurant, overallRating, affordabilityRating, foodRati
 
  function completeRestaurant(restaurant){
     restaurant['flooredRating'] = Math.floor(restaurant['rating'])
+    restaurant['stars'] = Math.floor(restaurant['rating'])
     restaurant['xcoord'] = restaurant['coordinates'][0]
     restaurant['ycoord'] = restaurant['coordinates'][1]
 }
