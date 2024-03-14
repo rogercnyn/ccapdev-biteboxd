@@ -51,3 +51,22 @@ function changeCategoryTitle(category) {
     categoryTitle.textContent = categoryDictionary[category]
 
 }
+
+
+
+$(document).ready(function() {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const sorting = params.get('sorting')
+
+    
+    if(sorting && sorting.length != 0) {
+        $('#sorting').val(sorting);
+    }
+    $('#sorting').change(function() {
+        let sorting = $('#sorting').val()
+        let url = `${window.location.href.split('?')[0]}?sorting=${sorting}`;
+    
+        window.location.href = url
+    });
+})
