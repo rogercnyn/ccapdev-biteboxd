@@ -67,7 +67,6 @@ router.get('/profile/:username', handleProfileRequest)
 //     });
 // });
 
-
 // // will redirect to login if the link resto-responsepage without the corresponding id is provided
 router.get('/resto-responsepage', (req, res) => {
     res.redirect('/login');

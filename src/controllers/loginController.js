@@ -31,6 +31,7 @@ async function loginUser(req, username, password) {
     }
 }
 
+
 async function logout(req,res) {
     req.session.destroy(() => {
         res.redirect('/'); 
@@ -47,7 +48,6 @@ async function login(req, res) {
         return res.redirect(redirectUrl);
     }
 }
-
 
 
 module.exports = {login, logout}
