@@ -49,7 +49,6 @@ async function completeReviews(restaurant, username){
         review['noMoney'] = 5 - review['affordabilityRating']
         review['isOwnReview'] = review['username'] === username
 
-
         review['replies'].map((reply) =>{
             reply['media'] = restaurant['media']
             reply['name'] = restaurant['name']
