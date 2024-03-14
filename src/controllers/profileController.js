@@ -328,11 +328,11 @@ async function fetchAndRenderProfile(query, res, view) {
         }));
 
 
-        profileData.reviews.forEach((review, index) => {
-            review['longText'] = review['body'].slice(0, 230);
-            review['fullText'] = review['body'].slice(230);
-            review['hasNoSeeMore'] = review['fullText'].length === 0;
-        });
+        // profileData.reviews.forEach((review, index) => {
+        //     review['longText'] = review['body'].slice(0, 230);
+        //     review['fullText'] = review['body'].slice(230);
+        //     review['hasNoSeeMore'] = review['fullText'].length === 0;
+        // });
         res.render(view, {
             profile: profileData,
             reviews: profileData.reviews,
