@@ -260,17 +260,15 @@ async function fetchAndRenderProfile(query, res, view) {
 
         const profile = await profileQuery.populate('reviews').populate('likedReviews').exec();
         if (!profile) {
-            return res.status(404).send('Profile not found');
+            res.redirect('/');
+        } else {
+            const profileData = profile.toObject({ virtuals: true });
+            res.render(view, {
+                profile: profileData,
+                reviews: profileData.reviews,
+                likedReviews: profileData.likedReviews,
+            });
         }
-
-        const profileData = profile.toObject({ virtuals: true });
-
-
-        res.render(view, {
-            profile: profileData,
-            reviews: profileData.reviews,
-            likedReviews: profileData.likedReviews,
-        });
     } catch (error) {
         console.error(`Error fetching profile data: ${error}`);
         res.status(500).send('Internal Server Error');
