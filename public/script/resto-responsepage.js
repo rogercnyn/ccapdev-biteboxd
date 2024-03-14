@@ -347,6 +347,7 @@ function deleteRestaurant(){
                             timerProgressBar: true 
                         }).then(() => {
                             window.location.href = '/index';
+                            
                         });
                     });
                     

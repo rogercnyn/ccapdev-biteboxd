@@ -241,12 +241,61 @@
                                     {{#if isOwnReview}}
                                     &nbsp;&nbsp;&#8286; 
                                     <div class="options-popup" id="optionsPopup">
-                                        <a href="" onclick="editReview()">Edit</a>
-                                        <a href="" onclick="deleteReview()">Delete</a>
+                                        <a onclick="editReview()">Edit</a>
+                                        <a onclick="deleteReview()">Delete</a>
                                     </div>
                                     {{/if}}
                                 </div>
                             </div>
+
+                            <div class="editReviewOverlay" id="editReviewOverlay" onclick="closeEditPopup()"></div>
+
+                                <div id="editReview" class="editReview">
+                                    <div class="modal-content">
+                                        <span class="closeEdit" onclick="closeEditPopup()">&times;</span>
+                                        <span id="editReviewheader">Edit Review</span>
+                                        <div id="reviewbody">
+                                            <p id ="getReview">{{body}}</p>
+                                        </div>
+                                        <div class="criteriaratearea">
+                                            <div class="criteriarate">
+                                                <h3 class="criterialbl">Food Quality</h3>
+                                                <div class="star-sorting" data-criterion="food">
+                                                    <span class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
+                                                    <span class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
+                                                    <span class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
+                                                    <span class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
+                                                    <span class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="criteriarate">
+                                                <h3 class="criterialbl">Service</h3>
+                                                <div class="star-sorting" data-criterion="service">
+                                                    <span class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
+                                                    <span class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
+                                                    <span class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
+                                                    <span class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
+                                                    <span  class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="criteriarate">
+                                                <h3 class="criterialbl">Affordability</h3>
+                                                <div class="star-sorting" data-criterion="price">
+                                                    <span class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
+                                                    <span class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
+                                                    <span class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
+                                                    <span class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
+                                                    <span class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div id="reviewEditor"></div>
+                                        <button class="publisheditbtn" onclick="publishEditedReview()">Publish</button>
+                                    </div>
+                                </div>
 
 
                         </div>

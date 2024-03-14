@@ -198,7 +198,43 @@ function toggleOptions() {
     popup.style.display = (popup.style.display === "block") ? "none" : "block";
 }
 
+var quill; 
+
 function editReview() {
+    document.getElementById('editReview').style.display = 'block';
+    document.getElementById('editReviewOverlay').style.display = 'block';
+    
+    var existingReviewContent = document.getElementById('getReview').innerHTML;
+
+    if (!quill) {
+        quill = new Quill('#reviewEditor', {
+            theme: 'snow',
+            height: 900,
+            width: 900,
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'indent': '-1' }, { 'indent': '+1' }],
+                    [{ 'align': [] }],
+                    [{ 'color': [] }],
+                    ['link'],
+                    ['clean']
+                ], 
+            }
+        });
+    }
+    quill.root.innerHTML = existingReviewContent;
+}
+
+
+function closeEditPopup(){
+    document.getElementById('editReview').style.display = 'none';
+    document.getElementById('editReviewOverlay').style.display = 'none';
+}
+
+function publishEditedReview(){
     Swal.fire({
         icon: 'success',
         title: 'Success!',
@@ -206,7 +242,10 @@ function editReview() {
         showConfirmButton: false,
         timer: 2500 
     });
+    closeEditPopup();
 }
+
+
 
 function deleteReview() {
     Swal.fire({
