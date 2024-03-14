@@ -511,7 +511,7 @@ margin-bottom: 100px;
     z-index: 1000;
     border-radius: 10px;
     width: 900px;
-    height: 350px;
+    height: 500px;
 }
 
 .closeEdit {
@@ -552,6 +552,20 @@ margin-bottom: 100px;
     cursor: pointer;
 }
 
-#reviewEditor {
-    height: 900px;
+
+#editreviewattachment{
+    margin-top: 30px;
+}
+
+#editRateArea {
+    margin-bottom: 20px;
+    gap: 50px;
+}
+
+#editreviewattachment {
+    gap: 20px;
+}
+
+#editphoto-container {
+    gap: 30px;
 }
