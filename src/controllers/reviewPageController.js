@@ -192,6 +192,10 @@ async function handleRestoResponsePageRequest(req, res) {
             res.render("resto-responsepage", restaurant);
         }
     }
+
+    else {
+        res.redirect("/");
+    }
   
 }
 
