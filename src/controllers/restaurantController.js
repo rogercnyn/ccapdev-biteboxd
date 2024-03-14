@@ -200,6 +200,7 @@ const sortReviewersHL = restaurants => restaurants.sort((a, b) => b.numberOfRevi
 const sortPriceLH = restaurants => restaurants.sort((a, b) => a.startPriceRange - b.startPriceRange);
 const sortPriceHL = restaurants => restaurants.sort((a, b) => b.startPriceRange - a.startPriceRange);
 
+const sortByNameAsc = restaurants => restaurants.slice().sort((a, b) => a.name.localeCompare(b.name));
 
 async function handleSearchRequest(req, resp) {
     // console.log("HERE")
@@ -233,10 +234,24 @@ async function handleSearchRequest(req, resp) {
 }
 
 async function handleGetAllRestoRequest(req, resp){
+
+    const { sorting } = req.query;
+
     getAllRestaurant()
         .then
         (
             results => {
+
+                if (sorting === "ratingLH"){
+                    results = sortRecommended(results).slice().reverse()
+                } else if (sorting === "rating"){
+                    sortRecommended(results)
+                } else if (sorting === "az"){
+                    sortByNameAsc(results)
+                } else if (sorting === "za"){
+                    results = sortByNameAsc(results).slice().reverse()
+                }
+            
 
                 resp.render("all", 
                 {
