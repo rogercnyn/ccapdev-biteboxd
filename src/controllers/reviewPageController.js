@@ -12,20 +12,20 @@ function computeRating(r1, r2, r3){
 function filterReviews( restaurant, overallRating, affordabilityRating, foodRating, serviceRating ){
     console.log(overallRating, affordabilityRating, foodRating, serviceRating)
    
-    if(overallRating){
-        restaurant.reviews = restaurant.reviews.filter(review => review.overallRating >= parseInt(overallRating));
+    if(overallRating && overallRating !== "0"){
+        restaurant.reviews = restaurant.reviews.filter(review => Math.floor(review.overallRating) === parseInt(overallRating));
     }
 
-    if(affordabilityRating){
-        restaurant.reviews = restaurant.reviews.filter(review => review.affordabilityRating >= parseInt(affordabilityRating));
+    if(affordabilityRating && affordabilityRating !== "0"){
+        restaurant.reviews = restaurant.reviews.filter(review => Math.floor(review.affordabilityRating) === parseInt(affordabilityRating));
     }
 
-    if(foodRating){
-        restaurant.reviews = restaurant.reviews.filter(review => review.foodRating >= parseInt(foodRating));
+    if(foodRating && foodRating !== "0"){
+        restaurant.reviews = restaurant.reviews.filter(review => Math.floor(review.foodRating) === parseInt(foodRating));
     }
 
-    if(serviceRating){
-        restaurant.reviews = restaurant.reviews.filter(review => review.serviceRating >= parseInt(serviceRating));
+    if(serviceRating && serviceRating !== "0"){
+        restaurant.reviews = restaurant.reviews.filter(review => Math.floor(review.serviceRating) === parseInt(serviceRating));
     }
 
 }

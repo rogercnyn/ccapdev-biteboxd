@@ -86,6 +86,7 @@ $(document).ready(function() {
         $('#min-price-filter').val('');
         $('#max-price-filter').val('');
         $('#criteria').val('recommended');
+        $(".search-bar").val('');
     })
     
 

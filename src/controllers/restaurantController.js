@@ -20,7 +20,8 @@ async function searchQuery(searchTerm, locationInput) {
     let query =  await Restaurant.find(
         {
             $or: [
-                { name: { $regex: searchTerm, $options: 'i' } }
+                { name: { $regex: searchTerm, $options: 'i' } },
+                { description: { $regex: searchTerm, $options: 'i' } }
             ]
         }, 
         searchRequiredFields
@@ -222,7 +223,7 @@ async function handleGetAllRestoRequest(req, resp){
         .then
         (
             results => {
-                console.log(results)
+
                 resp.render("all", 
                 {
                     results: results    
@@ -237,7 +238,7 @@ async function handleExploreRequest(req, res){
     restaurants = floorTheRating(restaurants);
 
     sortReviewersHL(restaurants)
-    // console.log(restaurants)
+    console.log(restaurants)
     let topRestaurants = restaurants.slice(0, 5)
     let editorsChoice =  restaurants.filter(restaurant => restaurant.rating == 5).slice(0, 5);
 
