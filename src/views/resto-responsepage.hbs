@@ -5,25 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/assets/tab-icon.png" type="image/x-icon">
     <title>{{name}}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/script/general.js"></script>
+    <script src="/script/like.js"></script>
     <script src="/script/quillSettings.js"></script>
-    <script src="/script/resto-responsepage.js"></script>
-  
     <script src="/script/slider.js"></script>
+    <script src="/script/search-bar.js"></script>
   
     <link rel="stylesheet" href="/styles/resto-responsepage.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- chart -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-
-    <script src="/script/resto-reviewpage.js"></script>
+    <script src="/script/resto-responsepage.js"></script>
 </head>
 <body>
     {{> navbar}}
@@ -31,8 +30,6 @@
     <main class = "main">
 
     <div class="left">
-        {{> searchBar}}
-
         <div class="restoinfo">
 
             <div class="options" id="optionsbtns">
@@ -272,7 +269,7 @@
                                     <div class="nametitle">
                                         <a href="others-profile" class="nameandtime">@{{username}}</a>
                                         <p class="nameandtime"> · </p>
-                                        <p class="nameandtime">{{createdAt}}</p>
+                                        <p class="nameandtime">{{createdAtDisplay}}</p>
                                     </div>
                                 </div>
                                 <div class="criteriaratings">
@@ -420,7 +417,7 @@
 
                         <div class="search-rev-outer-container">
                             <div class="search-rev-container">
-                                <input type="text" placeholder="Search for a review" class="search-rev-input">
+                                <input type="text" placeholder="Search for a review" class="search-rev-input" name="search-rev-input" id="search-rev-input">
                                 <button type="submit" class="search-rev-but"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
@@ -430,11 +427,11 @@
                             <div class="search-setting">
                                 <div class="star-sorting">
                                     <p>Filter reviews: </p>
-                                    <span onclick="stars.handleClick(1)" class="filter-slider slider-emoji-rating slider-star-rating">⭐</span>
-                                    <span onclick="stars.handleClick(2)" class="filter-slider slider-emoji-rating slider-star-rating">⭐</span>
-                                    <span onclick="stars.handleClick(3)" class="filter-slider slider-emoji-rating slider-star-rating">⭐</span>
-                                    <span onclick="stars.handleClick(4)" class="filter-slider slider-emoji-rating slider-star-rating">⭐</span>
-                                    <span onclick="stars.handleClick(5)" class="filter-slider slider-emoji-rating slider-star-rating">⭐</span>
+                                    <span class="filter-slider slider-emoji-rating slider-star-rating">⭐</span>
+                                    <span class="filter-slider slider-emoji-rating slider-star-rating">⭐</span>
+                                    <span class="filter-slider slider-emoji-rating slider-star-rating">⭐</span>
+                                    <span class="filter-slider slider-emoji-rating slider-star-rating">⭐</span>
+                                    <span class="filter-slider slider-emoji-rating slider-star-rating">⭐</span>
                                 </div>
                             </div>
 
@@ -442,11 +439,11 @@
                             <div class="price-setting">
                                 <p>Pricing</p>
                                 <div class="price-slider" id="price-filter">
-                                    <span onclick="cashEmos.handleClick(1)" class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
-                                    <span onclick="cashEmos.handleClick(2)" class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
-                                    <span onclick="cashEmos.handleClick(3)" class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
-                                    <span onclick="cashEmos.handleClick(4)" class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
-                                    <span onclick="cashEmos.handleClick(5)" class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
+                                    <span class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
+                                    <span class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
+                                    <span class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
+                                    <span class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
+                                    <span class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
                                 </div>
                             </div>
 
@@ -456,22 +453,22 @@
                             <div class="search-setting">
                                 <p>Food Quality</p>
                                     <div class="star-sorting" id="food-filter">
-                                    <span onclick="addRating(0, 1)" class="filter-slider slider-emoji-rating filter-food-rating">🍗</span>
-                                    <span onclick="addRating(0, 2)" class="filter-slider slider-emoji-rating filter-food-rating">🍗</span>
-                                    <span onclick="addRating(0, 3)" class="filter-slider slider-emoji-rating filter-food-rating">🍗</span>
-                                    <span onclick="addRating(0, 4)" class="filter-slider slider-emoji-rating filter-food-rating">🍗</span>
-                                    <span onclick="addRating(0, 5)" class="filter-slider slider-emoji-rating filter-food-rating">🍗</span>
+                                    <span class="filter-slider slider-emoji-rating filter-food-rating">🍗</span>
+                                    <span class="filter-slider slider-emoji-rating filter-food-rating">🍗</span>
+                                    <span class="filter-slider slider-emoji-rating filter-food-rating">🍗</span>
+                                    <span class="filter-slider slider-emoji-rating filter-food-rating">🍗</span>
+                                    <span class="filter-slider slider-emoji-rating filter-food-rating">🍗</span>
                                 </div>
                             </div>
 
                             <div class="search-setting">
                                 <p>Service</p>
                                 <div class="star-sorting" data-criterion="service">
-                                <span onclick="addRating(1, 1)" class="filter-slider slider-emoji-rating filter-service-rating">🤝</span>
-                                <span onclick="addRating(1, 2)" class="filter-slider slider-emoji-rating filter-service-rating">🤝</span>
-                                <span onclick="addRating(1, 3)" class="filter-slider slider-emoji-rating filter-service-rating">🤝</span>
-                                <span onclick="addRating(1, 4)" class="filter-slider slider-emoji-rating filter-service-rating">🤝</span>
-                                <span onclick="addRating(1, 5)" class="filter-slider slider-emoji-rating filter-service-rating">🤝</span>
+                                <span class="filter-slider slider-emoji-rating filter-service-rating">🤝</span>
+                                <span class="filter-slider slider-emoji-rating filter-service-rating">🤝</span>
+                                <span class="filter-slider slider-emoji-rating filter-service-rating">🤝</span>
+                                <span class="filter-slider slider-emoji-rating filter-service-rating">🤝</span>
+                                <span class="filter-slider slider-emoji-rating filter-service-rating">🤝</span>
                                 </div>
                             </div>
 
@@ -482,10 +479,11 @@
                             <p>Sort:</p>
                             <select id="criteria">
                                 <option value="recommended">Recommended</option>
-                                <option value="reviews">Number of Reviews</option>
+                                <option value="recentM">Most Recent</option>
+                                <option value="recentL">Least Recent</option>
                                 <option value="rating">Rating</option>
                                 <option value="food-quality">Food Quality</option>
-                                <option value="price">Price</option>
+                                <option value="affordability">Price</option>
                                 <option value="service">Service</option>
                             </select>
                             
@@ -493,25 +491,21 @@
 
                       
                         <div class="filter-buttons">
-                            <button class="clear-button adv-search-button" onclick="search()">Clear</button>
-                            <button class="apply-button adv-search-button" id="applyFilter" onclick="applyFilters()">Apply</button>
+                            <button class="no-filter-button adv-search-button" id="noFilter">Reset</button>
+                            <button class="apply-button adv-search-button" id="applyFilter">Apply</button>
+                            <button class="clear-button adv-search-button" id="clearFilter">Clear Settings</button>
                         </div>
                     </div>
 
                 </div>
 
             </div>
-        </div>
 
         </div>
     
     
     </main>
     <script>
-        const filterReviewSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
-        filterReviewSlider.initializeHover();
-
-
         let quillTargets = document.getElementsByClassName('reply-editor')
         let replyPanels = document.getElementsByClassName('replypanel')
         let responsePanels = document.getElementsByClassName('responsepanel')
@@ -532,11 +526,7 @@
         }
 
         );
-
-
-        adjustNavBar();
     </script>
-    <script src="/script/resto-responsepage.js"></script>
     <script src="/script/chart.js"></script>
 </body>
 </html>

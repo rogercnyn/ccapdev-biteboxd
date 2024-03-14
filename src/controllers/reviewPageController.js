@@ -61,7 +61,6 @@ async function completeReviews(restaurant, username){
         return profilePicture;
     });
 
-
     const profilePictures = await Promise.all(promises);
 
     restaurant['reviews'].forEach((review, index) => {
@@ -140,48 +139,40 @@ function sortRecommended(reviews, username) {
 
 async function handleRestoResponsePageRequest(req, res) {
     const id = req.params._id;
-    let restaurant = await getRestoCardDetails(id);
+    const { minStar, minPrice, minFood, minService, searchText, sorting } = req.query;
+    let restaurant = await getRestoCardDetails(id, searchText);
+    const username = req.session.username ? req.session.username : "";
 
-    restaurant['flooredRating'] = Math.floor(restaurant['rating'])
-    restaurant['xcoord'] = restaurant['coordinates'][0]
-    restaurant['ycoord'] = restaurant['coordinates'][1]
 
     if(!req.session.loggedIn){
         res.redirect('/')
     } else {
-        const promises = restaurant['reviews'].map(async (review) => {
-            review['createdAt'] = formatDate(review['createdAt']);
-            review['longText'] = review['body'].slice(0, 230);
-            review['fullText'] = review['body'].slice(230);
-            review['hasNoSeeMore'] = review['fullText'].length === 0;
-            review['overallRating'] = computeRating(review['affordabilityRating'], review['foodRating'], review['serviceRating']);
-            review['noFood'] = 5 - review['foodRating'];
-            review['noService'] = 5 - review['serviceRating'];
-            review['noMoney'] = 5 - review['affordabilityRating'];
-    
-            review['replies'].map((reply) =>{
-                reply['media'] = restaurant['media']
-                reply['name'] = restaurant['name']
-                reply['createdAt'] = formatDate(reply['createdAt'])
-            })
-    
-            const profilePicturePromise = getProfilePicture(review['username']);
-            const profilePicture = await profilePicturePromise;
-            return profilePicture;
-        });
-    
-        const profilePictures = await Promise.all(promises);
-    
-        restaurant['reviews'].forEach((review, index) => {
-            review['profilePicture'] = profilePictures[index]['image'];
-            review['order'] = index
-        });
+        completeRestaurant(restaurant)
+
+        await completeReviews(restaurant, username)
+
+        
+        filterReviews(restaurant, minStar, minPrice, minFood, minService)
+
+
+        // assuming recommended & tie breaker 
+        sortRecommended(restaurant['reviews'], username)
+        
+        if(sorting && sorting.startsWith("recent")) {
+            sortRecent(restaurant['reviews'], "recentM" === sorting)
+        } else if (sorting === "rating") {
+            sortStar(restaurant['reviews'])
+        } else if (sorting === "food-quality") {
+            sortFood(restaurant['reviews']) 
+        } else if (sorting === "service") {
+            sortService(restaurant['reviews'])
+        } else if (sorting === "affordability") {
+            sortAffordability(restaurant['reviews'])
+        }
     
         console.log(restaurant);
         res.render("resto-responsepage", restaurant);
     }
-
-
   
 }
 

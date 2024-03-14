@@ -1,4 +1,3 @@
-let starsContainers = document.querySelectorAll(".star-sorting");
 let currentRatings = {
     food: 0,
     service: 0,
@@ -9,68 +8,67 @@ let quillEditor;
 let photoContainer;
 
 
-document.querySelector('form').onsubmit = function(event) {
-    event.preventDefault();
+// document.querySelector('form').onsubmit = function(event) {
+//     event.preventDefault();
 
-    // Get values from form fields
-    const restaurantName = document.querySelector('#restoName').value;
-    const address = document.querySelector('#address').value;
-    const tags = document.querySelector('#tags').value;
-    const priceStart = document.querySelector('#pricestart').value;
-    const priceEnd = document.querySelector('#priceend').value;
-    const daysOpenStart = document.querySelector('#daysopenstart').value;
-    const daysOpenEnd = document.querySelector('#daysopenend').value;
-    const operatingHourStart = document.querySelector('#operatinghourstart').value;
-    const operatingHourEnd = document.querySelector('#operatinghourend').value;
-    const shortDesc = document.querySelector('#shortdesc').value;
-    const desc = document.querySelector('#desc').value;
-
+//     // Get values from form fields
+//     const restaurantName = document.querySelector('#restoName').value;
+//     const address = document.querySelector('#address').value;
+//     const tags = document.querySelector('#tags').value;
+//     const priceStart = document.querySelector('#pricestart').value;
+//     const priceEnd = document.querySelector('#priceend').value;
+//     const daysOpenStart = document.querySelector('#daysopenstart').value;
+//     const daysOpenEnd = document.querySelector('#daysopenend').value;
+//     const operatingHourStart = document.querySelector('#operatinghourstart').value;
+//     const operatingHourEnd = document.querySelector('#operatinghourend').value;
+//     const shortDesc = document.querySelector('#shortdesc').value;
+//     const desc = document.querySelector('#desc').value;
     
-    document.querySelector('.resto-title').innerText = restaurantName;
-    document.querySelector('.location').innerText = address;
-    document.querySelector('#tag1').innerHTML = `💵 💵 <span>(P${priceStart}-${priceEnd})</span>`;
-    document.querySelector('#tag2').innerText = tags.split(', ')[0]; 
-    document.querySelector('#tag3').innerText = tags.split(', ')[1]; 
-    document.querySelector('#tag4').innerText = `Open during: ${daysOpenStart}-${daysOpenEnd} (${operatingHourStart} - ${operatingHourEnd})`;
-    document.querySelector('#description').innerText = desc;
+//     document.querySelector('.resto-title').innerText = restaurantName;
+//     document.querySelector('.location').innerText = address;
+//     document.querySelector('#tag1').innerHTML = `💵 💵 <span>(P${priceStart}-${priceEnd})</span>`;
+//     document.querySelector('#tag2').innerText = tags.split(', ')[0]; 
+//     document.querySelector('#tag3').innerText = tags.split(', ')[1]; 
+//     document.querySelector('#tag4').innerText = `Open during: ${daysOpenStart}-${daysOpenEnd} (${operatingHourStart} - ${operatingHourEnd})`;
+//     document.querySelector('#description').innerText = desc;
 
-    const deliveryCheckbox = document.getElementById('deliveryCheckbox');
-    const outdoorDiningCheckbox = document.getElementById('outdoorDiningCheckbox');
-    const indoorDiningCheckbox = document.getElementById('indoorDiningCheckbox');
-    const groupsCheckbox = document.getElementById('groupsCheckbox');
+//     const deliveryCheckbox = document.getElementById('deliveryCheckbox');
+//     const outdoorDiningCheckbox = document.getElementById('outdoorDiningCheckbox');
+//     const indoorDiningCheckbox = document.getElementById('indoorDiningCheckbox');
+//     const groupsCheckbox = document.getElementById('groupsCheckbox');
 
-    const musicTvCheckbox = document.getElementById('musicTvCheckbox');
-    const driveThruCheckbox = document.getElementById('driveThruCheckbox');
-    const takeoutCheckbox = document.getElementById('takeoutCheckbox');
-    const creditCardsCheckbox = document.getElementById('creditCardsCheckbox');
+//     const musicTvCheckbox = document.getElementById('musicTvCheckbox');
+//     const driveThruCheckbox = document.getElementById('driveThruCheckbox');
+//     const takeoutCheckbox = document.getElementById('takeoutCheckbox');
+//     const creditCardsCheckbox = document.getElementById('creditCardsCheckbox');
 
-    const eWalletCheckbox = document.getElementById('eWalletCheckbox');
-    const kidsCheckbox = document.getElementById('kidsCheckbox');
-    const petsCheckbox = document.getElementById('petsCheckbox');
-    const veganCheckbox = document.getElementById('veganCheckbox');
+//     const eWalletCheckbox = document.getElementById('eWalletCheckbox');
+//     const kidsCheckbox = document.getElementById('kidsCheckbox');
+//     const petsCheckbox = document.getElementById('petsCheckbox');
+//     const veganCheckbox = document.getElementById('veganCheckbox');
 
-    updateCheckboxStatus('deliveryCheckbox', deliveryCheckbox.checked);
-    updateCheckboxStatus('outdoorDiningCheckbox', outdoorDiningCheckbox.checked);
-    updateCheckboxStatus('indoorDiningCheckbox', indoorDiningCheckbox.checked);
-    updateCheckboxStatus('groupsCheckbox', groupsCheckbox.checked);
+//     updateCheckboxStatus('deliveryCheckbox', deliveryCheckbox.checked);
+//     updateCheckboxStatus('outdoorDiningCheckbox', outdoorDiningCheckbox.checked);
+//     updateCheckboxStatus('indoorDiningCheckbox', indoorDiningCheckbox.checked);
+//     updateCheckboxStatus('groupsCheckbox', groupsCheckbox.checked);
 
-    updateCheckboxStatus('musicTvCheckbox', musicTvCheckbox.checked);
-    updateCheckboxStatus('driveThruCheckbox', driveThruCheckbox.checked);
-    updateCheckboxStatus('takeoutCheckbox', takeoutCheckbox.checked);
-    updateCheckboxStatus('creditCardsCheckbox', creditCardsCheckbox.checked);
+//     updateCheckboxStatus('musicTvCheckbox', musicTvCheckbox.checked);
+//     updateCheckboxStatus('driveThruCheckbox', driveThruCheckbox.checked);
+//     updateCheckboxStatus('takeoutCheckbox', takeoutCheckbox.checked);
+//     updateCheckboxStatus('creditCardsCheckbox', creditCardsCheckbox.checked);
 
-    updateCheckboxStatus('eWalletCheckbox', eWalletCheckbox.checked);
-    updateCheckboxStatus('kidsCheckbox', kidsCheckbox.checked);
-    updateCheckboxStatus('petsCheckbox', petsCheckbox.checked);
-    updateCheckboxStatus('veganCheckbox', veganCheckbox.checked);
+//     updateCheckboxStatus('eWalletCheckbox', eWalletCheckbox.checked);
+//     updateCheckboxStatus('kidsCheckbox', kidsCheckbox.checked);
+//     updateCheckboxStatus('petsCheckbox', petsCheckbox.checked);
+//     updateCheckboxStatus('veganCheckbox', veganCheckbox.checked);
 
-    // Close modal
-    const modal = document.getElementById('editModal');
-    modal.style.display = 'none';
+//     // Close modal
+//     const modal = document.getElementById('editModal');
+//     modal.style.display = 'none';
 
-    const modaloverlay = document.getElementById('overlay');
-    modaloverlay.style.display = 'none';
-};
+//     const modaloverlay = document.getElementById('overlay');
+//     modaloverlay.style.display = 'none';
+// };
 
 function updateCheckboxStatus(checkboxId, isChecked) {
     const checkboxElement = document.querySelector(`#${checkboxId}`);
@@ -394,4 +392,101 @@ function closeModal() {
     const modal = document.getElementById('modal');
     modal.style.display = 'none';
     document.body.classList.remove('modal-open');
+}
+
+$(document).ready(function() {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const minStar = params.get('minStar');
+    const minPrice = params.get('minPrice');
+    const minFood = params.get('minFood');
+    const minService = params.get('minService');
+    const searchTextValue = params.get('searchText');
+    const sortingVal = params.get('sorting');
+
+    const filterStarSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
+    const filterPriceSlider = new Slider(document.getElementsByClassName('filter-price-rating'));
+    const filterFoodSlider = new Slider(document.getElementsByClassName('filter-food-rating'));
+    const filterServiceSlider = new Slider(document.getElementsByClassName('filter-service-rating'));
+
+    filterStarSlider.initializeHover();
+    filterPriceSlider.initializeHover();
+    filterFoodSlider.initializeHover();
+    filterServiceSlider.initializeHover();
+
+    if(minStar) {
+        filterStarSlider.handleClick(minStar)
+    } 
+
+    if(minPrice) {
+        filterPriceSlider.handleClick(minPrice)  
+    }
+
+    if(minFood) {
+        filterFoodSlider.handleClick(minFood)
+    }
+
+    if(minService) {
+        filterServiceSlider.handleClick(minService)
+    }
+
+    $('#search-rev-input').val(searchTextValue)
+
+    if(sortingVal) {
+        $('#criteria').val(sortingVal)
+    }
+
+    function searchText() {
+        let searchText = $('#search-rev-input').val();
+        let url = `${window.location.href.split('?')[0]}?searchText=${searchText}`;
+        window.location.href = url;
+    }
+
+    $("#applyFilter").click(function() {
+
+        let minStar = filterStarSlider.getValue()
+        let minPrice = filterPriceSlider.getValue()
+        let minFood = filterFoodSlider.getValue()
+        let minService = filterServiceSlider.getValue()
+        let searchText = $('#search-rev-input').val();
+        var sorting = $('#criteria').val();
+
+        let url = `${window.location.href.split('?')[0]}?minStar=${minStar}&minPrice=${minPrice}&minFood=${minFood}&minService=${minService}&searchText=${searchText}&sorting=${sorting}`;
+
+        window.location.href = url;
+    })
+
+    $(".search-rev-but").click(function() {
+       searchText()    
+    })
+
+    $("#noFilter").click(function () {
+        window.location.href = window.location.href.split('?')[0];
+
+    })
+
+    $("#clearFilter").click(function () {
+
+        filterStarSlider.reset();
+        filterPriceSlider.reset();
+        filterFoodSlider.reset();
+        filterServiceSlider.reset();
+        $('#search-rev-input').val('');
+        $('#criteria').val('recommended');
+    })
+
+    
+    $('#search-rev-input').keypress(function(e) {
+        if (e.key === 'Enter') {
+            searchText()            
+        }
+    });
+
+
+});
+
+function searchReview(){
+    let reviews = document.getElementsByClassName("review")
+
+    Array.from(reviews).slice(0, reviews.length - 1).forEach(review => $(review).hide())
 }
