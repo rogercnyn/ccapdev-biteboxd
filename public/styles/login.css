@@ -48,8 +48,9 @@ a {
 .show-wrong-creds-text {
     color: red;
     font-size: 12px;
-    text-align: start;
+    text-align: center;
     display: block;
+
 }
 
 .shake {

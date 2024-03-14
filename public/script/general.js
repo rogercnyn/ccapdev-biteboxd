@@ -46,9 +46,9 @@ function appendQueryParameter(url, paramName, paramValue) {
 }
 
 
-function togglePasswordVisibility() {
-    var passwordField = document.getElementById("password");
-    var showPasswordIcon = document.getElementById("show-password");
+function togglePasswordVisibility(field, icon) {
+    var passwordField = document.getElementById(field);
+    var showPasswordIcon = document.getElementById(icon);
 
     if (passwordField.type === "password") {
         passwordField.type = "text";
