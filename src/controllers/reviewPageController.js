@@ -1,5 +1,5 @@
 const { getProfilePicture } = require('../controllers/profileController');
-const { getRestoCardDetails } = require('./restaurantController.js');
+const { getRestoCardDetails, findById } = require('./restaurantController.js');
 const { getReply, populateReplies } = require('./reviewController.js');
 const { readReply } = require('../controllers/restaurantreplyController.js');
 
@@ -140,39 +140,45 @@ function sortRecommended(reviews, username) {
 
 async function handleRestoResponsePageRequest(req, res) {
     const id = req.params._id;
-    const { minStar, minPrice, minFood, minService, searchText, sorting } = req.query;
-    let restaurant = await getRestoCardDetails(id, searchText);
-    const username = req.session.username ? req.session.username : "";
+    console.log(id);
+    const findResto = await findById(id);
+    console.log(findResto);
+
+    if (findResto) {
+        const { minStar, minPrice, minFood, minService, searchText, sorting } = req.query;
+        let restaurant = await getRestoCardDetails(id, searchText);
+        const username = req.session.username ? req.session.username : "";
 
 
-    if(!req.session.loggedIn){
-        res.redirect('/')
-    } else {
-        completeRestaurant(restaurant)
+        if(!req.session.loggedIn){
+            res.redirect('/')
+        } else {
+            completeRestaurant(restaurant)
 
-        await completeReviews(restaurant, username)
+            await completeReviews(restaurant, username)
 
+            
+            filterReviews(restaurant, minStar, minPrice, minFood, minService)
+
+
+            // assuming recommended & tie breaker 
+            sortRecommended(restaurant['reviews'], username)
+            
+            if(sorting && sorting.startsWith("recent")) {
+                sortRecent(restaurant['reviews'], "recentM" === sorting)
+            } else if (sorting === "rating") {
+                sortStar(restaurant['reviews'])
+            } else if (sorting === "food-quality") {
+                sortFood(restaurant['reviews']) 
+            } else if (sorting === "service") {
+                sortService(restaurant['reviews'])
+            } else if (sorting === "affordability") {
+                sortAffordability(restaurant['reviews'])
+            }
         
-        filterReviews(restaurant, minStar, minPrice, minFood, minService)
-
-
-        // assuming recommended & tie breaker 
-        sortRecommended(restaurant['reviews'], username)
-        
-        if(sorting && sorting.startsWith("recent")) {
-            sortRecent(restaurant['reviews'], "recentM" === sorting)
-        } else if (sorting === "rating") {
-            sortStar(restaurant['reviews'])
-        } else if (sorting === "food-quality") {
-            sortFood(restaurant['reviews']) 
-        } else if (sorting === "service") {
-            sortService(restaurant['reviews'])
-        } else if (sorting === "affordability") {
-            sortAffordability(restaurant['reviews'])
+            console.log(restaurant);
+            res.render("resto-responsepage", restaurant);
         }
-    
-        console.log(restaurant);
-        res.render("resto-responsepage", restaurant);
     }
   
 }

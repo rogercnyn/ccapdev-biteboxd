@@ -255,4 +255,14 @@ async function handleExploreRequest(req, res){
 
 }
 
-module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, filterRestaurants, handleExploreRequest};
+async function findById(id) {
+    try {
+        const resto = await Restaurant.findById(id).exec();
+        return !!resto; // Convert the truthy/falsy value to true/false
+    } catch (error) {
+        console.error('Error finding item by ID:', error);
+        return false;
+    }
+}
+
+module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, filterRestaurants, handleExploreRequest, findById};

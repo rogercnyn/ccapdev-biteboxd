@@ -73,6 +73,13 @@ router.get('/resto-responsepage', (req, res) => {
     res.redirect('/login');
 });
 
+
+// // will redirect to index if the called link is not found
+router.get('*', (req, res) => {
+    res.redirect('/');
+});
+
+
 // router.get('/sort', function(req, res) {
 //     const criteria = req.query.criteria;
 //     // Call the function to sort the results based on the criteria
