@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/login.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="shortcut icon" href="assets/tab-icon.png" type="image/x-icon">
+    <!-- Include SweetAlert library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <title>BiteBoxd - Log In</title>
 </head>
 <body>
@@ -53,7 +55,23 @@
     </div>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+
+    // Check if 'loadError' parameter exists and is true
+    if(params.loadError === 'true') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Incorrect username or password!',
+        });
+    }
+});
+
+</script>
 
 
 </body>

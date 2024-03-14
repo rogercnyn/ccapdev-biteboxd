@@ -48,35 +48,11 @@ function toggleOptions(button) {
     }
 }
 
-
-// function deleteReview(deleteButton) {
-//     var review = deleteButton.closest('.review');
-//     Swal.fire({
-//         icon: 'warning',
-//         title: 'Are you sure?',
-//         text: 'This action cannot be undone.',
-//         showCancelButton: true,
-//         confirmButtonColor: '#d33',
-//         cancelButtonColor: '#3085d6',
-//         confirmButtonText: 'Yes, delete it'
-//     }).then((result) => {
-//         if (result.isConfirmed) {
-//             review.remove();
-//             Swal.fire({
-//                 icon: 'success',
-//                 title: 'Deleted!',
-//                 text: 'Your review has been deleted.',
-//                 showConfirmButton: false,
-//                 timer: 2000
-//             });
-//         }
-//     });
-// }
 function deleteReview(deleteButton) {
     var review = deleteButton.closest('.review');
-    var reviewId = review.dataset.reviewId; // The review ID is stored in a data attribute
+    var reviewId = review.dataset.reviewId; 
 
-    console.log("Review ID to delete:", reviewId); // This should log the correct review ID
+    console.log("Review ID to delete:", reviewId); 
 
     if (!reviewId) {
         console.error('Review ID not found!');

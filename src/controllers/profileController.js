@@ -46,8 +46,6 @@ async function findProfileByUsername(username) {
             console.log('Profile not found');
             return null;
         }
-
-        // console.log('Profile found:', profile);
         return profile;
     } catch (error) {
         console.error('Error finding profile:', error);
@@ -163,7 +161,8 @@ async function createUser(req, res) {
 
 async function editProfile(req,res) {
     const userId = req.session.userId;
-        const { firstName, lastName, bio } = req.body;
+    const username = req.session.username;
+        const {  firstName, lastName, bio } = req.body;
         try {
             let profileUpdate = {
                 firstName: firstName,
@@ -176,7 +175,7 @@ async function editProfile(req,res) {
             }
             const updatedProfile = await Profile.findByIdAndUpdate(userId, profileUpdate, { new: true });
     
-            res.redirect("/own-profile");
+            res.redirect(`/profile/${username}`);
         } catch (error) {
             console.error('Error updating profile:', error);
             res.status(500).send("Internal Server Error");

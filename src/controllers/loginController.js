@@ -1,7 +1,6 @@
 const Profile = require('../models/Profile');
 const Restaurant = require('../models/Restaurant');
 
-
 async function loginUser(req, username, password) {
     try {
         const userProfile = await Profile.findOne({ username });
@@ -21,7 +20,7 @@ async function loginUser(req, username, password) {
                 req.session['loggedIn'] = true;
                 req.session['isResto'] = true;
 
-                console.log(req.session)
+                // console.log(req.session)
                 return { success: true, redirectUrl: "/resto-responsepage/" + restaurantUser._id };
             }
         }
@@ -37,22 +36,17 @@ async function logout(req,res) {
         res.redirect('/'); 
     });
 };
-
-async function login(req,res) {
+async function login(req, res) {
     const { username, password } = req.body;
     const loginResult = await loginUser(req, username, password);
 
     if (loginResult.success) {
-        res.redirect(loginResult.redirectUrl);
+        return res.redirect(loginResult.redirectUrl);
     } else {
-        if (loginResult.statusCode) {
-            res.status(loginResult.statusCode);
-        } else {
-            res.status(401);
-        }
-        res.send(loginResult.message);
+        const redirectUrl = loginResult.statusCode === 500 ? '/error' : `/login?loadError=true`;
+        return res.redirect(redirectUrl);
     }
-};
+}
 
 
 
