@@ -1,7 +1,7 @@
 const Restaurant = require('../models/Restaurant.js');
 const searchRequiredFields = { _id: 1, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1, numberOfCash: 1}
 const allPageRequiredFields = { _id: 1, name: 1, location: 1,  media: 1, rating: 1, shortDescription: 1, tag: 1 }
-
+const mongoose = require('mongoose')
 function floorTheRating(restaurants){
     restaurants.forEach(restaurant => {
         restaurant.stars = Math.floor(restaurant.rating)
@@ -62,6 +62,20 @@ async function getRestoCardDetails(id, searchText) {
     return query
 }  
 
+async function isValidRestaurant(id){
+    try {
+        // Check if the provided id can be cast to ObjectId
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return false;
+        }
+
+        const result = await Restaurant.exists({ _id: id });
+        return result;
+    } catch (err) {
+        console.error(err);
+        return false; // Or handle the error as per your requirement
+    }
+}
 
 
 
@@ -265,4 +279,4 @@ async function findById(id) {
     }
 }
 
-module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, filterRestaurants, handleExploreRequest, findById};
+module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, filterRestaurants, handleExploreRequest, findById, isValidRestaurant };
