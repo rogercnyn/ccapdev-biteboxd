@@ -169,14 +169,19 @@ body.modal-open {
     position: relative;
     display: inline-block;
 }
+
 .remove-button {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
     cursor: pointer;
-    color: rgb(235, 34, 34);
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
-    font-size: 1.5em; 
+    z-index: 999;
 }
 
 .cannot-publish a {
@@ -568,4 +573,24 @@ margin-bottom: 100px;
 
 #editphoto-container {
     gap: 30px;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.media-container {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
 }

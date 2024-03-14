@@ -227,9 +227,6 @@
                                         <span class="see-more" onclick="toggleSeeMore('rev{{order}}')"><b>...see more</b></span>
                                     {{/unless}}
                                 </div>
-
-                                
-            
                             </div>
 
                             <div class="rate-review" id="likeDislikeButtons">
@@ -249,7 +246,6 @@
                             </div>
 
                             <div class="editReviewOverlay" id="editReviewOverlay" onclick="closeEditPopup()"></div>
-
                                 <div id="editReview" class="editReview">
                                     <div class="modal-content">
                                         <span class="closeEdit" onclick="closeEditPopup()">&times;</span>
@@ -263,7 +259,7 @@
                                                 <div class="star-sorting" data-criterion="food">
 
                                                     {{#times foodRating}}
-                                                        <span class="filter-slider slider-emoji-rating.colored slider-food-rating">🍗</span>
+                                                        <span class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
                                                     {{/times}}
                                                     {{#times noFood}}
                                                         <span class="filter-slider slider-emoji-rating slider-food-rating over-emoji">🍗</span>
@@ -309,14 +305,14 @@
                                         
                                             <div class="editphoto-container" id="editphoto-container">
                                                 {{#each media}}
-
-                                                    {{#if (isVideo this)}}
-                                                        <video src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></video>
-
-                                                    {{else}}
-                                                        <img src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></img>
-
-                                                    {{/if}}
+                                                    <div class="media-container">
+                                                        {{#if (isVideo this)}}
+                                                            <video src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></video>
+                                                        {{else}}
+                                                            <img src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></img>
+                                                        {{/if}}
+                                                        <span class="delete-btn" onclick="removeMedia(this)">&times;</span>
+                                                    </div>
                                                 {{/each}}
                                             </div>
                         
@@ -330,9 +326,7 @@
                                         <button class="publisheditbtn" onclick="publishEditedReview()">Publish</button>
                                     </div>
                                 </div>
-
-
-                        </div>
+                            </div>
 
                         <div class="photopanel">
                             {{#each media}}
@@ -381,8 +375,6 @@
             
                             </div>
                         {{/each}}
-
-
                     </div>
                 {{/each}}
 

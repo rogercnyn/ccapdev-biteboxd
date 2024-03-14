@@ -67,7 +67,7 @@ function handleFileSelect(event) {
                 }
 
                 const removeButton = document.createElement('div');
-                removeButton.innerHTML = '&#10006;';
+                removeButton.innerHTML = '&times;';
                 removeButton.className = 'remove-button';
 
                 removeButton.addEventListener('click', function () {
@@ -272,6 +272,11 @@ function handleUpload() {
 function toggleOptions() {
     var popup = document.getElementById("optionsPopup");
     popup.style.display = (popup.style.display === "block") ? "none" : "block";
+}
+
+function removeMedia(element) {
+    var mediaContainer = element.parentNode;
+    mediaContainer.parentNode.removeChild(mediaContainer);
 }
 
 var quill; 
