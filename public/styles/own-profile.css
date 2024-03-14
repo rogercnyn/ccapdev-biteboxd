@@ -33,6 +33,9 @@ main {
     opacity: 40%;
 }
 
+.profile-pic{
+    object-fit: fill;
+}
 .profile{
     position: absolute;
     width: 60%;
