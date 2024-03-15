@@ -93,84 +93,6 @@ function handleFileSelect(event) {
     }
 }
 
-function handleEditFileSelect(event) {
-    const files = event.target.files;
-    const photoContainer = document.getElementById('editphoto-container');
-    const currentPhotos = photoContainer.querySelectorAll('.photo-preview').length;
-
-    if (currentPhotos + files.length > maxPhotos) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: 'You can only upload up to 4 photos or videos.',
-            showConfirmButton: false,
-            timer: 1500 
-        });
-        event.target.value = '';
-        return;
-    } else {
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-                const mediaContainer = document.createElement('div');
-                mediaContainer.className = 'editphoto-container-item';
-
-                if (isImage(file)) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.alt = 'Media Preview';
-                    img.className = 'photo-preview';
-                    img.style.borderRadius = '10px';
-
-                    img.addEventListener('click', function () {
-                        openModal(e.target.result);
-                    });
-
-                    mediaContainer.appendChild(img);
-                } else if (isVideo(file)) {
-                    const video = document.createElement('video');
-                    video.src = e.target.result;
-                    video.controls = true;
-                    video.className = 'photo-preview';
-                    video.style.borderRadius = '10px';
-
-                    video.addEventListener('click', function () {
-                        openModal(e.target.result);
-                    });
-
-                    mediaContainer.appendChild(video);
-                }
-
-                const removeButton = document.createElement('div');
-                removeButton.innerHTML = '&#10006;';
-                removeButton.className = 'remove-button';
-
-                removeButton.addEventListener('click', function () {
-                    mediaContainer.remove();
-
-                    document.getElementById('editphoto-input').disabled = false;
-                    document.querySelector('.publish-button').disabled = false;
-                });
-
-                mediaContainer.appendChild(removeButton);
-
-                photoContainer.appendChild(mediaContainer);
-            };
-
-            reader.readAsDataURL(file);
-        }
-
-        const fileInput = document.getElementById('photo-input');
-        fileInput.disabled = currentPhotos >= maxPhotos;
-
-        const uploadButton = document.querySelector('.publish-button');
-        uploadButton.disabled = currentPhotos >= maxPhotos;
-    }
-}
-
-
 function isImage(file) {
     return file.type.startsWith('image');
 }
@@ -371,7 +293,6 @@ $(document).ready(function() {
 
         document.querySelector('.publish-button').addEventListener('click', handleUpload);
         document.getElementById('photo-input').addEventListener('change', handleFileSelect);
-        document.getElementById('editphoto-input').addEventListener('change', handleEditFileSelect);
     
         initializeQuill()    
     }
