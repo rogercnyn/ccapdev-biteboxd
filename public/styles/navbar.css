@@ -74,7 +74,7 @@ a {
 
 
 .popup-container {
-    position: fixed;
+    position: absolute;
     left: 5%;
     bottom: 9%;
     background-color: white;
@@ -105,4 +105,5 @@ a {
 
 .popup a:hover {
     background-color: #efefef;
+    border-radius: 10px;
 }
