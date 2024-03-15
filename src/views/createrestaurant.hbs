@@ -10,6 +10,7 @@
     <script src="/script/quillSettings.js"></script>
   
     <script src="/script/slider.js"></script>
+    <script src="/script/createrestaurant.js"></script>
   
     <link rel="stylesheet" href="/styles/createrestaurant.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -25,7 +26,7 @@
 
         <div id="editModal" class="editModal">
             <span id="editheader">Publish Restaurant</span>
-            <form id = "createRestoForm" action="/createrestaurant" method="POST" enctype="multipart/form-data">
+            <form id = "createRestoForm">
                 <div class="upper-part">
 
                     <div class="restopictureareaupload" onclick="openFileInput()">
@@ -129,9 +130,8 @@
                 </div>
 
                 <div class="publisharea">
-                    <button type="submit" class ="publishbutton">Publish Restaurant</button>
+                    <button class ="publishbutton" onclick="publishRestaurant(event)">Publish Restaurant</button>
                 </div>
-                
             </form>
         </div>
        

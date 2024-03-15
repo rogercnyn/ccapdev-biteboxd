@@ -73,7 +73,8 @@ function publishRestaurant(event) {
                         timer: 3000,
                         timerProgressBar: true
                     }).then(() => {
-                        window.location.href = '/resto-responsepage';
+                        document.getElementById('createRestoForm').reset();
+                        window.location.href = '/';
                     });
                     
                 }
