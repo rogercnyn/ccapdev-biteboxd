@@ -112,3 +112,13 @@ BiteBoxd is a platform dedicated to centralizing restaurant reviews and fosterin
 ## Conclusion
 
 BiteBoxd aims to provide a comprehensive platform for culinary enthusiasts to share their experiences, discover new restaurants, and connect with like-minded foodies. Start exploring today!
+
+Sure, here's the updated section with the contributors added:
+
+## Contributors
+
+- [Mark Daniels Aquino](https://github.com/Mark03-lab)
+- [Roger Canayon](https://github.com/rogercnyn)
+- [Maria China Ortiz](https://github.com/cookietriestoprogram)
+- [Yumi Ann Pangan](https://github.com/pngnyume)
+
