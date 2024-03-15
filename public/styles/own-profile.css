@@ -178,3 +178,24 @@ main {
     margin-left: 5%;
     height: fit-content;
 }
+
+.delete-profile-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .delete-profile {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    background: #FDD247;
+    border-radius: 15px;
+    padding: 8px;
+    border: 2px solid #333;
+    cursor: pointer;
+  }
+  
+  .delete-profile:hover {
+    background: #ffffff;
+  }
+  
