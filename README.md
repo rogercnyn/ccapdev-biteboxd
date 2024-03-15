@@ -122,4 +122,3 @@ Sure, here's the updated section with the contributors added:
 - [Maria China Ortiz](https://github.com/cookietriestoprogram)
 - [Yumi Ann Pangan](https://github.com/pngnyume)
 
-Thank you to all the contributors for their valuable contributions to the project!
