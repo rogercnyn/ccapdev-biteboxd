@@ -69,13 +69,13 @@
                 {{#if loggedIn}}
                     <div class="publishreview" id="publishreview">
                         
-                        {{!-- <div class="criteriaratearea">
+                        <div class="criteriaratearea">
                             <div class="criteriarate">
                                 <h3 class="criterialbl">Food Quality</h3>
                                 <div class="star-sorting" data-criterion="food">
                                     <span onclick="addRating(0, 1)" class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
-                                    <span class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
-                                    <span class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
+                                    <span onclick="addRating(0, 2)" class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
+                                    <span onclick="addRating(0, 3)" class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
                                     <span onclick="addRating(0, 4)" class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
                                     <span onclick="addRating(0, 5)" class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
                                 </div>
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
                             
-                        </div> --}}
+                        </div>
 
                         <div class="title-container">
                             <textarea id="title" class="textbox" rows="1" placeholder="Title"></textarea>
@@ -429,7 +429,7 @@
 
                     
                             <div class="price-setting">
-                                <p>Pricing</p>
+                                <p>Affordability</p>
                                 <div class="price-slider" id="price-filter">
                                     <span class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
                                     <span class="filter-slider slider-emoji-rating filter-price-rating">💵</span>
