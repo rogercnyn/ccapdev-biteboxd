@@ -61,3 +61,16 @@ body {
     margin-bottom: auto;
 }
 
+
+#addresto {
+    position: fixed;
+    /* margin: auto; */
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    top: 415px;
+    left: 175px;
+}
+
+#addresto:hover {
+    color: #fdd247;
+}

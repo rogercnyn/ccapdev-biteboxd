@@ -26,6 +26,11 @@ a {
     color: #4D4747;
 }
 
+.show-password {
+    right: -30px;
+    position: absolute;
+}
+
 
 
 
