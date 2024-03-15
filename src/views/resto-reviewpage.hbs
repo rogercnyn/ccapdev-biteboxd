@@ -308,9 +308,9 @@
                                                 {{#each media}}
                                                     <div class="media-container">
                                                         {{#if (isVideo this)}}
-                                                            <video src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></video>
+                                                            <video src="/assets/{{this}}" class="revpic"></video>
                                                         {{else}}
-                                                            <img src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></img>
+                                                            <img src="/assets/{{this}}" class="revpic"></img>
                                                         {{/if}}
                                                         <span class="delete-btn" onclick="removeMedia(this)">&times;</span>
                                                     </div>
