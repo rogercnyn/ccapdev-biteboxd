@@ -61,7 +61,6 @@ Certainly! Below are the steps to run the application on both macOS and Windows:
 
 Make sure you have Node.js installed on your system before running the application. If you encounter any issues during the installation or running process, feel free to reach out for further assistance!
 
-Now you can access the application by visiting `http://localhost:3000` in your web browser.
 
 ## Description of the Web Application
 
@@ -93,9 +92,6 @@ BiteBoxd is a platform dedicated to centralizing restaurant reviews and fosterin
 ### Search Restaurants/Reviews
 - Users can search for restaurants by name, menu, location, or rating.
 - Reviews can be filtered based on keywords, rating range, or reviewer's taste profile.
-
-### Vote Reviews
-- Logged-in users can leave hearts or throw tomatoes to indicate helpfulness.
 
 ### Edit/Delete Review
 - Users can edit or delete their reviews, with an additional confirmation prompt for security.
