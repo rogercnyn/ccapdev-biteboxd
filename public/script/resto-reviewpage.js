@@ -5,6 +5,10 @@ let photoContainer;
 let reviewFoodSlider;
 let reviewPriceSlider;
 let reviewServiceSlider;
+let filterStarSlider;
+let filterPriceSlider
+let filterFoodSlider
+let filterServiceSlider
 
 function searchReview(){
     let reviews = document.getElementsByClassName("review")
@@ -190,7 +194,6 @@ function handleUpload() {
     let currentLink = new URL(window.location.href);
     let createLink = currentLink.pathname + '/create';
 
-    console.log(createLink)
     $.ajax({
         url: createLink,
         type: 'POST',
@@ -202,7 +205,7 @@ function handleUpload() {
             affordabilityRating: affordabilityRating
         },
         success: function(response) {
-            // Handle the response from the server
+            window.location.reload();
         },
         error: function(error) {
             // Handle any errors
@@ -218,10 +221,7 @@ function handleUpload() {
 
 
 function toggleOptions(element) {
-
     $(element).next('.options-popup').toggle()
-
-    
 }
 
 function removeMedia(element) {
@@ -301,20 +301,11 @@ function initializeQuill() {
     document.querySelector('.publish-button').addEventListener('click', handleUpload);
 }
 
-$(document).ready(function() {
-    const url = new URL(window.location.href);
-    const params = new URLSearchParams(url.search);
-    const minStar = params.get('minStar')
-    const minPrice = params.get('minPrice')
-    const minFood = params.get('minFood')
-    const minService = params.get('minService')
-    const searchTextValue = params.get('searchText')
-    const sortingVal = params.get('sorting')
-
-    const filterStarSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
-    const filterPriceSlider = new Slider(document.getElementsByClassName('filter-price-rating'));
-    const filterFoodSlider = new Slider(document.getElementsByClassName('filter-food-rating'));
-    const filterServiceSlider = new Slider(document.getElementsByClassName('filter-service-rating'));
+function initSliders() {
+    filterStarSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
+    filterPriceSlider = new Slider(document.getElementsByClassName('filter-price-rating'));
+    filterFoodSlider = new Slider(document.getElementsByClassName('filter-food-rating'));
+    filterServiceSlider = new Slider(document.getElementsByClassName('filter-service-rating'));
 
     reviewFoodSlider = new Slider(document.getElementsByClassName('review-food-rating'));
     reviewServiceSlider = new Slider(document.getElementsByClassName('review-service-rating'));
@@ -323,6 +314,18 @@ $(document).ready(function() {
     const sliders = [filterStarSlider, filterPriceSlider, filterFoodSlider, filterServiceSlider, reviewFoodSlider, reviewServiceSlider, reviewPriceSlider];
     
     sliders.forEach(slider => { slider.initializeHover(); });
+
+}
+
+function initRevFilterSort(){
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const minStar = params.get('minStar')
+    const minPrice = params.get('minPrice')
+    const minFood = params.get('minFood')
+    const minService = params.get('minService')
+    const searchTextValue = params.get('searchText')
+    const sortingVal = params.get('sorting')
 
     if(minStar) {
         filterStarSlider.handleClick(minStar)
@@ -340,46 +343,12 @@ $(document).ready(function() {
         filterServiceSlider.handleClick(minService)
     }
 
-    let isLogged = document.querySelector('.publish-button')
-
-    if(isLogged) {
-        initializeQuill(reviewFoodSlider, reviewServiceSlider, reviewPriceSlider);
-        document.getElementById('photo-input').addEventListener('change', handleFileSelect);
-    }
-
-
-    // 
     $('#search-rev-input').val(searchTextValue)
 
     if(sortingVal) {
         $('#criteria').val(sortingVal)
 
     }
-
-
-    const likesets = document.getElementsByClassName('likeset');
-    const likes = [];
-    
-    Array.from(likesets).forEach(likeset => {
-        let likeButton = likeset.querySelector('#like');
-        let dislikeButton = likeset.querySelector('#dislike');
-        likes.push(new Like(likeButton, dislikeButton));
-    });
-    
-    Array.from(likes).forEach(like => {
-        like.initializeClick();
-    });
-
-    initializeMap()
-
-    function searchText() {
-        let searchText = $('#search-rev-input').val();
-        let url = `${window.location.href.split('?')[0]}?searchText=${searchText}`;
-        window.location.href = url;
-    }
-
-
-
     
 
     $("#applyFilter").click(function() {
@@ -423,6 +392,45 @@ $(document).ready(function() {
         }
     });
 
+    
+    function searchText() {
+        let searchText = $('#search-rev-input').val();
+        let url = `${window.location.href.split('?')[0]}?searchText=${searchText}`;
+        window.location.href = url;
+    }
+}
 
+$(document).ready(function() {
+
+    initSliders()
+    initializeMap()
+    initRevFilterSort()
+
+
+    let isLogged = document.querySelector('.publish-button')
+
+    if(isLogged) {
+        
+        const likesets = document.getElementsByClassName('likeset');
+        const likes = [];
+        
+        Array.from(likesets).forEach(likeset => {
+            let likeButton = likeset.querySelector('#like');
+            let dislikeButton = likeset.querySelector('#dislike');
+            let counters = likeset.querySelectorAll(".numberoffeedback")
+            let reviewId = likeset.getAttribute('id')
+            likes.push(new Like(likeButton, dislikeButton, counters[0], counters[1], reviewId));
+        });
+        
+        Array.from(likes).forEach(like => {
+            like.initializeClick();
+        });
+
+        console.log(likes)
+        
+        initializeQuill(reviewFoodSlider, reviewServiceSlider, reviewPriceSlider);
+        document.getElementById('photo-input').addEventListener('change', handleFileSelect);
+    }
+    
 });
 

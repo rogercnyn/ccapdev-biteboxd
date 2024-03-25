@@ -225,27 +225,47 @@
                             </div>
 
                             <div class="rate-review" id="likeDislikeButtons">
-                                <div class="options-button">
+                                <div class="like-container">
 
-                                    
-                                    {{#if isOwnReview}}
-                                        <button class="a unclickable-like" id="a">&#128077;</button>
-                                        <span class = "numberoffeedback unclickable-like">{{noOfLikes}}</span>
-                                        <button class="a unclickable-like" id="b">&#128078;</button>
-                                        <span class="numberoffeedback unclickable-like">{{noOfDislikes}}</span>
-                                        
-                                        <span id="three-dots" onclick="toggleOptions(this)">&nbsp;&nbsp;&#8286;</span>
-                                        <div class="options-popup" id="optionsPopup">
-                                            <a onclick="editReview()">Edit</a>
-                                            <a onclick="deleteReview()">Delete</a>
-                                        </div>
+
+                                    {{#if loggedIn}}
+
+                                        {{#if isOwnReview}}
+                                            {{>unclickable-like}}
+
+                                            <span id="three-dots" onclick="toggleOptions(this)">&nbsp;&nbsp;&#8286;</span>
+                                            <div class="options-popup" id="optionsPopup">
+                                                <a onclick="editReview()">Edit</a>
+                                                <a onclick="deleteReview()">Delete</a>
+                                            </div>
+                                        {{else}}
+                                        <div class="likeset" id="{{_id}}">
+
+                                            {{#if isLiked}}
+                                                <button class="like-dislike colored" id="like">&#128077;</button>
+                                            {{else}}
+                                                <button class="like-dislike" id="like">&#128077;</button>
+                                            {{/if}}
+                                            <span class = "numberoffeedback">{{noOfLikes}}</span>
+
+                                            {{#if isDisliked}}
+                                                <button class="like-dislike colored" id="dislike">&#128078;</button>
+                                            {{else}}
+                                                <button class="like-dislike" id="dislike">&#128078;</button>
+                                            {{/if}}
+                                            <span class="numberoffeedback">{{noOfDislikes}}</span>
+                                    </div>
+
+                                        {{/if}}
                                     {{else}}
-                                        <button class="a" id="a">&#128077;</button>
-                                        <span class = "numberoffeedback">{{noOfLikes}}</span>
-                                        <button class="a" id="b">&#128078;</button>
-                                        <span class="numberoffeedback">{{noOfDislikes}}</span>
-                                  
+                                        {{>unclickable-like}}
                                     {{/if}}
+                                   
+
+
+
+
+
                                 </div>
                             </div>
 

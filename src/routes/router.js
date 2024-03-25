@@ -6,7 +6,7 @@ const path = require('path');
 // Import controllers for restaurant and review handling
 const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
-const { handleCreateReviewRequest } = require('../controllers/reviewController');
+const { handleCreateReviewRequest, handleLikeReviewRequest } = require('../controllers/reviewController');
 const { handleProfileRequest, createUser, editProfile, deleteReview, updateReview} = require('../controllers/profileController');
 const { login, logout} = require('../controllers/loginController');
 const {isAuthenticated} = require('../middleware/auth');
@@ -35,6 +35,7 @@ router.get('/search', handleSearchRequest);
 
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 router.post('/resto-reviewpage/:_id/create', handleCreateReviewRequest);
+router.get('/resto-reviewpage/:_id/:_reviewId/like', handleLikeReviewRequest);
 
 
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);

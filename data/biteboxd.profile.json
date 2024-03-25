@@ -18,6 +18,7 @@
       "65e57ac3a149f9de594a9e58"
     ],
     "likedReviews": ["65e57ac3a149f9de594a9e6a"],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.860Z",
     "__v": 1
   },
@@ -39,6 +40,7 @@
       "65e57ac3a149f9de594a9e6a"
     ],
     "likedReviews": ["65e57ac3a149f9de594a9e5e"],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -61,6 +63,7 @@
       "65e57ac3a149f9de594a9eac"
     ],
     "likedReviews": [],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.860Z",
     "__v": 2
   },
@@ -82,6 +85,7 @@
       "65e57ac3a149f9de594a9e64"
     ],
     "likedReviews": ["65e57ac3a149f9de594a9e5e"],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -103,6 +107,7 @@
       "65e57ac3a149f9de594a9e76"
     ],
     "likedReviews": ["65e57ac3a149f9de594a9e7c"],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -124,6 +129,7 @@
       "65e57ac3a149f9de594a9e7c"
     ],
     "likedReviews": ["65e57ac3a149f9de594a9e82"],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -145,6 +151,7 @@
       "65e57ac3a149f9de594a9e82"
     ],
     "likedReviews": [],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -166,6 +173,7 @@
       "65e57ac3a149f9de594a9e8e"
     ],
     "likedReviews": [],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -187,6 +195,7 @@
       "65e57ac3a149f9de594a9e94"
     ],
     "likedReviews": [],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -208,6 +217,7 @@
       "65e57ac3a149f9de594a9e9a"
     ],
     "likedReviews": [],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.862Z",
     "__v": 1
   },
@@ -229,6 +239,7 @@
       "65e57ac3a149f9de594a9ea0"
     ],
     "likedReviews": [],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.862Z",
     "__v": 1
   },
@@ -250,6 +261,7 @@
       "65e57ac3a149f9de594a9ea6"
     ],
     "likedReviews": [],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.862Z",
     "__v": 1
   },
@@ -270,7 +282,8 @@
     "reviews": [
       "65e57ac3a149f9de594a9e70"
     ],
-    "likedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e6a"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e64"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -292,6 +305,7 @@
       "65e57ac3a149f9de594a9e88"
     ],
     "likedReviews": [],
+    "dislikedReviews": [],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   }

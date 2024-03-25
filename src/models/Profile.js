@@ -32,7 +32,8 @@ const profileSchema = new Schema({
 
     // reviews
     reviews: {type: [Schema.Types.ObjectId], ref: 'Review', default: []},
-    likedReviews: {type: [Schema.Types.ObjectId], ref: 'Review', default: []}
+    likedReviews: {type: [Schema.Types.ObjectId], ref: 'Review', default: []},
+    dislikedReviews: {type: [Schema.Types.ObjectId], ref: 'Review', default: []}
 });
 
 const Profile = model('profile', profileSchema); 

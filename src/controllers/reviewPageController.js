@@ -1,4 +1,4 @@
-const { getProfilePicture } = require('../controllers/profileController');
+const { getProfilePicture, getLikedDislikedReviewsId } = require('../controllers/profileController');
 const { getRestoCardDetails, findById, isValidRestaurant } = require('./restaurantController.js');
 const { getReply, populateReplies } = require('./reviewController.js');
 const { readReply } = require('../controllers/restaurantreplyController.js');
@@ -10,7 +10,7 @@ function computeRating(r1, r2, r3){
 }
 
 function filterReviews( restaurant, overallRating, affordabilityRating, foodRating, serviceRating ){
-    console.log(overallRating, affordabilityRating, foodRating, serviceRating)
+    // console.log(overallRating, affordabilityRating, foodRating, serviceRating)
    
     if(overallRating && overallRating !== "0"){
         restaurant.reviews = restaurant.reviews.filter(review => Math.floor(review.overallRating) === parseInt(overallRating));
@@ -37,7 +37,16 @@ function filterReviews( restaurant, overallRating, affordabilityRating, foodRati
     restaurant['ycoord'] = restaurant['coordinates'][1]
 }
 
-async function completeReviews(restaurant, username){
+async function completeReviews(restaurant, username, loggedIn){
+    
+    let likedReviews = [], dislikedReviews = [];
+    
+    if(loggedIn){
+        reviews = await getLikedDislikedReviewsId(username)
+        likedReviews = reviews[0]
+        dislikedReviews = reviews[1]
+    }
+    
     const promises = restaurant['reviews'].map(async (review) => {
         review['createdAtDisplay'] = formatDate(review['createdAt']);
         review['longText'] = review['body'].slice(0, 230);
@@ -47,7 +56,13 @@ async function completeReviews(restaurant, username){
         review['noFood'] = 5 - review['foodRating']
         review['noService'] = 5 - review['serviceRating']
         review['noMoney'] = 5 - review['affordabilityRating']
-        review['isOwnReview'] = review['username'] === username
+        review['isOwnReview'] = (review['username'] === username) 
+        review['loggedIn'] = loggedIn
+        review['isLiked'] = likedReviews.includes(review['_id'].toString())
+        review['isDisliked'] = dislikedReviews.includes(review['_id'].toString())
+        
+
+        // console.log(review['isLiked'], review['_id'].toString())
 
         review['replies'].map((reply) =>{
             reply['media'] = restaurant['media']
@@ -83,7 +98,7 @@ async function handleRestoPageRequest(req, resp) {
     
         completeRestaurant(restaurant)
     
-        await completeReviews(restaurant, username)
+        await completeReviews(restaurant, username, resp.locals.loggedIn)
     
         
         filterReviews(restaurant, minStar, minPrice, minFood, minService)
@@ -104,7 +119,7 @@ async function handleRestoPageRequest(req, resp) {
             sortAffordability(restaurant['reviews'])
         }
 
-        console.log(restaurant)
+        // console.log(restaurant)
         
         resp.render("resto-reviewpage", restaurant);
     } else {

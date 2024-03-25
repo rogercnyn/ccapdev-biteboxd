@@ -89,6 +89,7 @@ body {
 
 .like-dislike:hover, .like-dislike.colored {
     text-shadow: 0 0 4px black;
+
 }
 
 .reviewinfo {
@@ -306,13 +307,6 @@ margin-bottom: 100px;
     /* opacity: 50%; */
     margin-left: 1%;
 
-}
-
-.options-button {
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    gap:5px;
 }
 
 .options-popup {
@@ -603,7 +597,9 @@ margin-bottom: 100px;
 
 
 .unclickable-like {
-    /* background-color: #f96161 !important; */
     cursor: auto !important;
-    /* font-size: 500px !important; */
+}
+
+#three-dots {
+    cursor: pointer;
 }
