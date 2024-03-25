@@ -1,7 +1,7 @@
 const Review  = require('../models/Review.js');
 
 const { addAReviewToRestaurant } = require('./restaurantController.js')
-const { addReviewToProfile } = require('./profileController.js')
+const { addReviewToProfile, modifyLikeDislikeReview } = require('./profileController.js')
 
 async function countReviews() {
     try {
@@ -66,8 +66,55 @@ async function addBulkReview(parsedJson){
     }
 }
 
+async function handleCreateReviewRequest(req, res) {
+    console.log("Creating a review")
+    const restaurantId = req.params._id;
+    let reviewData = {
+        username: req.session.username,
+        body: req.body.reviewHtml,
+        foodRating: req.body.foodRating,
+        serviceRating: req.body.serviceRating,
+        affordabilityRating: req.body.affordabilityRating,
+        title: req.body.title,
+    };
+
+    console.log(reviewData)
+    createReview(reviewData, restaurantId);
+
+    res.send({ success: true, message: "Review created" });
+}
+
+async function createReview(reviewData, restaurantId){
+    let reviewDocument = new Review(reviewData);
+
+    let savedReview = await saveReview(reviewDocument);
+    // console.log(savedReview['id'], restaurantId)
+    addAReviewToRestaurant(restaurantId, savedReview['id'])
+    addReviewToProfile(reviewData.username, savedReview['id'])
+}
+
+async function handleLikeReviewRequest(req, res) {
+    const reviewId = req.params._reviewId;
+    const username = req.session.username;
+    const { like, dislike } = req.query;
+
+    // console.log("Liking a review: ", reviewId);
+    // console.log("Like: ", like, "\tDislike: ", dislike);
+
+    
+    try {
+        await Review.findByIdAndUpdate(reviewId, { $inc: { noOfLikes: like, noOfDislikes: dislike } }, { new: true });
 
 
+        modifyLikeDislikeReview(username, reviewId, like, dislike)
+
+        res.send({ success: true}); 
+    } catch (error) {
+        console.log(error)
+    }
+
+    
+}
 
 
-module.exports = { addBulkReview, getReply, populateReplies }
+module.exports = { addBulkReview, getReply, populateReplies, handleCreateReviewRequest, handleLikeReviewRequest }

@@ -89,6 +89,7 @@ body {
 
 .like-dislike:hover, .like-dislike.colored {
     text-shadow: 0 0 4px black;
+
 }
 
 .reviewinfo {
@@ -306,13 +307,6 @@ margin-bottom: 100px;
     /* opacity: 50%; */
     margin-left: 1%;
 
-}
-
-.options-button {
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    gap:5px;
 }
 
 .options-popup {
@@ -594,4 +588,18 @@ margin-bottom: 100px;
     position: relative;
     display: inline-block;
     margin: 5px;
+}
+
+
+.review-rating {
+    font-size: 19px;
+}
+
+
+.unclickable-like {
+    cursor: auto !important;
+}
+
+#three-dots {
+    cursor: pointer;
 }

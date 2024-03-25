@@ -3,6 +3,43 @@ const Profile = require('../models/Profile');
 const Review = require('../models/Review');
 
 
+
+async function getLikedDislikedReviewsId(username) {
+    try {
+        const profile = await Profile.findOne({ username: username }).lean();
+        let likedReviews = profile.likedReviews;
+        let dislikedReviews = profile.dislikedReviews;
+        let stringify = (reviews) => reviews.map(review => review.toString());
+        
+        return [stringify(likedReviews), stringify(dislikedReviews)];
+    } catch (error) {
+        console.log('Error getting liked reviews');
+    }
+}
+
+async function modifyLikeDislikeReview(username, reviewId, like, dislike) {
+    try {
+        const profile = await Profile.findOne({ username: username });
+
+        if(like == 1){
+            profile.likedReviews.push(reviewId);
+        } else if (like == -1) {
+            profile.likedReviews = profile.likedReviews.filter(id => id.toString() !== reviewId);
+        }
+
+        if(dislike == 1) {
+            profile.dislikedReviews.push(reviewId);
+        } else if (dislike == -1) {
+            profile.dislikedReviews = profile.dislikedReviews.filter(id => id.toString() !== reviewId);
+        }
+
+        await profile.save();
+    } catch (error) {
+        console.error('Error modifying profile like:', error);
+    }
+}
+
+
 async function countProfiles() {
     try {
         const count = await Profile.countDocuments();
@@ -393,5 +430,7 @@ module.exports = {
     editProfile,
     deleteReview,
     updateReview,
-    handleProfileRequest
+    handleProfileRequest,
+    getLikedDislikedReviewsId,
+    modifyLikeDislikeReview
 };

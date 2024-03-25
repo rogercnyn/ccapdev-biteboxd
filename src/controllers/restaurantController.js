@@ -473,4 +473,14 @@ async function editRestaurant(req,res) {
         }
 };
 
-module.exports = { addRestaurant, editRestaurant, handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, filterRestaurants, handleExploreRequest, findById, isValidRestaurant };
+module.exports = {  addRestaurant, 
+                    editRestaurant,
+                    handleSearchRequest, 
+                    addBulkResto, 
+                    handleGetAllRestoRequest, 
+                    getRestoCardDetails, 
+                    filterRestaurants, 
+                    handleExploreRequest, 
+                    findById, 
+                    isValidRestaurant,
+                    addAReviewToRestaurant };
