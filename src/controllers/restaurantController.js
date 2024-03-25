@@ -400,8 +400,6 @@ async function addRestaurant(req, res) {
 
         console.log("Saved!");
 
-        clearForm(req);
-
         res.redirect('/login');
 
     } catch (error) {
