@@ -26,7 +26,7 @@
 
         <div id="editModal" class="editModal">
             <span id="editheader">Publish Restaurant</span>
-            <form id = "createRestoForm">
+            <form id = "createRestoForm"  action="/createrestaurant" method="POST" enctype="multipart/form-data">
                 <div class="upper-part">
 
                     <div class="restopictureareaupload" onclick="openFileInput()">
@@ -51,11 +51,11 @@
                 
                     <div class="right-side">
                         <div class="input-group">
-                            <label for="price" class="editlabel">Price Range:</label>
+                            <label for="price" class="editlabel">Price Range (₱):</label>
                             <div class="samerow">
-                                <input type="text" id="pricestart" name="pricestart" value="₱" class="styled-input">
+                                <input type="text" id="pricestart" name="pricestart" class="styled-input">
                                 <label for="price" class="editlabel"> - </label>
-                                <input type="text" id="priceend" name="priceend" value="₱" class="styled-input">
+                                <input type="text" id="priceend" name="priceend" class="styled-input">
                             </div>
                             
                         </div>
@@ -130,7 +130,7 @@
                 </div>
 
                 <div class="publisharea">
-                    <button class ="publishbutton" onclick="publishRestaurant(event)">Publish Restaurant</button>
+                    <button type="submit" class ="publishbutton">Publish Restaurant</button>
                 </div>
             </form>
         </div>

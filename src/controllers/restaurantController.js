@@ -295,5 +295,182 @@ async function findById(id) {
     }
 }
 
+function convertToAMPM(time) {
+    var timeSplit = time.split(":");
+    var hours = parseInt(timeSplit[0]);
+    var minutes = parseInt(timeSplit[1]);
 
-module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, filterRestaurants, handleExploreRequest, findById, isValidRestaurant };
+    var period = hours >= 12 ? 'PM' : 'AM';
+
+    hours = hours % 12;
+    hours = hours ? hours : 12; 
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+
+    return hours + ':' + minutes + ' ' + period;
+}
+
+function formatDay(day){
+    switch(day){
+        case "Monday": 
+            return "M";
+        case "Tuesday":
+            return "T";
+        case "Wednesday": 
+            return "W";
+        case "Thursday":
+            return "H";
+        case "Friday": 
+            return "F";
+        case "Saturday":
+            return "SA";
+        case "Sunday":
+            return "S";
+    }
+
+}
+
+async function addRestaurant(req, res) {
+        const { restoName, address, tags, pricestart, priceend, daysopenstart, daysopenend, operatinghourstart, operatinghourend, shortdesc, desc, 
+        attri1,
+        attri2,
+        attri3,
+        attri4,
+        attri5,
+        attri6,
+        attri7,
+        attri8,
+        attri9,
+        attri10,
+        attri11,
+        attri12 } = req.body;
+
+    let avatarFilename = req.file ? req.file.filename : 'default-avatar.png';
+
+    let formatStartHour = convertToAMPM(operatinghourstart);
+    let formatEndHour = convertToAMPM(operatinghourend);
+
+    let formatStartDay = formatDay(daysopenstart);
+    let formatEndDay = formatDay(daysopenend);
+
+    let name = restoName.replace(/\s/g, '').toLowerCase();
+    let password = "12345678";
+    let coordinates = [0, 0];
+    let numberOfCash = 0;
+    let priceS = Number(pricestart);
+    let priceE = Number(priceend);
+
+    try {
+        const newRestaurant = new Restaurant({
+            name: restoName,
+            username: name,
+            password: password,
+            coordinates: coordinates,
+            numberOfCash: numberOfCash,
+            location: address,
+            tag: tags,
+            startPriceRange: priceS,
+            endPriceRange: priceE,
+            startOpeningDay: formatStartDay,
+            endOpeningDay: formatEndDay,
+            startOpeningHour: formatStartHour,
+            endOpeningHour: formatEndHour,
+            shortDescription: shortdesc,
+            description: desc,
+            media: avatarFilename,
+            amenities: [
+                attri1 ? 1 : 0, 
+                attri2 ? 1 : 0,
+                attri3 ? 1 : 0,
+                attri4 ? 1 : 0,
+                attri5 ? 1 : 0,
+                attri6 ? 1 : 0,
+                attri7 ? 1 : 0,
+                attri8 ? 1 : 0,
+                attri9 ? 1 : 0,
+                attri10 ? 1 : 0,
+                attri11 ? 1 : 0,
+                attri12 ? 1 : 0
+              ]
+        });
+
+        console.log(newRestaurant);
+
+        await newRestaurant.save();
+
+        console.log("Saved!");
+
+        clearForm(req);
+
+        res.redirect('/login');
+
+    } catch (error) {
+        console.error('Error saving restaurant:', error);
+        res.status(500).send("Error saving restaurant");
+    }
+}
+
+async function editRestaurant(req,res) {
+    const restoId = req.session.userId;
+    
+    const { restoName, address, tags, pricestart, priceend, daysopenstart, daysopenend, operatinghourstart, operatinghourend, shortdesc, desc, 
+        attri1,
+        attri2,
+        attri3,
+        attri4,
+        attri5,
+        attri6,
+        attri7,
+        attri8,
+        attri9,
+        attri10,
+        attri11,
+        attri12 } = req.body;
+
+        let formatStartHour = convertToAMPM(operatinghourstart);
+        let formatEndHour = convertToAMPM(operatinghourend);
+    
+        let formatStartDay = formatDay(daysopenstart);
+        let formatEndDay = formatDay(daysopenend);
+
+        let priceS = Number(pricestart);
+        let priceE = Number(priceend);
+
+        try {
+            let updateDetails = {
+                name: restoName,
+                location: address,
+                tag: tags,
+                startPriceRange: priceS,
+                endPriceRange: priceE,
+                startOpeningDay: formatStartDay,
+                endOpeningDay: formatEndDay,
+                startOpeningHour: formatStartHour,
+                endOpeningHour: formatEndHour,
+                shortDescription: shortdesc,
+                description: desc,
+                amenities: [
+                    attri1 ? 1 : 0, 
+                    attri2 ? 1 : 0,
+                    attri3 ? 1 : 0,
+                    attri4 ? 1 : 0,
+                    attri5 ? 1 : 0,
+                    attri6 ? 1 : 0,
+                    attri7 ? 1 : 0,
+                    attri8 ? 1 : 0,
+                    attri9 ? 1 : 0,
+                    attri10 ? 1 : 0,
+                    attri11 ? 1 : 0,
+                    attri12 ? 1 : 0
+                  ]
+            };
+            const editResto = await Restaurant.findByIdAndUpdate(restoId, updateDetails, { new: true });
+    
+            res.redirect(`/resto-responsepage/${restoId}`);
+        } catch (error) {
+            console.error('Error updating profile:', error);
+            res.status(500).send("Internal Server Error");
+        }
+};
+
+module.exports = { addRestaurant, editRestaurant, handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, filterRestaurants, handleExploreRequest, findById, isValidRestaurant };

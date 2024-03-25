@@ -45,7 +45,7 @@
             <div id="editModal" class="editModal">
                 <span class="close-button" onclick="closeEditPopup()">&times;</span>
                 <span id="editheader">Edit Restaurant Details</span>
-                <form>
+                <form id="editRestoForm" action="/editrestaurant" method="POST">
                     <div class="upper-part">
                         <div class="left-side">
                             <div class="input-group">
@@ -65,11 +65,11 @@
                     
                         <div class="right-side">
                             <div class="input-group">
-                                <label for="price" class="editlabel">Price Range:</label>
+                                <label for="price" class="editlabel">Price Range (₱):</label>
                                 <div class="samerow">
-                                    <input type="text" id="pricestart" name="pricestart" value="₱{{startPriceRange}}" class="styled-input">
+                                    <input type="text" id="pricestart" name="pricestart" value="{{startPriceRange}}" class="styled-input">
                                     <label for="price" class="editlabel"> - </label>
-                                    <input type="text" id="priceend" name="priceend" value="₱{{endPriceRange}}" class="styled-input">
+                                    <input type="text" id="priceend" name="priceend" value="{{endPriceRange}}" class="styled-input">
                                 </div>
                                 
                             </div>
@@ -123,24 +123,24 @@
 
                     <div class="attributesedit">
                         <div class="firstbatchattri">
-                            <div class="feature"><input type="checkbox" id="deliveryCheckbox" {{#unless (get amenities 0 0) }} checked {{/unless}}> Offers Delivery</div>
-                            <div class="feature"><input type="checkbox" id="outdoorDiningCheckbox" {{#unless (get amenities 1 0) }} checked {{/unless}}> Outdoor dining</div>
-                            <div class="feature"><input type="checkbox" id="indoorDiningCheckbox" {{#unless (get amenities 2 0) }} checked {{/unless}}> Indoor dining</div>
-                            <div class="feature"><input type="checkbox" id="groupsCheckbox" {{#unless (get amenities 3 0) }} checked {{/unless}}> Good for Groups</div>
+                            <div class="feature"><input type="checkbox" id="deliveryCheckbox" name="attri1" {{#unless (get amenities 0 0) }} checked {{/unless}}> Offers Delivery</div>
+                            <div class="feature"><input type="checkbox" id="outdoorDiningCheckbox" name="attri2" {{#unless (get amenities 1 0) }} checked {{/unless}}> Outdoor dining</div>
+                            <div class="feature"><input type="checkbox" id="indoorDiningCheckbox" name="attri3" {{#unless (get amenities 2 0) }} checked {{/unless}}> Indoor dining</div>
+                            <div class="feature"><input type="checkbox" id="groupsCheckbox" name="attri4" {{#unless (get amenities 3 0) }} checked {{/unless}}> Good for Groups</div>
                         </div>
                     
                         <div class="secondbatchattri">
-                            <div class="feature"><input type="checkbox" id="musicTvCheckbox" {{#unless (get amenities 4 0) }} checked {{/unless}}> Music and TV</div>
-                            <div class="feature"><input type="checkbox" id="driveThruCheckbox" {{#unless (get amenities 5 0) }} checked {{/unless}}> Drive-thru</div>
-                            <div class="feature"><input type="checkbox" id="takeoutCheckbox" {{#unless (get amenities 6 0) }} checked {{/unless}}> Offers Takeout</div>
-                            <div class="feature"><input type="checkbox" id="creditCardsCheckbox" {{#unless (get amenities 7 0) }} checked {{/unless}}> Accepts Credit Cards</div>
+                            <div class="feature"><input type="checkbox" id="musicTvCheckbox" name="attri5" {{#unless (get amenities 4 0) }} checked {{/unless}}> Music and TV</div>
+                            <div class="feature"><input type="checkbox" id="driveThruCheckbox" name="attri6" {{#unless (get amenities 5 0) }} checked {{/unless}}> Drive-thru</div>
+                            <div class="feature"><input type="checkbox" id="takeoutCheckbox" name="attri7" {{#unless (get amenities 6 0) }} checked {{/unless}}> Offers Takeout</div>
+                            <div class="feature"><input type="checkbox" id="creditCardsCheckbox" name="attri8" {{#unless (get amenities 7 0) }} checked {{/unless}}> Accepts Credit Cards</div>
                         </div>
                     
                         <div class="thirdbatchattri">
-                            <div class="feature"><input type="checkbox" id="eWalletCheckbox" {{#unless (get amenities 8 0) }} checked {{/unless}} > Accepts E-Wallet</div>
-                            <div class="feature"><input type="checkbox" id="kidsCheckbox" {{#unless (get amenities 9 0) }} checked {{/unless}}> Good for Kids</div>
-                            <div class="feature"><input type="checkbox" id="petsCheckbox" {{#unless (get amenities 10 0) }} checked {{/unless}}> Good for Pets</div>
-                            <div class="feature"><input type="checkbox" id="veganCheckbox" {{#unless (get amenities 11 0) }} checked {{/unless}}> Vegetarian/Vegan Offerings</div>
+                            <div class="feature"><input type="checkbox" id="eWalletCheckbox" name="attri9" {{#unless (get amenities 8 0) }} checked {{/unless}} > Accepts E-Wallet</div>
+                            <div class="feature"><input type="checkbox" id="kidsCheckbox" name="attri10" {{#unless (get amenities 9 0) }} checked {{/unless}}> Good for Kids</div>
+                            <div class="feature"><input type="checkbox" id="petsCheckbox" name="attri11" {{#unless (get amenities 10 0) }} checked {{/unless}}> Good for Pets</div>
+                            <div class="feature"><input type="checkbox" id="veganCheckbox" name="attri12" {{#unless (get amenities 11 0) }} checked {{/unless}}> Vegetarian/Vegan Offerings</div>
                         </div>
                     </div>
 
