@@ -15,7 +15,7 @@ const reviewSchema = new Schema({
 
     // Content
     title: { type: String, required: true },
-    body: { type: String, required: true },
+    body: { type: String, required: false },
 
     // Media
     media: { type: [String], required: true },

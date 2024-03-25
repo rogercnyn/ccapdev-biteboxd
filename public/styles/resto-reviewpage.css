@@ -595,3 +595,15 @@ margin-bottom: 100px;
     display: inline-block;
     margin: 5px;
 }
+
+
+.review-rating {
+    font-size: 19px;
+}
+
+
+.unclickable-like {
+    /* background-color: #f96161 !important; */
+    cursor: auto !important;
+    /* font-size: 500px !important; */
+}

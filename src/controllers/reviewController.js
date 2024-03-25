@@ -66,8 +66,34 @@ async function addBulkReview(parsedJson){
     }
 }
 
+async function handleCreateReviewRequest(req, res) {
+    console.log("Creating a review")
+    const restaurantId = req.params._id;
+    let reviewData = {
+        username: req.session.username,
+        body: req.body.reviewHtml,
+        foodRating: req.body.foodRating,
+        serviceRating: req.body.serviceRating,
+        affordabilityRating: req.body.affordabilityRating,
+        title: req.body.title,
+    };
+
+    console.log(reviewData)
+    createReview(reviewData, restaurantId);
+
+    res.send({ success: true, message: "Review created" });
+}
+
+async function createReview(reviewData, restaurantId){
+    let reviewDocument = new Review(reviewData);
+
+    let savedReview = await saveReview(reviewDocument);
+    console.log(savedReview['id'])
+    addAReviewToRestaurant(restaurantId, savedReview['id'])
+
+    
+   
+}
 
 
-
-
-module.exports = { addBulkReview, getReply, populateReplies }
+module.exports = { addBulkReview, getReply, populateReplies, handleCreateReviewRequest }

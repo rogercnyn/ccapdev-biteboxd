@@ -17,11 +17,12 @@
     <script src="/script/like.js"></script>
     <script src="/script/slider.js"></script>
     <script src="/script/search-bar.js"></script>
+    <script src="/script/quill.js"></script>
     
 
     <!-- quill -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.4/dist/quill.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.4/dist/quill.snow.css" rel="stylesheet">
 
     <!-- map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -73,45 +74,39 @@
                             <div class="criteriarate">
                                 <h3 class="criterialbl">Food Quality</h3>
                                 <div class="star-sorting" data-criterion="food">
-                                    <span onclick="addRating(0, 1)" class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
-                                    <span onclick="addRating(0, 2)" class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
-                                    <span onclick="addRating(0, 3)" class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
-                                    <span onclick="addRating(0, 4)" class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
-                                    <span onclick="addRating(0, 5)" class="filter-slider slider-emoji-rating slider-food-rating">🍗</span>
+                                    {{#times 5}}
+                                        <span class="slider-emoji-rating review-food-rating review-rating">🍗</span>
+                                    {{/times}}
                                 </div>
                             </div>
 
                             <div class="criteriarate">
                                 <h3 class="criterialbl">Service</h3>
                                 <div class="star-sorting" data-criterion="service">
-                                    <span onclick="addRating(1, 1)" class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
-                                    <span onclick="addRating(1, 2)" class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
-                                    <span onclick="addRating(1, 3)" class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
-                                    <span onclick="addRating(1, 4)" class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
-                                    <span onclick="addRating(1, 5)" class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
+                                    {{#times 5}}
+                                        <span class="slider-emoji-rating review-service-rating review-rating">🤝</span>
+                                    {{/times}}
                                 </div>
                             </div>
 
                             <div class="criteriarate">
                                 <h3 class="criterialbl">Affordability</h3>
                                 <div class="star-sorting" data-criterion="price">
-                                    <span onclick="addRating(2, 1)" class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
-                                    <span onclick="addRating(2, 2)" class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
-                                    <span onclick="addRating(2, 3)" class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
-                                    <span onclick="addRating(2, 4)" class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
-                                    <span onclick="addRating(2, 5)" class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
+                                      {{#times 5}}
+                                        <span class="slider-emoji-rating review-price-rating review-rating">💵</span>
+                                    {{/times}}
                                 </div>
                             </div>
                             
                         </div>
 
                         <div class="title-container">
-                            <textarea id="title" class="textbox" rows="1" placeholder="Title"></textarea>
+                            <textarea id="review-title" class="textbox" rows="1" placeholder="Title"></textarea>
                         </div>
 
                         <br>
                         
-                        <div id="editor">
+                        <div id="review-editor">
                         </div>
 
                         <br>
@@ -230,17 +225,26 @@
                             </div>
 
                             <div class="rate-review" id="likeDislikeButtons">
-                                <div class="options-button" onclick="toggleOptions()">
-                                    <button class="a" id="a">&#128077;</button>
-                                    <span class = "numberoffeedback">{{noOfLikes}}</span>
-                                    <button class="a" id="b">&#128078;</button>
-                                    <span class="numberoffeedback">{{noOfDislikes}}</span>
+                                <div class="options-button">
+
+                                    
                                     {{#if isOwnReview}}
-                                    &nbsp;&nbsp;&#8286; 
-                                    <div class="options-popup" id="optionsPopup">
-                                        <a onclick="editReview()">Edit</a>
-                                        <a onclick="deleteReview()">Delete</a>
-                                    </div>
+                                        <button class="a unclickable-like" id="a">&#128077;</button>
+                                        <span class = "numberoffeedback unclickable-like">{{noOfLikes}}</span>
+                                        <button class="a unclickable-like" id="b">&#128078;</button>
+                                        <span class="numberoffeedback unclickable-like">{{noOfDislikes}}</span>
+                                        
+                                        <span id="three-dots" onclick="toggleOptions(this)">&nbsp;&nbsp;&#8286;</span>
+                                        <div class="options-popup" id="optionsPopup">
+                                            <a onclick="editReview()">Edit</a>
+                                            <a onclick="deleteReview()">Delete</a>
+                                        </div>
+                                    {{else}}
+                                        <button class="a" id="a">&#128077;</button>
+                                        <span class = "numberoffeedback">{{noOfLikes}}</span>
+                                        <button class="a" id="b">&#128078;</button>
+                                        <span class="numberoffeedback">{{noOfDislikes}}</span>
+                                  
                                     {{/if}}
                                 </div>
                             </div>
@@ -271,22 +275,18 @@
                                             <div class="criteriarate">
                                                 <h3 class="criterialbl">Service</h3>
                                                 <div class="star-sorting" data-criterion="service">
-                                                    <span class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
-                                                    <span class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
-                                                    <span class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
-                                                    <span class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
-                                                    <span  class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
+                                                    {{#times 5}}
+                                                        <span class="filter-slider slider-emoji-rating slider-service-rating">🤝</span>
+                                                    {{/times}}
                                                 </div>
                                             </div>
 
                                             <div class="criteriarate">
                                                 <h3 class="criterialbl">Affordability</h3>
                                                 <div class="star-sorting" data-criterion="price">
-                                                    <span class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
-                                                    <span class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
-                                                    <span class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
-                                                    <span class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
-                                                    <span class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
+                                                    {{#times 5}}
+                                                        <span class="filter-slider slider-emoji-rating slider-price-rating">💵</span>
+                                                    {{/times}}
                                                 </div>
                                             </div>
                                         </div>
@@ -327,7 +327,7 @@
                                         <button class="publisheditbtn" onclick="publishEditedReview()">Publish</button>
                                     </div>
                                 </div>
-                            </div>
+                        </div>
 
                         <div class="photopanel">
                             {{#each media}}
@@ -370,7 +370,7 @@
                                 </div>
                                 
                                 <div id="replytext">
-                                    {{body}}
+                                    <p>{{body}}</p>
                                 </div>
 
             

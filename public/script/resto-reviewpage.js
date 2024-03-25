@@ -1,13 +1,10 @@
 
-
-let currentRatings = {
-    food: 0,
-    service: 0,
-    price: 0,
-};
 let maxPhotos = 4;
-let quillEditor;
+let reviewQuill;
 let photoContainer;
+let reviewFoodSlider;
+let reviewPriceSlider;
+let reviewServiceSlider;
 
 function searchReview(){
     let reviews = document.getElementsByClassName("review")
@@ -139,61 +136,92 @@ function closeModal() {
     document.body.classList.remove('modal-open');
 }
 
-
-function handleUpload() {
-    const photoContainer = document.getElementById('photo-container');
-
-    var textarea = document.getElementById("title");
-
-    if (priceSlider.currentValue === 0 || foodQualitySlider.currentValue === 0 || serviceSlider.currentValue === 0) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: 'Cannot publish review with zero ratings. The lowest possible score is one.',
-            showConfirmButton: false,
-            timer: 2500 
-        });
-        return;
-    }
-
-    if (textarea.value.trim() === '') {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: 'Please enter a title for your review.',
-            showConfirmButton: false,
-            timer: 2500 
-        });
-        return;
-    }
-
-    else {
-
-        Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: 'Your review is now published.',
-            showConfirmButton: false,
-            timer: 2500 
-        });
-        quillEditor.root.innerHTML = '';
-        photoContainer.innerHTML = '';
-        textarea.value='';
-
-
-        priceSlider.reset();
-        foodQualitySlider.reset();
-        serviceSlider.reset();
-
-        updateStars();
-    }
+function fireSwal(icon, title, text, showConfirmButton, timer) {
+    Swal.fire({
+        icon: icon,
+        title: title,
+        text: text,
+        showConfirmButton: showConfirmButton,
+        timer: timer
+    });
 
 }
 
 
-function toggleOptions() {
-    var popup = document.getElementById("optionsPopup");
-    popup.style.display = (popup.style.display === "block") ? "none" : "block";
+function handleUpload() {
+    const photoContainer = document.getElementById('photo-container');
+    let titleInput = $('#review-title');
+    let title = titleInput.val().trim();
+    let reviewHtml = reviewQuill.getHtml();
+    
+
+    let foodRating = reviewFoodSlider.getValue();
+    let serviceRating = reviewServiceSlider.getValue();
+    let affordabilityRating = reviewPriceSlider.getValue();
+
+
+    if (foodRating === 0 || serviceRating === 0 || affordabilityRating === 0) {
+        fireSwal('error', 'Error!', 'Cannot publish review with zero ratings. The lowest possible score is one.', false, 2500);
+        return;
+    }
+
+
+    if (!title) {
+        fireSwal('error', 'Error!', 'Please enter a title for your review.', false, 2500);
+      
+        return;
+    }
+
+    else if (!reviewHtml) {
+        fireSwal('error', 'Error!', 'Please enter a review.', false, 2500);
+    }
+
+    else {
+        fireSwal('success', 'Success!', 'Your review is now published.', false, 2500);
+        
+        reviewQuill.clear();
+        photoContainer.innerHTML = '';
+        $(titleInput).val('');
+
+
+    }
+
+
+    let currentLink = new URL(window.location.href);
+    let createLink = currentLink.pathname + '/create';
+
+    console.log(createLink)
+    $.ajax({
+        url: createLink,
+        type: 'POST',
+        data: {
+            title: title, 
+            reviewHtml: reviewHtml,
+            foodRating: foodRating,
+            serviceRating: serviceRating,
+            affordabilityRating: affordabilityRating
+        },
+        success: function(response) {
+            // Handle the response from the server
+        },
+        error: function(error) {
+            // Handle any errors
+        }
+    });
+
+    
+    reviewFoodSlider.reset();
+    reviewPriceSlider.reset();
+    reviewServiceSlider.reset();
+
+}
+
+
+function toggleOptions(element) {
+
+    $(element).next('.options-popup').toggle()
+
+    
 }
 
 function removeMedia(element) {
@@ -269,11 +297,7 @@ function initializeMap() {
 }
 
 function initializeQuill() {
-    quillEditor = new Quill('#editor', {
-        theme: 'snow',
-        height: 120,
-        placeholder: 'Type here your review!'
-    });
+    reviewQuill = new QuillEditor('#review-editor', 120, 'Write your review here...');
     document.querySelector('.publish-button').addEventListener('click', handleUpload);
 }
 
@@ -286,34 +310,19 @@ $(document).ready(function() {
     const minService = params.get('minService')
     const searchTextValue = params.get('searchText')
     const sortingVal = params.get('sorting')
-   
-    let isLogged = document.querySelector('.publish-button')
 
-    if(isLogged) {
-
-        document.querySelector('.publish-button').addEventListener('click', handleUpload);
-        document.getElementById('photo-input').addEventListener('change', handleFileSelect);
-    
-        initializeQuill()    
-    }
-
-    
-
-    const priceSlider = new Slider(document.getElementsByClassName('slider-price-rating'));
-    const foodQualitySlider = new Slider(document.getElementsByClassName('slider-food-rating'));
-    const serviceSlider = new Slider(document.getElementsByClassName('slider-service-rating'));
     const filterStarSlider = new Slider(document.getElementsByClassName('slider-star-rating'));
     const filterPriceSlider = new Slider(document.getElementsByClassName('filter-price-rating'));
     const filterFoodSlider = new Slider(document.getElementsByClassName('filter-food-rating'));
     const filterServiceSlider = new Slider(document.getElementsByClassName('filter-service-rating'));
+
+    reviewFoodSlider = new Slider(document.getElementsByClassName('review-food-rating'));
+    reviewServiceSlider = new Slider(document.getElementsByClassName('review-service-rating'));
+    reviewPriceSlider = new Slider(document.getElementsByClassName('review-price-rating'));
+
+    const sliders = [filterStarSlider, filterPriceSlider, filterFoodSlider, filterServiceSlider, reviewFoodSlider, reviewServiceSlider, reviewPriceSlider];
     
-    priceSlider.initializeHover();
-    foodQualitySlider.initializeHover();
-    serviceSlider.initializeHover();
-    filterStarSlider.initializeHover();
-    filterPriceSlider.initializeHover();
-    filterFoodSlider.initializeHover()
-    filterServiceSlider.initializeHover()
+    sliders.forEach(slider => { slider.initializeHover(); });
 
     if(minStar) {
         filterStarSlider.handleClick(minStar)
@@ -331,6 +340,15 @@ $(document).ready(function() {
         filterServiceSlider.handleClick(minService)
     }
 
+    let isLogged = document.querySelector('.publish-button')
+
+    if(isLogged) {
+        initializeQuill(reviewFoodSlider, reviewServiceSlider, reviewPriceSlider);
+        document.getElementById('photo-input').addEventListener('change', handleFileSelect);
+    }
+
+
+    // 
     $('#search-rev-input').val(searchTextValue)
 
     if(sortingVal) {

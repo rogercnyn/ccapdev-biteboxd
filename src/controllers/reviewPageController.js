@@ -72,13 +72,9 @@ async function completeReviews(restaurant, username){
 
 
 async function handleRestoPageRequest(req, resp) {
-    // parse the headers
-
-    
     const id = req.params._id
     const isValid = await isValidRestaurant(id)
 
-    // console.log(isValid)
     if(isValid) {
         const { minStar, minPrice, minFood, minService, searchText, sorting } = req.query;
         const  restaurant = await getRestoCardDetails(id, searchText)
@@ -107,6 +103,8 @@ async function handleRestoPageRequest(req, resp) {
         } else if (sorting === "affordability") {
             sortAffordability(restaurant['reviews'])
         }
+
+        console.log(restaurant)
         
         resp.render("resto-reviewpage", restaurant);
     } else {
@@ -215,6 +213,7 @@ function formatDate(dateString) {
 
     return `${formattedDate}`;
 }
+
 
 
 module.exports = { handleRestoPageRequest, handleRestoResponsePageRequest }

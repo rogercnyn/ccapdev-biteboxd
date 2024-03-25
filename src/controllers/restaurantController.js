@@ -296,4 +296,12 @@ async function findById(id) {
 }
 
 
-module.exports = { handleSearchRequest, addBulkResto, handleGetAllRestoRequest, getRestoCardDetails, filterRestaurants, handleExploreRequest, findById, isValidRestaurant };
+module.exports = {  handleSearchRequest, 
+                    addBulkResto, 
+                    handleGetAllRestoRequest, 
+                    getRestoCardDetails, 
+                    filterRestaurants, 
+                    handleExploreRequest, 
+                    findById, 
+                    isValidRestaurant,
+                    addAReviewToRestaurant };
