@@ -471,8 +471,33 @@ async function editRestaurant(req,res) {
         }
 };
 
+async function deleteRestaurant(req, res) {
+    try {
+        const { id } = req.params;
+
+        const currentDate = new Date();
+
+        const updatedRestaurant = await Restaurant.findByIdAndUpdate(
+            id,
+            { $set: { deletedAt: currentDate } },
+            { new: true } // Return the updated document
+        );
+
+        if (!updatedRestaurant) {
+            return res.status(404).json({ message: 'Restaurant not found' });
+        }
+
+        res.redirect('/');
+
+    } catch (error) {
+        console.error('Error updating restaurant:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
 module.exports = {  addRestaurant, 
                     editRestaurant,
+                    deleteRestaurant,
                     handleSearchRequest, 
                     addBulkResto, 
                     handleGetAllRestoRequest, 

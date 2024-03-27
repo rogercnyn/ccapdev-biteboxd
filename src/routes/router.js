@@ -4,7 +4,7 @@ const path = require('path');
 // DO NOT IMPORT MODELS HERE
 
 // Import controllers for restaurant and review handling
-const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest, addRestaurant, editRestaurant } = require('../controllers/restaurantController');
+const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest, addRestaurant, editRestaurant, deleteRestaurant } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
 const { handleCreateReviewRequest, handleLikeReviewRequest } = require('../controllers/reviewController');
 const { handleProfileRequest, createUser, editProfile, deleteReview, updateReview} = require('../controllers/profileController');
@@ -60,6 +60,7 @@ router.get('/profile/:username', handleProfileRequest)
 // Routes for resto
 router.post("/createrestaurant", upload.single('restopicture'), addRestaurant)
 router.post("/editrestaurant", editRestaurant)
+router.post('/resto-responsepage/:id/delete', deleteRestaurant)
 
 // // Example server-side route for sorting
 // router.get('/api/search/sort', (req, res) => {

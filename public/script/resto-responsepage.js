@@ -357,7 +357,7 @@ function closeEditPopup() {
     document.getElementById('overlay').style.display = 'none';
 }
 
-function deleteRestaurant(){
+function deleteRestaurant(restaurantId){
      // Displaying the first confirmation dialog using SweetAlert
     Swal.fire({
         title: 'Delete Restaurant',
@@ -413,8 +413,16 @@ function deleteRestaurant(){
                             timer: 3000, // Auto-close the success message after 3 seconds
                             timerProgressBar: true // Display a progress bar for the auto-close timer
                         }).then(() => {
-                            // Redirecting the user to the logout page after successful deletion
-                            window.location.href = '/logout';
+                            $.ajax({
+                                url: `/resto-responsepage/${restaurantId}/delete`,
+                                type: 'POST',
+                                success: function(response) {
+                                    window.location.href = '/logout';
+                                },
+                                error: function(error) {
+                                    console.error('Error deleting restaurant:', error);
+                                }
+                            });
                         });
                     });
                     
