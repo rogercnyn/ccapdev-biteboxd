@@ -45,6 +45,12 @@ function appendQueryParameter(url, paramName, paramValue) {
     return newUrl;
 }
 
+function appendLink(link){
+    let currentLink = new URL(window.location.href);
+    return currentLink.pathname + link;
+
+}
+
 
 function togglePasswordVisibility(field, icon) {
     var passwordField = document.getElementById(field);

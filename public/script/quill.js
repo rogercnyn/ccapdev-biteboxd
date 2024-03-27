@@ -17,4 +17,8 @@ class QuillEditor {
     clear() {
         this.quill.root.innerHTML = '';
     }
+
+    setInnerHTMl(value) {
+        this.quill.root.innerHTML = value;
+    }
 }

@@ -69,6 +69,8 @@ async function addBulkReview(parsedJson){
 async function handleCreateReviewRequest(req, res) {
     console.log("Creating a review")
     const restaurantId = req.params._id;
+    const filenames = req.files.map(file => file.filename);
+
     let reviewData = {
         username: req.session.username,
         body: req.body.reviewHtml,
@@ -76,6 +78,7 @@ async function handleCreateReviewRequest(req, res) {
         serviceRating: req.body.serviceRating,
         affordabilityRating: req.body.affordabilityRating,
         title: req.body.title,
+        media: filenames,
     };
 
     console.log(reviewData)

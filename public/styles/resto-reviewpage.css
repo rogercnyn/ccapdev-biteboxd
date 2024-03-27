@@ -204,6 +204,7 @@ body.modal-open {
 .title-container {
     width: 800px;
     height: 30px;
+    margin-bottom: 2%;
 }
 
 .review-title {
@@ -237,15 +238,21 @@ margin-bottom: 100px;
 }
 .textbox {
     width: 850px;
-    padding: 10px; 
+    padding: 2%;
+    /* margin-bottom:5%;  */
     box-sizing: border-box; 
     font-family: 'Montserrat', sans-serif;
     font-size: 1em; 
     resize: none;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    /* box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); */
+    border: 1px solid #ccc;;
+    /* border: ; */
+    border-radius: 8px;
     font-weight: 700;
+}
+
+.modaltitlearea {
+    width: 100%;
 }
 
 .segoe{
@@ -511,6 +518,7 @@ margin-bottom: 100px;
     border-radius: 10px;
     width: 900px;
     height: 500px;
+    overflow-y: auto;
     z-index: 996;
 }
 
@@ -522,8 +530,12 @@ margin-bottom: 100px;
     cursor: pointer;
 }
 
-.modal-content{
+.edit-modal-content{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 #editReviewheader {
@@ -531,13 +543,14 @@ margin-bottom: 100px;
     font-weight: bold;
     font-family: 'DM Sans', sans-serif;
     text-align: left;
-    margin-top: 80px;
     margin-bottom: 20px;
 }
 
-#reviewbody {
-    display: none;
+.reviewEditor {
+
+    width: 100%;
 }
+
 
 .publisheditbtn {
     margin-top: 30px;

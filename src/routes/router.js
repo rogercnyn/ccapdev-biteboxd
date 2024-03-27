@@ -26,7 +26,29 @@ const storage = multer.diskStorage({
         cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
     }
 });
+
+
+const storageReviewMedia = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/uploads/reviewMedia/');
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname);
+    }
+  });
+  
 const upload = multer({ storage: storage });
+
+
+const uploadReviewMedia =  multer({
+    storage: storageReviewMedia,
+    limits: {
+        fileSize: 25 * 1024 * 1024, 
+        files: 4 
+    }
+}).array('files', 4); 
+
+  
 
 // configure middleware
 router.use(isAuthenticated)
@@ -37,7 +59,7 @@ router.get('/all', handleGetAllRestoRequest);
 router.get('/search', handleSearchRequest);
 
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
-router.post('/resto-reviewpage/:_id/create', handleCreateReviewRequest);
+router.post('/resto-reviewpage/:_id/create', uploadReviewMedia, handleCreateReviewRequest);
 router.get('/resto-reviewpage/:_id/:_reviewId/like', handleLikeReviewRequest);
 
 
