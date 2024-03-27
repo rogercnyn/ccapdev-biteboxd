@@ -1,7 +1,7 @@
 const Restaurant = require('../models/Restaurant.js');
 const { deleteReviewByBulk } = require('./reviewController.js')
 
-const { removeRestoReplyByBulk } = require('./restaurantreplyController.js')
+const { deleteRestoReplyByBulk } = require('./restaurantreplyController.js')
 const searchRequiredFields = { _id: 1, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1, numberOfCash: 1}
 const allPageRequiredFields = { _id: 1, name: 1, location: 1,  media: 1, rating: 1, shortDescription: 1, tag: 1 }
 const mongoose = require('mongoose')
@@ -500,10 +500,12 @@ async function deleteRestaurant(req, res) {
         console.log('Review IDs associated with the restaurant:', reviewIds);
 
         // delete the review under resto also
+        // from reviewController.js
         await deleteReviewByBulk(reviewIds);
 
         // delete the replies made by the restaurant
-        await removeRestoReplyByBulk(id);
+        // from restaurantreplyController.js
+        await deleteRestoReplyByBulk(id);
 
         res.redirect('/');
 

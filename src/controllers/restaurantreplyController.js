@@ -65,7 +65,7 @@ async function addRestaurantReply(req, res) {
     }
 }
 
-async function removeRestoReplyByBulk(restaurantId) {
+async function deleteRestoReplyByBulk(restaurantId) {
     try {
         const currentDate = new Date();
         await RestaurantReply.updateMany({ restaurantId: restaurantId }, { $set: { deletedAt: currentDate } });
@@ -76,4 +76,4 @@ async function removeRestoReplyByBulk(restaurantId) {
     }
 }
 
-module.exports = { addBulkRestaurantReply, readReply, addRestaurantReply, removeRestoReplyByBulk }
+module.exports = { addBulkRestaurantReply, readReply, addRestaurantReply, deleteRestoReplyByBulk }
