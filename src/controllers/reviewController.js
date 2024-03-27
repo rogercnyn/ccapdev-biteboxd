@@ -88,7 +88,7 @@ async function createReview(reviewData, restaurantId){
     let reviewDocument = new Review(reviewData);
 
     let savedReview = await saveReview(reviewDocument);
-    // console.log(savedReview['id'], restaurantId)
+    console.log(savedReview['id'], restaurantId);
     addAReviewToRestaurant(restaurantId, savedReview['id'])
     addReviewToProfile(reviewData.username, savedReview['id'])
 }
@@ -116,14 +116,5 @@ async function handleLikeReviewRequest(req, res) {
     
 }
 
-async function deleteReviewByBulk(reviewIds) {
-    try {
-        const result = await Review.deleteMany({ _id: { $in: reviewIds } });
-        console.log("Deleted reviews: ", result.deletedCount);
-    } catch (error) {
-        console.error('Error deleting reviews:', error);
-        throw error;
-    }
-}
 
-module.exports = { addBulkReview, getReply, populateReplies, handleCreateReviewRequest, handleLikeReviewRequest, deleteReviewByBulk }
+module.exports = { addBulkReview, getReply, populateReplies, handleCreateReviewRequest, handleLikeReviewRequest }

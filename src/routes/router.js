@@ -4,13 +4,16 @@ const path = require('path');
 // DO NOT IMPORT MODELS HERE
 
 // Import controllers for restaurant and review handling
-const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest, addRestaurant, editRestaurant, deleteRestaurant } = require('../controllers/restaurantController');
+const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest, addRestaurant, editRestaurant } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
 const { handleCreateReviewRequest, handleLikeReviewRequest } = require('../controllers/reviewController');
 const { handleProfileRequest, createUser, editProfile, deleteReview, updateReview} = require('../controllers/profileController');
 const { login, logout} = require('../controllers/loginController');
 const {isAuthenticated} = require('../middleware/auth');
 const router = express.Router();
+
+// for delete only
+const { deleteRestaurant } = require('../controllers/deleteController');
 
 
 //Multer - for uploads ( used sa Sign up and edit profile, review)

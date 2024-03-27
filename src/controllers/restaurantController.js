@@ -1,7 +1,4 @@
 const Restaurant = require('../models/Restaurant.js');
-const { deleteReviewByBulk } = require('./reviewController.js')
-
-const { deleteRestoReplyByBulk } = require('./restaurantreplyController.js')
 const searchRequiredFields = { _id: 1, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1, numberOfCash: 1}
 const allPageRequiredFields = { _id: 1, name: 1, location: 1,  media: 1, rating: 1, shortDescription: 1, tag: 1 }
 const mongoose = require('mongoose')
@@ -474,43 +471,8 @@ async function editRestaurant(req,res) {
         }
 };
 
-async function deleteRestaurant(req, res) {
-    try {
-        const { id } = req.params;
-        console.log("The restaurant id is:", id);
-
-        const restaurant = await Restaurant.findById(id);
-
-        if (!restaurant) {
-            return res.status(404).json({ message: 'Restaurant not found' });
-        }
-        const reviewIds = restaurant.reviews;
-      
-        console.log('Review IDs associated with the restaurant:', reviewIds);
-
-        //Delete resto
-        await Restaurant.findByIdAndDelete(id);
-
-        // delete the review under resto also
-        // from reviewController.js
-        await deleteReviewByBulk(reviewIds);
-
-        // delete the replies made by the restaurant
-        // from restaurantreplyController.js
-        await deleteRestoReplyByBulk(id);
-
-        res.redirect('/');
-
-    } catch (error) {
-        console.error('Error deleting restaurant:', error);
-        res.status(500).json({ message: 'Server error' });
-    }
-}
-
-
 module.exports = {  addRestaurant, 
                     editRestaurant,
-                    deleteRestaurant,
                     handleSearchRequest, 
                     addBulkResto, 
                     handleGetAllRestoRequest, 

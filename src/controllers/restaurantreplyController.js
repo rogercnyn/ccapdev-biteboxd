@@ -65,14 +65,4 @@ async function addRestaurantReply(req, res) {
     }
 }
 
-async function deleteRestoReplyByBulk(restaurantId) {
-    try {
-        const result = await RestaurantReply.deleteMany({ restaurantId: restaurantId });
-        console.log(`Deleted documents with restaurant ID: ${restaurantId}. Count: ${result.deletedCount}`);
-    } catch (error) {
-        console.error(`Error deleting documents for restaurant ID ${restaurantId}:`, error);
-        throw error;
-    }
-}
-
-module.exports = { addBulkRestaurantReply, readReply, addRestaurantReply, deleteRestoReplyByBulk }
+module.exports = { addBulkRestaurantReply, readReply, addRestaurantReply }
