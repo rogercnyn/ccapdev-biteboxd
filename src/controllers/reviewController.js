@@ -118,20 +118,12 @@ async function handleLikeReviewRequest(req, res) {
 
 async function deleteReviewByBulk(reviewIds) {
     try {
-        const currentDate = new Date();
-        for (const reviewId of reviewIds) {
-            await Review.findByIdAndUpdate(
-                reviewId,
-                { $set: { deletedAt: currentDate } },
-                { new: true } 
-            );
-            console.log("Deleted review: ", reviewId);
-        }
+        const result = await Review.deleteMany({ _id: { $in: reviewIds } });
+        console.log("Deleted reviews: ", result.deletedCount);
     } catch (error) {
-        console.error('Error updating review updatedAt attributes:', error);
+        console.error('Error deleting reviews:', error);
         throw error;
     }
 }
-
 
 module.exports = { addBulkReview, getReply, populateReplies, handleCreateReviewRequest, handleLikeReviewRequest, deleteReviewByBulk }

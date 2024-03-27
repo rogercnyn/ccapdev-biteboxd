@@ -67,11 +67,10 @@ async function addRestaurantReply(req, res) {
 
 async function deleteRestoReplyByBulk(restaurantId) {
     try {
-        const currentDate = new Date();
-        await RestaurantReply.updateMany({ restaurantId: restaurantId }, { $set: { deletedAt: currentDate } });
-        console.log(`DeletedAt updated for documents with restaurant ID: ${restaurantId}`);
+        const result = await RestaurantReply.deleteMany({ restaurantId: restaurantId });
+        console.log(`Deleted documents with restaurant ID: ${restaurantId}. Count: ${result.deletedCount}`);
     } catch (error) {
-        console.error(`Error updating deletedAt for restaurant ID ${restaurantId}:`, error);
+        console.error(`Error deleting documents for restaurant ID ${restaurantId}:`, error);
         throw error;
     }
 }

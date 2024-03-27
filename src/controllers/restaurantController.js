@@ -480,24 +480,16 @@ async function deleteRestaurant(req, res) {
         console.log("The restaurant id is:", id);
 
         const restaurant = await Restaurant.findById(id);
+
         if (!restaurant) {
             return res.status(404).json({ message: 'Restaurant not found' });
         }
         const reviewIds = restaurant.reviews;
-
-
-        const currentDate = new Date();
-        const updatedRestaurant = await Restaurant.findByIdAndUpdate(
-            id,
-            { $set: { deletedAt: currentDate } },
-            { new: true } 
-        );
-        if (!updatedRestaurant) {
-            return res.status(404).json({ message: 'Restaurant not found' });
-        }
-
       
         console.log('Review IDs associated with the restaurant:', reviewIds);
+
+        //Delete resto
+        await Restaurant.findByIdAndDelete(id);
 
         // delete the review under resto also
         // from reviewController.js
