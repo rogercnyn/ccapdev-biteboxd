@@ -43,4 +43,26 @@ async function addBulkRestaurantReply(parsedJson){
     }
 }
 
-module.exports = { addBulkRestaurantReply, readReply }
+async function addRestaurantReply(req, res) {
+    try {
+        const { restaurantId } = req.params;
+        const { body, media } = req.body; // Assuming body and media are sent in the request
+        const isEdited = false; // Default value for isEdited
+        const reply = new RestaurantReply({
+            restaurantId,
+            body,
+            media,
+            isEdited,
+            createdAt: new Date(), // Set current time as creation time
+            deletedAt: null // Initially, the reply is not deleted
+        });
+
+        await reply.save(); // Save the reply to the database
+        res.status(201).send({ message: 'Reply saved successfully', replyId: reply._id });
+    } catch (error) {
+        console.error('Error saving restaurant reply:', error);
+        res.status(500).send('Error saving reply');
+    }
+}
+
+module.exports = { addBulkRestaurantReply, readReply, addRestaurantReply }

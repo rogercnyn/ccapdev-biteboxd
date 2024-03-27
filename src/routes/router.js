@@ -326,4 +326,7 @@ router.get('*', (req, res) => {
 
 // });
 
+const { addRestaurantReply } = require('../controllers/restaurantreplyController');
+
+router.post('/resto-responsepage/:restaurantId', addRestaurantReply);
 module.exports = router;

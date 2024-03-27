@@ -1,17 +1,20 @@
+// Importing necessary functions and modules from respective controllers and modules
 const { getProfilePicture, getLikedDislikedReviewsId } = require('../controllers/profileController');
 const { getRestoCardDetails, findById, isValidRestaurant } = require('./restaurantController.js');
 const { getReply, populateReplies } = require('./reviewController.js');
 const { readReply } = require('../controllers/restaurantreplyController.js');
 
 
-
+// Function to compute the overall rating of a restaurant based on individual ratings
 function computeRating(r1, r2, r3){
     return Math.round(((r1 + r2 + r3) / 3.0) * 10, 1)/10
 }
 
+// Function to filter reviews based on different criteria
 function filterReviews( restaurant, overallRating, affordabilityRating, foodRating, serviceRating ){
     // console.log(overallRating, affordabilityRating, foodRating, serviceRating)
    
+    // Filtering reviews based on overall, affordability, food, and service ratings if provided
     if(overallRating && overallRating !== "0"){
         restaurant.reviews = restaurant.reviews.filter(review => Math.floor(review.overallRating) === parseInt(overallRating));
     }
@@ -30,6 +33,7 @@ function filterReviews( restaurant, overallRating, affordabilityRating, foodRati
 
 }
 
+// Function to add computed properties to a restaurant object
  function completeRestaurant(restaurant){
     restaurant['flooredRating'] = Math.floor(restaurant['rating'])
     restaurant['stars'] = Math.floor(restaurant['rating'])
@@ -37,16 +41,19 @@ function filterReviews( restaurant, overallRating, affordabilityRating, foodRati
     restaurant['ycoord'] = restaurant['coordinates'][1]
 }
 
+// Function to complete reviews by adding additional properties and profile pictures
 async function completeReviews(restaurant, username, loggedIn){
     
     let likedReviews = [], dislikedReviews = [];
     
+    // Fetching liked and disliked reviews if user is logged in
     if(loggedIn){
         reviews = await getLikedDislikedReviewsId(username)
         likedReviews = reviews[0]
         dislikedReviews = reviews[1]
     }
     
+    // Mapping over each review to add computed properties and profile pictures
     const promises = restaurant['reviews'].map(async (review) => {
         review['createdAtDisplay'] = formatDate(review['createdAt']);
         review['longText'] = review['body'].slice(0, 230);
@@ -64,6 +71,7 @@ async function completeReviews(restaurant, username, loggedIn){
 
         // console.log(review['isLiked'], review['_id'].toString())
 
+        // Mapping over each reply to add additional properties
         review['replies'].map((reply) =>{
             reply['media'] = restaurant['media']
             reply['name'] = restaurant['name']
@@ -71,13 +79,16 @@ async function completeReviews(restaurant, username, loggedIn){
         })
 
 
+        // Fetching profile picture of the reviewer
         const profilePicturePromise = getProfilePicture(review['username']);
         const profilePicture = await profilePicturePromise;
         return profilePicture;
     });
 
+    // Resolving all profile picture promises
     const profilePictures = await Promise.all(promises);
 
+    // Adding profile pictures to each review
     restaurant['reviews'].forEach((review, index) => {
         review['profilePicture'] = profilePictures[index]['image'];
         review['order'] = index
@@ -85,25 +96,29 @@ async function completeReviews(restaurant, username, loggedIn){
 }
 
 
-
+// Request handler for rendering the restaurant review page
 async function handleRestoPageRequest(req, resp) {
     const id = req.params._id
     const isValid = await isValidRestaurant(id)
 
     if(isValid) {
+        // Extracting query parameters from the request
         const { minStar, minPrice, minFood, minService, searchText, sorting } = req.query;
+        // Retrieving restaurant details
         const  restaurant = await getRestoCardDetails(id, searchText)
         const username = req.session.username ? req.session.username : "";
     
-    
+        // Completing restaurant details
         completeRestaurant(restaurant)
     
+        // Filtering reviews based on provided criteria
         await completeReviews(restaurant, username, resp.locals.loggedIn)
     
         
         filterReviews(restaurant, minStar, minPrice, minFood, minService)
     
     
+        // Sorting reviews based on sorting criteria
         // assuming recommended & tie breaker 
         sortRecommended(restaurant['reviews'], username)
         
@@ -121,6 +136,7 @@ async function handleRestoPageRequest(req, resp) {
 
         // console.log(restaurant)
         
+        // Rendering the restaurant review page with the processed data
         resp.render("resto-reviewpage", restaurant);
     } else {
         resp.redirect("/")
@@ -128,6 +144,7 @@ async function handleRestoPageRequest(req, resp) {
    
 }
 
+// Function to sort reviews based on most recent or least recent
 function sortRecent(reviews, mostRecent){
     return reviews.sort((a, b) => {
         if (mostRecent) {
@@ -140,13 +157,14 @@ function sortRecent(reviews, mostRecent){
     });
 }
 
+// Functions to sort reviews based on different criteria
 const sortStar = (reviews) => reviews.sort((a, b) => b.overallRating - a.overallRating);
 const sortFood = (reviews) => reviews.sort((a, b) => b.foodRating  - a.foodRating);
 const sortService = (reviews) => reviews.sort((a, b) => b.serviceRating - a.serviceRating);
 const sortAffordability = (reviews) => reviews.sort((a, b) => b.affordabilityRating - a.affordabilityRating);
 
 
-
+// Function to sort reviews based on recommended criteria
 function sortRecommended(reviews, username) {
     return reviews.sort((a, b) => {
         if (a.username === username) {
@@ -161,7 +179,7 @@ function sortRecommended(reviews, username) {
 
 
 
-
+// Request handler for rendering the response page for restaurant reviews
 async function handleRestoResponsePageRequest(req, res) {
     const id = req.params._id;
     console.log(id);
@@ -212,6 +230,7 @@ async function handleRestoResponsePageRequest(req, res) {
 }
 
 
+// Function to format date strings
 function formatDate(dateString) {
     const date = new Date(dateString);
 
@@ -230,5 +249,5 @@ function formatDate(dateString) {
 }
 
 
-
+// Exporting functions 
 module.exports = { handleRestoPageRequest, handleRestoResponsePageRequest }
