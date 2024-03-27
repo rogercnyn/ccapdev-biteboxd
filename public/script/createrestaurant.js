@@ -33,7 +33,7 @@ function updatePicture(input) {
     }
 }
 
-function publishRestaurant(event) {
+document.getElementById('publishButton').addEventListener('click', function(event) {
     event.preventDefault();
     Swal.fire({
         title: 'Publish Restaurant',
@@ -73,13 +73,13 @@ function publishRestaurant(event) {
                         timer: 3000,
                         timerProgressBar: true
                     }).then(() => {
+                        document.getElementById('createRestoForm').submit();
                         document.getElementById('createRestoForm').reset();
-                        window.location.href = '/';
                     });
                     
                 }
             });
         }
     });
-}
+});
 
