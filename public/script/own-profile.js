@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function deleteProfile(){
+function deleteProfile(username){
     Swal.fire({
         title: 'Delete Profile',
         text: 'Are you sure you want to delete your account?',

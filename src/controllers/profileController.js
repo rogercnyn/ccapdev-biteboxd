@@ -243,28 +243,32 @@ async function createUser(req, res) {
 //     }
 // }
 
-async function editProfile(req,res) {
+async function editProfile(req, res) {
     const userId = req.session.userId;
     const username = req.session.username;
-        const {  firstName, lastName, bio } = req.body;
-        try {
-            let profileUpdate = {
-                firstName: firstName,
-                lastName: lastName,
-                bio: bio
-            };
-            if (req.file) {
-                profileUpdate.image = req.file.filename;
-                req.session.profilePicture = profileUpdate.image; 
-            }
-            const updatedProfile = await Profile.findByIdAndUpdate(userId, profileUpdate, { new: true });
-    
-            res.redirect(`/profile/${username}`);
-        } catch (error) {
-            console.error('Error updating profile:', error);
-            res.status(500).send("Internal Server Error");
+    const { firstName, lastName, profileBio } = req.body;
+
+    try {
+        let profileUpdate = {
+            firstName: firstName,
+            lastName: lastName,
+            bio: profileBio
+        };
+
+        if (req.file) {
+            profileUpdate.image = req.file.filename;
+            req.session.profilePicture = profileUpdate.image;
         }
-};
+
+        const updatedProfile = await Profile.findByIdAndUpdate(userId, profileUpdate, { new: true });
+
+        res.redirect(`/profile/${username}`);
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).send("Internal Server Error");
+    }
+}
+
 
 
 

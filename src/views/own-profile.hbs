@@ -47,7 +47,7 @@
                         <h1 id="profile-username">@{{profile.username}}</h1>
                     </div>
                     <div class="edit">
-                        <button class="edit-btn">Edit Profile</button>
+                        <button class="edit-btn" onclick="openEditProfileModal()">Edit Profile</button>
 
                         <!-- edit profile popup-->
                         <div id="editProfileModal" class="modal">
@@ -77,11 +77,11 @@
 
                                     <div class="form-group">
                                         <label for="bio">Bio:</label>
-                                        <textarea id="bio" name="bio" required></textarea>
+                                        <textarea id="profileBio" name="profileBio" required></textarea>
                                     </div>
                                     
                                     <div class="form-group save-changes-div">
-                                        <button type="submit" class="save-changes">Save Changes</button>
+                                        <button type="submit" class="save-changes" >Save Changes</button>
                                     </div>
                                 </form>
 
