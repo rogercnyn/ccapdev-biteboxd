@@ -63,7 +63,7 @@ router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 router.post('/resto-reviewpage/:_id/create', uploadReviewMedia, handleCreateReviewRequest);
 router.post('/review/:_reviewId/edit', uploadReviewMedia, handleEditReviewRequest);
 router.post('/review/:_reviewId/delete', deleteReview);
-router.get('/resto-reviewpage/:_id/:_reviewId/like', handleLikeReviewRequest);
+router.get('/review/:_reviewId/like', handleLikeReviewRequest);
 
 
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);

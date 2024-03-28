@@ -60,7 +60,7 @@ function saveProfile(profileToSave) {
 
 
 async function getProfilePicture(username){
-    return await Profile.findOne({"username": username}).select("image").exec()
+    return await Profile.findOne({"username": username})['image']
 }
 
 async function clearProfiles() {

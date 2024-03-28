@@ -246,7 +246,11 @@
         <hr>
         <div class="reviewarea">
                 <div class="review-and-response">
-                    {{>reviews}}
+                {{#each reviews}}
+                    {{> reviews}}
+                {{else}}
+                    <p>No reviews found.</p>
+                {{/each}}
             </div>
         </div>  
     </div>

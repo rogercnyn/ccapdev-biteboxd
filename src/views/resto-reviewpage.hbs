@@ -148,7 +148,11 @@
             <hr>
             <div class="publishedrevarea">
               
-                {{>reviews}}
+                {{#each reviews}}
+                    {{> reviews}}
+                {{else}}
+                    <p>No reviews found.</p>
+                {{/each}}
             </div>
         </div>
        </div>

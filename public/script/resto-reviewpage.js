@@ -172,7 +172,7 @@ $(document).ready(function() {
             like.initializeClick();
         });
 
-        console.log(likes)
+        // console.log(likes)
         
         initializeQuill(reviewFoodSlider, reviewServiceSlider, reviewPriceSlider);
         document.getElementById('photo-input').addEventListener('change', (event) => handleFileSelect(event, 'photo-container', 'photo-input', '.publish-button'));

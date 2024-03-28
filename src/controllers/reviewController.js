@@ -1,8 +1,8 @@
 const Review  = require('../models/Review.js');
-const restaurant = require('../models/Restaurant.js');
 
 const { addAReviewToRestaurant } = require('./restaurantController.js')
-const { addReviewToProfile, modifyLikeDislikeReview } = require('./profileController.js');
+const { addReviewToProfile, modifyLikeDislikeReview, getProfilePicture } = require('./profileController.js');
+const Profile = require('../models/Profile.js');
 const Restaurant = require('../models/Restaurant.js');
 
 async function countReviews() {
@@ -83,7 +83,7 @@ async function handleCreateReviewRequest(req, res) {
         media: filenames,
     };
 
-    console.log(reviewData)
+    // console.log(reviewData)
     createReview(reviewData, restaurantId);
 
     res.send({ success: true, message: "Review created" });
@@ -103,11 +103,15 @@ async function handleLikeReviewRequest(req, res) {
     const username = req.session.username;
     const { like, dislike } = req.query;
 
+
+
     
     try {
-        await Review.findByIdAndUpdate(reviewId, { $inc: { noOfLikes: like, noOfDislikes: dislike } }, { new: true });
+        let result = await Review.findByIdAndUpdate(reviewId, { $inc: { noOfLikes: like, noOfDislikes: dislike } }, { new: true });
 
-
+        console.log(result)
+        // console.log(like)
+        // console.log("modifying like/dislike")
         modifyLikeDislikeReview(username, reviewId, like, dislike)
 
         res.send({ success: true}); 
@@ -155,10 +159,11 @@ async function handleEditReviewRequest( req, res) {
 }
 
 
-async function processReview(review, username, loggedIn){   
+async function processReview(review, username, loggedIn, likedReviews, dislikedReviews){   
     // manuall add the virtual property
     let r = await Review.findById(review['_id'])
     let restaurants = await Restaurant.findOne({ reviews: review['_id'] })
+    let profile = await Profile.findOne({ username: review['username'] })
 
     review['longText'] = review['body'].slice(0, 230);
     review['fullText'] = review['body'].slice(230);
@@ -168,6 +173,10 @@ async function processReview(review, username, loggedIn){
     review['isOwnReview'] = (review['username'] === username) 
     review['loggedIn'] = loggedIn
     review['restaurantId'] = restaurants['_id']
+    review['profilePicture'] = profile['image']
+    review['isLiked'] = likedReviews.includes(review['_id'].toString())
+    review['isDisliked'] = dislikedReviews.includes(review['_id'].toString())
+
 
     review['replies'].forEach((reply) => {
         reply['media'] = restaurants['media'];

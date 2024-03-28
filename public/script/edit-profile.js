@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var span = document.getElementsByClassName("close-button")[0];
     var form = document.getElementById("editProfileForm");
 
+    if(btn == null) return;
+
     btn.onclick = function() {
         preFillEditProfileForm();
         modal.style.display = "block";

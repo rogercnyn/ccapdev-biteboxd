@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <div class="bio">
-                    <input type="text" name="" id="bio" disabled value="{{profile.bio}}">
+                    <input type="text" name="" id="bio" disabled value="{{profile.bio}}" placeholder="No bio found.">
                 </div>
             </div>
             <div class="profile-tabs"> 
@@ -115,17 +115,16 @@
 
         <div class="content-box">
 
-            <!-- Liked Restaurants -->
-            <div class="content">
-                {{> reviews}}
-            </div>
-           
-            
-
 
             <!-- Reviews -->
 
-            
+            <div class="content">
+                {{#each reviews}}
+                    {{> reviews}}
+                {{else}}
+                    <p>No reviews found.</p>
+                {{/each}}
+            </div>
 
            
             
@@ -169,87 +168,8 @@
 
                 <h2 class="taste-profile-label">Reviews You've Liked</h2>
                 {{!-- {{#if profile.likedReviews.length}} --}}
-                    {{#each likedReviews}}
-                   <div class="review" data-review-id="{{this._id}}"> 
-                        <div class="review-panel">
-                            <div class="profile-score">
-                                <div class="profilearea">
-                                    <img src="/uploads/avatars/{{../this.likedReviewsProfilePictures}}" alt="Profile Picture" class="profilepic" id="profile-icon">
-                                </div>
-                                <div class="score">
-                                    <h2 class="yellowscore" id="user-score">{{this.overallRating}}</h2>
-                                </div>
-                            </div>
-
-                            <div class="review-center-tile">
-                                <div class="score-username">
-                                    <h2 class="titlearea">{{this.title}}</h2>
-                                    <div class="nametitle">
-                                        <a href="/profile/{{this.username}}" class="nameandtime">{{this.username}}</a>
-                                        <p class="nameandtime"> · </p>
-                                        <p class="nameandtime">{{formatDate this.createdAt}}</p>
-                                    </div>
-                                </div>
-                                <div class="criteriaratings">
-                                    <div class="criteriascore">
-                                        <h4 class="criteria">Food Quality</h4>
-                                        <div class="stars">
-                                            {{#times this.foodRating}}
-                                                <span>🍗</span>
-                                            {{/times}}
-                                        </div>
-                                    </div>
-                                    <div class="criteriascore">
-                                        <h4 class="criteria">Service</h4>
-                                        <div class="stars">
-                                            {{#times this.serviceRating}}
-                                                <span>🤝</span>
-                                            {{/times}}
-                                        </div>
-                                    </div>
-                                    <div class="criteriascore">
-                                        <h4 class="criteria">Affordability</h4>
-                                        <div class="stars">
-                                            {{#times this.affordabilityRating}}
-                                                <span>💵</span>
-                                            {{/times}}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="reviewtext" id="{{@index}}">
-                                    <span class="longtext">{{this.body}}</span>
-                                    {{!-- <span class="longtext">{{longText}}</span>
-                                    {{#unless hasNoSeeMore}}
-                                        <span class="full-text">{{fullText}}</span>
-                                        <span class="see-more" onclick="toggleSeeMore('this._id')"><b>...see more</b></span>
-                                    {{/unless}} --}}
-                                    {{!-- <span class="read-more">Read more...</span> --}}
-                                </div>
-                            </div>
-                                <div class="review-popup">
-                                    <div class="react-container">
-                                        <button class="like-dislike" id="like">&#128077;</button>
-                                        <span class = "numberoffeedback">9</span>
-                                        <button class="like-dislike" id="dislike">&#128078;</button>
-                                        <span class="numberoffeedback">8</span>
-                                    </div>
-                                    <div class="options-button" onclick="toggleOptions(this)">
-                                        &nbsp;&nbsp;&#8286;
-                                        <div class="options-popup">
-                                            <a href="#" onclick="deleteReview(this)">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>       
-                        </div>
-                        <div class="photopanel">
-                            {{#each this.media}}
-                                <img src="/assets/{{this}}" class="revpic">
-                            {{/each}}
-                        </div>
-                    </div>
-                {{else}}
-                    <p>No reviews found.</p>
+                {{#each likedReviews}}
+                    {{> reviews}}   
                 {{/each}}
 
                 <div class="divider"></div>
@@ -273,83 +193,5 @@
             </div>
         </div>
     </main>
-    <script>
-      
-    function deleteProfile(){
-        Swal.fire({
-            title: 'Delete Profile',
-            text: 'Are you sure you want to delete your account?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel!',
-            reverseButtons: true,
-            customClass: {
-                container: 'swal-custom-font',
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: 'Confirm Deletion',
-                    text: 'To confirm deletion, type \'Confirm\':',
-                    input: 'text',
-                    showCancelButton: true,
-                    cancelButtonText: 'Cancel',
-                    confirmButtonText: 'Submit',
-                    inputValidator: (value) => {
-                        if (value !== "Confirm") {
-                            return 'You need to enter the correct confirmation text!';
-                        }
-                    },
-                    customClass: {
-                        container: 'swal-custom-font',
-                    }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        console.log('Deleting profile:', username);
-                        fetch(`/deleteProfile/${username}`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ username })
-                        })
-                        .then(response => {
-                            console.log('Server response:', response); 
-                            if (response.ok) {
-                                return response.json();
-                            }
-                            throw new Error('Network response was not ok.');
-                        })
-                        .then(data => {
-                            console.log('Deletion successful:', data); 
-                            Swal.fire({
-                                title: 'Success!',
-                                text: 'Your account has been successfully deleted.',
-                                icon: 'success',
-                                confirmButtonText: 'OK',
-                                timer: 3000,
-                                timerProgressBar: true
-                            }).then(() => {
-                                window.location.href = '/logout';
-                            });
-                        })
-                        .catch(error => {
-                            console.error('Error deleting profile:', error);
-                            Swal.fire({
-                                title: 'Error!',
-                                text: 'An error occurred while deleting your account.',
-                                icon: 'error',
-                                confirmButtonText: 'OK'
-                            });
-                        });
-                    }
-                });
-            }
-        });
-    }
-
-
-    </script>
 </body>
 </html>

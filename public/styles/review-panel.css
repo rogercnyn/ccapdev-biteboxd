@@ -541,3 +541,10 @@
 .verified-icon {
     color: #125240;
 }
+
+
+
+.like-dislike:hover, .like-dislike.colored {
+    text-shadow: 0 0 4px black;
+
+}

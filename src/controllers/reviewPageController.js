@@ -1,5 +1,5 @@
 // Importing necessary functions and modules from respective controllers and modules
-const { getProfilePicture, getLikedDislikedReviewsId } = require('../controllers/profileController');
+const { getLikedDislikedReviewsId } = require('../controllers/profileController');
 const { getRestoCardDetails, findById, isValidRestaurant } = require('./restaurantController.js');
 const { processReview } = require('./reviewController.js');
 
@@ -49,27 +49,9 @@ async function completeReviews(restaurant, username, loggedIn){
         dislikedReviews = reviews[1]
     }
     
-    // Mapping over each review to add computed properties and profile pictures
-    const promises = restaurant['reviews'].map(async (review) => {
-        processReview(review, username, loggedIn)
-        review['isLiked'] = likedReviews.includes(review['_id'].toString())
-        review['isDisliked'] = dislikedReviews.includes(review['_id'].toString())
-        
-
-        // Fetching profile picture of the reviewer
-        const profilePicturePromise = getProfilePicture(review['username']);
-        const profilePicture = await profilePicturePromise;
-        return profilePicture;
-    });
-
-    // Resolving all profile picture promises
-    const profilePictures = await Promise.all(promises);
-
-    // Adding profile pictures to each review
-    restaurant['reviews'].forEach((review, index) => {
-        review['profilePicture'] = profilePictures[index]['image'];
-        review['order'] = index
-        console.log(review)
+    restaurant['reviews'].map(async (review, index) => {
+        processReview(review, username, loggedIn, likedReviews, dislikedReviews);
+        // review['order'] = index    
     });
 }
 

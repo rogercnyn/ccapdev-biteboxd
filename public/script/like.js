@@ -21,15 +21,21 @@ class Like {
     }
 
     sendLikeRequest(like, dislike) {
-        let likeLink = window.location.href + "/" + this.reviewId + "/like"
+        let likeLink = "/review/" + this.reviewId + "/like"
 
-        console.log(like, dislike)
+        console.log(likeLink)
+        // console.log(like, dislike)
         $.ajax({
           url: likeLink,
           type: 'GET',
           data: {like: like, dislike: dislike},          
-          success: (response) => { this.changeFeedback(like, dislike)},
-          error: function(error) {}
+          success: (response) => { 
+            console.log("success")
+            this.changeFeedback(like, dislike)
+        },
+          error: function(error) {
+            console.log(error)
+          }
         });
 
     }

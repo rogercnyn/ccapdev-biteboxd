@@ -1,4 +1,5 @@
 const { processReview } = require('./reviewController.js');
+const { getLikedDislikedReviewsId } = require('./profileController.js');
 const Profile = require('../models/Profile');
 
 async function handleProfileRequest(req, res) {
@@ -20,57 +21,46 @@ async function handleProfileRequest(req, res) {
 
 
 async function fetchAndRenderProfile(req, res, profile, view) {
+    let likedReviews = [], dislikedReviews = [];
     try {
-       
-        
         profileData = await Profile.findOne({ username: profile.username }).populate({
             path: 'reviews',
             populate: {
                 path: 'replies'
             }
-        }).populate('likedReviews').lean();
+        }).populate({
+            path: 'likedReviews',
+            populate: {
+                path: 'replies'
+            }
+        }).lean();
+
+        if(req.session.loggedIn){
+            reviews = await getLikedDislikedReviewsId(req.session.username)
+            likedReviews = reviews[0]
+            dislikedReviews = reviews[1]    
+        }
+
        
         profileData.reviews.forEach((review, index) => {
-            processReview(review, req.session.username, req.session.loggedIn);
+            processReview(review, req.session.username, req.session.loggedIn, likedReviews, dislikedReviews);
             review['order'] = index
-            review['profilePicture'] = profileData.image;
-            
-            // console.log(review)
-            // console.log(req.session.profilePic)
         })
 
-            // const likedReviewsProfilePictures = await Promise.all(profileData.likedReviews.map(async (review) => {
-            //     try {
-            //         const userProfile = await Profile.findOne({ username: review.username });
-            //         if (userProfile && userProfile.image) {
-            //             return userProfile.image;
-            //         } else {
-            //             console.error('Profile image not found for a review:', review._id);
-            //             return null;
-            //         }
-            //     } catch (error) {
-            //         console.error('Error finding profile for a review:', error);
-            //         return null;
-            //     }
-            //     }));
+        profileData.likedReviews.forEach((review, index) => {
+            processReview(review, req.session.username, req.session.loggedIn, likedReviews, dislikedReviews);
+            review['order'] = index
 
+            // review['replies'] = []
+            console.log(review)
+        })
 
-        // profileData.reviews.forEach((review, index) => {
-        //     review['longText'] = review['body'].slice(0, 230);
-        //     review['fullText'] = review['body'].slice(230);
-        //     review['hasNoSeeMore'] = review['fullText'].length === 0;
-        // });
 
         res.render(view, {
             profile: profileData,
             reviews: profileData.reviews,
+            likedReviews: profileData.likedReviews,
         })
-        // res.render(view, {
-        //     profile: profileData,
-        //     reviews: profileData.reviews,
-        //     likedReviews: profileData.likedReviews,
-        //     likedReviewsProfilePictures: likedReviewsProfilePictures
-        // });
     
     } catch (error) {
         console.error(`Error fetching profile data: ${error}`);
