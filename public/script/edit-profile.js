@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     var modal = document.getElementById("editProfileModal");
-    var btn = document.querySelector(".edit-btn");
+    var btn = document.querySelector(".edit-btn"); // Correct button selection
     var span = document.getElementsByClassName("close-button")[0];
     var form = document.getElementById("editProfileForm");
+
+    if (btn == null) return;
 
     btn.onclick = function() {
         preFillEditProfileForm();
@@ -26,202 +28,135 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 });
 
-
 function preFillEditProfileForm() {
     var currentUsername = document.getElementById("profile-username").textContent.replace('@', '');
     var currentFirstName = document.getElementById("first-name").textContent;
     var currentLastName = document.getElementById("last-name").textContent;
-    var currentBio = document.getElementById("profile-bio").textContent;
+    var currentBio = document.getElementById("bio").textContent;
 
     document.getElementById("firstName").value = currentFirstName;
     document.getElementById("lastName").value = currentLastName;
-    document.getElementById("bio").value = currentBio;
+    document.getElementById("profileBio").value = currentBio;
 }
 
+// function openEditProfileModal() {
+//     var modal = document.getElementById("editProfileModal");
+//     var btn = document.querySelector(".edit-btn"); // Correct button selection
+//     var form = document.getElementById("editProfileForm");
 
-function toggleOptions(button) {
-    var optionsPopup = button.querySelector('.options-popup');
-    if (optionsPopup.style.display === 'block') {
-        optionsPopup.style.display = 'none';
-    } else {
-        optionsPopup.style.display = 'block';
-    }
-}
+//     btn.onclick = function() {
+//         preFillEditProfileForm();
+//         modal.style.display = "block";
+//     };
+// }
 
-function deleteReview(deleteButton) {
-    var review = deleteButton.closest('.review');
-    var reviewId = review.dataset.reviewId; 
+// function submitEdit() {
+//     var form = document.getElementById("editProfileForm");
 
-    console.log("Review ID to delete:", reviewId); 
+//     form.onsubmit = function(event) {
+//         event.preventDefault(); // Prevent default form submission
 
-    if (!reviewId) {
-        console.error('Review ID not found!');
-        Swal.fire('Error', 'Review ID not found!', 'error');
-        return;
-    }
+//         var firstName = document.getElementById("firstName").value;
+//         var lastName = document.getElementById("lastName").value;
+//         var profileBio = document.getElementById("profileBio").value;
 
-    Swal.fire({
-        icon: 'warning',
-        title: 'Are you sure?',
-        text: 'This action cannot be undone.',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, delete it'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            fetch('/deleteReview', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ reviewId: reviewId }), 
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.message === 'Review deleted successfully') {
-                    review.remove();
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Deleted!',
-                        text: 'Your review has been deleted.',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: data.message,
-                    });
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                });
-            });
-        }
-    });
-}
+//         // Display confirmation dialog using SweetAlert
+//         Swal.fire({
+//             title: 'Are you sure?',
+//             text: 'Do you want to save these changes to your profile?',
+//             icon: 'question',
+//             showCancelButton: true,
+//             confirmButtonColor: '#3085d6',
+//             cancelButtonColor: '#d33',
+//             confirmButtonText: 'Yes, save it!'
+//         }).then((result) => {
+//             if (result.isConfirmed) {
+//                 // Perform profile update logic here
+//                 // Update profile fields
+//                 document.getElementById("first-name").textContent = firstName;
+//                 document.getElementById("last-name").textContent = lastName;
+//                 document.getElementById("bio").textContent = profileBio;
 
+//                 // Update profile picture if provided
+//                 var fileInput = document.getElementById("profilePic");
+//                 if (fileInput.files && fileInput.files[0]) {
+//                     var reader = new FileReader();
+//                     reader.onload = function(e) {
+//                         document.getElementById("profile-pic").src = e.target.result;
+//                     };
+//                     reader.readAsDataURL(fileInput.files[0]);
+//                 }
 
+//                 // Hide modal after successful update
+//                 var modal = document.getElementById("editProfileModal");
+//                 modal.style.display = "none";
 
+//                 // Show success message using SweetAlert
+//                 Swal.fire(
+//                     'Saved!',
+//                     'Your profile has been updated.',
+//                     'success'
+//                 );
+
+//                 return false; // Prevent form submission
+//             }
+//         });
+//     };
+// }
 
 
 function openEditProfileModal() {
     var modal = document.getElementById("editProfileModal");
-    var btn = document.querySelector(".edit-profile-popup");
+    var btn = document.querySelector(".edit-btn"); 
     var form = document.getElementById("editProfileForm");
 
     btn.onclick = function() {
-        preFillEditProfileForm(); 
-        modal.style.display = "block"; 
+        preFillEditProfileForm();
+        modal.style.display = "block";
     };
 
     form.onsubmit = function(event) {
-        event.preventDefault();
+        event.preventDefault(); 
 
         var firstName = document.getElementById("firstName").value;
         var lastName = document.getElementById("lastName").value;
-        var bio = document.getElementById("bio").value;
+        var profileBio = document.getElementById("profileBio").value;
 
-        document.getElementById("first-name").textContent = firstName;
-        document.getElementById("last-name").textContent = lastName;
-        document.getElementById("profile-bio").textContent = bio;
+        
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you want to save these changes to your profile?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, save it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        var fileInput = document.getElementById("profilePic");
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById("profile-pic").src = e.target.result;
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
+                document.getElementById("first-name").textContent = firstName;
+                document.getElementById("last-name").textContent = lastName;
+                document.getElementById("bio").textContent = profileBio;
 
-        modal.style.display = "none"; 
+
+                var fileInput = document.getElementById("profilePic");
+                if (fileInput.files && fileInput.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById("profile-pic").src = e.target.result;
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+
+                modal.style.display = "none";
+
+                Swal.fire(
+                    'Saved!',
+                    'Your profile has been updated.',
+                    'success'
+                );
+            }
+        });
     };
 }
-
-//edit review
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    document.body.addEventListener('click', function(event) {
-        if (event.target.dataset.action === 'editReview') {
-            event.preventDefault();
-            const reviewElement = event.target.closest('.review');
-            const reviewId = reviewElement.dataset.reviewId;
-
-            const reviewTitle = reviewElement.querySelector('.titlearea').textContent;
-            const reviewBody = reviewElement.querySelector('.longtext').textContent;
-
-            document.getElementById('editReviewId').value = reviewId;
-            document.getElementById('editTitle').value = reviewTitle.trim();
-            document.getElementById('editBody').value = reviewBody.trim();
-
-            var editModal = new bootstrap.Modal(document.getElementById('editReviewModal'));
-            editModal.show();
-        }
-    });
-
-    const editForm = document.getElementById('editReviewForm');
-    if(editForm) {
-        editForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            var formData = new FormData(this);
-            formData.append('reviewId', document.getElementById('editReviewId').value);
-
-            fetch('/updateReview', {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.success) {
-                    Swal.fire('Success', 'Review updated successfully', 'success').then(() => {
-                        location.reload(); 
-                    });
-                } else {
-                    Swal.fire('Error', 'Failed to update review', 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire('Error', 'Something went wrong', 'error');
-            });
-        });
-    }
-});
-
-
-
-
-
-var editReviewPopup = document.getElementById("editReviewPopup");
-
-var editButton = document.getElementById("editButton");
-
-var closeEditPopup = document.getElementById("closeEditPopup");
-
-editButton.onclick = function() {
-    editReviewPopup.style.display = "block";
-}
-
-closeEditPopup.onclick = function() {
-    editReviewPopup.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target == editReviewPopup) {
-        editReviewPopup.style.display = "none";
-    }
-}
-
-
-
 

@@ -35,7 +35,14 @@ function initializeHandlebars() {
                 if (!date) return "Invalid date";
                 const dateObj = new Date(date);
                 if (isNaN(dateObj.getTime())) return "Invalid date"; 
-                const options = { year: 'numeric', month: 'long' };
+                const options = {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric', 
+                    hour: 'numeric', 
+                    minute: 'numeric', 
+                    hour12: true
+                };
                 return dateObj.toLocaleDateString('en-US', options);
             },
             times: function(n, block) {
@@ -45,6 +52,14 @@ function initializeHandlebars() {
                 }
             return accum;
             },
+            timesInverse: function(n, block) {
+                let accum = ''; 
+                for (let i = 0; i < 5-n; i++) {
+                    accum += block.fn(i);
+                }
+                return accum;
+            },
+
             formatMonthYear: function(date) {
                 const options = { year: 'numeric', month: 'long' };
                 return new Date(date).toLocaleDateString('en-US', options);

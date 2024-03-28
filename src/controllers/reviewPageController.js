@@ -1,14 +1,7 @@
 // Importing necessary functions and modules from respective controllers and modules
-const { getProfilePicture, getLikedDislikedReviewsId } = require('../controllers/profileController');
+const { getLikedDislikedReviewsId } = require('../controllers/profileController');
 const { getRestoCardDetails, findById, isValidRestaurant } = require('./restaurantController.js');
-const { getReply, populateReplies } = require('./reviewController.js');
-const { readReply } = require('../controllers/restaurantreplyController.js');
-
-
-// Function to compute the overall rating of a restaurant based on individual ratings
-function computeRating(r1, r2, r3){
-    return Math.round(((r1 + r2 + r3) / 3.0) * 10, 1)/10
-}
+const { processReview } = require('./reviewController.js');
 
 // Function to filter reviews based on different criteria
 function filterReviews( restaurant, overallRating, affordabilityRating, foodRating, serviceRating ){
@@ -41,59 +34,27 @@ function filterReviews( restaurant, overallRating, affordabilityRating, foodRati
     restaurant['ycoord'] = restaurant['coordinates'][1]
 }
 
+
+
 // Function to complete reviews by adding additional properties and profile pictures
 async function completeReviews(restaurant, username, loggedIn){
     
     let likedReviews = [], dislikedReviews = [];
     
     // Fetching liked and disliked reviews if user is logged in
+    // so we know which reviews should have a colored like or dislike
     if(loggedIn){
         reviews = await getLikedDislikedReviewsId(username)
         likedReviews = reviews[0]
         dislikedReviews = reviews[1]
     }
     
-    // Mapping over each review to add computed properties and profile pictures
-    const promises = restaurant['reviews'].map(async (review) => {
-        review['createdAtDisplay'] = formatDate(review['createdAt']);
-        review['longText'] = review['body'].slice(0, 230);
-        review['fullText'] = review['body'].slice(230);
-        review['hasNoSeeMore'] = review['fullText'].length === 0 
-        review['overallRating'] = computeRating(review['affordabilityRating'],review['foodRating'], review['serviceRating'])
-        review['noFood'] = 5 - review['foodRating']
-        review['noService'] = 5 - review['serviceRating']
-        review['noMoney'] = 5 - review['affordabilityRating']
-        review['isOwnReview'] = (review['username'] === username) 
-        review['loggedIn'] = loggedIn
-        review['isLiked'] = likedReviews.includes(review['_id'].toString())
-        review['isDisliked'] = dislikedReviews.includes(review['_id'].toString())
-        
-
-        // console.log(review['isLiked'], review['_id'].toString())
-
-        // Mapping over each reply to add additional properties
-        review['replies'].map((reply) =>{
-            reply['media'] = restaurant['media']
-            reply['name'] = restaurant['name']
-            reply['createdAt'] = formatDate(reply['createdAt'])
-        })
-
-
-        // Fetching profile picture of the reviewer
-        const profilePicturePromise = getProfilePicture(review['username']);
-        const profilePicture = await profilePicturePromise;
-        return profilePicture;
-    });
-
-    // Resolving all profile picture promises
-    const profilePictures = await Promise.all(promises);
-
-    // Adding profile pictures to each review
-    restaurant['reviews'].forEach((review, index) => {
-        review['profilePicture'] = profilePictures[index]['image'];
-        review['order'] = index
+    restaurant['reviews'].map(async (review, index) => {
+        processReview(review, username, loggedIn, likedReviews, dislikedReviews);
+        // review['order'] = index    
     });
 }
+
 
 
 // Request handler for rendering the restaurant review page

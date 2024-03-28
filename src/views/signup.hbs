@@ -14,6 +14,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
     
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     
     <title>BiteBoxd - Sign up</title>
     <script src="script/signup.js"></script>    
@@ -116,7 +118,8 @@
                         <div class="pic-option" onclick="clickAvatar(this)"><img src="/uploads/avatars/avatar-m1.png" alt="" class="avatar"></div>
                         <div class="pic-option" onclick="triggerFileInput(this)">   
                              <input type="file" id="avatar-upload" class="avatar-upload">   
-                            <img src="assets/upload.svg" alt="" class="upload-icon">                     </div>
+                            <img src="assets/upload.svg" alt="" class="upload-icon">                    
+                        </div>
                     </div>
 
                     <div class="action-button-container">
@@ -132,6 +135,31 @@
     </main>
 
     <script>
+
+        function getTasteProfile() {
+            const selectedTags = $('.tag.selected').toArray().map(tag => tag.textContent);
+            return selectedTags;
+        }
+
+       function getAvatar() {
+            const selectedAvatar = $('.avatar-container .avatar-selected').attr('src');
+            if (selectedAvatar) {
+
+                return selectedAvatar;
+            } else {
+
+                const uploadedAvatar = $('#avatar-upload')[0].files[0];
+                if (uploadedAvatar) {
+
+                    return URL.createObjectURL(uploadedAvatar);
+                } else {
+
+                    return null;
+                }
+            }
+        }
+
+
         $(document).ready(function() {
             $('#form1').parsley();
 
@@ -145,7 +173,59 @@
                     document.getElementById('form2container').classList.add('adjustForm2');
                     document.getElementById('toForm3').classList.add('adjustButton2');
                 } 
-                e.preventDefault(); // Prevent form submission
+                e.preventDefault(); 
+            });
+            $('#form3').on('submit', function(e) {
+                e.preventDefault();
+
+
+                const formData = {
+                    firstName: $('#first-name').val(),
+                    lastName: $('#last-name').val(),
+                    username: $('#username').val(),
+                    email: $('#email').val(),
+                    password: $('#password').val(),
+                    tasteProfile: getTasteProfile(),
+                    image: getAvatar()
+                };
+
+
+                fetch('/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .then(data => {
+
+                    console.log(data);
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'User created successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+
+                        window.location.href = '/'; 
+                    });
+                })
+                .catch(error => {
+
+                    console.error('Error creating user:', error);
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'An error occurred while creating user',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                });
             });
         });           
       initializeSignUp(); 

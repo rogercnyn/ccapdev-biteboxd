@@ -101,12 +101,12 @@ async function removeReviewFromRestaurant(reviewId, restaurantId) {
 
 async function deleteReview(req, res) {
     const reviewId = req.params._reviewId;
-    const restaurantId = req.params._id;
 
     const username = req.session.username;
 
     try {
         const deletedReview = await Review.findByIdAndDelete(reviewId);
+        const restaurantId = await Restaurant.findOne({ reviews: deletedReview['_id'] })
 
         if (!deletedReview) {
             console.log("Review not found")

@@ -7,7 +7,8 @@ const path = require('path');
 const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest, addRestaurant, editRestaurant, updateRestoPicture } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
 const { handleCreateReviewRequest, handleLikeReviewRequest, handleEditReviewRequest } = require('../controllers/reviewController');
-const { handleProfileRequest, createUser, editProfile, updateReview} = require('../controllers/profileController');
+const { createUser, editProfile} = require('../controllers/profileController');
+const { handleProfileRequest } = require('../controllers/profilePageController');
 const { login, logout} = require('../controllers/loginController');
 const {isAuthenticated} = require('../middleware/auth');
 const router = express.Router();
@@ -71,9 +72,9 @@ router.get('/search', handleSearchRequest);
 
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 router.post('/resto-reviewpage/:_id/create', uploadReviewMedia, handleCreateReviewRequest);
-router.post('/resto-reviewpage/:_id/:_reviewId/edit', uploadReviewMedia, handleEditReviewRequest);
-router.post('/resto-reviewpage/:_id/:_reviewId/delete', deleteReview);
-router.get('/resto-reviewpage/:_id/:_reviewId/like', handleLikeReviewRequest);
+router.post('/review/:_reviewId/edit', uploadReviewMedia, handleEditReviewRequest);
+router.post('/review/:_reviewId/delete', deleteReview);
+router.get('/review/:_reviewId/like', handleLikeReviewRequest);
 
 
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
@@ -88,8 +89,8 @@ router.get('/createrestaurant', (req, res) => res.render("createrestaurant"));
 // Routes for profile handling
 router.post('/signup', createUser);
 router.post("/edit-profile", upload.single('profilePic'),editProfile);
-router.post('/deleteReview', deleteReview);
-router.post('/updateReview', upload.array('editMedia'), updateReview)
+// router.post('/deleteReview', deleteReview);
+// router.post('/updateReview', upload.array('editMedia'), updateReview)
 router.post("/login", login);
 router.post('/deleteProfile/:username', deleteProfile);
 

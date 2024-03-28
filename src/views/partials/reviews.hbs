@@ -1,0 +1,254 @@
+
+<div class="review" id="{{_id}}" data-restaurant="{{restaurantId}}"> 
+<div class="review-panel" id="reviewPanel2">
+
+    <div class="profile-score">
+        <div class="profilearea">
+            <img src="/uploads/avatars/{{profilePicture}}" class="profilepic">
+        </div>
+        <div class="score">
+            <h2 class="yellowscore" id="user-score">{{overallRating}}
+            </h2>
+        </div>
+    </div>
+
+    <div class="review-center-tile">
+        <div class="score-username">
+            <h2 class="titlearea">
+                {{#if isOwnReview}}
+                    <i class="fas fa-star owned"></i>
+                {{/if}}
+                {{title}}</h2>
+        
+            <div class="nametitle">
+                <a href="/profile/{{username}}" class="nameandtime">@{{username}}</a>
+                <p class="nameandtime"> · </p>
+                <p class="nameandtime">{{formatDate createdAt}}</p>
+            </div>
+        </div>
+        <div class="criteriaratings">
+            <div class="criteriascore">
+                <h4 class="criteria">Food Quality
+                <div class="stars">
+                    {{#times foodRating}}
+                        <span>🍗</span>
+                    {{/times}}
+                    {{#timesInverse foodRating}}
+                        <span class="over-emoji">🍗</span>
+                    {{/timesInverse}}
+                </div>
+            </div>
+
+            <div class="criteriascore">
+                <h4 class="criteria">Service
+                <div class="stars">
+                    {{#times serviceRating}}
+                        <span>🤝</span>
+                    {{/times}}
+                    {{#timesInverse serviceRating}}
+                        <span class="over-emoji">🤝</span>
+                    {{/timesInverse}}
+                </div>
+            </div>
+
+            <div class="criteriascore">
+                <h4 class="criteria">Affordability
+                <div class="stars">
+                    {{#times affordabilityRating}}
+                        <span>💵</span>
+                    {{/times}}
+                    {{#timesInverse affordabilityRating}}
+                        <span class="over-emoji">💵</span>
+                    {{/timesInverse}}
+                </div>
+            </div>
+        </div>
+
+        <div class="reviewtext" id="rev{{order}}">
+            <span class="longtext">{{longText}}</span>
+            {{#unless hasNoSeeMore}}
+                <span class="full-text">{{fullText}}</span>
+                <span class="see-more" onclick="toggleSeeMore('rev{{order}}')"><b>...see more</b></span>
+            {{/unless}}
+        </div>
+    </div>
+
+    <div class="rate-review" id="likeDislikeButtons">
+        <div class="like-container">
+
+
+            {{#if loggedIn}}
+
+                {{#if isOwnReview}}
+                    {{>unclickable-like}}
+
+                    <span id="three-dots" onclick="toggleOptions(this)">&nbsp;&nbsp;&#8286;</span>
+                    <div class="options-popup" id="optionsPopup">
+                        <a onclick="editReview({{foodRating}}, {{serviceRating}}, {{affordabilityRating}}, {{order}})">Edit</a>
+                        <a onclick="deleteReview('{{_id}}')">Delete</a>
+                    </div>
+                {{else}}
+                <div class="likeset" id="{{_id}}">
+
+                    {{#if isLiked}}
+                        <button class="like-dislike colored" id="like">&#128077;</button>
+                    {{else}}
+                        <button class="like-dislike" id="like">&#128077;</button>
+                    {{/if}}
+                    <span class = "numberoffeedback">{{noOfLikes}}</span>
+
+                    {{#if isDisliked}}
+                        <button class="like-dislike colored" id="dislike">&#128078;</button>
+                    {{else}}
+                        <button class="like-dislike" id="dislike">&#128078;</button>
+                    {{/if}}
+                    <span class="numberoffeedback">{{noOfDislikes}}</span>
+            </div>
+
+                {{/if}}
+            {{else}}
+                {{>unclickable-like}}
+            {{/if}}
+            
+
+
+
+
+
+        </div>
+    </div>
+
+    {{#if isOwnReview}}
+    <!-- EDIT REVIEW PART -->
+    <div class="editReviewOverlay" id="editReviewOverlay{{order}}" onclick="closeEditPopup({{order}})"></div>
+    <div id="editReview{{order}}" class="editReview">
+                <div class="edit-modal-content">
+                    <span class="closeEdit" onclick="closeEditPopup({{order}})">&times;</span>
+                    <span id="editReviewheader">Edit Review</span>
+                    <div class="reviewbody">
+                        <p id ="getReview{{order}}">{{body}}</p>
+                    </div>
+                    <div class="criteriaratearea" id ="editRateArea">
+                        <div class="criteriarate">
+                            <h3 class="criterialbl">Food Quality</h3>
+                            <div class="star-sorting" data-criterion="food">
+
+                                {{#times 5}}
+                                    <span class="slider-emoji-rating edit-food-rating edit-rating">🍗</span>
+                                {{/times}}
+                                
+                            </div>
+                        </div>
+
+                        <div class="criteriarate">
+                            <h3 class="criterialbl">Service</h3>
+                            <div class="star-sorting" data-criterion="service">
+                                
+                                {{#times 5}}
+                                    <span class="slider-emoji-rating edit-service-rating edit-rating">🤝</span>
+                                {{/times}}
+                                
+                            </div>
+                        </div>
+
+                        <div class="criteriarate">
+                            <h3 class="criterialbl">Affordability</h3>
+                            <div class="star-sorting" data-criterion="price">
+                                {{#times 5}}
+                                    <span class="slider-emoji-rating edit-price-rating edit-rating">💵</span>
+                                {{/times}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <textarea class="textbox modaltitlearea" id="reviewEditTitle{{order}}" rows="1" value="{{title}}"></textarea>
+                    <br>
+                    <div id="reviewEditor{{order}}" class="reviewEditor"></div>
+                    
+                    <div class="uploadarea" id ="editreviewattachment">
+                        <div class="photo-upload">
+                            <label for="editphoto-input{{order}}" class="upload-label">
+                            <img src="/assets/upload.svg" alt="Upload Icon" class="upload-icon">
+                            <br>
+                            <span class="upload-text">Upload</span>
+                            </label>
+                            <input type="file" id="editphoto-input{{order}}" name="photos" accept="image/*,video/*" multiple class="hidden-input">
+                        </div>
+                        
+                    
+                        <div class="editphoto-container{{order}}" id="editphoto-container{{order}}">
+                            {{#each media}}
+                                <div class="media-container">
+                                    {{#if (isVideo this)}}
+                                        <video src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></video>
+                                    {{else}}
+                                        <img src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></img>
+                                    {{/if}}
+                                    <span class="delete-btn" onclick="removeMedia(this)">&times;</span>
+                                </div>
+                            {{/each}}
+                        </div>
+    
+                        <div class="modal" id="modal" onclick="closeModal()">
+                            <div class="modal-content" onclick="event.stopPropagation();">
+                            <span class="close" onclick="closeModal()">&times;</span>
+                            <div id="modal-media-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="publisheditbtn" id="publisheditbtn" onclick="publishEditedReview({{order}}, '{{_id}}')">Publish</button>
+                </div>
+        </div>
+
+    {{/if}}
+</div>
+
+<div class="photopanel">
+    {{#each media}}
+
+        {{#if (isVideo this)}}
+            <video src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></video>
+
+        {{else}}
+            <img src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></img>
+
+        {{/if}}
+    {{/each}}
+</div>
+
+<div class="modal" id="modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation();">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div id="modal-media-container"></div>
+    </div>
+</div>
+
+
+{{#each replies}}
+
+    <div class="responsepanel">
+    
+        <div class="score-username">
+            
+            <div class="profilearea">
+                <img src="/assets/restaurant icons/{{media}}" class="profilepic">
+            </div>
+
+            <div class="titlearea">
+
+                <h2>{{name}} <i class="fas fa-check-circle verified-icon"></i></h2>
+                <p class="nameandtime">{{formatDate createdAt}}</p>
+
+            </div>
+        
+        </div>
+        
+        <div id="replytext">
+            <p>{{body}}</p>
+        </div>
+
+
+    </div>
+{{/each}}
+</div>
+
