@@ -151,19 +151,15 @@ function fireSwal(icon, title, text, showConfirmButton, timer) {
 }
 
 
-function handleUpload() {
-    const photoContainer = document.getElementById('photo-container');
-    let titleInput = $('#review-title');
+function handleUpload (photoContainer, photoInput, titleInput, quill, foodSlider, serviceSlider, affordabilitySlider, postLink, existingMedia=[]) {
     let title = titleInput.val().trim();
-    let reviewHtml = reviewQuill.getHtml();
+    let reviewHtml = quill.getHtml();
     
 
-    let foodRating = reviewFoodSlider.getValue();
-    let serviceRating = reviewServiceSlider.getValue();
-    let affordabilityRating = reviewPriceSlider.getValue();
-    const files = document.getElementById('photo-input').files;
-
-
+    let foodRating = foodSlider.getValue();
+    let serviceRating = serviceSlider.getValue();
+    let affordabilityRating = affordabilitySlider.getValue();
+    const files = document.getElementById(photoInput).files;
 
     if (foodRating === 0 || serviceRating === 0 || affordabilityRating === 0) {
         fireSwal('error', 'Error!', 'Cannot publish review with zero ratings. The lowest possible score is one.', false, 2500);
@@ -184,39 +180,41 @@ function handleUpload() {
     else {
         fireSwal('success', 'Success!', 'Your review is now published.', false, 2500);
         
-        reviewQuill.clear();
+        quill.clear();
         photoContainer.innerHTML = '';
         $(titleInput).val('');
-
-
     }
 
-
-    let createLink  = appendLink('/create')
     const formData = new FormData();
+
     for (let i = 0; i < files.length; i++) {
         formData.append('files', files[i]);
     }
+    
     formData.append('title', title);
     formData.append('reviewHtml', reviewHtml);
     formData.append('foodRating', foodRating);
     formData.append('serviceRating', serviceRating);
     formData.append('affordabilityRating', affordabilityRating);
+    
+    for (let i = 0; i < existingMedia.length; i++) {
+        formData.append('existingMedia[]', existingMedia[i]);
+    }
 
-    $.ajax({
-        url: createLink,
+    
+   $.ajax({
+        url: postLink,
         type: 'POST',
         data: formData,
+        processData: false,  
         contentType: false,
-        processData: false,
         success: function(response) {
             window.location.reload();
         },
         error: function(error) {
-            console.log(error);
+            console.error('Error uploading review:', error);
         }
     });
-
     
     reviewFoodSlider.reset();
     reviewPriceSlider.reset();
@@ -241,7 +239,6 @@ function editReview(foodRating, serviceRating, priceRating, order) {
 
     let titleArea = $(`#reviewEditTitle${order}`);
     titleArea.text(titleArea.attr('value'));
-    console.log(titleArea.attr('value'))
 
     editFoodSlider.handleClick(foodRating)
     editServiceSlider.handleClick(serviceRating)
@@ -256,7 +253,6 @@ function editReview(foodRating, serviceRating, priceRating, order) {
     document.getElementById(`editReviewOverlay${order}`).style.display = 'block';
     
     var existingReviewContent = document.getElementById(`getReview${order}`).innerHTML;
-    console.log(existingReviewContent)
 
     editQuill = new QuillEditor(`#reviewEditor${order}`, 120, 'Write your review here...')
 
@@ -267,7 +263,6 @@ function editReview(foodRating, serviceRating, priceRating, order) {
 
 
 function closeEditPopup(order){
-    console.log(`editReview${order}`)
     let editorContainer = document.getElementById(`reviewEditor${order}`)
     
 
@@ -278,27 +273,28 @@ function closeEditPopup(order){
     document.getElementById(`editReviewOverlay${order}`).style.display = 'none';
 }
 
-function publishEditedReview(){
+function publishEditedReview(order, id){
 
-    fireSwal('success', 'Success!', 'Edited review is now published.', false, 2500);
+    // fireSwal('success', 'Success!', 'Edited review is now published.', false, 2500);
 
-    let editLink = appendLink('/edit')
+    let existingMedia = new Array();
+    let editPhotoContainer = $(`#editphoto-container${order}`)
+    let editPhotoInput = `editphoto-input${order}`
+    let editTitle = $(`#reviewEditTitle${order}`)
 
 
-    // $ajax({
-    //     url: editLink,
-    //     type: 'POST',
-    //     data: formData,
-    //     contentType: false,
-    //     processData: false,
-    //     success: function(response) {
-    //         window.location.reload();
-    //     },
-    //     error: function(error) {
-    //         console.log(error);
-    //     }
-    // })
-    closeEditPopup();
+    $(`#editphoto-container${order} .revpic`).each(function() {
+        let src = ($(this).attr('src')).split('/');
+        existingMedia.push(src[src.length - 1]);
+    });
+
+
+    let editLink = appendLink(`/${id}/edit`)
+    console.log("outside: ", typeof existingMedia)
+    handleUpload(editPhotoContainer, editPhotoInput, editTitle, editQuill, editFoodSlider, editServiceSlider, editPriceSlider, editLink, existingMedia)
+
+
+    // closeEditPopup();
 }
 
 
@@ -332,7 +328,11 @@ function initializeMap() {
 
 function initializeQuill() {
     reviewQuill = new QuillEditor('#review-editor', 120, 'Write your review here...');
-    document.querySelector('.publish-button').addEventListener('click', handleUpload);
+    let createLink  = appendLink('/create')
+
+    document.querySelector('.publish-button').addEventListener('click', (event) => 
+    
+    handleUpload($('#photo-container'), 'photo-input', $('#review-title'), reviewQuill, reviewFoodSlider, reviewServiceSlider, reviewPriceSlider, createLink));
 }
 
 function initSliders() {
@@ -442,7 +442,7 @@ $(document).ready(function() {
 
 
 
-    $("#reviewbody").hide()
+    $(".reviewbody").hide();
 
     let isLogged = document.querySelector('.publish-button')
 

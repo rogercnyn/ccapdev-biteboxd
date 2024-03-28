@@ -120,4 +120,39 @@ async function handleLikeReviewRequest(req, res) {
 }
 
 
-module.exports = { addBulkReview, getReply, populateReplies, handleCreateReviewRequest, handleLikeReviewRequest }
+async function handleEditReviewRequest( req, res) {
+    const reviewId = req.params._reviewId;
+    const filenames = req.files.map(file => file.filename);
+    const media = (req.body.existingMedia || []).concat(filenames || []);
+
+
+    let reviewData = {
+        body: req.body.reviewHtml,
+        foodRating: req.body.foodRating,
+        serviceRating: req.body.serviceRating,
+        affordabilityRating: req.body.affordabilityRating,
+        title: req.body.title,
+        isEdited: true,
+        media: media
+    };
+
+
+
+    console.log(reviewId)
+    try {
+        const updatedReview = await Review.findByIdAndUpdate(reviewId, reviewData, { new: true });
+
+        if (!updatedReview) {
+            console.log("Review not found")
+            return res.status(404).send({ success: false, message: "Review not found" });
+        }
+
+        res.send({ success: true, message: "Review edited", review: updatedReview });
+    } catch (error) {
+        console.log(error)
+        console.error('Error editing review:', error);
+        res.status(500).send({ success: false, message: "Internal server error" });
+    }
+}
+
+module.exports = { addBulkReview, getReply, populateReplies, handleCreateReviewRequest, handleLikeReviewRequest, handleEditReviewRequest }

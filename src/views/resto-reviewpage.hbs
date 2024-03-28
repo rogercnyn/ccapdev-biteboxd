@@ -274,7 +274,7 @@
                                         <div class="edit-modal-content">
                                             <span class="closeEdit" onclick="closeEditPopup({{order}})">&times;</span>
                                             <span id="editReviewheader">Edit Review</span>
-                                            <div id="reviewbody">
+                                            <div class="reviewbody">
                                                 <p id ="getReview{{order}}">{{body}}</p>
                                             </div>
                                             <div class="criteriaratearea" id ="editRateArea">
@@ -345,7 +345,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button class="publisheditbtn" id="publisheditbtn" onclick="publishEditedReview()">Publish</button>
+                                            <button class="publisheditbtn" id="publisheditbtn" onclick="publishEditedReview({{order}}, '{{_id}}')">Publish</button>
                                         </div>
                                 </div>
 
