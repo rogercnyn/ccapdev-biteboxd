@@ -31,8 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
 $(document).ready(function() {
     $(".reviewbody").hide();
 
-    $(".review").click(function() {
-        var url = "/resto-reviewpage/" + $(this).data('restaurant') + "#" + $(this).attr('id');
+    $(".titlearea").click(function() {
+        var review = $(this).closest('.review');
+
+        var url = "/resto-reviewpage/" + $(review).data('restaurant') + "#" + $(review).attr('id');
         window.location.href = url;
     });
     

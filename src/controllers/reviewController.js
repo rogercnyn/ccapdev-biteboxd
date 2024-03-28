@@ -168,6 +168,11 @@ async function processReview(review, username, loggedIn){
     review['isOwnReview'] = (review['username'] === username) 
     review['loggedIn'] = loggedIn
     review['restaurantId'] = restaurants['_id']
+
+    review['replies'].forEach((reply) => {
+        reply['media'] = restaurants['media'];
+        reply['name'] = restaurants['name'];
+    })
     
     return review
 

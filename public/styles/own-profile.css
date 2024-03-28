@@ -3,6 +3,7 @@
 @import "tabs.css";
 @import "review-panel.css";
 @import "quill.css";
+@import "sliders.css";
 
 @import "user-about.css";
 @import "edit-profile.css";
@@ -27,10 +28,8 @@ main {
     display: flex;
 }
 
-.review:hover {
+.titlearea:hover {
     cursor: pointer;
-    border: 1px solid #d8d8d8;
-    border-radius: 15px;
 }
 
 .header-picture{

@@ -34,10 +34,7 @@ async function fetchAndRenderProfile(req, res, profile, view) {
             processReview(review, req.session.username, req.session.loggedIn);
             review['order'] = index
             review['profilePicture'] = profileData.image;
-            review['replies'].forEach((reply) => {
-                // reply['media'] = "";
-                reply['name'] = "nest to find the resto";
-            })
+            
             // console.log(review)
             // console.log(req.session.profilePic)
         })

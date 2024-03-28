@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <div class="bio">
-                    <p>bio:&nbsp;</p> <p id="profile-bio">{{profile.bio}}</p>
+                    <input type="text" name="" id="bio" disabled value="{{profile.bio}}">
                 </div>
             </div>
             <div class="profile-tabs"> 
@@ -275,113 +275,80 @@
     </main>
     <script>
       
-        function deleteProfile(){
-    Swal.fire({
-        title: 'Delete Profile',
-        text: 'Are you sure you want to delete your account?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        reverseButtons: true,
-        customClass: {
-            container: 'swal-custom-font',
-        }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: 'Confirm Deletion',
-                text: 'To confirm deletion, type \'Confirm\':',
-                input: 'text',
-                showCancelButton: true,
-                cancelButtonText: 'Cancel',
-                confirmButtonText: 'Submit',
-                inputValidator: (value) => {
-                    if (value !== "Confirm") {
-                        return 'You need to enter the correct confirmation text!';
-                    }
-                },
-                customClass: {
-                    container: 'swal-custom-font',
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    console.log('Deleting profile:', username);
-                    fetch(`/deleteProfile/${username}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ username })
-                    })
-                    .then(response => {
-                        console.log('Server response:', response); 
-                        if (response.ok) {
-                            return response.json();
+    function deleteProfile(){
+        Swal.fire({
+            title: 'Delete Profile',
+            text: 'Are you sure you want to delete your account?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true,
+            customClass: {
+                container: 'swal-custom-font',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Confirm Deletion',
+                    text: 'To confirm deletion, type \'Confirm\':',
+                    input: 'text',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancel',
+                    confirmButtonText: 'Submit',
+                    inputValidator: (value) => {
+                        if (value !== "Confirm") {
+                            return 'You need to enter the correct confirmation text!';
                         }
-                        throw new Error('Network response was not ok.');
-                    })
-                    .then(data => {
-                        console.log('Deletion successful:', data); 
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Your account has been successfully deleted.',
-                            icon: 'success',
-                            confirmButtonText: 'OK',
-                            timer: 3000,
-                            timerProgressBar: true
-                        }).then(() => {
-                            window.location.href = '/logout';
+                    },
+                    customClass: {
+                        container: 'swal-custom-font',
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        console.log('Deleting profile:', username);
+                        fetch(`/deleteProfile/${username}`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ username })
+                        })
+                        .then(response => {
+                            console.log('Server response:', response); 
+                            if (response.ok) {
+                                return response.json();
+                            }
+                            throw new Error('Network response was not ok.');
+                        })
+                        .then(data => {
+                            console.log('Deletion successful:', data); 
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Your account has been successfully deleted.',
+                                icon: 'success',
+                                confirmButtonText: 'OK',
+                                timer: 3000,
+                                timerProgressBar: true
+                            }).then(() => {
+                                window.location.href = '/logout';
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Error deleting profile:', error);
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'An error occurred while deleting your account.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
                         });
-                    })
-                    .catch(error => {
-                        console.error('Error deleting profile:', error);
-                        Swal.fire({
-                            title: 'Error!',
-                            text: 'An error occurred while deleting your account.',
-                            icon: 'error',
-                            confirmButtonText: 'OK'
-                        });
-                    });
-                }
-            });
-        }
-    });
-}
-
-
-        adjustNavBar();
-
-        const likesets = document.getElementsByClassName('react-container');
-        const likes = []
-        // console.log(likeDislikeButtons)
-
-
-        Array.from(likesets).forEach(likeset => {
-            let likeButton = likeset.querySelector('#like');
-            let dislikeButton = likeset.querySelector('#dislike');
-            likes.push(new Like(likeButton, dislikeButton))
-        });
-
-        
-        Array.from(likes).forEach(like => {
-            like.initializeClick();
-        });
-
-
-
-        console.log(likes)
-        adjustNavBar();
-        detectLogin();
-
-        document.getElementById("title").addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-                e.preventDefault();
+                    }
+                });
             }
         });
+    }
 
-
-        console.log(likes)
 
     </script>
 </body>

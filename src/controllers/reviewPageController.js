@@ -56,15 +56,6 @@ async function completeReviews(restaurant, username, loggedIn){
         review['isDisliked'] = dislikedReviews.includes(review['_id'].toString())
         
 
-        // console.log(review['isLiked'], review['_id'].toString())
-        // Mapping over each reply to add additional properties
-        review['replies'].map((reply) =>{
-            reply['media'] = restaurant['media']
-            reply['name'] = restaurant['name']
-            // reply['createdAt'] = formatDate(reply['createdAt'])
-        })
-
-
         // Fetching profile picture of the reviewer
         const profilePicturePromise = getProfilePicture(review['username']);
         const profilePicture = await profilePicturePromise;

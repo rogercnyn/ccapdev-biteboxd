@@ -220,6 +220,8 @@ function editReview(foodRating, serviceRating, priceRating, order) {
     editServiceSlider = new Slider(document.getElementsByClassName('edit-service-rating'));
     editPriceSlider = new Slider(document.getElementsByClassName('edit-price-rating'));
 
+    console.log(document.getElementsByClassName('edit-food-rating'))
+    console.log(editFoodSlider, editServiceSlider, editPriceSlider)
     let titleArea = $(`#reviewEditTitle${order}`);
     titleArea.text(titleArea.attr('value'));
 
