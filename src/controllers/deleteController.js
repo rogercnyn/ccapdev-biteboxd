@@ -1,6 +1,7 @@
 const Review  = require('../models/Review.js');
 const Restaurant = require('../models/Restaurant.js');
 const RestaurantReply = require('../models/RestaurantReply.js');
+const Profile = require('../models/Profile.js');
 
 async function deleteReviewByBulk(reviewIds) {
     try {
@@ -55,4 +56,75 @@ async function deleteRestaurant(req, res) {
     }
 }
 
-module.exports = { deleteRestaurant };
+async function removeReviewFromProfile(reviewId, username) {
+    try {
+        const profile = await Profile.findOne({ username: username });
+        const profiles = await Profile.find({});
+
+        if (!profile) {
+            console.log('Profile not found');
+            return;
+        }
+
+        // first delete it in the owner
+        profile.reviews = profile.reviews.filter(id => id.toString() !== reviewId);
+
+        // delete it in everyone else's like
+        profiles.forEach(async (profile) => {
+            profile.likedReviews = profile.likedReviews.filter(id => id.toString() !== reviewId);
+            profile.dislikedReviews = profile.dislikedReviews.filter(id => id.toString() !== reviewId);
+            profile.save();
+        });
+
+        profile.save();
+    } catch (error) {
+        console.error('Error removing review from profile:', error);
+    }
+    
+}
+
+async function removeReviewFromRestaurant(reviewId, restaurantId) {
+    try {
+        const restaurant = await Restaurant.findById(restaurantId);
+
+        if (!restaurant) {
+            console.log('Restaurant not found');
+            return;
+        }
+        restaurant.reviews = restaurant.reviews.filter(id => id.toString() !== reviewId);
+        restaurant.save();
+    } catch (error) {
+        console.error('Error removing review from restaurant:', error);
+    }
+}
+
+
+async function deleteReview(req, res) {
+    const reviewId = req.params._reviewId;
+    const restaurantId = req.params._id;
+
+    const username = req.session.username;
+
+    try {
+        const deletedReview = await Review.findByIdAndDelete(reviewId);
+
+        if (!deletedReview) {
+            console.log("Review not found")
+            return res.status(404).send({ success: false, message: "Review not found" });
+        }
+
+        removeReviewFromProfile(reviewId, username);
+        removeReviewFromRestaurant(reviewId, restaurantId);
+
+        res.send({ success: true, message: "Review deleted" });
+    }
+    catch (error) {
+        console.error('Error deleting review:', error);
+        res.status(500).send({ success: false, message: "Internal server error" });
+    }
+
+}
+
+
+
+module.exports = { deleteRestaurant, deleteReview };

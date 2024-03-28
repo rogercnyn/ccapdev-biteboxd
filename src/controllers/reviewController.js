@@ -101,9 +101,6 @@ async function handleLikeReviewRequest(req, res) {
     const username = req.session.username;
     const { like, dislike } = req.query;
 
-    // console.log("Liking a review: ", reviewId);
-    // console.log("Like: ", like, "\tDislike: ", dislike);
-
     
     try {
         await Review.findByIdAndUpdate(reviewId, { $inc: { noOfLikes: like, noOfDislikes: dislike } }, { new: true });
@@ -154,5 +151,7 @@ async function handleEditReviewRequest( req, res) {
         res.status(500).send({ success: false, message: "Internal server error" });
     }
 }
+
+
 
 module.exports = { addBulkReview, getReply, populateReplies, handleCreateReviewRequest, handleLikeReviewRequest, handleEditReviewRequest }

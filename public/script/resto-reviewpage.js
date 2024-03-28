@@ -299,14 +299,43 @@ function publishEditedReview(order, id){
 
 
 
-function deleteReview() {
+function deleteReview(id) {
     Swal.fire({
-        icon: 'success',
-        title: 'Success!',
-        text: 'Your review is now deleted.',
-        showConfirmButton: false,
-        timer: 2500 
+        title: 'Delete Review',
+        text: 'Are you sure you want to delete this review?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: true,
+        customClass: {
+            container: 'swal-custom-font',
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Delete the review
+            Swal.fire({
+                title: 'Review Deleted',
+                text: 'The review has been successfully deleted.',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                timer: 3000,
+                timerProgressBar: true
+            });
+            let deleteLink = appendLink(`/${id}/delete`)    
+            $.ajax({
+                url: deleteLink,
+                type: 'POST',
+                success: function(response) {
+                    window.location.reload();
+                },
+                error: function(error) {
+                    console.error('Error deleting review:', error);
+                }
+            });
+        }
     });
+    
 }
 
 

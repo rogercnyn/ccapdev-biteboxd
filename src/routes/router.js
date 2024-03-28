@@ -7,13 +7,13 @@ const path = require('path');
 const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest, addRestaurant, editRestaurant } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
 const { handleCreateReviewRequest, handleLikeReviewRequest, handleEditReviewRequest } = require('../controllers/reviewController');
-const { handleProfileRequest, createUser, editProfile, deleteReview, updateReview} = require('../controllers/profileController');
+const { handleProfileRequest, createUser, editProfile, updateReview} = require('../controllers/profileController');
 const { login, logout} = require('../controllers/loginController');
 const {isAuthenticated} = require('../middleware/auth');
 const router = express.Router();
 
 // for delete only
-const { deleteRestaurant } = require('../controllers/deleteController');
+const { deleteRestaurant, deleteReview } = require('../controllers/deleteController');
 
 
 //Multer - for uploads ( used sa Sign up and edit profile, review)
@@ -61,6 +61,7 @@ router.get('/search', handleSearchRequest);
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 router.post('/resto-reviewpage/:_id/create', uploadReviewMedia, handleCreateReviewRequest);
 router.post('/resto-reviewpage/:_id/:_reviewId/edit', uploadReviewMedia, handleEditReviewRequest);
+router.post('/resto-reviewpage/:_id/:_reviewId/delete', deleteReview);
 router.get('/resto-reviewpage/:_id/:_reviewId/like', handleLikeReviewRequest);
 
 

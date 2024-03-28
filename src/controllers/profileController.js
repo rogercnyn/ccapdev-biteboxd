@@ -288,6 +288,7 @@ async function handleProfileRequest(req, res) {
     }
 }
 
+
 // async function fetchAndRenderProfile(query, res, view) {
 //     try {
 //         let profileQuery = Profile.findOne(query);
@@ -432,5 +433,5 @@ module.exports = {
     updateReview,
     handleProfileRequest,
     getLikedDislikedReviewsId,
-    modifyLikeDislikeReview
+    modifyLikeDislikeReview, 
 };
