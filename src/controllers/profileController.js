@@ -160,38 +160,88 @@ async function getProfileById(id) {
 }
 
 
+// async function createUser(req, res) {
+//     try {
+//         const { firstName, lastName, username, email, password, tasteProfile } = req.body;
+//         if (!tasteProfile) {
+//             return res.status(400).send("Taste profiles string is empty or null");
+//         }
+
+//         const tasteProfilesArray = JSON.parse(tasteProfile);
+//         const avatarFilename = req.file ? req.file.filename : 'default-avatar.png';
+//         const headerFilename = 'header.jpg';
+
+//         const newProfile = new Profile({
+//             firstName,
+//             lastName,
+//             username,
+//             email,
+//             password,
+//             tasteProfile: tasteProfilesArray,
+//             image: avatarFilename,
+//             bgImage: headerFilename,
+//             hearts: 0,
+//             dislike: 0,
+//             credibility: 0
+//         });
+
+//         await newProfile.save();
+//         res.redirect('/login'); 
+//     } catch (error) {
+//         console.error('Signup error:', error);
+//         res.status(500).send('Error during signup');
+//     }
+// };
 async function createUser(req, res) {
     try {
-        const { firstName, lastName, username, email, password, tasteProfile } = req.body;
-        if (!tasteProfile) {
-            return res.status(400).send("Taste profiles string is empty or null");
-        }
+        const { firstName, lastName, username, email, password, tasteProfile, image } = req.body;
+        console.log('Request body:', req.body);
 
-        const tasteProfilesArray = JSON.parse(tasteProfile);
         const avatarFilename = req.file ? req.file.filename : 'default-avatar.png';
         const headerFilename = 'header.jpg';
+        
 
-        const newProfile = new Profile({
+        const newUser = new Profile({
             firstName,
             lastName,
             username,
             email,
             password,
-            tasteProfile: tasteProfilesArray,
-            image: avatarFilename,
+            tasteProfile,
+            image: image || avatarFilename,
             bgImage: headerFilename,
             hearts: 0,
             dislike: 0,
             credibility: 0
         });
 
-        await newProfile.save();
-        res.redirect('/login'); 
+        console.log('New user:', newUser);
+
+        const savedUser = await newUser.save();
+        console.log('Saved user:', savedUser);
+
+        res.status(201).json({ success: true, message: 'User created successfully', user: savedUser });
     } catch (error) {
-        console.error('Signup error:', error);
-        res.status(500).send('Error during signup');
+        console.error('Error creating user:', error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
     }
-};
+}
+
+
+
+// function getAvatar() {
+//     // Check if any avatar image is selected
+//     const selectedAvatar = document.querySelector('.avatar.selected img');
+    
+//     if (selectedAvatar) {
+//         // If an avatar is selected, return its source URL
+//         return selectedAvatar.src;
+//     } else {
+//         // If no avatar is selected, return a default URL or handle it according to your logic
+//         // For example, return a default avatar image URL
+//         return '/uploads/avatars/default-avatar.png';
+//     }
+// }
 
 async function editProfile(req,res) {
     const userId = req.session.userId;
