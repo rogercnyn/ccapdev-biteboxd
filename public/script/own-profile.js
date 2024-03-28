@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const all_content = document.querySelectorAll('.content');
     const line = document.querySelector('.line');
 
+    document.getElementById('bio').innerText = document.getElementById('bio').getAttribute('value');
+
     function activateTab(tabIndex) {
         tabs.forEach(tab => { tab.classList.remove('active'); });
         all_content.forEach(content => { content.classList.remove('active'); });

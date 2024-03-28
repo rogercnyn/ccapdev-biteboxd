@@ -28,9 +28,9 @@
 
 
     <main>
-        <div class="profile-header">
+        {{!-- <div class="profile-header">
             <img src="/assets/{{profile.bgImage}}" alt="header" class="header-picture">
-        </div>
+        </div> --}}
         
         <div class="profile">
             <div class="info-container">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="bio">
-                    <p>bio:&nbsp;</p> <p id="profile-bio">{{profile.bio}}</p>
+                    <input type="text" name="" id="bio" disabled value="{{profile.bio}}">
                 </div>
             </div>
             <div class="profile-tabs"> 
