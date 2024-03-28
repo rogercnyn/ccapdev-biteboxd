@@ -125,6 +125,43 @@ async function deleteReview(req, res) {
 
 }
 
+async function deleteProfile(req, res) {
+    try {
+        const { username } = req.params;
+        console.log('Deleting profile:', username);
+
+        const profile = await Profile.findOne({ username });
+
+        if (!profile) {
+            console.log('Profile not found');
+            return res.status(404).json({ message: 'Profile not found' });
+        }
+
+        const reviewIds = profile.reviews;
+
+        console.log('Deleting reviews:', reviewIds);
+        await deleteReviewByBulk(reviewIds);
 
 
-module.exports = { deleteRestaurant, deleteReview };
+        const profiles = await Profile.find({});
+        for (const p of profiles) {
+            p.likedReviews = p.likedReviews.filter(id => !reviewIds.includes(id.toString()));
+            p.dislikedReviews = p.dislikedReviews.filter(id => !reviewIds.includes(id.toString()));
+            await p.save();
+        }
+
+        console.log('Deleting profile from database'); 
+        await Profile.findOneAndDelete({ username });
+
+        console.log('Profile and associated reviews deleted successfully');
+        res.json({ success: true, message: 'Profile and associated reviews deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting profile:', error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+}
+
+
+
+
+module.exports = { deleteRestaurant, deleteReview, deleteProfile };

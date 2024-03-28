@@ -14,7 +14,7 @@ const {isAuthenticated} = require('../middleware/auth');
 const router = express.Router();
 
 // for delete only
-const { deleteRestaurant, deleteReview } = require('../controllers/deleteController');
+const { deleteRestaurant, deleteReview, deleteProfile } = require('../controllers/deleteController');
 
 
 //Multer - for uploads ( used sa Sign up and edit profile, review)
@@ -81,6 +81,7 @@ router.post("/edit-profile", upload.single('profilePic'),editProfile);
 // router.post('/deleteReview', deleteReview);
 // router.post('/updateReview', upload.array('editMedia'), updateReview)
 router.post("/login", login);
+router.post('/deleteProfile/:username', deleteProfile);
 
 router.get('/logout', logout);
 router.get('/profile/:username', handleProfileRequest)
