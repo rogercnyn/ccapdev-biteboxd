@@ -35,7 +35,8 @@
             <div class="options" id="optionsbtns">
                 <div class="optionsbutton">
                     <span class="editoption" onclick ="editRestaurant()">Edit</span>
-                     <span class="deleteoption" onclick="deleteRestaurant('{{_id}}')">Delete</span>
+                    <span class="changeoption" onclick ="editRestaurant()">Change Password</span>
+                    <span class="deleteoption" onclick="deleteRestaurant('{{_id}}')">Delete</span>
                 </div>
             </div>
 
@@ -148,8 +149,8 @@
                 </form>
             </div>
 
-            <div class="restopictureareaedit" onclick="openFileInput()">
-                <img src="/assets/restaurant icons/{{media}}" alt="Picture" class="restopicture" id ="restopicture">
+            <div class="restopictureareaedit" onclick="openFileInput('{{_id}}')">
+                <img src="/assets/restaurant icons/{{media}}" alt="Picture" class="restopicture" id ="restopicture" name = "restopicture">
                 <button class="change-button">Change Picture</button>
             </div>
 
@@ -335,10 +336,10 @@
                             {{#each media}}
 
                                 {{#if (isVideo this)}}
-                                    <video src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></video>
+                                    <video src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></video>
 
                                 {{else}}
-                                    <img src="/assets/{{this}}" class="revpic" onclick="openModal('/assets/{{this}}')"></img>
+                                    <img src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></img>
 
                                 {{/if}}
                             {{/each}}

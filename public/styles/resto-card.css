@@ -232,6 +232,21 @@ hr {
     border-radius: 11px;
 }
 
+.changeoption {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans';
+    font-size: 12px;
+    font-weight: 700;
+    background-color: orange;
+    color: #f2f2f8;
+    padding: 11px;
+    margin-right: 5px;
+    width: 120px;
+    border-radius: 11px;
+}
+
 .deleteoption {
     display: inline-flex;
     align-items: center;

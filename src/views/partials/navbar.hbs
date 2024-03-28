@@ -3,17 +3,17 @@
         <img src="/assets/logo.png" alt="Biteboxd Logo" class="logo">
     </a>
     
-    <a class="nav-icon-container" href="/">
+    <a class="nav-icon-container" href="{{#unless isResto}}/{{else}}javascript:void(0){{/unless}}">
         <img src="/assets/home.svg" alt="" class="nav-icon">
         <p>Home</p>
     </a>
     
-    <a class="nav-icon-container" href="/explore">
+    <a class="nav-icon-container" href="{{#unless isResto}}/explore{{else}}javascript:void(0){{/unless}}">
         <img src="/assets/explore.svg" alt="" class="nav-icon">
         <p>Explore</p>
     </a>
 
-    <a class="nav-icon-container" href="/all">
+    <a class="nav-icon-container" href="{{#unless isResto}}/all{{else}}javascript:void(0){{/unless}}">
         <img src="/assets/archive.svg" alt="" class="nav-icon">
         <p>All</p>
     </a>
@@ -21,24 +21,19 @@
     {{#if loggedIn}}
         <a href="#" class="account-icon" id="account-icon" onclick="togglePopup()">
             {{#if isResto}}
-
                 <img src="/assets/restaurant icons/{{profilePicture}}" alt="" class="profile-icon" id="account-icon">
-
             {{else}}
                 <img src="/uploads/avatars/{{profilePicture}}" alt="" class="profile-icon" id="account-icon">
             {{/if}}
-                <p>Profile</p>
+            <p>Profile</p>
         </a>
 
         <div class="popup-container" id="popupContainer" style="display: none">
             <div class="popup" id="popup">
-
                 {{#if isResto}}
                     <a href="/resto-responsepage/{{userId}}">View Profile</a>
-
                 {{else}}
                     <a href="/profile/{{loggedUsername}}">View Profile</a>
-
                 {{/if}}
                 <a href="/logout">Log Out</a>
             </div>

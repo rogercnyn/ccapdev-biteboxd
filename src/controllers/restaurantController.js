@@ -343,7 +343,7 @@ async function addRestaurant(req, res) {
         attri9,
         attri10,
         attri11,
-        attri12 } = req.body;
+        attri12, username, password } = req.body;
 
     let avatarFilename = req.file ? req.file.filename : 'default-avatar.png';
 
@@ -354,7 +354,6 @@ async function addRestaurant(req, res) {
     let formatEndDay = formatDay(daysopenend);
 
     let name = restoName.replace(/\s/g, '').toLowerCase();
-    let password = "12345678";
     let coordinates = [0, 0];
     let numberOfCash = 0;
     let priceS = Number(pricestart);
@@ -362,8 +361,9 @@ async function addRestaurant(req, res) {
 
     try {
         const newRestaurant = new Restaurant({
+            username: username,
+            password: password,
             name: restoName,
-            username: name,
             password: password,
             coordinates: coordinates,
             numberOfCash: numberOfCash,
@@ -471,8 +471,40 @@ async function editRestaurant(req,res) {
         }
 };
 
+async function updateRestoPicture(req, res) {
+    const { id } = req.params;
+    const file = req.file;
+    req.session.profilePicture = file.filename;
+
+    console.log(file.filename)
+
+    // Check if file exists
+    if (!file) {
+        return res.status(400).send('No file uploaded.');
+    }
+
+    try {
+        const restaurant = await Restaurant.findById(id);
+        if (!restaurant) {
+            return res.status(404).send('Restaurant not found.');
+        }
+
+        // Update the 'media' attribute with the filename
+        restaurant.media = file.filename;
+
+        // Save the updated restaurant document
+        await restaurant.save();
+
+        res.status(200).send('File uploaded successfully.');
+    } catch (err) {
+        console.error('Error updating restaurant picture:', err);
+        res.status(500).send('Internal server error.');
+    }
+}
+
 module.exports = {  addRestaurant, 
                     editRestaurant,
+                    updateRestoPicture,
                     handleSearchRequest, 
                     addBulkResto, 
                     handleGetAllRestoRequest, 

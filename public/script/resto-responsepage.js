@@ -106,7 +106,7 @@ function injectQuill(element) {
 
 }
 
-function openFileInput() {
+function openFileInput(restaurantId) {
     // Creating a new input element of type 'file'
     var input = document.createElement('input');
     input.type = 'file';
@@ -118,11 +118,41 @@ function openFileInput() {
     input.onchange = function () {
         // When a file is selected, call the updatePicture function and pass the input element
         updatePicture(input);
+        // Update the restopicture with the selected filename
+        updateRestoPicture(input, restaurantId);
     };
 
     // Programmatically clicking the input element to trigger the file selection dialog
     input.click();
 }
+
+function updateRestoPicture(input, restaurantId) {
+    const restopicture = document.getElementById('restopicture');
+    const file = input.files[0];
+    console.log(file.name);
+    if (file) {
+        restopicture.src = URL.createObjectURL(file); // Set the src attribute of restopicture to the file URL
+        restopicture.alt = file.name; // Set the alt attribute to the filename
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('restaurantId', restaurantId); // Assuming restaurantId is provided as a parameter
+        $.ajax({
+            url: `/resto-responsepage/${restaurantId}/updatepicture`,
+            type: 'POST',
+            data: formData, // Send the FormData object containing the file and restaurantId
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                window.location.reload(); // Reload the page after successful update
+            },
+            error: function(error) {
+                console.error('Error updating restaurant picture:', error);
+            }
+        });
+    }
+}
+
+
 
 function updatePicture(input) {
     // Getting a reference to the image element where the selected picture will be displayed

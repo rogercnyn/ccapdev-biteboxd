@@ -10,22 +10,22 @@
     <script src="/script/quillSettings.js"></script>
   
     <script src="/script/slider.js"></script>
-    <script src="/script/createrestaurant.js"></script>
   
     <link rel="stylesheet" href="/styles/createrestaurant.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script src="/script/createrestaurant.js"></script>
 </head>
 <body>
     {{> navbar}}
 
 
     <main class = "main">
-
-        <div id="editModal" class="editModal">
-            <span id="editheader">Publish Restaurant</span>
+            <span id="publishheader">Publish Restaurant</span>
             <form id = "createRestoForm"  action="/createrestaurant" method="POST" enctype="multipart/form-data">
                 <div class="upper-part">
 
@@ -53,9 +53,9 @@
                         <div class="input-group">
                             <label for="price" class="editlabel">Price Range (₱):</label>
                             <div class="samerow">
-                                <input type="text" id="pricestart" name="pricestart" class="styled-input">
+                                <input type="number" id="pricestart" name="pricestart" class="styled-input" min="0">
                                 <label for="price" class="editlabel"> - </label>
-                                <input type="text" id="priceend" name="priceend" class="styled-input">
+                                <input type="number" id="priceend" name="priceend" class="styled-input" min="0">
                             </div>
                             
                         </div>
@@ -130,11 +130,35 @@
                 </div>
 
                 <div class="publisharea">
-                    <button type="submit" class ="publishbutton" id ="publishButton">Publish Restaurant</button>
+                    <button class ="uploadbutton" id ="uploadButton">Upload</button>
                 </div>
+
+                <div class="credentialsOverlay" id="credentialsOverlay" onclick="closeCredentialsPopup()"></div>
+
+                <div id="credentialsModal" class="credentialsModal">
+                    <span class="close-button" onclick="closeCredentialsPopup()">&times;</span>
+                    <span id="credentialsheader">Login Credentials</span>
+
+                    <div class="credentials-group">
+                        <label for="username" class="editlabel">Username:</label>
+                        <input type="text" id="username" name="username" class="styled-input modal-field" data-parsley-trigger="change" required data-parsley-pattern="^[a-zA-Z0-9]+$">
+                    </div>
+                    <div class="credentials-group">
+                        <label for="password" class="editlabel">Password:</label>
+                        <input type="password" id="password" name="password" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
+                    </div>
+                    <div class="credentials-group">
+                        <label for="confirmpass" class="editlabel">Confirm Password:</label>
+                        <input type="password" id="confirmpass" name="confirmpass" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change" data-parsley-equalto="#password" data-parsley-equalto-message="Passwords do not match.">
+                        <span id="confirmError" class="error-message"></span>
+                    </div>
+
+                    <button type="submit" class="publishbutton" id="publishButton">Publish Restaurant</button>
+                </div>
+
             </form>
-        </div>
        
+    
     
     </main>
     <script src="/script/createrestaurant.js"></script>
