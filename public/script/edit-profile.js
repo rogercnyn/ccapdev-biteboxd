@@ -107,7 +107,7 @@ function preFillEditProfileForm() {
 
 function openEditProfileModal() {
     var modal = document.getElementById("editProfileModal");
-    var btn = document.querySelector(".edit-btn"); // Correct button selection
+    var btn = document.querySelector(".edit-btn"); 
     var form = document.getElementById("editProfileForm");
 
     btn.onclick = function() {
@@ -116,13 +116,13 @@ function openEditProfileModal() {
     };
 
     form.onsubmit = function(event) {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault(); 
 
         var firstName = document.getElementById("firstName").value;
         var lastName = document.getElementById("lastName").value;
         var profileBio = document.getElementById("profileBio").value;
 
-        // Display confirmation dialog using SweetAlert
+        
         Swal.fire({
             title: 'Are you sure?',
             text: 'Do you want to save these changes to your profile?',
@@ -133,13 +133,12 @@ function openEditProfileModal() {
             confirmButtonText: 'Yes, save it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Perform profile update logic here
-                // Update profile fields
+
                 document.getElementById("first-name").textContent = firstName;
                 document.getElementById("last-name").textContent = lastName;
                 document.getElementById("bio").textContent = profileBio;
 
-                // Update profile picture if provided
+
                 var fileInput = document.getElementById("profilePic");
                 if (fileInput.files && fileInput.files[0]) {
                     var reader = new FileReader();
@@ -149,10 +148,8 @@ function openEditProfileModal() {
                     reader.readAsDataURL(fileInput.files[0]);
                 }
 
-                // Hide modal after successful update
                 modal.style.display = "none";
 
-                // Show success message using SweetAlert
                 Swal.fire(
                     'Saved!',
                     'Your profile has been updated.',
