@@ -1,7 +1,9 @@
 const Review  = require('../models/Review.js');
+const restaurant = require('../models/Restaurant.js');
 
 const { addAReviewToRestaurant } = require('./restaurantController.js')
-const { addReviewToProfile, modifyLikeDislikeReview } = require('./profileController.js')
+const { addReviewToProfile, modifyLikeDislikeReview } = require('./profileController.js');
+const Restaurant = require('../models/Restaurant.js');
 
 async function countReviews() {
     try {
@@ -153,5 +155,25 @@ async function handleEditReviewRequest( req, res) {
 }
 
 
+async function processReview(review, username, loggedIn){   
+    // manuall add the virtual property
+    let r = await Review.findById(review['_id'])
+    let restaurants = await Restaurant.findOne({ reviews: review['_id'] })
 
-module.exports = { addBulkReview, getReply, populateReplies, handleCreateReviewRequest, handleLikeReviewRequest, handleEditReviewRequest }
+    review['longText'] = review['body'].slice(0, 230);
+    review['fullText'] = review['body'].slice(230);
+    review['hasNoSeeMore'] = review['fullText'].length === 0
+    
+    review['overallRating'] = r['overallRating']
+    review['isOwnReview'] = (review['username'] === username) 
+    review['loggedIn'] = loggedIn
+    review['restaurantId'] = restaurants['_id']
+    
+    return review
+
+}
+
+
+
+
+module.exports = { processReview, addBulkReview, handleCreateReviewRequest, handleLikeReviewRequest, handleEditReviewRequest }

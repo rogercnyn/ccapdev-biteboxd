@@ -1,8 +1,9 @@
 @import "navbar.css";
 @import "base.css";
 @import "tabs.css";
-@import "user-liked-restaurant.css";
-@import "user-reviews.css";
+@import "review-panel.css";
+@import "quill.css";
+
 @import "user-about.css";
 @import "edit-profile.css";
 
@@ -24,6 +25,12 @@ main {
     /* border: 1px solid #838181; */
     margin-bottom: 10px;
     display: flex;
+}
+
+.review:hover {
+    cursor: pointer;
+    border: 1px solid #d8d8d8;
+    border-radius: 15px;
 }
 
 .header-picture{
@@ -166,6 +173,8 @@ main {
 
 .info-container{
     height: 180px;
+    padding: 2%;
+    /* width: 90%; */
 
 
     /* background-color: rgb(251, 251, 251); */
@@ -176,8 +185,6 @@ main {
 }
 
 .review {
-    width: 85%;
-    margin-left: 5%;
     height: fit-content;
 }
 

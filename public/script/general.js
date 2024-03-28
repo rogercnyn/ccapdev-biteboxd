@@ -1,4 +1,3 @@
-let isLogged = getUrlParameter('isLogged');
 
 
 function getUrlParameter(name) {

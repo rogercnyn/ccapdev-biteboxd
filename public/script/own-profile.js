@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    
     const tabs = document.querySelectorAll('.tab-btn');
     const all_content = document.querySelectorAll('.content');
     const line = document.querySelector('.line');
@@ -26,20 +28,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function toggleSeeMore(reviewId) {
-    var truncateText = document.getElementById(reviewId);
-    var fullText = truncateText.querySelector('.full-text');
-    var seeMoreButton = truncateText.querySelector('.see-more');
+$(document).ready(function() {
+    $(".reviewbody").hide();
 
-    var computedDisplayStyle = window.getComputedStyle(fullText).display;
-
-    if (computedDisplayStyle === 'none') {
-        truncateText.style.maxHeight = 'none'; 
-        fullText.style.display = 'inline'; 
-        seeMoreButton.innerHTML = '<b>...see less</b>';
-    } else {
-        truncateText.style.maxHeight = '60px'; 
-        fullText.style.display = 'none'; 
-        seeMoreButton.innerHTML = '<b>...see more</b>';
-    }
-}
+    $(".review").click(function() {
+        var url = "/resto-reviewpage/" + $(this).data('restaurant') + "#" + $(this).attr('id');
+        window.location.href = url;
+    });
+    
+});
