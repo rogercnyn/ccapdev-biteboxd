@@ -72,8 +72,8 @@ router.get('/search', handleSearchRequest);
 
 router.get('/resto-reviewpage/:_id', handleRestoPageRequest);
 router.post('/resto-reviewpage/:_id/create', uploadReviewMedia, handleCreateReviewRequest);
-router.post('/review/:_reviewId/edit', uploadReviewMedia, handleEditReviewRequest);
-router.post('/review/:_reviewId/delete', deleteReview);
+router.post('/review/:_restaurantId/:_reviewId/edit', uploadReviewMedia, handleEditReviewRequest);
+router.post('/review/:_restaurantId/:_reviewId/delete', deleteReview);
 router.get('/review/:_reviewId/like', handleLikeReviewRequest);
 
 

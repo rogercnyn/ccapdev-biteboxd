@@ -1,5 +1,6 @@
 const Review  = require('../models/Review.js');
 const Restaurant = require('../models/Restaurant.js');
+const { removeReviewFromRestaurant } = require('./restaurantController.js');
 const RestaurantReply = require('../models/RestaurantReply.js');
 const Profile = require('../models/Profile.js');
 
@@ -83,30 +84,15 @@ async function removeReviewFromProfile(reviewId, username) {
     
 }
 
-async function removeReviewFromRestaurant(reviewId, restaurantId) {
-    try {
-        const restaurant = await Restaurant.findById(restaurantId);
-
-        if (!restaurant) {
-            console.log('Restaurant not found');
-            return;
-        }
-        restaurant.reviews = restaurant.reviews.filter(id => id.toString() !== reviewId);
-        restaurant.save();
-    } catch (error) {
-        console.error('Error removing review from restaurant:', error);
-    }
-}
-
-
 async function deleteReview(req, res) {
     const reviewId = req.params._reviewId;
+    const restaurantId = req.params._restaurantId;
 
     const username = req.session.username;
 
     try {
         const deletedReview = await Review.findByIdAndDelete(reviewId);
-        const restaurantId = await Restaurant.findOne({ reviews: deletedReview['_id'] })
+        const oldStar = parseInt(deletedReview['overallRating']);
 
         if (!deletedReview) {
             console.log("Review not found")
@@ -114,7 +100,7 @@ async function deleteReview(req, res) {
         }
 
         removeReviewFromProfile(reviewId, username);
-        removeReviewFromRestaurant(reviewId, restaurantId);
+        removeReviewFromRestaurant(reviewId, restaurantId, oldStar);
 
         res.send({ success: true, message: "Review deleted" });
     }

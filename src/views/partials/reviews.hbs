@@ -85,7 +85,7 @@
                     <span id="three-dots" onclick="toggleOptions(this)">&nbsp;&nbsp;&#8286;</span>
                     <div class="options-popup" id="optionsPopup">
                         <a onclick="editReview({{foodRating}}, {{serviceRating}}, {{affordabilityRating}}, {{order}})">Edit</a>
-                        <a onclick="deleteReview('{{_id}}')">Delete</a>
+                        <a onclick="deleteReview('{{_id}}', '{{restaurantId}}')">Delete</a>
                     </div>
                 {{else}}
                 <div class="likeset" id="{{_id}}">
@@ -196,7 +196,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="publisheditbtn" id="publisheditbtn" onclick="publishEditedReview({{order}}, '{{_id}}')">Publish</button>
+                    <button class="publisheditbtn" id="publisheditbtn" onclick="publishEditedReview({{order}}, '{{_id}}', '{{restaurantId}}')">Publish</button>
                 </div>
         </div>
 

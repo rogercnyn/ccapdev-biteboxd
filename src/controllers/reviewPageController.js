@@ -51,7 +51,7 @@ async function completeReviews(restaurant, username, loggedIn){
     
     restaurant['reviews'].map(async (review, index) => {
         processReview(review, username, loggedIn, likedReviews, dislikedReviews);
-        // review['order'] = index    
+        review['order'] = index    
     });
 }
 

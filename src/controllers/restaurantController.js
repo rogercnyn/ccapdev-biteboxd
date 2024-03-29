@@ -17,6 +17,20 @@ function getCuisine(restaurants){
     })
 }
 
+
+async function recalculateRating(restaurant) {
+
+    if (!restaurant) {
+        console.log('Restaurant not found');
+        return;
+    }
+
+    let sum = restaurant.noOfFiveStars * 5 + restaurant.noOfFourStars * 4 + restaurant.noOfThreeStars * 3 + restaurant.noOfTwoStars * 2 + restaurant.noOfOneStars * 1;
+    restaurant.rating = Math.round(sum / restaurant.numberOfReviews * 10)/10;
+
+    await restaurant.save();
+}
+
 async function searchQuery(searchTerm, locationInput) {
     let query =  await Restaurant.find(
         {
@@ -79,8 +93,6 @@ async function isValidRestaurant(id){
 }
 
 
-
-
 function getAllRestaurant(){
     return Restaurant
             .find()
@@ -102,7 +114,7 @@ function getAllRestaurant(){
             });
 }
 
-async function addAReviewToRestaurant(restaurantId, reviewId){
+async function addAReviewToRestaurant(restaurantId, reviewId, stars){
 
     const restaurant = await Restaurant.findById(restaurantId)
     
@@ -112,10 +124,26 @@ async function addAReviewToRestaurant(restaurantId, reviewId){
         return; 
     }
 
-    await restaurant.reviews.push(reviewId);
-    await restaurant.save();
 
+    console.log("pushing review")
+    restaurant.reviews.push(reviewId);
+    console.log("incrementing number of reviews")
+    restaurant.numberOfReviews++;
+    await changeNumberOfStars(restaurant, stars)
     console.log('Review added to the restaurant');
+}
+
+
+async function editAReviewInRestaurant(restaurantId, stars, oldStar){
+    const restaurant = await Restaurant.findById(restaurantId)
+
+    if (!restaurant) {
+        console.log('Restaurant not found');
+        return; 
+    }
+
+    await changeNumberOfStars(restaurant, stars, oldStar)
+    console.log('Review edited in the restaurant');
 }
 
 function saveRestaurant(restaurantToSave) {
@@ -156,10 +184,6 @@ function addRestaurant(restaurantToSave){
 }
 
 
-
-function getRestoPageInfo(restaurantId){
-    
-}
 
 async function addBulkResto(parsedJson){
     try {
@@ -240,6 +264,50 @@ async function handleSearchRequest(req, resp) {
     
 }
 
+
+async function changeNumberOfStars(restaurant, stars, oldStar = 0){
+    console.log("Changing")
+    switch (stars) {
+        case 1:
+            restaurant.noOfOneStars++;
+            break;
+        case 2:
+            restaurant.noOfTwoStars++;
+            break;
+        case 3:
+            restaurant.noOfThreeStars++;
+            break;
+        case 4:
+            restaurant.noOfFourStars++;
+            break;
+        case 5:
+            restaurant.noOfFiveStars++;
+    }
+
+    if(oldStar){
+        switch (oldStar) {
+            case 1:
+                restaurant.noOfOneStars--;
+                break;
+            case 2:
+                restaurant.noOfTwoStars--;
+                break;
+            case 3:
+                restaurant.noOfThreeStars--;
+                break;
+            case 4:
+                restaurant.noOfFourStars--;
+                break;
+            case 5:
+                restaurant.noOfFiveStars--;
+        }
+    }
+
+    await restaurant.save();
+    await recalculateRating(restaurant)
+
+    
+}
 async function handleGetAllRestoRequest(req, resp){
 
     const { sorting } = req.query;
@@ -527,7 +595,6 @@ async function changeRestoPassword(req, res){
             return res.status(400).json({ message: 'Incorrect current password' });
         }
 
-
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(newPassword, salt);
 
@@ -541,7 +608,32 @@ async function changeRestoPassword(req, res){
     }
 }
 
-module.exports = {  addRestaurant, 
+async function removeReviewFromRestaurant(reviewId, restaurantId, oldStar) {
+    try {
+        const restaurant = await Restaurant.findById(restaurantId);
+
+        if (!restaurant) {
+            console.log('Restaurant not found');
+            return;
+        }
+
+
+        restaurant.reviews = restaurant.reviews.filter(id => id.toString() !== reviewId);
+        restaurant.numberOfReviews--;
+        await changeNumberOfStars(restaurant, 0, oldStar)
+
+    } catch (error) {
+        console.error('Error removing review from restaurant:', error);
+    }
+}
+
+
+
+
+
+module.exports = { 
+                    // resto
+                    addRestaurant, 
                     editRestaurant,
                     updateRestoPicture,
                     changeRestoPassword,
@@ -553,4 +645,9 @@ module.exports = {  addRestaurant,
                     handleExploreRequest, 
                     findById, 
                     isValidRestaurant,
-                    addAReviewToRestaurant };
+
+                    // review-resto connection
+                    addAReviewToRestaurant, 
+                    editAReviewInRestaurant,
+                    removeReviewFromRestaurant,
+                     };

@@ -220,8 +220,6 @@ function editReview(foodRating, serviceRating, priceRating, order) {
     editServiceSlider = new Slider(document.getElementsByClassName('edit-service-rating'));
     editPriceSlider = new Slider(document.getElementsByClassName('edit-price-rating'));
 
-    console.log(document.getElementsByClassName('edit-food-rating'))
-    console.log(editFoodSlider, editServiceSlider, editPriceSlider)
     let titleArea = $(`#reviewEditTitle${order}`);
     titleArea.text(titleArea.attr('value'));
 
@@ -258,7 +256,7 @@ function closeEditPopup(order){
     document.getElementById(`editReviewOverlay${order}`).style.display = 'none';
 }
 
-function publishEditedReview(order, id){
+function publishEditedReview(order, id, restaurantId){
 
     // fireSwal('success', 'Success!', 'Edited review is now published.', false, 2500);
 
@@ -274,7 +272,7 @@ function publishEditedReview(order, id){
     });
 
 
-    let editLink = `/review/${id}/edit`
+    let editLink = `/review/${restaurantId}/${id}/edit`
     console.log("outside: ", typeof existingMedia)
     handleUpload(editPhotoContainer, editPhotoInput, editTitle, editQuill, editFoodSlider, editServiceSlider, editPriceSlider, editLink, existingMedia)
 
@@ -284,7 +282,7 @@ function publishEditedReview(order, id){
 
 
 
-function deleteReview(id) {
+function deleteReview(id, restaurantId) {
     Swal.fire({
         title: 'Delete Review',
         text: 'Are you sure you want to delete this review?',
@@ -307,7 +305,7 @@ function deleteReview(id) {
                 timer: 3000,
                 timerProgressBar: true
             });
-            let deleteLink = `/review/${id}/delete`
+            let deleteLink = `/review/${restaurantId}/${id}/delete`
             $.ajax({
                 url: deleteLink,
                 type: 'POST',

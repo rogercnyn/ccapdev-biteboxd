@@ -56,6 +56,7 @@ async function fetchAndRenderProfile(req, res, profile, view) {
         })
 
 
+
         res.render(view, {
             profile: profileData,
             reviews: profileData.reviews,

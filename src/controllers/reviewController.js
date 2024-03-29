@@ -1,6 +1,6 @@
 const Review  = require('../models/Review.js');
 
-const { addAReviewToRestaurant } = require('./restaurantController.js')
+const { addAReviewToRestaurant, editAReviewInRestaurant } = require('./restaurantController.js')
 const { addReviewToProfile, modifyLikeDislikeReview, getProfilePicture } = require('./profileController.js');
 const Profile = require('../models/Profile.js');
 const Restaurant = require('../models/Restaurant.js');
@@ -84,7 +84,7 @@ async function handleCreateReviewRequest(req, res) {
     };
 
     // console.log(reviewData)
-    createReview(reviewData, restaurantId);
+    await createReview(reviewData, restaurantId);
 
     res.send({ success: true, message: "Review created" });
 }
@@ -93,9 +93,9 @@ async function createReview(reviewData, restaurantId){
     let reviewDocument = new Review(reviewData);
 
     let savedReview = await saveReview(reviewDocument);
-    console.log(savedReview['id'], restaurantId);
-    addAReviewToRestaurant(restaurantId, savedReview['id'])
-    addReviewToProfile(reviewData.username, savedReview['id'])
+    // console.log(savedReview['id'], restaurantId);
+    await addAReviewToRestaurant(restaurantId, savedReview['id'], parseInt(savedReview['overallRating']))
+    await addReviewToProfile(reviewData.username, savedReview['id'])
 }
 
 async function handleLikeReviewRequest(req, res) {
@@ -125,8 +125,10 @@ async function handleLikeReviewRequest(req, res) {
 
 async function handleEditReviewRequest( req, res) {
     const reviewId = req.params._reviewId;
+    const restaurantId = req.params._restaurantId;
     const filenames = req.files.map(file => file.filename);
     const media = (req.body.existingMedia || []).concat(filenames || []);
+
 
 
     let reviewData = {
@@ -141,16 +143,22 @@ async function handleEditReviewRequest( req, res) {
 
 
 
-    console.log(reviewId)
     try {
+        const oldReview = await Review.findById(reviewId);
+        const oldStar = parseInt(oldReview['overallRating'])
+
         const updatedReview = await Review.findByIdAndUpdate(reviewId, reviewData, { new: true });
+        const updatedStar = parseInt(updatedReview['overallRating'])
 
         if (!updatedReview) {
             console.log("Review not found")
-            return res.status(404).send({ success: false, message: "Review not found" });
+            res.status(404).send({ success: false, message: "Review not found" });
+        } else {
+            editAReviewInRestaurant(restaurantId, updatedStar, oldStar)
+            res.send({ success: true, message: "Review edited", review: updatedReview });
+
         }
 
-        res.send({ success: true, message: "Review edited", review: updatedReview });
     } catch (error) {
         console.log(error)
         console.error('Error editing review:', error);
@@ -186,6 +194,8 @@ async function processReview(review, username, loggedIn, likedReviews, dislikedR
     return review
 
 }
+
+
 
 
 
