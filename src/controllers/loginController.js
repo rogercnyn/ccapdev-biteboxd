@@ -64,7 +64,9 @@ async function loginUser(req, username, password) {
         // }
         {
                         const restaurantUser = await Restaurant.findOne({ username });
-                        if (restaurantUser && password === restaurantUser.password) {
+                        const isMatchRestoProfile = await bcrypt.compare(password, restaurantUser.password);
+                        if (isMatchRestoProfile) {
+                            
                             req.session.userId = restaurantUser._id;
                             req.session.username = restaurantUser.username;
                             req.session.profilePicture = restaurantUser.media;

@@ -1,4 +1,5 @@
 const Restaurant = require('../models/Restaurant.js');
+const bcrypt = require('bcryptjs');
 const searchRequiredFields = { _id: 1, name: 1, location: 1, startPriceRange: 1, endPriceRange: 1, media: 1, rating: 1, numberOfReviews: 1, description: 1, numberOfCash: 1}
 const allPageRequiredFields = { _id: 1, name: 1, location: 1,  media: 1, rating: 1, shortDescription: 1, tag: 1 }
 const mongoose = require('mongoose')
@@ -164,7 +165,13 @@ async function addBulkResto(parsedJson){
     try {
         await clearRestaurants(); 
         console.log("Inserting restaurants...")
-        await Restaurant.insertMany(parsedJson)
+
+        const hashedRestos = await Promise.all(parsedJson.map(async (user) => {
+            const hashedPassword = await bcrypt.hash(user.password, 10); // Using 10 rounds for salt generation
+            return { ...user, password: hashedPassword };
+        }));
+
+        await Restaurant.insertMany(hashedRestos)
         await countRestaurants()
     } catch (error) {
         console.error('Error loading restaurants:', error);
@@ -347,6 +354,9 @@ async function addRestaurant(req, res) {
 
     let avatarFilename = req.file ? req.file.filename : 'default-avatar.png';
 
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
     let formatStartHour = convertToAMPM(operatinghourstart);
     let formatEndHour = convertToAMPM(operatinghourend);
 
@@ -364,7 +374,7 @@ async function addRestaurant(req, res) {
             username: username,
             password: password,
             name: restoName,
-            password: password,
+            password: hashedPassword,
             coordinates: coordinates,
             numberOfCash: numberOfCash,
             location: address,
