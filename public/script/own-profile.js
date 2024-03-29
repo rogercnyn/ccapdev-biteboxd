@@ -103,6 +103,105 @@ function deleteProfile(username){
 }
 
 
+
+function changePassword(username) {
+    console.log('Initiating password change process for:', username);
+    Swal.fire({
+        title: 'Change Password',
+        text: 'Please enter your current password:',
+        input: 'password',
+        inputAttributes: {
+            autocapitalize: 'off',
+            autocorrect: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Next',
+        cancelButtonText: 'Cancel',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const oldPassword = result.value;
+            Swal.fire({
+                title: 'Enter New Password',
+                text: 'Please enter your new password:',
+                input: 'password',
+                inputAttributes: {
+                    autocapitalize: 'off',
+                    autocorrect: 'off'
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Next',
+                preConfirm: (newPassword) => {
+                    console.log('Attempting to change password for:', username);
+                    if (newPassword.length < 8) {
+                        Swal.showValidationMessage('Password must be at least 8 characters long.');
+                        return false;
+                    }
+                    return newPassword;
+                },
+                cancelButtonText: 'Cancel',
+            }).then((newPassResult) => {
+                if (newPassResult.isConfirmed) {
+                    const newPassword = newPassResult.value;
+                    Swal.fire({
+                        title: 'Confirm New Password',
+                        text: 'Please confirm your new password:',
+                        input: 'password',
+                        inputAttributes: {
+                            autocapitalize: 'off',
+                            autocorrect: 'off'
+                        },
+                        showCancelButton: true,
+                        confirmButtonText: 'Change Password',
+                        cancelButtonText: 'Cancel',
+                        preConfirm: (confirmPassword) => {
+                            if (confirmPassword !== newPassword) {
+                                Swal.showValidationMessage('Passwords do not match. Please try again.');
+                                return false;
+                            }
+                            return fetch(`/api/changePassword/${username}`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({ username, oldPassword, newPassword })
+                            })
+                            .then(response => {
+                                console.log('Received response from server');
+                                if (!response.ok) {
+                                    console.error('Network response was not ok:', response.statusText);
+                                    throw new Error('Incorrect Pasword');
+                                }
+                                return response.json();
+                            })
+                            .catch(error => {
+                                Swal.showValidationMessage(`Request failed: ${error}`);
+                            });
+                        }
+                    }).then((finalResult) => {
+                        if (finalResult.isConfirmed && finalResult.value.success) {
+                            Swal.fire({
+                                title: 'Password Changed',
+                                text: 'Your password has been successfully changed.',
+                                icon: 'success',
+                                confirmButtonText: 'OK',
+                            });
+                        } else if (finalResult.isConfirmed && !finalResult.value.success) {
+                            Swal.fire({
+                                title: 'Failed',
+                                text: 'Failed to change the password. Please try again.',
+                                icon: 'error',
+                                confirmButtonText: 'OK',
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
+
+
+
 $(document).ready(function() {
     const likesets = document.getElementsByClassName('likeset');
     const likes = [];

@@ -7,7 +7,7 @@ const path = require('path');
 const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest, addRestaurant, editRestaurant, updateRestoPicture } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
 const { handleCreateReviewRequest, handleLikeReviewRequest, handleEditReviewRequest } = require('../controllers/reviewController');
-const { createUser, editProfile} = require('../controllers/profileController');
+const { createUser, editProfile, changeUserPassword} = require('../controllers/profileController');
 const { handleProfileRequest } = require('../controllers/profilePageController');
 const { login, logout} = require('../controllers/loginController');
 const {isAuthenticated} = require('../middleware/auth');
@@ -93,6 +93,10 @@ router.post("/edit-profile", upload.single('profilePic'),editProfile);
 // router.post('/updateReview', upload.array('editMedia'), updateReview)
 router.post("/login", login);
 router.post('/deleteProfile/:username', deleteProfile);
+router.post('/api/changePassword/:username', changeUserPassword);
+
+
+
 
 router.get('/logout', logout);
 router.get('/profile/:username', handleProfileRequest)

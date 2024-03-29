@@ -269,6 +269,68 @@ async function editProfile(req, res) {
     }
 }
 
+// async function changeUserPassword(req, res) {
+//     const { username, oldPassword, newPassword } = req.body;
+
+//     try {
+//         const user = await Profile.findOne({ username: username });
+//         if (!user) {
+//             return res.status(404).json({ success: false, message: 'User not found' });
+//         }
+
+//         const isMatch = await bcrypt.compare(oldPassword, user.password);
+//         if (!isMatch) {
+//             return res.status(400).json({ success: false, message: 'Incorrect current password' });
+//         }
+
+//         const salt = await bcrypt.genSalt(10);
+//         const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+//         Update the user's password in the database
+//         user.password = hashedPassword;
+//         user.password = newPassword
+//         await user.save();
+
+//         res.json({ success: true, message: 'Password successfully changed' });
+//     } catch (error) {
+//         console.error('Error changing password:', error);
+//         res.status(500).json({ success: false, message: 'Internal server error' });
+//     }
+// }
+
+
+async function changeUserPassword(req, res) {
+    const { username } = req.params;
+    const { oldPassword, newPassword } = req.body;
+    console.log('changeUserPassword called with username:', username);
+
+    try {
+        console.log('Finding user...');
+        const user = await Profile.findOne({ username: username });
+        if (!user) {
+            console.log('User not found:', username);
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        console.log('Verifying old password...');
+
+        if (oldPassword !== user.password) {
+            console.log('Incorrect current password for:', username);
+            return res.status(400).json({ success: false, message: 'Incorrect current password' });
+        }
+
+        console.log('Updating user password...');
+
+        user.password = newPassword;
+        await user.save();
+
+        console.log('Password successfully changed for:', username);
+        res.json({ success: true, message: 'Password successfully changed' });
+    } catch (error) {
+        console.error('Error changing password for', username, ':', error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+}
 
 
 
@@ -293,4 +355,5 @@ module.exports = {
     editProfile,
     getLikedDislikedReviewsId,
     modifyLikeDislikeReview, 
+    changeUserPassword
 };

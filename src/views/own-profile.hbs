@@ -172,10 +172,13 @@
                     {{> reviews}}   
                 {{/each}}
 
-                <div class="divider"></div>
+                <div class="divider" ></div>
 
-                <div class="delete-profile-container">
-                <button class="delete-profile" onclick="deleteProfile('{{profile.username}}')">Delete Profile</button>
+                 <div class="delete-change-container" style="padding-top: 20px;">
+                <button class="delete-change" onclick="changePassword('{{profile.username}}')">Change Password</button>
+                </div>
+                <div class="delete-change-container">
+                <button class="delete-change" onclick="deleteProfile('{{profile.username}}')">Delete Profile</button>
                 </div>
             </div>
             </div>

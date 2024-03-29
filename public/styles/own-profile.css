@@ -187,12 +187,12 @@ main {
     height: fit-content;
 }
 
-.delete-profile-container {
+.delete-change-container {
     text-align: center;
-    padding: 20px;
+    padding: 5px;
   }
   
-  .delete-profile {
+  .delete-change {
     font-size: 14px;
     font-weight: 600;
     color: #333;
