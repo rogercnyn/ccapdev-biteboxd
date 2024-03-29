@@ -87,6 +87,80 @@
     font-family: 'DM Sans';
 }
 
+.credentialsOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 5000px;
+    height: 5000px;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 999;
+}
+
+.credentials-group {
+    display: flex;
+    flex-direction: column;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-bottom: 35px;
+    margin-top: 25px;
+}
+
+.credentialsModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fcfcfc;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 10px;
+    width: 400px;
+    min-height: 400px;
+    max-height: 480px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#credentialsheader {
+    font-size: 34px;
+    font-weight: bold;
+    font-family: 'DM Sans', sans-serif;
+    margin-left: -120px;
+}
+
+.parsley-errors-list {
+    list-style-type: none;
+    margin-left: 4px;
+    padding: 0;
+    align-self: flex-start;
+    font-family: 'Segoe UI';
+    color: red;
+    font-size: 10px;
+}
+
+.changebutton {
+    padding: 10px 20px;
+    font-family: 'DM Sans';
+    font-weight: bold;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(5, 89, 5);
+    border: 1px solid #ccc;
+    font-size: 15px;
+    cursor: pointer;
+}
+
 .editModalOverlay {
     display: none;
     position: fixed;

@@ -512,9 +512,39 @@ async function updateRestoPicture(req, res) {
     }
 }
 
+async function changeRestoPassword(req, res){
+
+    const id = req.session.userId;
+    const { oldPassword, newPassword } = req.body;
+    try {
+        const restaurant = await Restaurant.findById(id);
+        if (!restaurant) {
+            return res.status(404).json({ message: 'Restaurant not found' });
+        }
+
+        const isMatch = await bcrypt.compare(oldPassword, restaurant.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Incorrect current password' });
+        }
+
+
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+        restaurant.password = hashedPassword; 
+        await restaurant.save();
+
+        res.json({ success: true, message: 'Password successfully changed' });
+    } catch (error) {
+        console.error('Error changing password:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
 module.exports = {  addRestaurant, 
                     editRestaurant,
                     updateRestoPicture,
+                    changeRestoPassword,
                     handleSearchRequest, 
                     addBulkResto, 
                     handleGetAllRestoRequest, 

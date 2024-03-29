@@ -22,6 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
     <script src="/script/resto-responsepage.js"></script>
 </head>
 <body>
@@ -35,10 +36,37 @@
             <div class="options" id="optionsbtns">
                 <div class="optionsbutton">
                     <span class="editoption" onclick ="editRestaurant()">Edit</span>
-                    <span class="changeoption" onclick ="editRestaurant()">Change Password</span>
+                    <span class="changeoption" onclick ="changePassword()">Change Password</span>
                     <span class="deleteoption" onclick="deleteRestaurant('{{_id}}')">Delete</span>
                 </div>
             </div>
+
+            <!-- FOR EDITING PASSWORD -->
+            <div class="credentialsOverlay" id="credentialsOverlay" onclick="closeCredentialsPopup()"></div>
+
+                <form id="editPassword" action="/editrestopassword" method="POST">
+
+                <div id="credentialsModal" class="credentialsModal">
+                    <span class="close-button" onclick="closeCredentialsPopup()">&times;</span>
+                    <span id="credentialsheader">Change Password</span>
+
+                    <div class="credentials-group">
+                        <label for="username" class="editlabel">Old Password:</label>
+                        <input type="password" id="oldPassword" name="oldPassword" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
+                    </div>
+                    <div class="credentials-group">
+                        <label for="password" class="editlabel">Password:</label>
+                        <input type="password" id="newPassword" name="newPassword" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
+                    </div>
+                    <div class="credentials-group">
+                        <label for="confirmpass" class="editlabel">Confirm Password:</label>
+                        <input type="password" id="confirmpass" name="confirmpass" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change" data-parsley-equalto="#newPassword" data-parsley-equalto-message="Passwords do not match.">
+                        <span id="confirmError" class="error-message"></span>
+                    </div>
+
+                    <button type="submit" class="changebutton" id="changeButton">Change Password</button>
+                </div>
+                </form>
 
             <div class="editModalOverlay" id="overlay" onclick="closeEditPopup()"></div>
 

@@ -137,15 +137,6 @@ textarea {
     margin-bottom: 15px;
 }
 
-.credentials-group {
-    display: flex;
-    flex-direction: column;
-    padding-right: 50px;
-    padding-left: 50px;
-    margin-bottom: 35px;
-    margin-top: 25px;
-}
-
 .styled-input {
     padding: 10px;  
     font-family: 'DM Sans';
@@ -248,6 +239,15 @@ textarea {
     height: 5000px;
     background: rgba(0, 0, 0, 0.5); 
     z-index: 999;
+}
+
+.credentials-group {
+    display: flex;
+    flex-direction: column;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-bottom: 35px;
+    margin-top: 25px;
 }
 
 .credentialsModal {

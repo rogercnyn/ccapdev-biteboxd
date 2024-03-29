@@ -152,6 +152,16 @@ function updateRestoPicture(input, restaurantId) {
     }
 }
 
+function closeCredentialsPopup() {
+    document.getElementById('credentialsModal').style.display = 'none';
+    document.getElementById('credentialsOverlay').style.display = 'none';
+}
+
+function changePassword(){
+    document.getElementById('credentialsModal').style.display = 'block';
+    document.getElementById('credentialsOverlay').style.display = 'block';
+}
+
 
 
 function updatePicture(input) {
@@ -510,6 +520,9 @@ function closeModal() {
 }
 
 $(document).ready(function() {
+    $('#editRestoForm').parsley();
+    $('#editPassword').parsley();
+    
     // Retrieving query parameters from the URL
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
