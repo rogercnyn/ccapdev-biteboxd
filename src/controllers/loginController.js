@@ -1,27 +1,65 @@
 const Profile = require('../models/Profile');
 const Restaurant = require('../models/Restaurant');
+const bcrypt = require('bcryptjs');
+
+// without hashed pass
+// async function loginUser(req, username, password) {
+//     try {
+//         const userProfile = await Profile.findOne({ username });
+//         if (userProfile && password === userProfile.password) {
+//             req.session.userId = userProfile._id;
+//             req.session.username = userProfile.username;
+//             req.session.profilePicture = userProfile.image;
+//             req.session['loggedIn'] = true;
+//             req.session['isResto'] = false;
+//             return { success: true, redirectUrl: "/" };
+//         } else {
+//             const restaurantUser = await Restaurant.findOne({ username });
+//             if (restaurantUser && password === restaurantUser.password) {
+//                 req.session.userId = restaurantUser._id;
+//                 req.session.username = restaurantUser.username;
+//                 req.session.profilePicture = restaurantUser.media;
+//                 req.session['loggedIn'] = true;
+//                 req.session['isResto'] = true;
+
+//                 // console.log(req.session)
+//                 return { success: true, redirectUrl: "/resto-responsepage/" + restaurantUser._id };
+//             }
+//         }
+//         return { success: false, message: "Incorrect username or password." };
+//     } catch (error) {
+//         console.error('Error during login process:', error);
+//         return { success: false, message: "Internal Server Error", statusCode: 500 };
+//     }
+// }
 
 async function loginUser(req, username, password) {
     try {
         const userProfile = await Profile.findOne({ username });
-        if (userProfile && password === userProfile.password) {
-            req.session.userId = userProfile._id;
-            req.session.username = userProfile.username;
-            req.session.profilePicture = userProfile.image;
-            req.session['loggedIn'] = true;
-            req.session['isResto'] = false;
-            return { success: true, redirectUrl: "/" };
+        if (userProfile) {
+            const isMatchUserProfile = await bcrypt.compare(password, userProfile.password);
+            if (isMatchUserProfile) {
+                req.session.userId = userProfile._id;
+                req.session.username = userProfile.username;
+                req.session.profilePicture = userProfile.image;
+                req.session['loggedIn'] = true;
+                req.session['isResto'] = false;
+                return { success: true, redirectUrl: "/" };
+            }
         } else {
             const restaurantUser = await Restaurant.findOne({ username });
-            if (restaurantUser && password === restaurantUser.password) {
-                req.session.userId = restaurantUser._id;
-                req.session.username = restaurantUser.username;
-                req.session.profilePicture = restaurantUser.media;
-                req.session['loggedIn'] = true;
-                req.session['isResto'] = true;
+            if (restaurantUser) {
+                const isMatchRestaurantUser = await bcrypt.compare(password, restaurantUser.password);
+                if (isMatchRestaurantUser) {
+                    req.session.userId = restaurantUser._id;
+                    req.session.username = restaurantUser.username;
+                    req.session.profilePicture = restaurantUser.media;
+                    req.session['loggedIn'] = true;
+                    req.session['isResto'] = true;
 
-                // console.log(req.session)
-                return { success: true, redirectUrl: "/resto-responsepage/" + restaurantUser._id };
+                    // console.log(req.session)
+                    return { success: true, redirectUrl: "/resto-responsepage/" + restaurantUser._id };
+                }
             }
         }
         return { success: false, message: "Incorrect username or password." };
@@ -30,6 +68,7 @@ async function loginUser(req, username, password) {
         return { success: false, message: "Internal Server Error", statusCode: 500 };
     }
 }
+
 
 
 async function logout(req,res) {
