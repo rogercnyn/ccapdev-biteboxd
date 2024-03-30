@@ -26,9 +26,11 @@ function updatePicture(input) {
         };
 
         reader.readAsDataURL(input.files[0]);
-    }
 
-    else {
+        // Assign the selected file to the input file element
+        var imageInput = document.getElementById('imageInput');
+        imageInput.files = input.files;
+    } else {
         return;
     }
 }

@@ -23,6 +23,10 @@
     height: 650px;
 }
 
+#imageInput{
+    display: none;
+}
+
 #publishheader {
     font-size: 34px;
     font-weight: bold;

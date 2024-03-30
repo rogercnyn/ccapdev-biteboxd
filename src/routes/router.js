@@ -102,7 +102,7 @@ router.get('/logout', logout);
 router.get('/profile/:username', handleProfileRequest)
 
 // Routes for resto
-router.post("/createrestaurant", upload.single('restopicture'), addRestaurant)
+router.post("/createrestaurant", uploadRestaurantPicture.single('image'), addRestaurant)
 router.post("/editrestaurant", editRestaurant)
 router.post('/resto-responsepage/:id/delete', deleteRestaurant)
 router.post('/resto-responsepage/:id/updatepicture', uploadRestaurantPicture.single('file'), updateRestoPicture)

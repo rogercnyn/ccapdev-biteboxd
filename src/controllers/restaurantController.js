@@ -431,7 +431,6 @@ async function addRestaurant(req, res) {
     let formatStartDay = formatDay(daysopenstart);
     let formatEndDay = formatDay(daysopenend);
 
-    let name = restoName.replace(/\s/g, '').toLowerCase();
     let coordinates = [0, 0];
     let numberOfCash = 0;
     let priceS = Number(pricestart);
