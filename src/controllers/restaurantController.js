@@ -418,7 +418,7 @@ async function addRestaurant(req, res) {
         attri9,
         attri10,
         attri11,
-        attri12, username, password } = req.body;
+        attri12, username, password, xcoord, ycoord } = req.body;
 
     let avatarFilename = req.file ? req.file.filename : 'default-avatar.png';
 
@@ -455,6 +455,7 @@ async function addRestaurant(req, res) {
             shortDescription: shortdesc,
             description: desc,
             media: avatarFilename,
+            coordinates: [xcoord, ycoord],
             amenities: [
                 attri1 ? 1 : 0, 
                 attri2 ? 1 : 0,

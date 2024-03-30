@@ -49,6 +49,10 @@ form {
     text-align: left;
 }
 
+#shortdesc {
+    width: 390px;
+}
+
 textarea {
     resize: none;
     width: calc(100% - 30px);
@@ -147,6 +151,10 @@ textarea {
     background-color: #f6f6f6;
     border: none;
     border-radius: 12px;
+}
+
+#xcoord, #ycoord {
+    padding: 12px;
 }
 
 #restoName, #address, #tags {
@@ -304,4 +312,10 @@ textarea {
     z-index: 1;
     opacity: 50%;
     cursor: pointer;
+}
+
+.shotdesc-coord {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
