@@ -116,10 +116,12 @@
                     </div>
                     <div class="two-avatar">
                         <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-m1.png"><img src="/uploads/avatars/avatar-m1.png" alt="" class="avatar"></div>
-                        <div class="pic-option" onclick="triggerFileInput(this)">   
+                        {{!-- <div class="pic-option" onclick="triggerFileInput(this)">   
                              <input type="file" id="avatar-upload" class="avatar-upload">   
                             <img src="assets/upload.svg" alt="" class="upload-icon">                    
-                        </div>
+                        </div> --}}
+                        <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-m2.jpeg"><img src="/uploads/avatars/avatar-m2.jpeg" alt="" class="avatar"></div>
+
                     </div>
 
                     <div class="action-button-container">
@@ -146,9 +148,11 @@
             if (selectedAvatar) {
                 return selectedAvatar.split('/').pop();
             } else {
-                const uploadedAvatar = $('#avatar-upload')[0].files[0];
-                if (uploadedAvatar) {
-                    return URL.createObjectURL(uploadedAvatar);
+                 const uploadedAvatar = $('#avatar-upload')[0].files[0];
+            if (uploadedAvatar) {
+                // Since we can't return the file itself in JSON, signal that a file has been uploaded
+                // The actual file upload handling will need to be adjusted to check for this signal and handle the file accordingly
+                return 'FILE_UPLOADED';
                 } else {
                     return null;
                 }
@@ -157,7 +161,7 @@
 
 
 
-        $(document).ready(function() {
+       $(document).ready(function() {
             $('#form1').parsley();
 
             $('#form1').on('submit', function(e) {
@@ -172,28 +176,31 @@
                 } 
                 e.preventDefault(); 
             });
+
             $('#form3').on('submit', function(e) {
                 e.preventDefault();
-
                 
+                // Create FormData object to handle file uploads
+                var formData = new FormData();
+                formData.append('firstName', $('#first-name').val());
+                formData.append('lastName', $('#last-name').val());
+                formData.append('username', $('#username').val());
+                formData.append('email', $('#email').val());
+                formData.append('password', $('#password').val());
+                formData.append('tasteProfile', JSON.stringify(getTasteProfile()));
 
-                const formData = {
-                    firstName: $('#first-name').val(),
-                    lastName: $('#last-name').val(),
-                    username: $('#username').val(),
-                    email: $('#email').val(),
-                    password: $('#password').val(),
-                    tasteProfile: getTasteProfile(),
-                    image: getAvatar()
-                };
-
+                const avatarResult = getAvatar();
+                if (avatarResult === 'FILE_UPLOADED') {
+                    // If a file is uploaded, append it to formData
+                    formData.append('avatar', $('#avatar-upload')[0].files[0]);
+                } else {
+                    // If a predefined avatar is selected or no avatar is selected, append its filename or null
+                    formData.append('image', avatarResult);
+                }
 
                 fetch('/signup', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
+                    body: formData // Send formData object
                 })
                 .then(response => {
                     if (response.ok) {
@@ -202,7 +209,6 @@
                     throw new Error('Network response was not ok.');
                 })
                 .then(data => {
-
                     console.log(data);
                     Swal.fire({
                         title: 'Success!',
@@ -210,12 +216,10 @@
                         icon: 'success',
                         confirmButtonText: 'OK'
                     }).then(() => {
-
-                        window.location.href = '/'; 
+                        window.location.href = '/';
                     });
                 })
                 .catch(error => {
-
                     console.error('Error creating user:', error);
                     Swal.fire({
                         title: 'Error!',
@@ -225,7 +229,8 @@
                     });
                 });
             });
-        });           
+        });
+
       initializeSignUp(); 
     </script>
     

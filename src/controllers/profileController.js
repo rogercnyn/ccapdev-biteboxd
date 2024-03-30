@@ -247,51 +247,93 @@ async function getProfileById(id) {
 //         res.status(500).json({ success: false, message: 'Internal server error' });
 //     }
 // }
-async function createUser(req, res) {
-    try {
-        const { firstName, lastName, username, email, password, tasteProfile, image } = req.body;
+// async function createUser(req, res) {
+//     try {
+//         const { firstName, lastName, username, email, password, tasteProfile, image } = req.body;
         
-        console.log("Incoming User Data:", req.body); 
+//         console.log("Incoming User Data:", req.body); 
 
+//         const salt = await bcrypt.genSalt(10);
+//         const hashedPassword = await bcrypt.hash(password, salt);
+
+//         let imagePath;
+//         if (image) {
+//             imagePath = image; 
+//         } else if (req.file && req.file.filename) {
+//             imagePath = req.file.filename;
+//         } else {
+//             imagePath = 'default-avatar.png'; 
+//         }
+
+//         const newUser = new Profile({
+//             firstName,
+//             lastName,
+//             username,
+//             email,
+//             password: hashedPassword, 
+//             tasteProfile,
+//             image: imagePath,
+//             bgImage: 'header.jpg',
+//             hearts: 0,
+//             dislike: 0,
+//             credibility: 0
+//         });
+
+//         await newUser.save();
+//         console.log("User created successfully:", newUser); 
+
+
+//         req.session.profilePicture = newUser.image;
+
+//         res.status(201).json({ success: true, message: 'User created successfully', user: newUser });
+//     } catch (error) {
+//         console.error('Error creating user:', error);
+//         res.status(500).json({ success: false, message: 'Internal server error' });
+//     }
+// }
+
+async function createUser(req, res){
+    try {
+        // Extract fields from request body or file
+        const { firstName, lastName, username, email, password, tasteProfile } = req.body;
+        
+        // Parse tasteProfile from JSON string to array
+        const parsedTasteProfile = JSON.parse(tasteProfile);
+        
+        // Hash the password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-
-        let imagePath;
-        if (image) {
-            imagePath = image; 
-        } else if (req.file && req.file.filename) {
-            imagePath = req.file.filename;
-        } else {
-            imagePath = 'default-avatar.png'; 
-        }
-
+        
+        // Determine the image path
+        let imagePath = req.file ? req.file.filename : req.body.image || 'default-avatar.png';
+        
+        // Create new profile
         const newUser = new Profile({
             firstName,
             lastName,
             username,
             email,
-            password: hashedPassword, 
-            tasteProfile,
+            password: hashedPassword,
+            tasteProfile: parsedTasteProfile,
             image: imagePath,
-            bgImage: 'header.jpg',
+            bgImage: 'header.jpg', // Assuming a default background image
             hearts: 0,
             dislike: 0,
             credibility: 0
         });
-
+        
+        // Save the profile
         await newUser.save();
-        console.log("User created successfully:", newUser); 
-
-
-        req.session.profilePicture = newUser.image;
-
+        
+        console.log("User created successfully:", newUser);
+        
+        // Respond with success
         res.status(201).json({ success: true, message: 'User created successfully', user: newUser });
     } catch (error) {
         console.error('Error creating user:', error);
         res.status(500).json({ success: false, message: 'Internal server error' });
     }
 }
-
 // function getAvatar() {
 //     // Check if any avatar image is selected
 //     const selectedAvatar = document.querySelector('.avatar.selected img');

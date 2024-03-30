@@ -39,6 +39,9 @@
 
 
     <main>
+        <div class="profile-header">
+            <img src="/assets/{{profile.bgImage}}" alt="header" class="header-picture">
+        </div>
 
         <div class="profile">
             <div class="info-container">
@@ -60,10 +63,10 @@
                                         <input type="file" id="profilePic" name="profilePic">
                                     </div>
                                     
-                                    <div class="form-group">
+                                    {{!-- <div class="form-group">
                                         <label for="backgroundPic">Background Picture:</label>
                                         <input type="file" id="backgroundPic" name="backgroundPic">
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group">
                                         <label for="firstName">First Name:</label>
