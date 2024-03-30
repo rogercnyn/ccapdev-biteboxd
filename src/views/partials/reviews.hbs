@@ -84,11 +84,7 @@
         </div>
 
         <div class="reviewtext" id="rev{{order}}">
-            <span class="longtext">{{longText}}</span>
-            {{#unless hasNoSeeMore}}
-                <span class="full-text">{{fullText}}</span>
-                <span class="see-more" onclick="toggleSeeMore('rev{{order}}')"><b>...see more</b></span>
-            {{/unless}}
+            {{{body}}}
         </div>
     </div>
 
@@ -183,15 +179,18 @@
             </div>
             
             <div id="replytext">
-                <p id="replyToReviewContent{{reviewId}}">{{body}}</p>
+                <p id="replyToReviewContent{{reviewId}}">{{{body}}}</p>
             </div>
 
 
-            <span id="three-dots-editReply" onclick="toggleOptions(this)">&nbsp;&nbsp;&#8286;</span>
-            <div class="options-popup" id="optionsPopup">
-                <a onclick="replyReview('{{reviewId}}', '{{restaurantId}}', '{{_id}}')">Edit</a>
-                <a onclick="deleteResponse('{{reviewId}}', '{{restaurantId}}', '{{_id}}')">Delete</a>
-            </div>
+            {{#if isRestaurantOwner}}
+                <p id="getReply{{reviewId}}" style="display: none;">{{body}}</p>
+                <span id="three-dots-editReply" onclick="toggleOptions(this)">&nbsp;&nbsp;&#8286;</span>
+                <div class="options-popup" id="optionsPopup">
+                    <a onclick="replyReview('{{reviewId}}', '{{restaurantId}}', '{{_id}}')">Edit</a>
+                    <a onclick="deleteResponse('{{reviewId}}', '{{restaurantId}}', '{{_id}}')">Delete</a>
+                </div>
+            {{/if}}
 
         </div>
 

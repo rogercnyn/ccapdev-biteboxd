@@ -20,10 +20,9 @@ class QuillEditor {
     }
 
     getHtml() {
-        if(this.quill.getText(0, 10000).trim() === '') {
-            return '';
-        }
-        return this.quill.getSemanticHTML(0, 10000)
+        const delta = this.quill.getContents()
+        const ops = delta.ops;
+        return JSON.stringify(ops)
     }
 
     clear() {
@@ -31,6 +30,7 @@ class QuillEditor {
     }
 
     setInnerHTMl(value) {
-        this.quill.root.innerHTML = value;
+        const delta = JSON.parse(value)
+        this.quill.setContents(delta);
     }
 }

@@ -2,6 +2,9 @@ const Review  = require('../models/Review.js');
 
 const { addAReviewToRestaurant, editAReviewInRestaurant } = require('./restaurantController.js')
 const { addReviewToProfile, modifyLikeDislikeReview, getProfilePicture } = require('./profileController.js');
+const { QuillDeltaToHtmlConverter } = require('quill-delta-to-html');
+
+
 const Profile = require('../models/Profile.js');
 const Restaurant = require('../models/Restaurant.js');
 
@@ -82,6 +85,8 @@ async function handleCreateReviewRequest(req, res) {
         title: req.body.title,
         media: filenames,
     };
+
+    console.log(JSON.stringify(req.body.reviewHtml))
 
     // console.log(reviewData)
     await createReview(reviewData, restaurantId);
@@ -167,15 +172,28 @@ async function handleEditReviewRequest( req, res) {
 }
 
 
-async function processReview(review, username, loggedIn, likedReviews, dislikedReviews){   
+function convertToRTF(value){
+    try {
+        let deltaOps = JSON.parse(value)
+        const converter = new QuillDeltaToHtmlConverter(deltaOps, {});
+        return converter.convert();
+    } catch (error) {
+        // TO DEAL WITH THE NON JSON STARTING REVIEW
+        return value
+    }
+}
+
+async function processReview(review, username, loggedIn, likedReviews, dislikedReviews, isRestaurantOwner = false){   
     // manuall add the virtual property
     let r = await Review.findById(review['_id'])
     let restaurants = await Restaurant.findOne({ reviews: review['_id'] })
     let profile = await Profile.findOne({ username: review['username'] })
+    
 
-    review['longText'] = review['body'].slice(0, 230);
-    review['fullText'] = review['body'].slice(230);
-    review['hasNoSeeMore'] = review['fullText'].length === 0
+    review['body'] = convertToRTF(review['body'])
+    // review['longText'] = review['body'].slice(0, 230);
+    // review['fullText'] = review['body'].slice(230);
+    // review['hasNoSeeMore'] = review['fullText'].length === 0
     
     review['overallRating'] = r['overallRating']
     review['isOwnReview'] = (review['username'] === username) 
@@ -190,7 +208,10 @@ async function processReview(review, username, loggedIn, likedReviews, dislikedR
         reply['media'] = restaurants['media'];
         reply['name'] = restaurants['name'];
         reply['reviewId'] = review['_id']
+        reply['body'] = convertToRTF(reply['body'])
+        reply['isRestaurantOwner'] = isRestaurantOwner
     })
+
     
     return review
 

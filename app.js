@@ -118,10 +118,10 @@ async function main(){
         try {
             await connect();
             console.log(`Now connected to MongoDB`);
-            await loadRestaurants();
-            await loadProfiles();
-            await loadReviews();
-            await loadRestaurantReplies();
+            // await loadRestaurants();
+            // await loadProfiles();
+            // await loadReviews();
+            // await loadRestaurantReplies();
         } catch (err) {
             console.log('Connection to MongoDB failed:');
             console.error(err);

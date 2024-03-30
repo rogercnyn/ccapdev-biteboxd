@@ -536,7 +536,7 @@
     cursor: pointer;
 }
 
-.longtext,  .full-text, .see-more {
+.longtext,  .full-text, .see-more, .reviewtext {
     text-align: left;
     font-family: 'Segoe UI', sans-serif;
     font-size: 13px;

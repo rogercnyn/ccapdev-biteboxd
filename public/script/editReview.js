@@ -169,6 +169,8 @@ function handleUpload (photoContainer, photoInput, titleInput, quill, foodSlider
         $(titleInput).val('');
     }
 
+
+
     const formData = new FormData();
 
     for (let i = 0; i < files.length; i++) {
@@ -253,6 +255,7 @@ function replyReview(reviewId, restaurantId, replyId=null) {
     replyQuill = new QuillEditor(`#replyToReviewEditor${reviewId}`, 300, 'Write your reply here...')
 
     if(replyId) {
+        
         let existingReplyContent = document.getElementById(`replyToReviewContent${reviewId}`).innerHTML;
         replyQuill.setInnerHTMl(existingReplyContent)
         $(publishReplyBtn).click(function() {
