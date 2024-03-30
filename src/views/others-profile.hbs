@@ -38,6 +38,9 @@
 
 
     <main>
+        <div class="profile-header">
+            <img src="/assets/{{profile.bgImage}}" alt="header" class="header-picture">
+        </div>
         
         <div class="profile">
             <div class="info-container">
@@ -78,12 +81,6 @@
             </div>
 
         <div class="content-box">
-
-            <!-- Liked Restaurants -->
-
-           
-
-
             <!-- Reviews -->
 
             <div class="content">
@@ -94,8 +91,6 @@
                 {{/each}}
             </div>
            
-            
-
             <!-- About -->
             <div class="content">
                 <div class="user-ratings-container">
@@ -114,8 +109,8 @@
                     </div>
                     <div class="rating-labelled">
                         <div class="rating-label-percentage">
-                            <p class="number-about">{{profile.credibility}}</p>
-                            <p class="label-about">Credibility</p>
+                          <p class="number-about" id="credibility">{{profile.credibility}}</p>
+                            <p class="label-about" >Credibility</p>
                         </div>
                     </div>
                 </div>
@@ -133,7 +128,6 @@
                 <div class="divider"></div>
                 <div class="recent-activities-container">
                 <h2 class="taste-profile-label">Reviews They've Liked</h2>
-                {{!-- {{#if profile.likedReviews.length}} --}}
                 {{#each likedReviews}}
                    {{> reviews}}
                 {{else}}
@@ -150,7 +144,6 @@
        <div class="avatar-container">
     <div class="avatar-boorder">
         <div class="avatar">
-            {{!-- <img src="/uploads/avatar/{{profile.profilePicture}}" alt="Profile Avatar" id="profile-pic"> --}}
         <img src="/uploads/avatars/{{profile.image}}" alt="Profile Avatar" id="profile-pic">
 
         </div>
@@ -158,6 +151,6 @@
 </div>
 
     </main>
-   
+    
 </body>
 </html>

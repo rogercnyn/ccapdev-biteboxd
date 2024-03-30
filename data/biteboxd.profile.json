@@ -1,50 +1,4 @@
-[
-  {
-    "_id": "65e57ac3a149f9de594a9e29",
-    "username": "makoeats",
-    "password": "YouNMeinTaft03",
-    "email": "makopangs@gmail.com",
-    "tasteProfile": ["Salty", "Sweet", "Japanse", "Filipino", "Chinese", "Italian"],
-    "image": "avatar-f1.png",
-    "bgImage": "header.jpg",
-    "deletedAt": null,
-    "firstName": "Mako",
-    "lastName": "Pangan",
-    "bio": "Has the best taste in Taft!",
-    "hearts": 712,
-    "dislike": 6,
-    "credibility": 99,
-    "reviews": [
-      "65e57ac3a149f9de594a9e58"
-    ],
-    "likedReviews": ["65e57ac3a149f9de594a9e6a"],
-    "dislikedReviews": [],
-    "createdAt": "2024-03-04T07:39:47.860Z",
-    "__v": 1
-  },
-  {
-    "_id": "65e57ac3a149f9de594a9e2c",
-    "username": "archerreviewer",
-    "password": "chase.your.dreams!!",
-    "email": "luis.mendoza01@gmail.com",
-    "tasteProfile": ["Sweet", "Sour", "Filipino", "Italian", "Indian"],
-    "image": "profile.jpg",
-    "bgImage": "header.jpg",
-    "deletedAt": null,
-    "firstName": "Luis",
-    "lastName": "Mendoza",
-    "hearts": 1015,
-    "dislike": 27,
-    "credibility": 99,
-    "reviews": [
-      "65e57ac3a149f9de594a9e6a"
-    ],
-    "likedReviews": ["65e57ac3a149f9de594a9e5e"],
-    "dislikedReviews": [],
-    "createdAt": "2024-03-04T07:39:47.861Z",
-    "__v": 1
-  },
-  {
+[{
     "_id": "65e57ac3a149f9de594a9e2a",
     "username": "Mon_1015",
     "password": "world_full-of.MAGIC",
@@ -55,15 +9,15 @@
     "deletedAt": null,
     "firstName": "Michelle",
     "lastName": "Cruz",
-    "hearts": 650,
-    "dislike": 33,
-    "credibility": 94,
+    "hearts": 4,
+    "dislike": 3,
+    "credibility": 57.14285714286,
     "reviews": [
       "65e57ac3a149f9de594a9e5e",
       "65e57ac3a149f9de594a9eac"
     ],
-    "likedReviews": [],
-    "dislikedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e94","65e57ac3a149f9de594a9e82","65e57ac3a149f9de594a9e7c","65e57ac3a149f9de594a9e58", "65e57ac3a149f9de594a9e6a"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e64"],
     "createdAt": "2024-03-04T07:39:47.860Z",
     "__v": 2
   },
@@ -78,14 +32,14 @@
     "deletedAt": null,
     "firstName": "Craig",
     "lastName": "Cruz",
-    "hearts": 217,
-    "dislike": 11,
-    "credibility": 96,
+    "hearts": 10,
+    "dislike": 2,
+    "credibility": 83.33333333333334,
     "reviews": [
       "65e57ac3a149f9de594a9e64"
     ],
-    "likedReviews": ["65e57ac3a149f9de594a9e5e"],
-    "dislikedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9eac","65e57ac3a149f9de594a9e94","65e57ac3a149f9de594a9e82","65e57ac3a149f9de594a9e7c","65e57ac3a149f9de594a9e58", "65e57ac3a149f9de594a9e6a"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e5e"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -100,14 +54,14 @@
     "deletedAt": null,
     "firstName": "Carrie",
     "lastName": "Dela Cruz",
-    "hearts": 19,
-    "dislike": 1,
-    "credibility": 99,
+    "hearts": 5,
+    "dislike": 3,
+    "credibility": 62.5,
     "reviews": [
       "65e57ac3a149f9de594a9e76"
     ],
-    "likedReviews": ["65e57ac3a149f9de594a9e7c"],
-    "dislikedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9eac","65e57ac3a149f9de594a9e94", "65e57ac3a149f9de594a9e82","65e57ac3a149f9de594a9e7c","65e57ac3a149f9de594a9e76", "65e57ac3a149f9de594a9e58","65e57ac3a149f9de594a9e6a", "65e57ac3a149f9de594a9e64"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e5e", "65e57ac3a149f9de594a9e9a"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -122,14 +76,14 @@
     "deletedAt": null,
     "firstName": "Ariana",
     "lastName": "Ortiz",
-    "hearts": 30,
+    "hearts": 5,
     "dislike": 2,
-    "credibility": 99,
+    "credibility": 71.42857142857143,
     "reviews": [
       "65e57ac3a149f9de594a9e7c"
     ],
-    "likedReviews": ["65e57ac3a149f9de594a9e82"],
-    "dislikedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9eac","65e57ac3a149f9de594a9e9a","65e57ac3a149f9de594a9e94", "65e57ac3a149f9de594a9e82","65e57ac3a149f9de594a9e6a", "65e57ac3a149f9de594a9e76", "65e57ac3a149f9de594a9e58", "65e57ac3a149f9de594a9e64"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e5e"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -144,14 +98,14 @@
     "deletedAt": null,
     "firstName": "Ryan",
     "lastName": "Chua",
-    "hearts": 1009,
-    "dislike": 7,
-    "credibility": 99,
+    "hearts": 8,
+    "dislike": 1,
+    "credibility": 88.88888888888889,
     "reviews": [
       "65e57ac3a149f9de594a9e82"
     ],
-    "likedReviews": [],
-    "dislikedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e9a","65e57ac3a149f9de594a9e94","65e57ac3a149f9de594a9e64"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e7c"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -166,14 +120,14 @@
     "deletedAt": null,
     "firstName": "Maxene",
     "lastName": "Summers",
-    "hearts": 817,
-    "dislike": 333,
-    "credibility": 66,
+    "hearts": 3,
+    "dislike": 1,
+    "credibility": 75,
     "reviews": [
       "65e57ac3a149f9de594a9e8e"
     ],
-    "likedReviews": [],
-    "dislikedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e9a","65e57ac3a149f9de594a9e94", "65e57ac3a149f9de594a9e88","65e57ac3a149f9de594a9e82","65e57ac3a149f9de594a9e58","65e57ac3a149f9de594a9e6a", "65e57ac3a149f9de594a9e76", "65e57ac3a149f9de594a9e64"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e7c"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -188,14 +142,14 @@
     "deletedAt": null,
     "firstName": "Mark",
     "lastName": "Ocampo",
-    "hearts": 77,
-    "dislike": 0,
-    "credibility": 100,
+    "hearts": 12,
+    "dislike": 1,
+    "credibility": 92.3076923076923,
     "reviews": [
       "65e57ac3a149f9de594a9e94"
     ],
-    "likedReviews": [],
-    "dislikedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e9a","65e57ac3a149f9de594a9e88","65e57ac3a149f9de594a9e82","65e57ac3a149f9de594a9e58","65e57ac3a149f9de594a9e6a","65e57ac3a149f9de594a9e76", "65e57ac3a149f9de594a9e64"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e8e"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -210,14 +164,14 @@
     "deletedAt": null,
     "firstName": "Shiana",
     "lastName": "Reyes",
-    "hearts": 100,
-    "dislike": 3,
-    "credibility": 97,
+    "hearts": 9,
+    "dislike": 1,
+    "credibility": 90,
     "reviews": [
       "65e57ac3a149f9de594a9e9a"
     ],
-    "likedReviews": [],
-    "dislikedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e9a","65e57ac3a149f9de594a9e94", "65e57ac3a149f9de594a9e8e","65e57ac3a149f9de594a9e88","65e57ac3a149f9de594a9e58","65e57ac3a149f9de594a9e6a","65e57ac3a149f9de594a9e76", "65e57ac3a149f9de594a9e64"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e82", "65e57ac3a149f9de594a9ea6"],
     "createdAt": "2024-03-04T07:39:47.862Z",
     "__v": 1
   },
@@ -232,14 +186,14 @@
     "deletedAt": null,
     "firstName": "Mikey",
     "lastName": "Tan",
-    "hearts": 109,
-    "dislike": 5,
-    "credibility": 95,
+    "hearts": 2,
+    "dislike": 0,
+    "credibility": 100,
     "reviews": [
       "65e57ac3a149f9de594a9ea0"
     ],
-    "likedReviews": [],
-    "dislikedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9e9a","65e57ac3a149f9de594a9e94","65e57ac3a149f9de594a9e8e","65e57ac3a149f9de594a9e88","65e57ac3a149f9de594a9e58","65e57ac3a149f9de594a9e6a", "65e57ac3a149f9de594a9e64"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e76"],
     "createdAt": "2024-03-04T07:39:47.862Z",
     "__v": 1
   },
@@ -254,15 +208,60 @@
     "deletedAt": null,
     "firstName": "Miggy",
     "lastName": "So",
-    "hearts": 190,
-    "dislike": 14,
-    "credibility": 96,
+    "hearts": 2,
+    "dislike": 1,
+    "credibility": 66.66666666666666,
     "reviews": [
       "65e57ac3a149f9de594a9ea6"
     ],
-    "likedReviews": [],
-    "dislikedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9ea0","65e57ac3a149f9de594a9e9a","65e57ac3a149f9de594a9e94","65e57ac3a149f9de594a9e8e","65e57ac3a149f9de594a9e88","65e57ac3a149f9de594a9e70"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e58", "65e57ac3a149f9de594a9e64", "65e57ac3a149f9de594a9e76"],
     "createdAt": "2024-03-04T07:39:47.862Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e29",
+    "username": "makoeats",
+    "password": "YouNMeinTaft03",
+    "email": "makopangs@gmail.com",
+    "tasteProfile": ["Salty", "Sweet", "Japanse", "Filipino", "Chinese", "Italian"],
+    "image": "avatar-f1.png",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Mako",
+    "lastName": "Pangan",
+    "bio": "Has the best taste in Taft!",
+    "hearts":8,
+    "dislikes":3,
+    "credibility":72.727272727,
+    "reviews": [
+      "65e57ac3a149f9de594a9e58"
+    ],
+    "likedReviews": ["65e57ac3a149f9de594a9e94", "65e57ac3a149f9de594a9e82","65e57ac3a149f9de594a9e7c","65e57ac3a149f9de594a9e6a"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e6a"],
+    "createdAt": "2024-03-04T07:39:47.860Z",
+    "__v": 1
+  },
+  {
+    "_id": "65e57ac3a149f9de594a9e2c",
+    "username": "archerreviewer",
+    "password": "chase.your.dreams!!",
+    "email": "luis.mendoza01@gmail.com",
+    "tasteProfile": ["Sweet", "Sour", "Filipino", "Italian", "Indian"],
+    "image": "profile.jpg",
+    "bgImage": "header.jpg",
+    "deletedAt": null,
+    "firstName": "Luis",
+    "lastName": "Mendoza",
+    "hearts":9,
+    "dislikes":1,
+    "credibility":90,
+    "reviews": [
+      "65e57ac3a149f9de594a9e6a"
+    ],
+    "likedReviews": ["65e57ac3a149f9de594a9e58","65e57ac3a149f9de594a9e94","65e57ac3a149f9de594a9e82","65e57ac3a149f9de594a9e7c","65e57ac3a149f9de594a9e5e", "65e57ac3a149f9de594a9e6a"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e64"],
+    "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
   {
@@ -276,14 +275,14 @@
     "deletedAt": null,
     "firstName": "Miguel",
     "lastName": "Sy",
-    "hearts": 10,
-    "dislike": 3,
-    "credibility": 70,
+    "hearts":1,
+    "dislikes":0,
+    "credibility":100,
     "reviews": [
       "65e57ac3a149f9de594a9e70"
     ],
-    "likedReviews": ["65e57ac3a149f9de594a9e6a"],
-    "dislikedReviews": ["65e57ac3a149f9de594a9e64"],
+    "likedReviews": ["65e57ac3a149f9de594a9ea6","65e57ac3a149f9de594a9ea0","65e57ac3a149f9de594a9e9a","65e57ac3a149f9de594a9e94","65e57ac3a149f9de594a9e88","65e57ac3a149f9de594a9e64"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e58", "65e57ac3a149f9de594a9e76"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   },
@@ -298,14 +297,14 @@
     "deletedAt": null,
     "firstName": "Vhrent",
     "lastName": "Pepito",
-    "hearts": 550,
-    "dislike": 100,
-    "credibility": 77,
+    "hearts":6,
+    "dislikes":0,
+    "credibility":100,
     "reviews": [
       "65e57ac3a149f9de594a9e88"
     ],
-    "likedReviews": [],
-    "dislikedReviews": [],
+    "likedReviews": ["65e57ac3a149f9de594a9ea6","65e57ac3a149f9de594a9e9a"],
+    "dislikedReviews": ["65e57ac3a149f9de594a9e94","65e57ac3a149f9de594a9e58", "65e57ac3a149f9de594a9e64"],
     "createdAt": "2024-03-04T07:39:47.861Z",
     "__v": 1
   }

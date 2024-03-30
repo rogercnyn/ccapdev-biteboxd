@@ -129,9 +129,6 @@
                 {{/each}}
             </div>
 
-           
-            
-
             <!-- About -->
             <div class="content">
                 <div class="user-ratings-container">
@@ -150,7 +147,7 @@
                     </div>
                     <div class="rating-labelled">
                         <div class="rating-label-percentage">
-                            <p class="number-about">{{profile.credibility}}</p>
+                            <p class="number-about" id="credibility">{{profile.credibility}}</p>
                             <p class="label-about">Credibility</p>
                         </div>
                     </div>
@@ -170,9 +167,10 @@
                 <div class="recent-activities-container">
 
                 <h2 class="taste-profile-label">Reviews You've Liked</h2>
-                {{!-- {{#if profile.likedReviews.length}} --}}
                 {{#each likedReviews}}
-                    {{> reviews}}   
+                   {{> reviews}}
+                {{else}}
+                    <p>No reviews found.</p>
                 {{/each}}
 
                 <div class="divider" ></div>

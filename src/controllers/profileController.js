@@ -1,6 +1,6 @@
 const Profile = require('../models/Profile');
+const Review = require('../models/Review'); 
 const bcrypt = require('bcryptjs');
-
 
 
 
@@ -33,7 +33,7 @@ async function modifyLikeDislikeReview(username, reviewId, like, dislike) {
         } else if (dislike == -1) {
             profile.dislikedReviews = profile.dislikedReviews.filter(id => id.toString() !== reviewId);
         }
-
+        updateUsersStats();
         await profile.save();
     } catch (error) {
         console.error('Error modifying profile like:', error);
@@ -129,9 +129,8 @@ async function addBulkProfile(parsedJson) {
     try {
         await clearProfiles(); 
         console.log("Clearing existing profiles and preparing to insert new profiles...");
-
         const hashedProfiles = await Promise.all(parsedJson.map(async (user) => {
-            const hashedPassword = await bcrypt.hash(user.password, 10); // Using 10 rounds for salt generation
+            const hashedPassword = await bcrypt.hash(user.password, 10);
             return { ...user, password: hashedPassword };
         }));
 
@@ -294,20 +293,13 @@ async function getProfileById(id) {
 
 async function createUser(req, res){
     try {
-        // Extract fields from request body or file
         const { firstName, lastName, username, email, password, tasteProfile } = req.body;
-        
-        // Parse tasteProfile from JSON string to array
         const parsedTasteProfile = JSON.parse(tasteProfile);
-        
-        // Hash the password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
         
-        // Determine the image path
         let imagePath = req.file ? req.file.filename : req.body.image || 'default-avatar.png';
         
-        // Create new profile
         const newUser = new Profile({
             firstName,
             lastName,
@@ -316,18 +308,16 @@ async function createUser(req, res){
             password: hashedPassword,
             tasteProfile: parsedTasteProfile,
             image: imagePath,
-            bgImage: 'header.jpg', // Assuming a default background image
+            bgImage: 'header.jpg',
             hearts: 0,
             dislike: 0,
             credibility: 0
         });
         
-        // Save the profile
         await newUser.save();
         
         console.log("User created successfully:", newUser);
         
-        // Respond with success
         res.status(201).json({ success: true, message: 'User created successfully', user: newUser });
     } catch (error) {
         console.error('Error creating user:', error);
@@ -439,7 +429,143 @@ async function changeUserPassword(req, res) {
 
 
 
+async function updateUsersStats() {
+    try {
+        const profiles = await Profile.find();
+        console.log(`Found ${profiles.length} profiles to update.`);
+        
+        for (let profile of profiles) {
+            const aggregation = await Review.aggregate([
+                { $match: { username: profile.username } },
+                { $group: {
+                    _id: '$username',
+                    totalHearts: { $sum: '$noOfLikes' },
+                    totalDislikes: { $sum: '$noOfDislikes' }
+                }}
+            ]);
+            console.log(`Aggregation result for ${profile.username}:`, aggregation);
+            
+            if (aggregation.length > 0) {
+                const { totalHearts, totalDislikes } = aggregation[0];
+                let credibility = 0;
+                
+                if (totalHearts + totalDislikes > 0) {
+                    credibility = (totalHearts / (totalHearts + totalDislikes)) * 100;
+                }
+                
+                const updatedProfile = await Profile.findOneAndUpdate(
+                    { _id: profile._id },
+                    {
+                        $set: {
+                            hearts: totalHearts,
+                            dislikes: totalDislikes,
+                            credibility: credibility
+                        }
+                    },
+                    { new: true }
+                );
 
+                // console.log(`Updated profile for ${profile.username}:`, updatedProfile);
+            console.log(`Updated stats for ${profile.username}:`, { totalHearts, totalDislikes, credibility });
+
+            }
+        }
+
+        console.log('Updated stats for all users');
+    } catch (error) {
+        console.error('Error updating user stats:', error);
+    }
+}
+
+// async function getReviewStats(reviewIds) {
+//     try {
+//         const reviews = await Review.find({ _id: { $in: reviewIds } });
+        
+//         if (!reviews || reviews.length === 0) {
+//             console.log('No reviews found');
+//             return { totalHearts: 0, totalDislikes: 0 };
+//         }
+
+//         let totalHearts = 0;
+//         let totalDislikes = 0;
+
+//         reviews.forEach(review => {
+//             totalHearts += review.noOfLikes;
+//             totalDislikes += review.noOfDislikes;
+//         });
+
+//         return { totalHearts, totalDislikes };
+//     } catch (error) {
+//         console.error('Error getting review stats:', error);
+//         return { totalHearts: 0, totalDislikes: 0 };
+//     }
+// }
+
+// async function getUserReviews(username) {
+//     try {
+//         const userReviews = await Review.find({ username: username });
+        
+//         if (!userReviews || userReviews.length === 0) {
+//             console.log('No reviews found for user:', username);
+//             return [];
+//         }
+
+//         return userReviews.map(review => review._id);
+//     } catch (error) {
+//         console.error('Error getting user reviews:', error);
+//         return [];
+//     }
+// }
+
+// async function getUserStats(username) {
+//     try {
+//         const userReviewIds = await getUserReviews(username);
+//         const { totalHearts, totalDislikes } = await getReviewStats(userReviewIds);
+        
+//         let credibility = 0;
+//         if (totalHearts + totalDislikes > 0) {
+//             credibility = (totalHearts / (totalHearts + totalDislikes)) * 100;
+//         }
+
+//         return { totalHearts, totalDislikes, credibility };
+//     } catch (error) {
+//         console.error('Error getting user stats:', error);
+//         return { totalHearts: 0, totalDislikes: 0, credibility: 0 };
+//     }
+// }
+
+// async function updateAllUserStats() {
+//     try {
+//         const profiles = await Profile.find();
+//         console.log(`Found ${profiles.length} profiles to update.`);
+        
+//         for (let profile of profiles) {
+//             const { totalHearts, totalDislikes, credibility } = await getUserStats(profile.username);
+            
+//             // Update the profile with the computed stats
+//             const updatedProfile = await Profile.findOneAndUpdate(
+//                 { _id: profile._id },
+//                 {
+//                     $set: {
+//                         hearts: totalHearts,
+//                         dislikes: totalDislikes,
+//                         credibility: credibility
+//                     }
+//                 },
+//                 { new: true }
+//             );
+
+//             console.log(`Updated stats for ${profile.username}:`, { totalHearts, totalDislikes, credibility });
+//         }
+
+//         console.log('Updated stats for all users');
+//     } catch (error) {
+//         console.error('Error updating user stats:', error);
+//     }
+// }
+
+// updateAllUserStats();
+updateUsersStats();
 
 module.exports = { 
     saveProfile, 

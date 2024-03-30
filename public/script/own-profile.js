@@ -203,8 +203,20 @@ function changePassword(username) {
 
 
 $(document).ready(function() {
+
     const likesets = document.getElementsByClassName('likeset');
     const likes = [];
+
+    const credibilityElement = document.getElementById('credibility');
+    if (credibilityElement) {
+        const credibilityValue = parseFloat(credibilityElement.textContent);
+        if (!isNaN(credibilityValue)) {
+            const roundedCredibility = credibilityValue.toFixed(1);
+            credibilityElement.textContent = roundedCredibility;
+        }
+    }
+
+ 
     
     Array.from(likesets).forEach(likeset => {
         let likeButton = likeset.querySelector('#like');
@@ -229,3 +241,4 @@ $(document).ready(function() {
     });
     
 });
+
