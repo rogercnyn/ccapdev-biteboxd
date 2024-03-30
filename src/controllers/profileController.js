@@ -458,7 +458,7 @@ async function updateUsersStats() {
                     {
                         $set: {
                             hearts: totalHearts,
-                            dislikes: totalDislikes,
+                            dislike: totalDislikes,
                             credibility: credibility
                         }
                     },

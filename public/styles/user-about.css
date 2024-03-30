@@ -185,8 +185,12 @@
     position: absolute;
     right: 7%;
 }
-.delete-recent-activity{
-    /* margin-inline-start: 68%; */
+.credibility-data{
+    display: flex;
+}
+.number-percentage{
+    font-size: 15px;
+    padding-top: 10px;
 }
 
 .delete-recent-activity-icon:hover {
