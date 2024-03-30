@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     var modal = document.getElementById("editProfileModal");
-    var btn = document.querySelector(".edit-btn"); // Correct button selection
+    var btn = document.querySelector(".edit-btn");
     var span = document.getElementsByClassName("close-button")[0];
     var form = document.getElementById("editProfileForm");
 

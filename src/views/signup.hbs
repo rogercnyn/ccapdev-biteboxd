@@ -111,11 +111,11 @@
             <div class="login-form hide-form" id="form3">
                 <form class="yellow-box-container  avatar-container">
                     <div class="two-avatar">
-                        <div class="pic-option" onclick="clickAvatar(this)"><img src="/uploads/avatars/avatar-f1.png" alt="" class="avatar"></div>
-                        <div class="pic-option" onclick="clickAvatar(this)"><img src="/uploads/avatars/avatar-f2.png" alt="" class="avatar"></div>
+                        <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-f1.png"><img src="/uploads/avatars/avatar-f1.png" alt="" class="avatar"></div>
+                        <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-f2.png"><img src="/uploads/avatars/avatar-f2.png" alt="" class="avatar"></div>
                     </div>
                     <div class="two-avatar">
-                        <div class="pic-option" onclick="clickAvatar(this)"><img src="/uploads/avatars/avatar-m1.png" alt="" class="avatar"></div>
+                        <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-m1.png"><img src="/uploads/avatars/avatar-m1.png" alt="" class="avatar"></div>
                         <div class="pic-option" onclick="triggerFileInput(this)">   
                              <input type="file" id="avatar-upload" class="avatar-upload">   
                             <img src="assets/upload.svg" alt="" class="upload-icon">                    
@@ -142,22 +142,19 @@
         }
 
        function getAvatar() {
-            const selectedAvatar = $('.avatar-container .avatar-selected').attr('src');
+            const selectedAvatar = $('.avatar-container .pic-option.clicked img').attr('src');
             if (selectedAvatar) {
-
-                return selectedAvatar;
+                return selectedAvatar.split('/').pop();
             } else {
-
                 const uploadedAvatar = $('#avatar-upload')[0].files[0];
                 if (uploadedAvatar) {
-
                     return URL.createObjectURL(uploadedAvatar);
                 } else {
-
                     return null;
                 }
             }
         }
+
 
 
         $(document).ready(function() {
@@ -178,6 +175,7 @@
             $('#form3').on('submit', function(e) {
                 e.preventDefault();
 
+                
 
                 const formData = {
                     firstName: $('#first-name').val(),

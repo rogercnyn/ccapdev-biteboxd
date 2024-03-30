@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 
 
 
+
+
 async function getLikedDislikedReviewsId(username) {
     try {
         const profile = await Profile.findOne({ username: username }).lean();
@@ -217,12 +219,51 @@ async function getProfileById(id) {
 
 //with hashing
 
+// async function createUser(req, res) {
+//     try {
+//         const { firstName, lastName, username, email, password, tasteProfile, image } = req.body;
+        
+//         const salt = await bcrypt.genSalt(10);
+//         const hashedPassword = await bcrypt.hash(password, salt);
+
+//         const newUser = new Profile({
+//             firstName,
+//             lastName,
+//             username,
+//             email,
+//             password: hashedPassword, 
+//             tasteProfile,
+//             image: image || req.file?.filename || 'default-avatar.png',
+//             bgImage: 'header.jpg',
+//             hearts: 0,
+//             dislike: 0,
+//             credibility: 0
+//         });
+
+//         await newUser.save();
+//         res.status(201).json({ success: true, message: 'User created successfully', user: newUser });
+//     } catch (error) {
+//         console.error('Error creating user:', error);
+//         res.status(500).json({ success: false, message: 'Internal server error' });
+//     }
+// }
 async function createUser(req, res) {
     try {
         const { firstName, lastName, username, email, password, tasteProfile, image } = req.body;
         
+        console.log("Incoming User Data:", req.body); 
+
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
+
+        let imagePath;
+        if (image) {
+            imagePath = image; 
+        } else if (req.file && req.file.filename) {
+            imagePath = req.file.filename;
+        } else {
+            imagePath = 'default-avatar.png'; 
+        }
 
         const newUser = new Profile({
             firstName,
@@ -231,7 +272,7 @@ async function createUser(req, res) {
             email,
             password: hashedPassword, 
             tasteProfile,
-            image: image || req.file?.filename || 'default-avatar.png',
+            image: imagePath,
             bgImage: 'header.jpg',
             hearts: 0,
             dislike: 0,
@@ -239,15 +280,17 @@ async function createUser(req, res) {
         });
 
         await newUser.save();
+        console.log("User created successfully:", newUser); 
+
+
+        req.session.profilePicture = newUser.image;
+
         res.status(201).json({ success: true, message: 'User created successfully', user: newUser });
     } catch (error) {
         console.error('Error creating user:', error);
         res.status(500).json({ success: false, message: 'Internal server error' });
     }
 }
-
-
-
 
 // function getAvatar() {
 //     // Check if any avatar image is selected

@@ -87,7 +87,7 @@ router.get(['/', '/index'], (req, res) => res.render("index"));
 router.get('/createrestaurant', (req, res) => res.render("createrestaurant"));
 
 // Routes for profile handling
-router.post('/signup', createUser);
+router.post('/signup',  upload.single('profilePic'), createUser);
 router.post("/edit-profile", upload.single('profilePic'),editProfile);
 // router.post('/deleteReview', deleteReview);
 // router.post('/updateReview', upload.array('editMedia'), updateReview)
