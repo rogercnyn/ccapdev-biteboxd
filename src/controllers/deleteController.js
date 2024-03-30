@@ -147,7 +147,23 @@ async function deleteProfile(req, res) {
     }
 }
 
+async function deleteReply(req, res) {
+    try {
+        const replyId = req.params._replyId;
+        const reviewId = req.params._reviewId;
+
+        await RestaurantReply.findByIdAndDelete(replyId);
+        const review = await Review.findById(reviewId);
+
+        review.replies = review.replies.filter(reply => reply.toString() !== replyId);
+        await review.save();
+        res.send({ success: true, message: "Reply deleted" });
+    } catch (error) {
+        console.error('Error deleting reply:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+
+}
 
 
-
-module.exports = { deleteRestaurant, deleteReview, deleteProfile };
+module.exports = { deleteRestaurant, deleteReview, deleteProfile, deleteReply }

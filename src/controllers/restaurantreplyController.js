@@ -1,5 +1,7 @@
 
 const RestaurantReply = require('../models/RestaurantReply.js');
+const Review = require('../models/Review.js');
+const Restaurant = require('../models/Restaurant.js');
 
 async function countRestaurantReplies() {
     try {
@@ -43,26 +45,64 @@ async function addBulkRestaurantReply(parsedJson){
     }
 }
 
-async function addRestaurantReply(req, res) {
-    try {
-        const { restaurantId } = req.params;
-        const { body, media } = req.body; // Assuming body and media are sent in the request
-        const isEdited = false; // Default value for isEdited
+
+async function handleCreateRestaurantReply(req, res) {
+    console.log("Creating a restaurant reply")
+    const restaurantId = req.params._restaurantId;
+    const reviewId = req.params._reviewId;
+    const { body } = req.body;
+
+    const review = await Review.findById(reviewId);
+
+    console.log(review)
+    
+    if (!review) {
+        return res.status(404).send({ message: 'Review not found' });
+    } else {
+
         const reply = new RestaurantReply({
             restaurantId,
-            body,
-            media,
-            isEdited,
-            createdAt: new Date(), // Set current time as creation time
-            deletedAt: null // Initially, the reply is not deleted
+            reviewId,
+            body
         });
 
-        await reply.save(); // Save the reply to the database
-        res.status(201).send({ message: 'Reply saved successfully', replyId: reply._id });
-    } catch (error) {
-        console.error('Error saving restaurant reply:', error);
-        res.status(500).send('Error saving reply');
+        review.replies.push(reply._id)
+    
+        try {
+            await reply.save(); 
+            await review.save();
+            res.status(201).send({ message: 'Reply saved successfully', replyId: reply._id });
+        } catch (error) {
+            console.error('Error saving restaurant reply:', error);
+            res.status(500).send('Error saving reply');
+        }
     }
+
 }
 
-module.exports = { addBulkRestaurantReply, readReply, addRestaurantReply }
+async function handleEditRestaurantReply(req, res) {
+    console.log("Editing a restaurant reply")
+    const replyId = req.params._replyId;
+
+    const { body } = req.body;
+
+    try {
+        const reply = await RestaurantReply.findById(replyId);
+ 
+        if (!reply) {
+            return res.status(404).send({ message: 'Reply not found' });
+        }
+
+        reply.body = body;
+        await reply.save();
+        res.send({ message: 'Reply updated successfully' });
+    }
+    catch (error) {
+        console.error('Error updating reply:', error);
+        res.status(500).send('Error updating reply');
+    }
+    console.log("HEREE")
+}
+
+
+module.exports = { addBulkRestaurantReply, readReply, handleCreateRestaurantReply, handleEditRestaurantReply }

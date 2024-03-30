@@ -1,6 +1,6 @@
 
 <div class="review" id="{{_id}}" data-restaurant="{{restaurantId}}"> 
-<div class="review-panel" id="reviewPanel2">
+    <div class="review-panel" id="reviewPanel2">
 
     <div class="profile-score">
         <div class="profilearea">
@@ -9,6 +9,25 @@
         <div class="score">
             <h2 class="yellowscore" id="user-score">{{overallRating}}
             </h2>
+        </div>
+        <div class="reply-button" id="{{isRestaurant}}">
+            {{#if isResto}}
+                <a onclick="replyReview('{{_id}}', '{{restaurantId}}')">Reply</a>
+
+                <div class="replyToReviewOverlay" id="replyToReviewOverlay{{_id}}" onclick="closeEditPopup('{{_id}}')"></div>
+                <div class="replyToReview" id="replyToReview{{_id}}">
+                    <div class="reply-modal-content">
+                        <span class="closeEdit" onclick="closeReplyPopup('{{_id}}')">&times;</span>
+                        <span id="editReviewheader">Reply to Review</span>
+                        <br><br>
+                        <div id="replyToReviewEditor{{_id}}" class="replyToReviewEditor"></div>
+                        <button class="publishReplyBtn" id="publishReplyBtn">Publish</button>
+
+
+                    </div>  
+                </div>
+
+            {{/if}}
         </div>
     </div>
 
@@ -119,136 +138,63 @@
     </div>
 
     {{#if isOwnReview}}
-    <!-- EDIT REVIEW PART -->
-    <div class="editReviewOverlay" id="editReviewOverlay{{order}}" onclick="closeEditPopup({{order}})"></div>
-    <div id="editReview{{order}}" class="editReview">
-                <div class="edit-modal-content">
-                    <span class="closeEdit" onclick="closeEditPopup({{order}})">&times;</span>
-                    <span id="editReviewheader">Edit Review</span>
-                    <div class="reviewbody">
-                        <p id ="getReview{{order}}">{{body}}</p>
-                    </div>
-                    <div class="criteriaratearea" id ="editRateArea">
-                        <div class="criteriarate">
-                            <h3 class="criterialbl">Food Quality</h3>
-                            <div class="star-sorting" data-criterion="food">
-
-                                {{#times 5}}
-                                    <span class="slider-emoji-rating edit-food-rating edit-rating">🍗</span>
-                                {{/times}}
-                                
-                            </div>
-                        </div>
-
-                        <div class="criteriarate">
-                            <h3 class="criterialbl">Service</h3>
-                            <div class="star-sorting" data-criterion="service">
-                                
-                                {{#times 5}}
-                                    <span class="slider-emoji-rating edit-service-rating edit-rating">🤝</span>
-                                {{/times}}
-                                
-                            </div>
-                        </div>
-
-                        <div class="criteriarate">
-                            <h3 class="criterialbl">Affordability</h3>
-                            <div class="star-sorting" data-criterion="price">
-                                {{#times 5}}
-                                    <span class="slider-emoji-rating edit-price-rating edit-rating">💵</span>
-                                {{/times}}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <textarea class="textbox modaltitlearea" id="reviewEditTitle{{order}}" rows="1" value="{{title}}"></textarea>
-                    <br>
-                    <div id="reviewEditor{{order}}" class="reviewEditor"></div>
-                    
-                    <div class="uploadarea" id ="editreviewattachment">
-                        <div class="photo-upload">
-                            <label for="editphoto-input{{order}}" class="upload-label">
-                            <img src="/assets/upload.svg" alt="Upload Icon" class="upload-icon">
-                            <br>
-                            <span class="upload-text">Upload</span>
-                            </label>
-                            <input type="file" id="editphoto-input{{order}}" name="photos" accept="image/*,video/*" multiple class="hidden-input">
-                        </div>
-                        
-                    
-                        <div class="editphoto-container{{order}}" id="editphoto-container{{order}}">
-                            {{#each media}}
-                                <div class="media-container">
-                                    {{#if (isVideo this)}}
-                                        <video src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></video>
-                                    {{else}}
-                                        <img src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></img>
-                                    {{/if}}
-                                    <span class="delete-btn" onclick="removeMedia(this)">&times;</span>
-                                </div>
-                            {{/each}}
-                        </div>
-    
-                        <div class="modal" id="modal" onclick="closeModal()">
-                            <div class="modal-content" onclick="event.stopPropagation();">
-                            <span class="close" onclick="closeModal()">&times;</span>
-                            <div id="modal-media-container"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="publisheditbtn" id="publisheditbtn" onclick="publishEditedReview({{order}}, '{{_id}}', '{{restaurantId}}')">Publish</button>
-                </div>
-        </div>
-
+        {{> editReview}}
     {{/if}}
-</div>
-
-<div class="photopanel">
-    {{#each media}}
-
-        {{#if (isVideo this)}}
-            <video src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></video>
-
-        {{else}}
-            <img src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></img>
-
-        {{/if}}
-    {{/each}}
-</div>
-
-<div class="modal" id="modal" onclick="closeModal()">
-    <div class="modal-content" onclick="event.stopPropagation();">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <div id="modal-media-container"></div>
     </div>
-</div>
+
+    <div class="photopanel">
+        {{#each media}}
+
+            {{#if (isVideo this)}}
+                <video src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></video>
+
+            {{else}}
+                <img src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></img>
+
+            {{/if}}
+        {{/each}}
+    </div>
+
+    <div class="modal" id="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation();">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modal-media-container"></div>
+        </div>
+    </div>
 
 
-{{#each replies}}
+    {{#each replies}}
 
-    <div class="responsepanel">
-    
-        <div class="score-username">
+        <div class="responsepanel">
+
+            <div class="score-username">
+                
+                <div class="profilearea">
+                    <img src="/assets/restaurant icons/{{media}}" class="profilepic">
+                </div>
+
+                <div class="titlearea">
+
+                    <h2>{{name}} <i class="fas fa-check-circle verified-icon"></i></h2>
+                    <p class="nameandtime">{{formatDate createdAt}}</p>
+
+                </div>
             
-            <div class="profilearea">
-                <img src="/assets/restaurant icons/{{media}}" class="profilepic">
+            </div>
+            
+            <div id="replytext">
+                <p id="replyToReviewContent{{reviewId}}">{{body}}</p>
             </div>
 
-            <div class="titlearea">
 
-                <h2>{{name}} <i class="fas fa-check-circle verified-icon"></i></h2>
-                <p class="nameandtime">{{formatDate createdAt}}</p>
-
+            <span id="three-dots-editReply" onclick="toggleOptions(this)">&nbsp;&nbsp;&#8286;</span>
+            <div class="options-popup" id="optionsPopup">
+                <a onclick="replyReview('{{reviewId}}', '{{restaurantId}}', '{{_id}}')">Edit</a>
+                <a onclick="deleteResponse('{{reviewId}}', '{{restaurantId}}', '{{_id}}')">Delete</a>
             </div>
-        
-        </div>
-        
-        <div id="replytext">
-            <p>{{body}}</p>
+
         </div>
 
-
-    </div>
-{{/each}}
+    {{/each}}
 </div>
 

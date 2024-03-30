@@ -189,6 +189,7 @@ async function processReview(review, username, loggedIn, likedReviews, dislikedR
     review['replies'].forEach((reply) => {
         reply['media'] = restaurants['media'];
         reply['name'] = restaurants['name'];
+        reply['reviewId'] = review['_id']
     })
     
     return review

@@ -3,18 +3,22 @@ const multer = require('multer');
 const path = require('path');
 // DO NOT IMPORT MODELS HERE
 
+
+
 // Import controllers for restaurant and review handling
 const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest, addRestaurant, editRestaurant, updateRestoPicture, changeRestoPassword } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
 const { handleCreateReviewRequest, handleLikeReviewRequest, handleEditReviewRequest } = require('../controllers/reviewController');
 const { createUser, editProfile, changeUserPassword} = require('../controllers/profileController');
+const { handleCreateRestaurantReply, handleEditRestaurantReply } = require('../controllers/restaurantreplyController');
 const { handleProfileRequest } = require('../controllers/profilePageController');
 const { login, logout} = require('../controllers/loginController');
 const {isAuthenticated} = require('../middleware/auth');
+const { deleteRestaurant, deleteReview, deleteProfile, deleteReply } = require('../controllers/deleteController');
+
 const router = express.Router();
 
 // for delete only
-const { deleteRestaurant, deleteReview, deleteProfile } = require('../controllers/deleteController');
 
 
 //Multer - for uploads ( used sa Sign up and edit profile, review)
@@ -76,6 +80,11 @@ router.post('/review/:_restaurantId/:_reviewId/edit', uploadReviewMedia, handleE
 router.post('/review/:_restaurantId/:_reviewId/delete', deleteReview);
 router.get('/review/:_reviewId/like', handleLikeReviewRequest);
 
+// replies
+router.post('/review/:_restaurantId/:_reviewId/reply/create', handleCreateRestaurantReply);
+router.post('/review/:_restaurantId/:_reviewId/reply/:_replyId/edit', handleEditRestaurantReply);
+
+router.post('/review/:_restaurantId/:_reviewId/reply/:_replyId/delete', deleteReply);
 
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
 
@@ -96,8 +105,6 @@ router.post('/deleteProfile/:username', deleteProfile);
 router.post('/api/changePassword/:username', changeUserPassword);
 
 
-
-
 router.get('/logout', logout);
 router.get('/profile/:username', handleProfileRequest)
 
@@ -108,17 +115,6 @@ router.post('/resto-responsepage/:id/delete', deleteRestaurant)
 router.post('/resto-responsepage/:id/updatepicture', uploadRestaurantPicture.single('file'), updateRestoPicture)
 router.post("/editrestopassword", changeRestoPassword)
 
-// // Example server-side route for sorting
-// router.get('/api/search/sort', (req, res) => {
-//     const criteria = req.query.criteria;
-//     // Assume getSortedResults is a function that returns sorted data based on criteria
-//     getSortedResults(criteria).then(sortedResults => {
-//         res.render('partials/sortedResults', { results: sortedResults, hasResults: sortedResults.length > 0 });
-//     }).catch(error => {
-//         // Handle errors
-//         res.status(500).send('Error processing request');
-//     });
-// });
 
 // // will redirect to login if the link resto-responsepage without the corresponding id is provided
 router.get('/resto-responsepage', (req, res) => {
@@ -132,7 +128,4 @@ router.get('*', (req, res) => {
 });
 
 
-const { addRestaurantReply } = require('../controllers/restaurantreplyController');
-
-router.post('/resto-responsepage/:restaurantId', addRestaurantReply);
 module.exports = router;

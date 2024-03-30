@@ -95,7 +95,7 @@ function initializeHandlebars() {
                 }
             
                 return tags.join(', ').trim();
-            }     
+            }
         }
     }));
     app.set("view engine", "hbs");

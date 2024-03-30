@@ -37,13 +37,13 @@ function filterReviews( restaurant, overallRating, affordabilityRating, foodRati
 
 
 // Function to complete reviews by adding additional properties and profile pictures
-async function completeReviews(restaurant, username, loggedIn){
+async function completeReviews(restaurant, username, loggedIn, isResto = false){
     
     let likedReviews = [], dislikedReviews = [];
     
     // Fetching liked and disliked reviews if user is logged in
     // so we know which reviews should have a colored like or dislike
-    if(loggedIn){
+    if(loggedIn && !isResto){
         reviews = await getLikedDislikedReviewsId(username)
         likedReviews = reviews[0]
         dislikedReviews = reviews[1]
@@ -52,6 +52,7 @@ async function completeReviews(restaurant, username, loggedIn){
     restaurant['reviews'].map(async (review, index) => {
         processReview(review, username, loggedIn, likedReviews, dislikedReviews);
         review['order'] = index    
+        review['isResto'] = isResto
     });
 }
 
@@ -143,9 +144,7 @@ function sortRecommended(reviews, username) {
 // Request handler for rendering the response page for restaurant reviews
 async function handleRestoResponsePageRequest(req, res) {
     const id = req.params._id;
-    console.log(id);
     const findResto = await findById(id);
-    console.log(findResto);
 
     if (findResto) {
         const { minStar, minPrice, minFood, minService, searchText, sorting } = req.query;
@@ -158,7 +157,7 @@ async function handleRestoResponsePageRequest(req, res) {
         } else {
             completeRestaurant(restaurant)
 
-            await completeReviews(restaurant, username)
+            await completeReviews(restaurant, username, true, true)
 
             
             filterReviews(restaurant, minStar, minPrice, minFood, minService)
@@ -179,7 +178,6 @@ async function handleRestoResponsePageRequest(req, res) {
                 sortAffordability(restaurant['reviews'])
             }
         
-            console.log(restaurant);
             res.render("resto-responsepage", restaurant);
         }
     }
@@ -191,23 +189,6 @@ async function handleRestoResponsePageRequest(req, res) {
 }
 
 
-// Function to format date strings
-function formatDate(dateString) {
-    const date = new Date(dateString);
-
-    const options = {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric', 
-        hour: 'numeric', 
-        minute: 'numeric', 
-        hour12: true
-    };
-
-    const formattedDate = date.toLocaleDateString('en-US', options);
-
-    return `${formattedDate}`;
-}
 
 
 // Exporting functions 

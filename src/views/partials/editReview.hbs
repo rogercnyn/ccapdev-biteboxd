@@ -1,0 +1,80 @@
+<!-- EDIT REVIEW PART -->
+    <div class="editReviewOverlay" id="editReviewOverlay{{order}}" onclick="closeEditPopup({{order}})"></div>
+    <div id="editReview{{order}}" class="editReview">
+                <div class="edit-modal-content">
+                    <span class="closeEdit" onclick="closeEditPopup({{order}})">&times;</span>
+                    <span id="editReviewheader">Edit Review</span>
+                    <div class="reviewbody">
+                        <p id ="getReview{{order}}">{{body}}</p>
+                    </div>
+                    <div class="criteriaratearea" id ="editRateArea">
+                        <div class="criteriarate">
+                            <h3 class="criterialbl">Food Quality</h3>
+                            <div class="star-sorting" data-criterion="food">
+
+                                {{#times 5}}
+                                    <span class="slider-emoji-rating edit-food-rating edit-rating">🍗</span>
+                                {{/times}}
+                                
+                            </div>
+                        </div>
+
+                        <div class="criteriarate">
+                            <h3 class="criterialbl">Service</h3>
+                            <div class="star-sorting" data-criterion="service">
+                                
+                                {{#times 5}}
+                                    <span class="slider-emoji-rating edit-service-rating edit-rating">🤝</span>
+                                {{/times}}
+                                
+                            </div>
+                        </div>
+
+                        <div class="criteriarate">
+                            <h3 class="criterialbl">Affordability</h3>
+                            <div class="star-sorting" data-criterion="price">
+                                {{#times 5}}
+                                    <span class="slider-emoji-rating edit-price-rating edit-rating">💵</span>
+                                {{/times}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <textarea class="textbox modaltitlearea" id="reviewEditTitle{{order}}" rows="1" value="{{title}}"></textarea>
+                    <br>
+                    <div id="reviewEditor{{order}}" class="reviewEditor"></div>
+                    
+                    <div class="uploadarea" id ="editreviewattachment">
+                        <div class="photo-upload">
+                            <label for="editphoto-input{{order}}" class="upload-label">
+                            <img src="/assets/upload.svg" alt="Upload Icon" class="upload-icon">
+                            <br>
+                            <span class="upload-text">Upload</span>
+                            </label>
+                            <input type="file" id="editphoto-input{{order}}" name="photos" accept="image/*,video/*" multiple class="hidden-input">
+                        </div>
+                        
+                    
+                        <div class="editphoto-container{{order}}" id="editphoto-container{{order}}">
+                            {{#each media}}
+                                <div class="media-container">
+                                    {{#if (isVideo this)}}
+                                        <video src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></video>
+                                    {{else}}
+                                        <img src="/uploads/reviewMedia/{{this}}" class="revpic" onclick="openModal('/uploads/reviewMedia/{{this}}')"></img>
+                                    {{/if}}
+                                    <span class="delete-btn" onclick="removeMedia(this)">&times;</span>
+                                </div>
+                            {{/each}}
+                        </div>
+    
+                        <div class="modal" id="modal" onclick="closeModal()">
+                            <div class="modal-content" onclick="event.stopPropagation();">
+                            <span class="close" onclick="closeModal()">&times;</span>
+                            <div id="modal-media-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="publisheditbtn" id="publisheditbtn" onclick="publishEditedReview({{order}}, '{{_id}}', '{{restaurantId}}')">Publish</button>
+                </div>
+    </div>

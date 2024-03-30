@@ -1,4 +1,5 @@
 let editQuill;
+let replyQuill;
 let editFoodSlider
 let editServiceSlider
 let editPriceSlider;
@@ -244,6 +245,32 @@ function editReview(foodRating, serviceRating, priceRating, order) {
 
 }
 
+function replyReview(reviewId, restaurantId, replyId=null) {
+    $(`#replyToReview${reviewId}`).show();
+    $(`#replyToReviewOverlay${reviewId}`).show();
+    let publishReplyBtn = $("#publishReplyBtn");
+
+    replyQuill = new QuillEditor(`#replyToReviewEditor${reviewId}`, 300, 'Write your reply here...')
+
+    if(replyId) {
+        let existingReplyContent = document.getElementById(`replyToReviewContent${reviewId}`).innerHTML;
+        replyQuill.setInnerHTMl(existingReplyContent)
+        $(publishReplyBtn).click(function() {
+            publishReplyToReview(reviewId, restaurantId, replyId);
+        });
+        
+    
+    } else {
+        console.log(publishReplyBtn)
+        $(publishReplyBtn).click(function() {
+            console.log("publishing reply")
+            publishReplyToReview(reviewId, restaurantId);
+        });
+         
+    }
+
+}
+
 
 function closeEditPopup(order){
     let editorContainer = document.getElementById(`reviewEditor${order}`)
@@ -255,6 +282,19 @@ function closeEditPopup(order){
     document.getElementById(`editReview${order}`).style.display = 'none';
     document.getElementById(`editReviewOverlay${order}`).style.display = 'none';
 }
+
+
+
+function closeReplyPopup(reviewId){
+    let replyQuillContainer = document.getElementById(`replyToReviewEditor${reviewId}`)
+    
+    replyQuillContainer.parentNode.querySelector('.ql-toolbar').remove()
+    $(replyQuillContainer).empty()
+
+    $(`#replyToReview${reviewId}`).hide();
+    $(`#replyToReviewOverlay${reviewId}`).hide();
+}
+
 
 function publishEditedReview(order, id, restaurantId){
 
@@ -280,12 +320,54 @@ function publishEditedReview(order, id, restaurantId){
     // closeEditPopup();
 }
 
+//  BOTH FOR CREATE AND EDIT
+function publishReplyToReview(reviewId, restaurantId, replyId = null) {
 
 
-function deleteReview(id, restaurantId) {
+    let replyHtml = replyQuill.getHtml();
+
+    if (!replyHtml) {
+        fireSwal('error', 'Error!', 'Please enter a reply.', false, 2500);
+        return;
+    }
+
+    fireSwal('success', 'Success!', 'Reply is now published.', false, 2500);
+
+    if(replyId) {
+        replyLink = `/review/${restaurantId}/${reviewId}/reply/${replyId}/edit`
+    } else {
+        replyLink = `/review/${restaurantId}/${reviewId}/reply/create`
+    }
+
+    console.log(replyLink)
+    
+    $.ajax({
+        url: replyLink,
+        type: 'POST',
+        data: {
+            body: replyHtml
+        },
+        success: function(response) {
+            window.location.reload();
+        },
+        error: function(error) {
+            console.error('Error replying to review:', error);
+        }
+    });
+
+    // closeReplyPopup(order);
+
+}
+
+
+
+function deleteReview(id, restaurantId, replyId=null) {
+
+    let type = replyId ? 'reply' : 'review';
+    let deleteLink;
     Swal.fire({
-        title: 'Delete Review',
-        text: 'Are you sure you want to delete this review?',
+        title: `Delete ${type}`,
+        text: `Are you sure you want to delete this ${type}?`,
         icon: 'question',
         showCancelButton: true,
         confirmButtonText: 'Yes',
@@ -298,14 +380,21 @@ function deleteReview(id, restaurantId) {
         if (result.isConfirmed) {
             // Delete the review
             Swal.fire({
-                title: 'Review Deleted',
-                text: 'The review has been successfully deleted.',
+                title: `${type} Deleted`,
+                text: `The ${type} has been successfully deleted.`,
                 icon: 'success',
                 confirmButtonText: 'OK',
                 timer: 3000,
                 timerProgressBar: true
             });
-            let deleteLink = `/review/${restaurantId}/${id}/delete`
+
+            if(replyId) {
+                deleteLink = `/review/${restaurantId}/${id}/reply/${replyId}/delete`
+            } else {
+                deleteLink = `/review/${restaurantId}/${id}/delete`
+            }
+            
+            
             $.ajax({
                 url: deleteLink,
                 type: 'POST',
@@ -319,4 +408,8 @@ function deleteReview(id, restaurantId) {
         }
     });
     
+}
+
+function deleteResponse(id, restaurantId, replyId){
+    deleteReview(id, restaurantId, replyId);
 }
