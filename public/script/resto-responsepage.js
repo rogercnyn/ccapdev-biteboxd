@@ -546,8 +546,11 @@ function validateForm() {
     let shortdescription = document.getElementById("shortdesc").value;
     let description = document.getElementById("desc").value;
 
+    let operatinghourstart = document.getElementById("operatinghourstart").value;
+    let operatinghourend = document.getElementById("operatinghourend").value;
+
     if (restoName === "" || address === "" || tags === "" || pricestart === "" || priceend === "" ||
-        xcoord === "" || ycoord === "" || shortdescription === "" || description === "") {
+        xcoord === "" || ycoord === "" || shortdescription === "" || description === "" || operatinghourstart === "" || operatinghourend === "") {
         return false;
     }
 

@@ -43,21 +43,25 @@ function closeCredentialsPopup() {
 function validateForm() {
     const inputs = document.querySelectorAll('input[type="text"], input[type="time"], textarea, input[type="number"]');
 
+    let pricestart = document.getElementById("pricestart").value;
+    let priceend = document.getElementById("priceend").value;
+
     for (let i = 0; i < inputs.length; i++) {
         if (!inputs[i].classList.contains('modal-field')) {
             if (inputs[i].value.trim() === '' || !inputs[i].checkValidity()) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Please make sure all fields are filled out correctly!',
-                    customClass: {
-                        container: 'swal-custom-font',
-                    }
-                });
                 return false; 
             }
         }
     }
+
+    if (parseFloat(pricestart) >= parseFloat(priceend)) {
+        return false;
+    }
+
+    if (parseFloat(pricestart) <= 0 || parseFloat(priceend) <= 0) {
+        return false;
+    }
+
     return true; 
 }
 
@@ -79,6 +83,14 @@ document.getElementById('uploadButton').addEventListener('click', function(event
     $('#createRestoForm').parsley();
 
     if (!validateForm()) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please make sure all fields are filled out correctly!',
+            customClass: {
+                container: 'swal-custom-font',
+            }
+        });
         return; 
     }
 
