@@ -536,23 +536,29 @@ function initializeMap() {
 }
 
 function validateForm() {
-    const inputs = document.querySelectorAll('input[type="text"], input[type="time"], textarea, input[type="number"]');
+    let restoName = document.getElementById("restoName").value;
+    let address = document.getElementById("address").value;
+    let tags = document.getElementById("tags").value;
+    let pricestart = document.getElementById("pricestart").value;
+    let priceend = document.getElementById("priceend").value;
+    let xcoord = document.getElementById("xcoord").value;
+    let ycoord = document.getElementById("ycoord").value;
+    let shortdescription = document.getElementById("shortdesc").value;
+    let description = document.getElementById("desc").value;
 
-    for (let i = 0; i < inputs.length; i++) {
-        if (!inputs[i].classList.contains('modal-field')) {
-            if (inputs[i].value.trim() === '' || !inputs[i].checkValidity()) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Please make sure all fields are filled out correctly!',
-                    customClass: {
-                        container: 'swal-custom-font',
-                    }
-                });
-                return false; 
-            }
-        }
+    if (restoName === "" || address === "" || tags === "" || pricestart === "" || priceend === "" ||
+        xcoord === "" || ycoord === "" || shortdescription === "" || description === "") {
+        return false;
     }
+
+    if (parseFloat(pricestart) >= parseFloat(priceend)) {
+        return false;
+    }
+
+    if (parseFloat(pricestart) <= 0 || parseFloat(priceend) <= 0) {
+        return false;
+    }
+
     return true; 
 }
 
@@ -564,7 +570,15 @@ $(document).ready(function() {
     document.getElementById('saveeditbutton').addEventListener('click', function(event) {
         event.preventDefault();
 
-        if (!validateForm){
+        if (!validateForm()){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please make sure all fields are filled out correctly!',
+                customClass: {
+                    container: 'swal-custom-font',
+                }
+            });
             return;
         }
 
