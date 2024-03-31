@@ -422,6 +422,11 @@ async function addRestaurant(req, res) {
 
     let avatarFilename = req.file ? req.file.filename : 'default-avatar.png';
 
+    const tagsArray = tags.split(',').map(tag => tag.trim());
+
+    let priceDifference = priceend-pricestart;
+    let numberofCashEmoji = numberOfCashEmojiCounter(priceDifference);
+
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -445,13 +450,14 @@ async function addRestaurant(req, res) {
             coordinates: coordinates,
             numberOfCash: numberOfCash,
             location: address,
-            tag: tags,
+            tag: tagsArray,
             startPriceRange: priceS,
             endPriceRange: priceE,
             startOpeningDay: formatStartDay,
             endOpeningDay: formatEndDay,
             startOpeningHour: formatStartHour,
             endOpeningHour: formatEndHour,
+            numberOfCash: numberofCashEmoji,
             shortDescription: shortdesc,
             description: desc,
             media: avatarFilename,
@@ -486,6 +492,19 @@ async function addRestaurant(req, res) {
     }
 }
 
+function numberOfCashEmojiCounter(priceDifference)
+{
+    if (priceDifference <= 300) {
+        return 1;
+    }
+    else if (priceDifference <= 1000) {
+        return 2;
+    }
+    else {
+        return 3;
+    }
+}
+
 async function editRestaurant(req,res) {
     const restoId = req.session.userId;
     
@@ -503,6 +522,12 @@ async function editRestaurant(req,res) {
         attri11,
         attri12, xcoord, ycoord } = req.body;
 
+        const tagsArray = tags.split(',').map(tag => tag.trim());
+
+        let priceDifference = priceend-pricestart;
+        let numberofCashEmoji = numberOfCashEmojiCounter(priceDifference);
+
+
         let formatStartHour = convertToAMPM(operatinghourstart);
         let formatEndHour = convertToAMPM(operatinghourend);
     
@@ -516,7 +541,7 @@ async function editRestaurant(req,res) {
             let updateDetails = {
                 name: restoName,
                 location: address,
-                tag: tags,
+                tag: tagsArray,
                 startPriceRange: priceS,
                 endPriceRange: priceE,
                 startOpeningDay: formatStartDay,
@@ -526,6 +551,7 @@ async function editRestaurant(req,res) {
                 shortDescription: shortdesc,
                 coordinates: [xcoord, ycoord],
                 description: desc,
+                numberOfCash: numberofCashEmoji,
                 amenities: [
                     attri1 ? 1 : 0, 
                     attri2 ? 1 : 0,

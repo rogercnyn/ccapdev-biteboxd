@@ -46,7 +46,7 @@
                         
                         <div class="input-group">
                             <label for="tags" class="editlabel">Tags:</label>
-                            <input type="text" id="tags" name="tags" class="styled-input">
+                            <input type="text" id="tags" name="tags" class="styled-input" placeholder="Use ',' to separate tags">
                         </div>
                     </div>
                 
@@ -56,7 +56,7 @@
                             <div class="samerow">
                                 <input type="number" id="pricestart" name="pricestart" class="styled-input" min="0">
                                 <label for="price" class="editlabel"> - </label>
-                                <input type="number" id="priceend" name="priceend" class="styled-input" min="0">
+                                <input type="number" id="priceend" name="priceend" class="styled-input" min="0" required data-parsley-range="[{{startPriceRange}}, Infinity]" data-parsley-trigger="change">
                             </div>
                             
                         </div>

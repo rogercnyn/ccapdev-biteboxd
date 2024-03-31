@@ -539,7 +539,7 @@ function validateForm() {
     const inputs = document.querySelectorAll('input[type="text"], input[type="time"], textarea, input[type="number"]');
 
     for (let i = 0; i < inputs.length; i++) {
-        if (!inputs[i]) {
+        if (!inputs[i].classList.contains('modal-field')) {
             if (inputs[i].value.trim() === '' || !inputs[i].checkValidity()) {
                 Swal.fire({
                     icon: 'error',
@@ -563,9 +563,11 @@ $(document).ready(function() {
 
     document.getElementById('saveeditbutton').addEventListener('click', function(event) {
         event.preventDefault();
+
         if (!validateForm){
             return;
         }
+
         else {
             Swal.fire({
                 title: 'Publish Edited Details',
