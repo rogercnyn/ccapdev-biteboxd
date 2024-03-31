@@ -79,11 +79,11 @@ document.getElementById('uploadButton').addEventListener('click', function(event
     $('#createRestoForm').parsley();
 
     if (!validateForm()) {
-        return; // Do not proceed if any field is empty
+        return; 
     }
 
     else {
-        // if fieds are complete, open login credentials
+        
         document.getElementById('credentialsModal').style.display = 'block';
         document.getElementById('credentialsOverlay').style.display = 'block';
 

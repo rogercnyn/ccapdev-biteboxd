@@ -1,5 +1,9 @@
 @import "resto-reviewpage.css";
 
+.restoinfo {
+    margin-bottom: 30px;
+}
+
 .right {
     font-size: 12px;
     flex: 0 0 10%;
@@ -240,6 +244,15 @@ textarea {
     font-family: 'DM Sans';
 }
 
+.shotdesc-coord {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#coordinatesgroup{
+    margin-top: 4px;
+}
 
 .shortdescription, .descriptionedit {
     display: flex;
@@ -250,9 +263,15 @@ textarea {
     margin-bottom: 15px;
 }
 
+#xcoord, #ycoord {
+    padding: 12px;
+    width: 121px;
+}
+
 #shortdesc {
     text-align: left;
     height: 20px;
+    width: 400px;
 }
 
 #desc {

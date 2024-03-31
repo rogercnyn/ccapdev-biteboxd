@@ -20,6 +20,9 @@
       <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.4/dist/quill.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.4/dist/quill.snow.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <!-- chart -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -99,9 +102,9 @@
                             <div class="input-group">
                                 <label for="price" class="editlabel">Price Range (₱):</label>
                                 <div class="samerow">
-                                    <input type="text" id="pricestart" name="pricestart" value="{{startPriceRange}}" class="styled-input">
+                                    <input type="number" id="pricestart" name="pricestart" value="{{startPriceRange}}" class="styled-input">
                                     <label for="price" class="editlabel"> - </label>
-                                    <input type="text" id="priceend" name="priceend" value="{{endPriceRange}}" class="styled-input">
+                                    <input type="number" id="priceend" name="priceend" value="{{endPriceRange}}" class="styled-input">
                                 </div>
                                 
                             </div>
@@ -146,8 +149,15 @@
                     <div class ="shotdesc-coord">
                         <div class="shortdescription">
                             <label for="shortdesc" class="editlabel" id="shortdesclabel">Short Description:</label>
-                            <textarea id="shortdesc" name="shortdesc"> {{shortDescription}}</textarea>
-                            
+                            <textarea id="shortdesc" name="shortdesc">{{shortDescription}}</textarea>
+                        </div>
+
+                        <div class="input-group" id="coordinatesgroup">
+                            <label for="coordinates" class="editlabel">Coordinates:</label>
+                            <div class="samerow">
+                                <input type="number" id="xcoord" name="xcoord" class="styled-input" placeholder="X Coordinate" value="{{ getFirstFiveDecimals coordinates.[0]}}">
+                                <input type="number" id="ycoord" name="ycoord" class="styled-input" placeholder="Y Coordinate" value="{{ getFirstFiveDecimals coordinates.[1]}}">
+                            </div>
                         </div>
                     </div>
 
@@ -179,7 +189,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class ="saveeditbutton">Save Changes</button>
+                    <button type="submit" class ="saveeditbutton" id="saveeditbutton">Save Changes</button>
                 </form>
             </div>
 
@@ -276,6 +286,13 @@
                 </div>
             </div>
         </div>
+
+        <div class="rating-map-container">
+                <input type="hidden" id="xcoord" value="{{xcoord}}">
+                <input type="hidden" id="ycoord" value="{{ycoord}}">
+                <div id="map"></div>
+
+            </div>
 
         
         <hr>

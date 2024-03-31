@@ -519,9 +519,100 @@ function closeModal() {
     document.body.classList.remove('modal-open');
 }
 
+function initializeMap() {
+    let x = $("#xcoord").val()
+    let y = $("#ycoord").val()
+    let title = $(".resto-title").text()
+    
+    let map = L.map('map').setView([ x, y ], 16);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    L.marker([ x, y]).addTo(map)
+      .bindPopup(title)
+      .openPopup();
+}
+
+function validateForm() {
+    const inputs = document.querySelectorAll('input[type="text"], input[type="time"], textarea, input[type="number"]');
+
+    for (let i = 0; i < inputs.length; i++) {
+        if (!inputs[i]) {
+            if (inputs[i].value.trim() === '' || !inputs[i].checkValidity()) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please make sure all fields are filled out correctly!',
+                    customClass: {
+                        container: 'swal-custom-font',
+                    }
+                });
+                return false; 
+            }
+        }
+    }
+    return true; 
+}
+
 $(document).ready(function() {
+    initializeMap()
     $('#editRestoForm').parsley();
     $('#editPassword').parsley();
+
+    document.getElementById('saveeditbutton').addEventListener('click', function(event) {
+        event.preventDefault();
+        if (!validateForm){
+            return;
+        }
+        else {
+            Swal.fire({
+                title: 'Publish Edited Details',
+                text: 'Are the details entered correct?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true,
+                customClass: {
+                    container: 'swal-custom-font',
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Confirm Upload',
+                        text: 'To confirm, type \'Confirm\':',
+                        input: 'text',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancel',
+                        confirmButtonText: 'Submit',
+                        inputValidator: (value) => {
+                            if (value !== "Confirm") {
+                                return 'You need to enter the correct confirmation text!';
+                            }
+                        },
+                        customClass: {
+                            container: 'swal-custom-font',
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'The updated details are successfully saved.',
+                                icon: 'success',
+                                confirmButtonText: 'OK',
+                                timer: 3000,
+                                timerProgressBar: true
+                            }).then(() => { 
+                                document.getElementById('editRestoForm').submit();
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
     
     // Retrieving query parameters from the URL
     const url = new URL(window.location.href);

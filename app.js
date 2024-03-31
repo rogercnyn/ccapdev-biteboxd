@@ -95,6 +95,18 @@ function initializeHandlebars() {
                 }
             
                 return tags.join(', ').trim();
+            },
+            getFirstFiveDecimals: function(number) {
+                if (typeof number !== 'number') {
+                    return 'Invalid number';
+                }
+                const numberString = number.toString();
+                const decimalIndex = numberString.indexOf('.');
+                if (decimalIndex === -1) {
+                    return numberString;
+                }
+
+                return numberString.substring(0, decimalIndex + 6);
             }
         }
     }));
@@ -118,10 +130,10 @@ async function main(){
         try {
             await connect();
             console.log(`Now connected to MongoDB`);
-            // await loadRestaurants();
-            // await loadProfiles();
-            // await loadReviews();
-            // await loadRestaurantReplies();
+            await loadRestaurants();
+            await loadProfiles();
+            await loadReviews();
+            await loadRestaurantReplies();
         } catch (err) {
             console.log('Connection to MongoDB failed:');
             console.error(err);

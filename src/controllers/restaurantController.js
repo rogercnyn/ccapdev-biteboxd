@@ -501,7 +501,7 @@ async function editRestaurant(req,res) {
         attri9,
         attri10,
         attri11,
-        attri12 } = req.body;
+        attri12, xcoord, ycoord } = req.body;
 
         let formatStartHour = convertToAMPM(operatinghourstart);
         let formatEndHour = convertToAMPM(operatinghourend);
@@ -524,6 +524,7 @@ async function editRestaurant(req,res) {
                 startOpeningHour: formatStartHour,
                 endOpeningHour: formatEndHour,
                 shortDescription: shortdesc,
+                coordinates: [xcoord, ycoord],
                 description: desc,
                 amenities: [
                     attri1 ? 1 : 0, 
