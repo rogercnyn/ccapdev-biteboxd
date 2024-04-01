@@ -13,14 +13,14 @@ const app = express();
 
 function initializeSessionManagement(){
     app.use(session({
-        cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 24 * 60 * 60 * 1000 }, 
+        cookie: { maxAge: 24 * 60 * 60 * 1000 },
         store: new MemoryStore({
-            checkPeriod: 24 * 60 * 60 * 1000
+          checkPeriod: 86400000 
         }),
-        saveUninitialized: true,
-        secret: process.env.SESSION_SECRET, 
-        resave: false
-    }));
+        resave: false,
+        secret: 'keyboard cat',
+        saveUninitialized: true
+    }))
 }
 
 function initializeStaticFolders() {
