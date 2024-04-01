@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
 const exphbs = require('express-handlebars');
 const path = require("path");
 const connect = require('./src/models/db.js');
@@ -12,12 +13,13 @@ const app = express();
 
 function initializeSessionManagement(){
     app.use(session({
-        secret: process.env.SESSION_SECRET, 
+        cookie: { maxAge: 24 * 60 * 60 * 1000 },
+        store: new MemoryStore({
+          checkPeriod: 86400000 
+        }),
         resave: false,
-        saveUninitialized: true,
-        cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 24 * 60 * 60 * 1000 } 
-    }));
-
+        secret: 'keyboard cat'
+    }))
 }
 
 function initializeStaticFolders() {

@@ -41,17 +41,22 @@ function closeCredentialsPopup() {
 }
 
 function validateForm() {
-    const inputs = document.querySelectorAll('input[type="text"], input[type="time"], textarea, input[type="number"]');
-
+    let restoName = document.getElementById("restoName").value;
+    let address = document.getElementById("address").value;
+    let tags = document.getElementById("tags").value;
     let pricestart = document.getElementById("pricestart").value;
     let priceend = document.getElementById("priceend").value;
+    let xcoord = document.getElementById("xcoord").value;
+    let ycoord = document.getElementById("ycoord").value;
+    let shortdescription = document.getElementById("shortdesc").value;
+    let description = document.getElementById("desc").value;
 
-    for (let i = 0; i < inputs.length; i++) {
-        if (!inputs[i].classList.contains('modal-field')) {
-            if (inputs[i].value.trim() === '' || !inputs[i].checkValidity()) {
-                return false; 
-            }
-        }
+    let operatinghourstart = document.getElementById("operatinghourstart").value;
+    let operatinghourend = document.getElementById("operatinghourend").value;
+
+    if (restoName === "" || address === "" || tags === "" || pricestart === "" || priceend === "" ||
+        xcoord === "" || ycoord === "" || shortdescription === "" || description === "" || operatinghourstart === "" || operatinghourend === "") {
+        return false;
     }
 
     if (parseFloat(pricestart) >= parseFloat(priceend)) {
