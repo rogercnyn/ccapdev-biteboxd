@@ -9,6 +9,7 @@ const connect = require('./src/models/db.js');
 const { loadProfiles, loadRestaurants, loadReviews, loadRestaurantReplies } = require('./src/routes/loader.js');
 const router = require('./src/routes/router.js');
 
+
 const app = express();
 
 function initializeSessionManagement(){
@@ -37,7 +38,7 @@ function initializeHandlebars() {
             formatDate: function(date) {
                 if (!date) return "Invalid date";
                 const dateObj = new Date(date);
-                if (isNaN(dateObj.getTime())) return "Invalid date"; 
+                if (isNaN(dateObj.getTime())) return ""; 
                 const options = {
                     month: 'long',
                     day: 'numeric',

@@ -2,7 +2,6 @@ const { Schema, SchemaTypes, mode, model, mongoose } = require('mongoose');
 
 const reviewSchema = new Schema({
     username: { type: String, required: false},
-    isEdited: { type: Boolean, default: false },
 
     // Ratings
     foodRating: { type: Number, required: true },
@@ -22,7 +21,7 @@ const reviewSchema = new Schema({
     
     // Metadata
     createdAt: { type: Date, default: Date.now },
-    deletedAt: { type: Date, default: null },
+    editedAt: { type: Date, default: null },
 
     // Replies
     replies: {type: [Schema.Types.ObjectId], ref: 'RestaurantReply', default: []}

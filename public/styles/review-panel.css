@@ -382,10 +382,7 @@
 
 
 .reviewbody{
-    padding-bottom: 10px;
-    max-height: 120px;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+    display: none;
 }
 
 .reviewtext  {
@@ -564,7 +561,7 @@
     gap: 1.5rem;
 }
 
-#replytext {
+.restaurant-replytext {
     border-radius: 10px;
    
     font-family: 'Segoe UI', sans-serif;

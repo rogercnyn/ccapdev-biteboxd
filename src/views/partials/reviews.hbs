@@ -42,7 +42,10 @@
             <div class="nametitle">
                 <a href="/profile/{{username}}" class="nameandtime">@{{username}}</a>
                 <p class="nameandtime"> · </p>
-                <p class="nameandtime">{{formatDate createdAt}}</p>
+                <p class="nameandtime">Created: {{formatDate createdAt}}</p>
+                <p class="nameandtime"> · </p>
+                <p class="nameandtime">{{formatDate editedAt}}</p>
+
             </div>
         </div>
         <div class="criteriaratings">
@@ -178,9 +181,7 @@
             
             </div>
             
-            <div id="replytext">
-                <p id="replyToReviewContent{{reviewId}}">{{{body}}}</p>
-            </div>
+            <div class="restaurant-replytext" id="replyToReviewContent{{reviewId}}">{{{body}}}</div>
 
 
             {{#if isRestaurantOwner}}

@@ -151,7 +151,7 @@ $(document).ready(function() {
 
 
 
-    $(".reviewbody").hide();
+    // $(".reviewbody").hide();
 
     let isLogged = document.querySelector('.publish-button')
 

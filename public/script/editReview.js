@@ -241,7 +241,9 @@ function editReview(foodRating, serviceRating, priceRating, order) {
     var existingReviewContent = document.getElementById(`getReview${order}`).innerHTML;
 
     editQuill = new QuillEditor(`#reviewEditor${order}`, 120, 'Write your review here...')
+    console.log(document.getElementById(`getReview${order}`).innerHTML)
 
+    
     editQuill.setInnerHTMl(existingReviewContent)
     document.getElementById(`editphoto-input${order}`).addEventListener('change', (event) => handleFileSelect(event, `editphoto-container${order}`, `editphoto-input${order}`, `#publisheditbtn`));
 
@@ -257,6 +259,7 @@ function replyReview(reviewId, restaurantId, replyId=null) {
     if(replyId) {
         
         let existingReplyContent = document.getElementById(`replyToReviewContent${reviewId}`).innerHTML;
+        console.log(existingReplyContent)
         replyQuill.setInnerHTMl(existingReplyContent)
         $(publishReplyBtn).click(function() {
             publishReplyToReview(reviewId, restaurantId, replyId);
@@ -326,8 +329,9 @@ function publishEditedReview(order, id, restaurantId){
 //  BOTH FOR CREATE AND EDIT
 function publishReplyToReview(reviewId, restaurantId, replyId = null) {
 
-
+    console.log("publishing reply")
     let replyHtml = replyQuill.getHtml();
+    console.log(replyHtml)
 
     if (!replyHtml) {
         fireSwal('error', 'Error!', 'Please enter a reply.', false, 2500);

@@ -421,28 +421,6 @@
     
     
     </main>
-    <script>
-        let quillTargets = document.getElementsByClassName('reply-editor')
-        let replyPanels = document.getElementsByClassName('replypanel')
-        let responsePanels = document.getElementsByClassName('responsepanel')
-
-        
-        let quills = []
-        Array.from(quillTargets).forEach(quillTarget => quills.push(createQuill(quillTarget)));
-        Array.from(replyPanels).forEach(replyPanel => $(replyPanel).hide());
-        Array.from(responsePanels).forEach(responsePanel => 
-        {
-            let bodyText = responsePanel.querySelector("#replytext")
-
-            if(bodyText.innerHTML.length == 0){
-                console.log('here');
-                $(responsePanel).hide()
-            }
-
-        }
-
-        );
-    </script>
     <script src="/script/chart.js"></script>
 </body>
 </html>

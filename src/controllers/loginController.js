@@ -46,22 +46,7 @@ async function loginUser(req, username, password) {
                 req.session['isResto'] = false;
                 return { success: true, redirectUrl: "/" };
             }
-        } else /*{*/
-        //     const restaurantUser = await Restaurant.findOne({ username });
-        //     if (restaurantUser) {
-        //         const isMatchRestaurantUser = await bcrypt.compare(password, restaurantUser.password);
-        //         if (isMatchRestaurantUser) {
-        //             req.session.userId = restaurantUser._id;
-        //             req.session.username = restaurantUser.username;
-        //             req.session.profilePicture = restaurantUser.media;
-        //             req.session['loggedIn'] = true;
-        //             req.session['isResto'] = true;
-
-        //             // console.log(req.session)
-        //             return { success: true, redirectUrl: "/resto-responsepage/" + restaurantUser._id };
-        //         }
-        //     }
-        // }
+        } else 
         {
                         const restaurantUser = await Restaurant.findOne({ username });
                         const isMatchRestoProfile = await bcrypt.compare(password, restaurantUser.password);

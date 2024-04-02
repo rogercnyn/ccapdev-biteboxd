@@ -94,6 +94,7 @@ async function handleEditRestaurantReply(req, res) {
         }
 
         reply.body = body;
+        reply.editedAt = Date.now();
         await reply.save();
         res.send({ message: 'Reply updated successfully' });
     }

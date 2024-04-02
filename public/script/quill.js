@@ -22,7 +22,13 @@ class QuillEditor {
     getHtml() {
         const delta = this.quill.getContents()
         const ops = delta.ops;
-        return JSON.stringify(ops)
+
+        if(this.quill.getText(0, 10000).trim() === '') {
+            return null;
+        }
+
+        
+        return JSON.stringify(ops) 
     }
 
     clear() {
@@ -30,7 +36,10 @@ class QuillEditor {
     }
 
     setInnerHTMl(value) {
-        const delta = JSON.parse(value)
-        this.quill.setContents(delta);
+        // console.log(value)
+        this.clear()
+        this.quill.root.innerHTML = value;
+        // const delta = JSON.parse(value)
+        // this.quill.setContents(delta);
     }
 }

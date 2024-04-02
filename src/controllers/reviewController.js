@@ -142,7 +142,7 @@ async function handleEditReviewRequest( req, res) {
         serviceRating: req.body.serviceRating,
         affordabilityRating: req.body.affordabilityRating,
         title: req.body.title,
-        isEdited: true,
+        editedAt: Date.now(),
         media: media
     };
 
@@ -189,7 +189,6 @@ async function processReview(review, username, loggedIn, likedReviews, dislikedR
     let restaurants = await Restaurant.findOne({ reviews: review['_id'] })
     let profile = await Profile.findOne({ username: review['username'] })
     
-
     review['body'] = convertToRTF(review['body'])
     // review['longText'] = review['body'].slice(0, 230);
     // review['fullText'] = review['body'].slice(230);
