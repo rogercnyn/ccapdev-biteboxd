@@ -41,20 +41,19 @@ async function fetchAndRenderProfile(req, res, profile, view) {
             dislikedReviews = reviews[1]    
         }
 
-       
-        profileData.reviews.forEach((review, index) => {
-            processReview(review, req.session.username, req.session.loggedIn, likedReviews, dislikedReviews);
-            review['order'] = index
-        })
-
-        profileData.likedReviews.forEach((review, index) => {
-            processReview(review, req.session.username, req.session.loggedIn, likedReviews, dislikedReviews);
-            review['order'] = index
-
-            // review['replies'] = []
-            console.log(review)
-        })
-
+        
+        for (const [index, review] of profileData.reviews.entries()) {
+            await processReview(review, req.session.username, req.session.loggedIn, likedReviews, dislikedReviews);
+            review['order'] = index;
+        }
+        
+        for (const [index, review] of profileData.likedReviews.entries()) {
+            await processReview(review, req.session.username, req.session.loggedIn, likedReviews, dislikedReviews);
+            review['order'] = index;
+            // review['replies'] = [];
+            console.log(review);
+        }
+        
 
 
         res.render(view, {

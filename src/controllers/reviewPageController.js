@@ -50,7 +50,7 @@ async function completeReviews(restaurant, username, loggedIn, isResto = false){
     }
     
     restaurant['reviews'].map(async (review, index) => {
-        processReview(review, username, loggedIn, likedReviews, dislikedReviews, isResto);
+        await processReview(review, username, loggedIn, likedReviews, dislikedReviews, isResto);
         review['order'] = index    
         review['isResto'] = isResto
     });
@@ -71,7 +71,7 @@ async function handleRestoPageRequest(req, resp) {
         const username = req.session.username ? req.session.username : "";
     
         // Completing restaurant details
-        completeRestaurant(restaurant)
+        await completeRestaurant(restaurant)
     
         // Filtering reviews based on provided criteria
         await completeReviews(restaurant, username, resp.locals.loggedIn)
@@ -96,7 +96,7 @@ async function handleRestoPageRequest(req, resp) {
             sortAffordability(restaurant['reviews'])
         }
 
-        // console.log(restaurant)
+        console.log(restaurant)
         
         // Rendering the restaurant review page with the processed data
         resp.render("resto-reviewpage", restaurant);

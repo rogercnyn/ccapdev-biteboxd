@@ -212,7 +212,7 @@ async function processReview(review, username, loggedIn, likedReviews, dislikedR
         reply['isRestaurantOwner'] = isRestaurantOwner
     })
 
-    
+    console.log(review)
     return review
 
 }
