@@ -306,6 +306,33 @@ async function updateUsersStats() {
     }
 }
 
+async function updateTasteProfile(req, res) {
+    const { username } = req.session;
+    const { newTasteProfile } = req.body;
+
+    try {
+        await updateProfileByUsername(username, { tasteProfile: newTasteProfile });
+        res.json({ success: true, message: 'Taste profile updated successfully' });
+    } catch (error) {
+        console.error('Error updating taste profile:', error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+}
+
+async function getTasteProfile(req, res){
+    const username = req.session.username; 
+    try {
+        const profile = await findProfileByUsername(username);
+        if (!profile) {
+            return res.status(404).json({ message: 'Profile not found' });
+        }
+        res.json({ tasteProfile: profile.tasteProfile });
+    } catch (error) {
+        console.error('Error fetching taste profile:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
 updateUsersStats();
 
 module.exports = { 
@@ -321,5 +348,7 @@ module.exports = {
     editProfile,
     getLikedDislikedReviewsId,
     modifyLikeDislikeReview, 
-    changeUserPassword
+    changeUserPassword,
+    getTasteProfile,
+    updateTasteProfile
 };

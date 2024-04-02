@@ -61,7 +61,7 @@
 }
 
 
-.modal-content form input[type="text"],
+/* .modal-content form input[type="text"],
 .modal-content form input[type="file"],
 .modal-content form textarea {
   width: 100%;
@@ -71,7 +71,7 @@
   box-sizing: border-box;
   font-family: sans-serif;
   color: #535353;
-}
+} */
 
 .modal-content form textarea {
   height: 80px;
@@ -79,7 +79,7 @@
 }
 
 
-.modal-content form button[type="submit"] {
+/* .modal-content form button[type="submit"] {
   padding: 10px 15px;
   font-size: 14px;
     font-weight: 600;
@@ -88,11 +88,9 @@
     border-radius: 15px;
     padding: 8px;
   transition: background-color 0.3s ease; 
-}
+} */
 
-.modal-content form button[type="submit"]:hover {
-  background-color: #e2ae01; 
-}
+
 
 .save-changes-div{
   margin-left: 35%;
@@ -105,3 +103,107 @@
   border: 1px solid rgba(218, 218, 218, 0.864);
 
 }
+
+.taste-profile-label-edit {
+  display: flex;
+  align-items: center;
+}
+
+.taste-profile-label {
+  margin-right: 10px;
+}
+
+.edit-taste-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.edit-taste-btn img {
+  width: 20px;
+  height: auto;
+  margin-right: 5px;
+  transition: filter 0.3s; /* Add transition effect */
+}
+
+.edit-taste-btn:hover img {
+  filter: brightness(0.8); /* Adjust brightness on hover */
+}
+.edit-taste-btn .icon {
+  width: 20px;
+  height: auto;
+  margin-right: 5px;
+  margin-bottom: 10px;
+
+}
+
+
+.options {
+  position: absolute;
+  
+  top: 20px;
+  right: 13px;
+  display: flex;
+  gap: 20px;
+  opacity: 80%;
+  z-index: 20; 
+}
+
+.optionsbutton {
+  cursor: pointer;
+  display: inline-block;
+  gap: 11px;
+}
+
+.edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-weight: 700;
+  background-color: orange;
+  color: #f2f2f8;
+  padding: 11px;
+  margin-right: 5px;
+  width: 50px;
+  border-radius: 11px;
+  border: none;
+  opacity: 75%;
+}
+
+.change-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-weight: 700;
+  background-color: orange;
+  color: #f2f2f8;
+  padding: 11px;
+  margin-right: 5px;
+  width: 120px;
+  border-radius: 11px;
+  border: none;
+  opacity: 75%;
+}
+
+.delete-profile-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-weight: 700;
+  background-color: rgb(233, 77, 15);
+  color: #f2f2f8;
+  padding: 11px;
+  width: 50px;
+  border-radius: 11px;
+  border: none;
+  opacity: 75%;
+}
+

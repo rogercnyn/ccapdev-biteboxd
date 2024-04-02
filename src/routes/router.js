@@ -9,7 +9,7 @@ const path = require('path');
 const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest, addRestaurant, editRestaurant, updateRestoPicture, changeRestoPassword } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
 const { handleCreateReviewRequest, handleLikeReviewRequest, handleEditReviewRequest } = require('../controllers/reviewController');
-const { createUser, editProfile, changeUserPassword} = require('../controllers/profileController');
+const { createUser, editProfile, changeUserPassword, getTasteProfile, updateTasteProfile} = require('../controllers/profileController');
 const { handleCreateRestaurantReply, handleEditRestaurantReply } = require('../controllers/restaurantreplyController');
 const { handleProfileRequest } = require('../controllers/profilePageController');
 const { login, logout} = require('../controllers/loginController');
@@ -94,6 +94,8 @@ router.get('/login', (req, res) => res.render("login"));
 router.get('/explore', handleExploreRequest);
 router.get(['/', '/index'], (req, res) => res.render("index"));
 router.get('/createrestaurant', (req, res) => res.render("createrestaurant"));
+router.get('/profile/getTasteProfile', isAuthenticated, getTasteProfile);
+
 
 // Routes for profile handling
 router.post('/signup',  upload.single('profilePic'), createUser);
@@ -108,12 +110,15 @@ router.post('/api/changePassword/:username', changeUserPassword);
 router.get('/logout', logout);
 router.get('/profile/:username', handleProfileRequest)
 
+
 // Routes for resto
 router.post("/createrestaurant", uploadRestaurantPicture.single('image'), addRestaurant)
 router.post("/editrestaurant", editRestaurant)
 router.post('/resto-responsepage/:id/delete', deleteRestaurant)
 router.post('/resto-responsepage/:id/updatepicture', uploadRestaurantPicture.single('file'), updateRestoPicture)
 router.post("/editrestopassword", changeRestoPassword)
+router.post('/profile/updateTasteProfile', isAuthenticated, updateTasteProfile);
+
 
 
 // // will redirect to login if the link resto-responsepage without the corresponding id is provided

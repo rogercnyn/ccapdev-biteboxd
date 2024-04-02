@@ -49,8 +49,24 @@
                     <div class="handle">
                         <h1 id="profile-username">@{{profile.username}}</h1>
                     </div>
+
+                    
                     <div class="edit">
-                        <button class="edit-btn" onclick="openEditProfileModal()">Edit Profile</button>
+                        <div class="options">
+                            <div class="optionsbutton">
+                                <button class="edit-btn" onclick="openEditProfileModal()">Edit Profile</button>
+                                <button class="change-btn" onclick="changePassword('{{profile.username}}')">Change Password</button>
+                                <button class="delete-profile-btn" onclick="deleteProfile('{{profile.username}}')">Delete Profile</button>
+                            </div>
+                        </div>
+
+                        {{!-- <div class="options" id="optionsbtns">
+                            <div class="optionsbutton">
+                                <span class="editoption" onclick="openEditProfileModal()">Edit Profile</span>
+                                <span class="changeoption" onclick="changePassword('{{profile.username}}')">Change Password</span>
+                                <span class="deleteoption" onclick="deleteProfile('{{profile.username}}')">Delete</span>
+                            </div>
+                        </div> --}}
 
                         <!-- edit profile popup-->
                         <div id="editProfileModal" class="modal">
@@ -158,13 +174,51 @@
                 <div class="divider"></div>
                 <!-- Taste profile section -->
                 <div class="taste-profile-container">
-                    <h2 class="taste-profile-label">Taste Profile</h2>
+                    <div class="taste-profile-label-edit">
+                        <h2 class="taste-profile-label">Taste Profile</h2>
+                        <button class="edit-taste-btn" onclick="openEditTasteProfileModal()">
+                            <img src="/assets/review.svg" alt="Edit Taste Profile" class="icon">
+                        </button>
+
+                    </div>
+                    
                     <div class="taste-profile-items">
                         {{#each profile.tasteProfile}}
                             <div class="taste-profile-item">{{this}}</div>
                         {{/each}}
                     </div>
                 </div>
+
+                <div id="editTasteProfileModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>Edit Taste Profile</h2>
+                        <div class="yellow-box-container tag-layers">
+                            <div class="layer">
+                                <div class="tag" onclick="toggleTag(this)">Salty</div>
+                                <div class="tag" onclick="toggleTag(this)">Sweet</div>
+                            </div>
+                            <div class="layer">
+                                <div class="tag" onclick="toggleTag(this)">Sour</div>
+                                <div class="tag" onclick="toggleTag(this)">Bitter</div>
+                                <div class="tag" onclick="toggleTag(this)">Japanese</div>
+                            </div>
+                            <div class="layer">
+                                <div class="tag" onclick="toggleTag(this)">Chinese</div>
+                                <div class="tag" onclick="toggleTag(this)">Italian</div>
+                                <div class="tag" onclick="toggleTag(this)">Korean</div>
+                            </div>
+                            <div class="layer">
+                                <div class="tag" onclick="toggleTag(this)">Filipino</div>
+                                <div class="tag" onclick="toggleTag(this)">Indian</div>
+                            </div>
+                        </div>
+                        <div class="action-button-container">
+                            <button  type="submit" class="action-button" id="saveTasteChanges">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="divider"></div>
                 <div class="recent-activities-container">
@@ -178,12 +232,7 @@
 
                 <div class="divider" ></div>
 
-                 <div class="delete-change-container" style="padding-top: 20px;">
-                <button class="delete-change" onclick="changePassword('{{profile.username}}')">Change Password</button>
-                </div>
-                <div class="delete-change-container">
-                <button class="delete-change" onclick="deleteProfile('{{profile.username}}')">Delete Profile</button>
-                </div>
+                 
             </div>
             </div>
 

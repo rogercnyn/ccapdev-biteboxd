@@ -81,7 +81,8 @@
 /* Taste profile section */
 /* Taste profile section */
 .taste-profile-container {
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .taste-profile-label {
@@ -101,23 +102,21 @@
 
 .taste-profile-item {
     background-color: #FDD247;
-    border: 2px solid #333;
     border-radius: 5px;
-    padding: 8px 16px;
+    font-family: 'DM Sans';
+    font-size: 12px;
+    font-weight: 700;
+    padding: 12px 22px;
     font-size: 14px;
     color: #333;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-
 }
 
 .taste-profile-item:hover {
     background-color: #ffffff;
     color: FDD247;
 }
-
-
-
 
 
 
