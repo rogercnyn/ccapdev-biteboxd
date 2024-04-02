@@ -58,15 +58,19 @@ async function completeReviews(restaurant, username, loggedIn, isResto = false){
 
         await processReview(review, username, loggedIn, likedReviews, dislikedReviews, isResto);
         review['profilePicture'] = profile['image']
+        console.log("added profile picture inside review: ", review['profilePicture']);
 
         review['order'] = index    
         review['isResto'] = isResto
 
+
         review['replies'].forEach((reply) => {
             reply['name'] = restaurants['name'];
-            // reply['']
+            reply['media'] = restaurant['media']
         });
     });
+
+
 }
 
 
@@ -109,7 +113,9 @@ async function handleRestoPageRequest(req, resp) {
             sortAffordability(restaurant['reviews'])
         }
 
+        console.log("START OF RESTO ======")
         console.log(restaurant)
+        console.log("END OF RESTO ======")
         
         // Rendering the restaurant review page with the processed data
         resp.render("resto-reviewpage", restaurant);
