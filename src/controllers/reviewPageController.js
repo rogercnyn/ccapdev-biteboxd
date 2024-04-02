@@ -2,8 +2,6 @@
 const { getLikedDislikedReviewsId } = require('../controllers/profileController');
 const { getRestoCardDetails, findById, isValidRestaurant } = require('./restaurantController.js');
 const { processReview } = require('./reviewController.js');
-const Restaurant = require('../models/Restaurant.js');
-const Profile = require('../models/Profile.js');
 
 // Function to filter reviews based on different criteria
 function filterReviews( restaurant, overallRating, affordabilityRating, foodRating, serviceRating ){
@@ -51,20 +49,12 @@ async function completeReviews(restaurant, username, loggedIn, isResto = false) 
 
     for (let index = 0; index < restaurant['reviews'].length; index++) {
         let review = restaurant['reviews'][index];
-        let restaurants = await Restaurant.findOne({ reviews: review['_id'] });
-        let profile = await Profile.findOne({ username: review['username'] });
 
         await processReview(review, username, loggedIn, likedReviews, dislikedReviews, isResto);
-        review['profilePicture'] = profile['image'];
-        console.log("added profile picture inside review: ", review['profilePicture']);
 
         review['order'] = index;
         review['isResto'] = isResto;
 
-        for (let reply of review['replies']) {
-            reply['name'] = restaurants['name'];
-            reply['media'] = restaurant['media'];
-        }
     }
 }
 
