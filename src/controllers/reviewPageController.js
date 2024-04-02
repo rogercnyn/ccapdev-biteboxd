@@ -39,38 +39,33 @@ function filterReviews( restaurant, overallRating, affordabilityRating, foodRati
 
 
 // Function to complete reviews by adding additional properties and profile pictures
-async function completeReviews(restaurant, username, loggedIn, isResto = false){
-    
-    let likedReviews = [], dislikedReviews = [];
-    
-    // Fetching liked and disliked reviews if user is logged in
-    // so we know which reviews should have a colored like or dislike
-    if(loggedIn && !isResto){
-        reviews = await getLikedDislikedReviewsId(username)
-        likedReviews = reviews[0]
-        dislikedReviews = reviews[1]
-    }
-    
+async function completeReviews(restaurant, username, loggedIn, isResto = false) {
+    let likedReviews = [];
+    let dislikedReviews = [];
 
-    restaurant['reviews'].map(async (review, index) => {
-        let restaurants = await Restaurant.findOne({ reviews: review['_id'] })
-        let profile = await Profile.findOne({ username: review['username'] })
+    if (loggedIn && !isResto) {
+        reviews = await getLikedDislikedReviewsId(username);
+        likedReviews = reviews[0];
+        dislikedReviews = reviews[1];
+    }
+
+    for (let index = 0; index < restaurant['reviews'].length; index++) {
+        let review = restaurant['reviews'][index];
+        let restaurants = await Restaurant.findOne({ reviews: review['_id'] });
+        let profile = await Profile.findOne({ username: review['username'] });
 
         await processReview(review, username, loggedIn, likedReviews, dislikedReviews, isResto);
-        review['profilePicture'] = profile['image']
+        review['profilePicture'] = profile['image'];
         console.log("added profile picture inside review: ", review['profilePicture']);
 
-        review['order'] = index    
-        review['isResto'] = isResto
+        review['order'] = index;
+        review['isResto'] = isResto;
 
-
-        review['replies'].forEach((reply) => {
+        for (let reply of review['replies']) {
             reply['name'] = restaurants['name'];
-            reply['media'] = restaurant['media']
-        });
-    });
-
-
+            reply['media'] = restaurant['media'];
+        }
+    }
 }
 
 
