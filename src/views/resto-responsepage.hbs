@@ -56,17 +56,20 @@
                     <span class="close-button" onclick="closeCredentialsPopup()">&times;</span>
                     <span id="credentialsheader">Change Password</span>
 
-                    <div class="credentials-group">
+                    <div class="credentials-group password-box">
                         <label for="username" class="editlabel">Old Password:</label>
-                        <input type="password" id="oldPassword" name="oldPassword" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
+                        <input type="password" id="oldPassword" name="oldPassword" class="styled-input modal-field password-input" required data-parsley-minlength="8" data-parsley-trigger="change">
+                        <i class="fas fa-eye show-password" id="show-password-1" onclick="togglePasswordVisibility('oldPassword', 'show-password-1')"></i>
                     </div>
-                    <div class="credentials-group">
-                        <label for="password" class="editlabel">Password:</label>
-                        <input type="password" id="newPassword" name="newPassword" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
+                    <div class="credentials-group password-box">
+                        <label for="password" class="editlabel">New Password:</label>
+                        <input type="password" id="newPassword" name="newPassword" class="styled-input modal-field password-input" required data-parsley-minlength="8" data-parsley-trigger="change">
+                        <i class="fas fa-eye show-password" id="show-password-2" onclick="togglePasswordVisibility('newPassword', 'show-password-2')"></i>
                     </div>
-                    <div class="credentials-group">
-                        <label for="confirmpass" class="editlabel">Confirm Password:</label>
-                        <input type="password" id="confirmpass" name="confirmpass" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change" data-parsley-equalto="#newPassword" data-parsley-equalto-message="Passwords do not match.">
+                    <div class="credentials-group password-box">
+                        <label for="confirmpass" class="editlabel">Confirm New Password:</label>
+                        <input type="password" id="confirmpass" name="confirmpass" class="styled-input modal-field password-input" required data-parsley-minlength="8" data-parsley-trigger="change" data-parsley-equalto="#newPassword" data-parsley-equalto-message="Passwords do not match.">
+                        <i class="fas fa-eye show-password" id="show-password-3" onclick="togglePasswordVisibility('confirmpass', 'show-password-3')"></i>
                         <span id="confirmError" class="error-message"></span>
                     </div>
 

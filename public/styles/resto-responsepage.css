@@ -375,3 +375,25 @@ textarea {
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
+.password-box {
+    position: relative;
+}
+
+.password-input {
+    padding-right: 40px;
+}
+
+.show-password {
+    position: absolute;
+    height: 1.5rem;
+    top: 33px;
+    right: 65px;
+    z-index: 100001;
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.show-password-clicked {
+    opacity: 100%;
+}
