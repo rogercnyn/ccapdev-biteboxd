@@ -155,8 +155,8 @@
                         <div class="input-group" id="coordinatesgroup">
                             <label for="coordinates" class="editlabel">Coordinates:</label>
                             <div class="samerow">
-                                <input type="number" id="xcoord" name="xcoord" class="styled-input" placeholder="X Coordinate" value="{{ getFirstFiveDecimals coordinates.[0]}}">
-                                <input type="number" id="ycoord" name="ycoord" class="styled-input" placeholder="Y Coordinate" value="{{ getFirstFiveDecimals coordinates.[1]}}">
+                                <input type="number" id="xcoord" name="xcoord" class="styled-input" placeholder="X Coordinate" value="{{ getFirstFiveDecimals coordinates.[0]}}" step="0.000000001">
+                                <input type="number" id="ycoord" name="ycoord" class="styled-input" placeholder="Y Coordinate" value="{{ getFirstFiveDecimals coordinates.[1]}}" step="0.000000001">
                             </div>
                         </div>
                     </div>
