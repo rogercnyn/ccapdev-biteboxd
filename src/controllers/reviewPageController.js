@@ -98,9 +98,9 @@ async function handleRestoPageRequest(req, resp) {
             sortAffordability(restaurant['reviews'])
         }
 
-        console.log("START OF RESTO ======")
-        console.log(restaurant)
-        console.log("END OF RESTO ======")
+        // console.log("START OF RESTO ======")
+        // console.log(restaurant)
+        // console.log("END OF RESTO ======")
         
         // Rendering the restaurant review page with the processed data
         resp.render("resto-reviewpage", restaurant);

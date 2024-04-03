@@ -131,15 +131,22 @@ async function deleteProfile(req, res) {
 
         const profiles = await Profile.find({});
         for (const p of profiles) {
+            // remove from the likes and dislikes of OTHER profile the review of the deleted profile
             p.likedReviews = p.likedReviews.filter(id => !reviewIds.includes(id.toString()));
             p.dislikedReviews = p.dislikedReviews.filter(id => !reviewIds.includes(id.toString()));
             await p.save();
         }
 
-        console.log('Deleting profile from database'); 
+        for (const likedReview of profile.likedReviews) {
+            await Review.findByIdAndUpdate(likedReview['_id'], { $inc: { noOfLikes: -1, noOfDislikes: 0 } }, { new: true });
+        }
+
+        for (const dislikedReview of profile.dislikedReviews) {
+            await Review.findByIdAndUpdate(dislikedReview['_id'], { $inc: { noOfLikes: 0, noOfDislikes: -1 } }, { new: true });
+        }
+
         await Profile.findOneAndDelete({ username });
 
-        console.log('Profile and associated reviews deleted successfully');
         res.json({ success: true, message: 'Profile and associated reviews deleted successfully' });
     } catch (error) {
         console.error('Error deleting profile:', error);
