@@ -19,7 +19,7 @@
 .review-panel {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 1.5rem;
     max-height: 500px;
     transition: max-height 0.3s ease;
     padding: 2%;
@@ -373,9 +373,9 @@
 
 .criteriascore {
     /* font-family: 'Helvetica'; */
-    font-size: 15px;
-    color: #929191;
-    font-weight: lighter;
+    font-size: 13px;
+    color: #c8c3c3;
+    /* font-weight: lighter; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -403,6 +403,7 @@
     padding: 10px;
     max-width: 732px;
     min-width: 732px;
+    margin-top: -1%;
 }
 
 .full-text{
@@ -422,7 +423,7 @@
     display: flex;
     flex-direction: row;
     gap: 15px;
-    padding-left: 90px;
+    padding-left: 95px;
     margin-bottom: 20px;
     /* border: 1px solid black; */
 }
@@ -558,6 +559,7 @@
     width: 100%;
     font-family: 'Segoe UI';
     display: flex;
+    margin-top: 2%;
     /* border-left: 1px solid #999; */
     /* margin-left: 5%; */
     flex-direction: column;
