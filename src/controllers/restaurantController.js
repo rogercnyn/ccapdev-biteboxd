@@ -614,12 +614,12 @@ async function changeRestoPassword(req, res){
     try {
         const restaurant = await Restaurant.findById(id);
         if (!restaurant) {
-            return res.status(404).json({ message: 'Restaurant not found' });
+            return res.json({ success: false, message: 'Failed to change password.' });
         }
 
         const isMatch = await bcrypt.compare(oldPassword, restaurant.password);
         if (!isMatch) {
-            return res.status(400).json({ message: 'Incorrect current password' });
+            return res.json({ success: false, message: 'Incorrect current password.' });
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -628,7 +628,7 @@ async function changeRestoPassword(req, res){
         restaurant.password = hashedPassword; 
         await restaurant.save();
 
-        res.json({ success: true, message: 'Password successfully changed' });
+        res.json({ success: true, message: 'Password changed successfully.' });
     } catch (error) {
         console.error('Error changing password:', error);
         res.status(500).json({ message: 'Internal server error' });
