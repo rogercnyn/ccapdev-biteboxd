@@ -570,6 +570,49 @@ $(document).ready(function() {
     $('#editRestoForm').parsley();
     $('#editPassword').parsley();
 
+    document.getElementById('changeButton').addEventListener('click', async function(event) {
+        event.preventDefault();
+    
+        const response = await fetch('/editrestopassword', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                oldPassword: document.getElementById('oldPassword').value,
+                newPassword: document.getElementById('newPassword').value
+            })
+        });
+    
+        const data = await response.json();
+    
+        if (data.success) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: data.message,
+                onClose: () => {
+                    document.getElementById('oldPassword').value = '';
+                    document.getElementById('newPassword').value = '';
+                    document.getElementById('confirmpass').value = '';
+        
+                    window.location.reload();
+                }
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.message,
+                onClose: () => {
+                    document.getElementById('oldPassword').value = '';
+                    document.getElementById('newPassword').value = '';
+                    document.getElementById('confirmpass').value = '';
+                }
+            });
+        }
+    });
+
     document.getElementById('saveeditbutton').addEventListener('click', function(event) {
         event.preventDefault();
 
