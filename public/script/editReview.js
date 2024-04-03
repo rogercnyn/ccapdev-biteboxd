@@ -252,16 +252,16 @@ function editReview(foodRating, serviceRating, priceRating, order) {
 function replyReview(reviewId, restaurantId, replyId=null) {
     $(`#replyToReview${reviewId}`).show();
     $(`#replyToReviewOverlay${reviewId}`).show();
-    let publishReplyBtn = $("#publishReplyBtn");
+    let publishReplyBtn = $(`#publishReplyBtn${reviewId}`);
 
     replyQuill = new QuillEditor(`#replyToReviewEditor${reviewId}`, 300, 'Write your reply here...')
 
     if(replyId) {
         
         let existingReplyContent = document.getElementById(`replyToReviewContent${reviewId}`).innerHTML;
-        console.log(existingReplyContent)
         replyQuill.setInnerHTMl(existingReplyContent)
         $(publishReplyBtn).click(function() {
+            console.log("editing")
             publishReplyToReview(reviewId, restaurantId, replyId);
         });
         
@@ -329,9 +329,9 @@ function publishEditedReview(order, id, restaurantId){
 //  BOTH FOR CREATE AND EDIT
 function publishReplyToReview(reviewId, restaurantId, replyId = null) {
 
-    console.log("publishing reply")
+    // console.log("publishing reply")
     let replyHtml = replyQuill.getHtml();
-    console.log(replyHtml)
+    // console.log(replyHtml)
 
     if (!replyHtml) {
         fireSwal('error', 'Error!', 'Please enter a reply.', false, 2500);

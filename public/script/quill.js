@@ -36,10 +36,7 @@ class QuillEditor {
     }
 
     setInnerHTMl(value) {
-        // console.log(value)
         this.clear()
         this.quill.root.innerHTML = value;
-        // const delta = JSON.parse(value)
-        // this.quill.setContents(delta);
     }
 }
