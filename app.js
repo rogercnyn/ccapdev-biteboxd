@@ -30,24 +30,31 @@ function initializeStaticFolders() {
 
 }
 
+function formatDate(date) {
+    if (!date) return "";
+    const dateObj = new Date(date);
+    if (isNaN(dateObj.getTime())) return ""; 
+    const options = {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric', 
+        hour: 'numeric', 
+        minute: 'numeric', 
+        hour12: true
+    };
+    return dateObj.toLocaleDateString('en-US', options);
+}
+
 function initializeHandlebars() {
     app.engine("hbs", exphbs.engine({
         extname: "hbs",
         defaultLayout: false,
         helpers: {
-            formatDate: function(date) {
-                if (!date) return "";
-                const dateObj = new Date(date);
-                if (isNaN(dateObj.getTime())) return ""; 
-                const options = {
-                    month: 'long',
-                    day: 'numeric',
-                    year: 'numeric', 
-                    hour: 'numeric', 
-                    minute: 'numeric', 
-                    hour12: true
-                };
-                return dateObj.toLocaleDateString('en-US', options);
+            formatDate: formatDate,
+            formatEdit: function(date){
+                let dateString = formatDate(date);
+                if(dateString === "") { return ""}
+                return "Edited: " + dateString;
             },
             times: function(n, block) {
                 let accum = '';

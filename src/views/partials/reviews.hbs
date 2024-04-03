@@ -44,7 +44,7 @@
                 <p class="nameandtime"> · </p>
                 <p class="nameandtime">Created: {{formatDate createdAt}}</p>
                 <p class="nameandtime"> · </p>
-                <p class="nameandtime">{{formatDate editedAt}}</p>
+                <p class="nameandtime">{{formatEdit editedAt}}</p>
 
             </div>
         </div>
@@ -109,16 +109,16 @@
                 <div class="likeset" id="{{_id}}">
 
                     {{#if isLiked}}
-                        <button class="like-dislike colored" id="like">&#128077;</button>
+                        <button class="like-dislike colored" id="like">💖</button>
                     {{else}}
-                        <button class="like-dislike" id="like">&#128077;</button>
+                        <button class="like-dislike" id="like">💖</button>
                     {{/if}}
                     <span class = "numberoffeedback">{{noOfLikes}}</span>
 
                     {{#if isDisliked}}
-                        <button class="like-dislike colored" id="dislike">&#128078;</button>
+                        <button class="like-dislike colored" id="dislike">😤</button>
                     {{else}}
-                        <button class="like-dislike" id="dislike">&#128078;</button>
+                        <button class="like-dislike" id="dislike">😤</button>
                     {{/if}}
                     <span class="numberoffeedback">{{noOfDislikes}}</span>
             </div>
