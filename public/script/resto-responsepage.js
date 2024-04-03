@@ -574,7 +574,7 @@ $(document).ready(function() {
         event.preventDefault();
     
         const response = await fetch('/editrestopassword', {
-            method: 'POST', // Assuming it's a POST request
+            method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
             },
