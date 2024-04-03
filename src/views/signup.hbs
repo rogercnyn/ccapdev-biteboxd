@@ -10,6 +10,8 @@
     <!-- noty -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/noty@3.1.4/lib/noty.css">
     <script src="https://cdn.jsdelivr.net/npm/noty@3.1.4/lib/noty.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
@@ -68,13 +70,13 @@
                 <div class="box password-box">
                     <p class="input-label">Password</p>
                     <input type="password" id="password" name="password" required data-parsley-minlength="8" data-parsley-trigger="change">  
-                    <img src="assets/see.svg" alt="" class="show-password" id="show-password" onclick="togglePasswordVisibility('password', 'show-password')">
+                    <i class="fas fa-eye show-password" alt="" class="show-password" id="show-password" onclick="togglePasswordVisibility('password', 'show-password')"></i>
                 </div>
             
                 <div class="box confirm-password-box password-box">
                     <p class="input-label">Confirm Password</p>
                     <input type="password" id="c-password" name="c-password" required data-parsley-minlength="8" data-parsley-trigger="change">
-                    <img src="assets/see.svg" alt="" class="show-password" id="show-password-2" onclick="togglePasswordVisibility('c-password', 'show-password-2')">
+                    <i class="fas fa-eye show-password" alt="" class="show-password" id="show-password-2" onclick="togglePasswordVisibility('c-password', 'show-password-2')"></i>
                 </div>
             
                 <div class="action-button-container">
