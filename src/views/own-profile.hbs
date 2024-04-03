@@ -55,7 +55,7 @@
                         <div class="options">
                             <div class="optionsbutton">
                                 <button class="edit-btn" onclick="openEditProfileModal()">Edit Profile</button>
-                                <button class="change-btn" onclick="changePassword('{{profile.username}}')">Change Password</button>
+                                <button class="change-btn" onclick="openChangePasswordModal()">Change Password</button>
                                 <button class="delete-profile-btn" onclick="deleteProfile('{{profile.username}}')">Delete Profile</button>
                             </div>
                         </div>
@@ -74,9 +74,9 @@
                                 <span class="close-button">&times;</span>
                                 <h2>Edit Profile</h2>
                                 <form id="editProfileForm" action="/edit-profile" method="POST" enctype="multipart/form-data">
-                                    <div class="form-group">
+                                    <div class="credentials-group">
                                         <label for="profilePic">Profile Picture:</label>
-                                        <input type="file" id="profilePic" name="profilePic">
+                                        <input type="file" id="profilePic" class="styled-input modal-field" name="profilePic">
                                     </div>
                                     
                                     {{!-- <div class="form-group">
@@ -84,22 +84,22 @@
                                         <input type="file" id="backgroundPic" name="backgroundPic">
                                     </div> --}}
 
-                                    <div class="form-group">
+                                    <div class="credentials-group">
                                         <label for="firstName">First Name:</label>
-                                        <input type="text" id="firstName" name="firstName" required>
+                                        <input type="text" id="firstName" name="firstName" class="styled-input modal-field" required>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="credentials-group">
                                         <label for="lastName">Last Name:</label>
-                                        <input type="text" id="lastName" name="lastName" required>
+                                        <input type="text" id="lastName" name="lastName"  class="styled-input modal-field" required>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="credentials-group">
                                         <label for="bio">Bio:</label>
-                                        <textarea id="profileBio" name="profileBio" required></textarea>
+                                        <textarea id="profileBio" name="profileBio" class="styled-input modal-field" required></textarea>
                                     </div>
                                     
-                                    <div class="form-group save-changes-div">
+                                    <div class="credentials-group save-changes-div">
                                         <button type="submit" class="save-changes" >Save Changes</button>
                                     </div>
                                 </form>
@@ -107,6 +107,30 @@
                             </div>
                             
                         </div>
+
+                           <div id="changePasswordModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close-button">&times;</span>
+                                    <h2>Change Password</h2>
+                                        <form id="changePasswordForm" action="/change-password" method="POST">
+                                            <div class="credentials-group">
+                                                <label for="username" class="editlabel">Old Password:</label>
+                                                <input type="password" id="oldPassword" name="oldPassword" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
+                                            </div>
+                                            <div class="credentials-group">
+                                                <label for="password" class="editlabel">Password:</label>
+                                                <input type="password" id="newPassword" name="newPassword" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
+                                            </div>
+                                            <div class="credentials-group">
+                                                <label for="confirmpass" class="editlabel">Confirm Password:</label>
+                                                <input type="password" id="confirmpass" name="confirmpass" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change" data-parsley-equalto="#newPassword" data-parsley-equalto-message="Passwords do not match.">
+                                                <span id="confirmError" class="error-message"></span>
+                                            </div>
+
+                                            <button type="submit" class="save-changes" id="changeButton" style="margin-left: 50px;">Change Password</button>
+                                        </form>
+                                </div>
+                            </div>
 
                     </div>
                 </div>
@@ -192,7 +216,7 @@
                 <div id="editTasteProfileModal" class="modal">
                     <div class="modal-content">
                         <span class="close-button">&times;</span>
-                        <h2>Edit Taste Profile</h2>
+                        <h2 style="margin-bottom: 40px;">Edit Taste Profile</h2>
                         <div class="yellow-box-container tag-layers">
                             <div class="layer">
                                 <div class="tag" onclick="toggleTag(this)">Salty</div>
@@ -214,10 +238,14 @@
                             </div>
                         </div>
                         <div class="action-button-container">
-                            <button  type="submit" class="action-button" id="saveTasteChanges">Save Changes</button>
+                            <button  type="submit" class="save-changes" id="saveTasteChanges" style="margin-top: 35px;" >Save Changes</button>
                         </div>
                     </div>
                 </div>
+
+                {{!-- editing pass --}}
+                
+             
 
 
                 <div class="divider"></div>

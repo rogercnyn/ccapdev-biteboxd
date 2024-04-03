@@ -105,7 +105,7 @@ router.post("/edit-profile", upload.single('profilePic'),editProfile);
 router.post("/login", login);
 router.post('/deleteProfile/:username', deleteProfile);
 router.post('/api/changePassword/:username', changeUserPassword);
-
+// router.post('/api/changePassword', isAuthenticated, changeUserPassword);
 
 router.get('/logout', logout);
 router.get('/profile/:username', handleProfileRequest)

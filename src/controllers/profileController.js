@@ -228,9 +228,38 @@ async function editProfile(req, res) {
     }
 }
 
+// async function changeUserPassword(req, res) {
+//     const { username } = req.params;
+//     const { oldPassword, newPassword } = req.body;
+//     try {
+//         const user = await Profile.findOne({ username });
+//         if (!user) {
+//             return res.status(404).json({ message: 'User not found' });
+//         }
+
+//         const isMatch = await bcrypt.compare(oldPassword, user.password);
+//         if (!isMatch) {
+//             return res.status(400).json({ message: 'Incorrect current password' });
+//         }
+
+
+//         const salt = await bcrypt.genSalt(10);
+//         const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+//         user.password = hashedPassword; 
+//         await user.save();
+
+//         res.json({ success: true, message: 'Password successfully changed' });
+//     } catch (error) {
+//         console.error('Error changing password:', error);
+//         res.status(500).json({ message: 'Internal server error' });
+//     }
+// }
+
 async function changeUserPassword(req, res) {
-    const { username } = req.params;
     const { oldPassword, newPassword } = req.body;
+    const username = req.session.username; // Assuming username is stored in session
+
     try {
         const user = await Profile.findOne({ username });
         if (!user) {
@@ -242,11 +271,10 @@ async function changeUserPassword(req, res) {
             return res.status(400).json({ message: 'Incorrect current password' });
         }
 
-
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(newPassword, salt);
 
-        user.password = hashedPassword; 
+        user.password = hashedPassword;
         await user.save();
 
         res.json({ success: true, message: 'Password successfully changed' });
@@ -255,8 +283,6 @@ async function changeUserPassword(req, res) {
         res.status(500).json({ message: 'Internal server error' });
     }
 }
-
-
 
 async function updateUsersStats() {
     try {

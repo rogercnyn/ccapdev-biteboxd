@@ -241,7 +241,7 @@ main {
     background-color: rgba(0,0,0,0.4);
 }
 
-.modal-content {
+/* .modal-content {
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -250,7 +250,7 @@ main {
     max-width: 479px;
     border-radius: 10px;
     position: relative;
-}
+} */
 
 .close-button {
     color: #aaa;
@@ -275,16 +275,6 @@ label {
     font-weight: bold;
 }
 
-input[type="text"],
-input[type="number"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-}
 
 textarea {
     resize: vertical;
@@ -303,7 +293,8 @@ textarea {
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
     font-size: 16px;
-    margin-right: 90px;
+    margin-right: 25px;
+    margin-left: 25px;
 }
 
 .save-changes:hover {

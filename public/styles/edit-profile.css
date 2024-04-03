@@ -18,9 +18,10 @@
   padding: 25px;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  width: 30%;
+  width: 25%;
   position: relative;
   z-index: 1001;
+  font-family: 'DM Sans';
 }
 
 
@@ -42,7 +43,7 @@
 }
 
 
-.modal-content h2 {
+/* .modal-content h2 {
   color: #333;
   margin-bottom: 20px;
   font-size: 24px;
@@ -58,45 +59,24 @@
   margin-bottom: 5px;
   color: #333;
   font-weight: 600;
-}
-
-
-/* .modal-content form input[type="text"],
-.modal-content form input[type="file"],
-.modal-content form textarea {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-sizing: border-box;
-  font-family: sans-serif;
-  color: #535353;
 } */
 
-.modal-content form textarea {
+
+
+/* .modal-content form textarea {
   height: 80px;
   resize: none;
-}
-
-
-/* .modal-content form button[type="submit"] {
-  padding: 10px 15px;
-  font-size: 14px;
-    font-weight: 600;
-    color: #333;
-    background: #FDD247;
-    border-radius: 15px;
-    padding: 8px;
-  transition: background-color 0.3s ease; 
 } */
 
 
 
-.save-changes-div{
+
+
+/* .save-changes-div{
   margin-left: 35%;
   width: 60%;
   
-}
+} */
 
 #file-uploard-button{
 
@@ -207,3 +187,71 @@
   opacity: 75%;
 }
 
+
+.credentials-group {
+  display: flex;
+  flex-direction: column;
+  /* padding-right: 50px; */
+  /* padding-left: 50px; */
+  margin-bottom: 35px;
+  margin-top: 25px;
+}
+
+/* #changePasswordModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fcfcfc;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 10px;
+  width: 400px;
+  min-height: 400px;
+  max-height: 480px;
+} */
+
+/* .close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 20px;
+  cursor: pointer;
+} */
+
+
+.parsley-errors-list {
+  list-style-type: none;
+  margin-left: 4px;
+  padding: 0;
+  align-self: flex-start;
+  font-family: 'Segoe UI';
+  color: red;
+  font-size: 10px;
+}
+
+.changebutton {
+  padding: 10px 20px;
+  font-family: 'DM Sans';
+  font-weight: bold;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(5, 89, 5);
+  border: 1px solid #ccc;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: 20px;
+
+}
+
+.styled-input {
+  padding: 10px;
+  font-family: 'DM Sans';
+  background-color: #f6f6f6;
+  border: none;
+  border-radius: 12px;
+  width: 250px;
+}
