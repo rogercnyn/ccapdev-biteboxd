@@ -85,6 +85,7 @@ function checkPasswordsMatch() {
 
 document.getElementById('uploadButton').addEventListener('click', function(event) {
     event.preventDefault();
+    $('#createRestoForm').parsley();
 
     if (!validateForm()) {
         Swal.fire({

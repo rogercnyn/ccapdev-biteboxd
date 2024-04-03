@@ -319,3 +319,26 @@ textarea {
     flex-direction: row;
     gap: 10px;
 }
+
+.password-box {
+    position: relative;
+}
+
+.password-input {
+    padding-right: 40px;
+}
+
+.show-password {
+    position: absolute;
+    height: 1.5rem;
+    top: 28px;
+    right: 60px;
+    z-index: 1;
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.show-password-clicked {
+    opacity: 100%;
+}
+

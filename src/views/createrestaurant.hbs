@@ -154,13 +154,15 @@
                         <label for="username" class="editlabel">Username:</label>
                         <input type="text" id="username" name="username" class="styled-input modal-field" data-parsley-trigger="change" required data-parsley-pattern="^[a-zA-Z0-9]+$">
                     </div>
-                    <div class="credentials-group">
+                    <div class="credentials-group password-box">
                         <label for="password" class="editlabel">Password:</label>
-                        <input type="password" id="password" name="password" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
+                        <input type="password" id="password" name="password" class="styled-input modal-field password-input" required data-parsley-minlength="8" data-parsley-trigger="change">
+                        <img src="assets/see.svg" alt="" class="show-password" id="show-password" onclick="togglePasswordVisibility('password', 'show-password')">
                     </div>
-                    <div class="credentials-group">
+                    <div class="credentials-group password-box">
                         <label for="confirmpass" class="editlabel">Confirm Password:</label>
-                        <input type="password" id="confirmpass" name="confirmpass" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change" data-parsley-equalto="#password" data-parsley-equalto-message="Passwords do not match.">
+                        <input type="password" id="confirmpass" name="confirmpass" class="styled-input modal-field password-input" required data-parsley-minlength="8" data-parsley-trigger="change" data-parsley-equalto="#password" data-parsley-equalto-message="Passwords do not match.">
+                        <img src="assets/see.svg" alt="" class="show-password" id="show-password-2" onclick="togglePasswordVisibility('confirmpass', 'show-password-2')">
                         <span id="confirmError" class="error-message"></span>
                     </div>
 
