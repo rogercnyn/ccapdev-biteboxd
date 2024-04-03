@@ -223,11 +223,6 @@ function toggleTag(tag) {
     tag.classList.toggle('selected');
 }
 
-function toggleOptions(element) {
-    $(element).next('.edit-options-popup').toggle()
-}
-
-
 function openChangePasswordModal() {
     document.getElementById('changePasswordModal').style.display = 'block';
 }
