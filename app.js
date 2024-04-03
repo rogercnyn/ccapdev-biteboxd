@@ -36,7 +36,7 @@ function initializeHandlebars() {
         defaultLayout: false,
         helpers: {
             formatDate: function(date) {
-                if (!date) return "Invalid date";
+                if (!date) return "";
                 const dateObj = new Date(date);
                 if (isNaN(dateObj.getTime())) return ""; 
                 const options = {
