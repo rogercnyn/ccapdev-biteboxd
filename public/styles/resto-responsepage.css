@@ -390,7 +390,7 @@ textarea {
     top: 33px;
     right: 65px;
     z-index: 100001;
-    opacity: 50%;
+    opacity: 25%;
     cursor: pointer;
 }
 

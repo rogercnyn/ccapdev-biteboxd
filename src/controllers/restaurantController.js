@@ -422,7 +422,7 @@ async function addRestaurant(req, res) {
 
     let avatarFilename = req.file ? req.file.filename : 'default-avatar.png';
 
-    const tagsArray = tags.split(',').map(tag => tag.trim());
+    const tagsArray = tags.split(',').map(tag => tag.trim()).filter(tag => tag !== "");
 
     let priceDifference = priceend-pricestart;
     let numberofCashEmoji = numberOfCashEmojiCounter(priceDifference);
@@ -522,7 +522,7 @@ async function editRestaurant(req,res) {
         attri11,
         attri12, xcoord, ycoord } = req.body;
 
-        const tagsArray = tags.split(',').map(tag => tag.trim());
+        const tagsArray = tags.split(',').map(tag => tag.trim()).filter(tag => tag !== "");
 
         let priceDifference = priceend-pricestart;
         let numberofCashEmoji = numberOfCashEmojiCounter(priceDifference);

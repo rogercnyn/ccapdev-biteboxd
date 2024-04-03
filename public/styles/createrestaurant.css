@@ -331,10 +331,10 @@ textarea {
 .show-password {
     position: absolute;
     height: 1.5rem;
-    top: 28px;
+    top: 33px;
     right: 60px;
     z-index: 1;
-    opacity: 50%;
+    opacity: 25%;
     cursor: pointer;
 }
 
