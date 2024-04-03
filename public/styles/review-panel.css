@@ -394,6 +394,7 @@
     background-color: #f8f8f8;
     border-radius: 10px;
     padding: 10px;
+    max-width: 732px;
     min-width: 732px;
 }
 
