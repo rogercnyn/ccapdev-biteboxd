@@ -97,15 +97,9 @@ function saveEditedProfile() {
                 text: 'Failed to edit profile: ' + data.message,
                 icon: 'error'
             });
+            console.log('Failed to edit profile:', data.message);
         }
     })
-    .catch((error) => {
-        Swal.fire({
-            title: 'Error!',
-            text: 'An error occurred: ' + error.message,
-            icon: 'error'
-        });
-    });
 }
 
 
