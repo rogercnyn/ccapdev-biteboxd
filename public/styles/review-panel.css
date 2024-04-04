@@ -399,7 +399,7 @@
     text-overflow: ellipsis;
     white-space: normal;
     max-height: 34px;
-
+    word-wrap: break-word; 
     /* border: 1px solid orange; */
     cursor: pointer;
 
@@ -408,7 +408,7 @@
     background-color: #f8f8f8;
     border-radius: 10px;
     padding: 10px;
-    max-width: 732px;
+    max-width: 732px; 
     min-width: 732px;
     margin-top: -1%;
 }
