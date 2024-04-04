@@ -227,17 +227,58 @@ function openChangePasswordModal() {
     document.getElementById('changePasswordModal').style.display = 'block';
 }
 
+
+function shakeBoxes(message) {
+    var newPasswordField = document.getElementById("newPassword");
+    if (newPasswordField) {
+        newPasswordField.classList.add("shake", "error");
+        var errorSpan = newPasswordField.nextElementSibling;
+        if (errorSpan) {
+            errorSpan.textContent = message;
+            errorSpan.style.display = "block";
+        }
+        setTimeout(() => {
+            newPasswordField.classList.remove("shake", "error");
+            if (errorSpan) {
+                errorSpan.textContent = "";
+                errorSpan.style.display = "none";
+            }
+        }, 2000);
+    }
+
+    var confirmPasswordField = document.getElementById("confirmpass");
+    if (confirmPasswordField) {
+        confirmPasswordField.classList.add("shake", "error");
+        var errorSpan = confirmPasswordField.nextElementSibling;
+        if (errorSpan) {
+            errorSpan.textContent = message;
+            errorSpan.style.display = "block";
+        }
+        setTimeout(() => {
+            confirmPasswordField.classList.remove("shake", "error");
+            if (errorSpan) {
+                errorSpan.textContent = "";
+                errorSpan.style.display = "none";
+            }
+        }, 2000);
+    }
+}
+
+
+
 function saveChangePassword() {
     var oldPassword = document.getElementById("oldPassword").value;
     var newPassword = document.getElementById("newPassword").value;
     var confirmPassword = document.getElementById("confirmpass").value;
 
-    if (!oldPassword || !newPassword || newPassword !== confirmPassword) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please make sure all fields are filled correctly!',
-        });
+    if (!oldPassword || !newPassword || newPassword !== confirmPassword || newPassword.length < 8) {
+        var message = "";
+        if (newPassword.length < 8) {
+            message = "Password too short";
+        } else {
+            message = "Passwords do not match";
+        }
+        shakeBoxes(message);
         return;
     }
 
@@ -274,6 +315,10 @@ function saveChangePassword() {
         });
     });
 }
+
+
+
+
 function setupFileInputPreview(fileInputId, previewImgId) {
     var fileInput = document.getElementById(fileInputId);
     if (fileInput) {
