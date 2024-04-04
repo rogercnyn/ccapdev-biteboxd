@@ -414,10 +414,16 @@
 }
 
 .expand {
+    cursor: pointer;
+    position: absolute;
+    top: 13px;
+    right: 125px;
     opacity: 20%;
 }
 
+
 .expanded {
+    cursor: pointer;
     opacity: 40%;
 }
 
