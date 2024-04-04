@@ -63,7 +63,9 @@ async function handleCreateRestaurantReply(req, res) {
         const reply = new RestaurantReply({
             restaurantId,
             reviewId,
-            body
+            body,
+            createdAt: Date.now(),
+
         });
 
         review.replies.push(reply._id)

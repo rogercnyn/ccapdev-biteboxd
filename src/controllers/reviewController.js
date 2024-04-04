@@ -209,6 +209,7 @@ async function processReview(review, username, loggedIn, likedReviews, dislikedR
         reply['reviewId'] = review['_id']
         reply['body'] = convertToRTF(reply['body'])
         reply['isRestaurantOwner'] = isRestaurantOwner
+        // reply['editedAt']
     })
 
     // console.log(review)
