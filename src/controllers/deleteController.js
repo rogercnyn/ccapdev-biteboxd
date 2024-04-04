@@ -49,7 +49,8 @@ async function deleteRestaurant(req, res) {
         // from restaurantreplyController.js
         await deleteRestoReplyByBulk(id);
 
-        res.redirect('/');
+        
+        res.redirect('/logout');
 
     } catch (error) {
         console.error('Error deleting restaurant:', error);
