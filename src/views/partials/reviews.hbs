@@ -176,19 +176,17 @@
                 <div class="titlearea">
 
                     <h2>{{name}} <i class="fas fa-check-circle verified-icon"></i></h2>
-                    <p class="nameandtime">{{formatDate createdAt}}</p>
-                    <p class="nameandtime"> · </p>
-                    <p class="nameandtime">{{formatEdit editedAt}}</p>
-
+                    <p class="nameandtime">{{formatDate createdAt}} · {{formatEdit editedAt}}</p>
+                    
                 </div>
             
             </div>
             
-            <div class="restaurant-replytext" id="replyToReviewContent{{reviewId}}">{{{body}}}</div>
+            <div class="restaurant-replytext" id="replyToReviewContent{{_id}}">{{{body}}}</div>
 
 
             {{#if isRestaurantOwner}}
-                <p id="getReply{{reviewId}}" style="display: none;">{{body}}</p>
+                <p id="getReply{{_id}}" style="display: none;">{{body}}</p>
                 <span id="three-dots-editReply" onclick="toggleOptions(this)">&nbsp;&nbsp;&#8286;</span>
                 <div class="options-popup" id="optionsPopup">
                     <a onclick="replyReview('{{reviewId}}', '{{restaurantId}}', '{{_id}}')">Edit</a>

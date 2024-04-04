@@ -271,7 +271,7 @@ function replyReview(reviewId, restaurantId, replyId=null) {
 
     if(replyId) {
         
-        let existingReplyContent = document.getElementById(`replyToReviewContent${reviewId}`).innerHTML;
+        let existingReplyContent = document.getElementById(`replyToReviewContent${replyId}`).innerHTML;
         replyQuill.setInnerHTMl(existingReplyContent)
         $(publishReplyBtn).click(function() {
             console.log("editing")
