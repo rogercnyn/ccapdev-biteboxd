@@ -171,11 +171,12 @@ async function getProfileById(id) {
 async function createUser(req, res){
     try {
         const { firstName, lastName, username, email, password, tasteProfile } = req.body;
+        console.log('Creating user:', req.body.avatar);
         const parsedTasteProfile = JSON.parse(tasteProfile);
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
         
-        let imagePath = req.file ? req.file.filename : req.body.image || 'default-avatar.png';
+        let imagePath = req.file ? req.file.filename : (req.body.avatar || 'default-avatar.png');
         
         const newUser = new Profile({
             firstName,

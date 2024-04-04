@@ -75,7 +75,7 @@
             
                 <div class="box confirm-password-box password-box">
                     <p class="input-label">Confirm Password</p>
-                    <input type="password" id="c-password" name="c-password" required data-parsley-minlength="8" data-parsley-trigger="change">
+                    <input type="password" id="c-password" name="c-password" required data-parsley-minlength="8" data-parsley-trigger="change" data-parsley-equalto="#password">
                     <i class="fas fa-eye show-password" alt="" class="show-password" id="show-password-2" onclick="togglePasswordVisibility('c-password', 'show-password-2')"></i>
                 </div>
             
@@ -113,21 +113,27 @@
             <div class="login-form hide-form" id="form3">
                 <form class="yellow-box-container  avatar-container">
                     <div class="two-avatar">
-                        <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-f1.png"><img src="/uploads/avatars/avatar-f1.png" alt="" class="avatar"></div>
-                        <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-f2.png"><img src="/uploads/avatars/avatar-f2.png" alt="" class="avatar"></div>
+                        <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-f1.png"><img src="/uploads/avatars/avatar-f1.png" alt="" class="avatar image-src"></div>
+                        <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-f2.png"><img src="/uploads/avatars/avatar-f2.png" alt="" class="avatar image-src"></div>
                     </div>
                     <div class="two-avatar">
-                        <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-m1.png"><img src="/uploads/avatars/avatar-m1.png" alt="" class="avatar"></div>
+                        <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-m1.png"><img src="/uploads/avatars/avatar-m1.png" alt="" class="avatar image-src"></div>
                         {{!-- <div class="pic-option" onclick="triggerFileInput(this)">   
                              <input type="file" id="avatar-upload" class="avatar-upload">   
                             <img src="assets/upload.svg" alt="" class="upload-icon">                    
                         </div> --}}
-                        <div class="pic-option" onclick="clickAvatar(this)" id="/uploads/avatars/avatar-m2.jpeg"><img src="/uploads/avatars/avatar-m2.jpeg" alt="" class="avatar"></div>
+                         <div class="pic-option" id="avatar-upload-parking" onclick="triggerFileInput(this)">   
+                            <input type="file" id="avatar-upload" class="avatar-upload" accept="image/*">   
+                            <img src="assets/upload.svg" alt="" class="upload-icon">                        
+                        </div>
 
+                        <div class="photo-container" id="photo-container">
+        
+                        </div>
                     </div>
 
                     <div class="action-button-container">
-                        <button class="action-button">Sign up</button>
+                        <button class="action-button" id="final-signup-btn">Sign up</button>
                     </div>
                 </form>
             </div>
@@ -138,103 +144,6 @@
         </div>
     </main>
 
-    <script>
-
-        function getTasteProfile() {
-            const selectedTags = $('.tag.selected').toArray().map(tag => tag.textContent);
-            return selectedTags;
-        }
-
-       function getAvatar() {
-            const selectedAvatar = $('.avatar-container .pic-option.clicked img').attr('src');
-            if (selectedAvatar) {
-                return selectedAvatar.split('/').pop();
-            } else {
-                 const uploadedAvatar = $('#avatar-upload')[0].files[0];
-            if (uploadedAvatar) {
-                // Since we can't return the file itself in JSON, signal that a file has been uploaded
-                // The actual file upload handling will need to be adjusted to check for this signal and handle the file accordingly
-                return 'FILE_UPLOADED';
-                } else {
-                    return null;
-                }
-            }
-        }
-
-
-
-       $(document).ready(function() {
-            $('#form1').parsley();
-
-            $('#form1').on('submit', function(e) {
-                if ($('#form1').parsley().isValid()) {
-                    document.getElementById("yellow-box").classList.add('turn-white');
-                    document.getElementById('form1').classList.add('hide-form');
-                    document.getElementById('form2').classList.remove('hide-form');
-                
-                    document.getElementById('ellipse-2').classList.add('ellipse-clicked');
-                    document.getElementById('form2container').classList.add('adjustForm2');
-                    document.getElementById('toForm3').classList.add('adjustButton2');
-                } 
-                e.preventDefault(); 
-            });
-
-            $('#form3').on('submit', function(e) {
-                e.preventDefault();
-                
-                // Create FormData object to handle file uploads
-                var formData = new FormData();
-                formData.append('firstName', $('#first-name').val());
-                formData.append('lastName', $('#last-name').val());
-                formData.append('username', $('#username').val());
-                formData.append('email', $('#email').val());
-                formData.append('password', $('#password').val());
-                formData.append('tasteProfile', JSON.stringify(getTasteProfile()));
-
-                const avatarResult = getAvatar();
-                if (avatarResult === 'FILE_UPLOADED') {
-                    // If a file is uploaded, append it to formData
-                    formData.append('avatar', $('#avatar-upload')[0].files[0]);
-                } else {
-                    // If a predefined avatar is selected or no avatar is selected, append its filename or null
-                    formData.append('image', avatarResult);
-                }
-
-                fetch('/signup', {
-                    method: 'POST',
-                    body: formData // Send formData object
-                })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    throw new Error('Network response was not ok.');
-                })
-                .then(data => {
-                    console.log(data);
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'User created successfully',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        window.location.href = '/';
-                    });
-                })
-                .catch(error => {
-                    console.error('Error creating user:', error);
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'An error occurred while creating user',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    });
-                });
-            });
-        });
-
-      initializeSignUp(); 
-    </script>
     
     
 </body>
