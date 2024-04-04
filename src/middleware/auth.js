@@ -1,6 +1,6 @@
 
 function isAuthenticated(req, res, next) {
-    const acceptedPaths = ['/createrestaurant', '/editrestaurant', '/resto-responsepage/:id/delete', '/resto-responsepage/:id/updatepicture', '/editrestopassword', '/logout'];
+    const acceptedPaths = ['/createrestaurant', '/editrestaurant', '/resto-responsepage/:id/delete', '/resto-responsepage/:id/updatepicture', '/editrestopassword', '/logout', '/review/:_restaurantId/:_reviewId/reply/create', '/review/:_restaurantId/:_reviewId/reply/:_replyId/edit', '/review/:_restaurantId/:_reviewId/reply/:_replyId/delete'];
     // console.log(req.session)
     res.locals.loggedIn = req.session.userId ? true : false;
     res.locals.profilePicture = req.session.profilePicture || 'defaultProfilePic.png'; // Adjust default profile picture as necessary
