@@ -219,7 +219,7 @@ async function editProfile(req, res) {
 
         if (req.file) {
             const filename = path.basename(req.file.path);
-            profileUpdate.image = filename + '?' + Date.now(); // Add cache busting query parameter
+            profileUpdate.image = filename;
             console.log("Profile picture updated");
         }
 
@@ -233,64 +233,9 @@ async function editProfile(req, res) {
 }
 
 
-
-// async function editProfile(req, res) {
-//     try {
-//         const { username, firstName, lastName, bio } = req.body;
-//         console.log("Request body:", req.body);
-
-//         let profile = await Profile.findOneAndUpdate(
-//             { username: username },
-//             { firstName: firstName, lastName: lastName, bio: bio },
-//             { new: true }
-//         );
-//         console.log("Updated profile:", profile);
-
-//         if (req.file) {
-//             // Update profile picture path if a new file is uploaded
-//             profile.image = req.file.path;
-//             await profile.save();
-            // console.log("Profile picture updated");
-//         }
-
-//         res.status(200).json({ success: true, profile: profile });
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({ success: false, message: "Failed to edit profile" });
-//     }
-// }
-
-// async function changeUserPassword(req, res) {
-//     const { username } = req.params;
-//     const { oldPassword, newPassword } = req.body;
-//     try {
-//         const user = await Profile.findOne({ username });
-//         if (!user) {
-//             return res.status(404).json({ message: 'User not found' });
-//         }
-
-//         const isMatch = await bcrypt.compare(oldPassword, user.password);
-//         if (!isMatch) {
-//             return res.status(400).json({ message: 'Incorrect current password' });
-//         }
-
-
-//         const salt = await bcrypt.genSalt(10);
-//         const hashedPassword = await bcrypt.hash(newPassword, salt);
-
-//         user.password = hashedPassword; 
-//         await user.save();
-
-//         res.json({ success: true, message: 'Password successfully changed' });
-//     } catch (error) {
-//         console.error('Error changing password:', error);
-//         res.status(500).json({ message: 'Internal server error' });
-//     }
-// }
-
 async function changeUserPassword(req, res) {
     const { oldPassword, newPassword } = req.body;
-    const username = req.session.username; // Assuming username is stored in session
+    const username = req.session.username; 
 
     try {
         const user = await Profile.findOne({ username });

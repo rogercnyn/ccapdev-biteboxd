@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var tasteModal = document.getElementById("editTasteProfileModal");
 
     // Assuming profilePic contains the new image filename
-    document.getElementById('profile-pic').src = `/uploads/avatars/${profilePic}?${Date.now()}`;
+    // document.getElementById('profile-pic').src = `/uploads/avatars/${profilePic}?${Date.now()}`;
 
 
     // setupModalOpen(document.querySelector(".edit-btn"), profileModal, preFillEditProfileForm);
@@ -63,65 +63,12 @@ function preFillEditProfileForm() {
 
 
 
-// function openEditProfileModal() {
-//     var modal = document.getElementById("editProfileModal");
-//     var btn = document.querySelector(".edit-btn"); 
-//     var form = document.getElementById("editProfileForm");
-
-//     btn.onclick = function() {
-//         preFillEditProfileForm();
-//         modal.style.display = "block";
-//     };
-
-//     form.onsubmit = function(event) {
-//         event.preventDefault(); 
-
-//         var firstName = document.getElementById("firstName").value;
-//         var lastName = document.getElementById("lastName").value;
-//         var profileBio = document.getElementById("profileBio").value;
-
-        
-//         Swal.fire({
-//             title: 'Are you sure?',
-//             text: 'Do you want to save these changes to your profile?',
-//             icon: 'question',
-//             showCancelButton: true,
-//             confirmButtonColor: '#3085d6',
-//             cancelButtonColor: '#d33',
-//             confirmButtonText: 'Yes, save it!'
-//         }).then((result) => {
-//             if (result.isConfirmed) {
-
-//                 document.getElementById("first-name").textContent = firstName;
-//                 document.getElementById("last-name").textContent = lastName;
-//                 document.getElementById("bio").textContent = profileBio;
-
-
-//                 var fileInput = document.getElementById("profilePic");
-//                 if (fileInput.files && fileInput.files[0]) {
-//                     var reader = new FileReader();
-//                     reader.onload = function(e) {
-//                         document.getElementById("profile-pic").src = e.target.result;
-//                     };
-//                     reader.readAsDataURL(fileInput.files[0]);
-//                 }
-
-//                 modal.style.display = "none";
-
-//                 Swal.fire(
-//                     'Saved!',
-//                     'Your profile has been updated.',
-//                     'success'
-//                 );
-//             }
-//         });
-//     };
-// }
-
 function openEditProfileModal() {
     preFillEditProfileForm();
     document.getElementById("editProfileModal").style.display = "block";
 }
+
+
 
 function saveEditedProfile() {
     var formData = new FormData(document.getElementById("editProfileForm"));
@@ -130,22 +77,37 @@ function saveEditedProfile() {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
         if(data.success) {
-            console.log("Profile edited successfully:", data.profile);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Profile edited successfully',
+                icon: 'success'
+            });
             document.getElementById("editProfileModal").style.display = "none";
-            // You can update the profile information on the frontend as needed
         } else {
-            console.error("Failed to edit profile:", data.message);
-            // Handle failure, e.g., show an error message to the user
+            Swal.fire({
+                title: 'Error!',
+                text: 'Failed to edit profile: ' + data.message,
+                icon: 'error'
+            });
         }
     })
     .catch((error) => {
-        console.error('Error:', error);
-        // Handle error, e.g., show an error message to the user
+        Swal.fire({
+            title: 'Error!',
+            text: 'An error occurred: ' + error.message,
+            icon: 'error'
+        });
     });
 }
+
 
 
 function setupModalOpen(button, modal, preFillFunction) {
