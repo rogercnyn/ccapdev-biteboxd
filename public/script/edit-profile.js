@@ -2,17 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var profileModal = document.getElementById("editProfileModal");
     var tasteModal = document.getElementById("editTasteProfileModal");
 
-    function setupModalOpen(button, modal, preFillFunction) {
-        if (button) {
-            button.addEventListener('click', function() {
-                if (preFillFunction) preFillFunction();
-                modal.style.display = "block";
-            });
-        }
-    }
+    // Assuming profilePic contains the new image filename
+    document.getElementById('profile-pic').src = `/uploads/avatars/${profilePic}?${Date.now()}`;
 
-    setupModalOpen(document.querySelector(".edit-btn"), profileModal, preFillEditProfileForm);
-    setupModalOpen(document.querySelector(".edit-taste-btn"), tasteModal, preFillEditTasteProfileForm);
+
+    // setupModalOpen(document.querySelector(".edit-btn"), profileModal, preFillEditProfileForm);
+    // setupModalOpen(document.querySelector(".edit-taste-btn"), tasteModal, preFillEditTasteProfileForm);
 
     var changePasswordBtn = document.querySelector(".change-btn");
     if (changePasswordBtn) {
@@ -52,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (saveTasteChangesButton) {
         saveTasteChangesButton.addEventListener('click', saveUpdatedTasteProfile);
     }
+    document.getElementById("saveEditedProfileButton").addEventListener("click", saveEditedProfile);
 });
 
 function preFillEditProfileForm() {
@@ -67,60 +63,90 @@ function preFillEditProfileForm() {
 
 
 
-function openEditProfileModal() {
-    var modal = document.getElementById("editProfileModal");
-    var btn = document.querySelector(".edit-btn"); 
-    var form = document.getElementById("editProfileForm");
+// function openEditProfileModal() {
+//     var modal = document.getElementById("editProfileModal");
+//     var btn = document.querySelector(".edit-btn"); 
+//     var form = document.getElementById("editProfileForm");
 
-    btn.onclick = function() {
-        preFillEditProfileForm();
-        modal.style.display = "block";
-    };
+//     btn.onclick = function() {
+//         preFillEditProfileForm();
+//         modal.style.display = "block";
+//     };
 
-    form.onsubmit = function(event) {
-        event.preventDefault(); 
+//     form.onsubmit = function(event) {
+//         event.preventDefault(); 
 
-        var firstName = document.getElementById("firstName").value;
-        var lastName = document.getElementById("lastName").value;
-        var profileBio = document.getElementById("profileBio").value;
+//         var firstName = document.getElementById("firstName").value;
+//         var lastName = document.getElementById("lastName").value;
+//         var profileBio = document.getElementById("profileBio").value;
 
         
-        Swal.fire({
-            title: 'Are you sure?',
-            text: 'Do you want to save these changes to your profile?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, save it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
+//         Swal.fire({
+//             title: 'Are you sure?',
+//             text: 'Do you want to save these changes to your profile?',
+//             icon: 'question',
+//             showCancelButton: true,
+//             confirmButtonColor: '#3085d6',
+//             cancelButtonColor: '#d33',
+//             confirmButtonText: 'Yes, save it!'
+//         }).then((result) => {
+//             if (result.isConfirmed) {
 
-                document.getElementById("first-name").textContent = firstName;
-                document.getElementById("last-name").textContent = lastName;
-                document.getElementById("bio").textContent = profileBio;
+//                 document.getElementById("first-name").textContent = firstName;
+//                 document.getElementById("last-name").textContent = lastName;
+//                 document.getElementById("bio").textContent = profileBio;
 
 
-                var fileInput = document.getElementById("profilePic");
-                if (fileInput.files && fileInput.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById("profile-pic").src = e.target.result;
-                    };
-                    reader.readAsDataURL(fileInput.files[0]);
-                }
+//                 var fileInput = document.getElementById("profilePic");
+//                 if (fileInput.files && fileInput.files[0]) {
+//                     var reader = new FileReader();
+//                     reader.onload = function(e) {
+//                         document.getElementById("profile-pic").src = e.target.result;
+//                     };
+//                     reader.readAsDataURL(fileInput.files[0]);
+//                 }
 
-                modal.style.display = "none";
+//                 modal.style.display = "none";
 
-                Swal.fire(
-                    'Saved!',
-                    'Your profile has been updated.',
-                    'success'
-                );
-            }
-        });
-    };
+//                 Swal.fire(
+//                     'Saved!',
+//                     'Your profile has been updated.',
+//                     'success'
+//                 );
+//             }
+//         });
+//     };
+// }
+
+function openEditProfileModal() {
+    preFillEditProfileForm();
+    document.getElementById("editProfileModal").style.display = "block";
 }
+
+function saveEditedProfile() {
+    var formData = new FormData(document.getElementById("editProfileForm"));
+
+    fetch('/edit-profile', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success) {
+            console.log("Profile edited successfully:", data.profile);
+            document.getElementById("editProfileModal").style.display = "none";
+            // You can update the profile information on the frontend as needed
+        } else {
+            console.error("Failed to edit profile:", data.message);
+            // Handle failure, e.g., show an error message to the user
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        // Handle error, e.g., show an error message to the user
+    });
+}
+
 
 function setupModalOpen(button, modal, preFillFunction) {
     if (button) {
@@ -227,17 +253,58 @@ function openChangePasswordModal() {
     document.getElementById('changePasswordModal').style.display = 'block';
 }
 
+
+function shakeBoxes(message) {
+    var newPasswordField = document.getElementById("newPassword");
+    if (newPasswordField) {
+        newPasswordField.classList.add("shake", "error");
+        var errorSpan = newPasswordField.nextElementSibling;
+        if (errorSpan) {
+            errorSpan.textContent = message;
+            errorSpan.style.display = "block";
+        }
+        setTimeout(() => {
+            newPasswordField.classList.remove("shake", "error");
+            if (errorSpan) {
+                errorSpan.textContent = "";
+                errorSpan.style.display = "none";
+            }
+        }, 2000);
+    }
+
+    var confirmPasswordField = document.getElementById("confirmpass");
+    if (confirmPasswordField) {
+        confirmPasswordField.classList.add("shake", "error");
+        var errorSpan = confirmPasswordField.nextElementSibling;
+        if (errorSpan) {
+            errorSpan.textContent = message;
+            errorSpan.style.display = "block";
+        }
+        setTimeout(() => {
+            confirmPasswordField.classList.remove("shake", "error");
+            if (errorSpan) {
+                errorSpan.textContent = "";
+                errorSpan.style.display = "none";
+            }
+        }, 2000);
+    }
+}
+
+
+
 function saveChangePassword() {
     var oldPassword = document.getElementById("oldPassword").value;
     var newPassword = document.getElementById("newPassword").value;
     var confirmPassword = document.getElementById("confirmpass").value;
 
-    if (!oldPassword || !newPassword || newPassword !== confirmPassword) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please make sure all fields are filled correctly!',
-        });
+    if (!oldPassword || !newPassword || newPassword !== confirmPassword || newPassword.length < 8) {
+        var message = "";
+        if (newPassword.length < 8) {
+            message = "Password too short";
+        } else {
+            message = "Passwords do not match";
+        }
+        shakeBoxes(message);
         return;
     }
 
@@ -274,6 +341,10 @@ function saveChangePassword() {
         });
     });
 }
+
+
+
+
 function setupFileInputPreview(fileInputId, previewImgId) {
     var fileInput = document.getElementById(fileInputId);
     if (fileInput) {

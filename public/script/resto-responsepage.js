@@ -565,16 +565,29 @@ function validateForm() {
     return true; 
 }
 
-function checkPassword()
+function isPasswordValid()
 {
     let oldPass = document.getElementById('oldPassword').value;
     let newPass = document.getElementById('newPassword').value;
     let confirmPass = document.getElementById('confirmpass').value;
 
-    if (newPass !== confirmPass || newPass.length < 8 || confirmPass.length < 8 || oldPass === '' ||
+    if (newPass.length < 8 || confirmPass.length < 8 || oldPass === '' ||
             newPass === '' || confirmPass === '') {
         return false;
     } else {
+        return true;
+    }
+}
+
+function isPasswordMatch(){
+    let newPass = document.getElementById('newPassword').value;
+    let confirmPass = document.getElementById('confirmpass').value;
+
+    if(newPass !== confirmPass)
+    {
+        return false;
+    }
+    else{
         return true;
     }
 }
@@ -586,39 +599,55 @@ $(document).ready(function() {
     document.getElementById('changeButton').addEventListener('click', async function(event) {
         event.preventDefault();
 
-        if (checkPassword())
+        if (isPasswordValid())
         {
-            const response = await fetch('/editrestopassword', {
-                method: 'POST', 
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    oldPassword: document.getElementById('oldPassword').value,
-                    newPassword: document.getElementById('newPassword').value
-                })
-            });
-        
-            const data = await response.json();
-        
-            if (data.success) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: data.message,
-                    onClose: () => {
-                        document.getElementById('oldPassword').value = '';
-                        document.getElementById('newPassword').value = '';
-                        document.getElementById('confirmpass').value = '';
-            
-                        window.location.reload();
-                    }
+            if(isPasswordMatch())
+            {
+                const response = await fetch('/editrestopassword', {
+                    method: 'POST', 
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        oldPassword: document.getElementById('oldPassword').value,
+                        newPassword: document.getElementById('newPassword').value
+                    })
                 });
-            } else {
+            
+                const data = await response.json();
+            
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: data.message,
+                        onClose: () => {
+                            document.getElementById('oldPassword').value = '';
+                            document.getElementById('newPassword').value = '';
+                            document.getElementById('confirmpass').value = '';
+                
+                            window.location.reload();
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.message,
+                        onClose: () => {
+                            document.getElementById('oldPassword').value = '';
+                            document.getElementById('newPassword').value = '';
+                            document.getElementById('confirmpass').value = '';
+                        }
+                    });
+                }
+            }
+            else 
+            {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: data.message,
+                    text: "The password does not match.",
                     onClose: () => {
                         document.getElementById('oldPassword').value = '';
                         document.getElementById('newPassword').value = '';

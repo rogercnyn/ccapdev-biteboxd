@@ -60,15 +60,7 @@
                             </div>
                         </div>
 
-                        {{!-- <div class="options" id="optionsbtns">
-                            <div class="optionsbutton">
-                                <span class="editoption" onclick="openEditProfileModal()">Edit Profile</span>
-                                <span class="changeoption" onclick="changePassword('{{profile.username}}')">Change Password</span>
-                                <span class="deleteoption" onclick="deleteProfile('{{profile.username}}')">Delete</span>
-                            </div>
-                        </div> --}}
-
-                        <!-- edit profile popup-->
+                        
                         <div id="editProfileModal" class="modal">
                             <div class="modal-content">
                                 <span class="close-button">&times;</span>
@@ -79,11 +71,6 @@
                                         <input type="file" id="profilePic" class="styled-input modal-field" name="profilePic">
                                     </div>
                                     
-                                    {{!-- <div class="form-group">
-                                        <label for="backgroundPic">Background Picture:</label>
-                                        <input type="file" id="backgroundPic" name="backgroundPic">
-                                    </div> --}}
-
                                     <div class="credentials-group">
                                         <label for="firstName">First Name:</label>
                                         <input type="text" id="firstName" name="firstName" class="styled-input modal-field" required>
@@ -100,37 +87,36 @@
                                     </div>
                                     
                                     <div class="credentials-group save-changes-div">
-                                        <button type="submit" class="save-changes" >Save Changes</button>
+                                        <button type="submit" class="save-changes" id="saveEditedProfileButton">Save Changes</button>
                                     </div>
                                 </form>
-
                             </div>
-                            
                         </div>
 
                            <div id="changePasswordModal" class="modal">
-                                <div class="modal-content">
-                                    <span class="close-button">&times;</span>
-                                    <h2>Change Password</h2>
-                                        <form id="changePasswordForm" action="/change-password" method="POST">
-                                            <div class="credentials-group">
-                                                <label for="username" class="editlabel">Old Password:</label>
-                                                <input type="password" id="oldPassword" name="oldPassword" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
-                                            </div>
-                                            <div class="credentials-group">
-                                                <label for="password" class="editlabel">Password:</label>
-                                                <input type="password" id="newPassword" name="newPassword" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
-                                            </div>
-                                            <div class="credentials-group">
-                                                <label for="confirmpass" class="editlabel">Confirm Password:</label>
-                                                <input type="password" id="confirmpass" name="confirmpass" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change" data-parsley-equalto="#newPassword" data-parsley-equalto-message="Passwords do not match.">
-                                                <span id="confirmError" class="error-message"></span>
-                                            </div>
+                            <div class="modal-content">
+                                <span class="close-button">&times;</span>
+                                <h2>Change Password</h2>
+                                <form id="changePasswordForm" action="/change-password" method="POST">
+                                    <div class="credentials-group">
+                                        <label for="username" class="editlabel">Old Password:</label>
+                                        <input type="password" id="oldPassword" name="oldPassword" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
+                                    </div>
+                                    <div class="credentials-group">
+                                        <label for="password" class="editlabel">Password:</label>
+                                        <input type="password" id="newPassword" name="newPassword" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change">
+                                    </div>
+                                    <div class="credentials-group">
+                                        <label for="confirmpass" class="editlabel">Confirm Password:</label>
+                                        <input type="password" id="confirmpass" name="confirmpass" class="styled-input modal-field" required data-parsley-minlength="8" data-parsley-trigger="change" data-parsley-equalto="#newPassword" data-parsley-equalto-message="Passwords do not match.">
+                                        <span id="passwordError" class="error-message"></span> <!-- Error message element -->
+                                    </div>
 
-                                            <button type="submit" class="save-changes" id="changeButton" style="margin-left: 50px;">Change Password</button>
-                                        </form>
-                                </div>
+                                    <button type="submit" class="save-changes" id="changeButton" style="margin-left: 50px;">Change Password</button>
+                                </form>
                             </div>
+                        </div>
+
 
                     </div>
                 </div>

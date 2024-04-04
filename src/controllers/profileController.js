@@ -1,6 +1,7 @@
 const Profile = require('../models/Profile');
 const Review = require('../models/Review'); 
 const bcrypt = require('bcryptjs');
+const path = require('path');
 
 
 
@@ -214,10 +215,12 @@ async function editProfile(req, res) {
             lastName: lastName,
             bio: profileBio
         };
+        console.log("Updated profile:", profileUpdate);
 
         if (req.file) {
-            profileUpdate.image = req.file.filename;
-            req.session.profilePicture = profileUpdate.image;
+            const filename = path.basename(req.file.path);
+            profileUpdate.image = filename + '?' + Date.now(); // Add cache busting query parameter
+            console.log("Profile picture updated");
         }
 
         const updatedProfile = await Profile.findByIdAndUpdate(userId, profileUpdate, { new: true });
@@ -228,6 +231,34 @@ async function editProfile(req, res) {
         res.status(500).send("Internal Server Error");
     }
 }
+
+
+
+// async function editProfile(req, res) {
+//     try {
+//         const { username, firstName, lastName, bio } = req.body;
+//         console.log("Request body:", req.body);
+
+//         let profile = await Profile.findOneAndUpdate(
+//             { username: username },
+//             { firstName: firstName, lastName: lastName, bio: bio },
+//             { new: true }
+//         );
+//         console.log("Updated profile:", profile);
+
+//         if (req.file) {
+//             // Update profile picture path if a new file is uploaded
+//             profile.image = req.file.path;
+//             await profile.save();
+            // console.log("Profile picture updated");
+//         }
+
+//         res.status(200).json({ success: true, profile: profile });
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ success: false, message: "Failed to edit profile" });
+//     }
+// }
 
 // async function changeUserPassword(req, res) {
 //     const { username } = req.params;
