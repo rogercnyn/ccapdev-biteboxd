@@ -61,6 +61,19 @@ body {
     margin-bottom: auto;
 }
 
+#aboutus {
+    position: fixed;
+    /* margin: auto; */
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    top: 50px;
+    left: 175px;
+}
+
+#aboutus:hover {
+    color: #fdd247;
+}
+
 
 #addresto {
     position: fixed;

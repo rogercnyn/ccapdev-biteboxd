@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <script src="/script/general.js"></script>
+    <script src="/script/navbar.js"></script>
+    <script src="/script/quillSettings.js"></script>
+    <script src="/script/slider.js"></script>
+  
+    <link rel="stylesheet" href="/styles/about.css">
+    <link rel="stylesheet" href="/styles/createrestaurant.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+    {{> navbar}}
+    <main class="about">
+    <div class="header">
+        <h1 id ="aboutus">
+        About Us
+        </h1>
+        <p id ="abouttheapp">BiteBoxd is a web application emerging as a response to the prevailing challenge when it comes to culinary exploration, discovering, reviewing, and sharing dining experiences, where evaluations are often centralized. Relying heavily on the individual tastes of a single person, typically a blogger or influencer. Recognizing the limitations of such a singular perspective, Biteboxd seeks to revolutionize the experience by empowering a diverse community of users to contribute their unique insights and preferences. Inspired by the chosen approach of Letterboxd, BiteBoxd envisions a centralized platform where users can share their collective experiences and narratives around restaurant reviews. BiteBoxd is driven by the belief that a multitude of perspectives provides a more comprehensive and reliable guide for fellow enthusiasts.</p>
+    </div>
+    
+    <div class = "developerarea">
+        <h2>Developers</h2>
+        <div class="developerinfo">
+            <div class="developer">
+                <h3>China Ortiz</h3>
+                <p class = "sub">Team Head, Programmer</p>
+            </div>
+            <div class="developer">
+                <h3>Roger Canayon Jr.</h3>
+                <p class = "sub">Programmer</p>
+            </div>
+            <div class="developer">
+                <h3>Yuan Pangan</h3>
+                <p class = "sub">Programmer</p>
+            </div>
+            <div class="developer">
+                <h3>Mark Aquino</A></h3>
+                <p class = "sub">Quality Assurance, Programmer</p>
+            </div>
+        </div>
+    </div>
+
+    <div class = "libraryused">
+        <h2>Library and Packages Used</h2>
+        <div class="list">
+            <div class="listleft">
+                <li>Quill.js</li>
+                <li>Leaflet</li>
+                <li>NPM Chart</li>
+                <li>SweetAlert</li>
+                <li>Parsley</li>
+                <li>bcryptjs</li>
+                <li>body-parser</li>
+                <li>dotenv</li>
+            </div>
+            
+            <div class="listright">
+                <li>express</li>
+                <li>express-handlebars</li>
+                <li>express-session</li>
+                <li>memorystore</li>
+                <li>mongoose</li>
+                <li>multer</li>
+                <li>quill-delta-to-html</li>
+                <li>Font Awesome</li>
+            </div>
+            
+        </div>
+    </div>
+    </main>
+</body>
+</html>

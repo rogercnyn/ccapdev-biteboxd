@@ -88,7 +88,7 @@ router.post('/review/:_restaurantId/:_reviewId/reply/:_replyId/delete', deleteRe
 
 router.get('/resto-responsepage/:_id', handleRestoResponsePageRequest);
 
-
+router.get('/about', (req, res)=> res.render("about"));
 router.get('/signup', (req, res)=> res.render("signup"));
 router.get('/login', (req, res) => res.render("login"));
 router.get('/explore', handleExploreRequest);
