@@ -16,6 +16,11 @@
 
 }
 
+.checkmark {
+    width: 20px;
+    height: 20px;
+}
+
 .review-panel {
     display: flex;
     flex-direction: row;
