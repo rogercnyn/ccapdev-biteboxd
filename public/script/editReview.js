@@ -116,6 +116,19 @@ function openModal(mediaSrc) {
     
 }
 
+function toggleSeeMore(id, element){
+    textElement = document.getElementById(id)
+    
+    console.log(element)
+    if (textElement.style.maxHeight) {
+        textElement.style.maxHeight = null;
+        element.classList.remove('expanded')
+    } else {
+        textElement.style.maxHeight = textElement.scrollHeight + "px";
+        element.classList.add('expanded')
+    }
+}
+
 
 function closeModal() {
     const modal = document.getElementById('modal');

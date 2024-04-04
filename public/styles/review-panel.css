@@ -394,16 +394,31 @@
 
 .reviewtext  {
     padding-bottom: 10px;
+    
     overflow: hidden;
     text-overflow: ellipsis;
-    min-height: 10px;
-    max-height: 120px;
+    white-space: normal;
+    max-height: 34px;
+
+    /* border: 1px solid orange; */
+    cursor: pointer;
+
+    /* min-height: 10px; */
+    /* max-height: 120px; */
     background-color: #f8f8f8;
     border-radius: 10px;
     padding: 10px;
     max-width: 732px;
     min-width: 732px;
     margin-top: -1%;
+}
+
+.expand {
+    opacity: 20%;
+}
+
+.expanded {
+    opacity: 40%;
 }
 
 .full-text{
