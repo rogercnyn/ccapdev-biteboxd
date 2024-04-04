@@ -8,16 +8,7 @@ function isAuthenticated(req, res, next) {
     res.locals.loggedUsername = req.session.username
     res.locals.userId = req.session.userId;
 
-    const isInAcceptedPaths = acceptedPaths.some(path => {
-        if (path.includes(':id')) {
-            const actualPath = path.replace(':id', req.params.id);
-            return req.path === actualPath;
-        } else {
-            return req.path === path;
-        }
-    });    
-
-    if (res.locals.isResto && req.path.indexOf("/resto-responsepage") === -1 && !isInAcceptedPaths) {
+    if (res.locals.isResto && req.path.indexOf("/resto-responsepage") === -1) {
         res.redirect('/resto-responsepage/' + req.session.userId);
     }
     else {

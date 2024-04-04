@@ -6,7 +6,7 @@ const path = require('path');
 
 
 // Import controllers for restaurant and review handling
-const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest, addRestaurant, editRestaurant, updateRestoPicture, changeRestoPassword } = require('../controllers/restaurantController');
+const { handleSearchRequest, handleGetAllRestoRequest, handleExploreRequest, addRestaurant, editRestaurant, updateRestoPicture, changeRestoPassword, checkRestoUsername } = require('../controllers/restaurantController');
 const { handleRestoPageRequest, handleRestoResponsePageRequest } = require('../controllers/reviewPageController');
 const { handleCreateReviewRequest, handleLikeReviewRequest, handleEditReviewRequest } = require('../controllers/reviewController');
 const { createUser, editProfile, changeUserPassword, getTasteProfile, updateTasteProfile} = require('../controllers/profileController');
@@ -117,6 +117,7 @@ router.post("/editrestaurant", editRestaurant)
 router.post('/resto-responsepage/:id/delete', deleteRestaurant)
 router.post('/resto-responsepage/:id/updatepicture', uploadRestaurantPicture.single('file'), updateRestoPicture)
 router.post("/editrestopassword", changeRestoPassword)
+router.post("/checkUsername", checkRestoUsername)
 router.post('/profile/updateTasteProfile', isAuthenticated, updateTasteProfile);
 
 

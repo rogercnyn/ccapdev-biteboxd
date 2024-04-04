@@ -405,6 +405,28 @@ function formatDay(day){
 
 }
 
+async function checkRestoUsername(req, res) {
+    try {
+        const { username } = req.body;
+
+        // Assuming Restaurant is a model for MongoDB/Mongoose
+        const restaurant = await Restaurant.findOne({ username });
+
+        // If restaurant is not found, username doesn't exist
+        if (!restaurant) {
+            console.log("Username does not exist");
+            return res.json({ exists: false });
+        } else {
+            console.log("Username exists");
+            return res.json({ exists: true });
+        }
+    } catch (error) {
+        console.error("Error checking username:", error);
+        return res.status(500).json({ error: "Internal server error" });
+    }
+}
+
+
 async function addRestaurant(req, res) {
         const { restoName, address, tags, pricestart, priceend, daysopenstart, daysopenend, operatinghourstart, operatinghourend, shortdesc, desc, 
         attri1,
@@ -661,6 +683,7 @@ async function removeReviewFromRestaurant(reviewId, restaurantId, oldStar) {
 module.exports = { 
                     // resto
                     addRestaurant, 
+                    checkRestoUsername,
                     editRestaurant,
                     updateRestoPicture,
                     changeRestoPassword,
