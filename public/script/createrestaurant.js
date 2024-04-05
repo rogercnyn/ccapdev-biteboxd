@@ -92,7 +92,7 @@ function validateCredentials() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'dito',
+            text: 'Make sure all fields are filled out correctly.',
             customClass: {
                 container: 'swal-custom-font',
             }
