@@ -2,7 +2,7 @@
 
 Welcome to BiteBoxd! BiteBoxd is a web application designed to revolutionize the culinary exploration experience by centralizing restaurant reviews and empowering a diverse community of users to contribute their unique insights and preferences.
 
-Link to site: [Biteboxd] https://biteboxd.onrender.com/
+Link to site: https://biteboxd.onrender.com/
 
 ## Setting Up and Running the Application Locally
 
