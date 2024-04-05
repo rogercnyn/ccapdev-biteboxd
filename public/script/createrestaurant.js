@@ -105,7 +105,7 @@ function validateCredentials() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Please make sure the username is alphanumeric!',
+            text: 'Username should consist of only alphanumeric characters!',
             customClass: {
                 container: 'swal-custom-font',
             },
